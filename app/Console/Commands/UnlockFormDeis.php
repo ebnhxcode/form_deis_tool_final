@@ -14,7 +14,7 @@ class UnlockFormDeis extends Command
      * @var string
      */
     protected $signature = 'unlock:formdeis';
-
+    #*/1 * * * * php /var/www/html/form_deis_tool/artisan unlock:formdeis >> /dev/null 2>&1
     /**
      * The console command description.
      *
