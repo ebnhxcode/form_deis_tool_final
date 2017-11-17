@@ -467,8 +467,8 @@ const UsuarioCreateController = new Vue({
 
       check_password: function (inputtxt) {
          //var passw =  /^[A-Za-z]\w{7,14}$/;
-         //var passw =  /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
-         var passw =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+         var passw =  /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
+         //var passw =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
          if(inputtxt.match(passw)) {
             //alert('Correct, try another...');
             return true;
