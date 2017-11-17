@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
+        Commands\UnlockFormDeis::class,
     ];
 
     /**
@@ -26,5 +27,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        #$schedule->command('unlock:formdeis')->hourly();
+        $schedule->command('unlock:formdeis')->cron('1 * * * *') ;
+        #$schedule->command('unlock:formdeis')->cron('30 * * * *') ;
     }
 }

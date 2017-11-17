@@ -21,6 +21,9 @@ Route::get('/demoemail', function () {
    return view ('email.envio_clave_electronica', $returnData) ;
 });
 */
+
+Route::get('/testask', 'UserController@testask');
+
 Route::get('/demo', function () {
    #return view('demo.demo');
    return redirect()->to('/login');
