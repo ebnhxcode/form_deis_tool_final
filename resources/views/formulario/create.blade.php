@@ -176,10 +176,12 @@
 
                                                 </dd>
 
-                                                <dd v-else>
-                                                   <div class="well well-sm">
-                                                      <small class="text-success">No es necesario completar este campo</small>
-                                                   </div>
+                                                <dd v-else class="text-center">
+                                                   <span class="text-success">
+                                                      <small>
+                                                         Dato ya ingresado
+                                                      </small>
+                                                   </span>
                                                 </dd>
                                                 <br>
                                              </div><!-- .col-md-* -->

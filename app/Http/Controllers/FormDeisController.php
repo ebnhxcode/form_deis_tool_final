@@ -355,6 +355,9 @@ class FormDeisController extends Controller {
                 FormDeisLogSeguimientoVih::create($fd);
             }
 
+            $fd['usuario_modifica_form_deis'] = auth()->user()->id;
+            FormDeisLogSeguimientoVih::create($fd);
+
 
             return response()->json(['result' => $result, 'data' => $fd]);
         }
