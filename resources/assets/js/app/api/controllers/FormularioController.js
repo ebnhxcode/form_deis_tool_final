@@ -477,11 +477,9 @@ const FormularioController = new Vue({
          //console.log(input.bloque);
          //console.log(input);
          //console.log(this.inputs[index]);
-         /*
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
-            if (this.fdc[this.inputs[index].id] != null && this.fdc[this.inputs[index].id] != ''
-               && this.fdc[this.inputs[index].id] == this.fdc_temp[this.inputs[index].id]) {
+            if ( this.fdc[this.inputs[index].id] != null && this.fdc[this.inputs[index].id] != '' ) {
                this.inputs[index].edicion_temporal = true;
             }else{
                //caso contrario, no es necesario completar
@@ -489,7 +487,6 @@ const FormularioController = new Vue({
             }
             return this.inputs[index].edicion_temporal;
          }
-         */
          return true;
 
       },

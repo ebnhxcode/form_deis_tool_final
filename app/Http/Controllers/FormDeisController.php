@@ -215,6 +215,7 @@ class FormDeisController extends Controller {
             $this->fdc->save();
             $this->fdc = FormDeis::find($this->fdc->id);
             $this->fdc->n_correlativo_interno = $this->fdc->id;
+            $this->fdc->usuario_modifica_form_deis = auth()->user()->id;
 
             #Preparacion de variables que contienen la informacion del renderizado de los inputs y de las colecciones que llenan los comboboxes
             $returnData['fdc'] = $this->fdc;
