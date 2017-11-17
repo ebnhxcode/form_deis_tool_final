@@ -455,27 +455,27 @@ const FormularioController = new Vue({
       //Funcion de auto guardado cada 5 minutos
       setInterval(function () {
          self.guardarFormulario('identificacion_mujer');
-      },300000);
+      },601000);
 
       setInterval(function () {
          self.guardarFormulario('control_embarazo');
-      },305000);
+      },602000);
 
       setInterval(function () {
          self.guardarFormulario('patologias_sifilis');
-      },310000);
+      },603000);
 
       setInterval(function () {
          self.guardarFormulario('patologias_vih');
-      },315000);
+      },604000);
 
       setInterval(function () {
          self.guardarFormulario('datos_parto');
-      },320000);
+      },605000);
 
       setInterval(function () {
          self.guardarFormulario('datos_recien_nacido');
-      },325000);
+      },606000);
 
       $(document).ready(function () {
 
