@@ -161,7 +161,7 @@ const FormularioController = new Vue({
          methods: {},
       },
       'modal_buscar_formulario':{
-         props: [''],
+         props: [],
          template: `
 			   <!-- template for the modal component -->
 			   <transition name="modal">
@@ -418,7 +418,7 @@ const FormularioController = new Vue({
                formData.append('n_correlativo_interno', formulario.n_correlativo_interno);
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
-                  this.fdc = response.body.fdc;
+                  this.$parent.fdc = response.body.fdc;
                   //console.log(response);
                }, response => { // error callback
                   console.log(response);
