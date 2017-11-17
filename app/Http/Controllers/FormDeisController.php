@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FormDeis;
 use App\FormDeisLog;
 use App\FormDeisLogSeguimientoVih;
+use App\FormDeisUser;
 use App\Pais;
 use App\User;
 use App\Establecimiento;
@@ -359,8 +360,15 @@ class FormDeisController extends Controller {
             $fd['usuario_modifica_form_deis'] = auth()->user()->id;
             FormDeisLog::create($fd);
 
+            $fdu = FormDeisUser::where('id_form_deis', $form_deis->n_correlativo_interno)
+               ->where('usuario_modifica_form_deis', auth()->user()->id)->first();
 
-
+            if (empty($fdu)) {
+                FormDeisUser::create([
+                   'id_form_deis' => $form_deis->n_correlativo_interno,
+                   'usuario_modifica_form_deis' => auth()->user()->id
+                ]);
+            }
 
             return response()->json(['result' => $result, 'data' => $fd]);
         }

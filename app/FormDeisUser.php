@@ -10,6 +10,7 @@ class FormDeisUser extends Model
    protected $primaryKey = 'id';
    protected $table = 'form_deis_users';
    protected $fillable = [
+      'id_form_deis',
       'usuario_modifica_form_deis',
       'created_at',
       'updated_at',
