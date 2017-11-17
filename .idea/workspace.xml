@@ -3,21 +3,17 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" line="31" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/UsuarioCreateController.js" line="390" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="354" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="278" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="355" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="279" />
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" line="118" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/UnlockFormDeis.php" afterPath="$PROJECT_DIR$/app/Console/Commands/UnlockFormDeis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/input/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/input/index.blade.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,18 +45,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1453" column="56" selection-start-line="1453" selection-start-column="56" selection-end-line="1453" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="556" column="26" selection-start-line="556" selection-start-column="23" selection-end-line="556" selection-end-column="26" />
               <folding>
-                <element signature="e#1439#17632#0" expanded="false" />
-                <element signature="e#17364#17627#0" expanded="false" />
-                <element signature="e#48775#51397#0" expanded="false" />
-                <marker date="1510925872324" expanded="true" signature="2752:3219" placeholder="..." />
-                <marker date="1510925872324" expanded="true" signature="3482:3642" placeholder="..." />
-                <marker date="1510925872324" expanded="true" signature="3933:4093" placeholder="..." />
+                <element signature="e#17388#17651#0" expanded="false" />
+                <element signature="e#49017#51639#0" expanded="false" />
+                <marker date="1510927109416" expanded="true" signature="2776:3243" placeholder="..." />
+                <marker date="1510927109416" expanded="true" signature="3506:3666" placeholder="..." />
+                <marker date="1510927109416" expanded="true" signature="3957:4117" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -100,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InputController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InputController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38413686">
+            <state vertical-scroll-proportion="0.0">
               <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
                 <element signature="e#453#17563#0" expanded="false" />
@@ -863,7 +858,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632353" sideWeight="0.8910448" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632353" sideWeight="0.880597" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -871,7 +866,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632353" sideWeight="0.10895523" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632353" sideWeight="0.11940298" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1300,29 +1295,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1453" column="56" selection-start-line="1453" selection-start-column="56" selection-end-line="1453" selection-end-column="56" />
-          <folding>
-            <element signature="e#1439#17632#0" expanded="false" />
-            <element signature="e#17364#17627#0" expanded="false" />
-            <element signature="e#48775#51397#0" expanded="false" />
-            <marker date="1510925872324" expanded="true" signature="2752:3219" placeholder="..." />
-            <marker date="1510925872324" expanded="true" signature="3482:3642" placeholder="..." />
-            <marker date="1510925872324" expanded="true" signature="3933:4093" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38413686">
+        <state vertical-scroll-proportion="0.0">
           <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
             <element signature="e#453#17563#0" expanded="false" />
             <element signature="e#1077#14644#0" expanded="false" />
             <element signature="e#17787#19161#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="556" column="26" selection-start-line="556" selection-start-column="23" selection-end-line="556" selection-end-column="26" />
+          <folding>
+            <element signature="e#17388#17651#0" expanded="false" />
+            <element signature="e#49017#51639#0" expanded="false" />
+            <marker date="1510927109416" expanded="true" signature="2776:3243" placeholder="..." />
+            <marker date="1510927109416" expanded="true" signature="3506:3666" placeholder="..." />
+            <marker date="1510927109416" expanded="true" signature="3957:4117" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -37183,7 +37183,11 @@ var FormularioController = new _vue2.default({
    filters: {},
    methods: {
       checkInput: function checkInput(input) {
-         console.log(input);
+         //console.log(input.bloque);
+         if (input.bloque == 'campo_limitado') {
+            console.log(input);
+         }
+         return true;
       },
 
       validar_campos_completados: function validar_campos_completados(tabName) {
@@ -38070,7 +38074,7 @@ var FormularioController = new _vue2.default({
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             _this7.mini_loader = false;
-            swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
+            swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 15 minutos.\n            ', "success");
          }, function (response) {
             // error callback
             console.log(response);

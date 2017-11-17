@@ -29,6 +29,7 @@ const FormularioController = new Vue({
          'deis_form_table_options':[],
          'pais_origen':[],
          'fdc':[],
+         'fdc_temp':[],
          'auth':[],
 
          'inputTypes':{
@@ -474,7 +475,16 @@ const FormularioController = new Vue({
    },
    methods: {
       checkInput: function (input) {
-         console.log(input);
+         //console.log(input.bloque);
+         //console.log(input);
+         if (input.bloque == 'campo_limitado') {
+            this.fdc[input.id].edicion_temporal = true;
+            if (true) {
+
+            }
+
+         }
+         return true;
       },
 
       validar_campos_completados: function (tabName) {
@@ -1499,6 +1509,7 @@ const FormularioController = new Vue({
             this.deis_form_table_options = response.body.deis_form_table_options;
             this.pais_origen = response.body.pais_origen;
             this.fdc = response.body.fdc;
+            this.fdc_temp = response.body.fdc;
             this.formularioActivoObj = response.body.fdc;
             this.auth = response.body.auth;
             this.validar_validaciones_previas();
