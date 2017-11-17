@@ -172,6 +172,7 @@
                                                              v-model="fdc[i.name]"
                                                              v-else-if="inputInArray(i,inputTypes.textarea)">
                                                    </textarea>
+
                                                 </dd>
 
                                                 <dd v-else>

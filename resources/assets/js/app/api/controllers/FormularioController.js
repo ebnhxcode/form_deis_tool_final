@@ -47,6 +47,8 @@ const FormularioController = new Vue({
 
          'formularioNuevoActivo':false,
          'formularioEditActivo':false,
+
+
          'formularioActivoObj':[],
 
          'hayGuardadoActivo':false,
