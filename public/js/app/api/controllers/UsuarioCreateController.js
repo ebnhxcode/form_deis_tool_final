@@ -37079,7 +37079,13 @@ var UsuarioCreateController = new _vue2.default({
       validar_rut: function validar_rut() {
          var run = this.newuser.run;
          if ((0, _rut.validate)(run) == false) {
-            alert('El formato del rut es incorrecto');
+            swal({
+               title: "Advertencia",
+               text: "El formato del rut es incorrecto.",
+               type: "warning",
+               confirmButtonClass: "btn-danger",
+               closeOnConfirm: false
+            });
             return this.newuser.run = null;
          }
       },
@@ -37103,7 +37109,13 @@ var UsuarioCreateController = new _vue2.default({
          var formData = new FormData();
 
          if (!this.newuser.run || !this.newuser.email || !this.newuser.clave_electronica) {
-            alert('Debe completar todos los campos');
+            swal({
+               title: "Advertencia",
+               text: "Debe completar todos los campos.",
+               type: "warning",
+               confirmButtonClass: "btn-danger",
+               closeOnConfirm: false
+            });
             this.mini_loader_visible = false;
             return;
          }
@@ -37118,7 +37130,13 @@ var UsuarioCreateController = new _vue2.default({
             // success callback
             var rd = response.body.rd;
             if (rd == 'false') {
-               alert('Error, los datos ingresados no son correctos');
+               swal({
+                  title: "Advertencia",
+                  text: "Los datos ingresados no son correctos.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
                _this3.mini_loader_visible = false;
                return;
             }
@@ -37146,8 +37164,8 @@ var UsuarioCreateController = new _vue2.default({
 
       check_password: function check_password(inputtxt) {
          //var passw =  /^[A-Za-z]\w{7,14}$/;
-         //var passw =  /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
-         var passw = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+         var passw = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/;
+         //var passw =  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
          if (inputtxt.match(passw)) {
             //alert('Correct, try another...');
             return true;
@@ -37161,7 +37179,13 @@ var UsuarioCreateController = new _vue2.default({
          var _this4 = this;
 
          if (this.check_password(this.newuser.clave_real) == false) {
-            alert('Error, la nueva clave debe tener numeros, letras, letras mayusculas, un caracter especial y que sea minimo de 8 caracteres');
+            swal({
+               title: "Advertencia",
+               text: "La nueva clave debe tener numeros, letras, letras mayusculas y que sea minimo de 8 caracteres.",
+               type: "warning",
+               confirmButtonClass: "btn-danger",
+               closeOnConfirm: false
+            });
             return;
          }
 

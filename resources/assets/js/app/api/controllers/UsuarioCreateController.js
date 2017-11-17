@@ -483,7 +483,7 @@ const UsuarioCreateController = new Vue({
          if (this.check_password(this.newuser.clave_real) == false) {
             swal({
                title: "Advertencia",
-               text: "La nueva clave debe tener numeros, letras, letras mayusculas, un caracter especial y que sea minimo de 8 caracteres.",
+               text: "La nueva clave debe tener numeros, letras, letras mayusculas y que sea minimo de 8 caracteres.",
                type: "warning",
                confirmButtonClass: "btn-danger",
                closeOnConfirm: false

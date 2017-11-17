@@ -34,13 +34,12 @@
                         <li>
                            Para la nueva clave, el formato requerido debe contener:
                            <span class="pull-right" style="color: gray;">
-                              Ej: Clave123%&/==
+                              Ej: Clave123
                            </span>
                            <ul>
                               <li>Letras minúsculas</li>
                               <li>Letras mayúsculas</li>
                               <li>Números</li>
-                              <li>Caracteres especiales</li>
                            </ul>
                         </li>
                      </ul>
@@ -91,7 +90,7 @@
 
                         <div class="col-md-6">
                            <input id="clave_real" type="password" autocomplete="new-password" class="form-control" name="clave_real"
-                                  v-model="newuser.clave_real" placeholder="Ej: abcDEF12$#">
+                                  v-model="newuser.clave_real" placeholder="Ej: abcDEF12">
 
                         </div>
                      </div>
