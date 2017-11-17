@@ -75,6 +75,7 @@
                               <th style="min-width: 140px !important;">style</th>
                               <th style="min-width: 140px !important;">readonly</th>
                               <th style="min-width: 140px !important;">disabled</th>
+                              <th style="min-width: 140px !important;">edicion temporal</th>
                               <th style="min-width: 140px !important;">min</th>
                               <th style="min-width: 140px !important;">max</th>
                               <th style="min-width: 140px !important;">pattern</th>
@@ -143,6 +144,10 @@
                               <td>
                                  <span v-if="editBy != input.id">@{{input.disabled}}</span>
                                  <input v-else type="text" class="form-control input-sm" v-model="input.disabled">
+                              </td>
+                              <td>
+                                 <span v-if="editBy != input.id">@{{input.edicion_temporal}}</span>
+                                 <input v-else type="text" class="form-control input-sm" v-model="input.edicion_temporal">
                               </td>
                               <td>
                                  <span v-if="editBy != input.id">@{{input.min}}</span>

@@ -122,7 +122,8 @@
                                                 </dt>
 
                                                 <!-- Input basicos como text,number,time,date,etc -->
-                                                <dd v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'">
+                                                {{--v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'"--}}
+                                                <dd v-if="checkInput(i) == true">
 
                                                    <input :name="i.name"
                                                           :id="i.id"

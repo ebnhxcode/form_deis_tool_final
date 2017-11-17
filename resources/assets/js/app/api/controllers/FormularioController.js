@@ -457,7 +457,7 @@ const FormularioController = new Vue({
       //Funcion de auto guardado cada 5 minutos
       setInterval(function () {
          self.guardarFormularioCompleto();
-      },300000);
+      },900000);
 
       $(document).ready(function () {
 
@@ -473,6 +473,9 @@ const FormularioController = new Vue({
    filters: {
    },
    methods: {
+      checkInput: function (input) {
+         console.log(input);
+      },
 
       validar_campos_completados: function (tabName) {
          var validation = true;
@@ -1448,7 +1451,7 @@ const FormularioController = new Vue({
             swal("Guardado", `
                El registro se ha guardado automáticamente con éxito.
 
-               Recuerda que el registro se guarda cada 5 minutos.
+               Recuerda que el registro se guarda cada 15 minutos.
             `, "success")
 
          }, response => { // error callback

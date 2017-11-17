@@ -36913,6 +36913,7 @@ var FormularioController = new _vue2.default({
 
          'formularioNuevoActivo': false,
          'formularioEditActivo': false,
+
          'formularioActivoObj': [],
 
          'hayGuardadoActivo': false,
@@ -37166,7 +37167,7 @@ var FormularioController = new _vue2.default({
       //Funcion de auto guardado cada 5 minutos
       setInterval(function () {
          self.guardarFormularioCompleto();
-      }, 300000);
+      }, 900000);
 
       $(document).ready(function () {
 
@@ -37181,6 +37182,9 @@ var FormularioController = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
+      checkInput: function checkInput(input) {
+         console.log(input);
+      },
 
       validar_campos_completados: function validar_campos_completados(tabName) {
          var validation = true;
