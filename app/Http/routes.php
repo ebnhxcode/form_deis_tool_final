@@ -22,8 +22,6 @@ Route::get('/demoemail', function () {
 });
 */
 
-Route::get('/testask', 'UserController@testask');
-
 Route::get('/demo', function () {
    #return view('demo.demo');
    return redirect()->to('/login');

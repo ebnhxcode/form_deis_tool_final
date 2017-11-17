@@ -13,39 +13,7 @@ class UserController extends Controller
 {
 
     public function __construct () {
-        $this->middleware('auth', ['except' => ['registro', 'procesar_solicitud_clave', 'crear_clave', 'enviar_llaves_secretas', 'testask']]);
-    }
-
-
-
-    public function testask () {
-        $form_deis = FormDeis::where('estado_form_deis', 'ocupado')->orderBy('id','desc')->get();
-
-        foreach($form_deis as $key => $fd){
-            #$date = "2016-09-16 11:00:00";
-            #dd( $fd->updated_at->diff(Carbon::now())->format('%y year, %m months, %d days, %h hours and %i minutes') );
-            #dd( $fd->updated_at->diffForHumans(Carbon::now()) );
-            /*
-            $date = $fd->updated_at->toDateTimeString();
-
-            $datework = Carbon::createFromDate($date);
-            dd($datework);
-            $now = Carbon::now();
-            $testdate = $datework->diffInDays($now);
-            dd($testdate);
-            */
-
-            $diff = $fd->updated_at->diff(Carbon::now())->format('%y:%m:%d:%h:%i');
-            $diff = explode(':', $diff);
-            if ($diff[0] > 0 || $diff[1] > 0 || $diff[2] > 0 || $diff[3] > 0 || $diff[4] > 30) {
-                $fd->estado_form_deis = 'disponible';
-                echo $fd->estado_form_deis;
-            }
-
-
-        }
-
-
+        $this->middleware('auth', ['except' => ['registro', 'procesar_solicitud_clave', 'crear_clave', 'enviar_llaves_secretas']]);
     }
 
     public function registro (Request $request) {
