@@ -99,7 +99,7 @@
 
                                        <dl class="dl-vertical">
                                           <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
-                                          <div v-for="i in inputs" v-if="i.seccion == tab.name">
+                                          <div v-for="i,index in inputs" v-if="i.seccion == tab.name">
 
 
 
@@ -123,7 +123,7 @@
 
                                                 <!-- Input basicos como text,number,time,date,etc -->
                                                 {{--v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'"--}}
-                                                <dd v-if="checkInput(i) == true">
+                                                <dd v-if="checkInput(i,index) == true">
 
                                                    <input :name="i.name"
                                                           :id="i.id"

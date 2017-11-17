@@ -29,7 +29,6 @@ const FormularioController = new Vue({
          'deis_form_table_options':[],
          'pais_origen':[],
          'fdc':[],
-         'fdc_temp':[],
          'auth':[],
 
          'inputTypes':{
@@ -474,17 +473,25 @@ const FormularioController = new Vue({
    filters: {
    },
    methods: {
-      checkInput: function (input) {
+      checkInput: function (input,index) {
          //console.log(input.bloque);
          //console.log(input);
+         //console.log(this.inputs[index]);
+         /*
          if (input.bloque == 'campo_limitado') {
-            this.fdc[input.id].edicion_temporal = true;
-            if (true) {
-
+            //por que se requiere completar
+            if (this.fdc[this.inputs[index].id] != null && this.fdc[this.inputs[index].id] != ''
+               && this.fdc[this.inputs[index].id] == this.fdc_temp[this.inputs[index].id]) {
+               this.inputs[index].edicion_temporal = true;
+            }else{
+               //caso contrario, no es necesario completar
+               this.inputs[index].edicion_temporal = false;
             }
-
+            return this.inputs[index].edicion_temporal;
          }
+         */
          return true;
+
       },
 
       validar_campos_completados: function (tabName) {
@@ -1509,7 +1516,7 @@ const FormularioController = new Vue({
             this.deis_form_table_options = response.body.deis_form_table_options;
             this.pais_origen = response.body.pais_origen;
             this.fdc = response.body.fdc;
-            this.fdc_temp = response.body.fdc;
+
             this.formularioActivoObj = response.body.fdc;
             this.auth = response.body.auth;
             this.validar_validaciones_previas();

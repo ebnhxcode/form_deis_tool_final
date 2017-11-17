@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         #$schedule->command('unlock:formdeis')->hourly();
-        $schedule->command('unlock:formdeis')->cron('1 * * * *') ;
+        $schedule->command('unlock:formdeis')->cron('20 * * * *') ;
         #$schedule->command('unlock:formdeis')->cron('30 * * * *') ;
     }
 }

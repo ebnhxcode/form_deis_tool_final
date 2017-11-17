@@ -37182,11 +37182,23 @@ var FormularioController = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
-      checkInput: function checkInput(input) {
+      checkInput: function checkInput(input, index) {
          //console.log(input.bloque);
+         //console.log(input);
+         //console.log(this.inputs[index]);
+         /*
          if (input.bloque == 'campo_limitado') {
-            console.log(input);
+            //por que se requiere completar
+            if (this.fdc[this.inputs[index].id] != null && this.fdc[this.inputs[index].id] != ''
+               && this.fdc[this.inputs[index].id] == this.fdc_temp[this.inputs[index].id]) {
+               this.inputs[index].edicion_temporal = true;
+            }else{
+               //caso contrario, no es necesario completar
+               this.inputs[index].edicion_temporal = false;
+            }
+            return this.inputs[index].edicion_temporal;
          }
+         */
          return true;
       },
 
@@ -38125,6 +38137,7 @@ var FormularioController = new _vue2.default({
             _this9.deis_form_table_options = response.body.deis_form_table_options;
             _this9.pais_origen = response.body.pais_origen;
             _this9.fdc = response.body.fdc;
+
             _this9.formularioActivoObj = response.body.fdc;
             _this9.auth = response.body.auth;
             _this9.validar_validaciones_previas();
