@@ -11,13 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FormDeis.php" afterPath="$PROJECT_DIR$/app/FormDeis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/session.php" afterPath="$PROJECT_DIR$/config/session.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/input/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/input/index.blade.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.035714">
-              <caret line="694" column="39" selection-start-line="694" selection-start-column="39" selection-end-line="694" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.3934681">
+              <caret line="841" column="94" selection-start-line="841" selection-start-column="94" selection-end-line="841" selection-end-column="94" />
               <folding>
                 <element signature="e#1877#2236#0" expanded="false" />
                 <element signature="e#2259#2541#0" expanded="false" />
@@ -52,10 +48,10 @@
                 <element signature="e#3838#4271#0" expanded="false" />
                 <element signature="e#4305#17499#0" expanded="false" />
                 <element signature="e#17507#17770#0" expanded="false" />
-                <element signature="e#49689#52311#0" expanded="false" />
-                <marker date="1510961363429" expanded="true" signature="2776:3243" placeholder="..." />
-                <marker date="1510961363429" expanded="true" signature="3506:3666" placeholder="..." />
-                <marker date="1510961363429" expanded="true" signature="3957:4117" placeholder="..." />
+                <element signature="e#53029#55651#0" expanded="false" />
+                <marker date="1510963060265" expanded="true" signature="2776:3243" placeholder="..." />
+                <marker date="1510963060265" expanded="true" signature="3506:3666" placeholder="..." />
+                <marker date="1510963060265" expanded="true" signature="3957:4117" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -149,10 +145,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormDeis.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormDeis.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4943274">
+            <state vertical-scroll-proportion="-11.730769">
               <caret line="175" column="27" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
               <folding />
             </state>
@@ -216,8 +212,8 @@
         <option value="$PROJECT_DIR$/config/session.php" />
         <option value="$PROJECT_DIR$/resources/views/input/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
         <option value="$PROJECT_DIR$/app/FormDeis.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
       </list>
     </option>
   </component>
@@ -910,10 +906,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="8" width="1360" height="761" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632353" sideWeight="0.8313433" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19632353" sideWeight="0.8313433" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1338,6 +1334,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.730769">
+          <caret line="175" column="27" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1352,8 +1356,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.035714">
-          <caret line="694" column="39" selection-start-line="694" selection-start-column="39" selection-end-line="694" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.3934681">
+          <caret line="841" column="94" selection-start-line="841" selection-start-column="94" selection-end-line="841" selection-end-column="94" />
           <folding>
             <element signature="e#1877#2236#0" expanded="false" />
             <element signature="e#2259#2541#0" expanded="false" />
@@ -1362,19 +1366,11 @@
             <element signature="e#3838#4271#0" expanded="false" />
             <element signature="e#4305#17499#0" expanded="false" />
             <element signature="e#17507#17770#0" expanded="false" />
-            <element signature="e#49689#52311#0" expanded="false" />
-            <marker date="1510961363429" expanded="true" signature="2776:3243" placeholder="..." />
-            <marker date="1510961363429" expanded="true" signature="3506:3666" placeholder="..." />
-            <marker date="1510961363429" expanded="true" signature="3957:4117" placeholder="..." />
+            <element signature="e#53029#55651#0" expanded="false" />
+            <marker date="1510963060265" expanded="true" signature="2776:3243" placeholder="..." />
+            <marker date="1510963060265" expanded="true" signature="3506:3666" placeholder="..." />
+            <marker date="1510963060265" expanded="true" signature="3957:4117" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4943274">
-          <caret line="175" column="27" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
