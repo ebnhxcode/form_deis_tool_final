@@ -36897,6 +36897,7 @@ var FormularioController = new _vue2.default({
          'deis_form_table_options': [],
          'pais_origen': [],
          'fdc': [],
+         'fdc_temp': [],
          'auth': [],
 
          'inputTypes': {
@@ -37116,6 +37117,8 @@ var FormularioController = new _vue2.default({
                 */
                this.$parent.renderizar_solo_inputs();
                this.$parent.fdc = formulario;
+               this.$parent.fdc_temp = formulario;
+               this.$parent.formularioActivoObj = formulario;
                this.$parent.show_modal_buscar_formulario = false;
                this.$parent.formularioEditActivo = true;
                this.$parent.formularioNuevoActivo = false;
@@ -37186,19 +37189,18 @@ var FormularioController = new _vue2.default({
          //console.log(input.bloque);
          //console.log(input);
          //console.log(this.inputs[index]);
-         /*
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
-            if (this.fdc[this.inputs[index].id] != null && this.fdc[this.inputs[index].id] != ''
-               && this.fdc[this.inputs[index].id] == this.fdc_temp[this.inputs[index].id]) {
-               this.inputs[index].edicion_temporal = true;
-            }else{
-               //caso contrario, no es necesario completar
+
+            if (this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '') {
+
                this.inputs[index].edicion_temporal = false;
+            } else {
+               //caso contrario, no es necesario completar
+               this.inputs[index].edicion_temporal = true;
             }
             return this.inputs[index].edicion_temporal;
          }
-         */
          return true;
       },
 
