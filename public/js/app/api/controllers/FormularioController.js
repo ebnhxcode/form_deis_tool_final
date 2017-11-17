@@ -37165,28 +37165,8 @@ var FormularioController = new _vue2.default({
 
       //Funcion de auto guardado cada 5 minutos
       setInterval(function () {
-         self.guardarFormulario('identificacion_mujer');
-      }, 601000);
-
-      setInterval(function () {
-         self.guardarFormulario('control_embarazo');
-      }, 602000);
-
-      setInterval(function () {
-         self.guardarFormulario('patologias_sifilis');
-      }, 603000);
-
-      setInterval(function () {
-         self.guardarFormulario('patologias_vih');
-      }, 604000);
-
-      setInterval(function () {
-         self.guardarFormulario('datos_parto');
-      }, 605000);
-
-      setInterval(function () {
-         self.guardarFormulario('datos_recien_nacido');
-      }, 606000);
+         self.guardarFormularioCompleto();
+      }, 300000);
 
       $(document).ready(function () {
 
@@ -38040,17 +38020,7 @@ var FormularioController = new _vue2.default({
 
          this.$http.post('/formulario', formData).then(function (response) {
             // success callback
-            console.log(response.status);
-            if (response.status == 500) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
-            }
+            //console.log(response.status);
 
             //alert('Guardado');
 
@@ -38079,22 +38049,79 @@ var FormularioController = new _vue2.default({
          return;
       },
 
+      guardarFormularioCompleto: function guardarFormularioCompleto() {
+         var _this7 = this;
+
+         this.mini_loader = true;
+         //this.spinner_finalizar = true;
+         var formData = new FormData();
+         //var formData = [];
+         var permiteGuardar = false;
+         //console.log(tabName);
+         for (var i in this.inputs) {
+            if (this.fdc[this.inputs[i].name] != null) {
+               //Le pasa el valor en v-model
+               if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                  this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
+               }
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+            }
+         }
+
+         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+            return false;
+         }
+
+         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         formData.append('_id_formulario', this.fdc.id);
+
+         this.$http.post('/formulario', formData).then(function (response) {
+            // success callback
+            //console.log(response.status);
+
+            //alert('Guardado');
+
+            //Si guardar salio bien
+            _this7.hayGuardadoActivo = true;
+            _this7.idFormularioActivo = _this7.fdc.id;
+            $('.circle-loader').toggleClass('load-complete');
+            $('.checkmark').toggle();
+            _this7.mini_loader = false;
+            swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
+         }, function (response) {
+            // error callback
+            console.log(response);
+            if (response.status == 500) {
+               swal({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               window.location.href = '/login';
+            }
+         });
+
+         return;
+      },
+
       inputInArray: function inputInArray(input, array) {
 
          return $.inArray(input.type, array) == -1 ? false : true;
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this7 = this;
+         var _this8 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this7.inputs = response.body.inputs;
-            _this7.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this7.deis_form_table_options = response.body.deis_form_table_options;
-            _this7.pais_origen = response.body.pais_origen;
-            _this7.auth = response.body.auth;
-            _this7.validar_validaciones_previas();
+            _this8.inputs = response.body.inputs;
+            _this8.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this8.deis_form_table_options = response.body.deis_form_table_options;
+            _this8.pais_origen = response.body.pais_origen;
+            _this8.auth = response.body.auth;
+            _this8.validar_validaciones_previas();
          }, function (response) {
             // error callback
             console.log('Error datos_formulario: ' + response);
@@ -38102,18 +38129,18 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this8 = this;
+         var _this9 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this8.inputs = response.body.inputs;
-            _this8.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this8.deis_form_table_options = response.body.deis_form_table_options;
-            _this8.pais_origen = response.body.pais_origen;
-            _this8.fdc = response.body.fdc;
-            _this8.formularioActivoObj = response.body.fdc;
-            _this8.auth = response.body.auth;
-            _this8.validar_validaciones_previas();
+            _this9.inputs = response.body.inputs;
+            _this9.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this9.deis_form_table_options = response.body.deis_form_table_options;
+            _this9.pais_origen = response.body.pais_origen;
+            _this9.fdc = response.body.fdc;
+            _this9.formularioActivoObj = response.body.fdc;
+            _this9.auth = response.body.auth;
+            _this9.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit

@@ -454,28 +454,8 @@ const FormularioController = new Vue({
 
       //Funcion de auto guardado cada 5 minutos
       setInterval(function () {
-         self.guardarFormulario('identificacion_mujer');
-      },601000);
-
-      setInterval(function () {
-         self.guardarFormulario('control_embarazo');
-      },602000);
-
-      setInterval(function () {
-         self.guardarFormulario('patologias_sifilis');
-      },603000);
-
-      setInterval(function () {
-         self.guardarFormulario('patologias_vih');
-      },604000);
-
-      setInterval(function () {
-         self.guardarFormulario('datos_parto');
-      },605000);
-
-      setInterval(function () {
-         self.guardarFormulario('datos_recien_nacido');
-      },606000);
+         self.guardarFormularioCompleto();
+      },300000);
 
       $(document).ready(function () {
 
@@ -1422,7 +1402,20 @@ const FormularioController = new Vue({
          formData.append('_id_formulario', this.fdc.id);
 
          this.$http.post('/formulario', formData).then(response => { // success callback
-            console.log(response.status);
+            //console.log(response.status);
+
+            //alert('Guardado');
+
+            //Si guardar salio bien
+            this.hayGuardadoActivo = true;
+            this.idFormularioActivo = this.fdc.id;
+            $('.circle-loader').toggleClass('load-complete');
+            $('.checkmark').toggle();
+            this.mini_loader = false;
+            swal("Guardado", "El registro se guardó correctamente!", "success")
+
+         }, response => { // error callback
+            console.log(response);
             if (response.status == 500) {
                swal({
                   title: "Atencion",
@@ -1434,6 +1427,40 @@ const FormularioController = new Vue({
                window.location.href = '/login';
             }
 
+         });
+
+
+
+         return;
+      },
+
+      guardarFormularioCompleto: function () {
+         this.mini_loader = true;
+         //this.spinner_finalizar = true;
+         var formData = new FormData();
+         //var formData = [];
+         var permiteGuardar = false;
+         //console.log(tabName);
+         for (let i in this.inputs) {
+            if (this.fdc[this.inputs[i].name] != null ) {
+               //Le pasa el valor en v-model
+               if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                  this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
+               }
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+            }
+         }
+
+         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+            return false;
+         }
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         formData.append('_id_formulario', this.fdc.id);
+
+         this.$http.post('/formulario', formData).then(response => { // success callback
+            //console.log(response.status);
+
             //alert('Guardado');
 
             //Si guardar salio bien
@@ -1442,7 +1469,11 @@ const FormularioController = new Vue({
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             this.mini_loader = false;
-            swal("Guardado", "El registro se guardó correctamente!", "success")
+            swal("Guardado", `
+               El registro se ha guardado automáticamente con éxito.
+
+               Recuerda que el registro se guarda cada 5 minutos.
+            `, "success")
 
          }, response => { // error callback
             console.log(response);
