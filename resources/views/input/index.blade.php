@@ -65,6 +65,8 @@
                            <tr>
                               <th>Acción</th>
                               <th>id_input</th>
+                              <th style="min-width: 140px !important;">bloque</th>
+                              <th style="min-width: 140px !important;">edicion temporal</th>
                               <th>order_layout_form</th>
                               <th style="min-width: 140px !important;">label</th>
                               <th style="min-width: 140px !important;">tag</th>
@@ -75,11 +77,9 @@
                               <th style="min-width: 140px !important;">style</th>
                               <th style="min-width: 140px !important;">readonly</th>
                               <th style="min-width: 140px !important;">disabled</th>
-                              <th style="min-width: 140px !important;">edicion temporal</th>
                               <th style="min-width: 140px !important;">min</th>
                               <th style="min-width: 140px !important;">max</th>
                               <th style="min-width: 140px !important;">pattern</th>
-                              <th style="min-width: 140px !important;">bloque</th>
                               <th style="min-width: 140px !important;">seccion</th>
                               <th style="min-width: 140px !important;">class_custom</th>
                               <th style="min-width: 140px !important;">empty_column</th>
@@ -104,6 +104,14 @@
                               </td>
                               <td>
                                  @{{input.id_input}}
+                              </td>
+                              <td>
+                                 <span v-if="editBy != input.id">@{{input.bloque}}</span>
+                                 <input v-else type="text" class="form-control input-sm" v-model="input.bloque">
+                              </td>
+                              <td>
+                                 <span v-if="editBy != input.id">@{{input.edicion_temporal}}</span>
+                                 <input v-else type="text" class="form-control input-sm" v-model="input.edicion_temporal">
                               </td>
                               <td>
                                  <span v-if="editBy != input.id">@{{input.order_layout_form}}</span>
@@ -146,10 +154,6 @@
                                  <input v-else type="text" class="form-control input-sm" v-model="input.disabled">
                               </td>
                               <td>
-                                 <span v-if="editBy != input.id">@{{input.edicion_temporal}}</span>
-                                 <input v-else type="text" class="form-control input-sm" v-model="input.edicion_temporal">
-                              </td>
-                              <td>
                                  <span v-if="editBy != input.id">@{{input.min}}</span>
                                  <input v-else type="text" class="form-control input-sm" v-model="input.min">
                               </td>
@@ -160,10 +164,6 @@
                               <td>
                                  <span v-if="editBy != input.id">@{{input.pattern}}</span>
                                  <input v-else type="text" class="form-control input-sm" v-model="input.pattern">
-                              </td>
-                              <td>
-                                 <span v-if="editBy != input.id">@{{input.bloque}}</span>
-                                 <input v-else type="text" class="form-control input-sm" v-model="input.bloque">
                               </td>
                               <td>
                                  <span v-if="editBy != input.id">@{{input.seccion}}</span>

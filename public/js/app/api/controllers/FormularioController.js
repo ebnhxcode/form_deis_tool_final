@@ -37168,9 +37168,11 @@ var FormularioController = new _vue2.default({
       var self = this;
 
       //Funcion de auto guardado cada 5 minutos
+      /*
       setInterval(function () {
          self.guardarFormularioCompleto();
-      }, 900000);
+      },300000);
+      */
 
       $(document).ready(function () {
 
@@ -37361,13 +37363,13 @@ var FormularioController = new _vue2.default({
                         &&
                            (
                               (this.inputs[i].name != 'resultado_dilucion_1_vdrl_embarazo' && this.inputs[i].name != 'fecha_1_vdrl_embarazo'
-                              && this.inputs[i].name == 'eg_1_dvrl_embarazo' ||
+                              && this.inputs[i].name == 'eg_1_vdrl_embarazo' ||
                               this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ) &&
                               (this.inputs[i].name != 'resultado_dilucion_2_vdrl_embarazo' && this.inputs[i].name != 'fecha_2_vdrl_embarazo'
-                              && this.inputs[i].name == 'eg_2_dvrl_embarazo' ||
+                              && this.inputs[i].name == 'eg_2_vdrl_embarazo' ||
                               this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ) &&
                               (this.inputs[i].name != 'resultado_dilucion_3_vdrl_embarazo' && this.inputs[i].name != 'fecha_3_vdrl_embarazo'
-                              && this.inputs[i].name == 'eg_3_dvrl_embarazo' ||
+                              && this.inputs[i].name == 'eg_3_vdrl_embarazo' ||
                               this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo')
                             )
                         )*/
@@ -37387,22 +37389,23 @@ var FormularioController = new _vue2.default({
                   for (var _i3 in this.inputs) {
 
                      if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[_i3].name == 'resultado_dilucion_1_vdrl_embarazo' || this.inputs[_i3].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i3].name == 'eg_1_dvrl_embarazo') {
+                        if (this.inputs[_i3].name == 'resultado_dilucion_1_vdrl_embarazo' || this.inputs[_i3].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i3].name == 'eg_1_vdrl_embarazo') {
                            this.inputs[_i3].disabled = true;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[_i3].name == 'fecha_1_vdrl_embarazo') {
                            this.inputs[_i3].disabled = null;
                         } else {
-                           if (this.inputs[_i3].name == 'resultado_dilucion_1_vdrl_embarazo' || this.inputs[_i3].name == 'eg_1_dvrl_embarazo') {
+                           if (this.inputs[_i3].name == 'resultado_dilucion_1_vdrl_embarazo') {
                               this.inputs[_i3].disabled = true;
                            }
                         }
                      }
+                     this.fdc['resultado_dilucion_1_vdrl_embarazo'] = 'true';
                   }
                } else {
                   for (var _i4 in this.inputs) {
-                     if (this.inputs[_i4].name == 'resultado_dilucion_1_vdrl_embarazo' || this.inputs[_i4].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i4].name == 'eg_1_dvrl_embarazo') {
+                     if (this.inputs[_i4].name == 'resultado_dilucion_1_vdrl_embarazo' || this.inputs[_i4].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i4].name == 'eg_1_vdrl_embarazo') {
                         this.inputs[_i4].disabled = null;
                      }
                   }
@@ -37415,22 +37418,23 @@ var FormularioController = new _vue2.default({
                   for (var _i5 in this.inputs) {
 
                      if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[_i5].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i5].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i5].name == 'eg_2_dvrl_embarazo') {
+                        if (this.inputs[_i5].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i5].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i5].name == 'eg_2_vdrl_embarazo') {
                            this.inputs[_i5].disabled = true;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[_i5].name == 'fecha_2_vdrl_embarazo') {
                            this.inputs[_i5].disabled = null;
                         } else {
-                           if (this.inputs[_i5].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i5].name == 'eg_2_dvrl_embarazo') {
+                           if (this.inputs[_i5].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i5].name == 'eg_2_vdrl_embarazo') {
                               this.inputs[_i5].disabled = true;
                            }
                         }
                      }
+                     this.fdc['resultado_dilucion_2_vdrl_embarazo'] = 'true';
                   }
                } else {
                   for (var _i6 in this.inputs) {
-                     if (this.inputs[_i6].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i6].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i6].name == 'eg_2_dvrl_embarazo') {
+                     if (this.inputs[_i6].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i6].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i6].name == 'eg_2_vdrl_embarazo') {
                         this.inputs[_i6].disabled = null;
                      }
                   }
@@ -37442,22 +37446,23 @@ var FormularioController = new _vue2.default({
                   for (var _i7 in this.inputs) {
 
                      if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[_i7].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i7].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i7].name == 'eg_3_dvrl_embarazo') {
+                        if (this.inputs[_i7].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i7].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i7].name == 'eg_3_vdrl_embarazo') {
                            this.inputs[_i7].disabled = true;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[_i7].name == 'fecha_3_vdrl_embarazo') {
                            this.inputs[_i7].disabled = null;
                         } else {
-                           if (this.inputs[_i7].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i7].name == 'eg_3_dvrl_embarazo') {
+                           if (this.inputs[_i7].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i7].name == 'eg_3_vdrl_embarazo') {
                               this.inputs[_i7].disabled = true;
                            }
                         }
                      }
+                     this.fdc['resultado_dilucion_3_vdrl_embarazo'] = 'true';
                   }
                } else {
                   for (var _i8 in this.inputs) {
-                     if (this.inputs[_i8].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i8].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i8].name == 'eg_3_dvrl_embarazo') {
+                     if (this.inputs[_i8].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i8].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i8].name == 'eg_3_vdrl_embarazo') {
                         this.inputs[_i8].disabled = null;
                      }
                   }
@@ -37512,6 +37517,7 @@ var FormularioController = new _vue2.default({
                      }
                   }
                }
+
                break;
 
             //case 'anos_estudio':
@@ -37918,10 +37924,13 @@ var FormularioController = new _vue2.default({
       },
 
       crear_nuevo_formulario: function crear_nuevo_formulario() {
+         this.renderizar_formulario();
+         this.formularioNuevoActivo = true;
+         /*
          if (this.formularioNuevoActivo == false) {
             this.renderizar_formulario();
             this.formularioNuevoActivo = true;
-         } else {
+         }else{
             this.fdc = this.formularioActivoObj;
             swal({
                title: "Advertencia",
@@ -37931,6 +37940,7 @@ var FormularioController = new _vue2.default({
                closeOnConfirm: false
             });
          }
+         */
       },
 
       fetchFormulario: function fetchFormulario() {
@@ -38088,7 +38098,7 @@ var FormularioController = new _vue2.default({
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             _this7.mini_loader = false;
-            swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 15 minutos.\n            ', "success");
+            swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
          }, function (response) {
             // error callback
             console.log(response);

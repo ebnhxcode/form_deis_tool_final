@@ -177,11 +177,7 @@
                                                 </dd>
 
                                                 <dd v-else class="text-center">
-                                                   <span class="text-success">
-                                                      <small>
-                                                         Dato ya ingresado
-                                                      </small>
-                                                   </span>
+                                                   <input class="form-control text-success" type="text" readonly="true" value="Dato ya ingresado">
                                                 </dd>
                                                 <br>
                                              </div><!-- .col-md-* -->

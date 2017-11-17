@@ -171,7 +171,9 @@ class FormDeis extends Model
       'terapia_antiretroviral_farmaco_1',
       'terapia_antiretroviral_tar_farmaco_2',
       'terapia_antiretroviral_tar_farmaco_3',
+      'terapia_antiretroviral_tar_farmaco_3_otro',
       'tipo_de_convivencia',
+      'tipo_establecimiento',
       'tipo_establecimiento_control_prenatal_embarazo',
       'tipo_parto',
       'titulacion_vdrl_liq_cefalo_recien_nacido',
@@ -187,6 +189,6 @@ class FormDeis extends Model
       'updated_at',
       'usuario_modifica_form_deis',
       'via_parto',
-      'vih_conocido_previa_embarazo',
+      'vih_conocido_previa_embarazo'
    ];
 }
