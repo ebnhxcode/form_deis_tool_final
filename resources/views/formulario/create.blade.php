@@ -122,7 +122,8 @@
                                                 </dt>
 
                                                 <!-- Input basicos como text,number,time,date,etc -->
-                                                <dd v-if="inputInArray(i,inputTypes.basics)">
+                                                <dd v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'">
+
                                                    <input :name="i.name"
                                                           :id="i.id"
                                                           :disabled="i.disabled!=''?i.disabled:''"
@@ -139,11 +140,9 @@
                                                           :pattern="i.pattern!=''?i.pattern:''"
                                                           @change.prevent="verifica_validacion_change(i)"
                                                           @keyup.prevent="verifica_validacion_keyup(i)"
-                                                          v-model="fdc[i.name]">
-                                                </dd>
+                                                          v-model="fdc[i.name]"
+                                                          v-if="inputInArray(i,inputTypes.basics)">
 
-                                                <!-- Select Inputs -->
-                                                <dd v-else-if="inputInArray(i,inputTypes.select)">
                                                    <select :name="i.name"
                                                            :id="i.id"
                                                            :disabled="i.disabled!=''?i.disabled:''"
@@ -156,7 +155,8 @@
                                                            :value="fdc[i.name]"
                                                            v-model="fdc[i.name]"
                                                            @change.prevent="verifica_validacion_change(i)"
-                                                           @click.prevent="verifica_validacion_click(i)">
+                                                           @click.prevent="verifica_validacion_click(i)"
+                                                           v-else-if="inputInArray(i,inputTypes.select)">
 
                                                       {{--<option value="">Seleccione</option>--}}
                                                       <option v-for="o,i in deis_form_table_options[i.name]" :value="i">
@@ -165,20 +165,19 @@
 
                                                    </select><!-- .form-control -->
 
-                                                </dd>
-
-                                                <!-- Textarea Inputs -->
-                                                <dd v-else-if="inputInArray(i,inputTypes.textarea)">
-                                             <textarea :name="i.name"
-                                                       :id="i.id"
-                                                       :disabled="i.disabled!=''?i.disabled:''"
-                                                       class="form-control"
-                                                       v-model="fdc[i.name]">
-                                             </textarea>
+                                                   <textarea :name="i.name"
+                                                             :id="i.id"
+                                                             :disabled="i.disabled!=''?i.disabled:''"
+                                                             class="form-control"
+                                                             v-model="fdc[i.name]"
+                                                             v-else-if="inputInArray(i,inputTypes.textarea)">
+                                                   </textarea>
                                                 </dd>
 
                                                 <dd v-else>
-                                                   Sin Campos
+                                                   <div class="well well-sm">
+                                                      <small class="text-success">No es necesario completar este campo</small>
+                                                   </div>
                                                 </dd>
                                                 <br>
                                              </div><!-- .col-md-* -->
