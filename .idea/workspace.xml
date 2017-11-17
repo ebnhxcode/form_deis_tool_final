@@ -7,7 +7,6 @@
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="276" />
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" line="118" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="0" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="469" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
@@ -39,16 +38,14 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47357064">
-              <caret line="457" column="11" selection-start-line="457" selection-start-column="11" selection-end-line="457" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.7119741">
+              <caret line="874" column="20" selection-start-line="874" selection-start-column="20" selection-end-line="874" selection-end-column="20" />
               <folding>
                 <element signature="e#17362#17625#0" expanded="false" />
-                <element signature="e#19867#49327#0" expanded="false" />
-                <element signature="e#19880#47250#0" expanded="false" />
-                <element signature="e#49380#52002#0" expanded="false" />
-                <marker date="1510885662022" expanded="true" signature="2750:3217" placeholder="..." />
-                <marker date="1510885662022" expanded="true" signature="3480:3640" placeholder="..." />
-                <marker date="1510885662022" expanded="true" signature="3931:4091" placeholder="..." />
+                <element signature="e#48698#51320#0" expanded="false" />
+                <marker date="1510886007826" expanded="true" signature="2750:3217" placeholder="..." />
+                <marker date="1510886007826" expanded="true" signature="3480:3640" placeholder="..." />
+                <marker date="1510886007826" expanded="true" signature="3931:4091" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -98,7 +95,6 @@
         <option value="$PROJECT_DIR$/resources/views/email/envio_clave_electronica.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" />
-        <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/mail.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
@@ -112,6 +108,7 @@
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/resources/views/usuarios/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/UsuarioCreateController.js" />
+        <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
       </list>
     </option>
@@ -1169,14 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="123" selection-start-line="86" selection-start-column="123" selection-end-line="86" selection-end-column="123" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1222,18 +1211,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37782562">
+          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47357064">
-          <caret line="457" column="11" selection-start-line="457" selection-start-column="11" selection-end-line="457" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.7119741">
+          <caret line="874" column="20" selection-start-line="874" selection-start-column="20" selection-end-line="874" selection-end-column="20" />
           <folding>
             <element signature="e#17362#17625#0" expanded="false" />
-            <element signature="e#19867#49327#0" expanded="false" />
-            <element signature="e#19880#47250#0" expanded="false" />
-            <element signature="e#49380#52002#0" expanded="false" />
-            <marker date="1510885662022" expanded="true" signature="2750:3217" placeholder="..." />
-            <marker date="1510885662022" expanded="true" signature="3480:3640" placeholder="..." />
-            <marker date="1510885662022" expanded="true" signature="3931:4091" placeholder="..." />
+            <element signature="e#48698#51320#0" expanded="false" />
+            <marker date="1510886007826" expanded="true" signature="2750:3217" placeholder="..." />
+            <marker date="1510886007826" expanded="true" signature="3480:3640" placeholder="..." />
+            <marker date="1510886007826" expanded="true" signature="3931:4091" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -464,34 +464,6 @@ const FormularioController = new Vue({
             //console.log(e);
             return "Estas seguro que deseas cerrar esta ventana?";
          };
-
-         /*
-            window.onclose = function (e) {
-               alert(e);
-            };
-         */
-
-         /*
-          window.onbeforeunload = confirmExit;
-
-          function confirmExit(){
-          return `
-          You have attempted to leave this page.
-          If you have made any changes to the fields without clicking the Save button, your changes will be lost.
-          Are you sure you want to exit this page?
-          `;
-          }
-
-         $(window).unload(function() {
-            return "Are you sure you want to close the window?";
-         });
-
-         $(window).bind("beforeunload", function() {
-            return confirm("Do you really want to close?");
-         });
-         /* */
-
-
       });
 
    },
@@ -900,6 +872,7 @@ const FormularioController = new Vue({
                         $('.anos_estudio2').append($(o).html(i));
                      }
                      break;
+                  /*
                   default:
                      var i = -1;
                      do {
@@ -909,6 +882,7 @@ const FormularioController = new Vue({
                         $('.anos_estudio2').append($(o).html(i));
                      }while(false);
                      break;
+                  */
                }
 
                $('.anos_estudio1').val(this.fdc['anos_estudio']);
