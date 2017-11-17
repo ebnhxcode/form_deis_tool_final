@@ -39,6 +39,7 @@ class UserController extends Controller
             $diff = explode(':', $diff);
             if ($diff[0] > 0 || $diff[1] > 0 || $diff[2] > 0 || $diff[3] > 0 || $diff[4] > 30) {
                 $fd->estado_form_deis = 'disponible';
+                echo $fd->estado_form_deis;
             }
 
 

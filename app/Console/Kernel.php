@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
-        Commands\UnlockFormDeis::class,
+        //Commands\UnlockFormDeis::class,
+        'App\Console\Commands\UnlockFormDeis',
     ];
 
     /**
