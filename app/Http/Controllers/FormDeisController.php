@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FormDeis;
+use App\FormDeisLog;
 use App\FormDeisLogSeguimientoVih;
 use App\Pais;
 use App\User;
@@ -356,7 +357,7 @@ class FormDeisController extends Controller {
             }
 
             $fd['usuario_modifica_form_deis'] = auth()->user()->id;
-            FormDeisLogSeguimientoVih::create($fd);
+            FormDeisLog::create($fd);
 
 
             return response()->json(['result' => $result, 'data' => $fd]);
