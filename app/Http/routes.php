@@ -26,6 +26,8 @@ Route::get('/demo', function () {
    return redirect()->to('/login');
 });
 
+Route::post('/formulario/prueba_session', 'UserController@prueba_session');
+
 Route::get('/registro', 'UserController@registro');
 Route::get('/solicitud_clave', 'UserController@registro');
 Route::get('/clave_electronica', 'UserController@registro');

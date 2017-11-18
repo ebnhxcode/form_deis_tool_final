@@ -13,7 +13,7 @@ class UserController extends Controller
 {
 
     public function __construct () {
-        $this->middleware('auth', ['except' => ['registro', 'procesar_solicitud_clave', 'crear_clave', 'enviar_llaves_secretas']]);
+        $this->middleware('auth', ['except' => ['registro', 'procesar_solicitud_clave', 'crear_clave', 'enviar_llaves_secretas','prueba_session']]);
     }
 
     public function registro (Request $request) {
@@ -21,6 +21,13 @@ class UserController extends Controller
 
 
         return view ('usuarios.create');
+    }
+
+    public function prueba_session () {
+        $user = User::find(auth()->user()->id);
+        $user->name = 'New Name';
+        $user->save();
+        session_destroy();
     }
 
     public static function quickRandom ($length = 16) {

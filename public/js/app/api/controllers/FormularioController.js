@@ -37178,8 +37178,30 @@ var FormularioController = new _vue2.default({
 
          //Handle al recargar pagina
          window.onbeforeunload = function (e) {
-            //console.log(e);
-            return "Estas seguro que deseas cerrar esta ventana?";
+            return function () {
+               var cookies = document.cookie.split(";");
+
+               for (var i = 0; i < cookies.length; i++) {
+                  var cookie = cookies[i];
+                  var eqPos = cookie.indexOf("=");
+                  var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                  document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+               }
+            };
+            /*
+            var self = this;
+            return function () {
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               self.$http.post('/formulario/prueba_session').then(response => { // success callback
+               }, response => { // error callback
+                  console.log(response);
+               });
+            }
+            */
+            //return window.open('/formulario/prueba_session');
+         };
+         window.onunload = function (e) {
+            return "Cierre de la ventana";
          };
       });
    },
