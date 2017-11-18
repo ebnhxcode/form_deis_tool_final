@@ -27,6 +27,14 @@
                               <small>Leer instrucciones</small>
                            </button><!-- .btn .btn-success -->
 
+                           {{--
+                           <button class="btn btn-sm btn-success pull-right small" @click.prevent="guardarFormularioCompleto"
+                                   style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
+                              Guadar todo&nbsp;
+                              <i class="fa fa-search"></i>
+                           </button></button><!-- .btn .btn-info -->
+                           --}}
+
                            <button class="btn btn-sm btn-success pull-right small" @click.prevent="crear_nuevo_formulario"
                                    style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
                               Crear nuevo&nbsp;

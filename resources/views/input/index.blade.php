@@ -190,10 +190,12 @@
                                  <input v-else type="text" class="form-control input-sm" v-model="input.type">
                               </td>
                               <td>
-                                 @{{input.id}}
+                                 <span v-if="editBy != input.id">@{{input.id}}</span>
+                                 <input v-else type="text" class="form-control input-sm" v-model="input.id">
                               </td>
                               <td>
-                                 @{{input.name}}
+                                 <span v-if="editBy != input.id">@{{input.name}}</span>
+                                 <input v-else type="text" class="form-control input-sm" v-model="input.name">
                               </td>
                               <td>
                                  @{{input.value}}

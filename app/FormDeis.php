@@ -153,6 +153,7 @@ class FormDeis extends Model
       'resultado_dilucion_vdrl_parto',
       'resultado_estudio_placentario',
       'resultado_examen_treponemico_parto',
+      'resultado_examen_treponemico_parto_madre',
       'resultado_examen_vih_parto',
       'resultado_final_isp_examen_vih',
       'resultado_final_isp_examen_vih_recien_nacido',
