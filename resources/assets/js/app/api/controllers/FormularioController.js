@@ -1507,7 +1507,7 @@ const FormularioController = new Vue({
 
          }, response => { // error callback
             console.log(response);
-            if (response.status == 500) {
+            if (response.status == 401) {
                swal({
                   title: "Atencion",
                   text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
@@ -1568,7 +1568,7 @@ const FormularioController = new Vue({
 
          }, response => { // error callback
             console.log(response);
-            if (response.status == 500) {
+            if (response.status == 401) {
                swal({
                   title: "Atencion",
                   text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",

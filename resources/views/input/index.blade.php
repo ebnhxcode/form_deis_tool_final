@@ -59,7 +59,7 @@
 
 
                      <br>
-                     <div class="table-responsive small" style="overflow-y: scroll;max-height: 400px;">
+                     <div class="table-responsive small" {{--style="overflow-y: scroll;max-height: 400px;"--}}>
                         <table class="table table-striped small">
                            <thead>
                            <tr>
