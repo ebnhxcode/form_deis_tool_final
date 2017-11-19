@@ -451,23 +451,20 @@ const FormularioController = new Vue({
        */
    },
    created(){
-
       //Instancia parametros iniciales
       this.fetchFormulario();
       //Variable de contexto
       var self = this;
-
       //Funcion de auto guardado cada 5 minutos
       /*
       setInterval(function () {
          self.guardarFormularioCompleto();
       },300000);
       */
-
       $(document).ready(function () {
-
          //Handle al recargar pagina
          window.onbeforeunload = function(e){
+            return "Estás seguro que deseas cerrar la ventana?";
             /*
             return function () {
                var cookies = document.cookie.split(";");
@@ -478,8 +475,7 @@ const FormularioController = new Vue({
                   var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
                   document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
                }
-               */
-            return "Estás seguro que deseas cerrar la ventana?";
+            */
             /*
             var self = this;
             return function () {
@@ -495,9 +491,7 @@ const FormularioController = new Vue({
          window.onunload = function(e){
             return "Cierre de la ventana";
          };
-
       });
-
    },
    ready: {},
    filters: {
@@ -1395,7 +1389,6 @@ const FormularioController = new Vue({
          }
       },
 
-
       buscar_formulario: function () {
          this.show_modal_buscar_formulario = true;
       },
@@ -1437,10 +1430,10 @@ const FormularioController = new Vue({
                swal({
                   title: "Términos y condiciones de uso",
                   text: `
-           Al ingresar y o realizar cualquier operación de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el artículo 7 de la ley 19628 dispone que  “Las personas que trabajan en el tratamiento de datos personales, tanto en organismos públicos como privados, están obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al público, como asimismo sobre los demás datos y antecedentes relacionados con el banco de datos, obligación que no cesa por haber terminado sus actividades en ese campo”. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son “datos sensibles” y por tanto los datos de este sistema sólo podrán ser tratados dentro de las finalidades que se declaran.
+                     Al ingresar y o realizar cualquier operación de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el artículo 7 de la ley 19628 dispone que  “Las personas que trabajan en el tratamiento de datos personales, tanto en organismos públicos como privados, están obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al público, como asimismo sobre los demás datos y antecedentes relacionados con el banco de datos, obligación que no cesa por haber terminado sus actividades en ese campo”. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son “datos sensibles” y por tanto los datos de este sistema sólo podrán ser tratados dentro de las finalidades que se declaran.
 
-            Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta información, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.
-         `,
+                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta información, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.
+                     `,
                   closeOnConfirm: true,
                   confirmButtonText: 'Si, acepto',
                }, function (isConfirm) {
@@ -1453,13 +1446,10 @@ const FormularioController = new Vue({
 
                      self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(response => { // success callback
                         console.log(response);
-
                         var rd = response.body.rd;
-
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
                         }
-
                      }, response => { // error callback
                         console.log(response);
                      });
