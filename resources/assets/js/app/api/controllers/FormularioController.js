@@ -374,7 +374,8 @@ const FormularioController = new Vue({
                   }
 
                }, response => { // error callback
-                  console.log(response);
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
                });
             },
             buscar_por_correlativo: function () {
@@ -391,7 +392,8 @@ const FormularioController = new Vue({
                   this.formulario_vacio_correlativo = $.isEmptyObject(this.formularios_correlativo)==true?true:false;
 
                }, response => { // error callback
-                  console.log(response);
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
                });
             },
             modificar_usuario_seleccionado: function (formulario) {
@@ -421,7 +423,8 @@ const FormularioController = new Vue({
                   this.$parent.fdc = response.body.fdc;
                   //console.log(response);
                }, response => { // error callback
-                  console.log(response);
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
                });
 
             },
@@ -452,7 +455,7 @@ const FormularioController = new Vue({
    },
    created(){
       //Instancia parametros iniciales
-      this.fetchFormulario();
+      this.fetch_formulario();
       //Variable de contexto
       var self = this;
       //Funcion de auto guardado cada 5 minutos
@@ -497,6 +500,50 @@ const FormularioController = new Vue({
    filters: {
    },
    methods: {
+      check_status_code: function (status_code) {
+         switch (status_code) {
+            case 401:
+               swal({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true,
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+
+               break;
+            case 500:
+               swal({
+                  title: "Atencion",
+                  text: "Ocurrio un error al guardar, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true,
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+               break;
+            default :
+               swal({
+                  title: "Atencion",
+                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+               break;
+         }
+      },
       check_input: function (input,index) {
          //console.log(input.bloque);
          //console.log(input);
@@ -504,8 +551,9 @@ const FormularioController = new Vue({
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
 
-            if ( this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '' ) {
-
+            if ( this.fdc_temp[this.inputs[index].id] != null &&
+               this.fdc_temp[this.inputs[index].id] != ''
+               || this.formularioNuevoActivo == false) {
                this.inputs[index].edicion_temporal = false;
             }else{
                //caso contrario, no es necesario completar
@@ -563,7 +611,7 @@ const FormularioController = new Vue({
                   Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                   formData.append('run_madre', this.fdc[input.name]);
                   this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
-                     console.log(response);
+                     //console.log(response);
                      var rd = response.body.rd;
                      if (rd == 'Existe') {
                         this.fdc[input.name] = null;
@@ -577,7 +625,7 @@ const FormularioController = new Vue({
                      }
 
                   }, response => { // error callback
-                     console.log(response);
+                     //console.log(response);
                   });
                }
                break;
@@ -625,7 +673,7 @@ const FormularioController = new Vue({
                      formData.append('clave_usuario', inputValue);
 
                      self.$http.post('/formulario/confirmar_confidencialidad_mujer_vih', formData).then(response => { // success callback
-                        console.log(response);
+                        //console.log(response);
                         var rd = response.body.rd;
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
@@ -641,7 +689,7 @@ const FormularioController = new Vue({
                         }
 
                      }, response => { // error callback
-                        console.log(response);
+                        //console.log(response);
                      });
                      return false;
                   });
@@ -1413,16 +1461,16 @@ const FormularioController = new Vue({
          */
       },
 
-      fetchFormulario: function () {
+      fetch_formulario: function () {
          this.$http.get('/formulario/create').then(response => { // success callback
             this.instructions = response.body.instructions;
             this.auth = response.body.auth;
 
             Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
             this.$http.post('/formulario/desmarcar_registro_form_deis').then(response => { // success callback
-               console.log(response);
+               //console.log(response);
             }, response => { // error callback
-               console.log(response);
+               //console.log(response);
             });
 
             if (this.auth && this.auth.acepta_terminos != 'true') {
@@ -1445,13 +1493,13 @@ const FormularioController = new Vue({
                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                      self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(response => { // success callback
-                        console.log(response);
+                        //console.log(response);
                         var rd = response.body.rd;
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
                         }
                      }, response => { // error callback
-                        console.log(response);
+                        //console.log(response);
                      });
                   }else{
                      return ;
@@ -1460,7 +1508,7 @@ const FormularioController = new Vue({
             }
 
          }, response => { // error callback
-            console.log('Error fetch_formulario: '+response);
+            //console.log('Error fetch_formulario: '+response);
          });
 
          return;
@@ -1506,18 +1554,8 @@ const FormularioController = new Vue({
             swal("Guardado", "El registro se guardó correctamente!", "success")
 
          }, response => { // error callback
-            console.log(response);
-            if (response.status == 401) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
-            }
-
+            //console.log(response);
+            this.check_status_code(response.status);
          });
 
 
@@ -1567,18 +1605,8 @@ const FormularioController = new Vue({
             `, "success")
 
          }, response => { // error callback
-            console.log(response);
-            if (response.status == 401) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
-            }
-
+            //console.log(response);
+            this.check_status_code(response.status);
          });
 
 
@@ -1600,7 +1628,7 @@ const FormularioController = new Vue({
             this.auth = response.body.auth;
             this.validar_validaciones_previas();
          }, response => { // error callback
-            console.log('Error datos_formulario: '+response);
+            //console.log('Error datos_formulario: '+response);
          });
       },
 
@@ -1611,6 +1639,7 @@ const FormularioController = new Vue({
             this.deis_form_table_options = response.body.deis_form_table_options;
             this.pais_origen = response.body.pais_origen;
             this.fdc = response.body.fdc;
+            this.fdc_temp = response.body.fdc;
 
             this.formularioActivoObj = response.body.fdc;
             this.auth = response.body.auth;
@@ -1628,14 +1657,14 @@ const FormularioController = new Vue({
                   this.fdc = response.body.fdc;
                   //console.log(response);
                }, response => { // error callback
-                  console.log(response);
+                  //console.log(response);
                });
             }
             */
 
 
          }, response => { // error callback
-            console.log('Error datos_formulario: '+response);
+            //console.log('Error datos_formulario: '+response);
          });
 
 

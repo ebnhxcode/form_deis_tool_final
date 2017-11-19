@@ -37081,7 +37081,8 @@ var FormularioController = new _vue2.default({
                   }
                }, function (response) {
                   // error callback
-                  console.log(response);
+                  //console.log(response);
+                  _this.$parent.check_status_code(response.status);
                });
             },
             buscar_por_correlativo: function buscar_por_correlativo() {
@@ -37101,7 +37102,8 @@ var FormularioController = new _vue2.default({
                   _this2.formulario_vacio_correlativo = $.isEmptyObject(_this2.formularios_correlativo) == true ? true : false;
                }, function (response) {
                   // error callback
-                  console.log(response);
+                  //console.log(response);
+                  _this2.$parent.check_status_code(response.status);
                });
             },
             modificar_usuario_seleccionado: function modificar_usuario_seleccionado(formulario) {
@@ -37133,7 +37135,8 @@ var FormularioController = new _vue2.default({
                   //console.log(response);
                }, function (response) {
                   // error callback
-                  console.log(response);
+                  //console.log(response);
+                  _this3.$parent.check_status_code(response.status);
                });
             }
          },
@@ -37162,7 +37165,7 @@ var FormularioController = new _vue2.default({
    },
    created: function created() {
       //Instancia parametros iniciales
-      this.fetchFormulario();
+      this.fetch_formulario();
       //Variable de contexto
       var self = this;
       //Funcion de auto guardado cada 5 minutos
@@ -37206,6 +37209,50 @@ var FormularioController = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
+      check_status_code: function check_status_code(status_code) {
+         switch (status_code) {
+            case 401:
+               swal({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+
+               break;
+            case 500:
+               swal({
+                  title: "Atencion",
+                  text: "Ocurrio un error al guardar, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+               break;
+            default:
+               swal({
+                  title: "Atencion",
+                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
+               });
+               break;
+         }
+      },
       check_input: function check_input(input, index) {
          //console.log(input.bloque);
          //console.log(input);
@@ -37213,8 +37260,7 @@ var FormularioController = new _vue2.default({
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
 
-            if (this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '') {
-
+            if (this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '' || this.formularioNuevoActivo == false) {
                this.inputs[index].edicion_temporal = false;
             } else {
                //caso contrario, no es necesario completar
@@ -37270,7 +37316,7 @@ var FormularioController = new _vue2.default({
                   formData.append('run_madre', this.fdc[input.name]);
                   this.$http.post('/formulario/buscar_run_existente', formData).then(function (response) {
                      // success callback
-                     console.log(response);
+                     //console.log(response);
                      var rd = response.body.rd;
                      if (rd == 'Existe') {
                         _this4.fdc[input.name] = null;
@@ -37282,9 +37328,8 @@ var FormularioController = new _vue2.default({
                            closeOnConfirm: false
                         });
                      }
-                  }, function (response) {
-                     // error callback
-                     console.log(response);
+                  }, function (response) {// error callback
+                     //console.log(response);
                   });
                }
                break;
@@ -37327,7 +37372,7 @@ var FormularioController = new _vue2.default({
 
                      self.$http.post('/formulario/confirmar_confidencialidad_mujer_vih', formData).then(function (response) {
                         // success callback
-                        console.log(response);
+                        //console.log(response);
                         var rd = response.body.rd;
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
@@ -37341,9 +37386,8 @@ var FormularioController = new _vue2.default({
                               closeOnConfirm: false
                            });
                         }
-                     }, function (response) {
-                        // error callback
-                        console.log(response);
+                     }, function (response) {// error callback
+                        //console.log(response);
                      });
                      return false;
                   });
@@ -38022,7 +38066,7 @@ var FormularioController = new _vue2.default({
          */
       },
 
-      fetchFormulario: function fetchFormulario() {
+      fetch_formulario: function fetch_formulario() {
          var _this5 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
@@ -38031,12 +38075,10 @@ var FormularioController = new _vue2.default({
             _this5.auth = response.body.auth;
 
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            _this5.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {
-               // success callback
-               console.log(response);
-            }, function (response) {
-               // error callback
-               console.log(response);
+            _this5.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
+               //console.log(response);
+            }, function (response) {// error callback
+               //console.log(response);
             });
 
             if (_this5.auth && _this5.auth.acepta_terminos != 'true') {
@@ -38056,23 +38098,21 @@ var FormularioController = new _vue2.default({
 
                      self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(function (response) {
                         // success callback
-                        console.log(response);
+                        //console.log(response);
                         var rd = response.body.rd;
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
                         }
-                     }, function (response) {
-                        // error callback
-                        console.log(response);
+                     }, function (response) {// error callback
+                        //console.log(response);
                      });
                   } else {
                      return;
                   }
                });
             }
-         }, function (response) {
-            // error callback
-            console.log('Error fetch_formulario: ' + response);
+         }, function (response) {// error callback
+            //console.log('Error fetch_formulario: '+response);
          });
 
          return;
@@ -38121,17 +38161,8 @@ var FormularioController = new _vue2.default({
             swal("Guardado", "El registro se guardó correctamente!", "success");
          }, function (response) {
             // error callback
-            console.log(response);
-            if (response.status == 401) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
-            }
+            //console.log(response);
+            _this6.check_status_code(response.status);
          });
 
          return;
@@ -38178,17 +38209,8 @@ var FormularioController = new _vue2.default({
             swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
          }, function (response) {
             // error callback
-            console.log(response);
-            if (response.status == 401) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
-            }
+            //console.log(response);
+            _this7.check_status_code(response.status);
          });
 
          return;
@@ -38210,9 +38232,8 @@ var FormularioController = new _vue2.default({
             _this8.pais_origen = response.body.pais_origen;
             _this8.auth = response.body.auth;
             _this8.validar_validaciones_previas();
-         }, function (response) {
-            // error callback
-            console.log('Error datos_formulario: ' + response);
+         }, function (response) {// error callback
+            //console.log('Error datos_formulario: '+response);
          });
       },
 
@@ -38226,6 +38247,7 @@ var FormularioController = new _vue2.default({
             _this9.deis_form_table_options = response.body.deis_form_table_options;
             _this9.pais_origen = response.body.pais_origen;
             _this9.fdc = response.body.fdc;
+            _this9.fdc_temp = response.body.fdc;
 
             _this9.formularioActivoObj = response.body.fdc;
             _this9.auth = response.body.auth;
@@ -38241,13 +38263,12 @@ var FormularioController = new _vue2.default({
                   this.fdc = response.body.fdc;
                   //console.log(response);
                }, response => { // error callback
-                  console.log(response);
+                  //console.log(response);
                });
             }
             */
-         }, function (response) {
-            // error callback
-            console.log('Error datos_formulario: ' + response);
+         }, function (response) {// error callback
+            //console.log('Error datos_formulario: '+response);
          });
       },
 
