@@ -468,6 +468,7 @@ const FormularioController = new Vue({
 
          //Handle al recargar pagina
          window.onbeforeunload = function(e){
+            /*
             return function () {
                var cookies = document.cookie.split(";");
 
@@ -477,7 +478,8 @@ const FormularioController = new Vue({
                   var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
                   document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
                }
-            }
+               */
+            return "Estás seguro que deseas cerrar la ventana?";
             /*
             var self = this;
             return function () {
