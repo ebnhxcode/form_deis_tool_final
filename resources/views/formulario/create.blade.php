@@ -28,7 +28,7 @@
                            </button><!-- .btn .btn-success -->
 
                            {{--
-                           <button class="btn btn-sm btn-success pull-right small" @click.prevent="guardarFormularioCompleto"
+                           <button class="btn btn-sm btn-success pull-right small" @click.prevent="guardar_formulario_completo"
                                    style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
                               Guadar todo&nbsp;
                               <i class="fa fa-search"></i>
@@ -131,7 +131,7 @@
 
                                                 <!-- Input basicos como text,number,time,date,etc -->
                                                 {{--v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'"--}}
-                                                <dd v-if="checkInput(i,index) == true">
+                                                <dd v-if="check_input(i,index) == true">
 
                                                    <input :name="i.name"
                                                           :id="i.id"
@@ -199,7 +199,7 @@
                                              <dt>
                                              </dt>
                                              <dd>
-                                                <input id="" name="" @click.prevent="guardarFormulario(tab.name)"
+                                                <input id="" name="" @click.prevent="guardar_formulario(tab.name)"
                                                        class="btn btn-success" type="button" value="Guardar"
                                                        style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
                                                 <transition v-if="mini_loader == true" name="slide-fade">

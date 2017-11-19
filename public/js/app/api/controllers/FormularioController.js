@@ -37161,23 +37161,20 @@ var FormularioController = new _vue2.default({
        */
    },
    created: function created() {
-
       //Instancia parametros iniciales
       this.fetchFormulario();
       //Variable de contexto
       var self = this;
-
       //Funcion de auto guardado cada 5 minutos
       /*
       setInterval(function () {
-         self.guardarFormularioCompleto();
+         self.guardar_formulario_completo();
       },300000);
       */
-
       $(document).ready(function () {
-
          //Handle al recargar pagina
          window.onbeforeunload = function (e) {
+            return "Estás seguro que deseas cerrar la ventana?";
             /*
             return function () {
                var cookies = document.cookie.split(";");
@@ -37187,8 +37184,7 @@ var FormularioController = new _vue2.default({
                   var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
                   document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
                }
-               */
-            return "Estás seguro que deseas cerrar la ventana?";
+            */
             /*
             var self = this;
             return function () {
@@ -37210,7 +37206,7 @@ var FormularioController = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
-      checkInput: function checkInput(input, index) {
+      check_input: function check_input(input, index) {
          //console.log(input.bloque);
          //console.log(input);
          //console.log(this.inputs[index]);
@@ -37240,7 +37236,7 @@ var FormularioController = new _vue2.default({
          }
          return validation;
       },
-      //camelCase() => for specific functions
+
       verifica_validacion_keyup: function verifica_validacion_keyup(input) {
          /*
          switch (input.id) {
@@ -38047,7 +38043,7 @@ var FormularioController = new _vue2.default({
                var self = _this5;
                swal({
                   title: "Términos y condiciones de uso",
-                  text: '\n           Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n            Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n         ',
+                  text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
                   closeOnConfirm: true,
                   confirmButtonText: 'Si, acepto'
                }, function (isConfirm) {
@@ -38061,9 +38057,7 @@ var FormularioController = new _vue2.default({
                      self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(function (response) {
                         // success callback
                         console.log(response);
-
                         var rd = response.body.rd;
-
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
                         }
@@ -38084,7 +38078,7 @@ var FormularioController = new _vue2.default({
          return;
       },
 
-      guardarFormulario: function guardarFormulario(tabName) {
+      guardar_formulario: function guardar_formulario(tabName) {
          var _this6 = this;
 
          this.mini_loader = true;
@@ -38143,7 +38137,7 @@ var FormularioController = new _vue2.default({
          return;
       },
 
-      guardarFormularioCompleto: function guardarFormularioCompleto() {
+      guardar_formulario_completo: function guardar_formulario_completo() {
          var _this7 = this;
 
          this.mini_loader = true;
@@ -38262,7 +38256,7 @@ var FormularioController = new _vue2.default({
             this.verifica_validacion_change(this.inputs[i]);
          }
       }
-      //with_dash() => for explained specific functions
+
    }
 });
 

@@ -458,7 +458,7 @@ const FormularioController = new Vue({
       //Funcion de auto guardado cada 5 minutos
       /*
       setInterval(function () {
-         self.guardarFormularioCompleto();
+         self.guardar_formulario_completo();
       },300000);
       */
       $(document).ready(function () {
@@ -497,7 +497,7 @@ const FormularioController = new Vue({
    filters: {
    },
    methods: {
-      checkInput: function (input,index) {
+      check_input: function (input,index) {
          //console.log(input.bloque);
          //console.log(input);
          //console.log(this.inputs[index]);
@@ -529,7 +529,7 @@ const FormularioController = new Vue({
          }
          return validation;
       },
-      //camelCase() => for specific functions
+
       verifica_validacion_keyup: function (input) {
          /*
          switch (input.id) {
@@ -1466,7 +1466,7 @@ const FormularioController = new Vue({
          return;
       },
 
-      guardarFormulario: function (tabName) {
+      guardar_formulario: function (tabName) {
          this.mini_loader = true;
          //this.spinner_finalizar = true;
          var formData = new FormData();
@@ -1525,7 +1525,7 @@ const FormularioController = new Vue({
          return;
       },
 
-      guardarFormularioCompleto: function () {
+      guardar_formulario_completo: function () {
          this.mini_loader = true;
          //this.spinner_finalizar = true;
          var formData = new FormData();
@@ -1648,7 +1648,7 @@ const FormularioController = new Vue({
             this.verifica_validacion_change(this.inputs[i]);
          }
       },
-      //with_dash() => for explained specific functions
+
    },
 });
 
