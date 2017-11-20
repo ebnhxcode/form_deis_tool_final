@@ -37452,7 +37452,7 @@ var FormularioController = new _vue2.default({
                            this.inputs[_i3].disabled = true;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[_i3].name == 'fecha_1_vdrl_embarazo') {
+                        if (this.inputs[_i3].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i3].name == 'eg_1_vdrl_embarazo') {
                            this.inputs[_i3].disabled = null;
                         } else {
                            if (this.inputs[_i3].name == 'resultado_dilucion_1_vdrl_embarazo') {
@@ -37481,10 +37481,10 @@ var FormularioController = new _vue2.default({
                            this.inputs[_i5].disabled = true;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[_i5].name == 'fecha_2_vdrl_embarazo') {
+                        if (this.inputs[_i5].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i5].name == 'eg_2_vdrl_embarazo') {
                            this.inputs[_i5].disabled = null;
                         } else {
-                           if (this.inputs[_i5].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i5].name == 'eg_2_vdrl_embarazo') {
+                           if (this.inputs[_i5].name == 'resultado_dilucion_2_vdrl_embarazo') {
                               this.inputs[_i5].disabled = true;
                            }
                         }
@@ -37509,10 +37509,10 @@ var FormularioController = new _vue2.default({
                            this.inputs[_i7].disabled = true;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[_i7].name == 'fecha_3_vdrl_embarazo') {
+                        if (this.inputs[_i7].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i7].name == 'eg_3_vdrl_embarazo') {
                            this.inputs[_i7].disabled = null;
                         } else {
-                           if (this.inputs[_i7].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i7].name == 'eg_3_vdrl_embarazo') {
+                           if (this.inputs[_i7].name == 'resultado_dilucion_3_vdrl_embarazo') {
                               this.inputs[_i7].disabled = true;
                            }
                         }

@@ -759,7 +759,8 @@ const FormularioController = new Vue({
                            this.inputs[i].disabled = true;
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_1_vdrl_embarazo') {
+                        if (this.inputs[i].name == 'fecha_1_vdrl_embarazo' ||
+                           this.inputs[i].name == 'eg_1_vdrl_embarazo') {
                            this.inputs[i].disabled = null;
 
                         }else {
@@ -798,12 +799,12 @@ const FormularioController = new Vue({
                            this.inputs[i].disabled = true;
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_2_vdrl_embarazo') {
+                        if (this.inputs[i].name == 'fecha_2_vdrl_embarazo'||
+                           this.inputs[i].name == 'eg_2_vdrl_embarazo') {
                            this.inputs[i].disabled = null;
 
                         }else {
-                           if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
-                              this.inputs[i].name == 'eg_2_vdrl_embarazo') {
+                           if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo') {
                               this.inputs[i].disabled = true;
                            }
                         }
@@ -835,12 +836,12 @@ const FormularioController = new Vue({
                            this.inputs[i].disabled = true;
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_3_vdrl_embarazo') {
+                        if (this.inputs[i].name == 'fecha_3_vdrl_embarazo' ||
+                           this.inputs[i].name == 'eg_3_vdrl_embarazo') {
                            this.inputs[i].disabled = null;
 
                         }else {
-                           if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo' ||
-                              this.inputs[i].name == 'eg_3_vdrl_embarazo') {
+                           if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo') {
                               this.inputs[i].disabled = true;
                            }
                         }
