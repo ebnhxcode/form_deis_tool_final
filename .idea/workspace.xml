@@ -10,11 +10,267 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/almond/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/almond/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/almond/almond.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/almond/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/auto.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/dist/object-assign-auto.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/dist/object-assign-auto.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/dist/object-assign.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/dist/object-assign.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/es6-object-assign/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-mousewheel/ChangeLog.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-mousewheel/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-mousewheel/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-mousewheel/jquery.mousewheel.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/jquery-mousewheel/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/.editorconfig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/.eslintrc.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/karma.conf.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/promise.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/promise.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/test/adapter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/promise-polyfill/test/promise.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/css/select2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/css/select2.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/az.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/bs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/build.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/dsb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/et.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/gl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/hi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/hsb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/hy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/is.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/km.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/mk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ms.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ps.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/pt-BR.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/sr-Cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/sr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/zh-CN.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/i18n/zh-TW.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/select2.full.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/select2.full.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/select2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/dist/js/select2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/banner.end.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/banner.start.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/jquery.mousewheel.shim.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/jquery.select2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/jquery.shim.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/containerCss.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/dropdownCss.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/initSelection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/inputData.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/matcher.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/query.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/compat/utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/core.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/ajax.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/array.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/base.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/maximumInputLength.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/maximumSelectionLength.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/minimumInputLength.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/select.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/tags.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/data/tokenizer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/defaults.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/diacritics.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/attachBody.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/attachContainer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/closeOnSelect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/hidePlaceholder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/infiniteScroll.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/minimumResultsForSearch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/search.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/selectOnClose.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/dropdown/stopPropagation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/af.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/az.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/bs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/dsb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/et.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/gl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/hi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/hsb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/hy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/is.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/km.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/mk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ms.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ps.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/pt-BR.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/sr-Cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/sr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/zh-CN.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/i18n/zh-TW.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/keys.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/options.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/results.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/allowClear.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/base.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/clickMask.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/eventRelay.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/multiple.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/placeholder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/search.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/single.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/selection/stopPropagation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/translation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/select2/utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/wrapper.end.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/js/wrapper.start.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/_dropdown.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/_multiple.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/_single.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/core.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/mixins/_gradients.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/classic/_defaults.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/classic/_multiple.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/classic/_single.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/classic/layout.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/default/_multiple.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/default/_single.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/select2/src/scss/theme/default/layout.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/dist/sweetalert.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/core.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/actions.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/class-list/index.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/event-listeners.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/buttons.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/content.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/icon.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/index.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/modal.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/overlay.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/init/text.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/markup/buttons.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/markup/content.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/markup/icons.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/markup/index.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/markup/modal.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/markup/overlay.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/options/buttons.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/options/content.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/options/deprecations.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/options/index.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/state.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/modules/utils.d.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/sweetalert/typings/sweetalert.d.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/aliasify/package.json" afterPath="$PROJECT_DIR$/node_modules/aliasify/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/browserify-transform-tools/package.json" afterPath="$PROJECT_DIR$/node_modules/browserify-transform-tools/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/README.md" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/bin/acorn" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/bin/acorn" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn.es.js" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn.es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn.js" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn_loose.es.js" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn_loose.es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn_loose.js" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/acorn_loose.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/walk.es.js" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/walk.es.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/walk.js" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/dist/walk.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/package.json" afterPath="$PROJECT_DIR$/node_modules/falafel/node_modules/acorn/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/falafel/package.json" afterPath="$PROJECT_DIR$/node_modules/falafel/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/npm/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/npm/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/npm/bin/node-gyp-bin/node-gyp.cmd" afterPath="$PROJECT_DIR$/node_modules/npm/bin/node-gyp-bin/node-gyp.cmd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/npm/bin/npm.cmd" afterPath="$PROJECT_DIR$/node_modules/npm/bin/npm.cmd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/npm/bin/npx.cmd" afterPath="$PROJECT_DIR$/node_modules/npm/bin/npx.cmd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/npm/package.json" afterPath="$PROJECT_DIR$/node_modules/npm/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +295,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37560976">
-              <caret line="1505" column="69" selection-start-line="1505" selection-start-column="69" selection-end-line="1505" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.4504065">
+              <caret line="1562" column="36" selection-start-line="1562" selection-start-column="36" selection-end-line="1562" selection-end-column="36" />
               <folding>
                 <element signature="e#1487#1858#0" expanded="false" />
                 <element signature="e#1877#2236#0" expanded="false" />
@@ -48,32 +304,34 @@
                 <element signature="e#2558#3373#0" expanded="false" />
                 <element signature="e#3391#3818#0" expanded="false" />
                 <element signature="e#3838#4271#0" expanded="false" />
-                <element signature="e#4305#17706#0" expanded="false" />
                 <element signature="e#12989#13090#0" expanded="false" />
                 <element signature="e#13132#13601#0" expanded="false" />
                 <element signature="e#13643#15383#0" expanded="false" />
                 <element signature="e#15433#16250#0" expanded="false" />
-                <element signature="e#16318#17655#0" expanded="false" />
-                <element signature="e#17714#17977#0" expanded="false" />
-                <element signature="e#17996#19496#0" expanded="false" />
-                <element signature="e#18478#18917#0" expanded="false" />
                 <element signature="e#19594#21118#0" expanded="false" />
                 <element signature="e#21162#21745#0" expanded="false" />
                 <element signature="e#21801#22210#0" expanded="false" />
-                <element signature="e#22263#22585#0" expanded="false" />
-                <element signature="e#22639#55746#0" expanded="false" />
                 <element signature="e#30964#31360#0" expanded="false" />
                 <element signature="e#32661#33057#0" expanded="false" />
                 <element signature="e#34355#34751#0" expanded="false" />
                 <element signature="e#55799#58421#0" expanded="false" />
                 <element signature="e#63005#63065#0" expanded="false" />
-                <element signature="e#63736#66764#0" expanded="false" />
                 <element signature="e#66812#68515#0" expanded="false" />
                 <element signature="e#68565#70293#0" expanded="false" />
-                <marker date="1511237229907" expanded="true" signature="2776:3243" placeholder="..." />
-                <marker date="1511237229907" expanded="true" signature="3506:3666" placeholder="..." />
-                <marker date="1511237229907" expanded="true" signature="3957:4117" placeholder="..." />
+                <marker date="1511267761185" expanded="true" signature="2776:3243" placeholder="..." />
+                <marker date="1511267761185" expanded="true" signature="3506:3666" placeholder="..." />
+                <marker date="1511267761185" expanded="true" signature="3957:4117" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,7 +339,7 @@
       <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.730769">
+            <state vertical-scroll-proportion="0.0">
               <caret line="151" column="97" selection-start-line="151" selection-start-column="97" selection-end-line="151" selection-end-column="97" />
               <folding />
             </state>
@@ -129,7 +387,6 @@
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
         <option value="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/resources/views/usuarios/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/UsuarioCreateController.js" />
         <option value="$PROJECT_DIR$/app/Console/Commands/UnlockFormDeis.php" />
@@ -146,6 +403,7 @@
         <option value="$PROJECT_DIR$/config/session.php" />
         <option value="$PROJECT_DIR$/config/collections.php" />
         <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
       </list>
     </option>
@@ -215,7 +473,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -821,6 +1078,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -829,7 +1087,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="UserController&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/Controllers/UserController.php&#10;routes.&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;routes&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;gulp&#9;FILE&#9;file:///var/www/html/deis_form_tool/gulpfile.js&#10;FormDeisController&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/Controllers/FormDeisController.php&#10;route&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;routes.php&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;AdminContro&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/Controllers/AdminController.php&#10;gulpf&#9;FILE&#9;file:///var/www/html/deis_form_tool/gulpfile.js&#10;/config/app&#9;FILE&#9;file:///var/www/html/deis_form_tool/config/app.php&#10;0399988e8202f72fc2e08d1f72cd2a892a6a36cf.php&#9;FILE&#9;file:///var/www/html/deis_form_tool/storage/framework/views/0399988e8202f72fc2e08d1f72cd2a892a6a36cf.php" />
+    <property name="SearchEverywhereHistoryKey" value="gulp&#9;FILE&#9;file:///var/www/html/deis_form_tool/gulpfile.js&#10;UserController&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/Controllers/UserController.php&#10;routes.&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;routes&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;FormDeisController&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/Controllers/FormDeisController.php&#10;route&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;routes.php&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/routes.php&#10;AdminContro&#9;FILE&#9;file:///var/www/html/deis_form_tool/app/Http/Controllers/AdminController.php&#10;gulpf&#9;FILE&#9;file:///var/www/html/deis_form_tool/gulpfile.js&#10;/config/app&#9;FILE&#9;file:///var/www/html/deis_form_tool/config/app.php&#10;0399988e8202f72fc2e08d1f72cd2a892a6a36cf.php&#9;FILE&#9;file:///var/www/html/deis_form_tool/storage/framework/views/0399988e8202f72fc2e08d1f72cd2a892a6a36cf.php" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
@@ -1119,13 +1377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66701573">
-          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/input/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37925446">
@@ -1278,7 +1529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1293,7 +1543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="55" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1301,7 +1550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13614263">
           <caret line="488" column="24" selection-start-line="488" selection-start-column="24" selection-end-line="488" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1309,22 +1557,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.5">
           <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.730769">
+        <state vertical-scroll-proportion="0.0">
           <caret line="151" column="97" selection-start-line="151" selection-start-column="97" selection-end-line="151" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="4" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37560976">
-          <caret line="1505" column="69" selection-start-line="1505" selection-start-column="69" selection-end-line="1505" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.4504065">
+          <caret line="1562" column="36" selection-start-line="1562" selection-start-column="36" selection-end-line="1562" selection-end-column="36" />
           <folding>
             <element signature="e#1487#1858#0" expanded="false" />
             <element signature="e#1877#2236#0" expanded="false" />
@@ -1332,31 +1587,23 @@
             <element signature="e#2558#3373#0" expanded="false" />
             <element signature="e#3391#3818#0" expanded="false" />
             <element signature="e#3838#4271#0" expanded="false" />
-            <element signature="e#4305#17706#0" expanded="false" />
             <element signature="e#12989#13090#0" expanded="false" />
             <element signature="e#13132#13601#0" expanded="false" />
             <element signature="e#13643#15383#0" expanded="false" />
             <element signature="e#15433#16250#0" expanded="false" />
-            <element signature="e#16318#17655#0" expanded="false" />
-            <element signature="e#17714#17977#0" expanded="false" />
-            <element signature="e#17996#19496#0" expanded="false" />
-            <element signature="e#18478#18917#0" expanded="false" />
             <element signature="e#19594#21118#0" expanded="false" />
             <element signature="e#21162#21745#0" expanded="false" />
             <element signature="e#21801#22210#0" expanded="false" />
-            <element signature="e#22263#22585#0" expanded="false" />
-            <element signature="e#22639#55746#0" expanded="false" />
             <element signature="e#30964#31360#0" expanded="false" />
             <element signature="e#32661#33057#0" expanded="false" />
             <element signature="e#34355#34751#0" expanded="false" />
             <element signature="e#55799#58421#0" expanded="false" />
             <element signature="e#63005#63065#0" expanded="false" />
-            <element signature="e#63736#66764#0" expanded="false" />
             <element signature="e#66812#68515#0" expanded="false" />
             <element signature="e#68565#70293#0" expanded="false" />
-            <marker date="1511237229907" expanded="true" signature="2776:3243" placeholder="..." />
-            <marker date="1511237229907" expanded="true" signature="3506:3666" placeholder="..." />
-            <marker date="1511237229907" expanded="true" signature="3957:4117" placeholder="..." />
+            <marker date="1511267761185" expanded="true" signature="2776:3243" placeholder="..." />
+            <marker date="1511267761185" expanded="true" signature="3506:3666" placeholder="..." />
+            <marker date="1511267761185" expanded="true" signature="3957:4117" placeholder="..." />
           </folding>
         </state>
       </provider>
