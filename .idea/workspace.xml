@@ -11,14 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php" afterPath="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +38,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.857143">
-              <caret line="598" column="47" selection-start-line="598" selection-start-column="47" selection-end-line="598" selection-end-column="47" />
+            <state vertical-scroll-proportion="-3.142857">
+              <caret line="1650" column="12" selection-start-line="1650" selection-start-column="12" selection-end-line="1650" selection-end-column="79" />
               <folding>
                 <element signature="e#1487#1858#0" expanded="false" />
                 <element signature="e#1877#2236#0" expanded="false" />
@@ -62,7 +57,6 @@
                 <element signature="e#34319#34715#0" expanded="false" />
                 <element signature="e#55763#58385#0" expanded="false" />
                 <element signature="e#62969#63029#0" expanded="false" />
-                <element signature="e#66776#68479#0" expanded="false" />
                 <element signature="e#68529#70257#0" expanded="false" />
                 <marker date="1511268829717" expanded="true" signature="2776:3243" placeholder="..." />
                 <marker date="1511268829717" expanded="true" signature="3506:3666" placeholder="..." />
@@ -114,10 +108,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResetsPasswords.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResetsPasswords.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.8477159">
+            <state vertical-scroll-proportion="-16.615385">
               <caret line="137" column="6" selection-start-line="137" selection-start-column="6" selection-end-line="137" selection-end-column="6" />
               <folding>
                 <element signature="e#46#73#0#PHP" expanded="true" />
@@ -126,15 +120,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="382" column="54" selection-start-line="382" selection-start-column="54" selection-end-line="382" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.07931571">
+              <caret line="373" column="5" selection-start-line="373" selection-start-column="5" selection-end-line="373" selection-end-column="5" />
               <folding>
-                <marker date="1511272362317" expanded="true" signature="2534:3001" placeholder="..." />
-                <marker date="1511272362317" expanded="true" signature="3264:3424" placeholder="..." />
-                <marker date="1511272362317" expanded="true" signature="3715:3875" placeholder="..." />
+                <marker date="1511275763105" expanded="true" signature="2534:3001" placeholder="..." />
+                <marker date="1511275763105" expanded="true" signature="3264:3424" placeholder="..." />
+                <marker date="1511275763105" expanded="true" signature="3715:3875" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -226,9 +220,9 @@
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
       </list>
     </option>
   </component>
@@ -1318,36 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.857143">
-          <caret line="598" column="47" selection-start-line="598" selection-start-column="47" selection-end-line="598" selection-end-column="47" />
-          <folding>
-            <element signature="e#1487#1858#0" expanded="false" />
-            <element signature="e#1877#2236#0" expanded="false" />
-            <element signature="e#2259#2541#0" expanded="false" />
-            <element signature="e#2558#3373#0" expanded="false" />
-            <element signature="e#3391#3818#0" expanded="false" />
-            <element signature="e#3838#4271#0" expanded="false" />
-            <element signature="e#13132#13601#0" expanded="false" />
-            <element signature="e#15433#16250#0" expanded="false" />
-            <element signature="e#19594#21118#0" expanded="false" />
-            <element signature="e#21162#21745#0" expanded="false" />
-            <element signature="e#21801#22210#0" expanded="false" />
-            <element signature="e#30928#31324#0" expanded="false" />
-            <element signature="e#32625#33021#0" expanded="false" />
-            <element signature="e#34319#34715#0" expanded="false" />
-            <element signature="e#55763#58385#0" expanded="false" />
-            <element signature="e#62969#63029#0" expanded="false" />
-            <element signature="e#66776#68479#0" expanded="false" />
-            <element signature="e#68529#70257#0" expanded="false" />
-            <marker date="1511268829717" expanded="true" signature="2776:3243" placeholder="..." />
-            <marker date="1511268829717" expanded="true" signature="3506:3666" placeholder="..." />
-            <marker date="1511268829717" expanded="true" signature="3957:4117" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1404,26 +1368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="382" column="54" selection-start-line="382" selection-start-column="54" selection-end-line="382" selection-end-column="54" />
-          <folding>
-            <marker date="1511272362317" expanded="true" signature="2534:3001" placeholder="..." />
-            <marker date="1511272362317" expanded="true" signature="3264:3424" placeholder="..." />
-            <marker date="1511272362317" expanded="true" signature="3715:3875" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.5">
-          <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.5">
@@ -1444,10 +1388,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.8477159">
+        <state vertical-scroll-proportion="-16.615385">
           <caret line="137" column="6" selection-start-line="137" selection-start-column="6" selection-end-line="137" selection-end-column="6" />
           <folding>
             <element signature="e#46#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.5">
+          <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.142857">
+          <caret line="1650" column="12" selection-start-line="1650" selection-start-column="12" selection-end-line="1650" selection-end-column="79" />
+          <folding>
+            <element signature="e#1487#1858#0" expanded="false" />
+            <element signature="e#1877#2236#0" expanded="false" />
+            <element signature="e#2259#2541#0" expanded="false" />
+            <element signature="e#2558#3373#0" expanded="false" />
+            <element signature="e#3391#3818#0" expanded="false" />
+            <element signature="e#3838#4271#0" expanded="false" />
+            <element signature="e#13132#13601#0" expanded="false" />
+            <element signature="e#15433#16250#0" expanded="false" />
+            <element signature="e#19594#21118#0" expanded="false" />
+            <element signature="e#21162#21745#0" expanded="false" />
+            <element signature="e#21801#22210#0" expanded="false" />
+            <element signature="e#30928#31324#0" expanded="false" />
+            <element signature="e#32625#33021#0" expanded="false" />
+            <element signature="e#34319#34715#0" expanded="false" />
+            <element signature="e#55763#58385#0" expanded="false" />
+            <element signature="e#62969#63029#0" expanded="false" />
+            <element signature="e#68529#70257#0" expanded="false" />
+            <marker date="1511268829717" expanded="true" signature="2776:3243" placeholder="..." />
+            <marker date="1511268829717" expanded="true" signature="3506:3666" placeholder="..." />
+            <marker date="1511268829717" expanded="true" signature="3957:4117" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07931571">
+          <caret line="373" column="5" selection-start-line="373" selection-start-column="5" selection-end-line="373" selection-end-column="5" />
+          <folding>
+            <marker date="1511275763105" expanded="true" signature="2534:3001" placeholder="..." />
+            <marker date="1511275763105" expanded="true" signature="3264:3424" placeholder="..." />
+            <marker date="1511275763105" expanded="true" signature="3715:3875" placeholder="..." />
           </folding>
         </state>
       </provider>

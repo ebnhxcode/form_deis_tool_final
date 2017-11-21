@@ -37076,6 +37076,10 @@ var AdminUsuarios = new _vue2.default({
          this.$http.post('/password/email', formData).then(function (response) {
             // success callback
             console.log(response);
+
+            if (response.status == 200) {
+               swal("Enviado", 'Se ha enviado el correo de creacion de claves al siguiente usuario: ' + email, "success");
+            }
          }, function (response) {
             // error callback
             console.log('Error saveUser: ' + response);
@@ -37152,7 +37156,7 @@ var AdminUsuarios = new _vue2.default({
                swal({
                   title: "Atencion",
                   text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
+                  type: "success",
                   confirmButtonClass: "btn-danger",
                   closeOnConfirm: false
                });

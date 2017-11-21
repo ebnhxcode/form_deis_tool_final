@@ -385,6 +385,12 @@ const AdminUsuarios = new Vue({
 
          this.$http.post('/password/email', formData).then(response => { // success callback
             console.log(response);
+
+            if (response.status == 200) {
+               swal("Enviado", `Se ha enviado el correo de creacion de claves al siguiente usuario: ${email}`, "success");
+            }
+
+
          }, response => { // error callback
             console.log('Error saveUser: ' + response);
             if (response.status == 500) {
@@ -458,7 +464,7 @@ const AdminUsuarios = new Vue({
                swal({
                   title: "Atencion",
                   text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "warning",
+                  type: "success",
                   confirmButtonClass: "btn-danger",
                   closeOnConfirm: false
                });
