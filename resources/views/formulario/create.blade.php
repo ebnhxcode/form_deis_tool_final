@@ -64,15 +64,17 @@
                               <h3 slot="header">
                                  Formularios encontrados
 
+                                 {{--
                                  <button class="btn btn-sm btn-success pull-right"
                                          @click.prevent="crear_nuevo_formulario"
                                          style="margin-left: 10px;">
                                     Ó Crear nuevo&nbsp;
                                     <i class="fa fa-plus"></i>
                                  </button><!-- .btn .btn-success -->
+                                 --}}
 
                                  <button class="btn btn-sm btn-default pull-right" @click.prevent="show_modal_formularios_encontrados= false">
-                                    Cerrar
+                                    Ó Seguir creando
                                  </button>
                                  <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
                               </h3>

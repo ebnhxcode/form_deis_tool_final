@@ -880,6 +880,20 @@ const FormularioController = new Vue({
                }
                */
 
+               if (this.fdc[input.name] != null && this.fdc[input.name]) {
+
+
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'pasaporte_provisorio') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
+
+               }
+
+
+
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
                   Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -1730,6 +1744,9 @@ const FormularioController = new Vue({
 
       verifica_validacion_blur: function (input) {
          switch (input.id) {
+
+
+
             case 'fecha_nacimiento_madre':
                var date = this.fdc[input.name].split('-');
                var ano_tope = new Date();
