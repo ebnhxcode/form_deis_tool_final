@@ -37008,11 +37008,12 @@ var FormularioController = new _vue2.default({
       },
       'modal_buscar_formulario': {
          props: [],
-         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_personas_run" aria-controls="lista_personas_run" role="tab" data-toggle="tab">\n                                             B\xFAsqueda de Personas - <b>Run Madre</b>\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_personas_run">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <dt>\n                                                      Run Madre\n                                                   </dt>\n                                                   <dd>\n\n                                                      <!-- Busqueda por RUN -->\n                                                      <div class="form-group">\n                                                         <div class="input-group input-group-sm">\n                                                            <div class="input-group-addon">\n                                                               <i class="fa fa-user"></i>\n                                                            </div>\n\n                                                            <input class="form-control"\n                                                             type="text"\n                                                             style="padding-bottom: 5px;"\n                                                             name="run_madre"\n                                                             placeholder="Ej: 123456789 Sin puntos ni gui\xF3n"\n                                                             id="run_madre"\n                                                             maxlength="12"\n                                                             v-model="run_madre"\n                                                             @keyup.prevent="formatear_rut"\n                                                             @change="buscar_por_run">\n\n                                                            <span class="input-group-btn">\n                                                               <button class="btn btn-sm btn-info"\n                                                                  @click.prevent="buscar_por_run">\n                                                                  Buscar&nbsp;<i class="fa fa-search"></i>\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                         </div><!-- /.input-group -->\n                                                      </div><!-- /.form-group -->\n\n\n                                                      <div class="table-responsive" v-if="formulario_vacio == false">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <th>Accion</th>\n                                                                  <th>Correlativo</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Nombres</th>\n                                                                  <th>Disponibilidad Registro</th>\n                                                                  <th>Estado Registro</th>\n                                                                  <th>Fecha Parto</th>\n                                                                  <th>Hora Parto</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n                                                               <tr v-for="f in formularios">\n                                                                  <td>\n                                                                     <button class="btn btn-sm btn-primary"\n                                                                        @click.prevent="modificar_usuario_seleccionado(f)">\n                                                                        <i class="fa fa-pencil"></i>\n                                                                     </button>\n                                                                  </td>\n                                                                  <td>{{f.n_correlativo_interno}}</td>\n                                                                  <td>{{f.run_madre}}</td>\n                                                                  <td>{{f.nombres_madre}}</td>\n                                                                  <td>{{f.estado_form_deis || \'disponible\'}}</td>\n                                                                  <td>{{f.estado_formulario_completo_form_deis || \'Incompleto\'}}</td>\n                                                                  <td>{{f.fecha_parto || \'No Ingresado\'}}</td>\n                                                                  <td>{{f.hora_parto || \'No Ingresado\'}}</td>\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_personas_run -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
+         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_personas_run" aria-controls="lista_personas_run" role="tab" data-toggle="tab">\n                                             B\xFAsqueda de Personas - <b>Run Madre</b>\n                                          </a>\n                                       </li>\n\n                                       <li role="presentation">\n                                          <a href="#lista_personas_pasaporte" aria-controls="lista_personas_pasaporte"\n                                             role="tab" data-toggle="tab">\n                                             B\xFAsqueda de Personas - <b>Pasaporte</b>\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_personas_run">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <dt>\n                                                      Run Madre\n                                                   </dt>\n                                                   <dd>\n\n                                                      <!-- Busqueda por RUN -->\n                                                      <div class="form-group">\n                                                         <div class="input-group input-group-sm">\n                                                            <div class="input-group-addon">\n                                                               <i class="fa fa-user"></i>\n                                                            </div>\n\n                                                            <input class="form-control"\n                                                             type="text"\n                                                             style="padding-bottom: 5px;"\n                                                             name="run_madre"\n                                                             placeholder="Ej: 123456789 Sin puntos ni gui\xF3n"\n                                                             id="run_madre"\n                                                             maxlength="12"\n                                                             v-model="run_madre"\n                                                             @keyup.prevent="formatear_rut"\n                                                             @change="buscar_por_run">\n\n                                                            <span class="input-group-btn">\n                                                               <button class="btn btn-sm btn-info"\n                                                                  @click.prevent="buscar_por_run">\n                                                                  Buscar&nbsp;<i class="fa fa-search"></i>\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                         </div><!-- /.input-group -->\n                                                      </div><!-- /.form-group -->\n\n\n                                                      <div class="table-responsive" v-if="formulario_vacio == false">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <th>Accion</th>\n                                                                  <th>Correlativo</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Nombres</th>\n                                                                  <th>Disponibilidad Registro</th>\n                                                                  <th>Estado Registro</th>\n                                                                  <th>Fecha Parto</th>\n                                                                  <th>Hora Parto</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n                                                               <tr v-for="f in formularios">\n                                                                  <td>\n                                                                     <button class="btn btn-sm btn-primary"\n                                                                        @click.prevent="modificar_usuario_seleccionado(f)">\n                                                                        <i class="fa fa-pencil"></i>\n                                                                     </button>\n                                                                  </td>\n                                                                  <td>{{f.n_correlativo_interno}}</td>\n                                                                  <td>{{f.run_madre}}</td>\n                                                                  <td>{{f.nombres_madre}}</td>\n                                                                  <td>{{f.estado_form_deis || \'disponible\'}}</td>\n                                                                  <td>{{f.estado_formulario_completo_form_deis || \'Incompleto\'}}</td>\n                                                                  <td>{{f.fecha_parto || \'No Ingresado\'}}</td>\n                                                                  <td>{{f.hora_parto || \'No Ingresado\'}}</td>\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_personas_run -->\n\n\n                                       <div role="tabpanel" class="tab-pane fade" id="lista_personas_pasaporte">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <dt>\n                                                      Pasaporte\n                                                   </dt>\n                                                   <dd>\n\n                                                      <!-- Busqueda por PASAPORTE -->\n                                                      <div class="form-group">\n                                                         <div class="input-group input-group-sm">\n                                                            <div class="input-group-addon">\n                                                               <i class="fa fa-user"></i>\n                                                            </div>\n\n                                                            <input class="form-control"\n                                                             type="text"\n                                                             style="padding-bottom: 5px;"\n                                                             name="pasaporte_provisorio"\n                                                             placeholder="Ej: 123456789 Sin puntos ni gui\xF3n"\n                                                             id="pasaporte_provisorio"\n                                                             maxlength="12"\n                                                             v-model="pasaporte_provisorio"\n                                                             @change="buscar_por_pasaporte">\n\n                                                            <span class="input-group-btn">\n                                                               <button class="btn btn-sm btn-info"\n                                                                  @click.prevent="buscar_por_pasaporte">\n                                                                  Buscar&nbsp;<i class="fa fa-search"></i>\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                         </div><!-- /.input-group -->\n                                                      </div><!-- /.form-group -->\n\n\n                                                      <div class="table-responsive" v-if="formulario_vacio == false">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <th>Accion</th>\n                                                                  <th>Correlativo</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Nombres</th>\n                                                                  <th>Disponibilidad Registro</th>\n                                                                  <th>Estado Registro</th>\n                                                                  <th>Fecha Parto</th>\n                                                                  <th>Hora Parto</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n                                                               <tr v-for="f in formularios">\n                                                                  <td>\n                                                                     <button class="btn btn-sm btn-primary"\n                                                                        @click.prevent="modificar_usuario_seleccionado(f)">\n                                                                        <i class="fa fa-pencil"></i>\n                                                                     </button>\n                                                                  </td>\n                                                                  <td>{{f.n_correlativo_interno}}</td>\n                                                                  <td>{{f.run_madre}}</td>\n                                                                  <td>{{f.nombres_madre}}</td>\n                                                                  <td>{{f.estado_form_deis || \'disponible\'}}</td>\n                                                                  <td>{{f.estado_formulario_completo_form_deis || \'Incompleto\'}}</td>\n                                                                  <td>{{f.fecha_parto || \'No Ingresado\'}}</td>\n                                                                  <td>{{f.hora_parto || \'No Ingresado\'}}</td>\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_personas_pasaporte -->\n\n\n\n\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
          name: 'modal_buscar_formulario',
          data: function data() {
             return {
                'run_madre': '',
+               'pasaporte_provisorio': '',
                'n_correlativo_interno': '',
                'formularios': [],
                'formularios_correlativo': [],
@@ -37042,8 +37043,37 @@ var FormularioController = new _vue2.default({
                   return (0, _rut.format)(run);
                }
             },
-            buscar_por_run: function buscar_por_run() {
+            buscar_por_pasaporte: function buscar_por_pasaporte() {
                var _this = this;
+
+               var formData = new FormData();
+
+               _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('pasaporte_provisorio', this.pasaporte_provisorio);
+
+               this.$http.post('/formulario/buscar_por_pasaporte', formData).then(function (response) {
+                  // success callback
+                  //console.log(response);
+                  _this.formularios = response.body.formularios;
+                  _this.formulario_vacio = $.isEmptyObject(_this.formularios) == true ? true : false;
+
+                  if (_this.formulario_vacio == true) {
+                     swal({
+                        title: "Atención",
+                        text: "El rut ingresado no se encuentra registrado.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                  }
+               }, function (response) {
+                  // error callback
+                  //console.log(response);
+                  _this.$parent.check_status_code(response.status);
+               });
+            },
+            buscar_por_run: function buscar_por_run() {
+               var _this2 = this;
 
                if (!this.run_madre || (0, _rut.validate)(this.run_madre) == false) {
                   swal({
@@ -37071,10 +37101,10 @@ var FormularioController = new _vue2.default({
                this.$http.post('/formulario/buscar_por_run', formData).then(function (response) {
                   // success callback
                   //console.log(response);
-                  _this.formularios = response.body.formularios;
-                  _this.formulario_vacio = $.isEmptyObject(_this.formularios) == true ? true : false;
+                  _this2.formularios = response.body.formularios;
+                  _this2.formulario_vacio = $.isEmptyObject(_this2.formularios) == true ? true : false;
 
-                  if (_this.formulario_vacio == true) {
+                  if (_this2.formulario_vacio == true) {
                      swal({
                         title: "Atención",
                         text: "El rut ingresado no se encuentra registrado.",
@@ -37086,11 +37116,11 @@ var FormularioController = new _vue2.default({
                }, function (response) {
                   // error callback
                   //console.log(response);
-                  _this.$parent.check_status_code(response.status);
+                  _this2.$parent.check_status_code(response.status);
                });
             },
             buscar_por_correlativo: function buscar_por_correlativo() {
-               var _this2 = this;
+               var _this3 = this;
 
                if (!this.n_correlativo_interno) return;
                var formData = new FormData();
@@ -37102,16 +37132,16 @@ var FormularioController = new _vue2.default({
                   // success callback
                   //console.log(response);
 
-                  _this2.formularios_correlativo = response.body.formularios;
-                  _this2.formulario_vacio_correlativo = $.isEmptyObject(_this2.formularios_correlativo) == true ? true : false;
+                  _this3.formularios_correlativo = response.body.formularios;
+                  _this3.formulario_vacio_correlativo = $.isEmptyObject(_this3.formularios_correlativo) == true ? true : false;
                }, function (response) {
                   // error callback
                   //console.log(response);
-                  _this2.$parent.check_status_code(response.status);
+                  _this3.$parent.check_status_code(response.status);
                });
             },
             modificar_usuario_seleccionado: function modificar_usuario_seleccionado(formulario) {
-               var _this3 = this;
+               var _this4 = this;
 
                /*
                 for (let f in formulario) {
@@ -37135,12 +37165,12 @@ var FormularioController = new _vue2.default({
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
                   // success callback
-                  _this3.$parent.fdc = response.body.fdc;
+                  _this4.$parent.fdc = response.body.fdc;
                   //console.log(response);
                }, function (response) {
                   // error callback
                   //console.log(response);
-                  _this3.$parent.check_status_code(response.status);
+                  _this4.$parent.check_status_code(response.status);
                });
             }
          },
@@ -37164,7 +37194,7 @@ var FormularioController = new _vue2.default({
 
          methods: {
             modificar_usuario_seleccionado: function modificar_usuario_seleccionado(formulario) {
-               var _this4 = this;
+               var _this5 = this;
 
                this.$parent.renderizar_solo_inputs();
                this.$parent.fdc = formulario;
@@ -37180,12 +37210,12 @@ var FormularioController = new _vue2.default({
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
                   // success callback
-                  _this4.$parent.fdc = response.body.fdc;
+                  _this5.$parent.fdc = response.body.fdc;
                   //console.log(response);
                }, function (response) {
                   // error callback
                   //console.log(response);
-                  _this4.$parent.check_status_code(response.status);
+                  _this5.$parent.check_status_code(response.status);
                });
             }
          },
@@ -37343,7 +37373,7 @@ var FormularioController = new _vue2.default({
       },
 
       verifica_validacion_change: function verifica_validacion_change(input) {
-         var _this5 = this;
+         var _this6 = this;
 
          switch (input.id) {
 
@@ -37364,10 +37394,10 @@ var FormularioController = new _vue2.default({
                      //console.log(response);
                      if (response.status == 200) {
                         var rd = response.body.rd;
-                        _this5.formularios_encontrados = response.body.formularios;
+                        _this6.formularios_encontrados = response.body.formularios;
                         if (rd == 'Existe') {
                            //this.fdc[input.name] = null;
-                           var self = _this5;
+                           var self = _this6;
                            swal({
                               title: "Atencion",
                               text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
@@ -38242,22 +38272,22 @@ var FormularioController = new _vue2.default({
       },
 
       fetch_formulario: function fetch_formulario() {
-         var _this6 = this;
+         var _this7 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
             // success callback
-            _this6.instructions = response.body.instructions;
-            _this6.auth = response.body.auth;
+            _this7.instructions = response.body.instructions;
+            _this7.auth = response.body.auth;
 
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            _this6.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
+            _this7.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
                //console.log(response);
             }, function (response) {// error callback
                //console.log(response);
             });
 
-            if (_this6.auth && _this6.auth.acepta_terminos != 'true') {
-               var self = _this6;
+            if (_this7.auth && _this7.auth.acepta_terminos != 'true') {
+               var self = _this7;
                swal({
                   title: "Términos y condiciones de uso",
                   text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
@@ -38294,7 +38324,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario: function guardar_formulario(tabName) {
-         var _this7 = this;
+         var _this8 = this;
 
          this.mini_loader = true;
          //this.spinner_finalizar = true;
@@ -38328,23 +38358,23 @@ var FormularioController = new _vue2.default({
             //alert('Guardado');
 
             //Si guardar salio bien
-            _this7.hayGuardadoActivo = true;
-            _this7.idFormularioActivo = _this7.fdc.id;
+            _this8.hayGuardadoActivo = true;
+            _this8.idFormularioActivo = _this8.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this7.mini_loader = false;
+            _this8.mini_loader = false;
             swal("Guardado", "El registro se guardó correctamente!", "success");
          }, function (response) {
             // error callback
             //console.log(response);
-            _this7.check_status_code(response.status);
+            _this8.check_status_code(response.status);
          });
 
          return;
       },
 
       guardar_formulario_completo: function guardar_formulario_completo() {
-         var _this8 = this;
+         var _this9 = this;
 
          this.mini_loader = true;
          //this.spinner_finalizar = true;
@@ -38376,16 +38406,16 @@ var FormularioController = new _vue2.default({
             //alert('Guardado');
 
             //Si guardar salio bien
-            _this8.hayGuardadoActivo = true;
-            _this8.idFormularioActivo = _this8.fdc.id;
+            _this9.hayGuardadoActivo = true;
+            _this9.idFormularioActivo = _this9.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this8.mini_loader = false;
+            _this9.mini_loader = false;
             swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
          }, function (response) {
             // error callback
             //console.log(response);
-            _this8.check_status_code(response.status);
+            _this9.check_status_code(response.status);
          });
 
          return;
@@ -38397,36 +38427,36 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this9 = this;
+         var _this10 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this9.inputs = response.body.inputs;
-            _this9.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this9.deis_form_table_options = response.body.deis_form_table_options;
-            _this9.pais_origen = response.body.pais_origen;
-            _this9.auth = response.body.auth;
-            _this9.validar_validaciones_previas();
+            _this10.inputs = response.body.inputs;
+            _this10.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this10.deis_form_table_options = response.body.deis_form_table_options;
+            _this10.pais_origen = response.body.pais_origen;
+            _this10.auth = response.body.auth;
+            _this10.validar_validaciones_previas();
          }, function (response) {// error callback
             //console.log('Error datos_formulario: '+response);
          });
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this10 = this;
+         var _this11 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this10.inputs = response.body.inputs;
-            _this10.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this10.deis_form_table_options = response.body.deis_form_table_options;
-            _this10.pais_origen = response.body.pais_origen;
-            _this10.fdc = response.body.fdc;
-            _this10.fdc_temp = response.body.fdc;
+            _this11.inputs = response.body.inputs;
+            _this11.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this11.deis_form_table_options = response.body.deis_form_table_options;
+            _this11.pais_origen = response.body.pais_origen;
+            _this11.fdc = response.body.fdc;
+            _this11.fdc_temp = response.body.fdc;
 
-            _this10.formularioActivoObj = response.body.fdc;
-            _this10.auth = response.body.auth;
-            _this10.validar_validaciones_previas();
+            _this11.formularioActivoObj = response.body.fdc;
+            _this11.auth = response.body.auth;
+            _this11.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit

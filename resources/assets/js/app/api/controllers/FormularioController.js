@@ -192,6 +192,13 @@ const FormularioController = new Vue({
                                           </a>
                                        </li>
 
+                                       <li role="presentation">
+                                          <a href="#lista_personas_pasaporte" aria-controls="lista_personas_pasaporte"
+                                             role="tab" data-toggle="tab">
+                                             Búsqueda de Personas - <b>Pasaporte</b>
+                                          </a>
+                                       </li>
+
                                     </ul>
                                  </div><!-- .panel-heading -->
 
@@ -282,6 +289,94 @@ const FormularioController = new Vue({
 
 
                                        </div><!-- .tab-pane .fade #lista_personas_run -->
+
+
+                                       <div role="tabpanel" class="tab-pane fade" id="lista_personas_pasaporte">
+
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <dt>
+                                                      Pasaporte
+                                                   </dt>
+                                                   <dd>
+
+                                                      <!-- Busqueda por PASAPORTE -->
+                                                      <div class="form-group">
+                                                         <div class="input-group input-group-sm">
+                                                            <div class="input-group-addon">
+                                                               <i class="fa fa-user"></i>
+                                                            </div>
+
+                                                            <input class="form-control"
+                                                             type="text"
+                                                             style="padding-bottom: 5px;"
+                                                             name="pasaporte_provisorio"
+                                                             placeholder="Ej: 123456789 Sin puntos ni guión"
+                                                             id="pasaporte_provisorio"
+                                                             maxlength="12"
+                                                             v-model="pasaporte_provisorio"
+                                                             @change="buscar_por_pasaporte">
+
+                                                            <span class="input-group-btn">
+                                                               <button class="btn btn-sm btn-info"
+                                                                  @click.prevent="buscar_por_pasaporte">
+                                                                  Buscar&nbsp;<i class="fa fa-search"></i>
+                                                               </button>
+                                                            </span><!-- .input-group-btn -->
+                                                         </div><!-- /.input-group -->
+                                                      </div><!-- /.form-group -->
+
+
+                                                      <div class="table-responsive" v-if="formulario_vacio == false">
+                                                         <small class="text-info">Resultados encontrados</small>
+                                                         <br>
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <th>Correlativo</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Nombres</th>
+                                                                  <th>Disponibilidad Registro</th>
+                                                                  <th>Estado Registro</th>
+                                                                  <th>Fecha Parto</th>
+                                                                  <th>Hora Parto</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr v-for="f in formularios">
+                                                                  <td>
+                                                                     <button class="btn btn-sm btn-primary"
+                                                                        @click.prevent="modificar_usuario_seleccionado(f)">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                     </button>
+                                                                  </td>
+                                                                  <td>{{f.n_correlativo_interno}}</td>
+                                                                  <td>{{f.run_madre}}</td>
+                                                                  <td>{{f.nombres_madre}}</td>
+                                                                  <td>{{f.estado_form_deis || 'disponible'}}</td>
+                                                                  <td>{{f.estado_formulario_completo_form_deis || 'Incompleto'}}</td>
+                                                                  <td>{{f.fecha_parto || 'No Ingresado'}}</td>
+                                                                  <td>{{f.hora_parto || 'No Ingresado'}}</td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_personas_pasaporte -->
+
+
+
+
                                     </div><!-- .panel-heading -->
                                  </div><!-- .panel-heading -->
                               </div><!-- .panel-heading -->
@@ -308,6 +403,7 @@ const FormularioController = new Vue({
          data () {
             return {
                'run_madre':'',
+               'pasaporte_provisorio':'',
                'n_correlativo_interno':'',
                'formularios':[],
                'formularios_correlativo':[],
@@ -337,6 +433,32 @@ const FormularioController = new Vue({
                }else{
                   return format(run);
                }
+            },
+            buscar_por_pasaporte: function () {
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('pasaporte_provisorio', this.pasaporte_provisorio);
+
+               this.$http.post('/formulario/buscar_por_pasaporte', formData).then(response => { // success callback
+                  //console.log(response);
+                  this.formularios = response.body.formularios;
+                  this.formulario_vacio = $.isEmptyObject(this.formularios)==true?true:false;
+
+                  if (this.formulario_vacio == true) {
+                     swal({
+                        title: "Atención",
+                        text: "El rut ingresado no se encuentra registrado.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                  }
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
             },
             buscar_por_run: function () {
                if (!this.run_madre || validate(this.run_madre) == false){

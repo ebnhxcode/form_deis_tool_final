@@ -170,6 +170,19 @@ class FormDeisController extends Controller {
         }
     }
 
+    public function buscar_por_pasaporte (Request $request) {
+        if ($request->wantsJson()) {
+            $pasaporte_provisorio = isset($request->pasaporte_provisorio)?$request->pasaporte_provisorio:null;
+            if ($pasaporte_provisorio) {
+                $formularios = FormDeis::where('pasaporte_provisorio', 'ilike', $pasaporte_provisorio.'%')->get();
+                #$formularios = FormDeis::where('run_madre', '=', $run_madre)->get();
+                return response()->json(['formularios'=>$formularios]);
+            }else{
+                return response()->json(['error'=>['rd' => 'El pasaporte no existe']]);
+            }
+        }
+    }
+
     #Busqueda de un registro por el correlativo del registro
     public function buscar_por_correlativo (Request $request){
         if ($request->wantsJson()) {

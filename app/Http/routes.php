@@ -86,6 +86,7 @@ Route::get('/testapi', function () {
 Route::get('/formulario/testapi', 'FormDeisController@testapi');
 
 Route::post ('/formulario/buscar_por_run' , 'FormDeisController@buscar_por_run') ;
+Route::post ('/formulario/buscar_por_pasaporte' , 'FormDeisController@buscar_por_pasaporte') ;
 Route::post ('/formulario/buscar_run_existente' , 'FormDeisController@buscar_run_existente') ;
 Route::post ('/formulario/buscar_por_correlativo' , 'FormDeisController@buscar_por_correlativo') ;
 Route::post ('/formulario/confirmar_confidencialidad_mujer_vih' , 'FormDeisController@confirmar_confidencialidad_mujer_vih') ;

@@ -3,17 +3,18 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php" line="31" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/UsuarioCreateController.js" line="390" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="359" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="283" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="290" />
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" line="120" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="0" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FormDeis.php" afterPath="$PROJECT_DIR$/app/FormDeis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FormDeisLog.php" afterPath="$PROJECT_DIR$/app/FormDeisLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FormDeisLogSeguimientoVih.php" afterPath="$PROJECT_DIR$/app/FormDeisLogSeguimientoVih.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/collection.php" afterPath="$PROJECT_DIR$/config/collection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1724" column="0" selection-start-line="1724" selection-start-column="0" selection-end-line="1724" selection-end-column="0" />
+              <caret line="444" column="63" selection-start-line="444" selection-start-column="63" selection-end-line="444" selection-end-column="63" />
               <folding>
                 <element signature="e#1581#1952#0" expanded="false" />
                 <element signature="e#1971#2330#0" expanded="false" />
@@ -47,64 +48,23 @@
                 <element signature="e#2652#3467#0" expanded="false" />
                 <element signature="e#3485#3912#0" expanded="false" />
                 <element signature="e#3932#4365#0" expanded="false" />
-                <element signature="e#4399#17800#0" expanded="false" />
-                <element signature="e#13226#13695#0" expanded="false" />
-                <element signature="e#15527#16344#0" expanded="false" />
-                <element signature="e#17840#25514#0" expanded="false" />
-                <element signature="e#27402#28926#0" expanded="false" />
-                <element signature="e#28970#29553#0" expanded="false" />
-                <element signature="e#29609#30018#0" expanded="false" />
-                <element signature="e#30447#64401#0" expanded="false" />
-                <element signature="e#39619#40015#0" expanded="false" />
-                <element signature="e#41316#41712#0" expanded="false" />
-                <element signature="e#43010#43406#0" expanded="false" />
-                <element signature="e#64454#67076#0" expanded="false" />
-                <element signature="e#71660#71720#0" expanded="false" />
-                <element signature="e#77729#79457#0" expanded="false" />
-                <marker date="1511296126257" expanded="true" signature="2870:3337" placeholder="..." />
-                <marker date="1511296126257" expanded="true" signature="3600:3760" placeholder="..." />
-                <marker date="1511296126257" expanded="true" signature="4051:4211" placeholder="..." />
+                <element signature="e#19840#20309#0" expanded="false" />
+                <element signature="e#23304#24121#0" expanded="false" />
+                <element signature="e#25617#33291#0" expanded="false" />
+                <element signature="e#35179#36703#0" expanded="false" />
+                <element signature="e#36747#37330#0" expanded="false" />
+                <element signature="e#37386#37795#0" expanded="false" />
+                <element signature="e#38224#72178#0" expanded="false" />
+                <element signature="e#47396#47792#0" expanded="false" />
+                <element signature="e#49093#49489#0" expanded="false" />
+                <element signature="e#50787#51183#0" expanded="false" />
+                <element signature="e#72231#74853#0" expanded="false" />
+                <element signature="e#79437#79497#0" expanded="false" />
+                <element signature="e#85506#87234#0" expanded="false" />
+                <marker date="1511297814393" expanded="true" signature="2870:3337" placeholder="..." />
+                <marker date="1511297814393" expanded="true" signature="3600:3760" placeholder="..." />
+                <marker date="1511297814393" expanded="true" signature="4051:4211" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/collection.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.230769">
-              <caret line="4376" column="27" selection-start-line="4376" selection-start-column="7" selection-end-line="4376" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormDeis.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0">
-              <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormDeisLog.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/FormDeisLog.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.73077">
-              <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormDeisLogSeguimientoVih.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/FormDeisLogSeguimientoVih.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -125,17 +85,17 @@
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-8.615385">
-              <caret line="88" column="69" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="69" />
+              <caret line="88" column="90" selection-start-line="88" selection-start-column="90" selection-end-line="88" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormDeisController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FormDeisController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5576923">
-              <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+            <state vertical-scroll-proportion="3.717428">
+              <caret line="180" column="72" selection-start-line="180" selection-start-column="72" selection-end-line="180" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -213,7 +173,6 @@
         <option value="$PROJECT_DIR$/resources/lang/es/auth.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
         <option value="$PROJECT_DIR$/app/FormDeisUser.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/input/index.blade.php" />
@@ -227,13 +186,14 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" />
         <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
         <option value="$PROJECT_DIR$/config/collection.php" />
         <option value="$PROJECT_DIR$/app/FormDeis.php" />
         <option value="$PROJECT_DIR$/app/FormDeisLog.php" />
         <option value="$PROJECT_DIR$/app/FormDeisLogSeguimientoVih.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
       </list>
     </option>
   </component>
@@ -1394,18 +1354,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+    <entry file="file://$PROJECT_DIR$/config/collections.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.615385">
-          <caret line="88" column="69" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="69" />
+        <state vertical-scroll-proportion="7.7909236">
+          <caret line="488" column="24" selection-start-line="488" selection-start-column="24" selection-end-line="488" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php">
+    <entry file="file://$PROJECT_DIR$/app/FormDeisInput.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5576923">
-          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/FormDeisLogSeguimientoVih.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/FormDeisLog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9578606">
+          <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2949757">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/collection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5575365">
+          <caret line="4376" column="27" selection-start-line="4376" selection-start-column="7" selection-end-line="4376" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1420,18 +1412,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/collections.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.7909236">
-          <caret line="488" column="24" selection-start-line="488" selection-start-column="24" selection-end-line="488" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1724" column="0" selection-start-line="1724" selection-start-column="0" selection-end-line="1724" selection-end-column="0" />
+          <caret line="444" column="63" selection-start-line="444" selection-start-column="63" selection-end-line="444" selection-end-column="63" />
           <folding>
             <element signature="e#1581#1952#0" expanded="false" />
             <element signature="e#1971#2330#0" expanded="false" />
@@ -1439,63 +1423,38 @@
             <element signature="e#2652#3467#0" expanded="false" />
             <element signature="e#3485#3912#0" expanded="false" />
             <element signature="e#3932#4365#0" expanded="false" />
-            <element signature="e#4399#17800#0" expanded="false" />
-            <element signature="e#13226#13695#0" expanded="false" />
-            <element signature="e#15527#16344#0" expanded="false" />
-            <element signature="e#17840#25514#0" expanded="false" />
-            <element signature="e#27402#28926#0" expanded="false" />
-            <element signature="e#28970#29553#0" expanded="false" />
-            <element signature="e#29609#30018#0" expanded="false" />
-            <element signature="e#30447#64401#0" expanded="false" />
-            <element signature="e#39619#40015#0" expanded="false" />
-            <element signature="e#41316#41712#0" expanded="false" />
-            <element signature="e#43010#43406#0" expanded="false" />
-            <element signature="e#64454#67076#0" expanded="false" />
-            <element signature="e#71660#71720#0" expanded="false" />
-            <element signature="e#77729#79457#0" expanded="false" />
-            <marker date="1511296126257" expanded="true" signature="2870:3337" placeholder="..." />
-            <marker date="1511296126257" expanded="true" signature="3600:3760" placeholder="..." />
-            <marker date="1511296126257" expanded="true" signature="4051:4211" placeholder="..." />
+            <element signature="e#19840#20309#0" expanded="false" />
+            <element signature="e#23304#24121#0" expanded="false" />
+            <element signature="e#25617#33291#0" expanded="false" />
+            <element signature="e#35179#36703#0" expanded="false" />
+            <element signature="e#36747#37330#0" expanded="false" />
+            <element signature="e#37386#37795#0" expanded="false" />
+            <element signature="e#38224#72178#0" expanded="false" />
+            <element signature="e#47396#47792#0" expanded="false" />
+            <element signature="e#49093#49489#0" expanded="false" />
+            <element signature="e#50787#51183#0" expanded="false" />
+            <element signature="e#72231#74853#0" expanded="false" />
+            <element signature="e#79437#79497#0" expanded="false" />
+            <element signature="e#85506#87234#0" expanded="false" />
+            <marker date="1511297814393" expanded="true" signature="2870:3337" placeholder="..." />
+            <marker date="1511297814393" expanded="true" signature="3600:3760" placeholder="..." />
+            <marker date="1511297814393" expanded="true" signature="4051:4211" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/collection.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.230769">
-          <caret line="4376" column="27" selection-start-line="4376" selection-start-column="7" selection-end-line="4376" selection-end-column="27" />
+        <state vertical-scroll-proportion="-8.615385">
+          <caret line="88" column="90" selection-start-line="88" selection-start-column="90" selection-end-line="88" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeisInput.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0">
-          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeisLog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.73077">
-          <caret line="100" column="34" selection-start-line="100" selection-start-column="34" selection-end-line="100" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeisLogSeguimientoVih.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="3.717428">
+          <caret line="180" column="72" selection-start-line="180" selection-start-column="72" selection-end-line="180" selection-end-column="72" />
           <folding />
         </state>
       </provider>
