@@ -16,10 +16,32 @@
                         <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
                         <div class="well well-sm">
+
+
                            <h3 class="text-center">
                               Mantenedor de Usuarios
                               <img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">
                            </h3> <!-- .text-center --> <br>
+
+                           {{-- @click.prevent="crear_nuevo_usuario" --}}
+                           <button class="btn btn-sm btn-success small"
+                                   style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;" @click.prevent="mostrar_modal_nuevo_usuario = true">
+                              Crear nuevo Usuario&nbsp;
+                              <i class="fa fa-plus"></i>
+                           </button><!-- .btn .btn-success -->
+
+                           <!-- Componente para crear compromiso en modal -->
+                           <modal-nuevousuario v-show="mostrar_modal_nuevo_usuario == true" @close="mostrar_modal_nuevo_usuario = false">
+                              <h3 slot="header">
+                                 Crear nuevo usuario
+                                 <button class="btn btn-sm btn-default pull-right"
+                                 @click="mostrar_modal_nuevo_usuario = false">
+                                 Cerrar
+                                 </button>
+                                 <span class="pull-right">&nbsp;&nbsp;</span>
+                                 <button @click.prevent="guardar_nuevo_usuario" class="btn btn-sm btn-success pull-right">Guardar</button>
+                              </h3>
+                           </modal-nuevousuario>
 
                         </div><!-- .well .well-sm -->
 

@@ -36901,7 +36901,9 @@ var AdminUsuarios = new _vue2.default({
          'mini_loader_visible': false,
          'btn_procesar_clave': true,
          'btn_generar_clave': false,
-         'btn_finalizar': false
+         'btn_finalizar': false,
+
+         'mostrar_modal_nuevo_usuario': false
       };
    },
 
@@ -37029,6 +37031,45 @@ var AdminUsuarios = new _vue2.default({
             }
          },
          watch: {}
+      },
+      'modal-nuevousuario': {
+         props: [''],
+         template: '\n\t\t\t<!-- template for the modal component -->\n\t\t\t  <transition name="modal">\n\t\t\t\t <div class="modal-mask">\n\t\t\t\t\t<div class="modal-wrapper">\n\t\t\t\t\t  <div class="modal-container">\n\n\t\t\t\t\t\t <div class="modal-header">\n\t\t\t\t\t\t\t<slot name="header">\n\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\n\t\t\t\t\t\t <div class="modal-body">\n\t\t\t\t\t\t\t<slot name="body">\n                        <dl class="dl-vertical" style="margin: 20px;">\n                           <div class="row">\n\t\t\t\t\t\t\t\t\t   <div style="overflow-y: scroll;max-height: 400px;">\n\n                                 <div class="col-md-6">\n                                    <dt>Nombre</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="name" type="text" id="name"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'name\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'plazo_estimado\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n\n                              </div><!-- styled -->\n                           </div><!-- .row -->\n                        </dl>\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\n\t\t\t\t\t\t <div class="modal-footer">\n\t\t\t\t\t\t\t<slot name="footer">\n\t\t\t\t\t\t\t\t<!--\n\t\t\t\t\t\t\t  \t<button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t\tAceptar\n\t\t\t\t\t\t\t  \t</button>\n\t\t\t\t\t\t\t  \t-->\n\t\t\t\t\t\t\t  \tLos campos con <b>*</b> son obligatorios\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t  </transition>\n\t\t\t',
+         name: 'modal-nuevousuario',
+         data: function data() {
+            return {};
+         },
+         ready: function ready() {},
+         created: function created() {},
+
+         filters: {
+            replaceFono: function replaceFono(fono) {
+               if (fono != null) {
+                  fono = fono.replace('fono_responsable', 'telefono');
+               }
+               return fono;
+            },
+            replacePlazoComprometido: function replacePlazoComprometido(plazo_comprometido) {
+               if (plazo_comprometido != null) {
+                  plazo_comprometido = plazo_comprometido.replace('plazo_comprometido', 'para el plazo comprometido');
+               }
+               return plazo_comprometido;
+            },
+            replacePlazoEstimado: function replacePlazoEstimado(plazo_estimado) {
+               if (plazo_estimado != null) {
+                  plazo_estimado = plazo_estimado.replace('plazo_estimado', ' para el plazo estimado');
+               }
+               return plazo_estimado;
+            },
+            replaceNombreCompromisoContraloria: function replaceNombreCompromisoContraloria(nombre_compromiso_contraloria) {
+               if (nombre_compromiso_contraloria != null) {
+                  nombre_compromiso_contraloria = nombre_compromiso_contraloria.replace('nombre_compromiso_contraloria', 'para el nombre del compromiso');
+               }
+               return nombre_compromiso_contraloria;
+            }
+         },
+         methods: {},
+         watch: {}
       }
       /*
        '':{
@@ -37053,9 +37094,7 @@ var AdminUsuarios = new _vue2.default({
    },
    created: function created() {
       this.fetchAdminUsuarios();
-      $(document).ready(function () {
-         $('[data-toggle="popover"]').popover();
-      });
+
       /*
        $(document).ready( function () {
        $('#toggle').click(function() {
