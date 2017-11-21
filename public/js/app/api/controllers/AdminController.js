@@ -37066,6 +37066,31 @@ var AdminUsuarios = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
+      sendEmailPasswordReset: function sendEmailPasswordReset(email) {
+         var formData = new FormData();
+         formData.append('email', email);
+         formData.append('_token', $('#_token').val());
+         formData.append('token', $('#_token').val());
+         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.post('/password/email', formData).then(function (response) {
+            // success callback
+            console.log(response);
+         }, function (response) {
+            // error callback
+            console.log('Error saveUser: ' + response);
+            if (response.status == 500) {
+               swal({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               window.location.href = '/login';
+            }
+         });
+      },
 
       editUser: function editUser(id) {
          this.userEditId = id;

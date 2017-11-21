@@ -376,6 +376,29 @@ const AdminUsuarios = new Vue({
    filters: {
    },
    methods: {
+      sendEmailPasswordReset: function (email) {
+         var formData = new FormData();
+         formData.append('email', email);
+         formData.append('_token', $('#_token').val());
+         formData.append('token', $('#_token').val());
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.post('/password/email', formData).then(response => { // success callback
+            console.log(response);
+         }, response => { // error callback
+            console.log('Error saveUser: ' + response);
+            if (response.status == 500) {
+               swal({
+                  title: "Atencion",
+                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               window.location.href = '/login';
+            }
+         });
+      },
 
       editUser: function (id) {
          this.userEditId = id;

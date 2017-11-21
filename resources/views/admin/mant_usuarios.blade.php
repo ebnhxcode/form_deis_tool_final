@@ -87,6 +87,10 @@
                                             v-else>
                                        <i class="fa fa-check"></i>
                                     </button>
+                                    <button class="btn btn-sm btn-default"
+                                            @click.prevent="sendEmailPasswordReset(user.email)">
+                                       <i class="fa fa-envelope"></i>
+                                    </button>
                                  </td>
 
                                  <td>
