@@ -32,6 +32,8 @@ const FormularioController = new Vue({
          'fdc_temp':[],
          'auth':[],
 
+         'formularios_encontrados':{},
+
          'inputTypes':{
             'basics':['text', 'number', 'email', 'password', 'date', 'time'],
             'select':['select'],
@@ -42,6 +44,8 @@ const FormularioController = new Vue({
          ],
 
          'show_modal_buscar_formulario':false,
+         'show_modal_formularios_encontrados':false,
+
          'spinner_iniciar':true,
          'spinner_finalizar':false,
          'mini_loader':false,
@@ -432,6 +436,158 @@ const FormularioController = new Vue({
          watch: {
          },
       },
+      'modal_formularios_encontrados':{
+         props: ['formularios_encontrados'],
+         template: `
+			   <!-- template for the modal component -->
+			   <transition name="modal">
+				   <div class="modal-mask">
+					   <div class="modal-wrapper">
+					      <div class="modal-container">
+
+						      <div class="modal-header">
+							      <slot name="header"></slot>
+						      </div>
+
+						      <div class="modal-body">
+							      <slot name="body">
+
+                              <div id="" class="panel with-nav-tabs panel-primary">
+                                 <!-- Items elementos de cabecera -->
+                                 <div class="panel-heading">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs small" role="tablist">
+
+                                       <li role="presentation" class="active">
+                                          <a href="#lista_personas_run" aria-controls="lista_personas_run" role="tab" data-toggle="tab">
+                                             Lista de personas encontradas
+                                          </a>
+                                       </li>
+
+                                    </ul>
+                                 </div><!-- .panel-heading -->
+
+                                 <div class="panel-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+
+                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_personas_run">
+
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <dt>
+                                                      Formularios encontrados
+                                                   </dt>
+                                                   <dd>
+                                                      <div class="table-responsive">
+                                                         <small class="text-info">Resultados encontrados</small>
+                                                         <br>
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <th>Correlativo</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Nombres</th>
+                                                                  <th>Disponibilidad Registro</th>
+                                                                  <th>Estado Registro</th>
+                                                                  <th>Fecha Parto</th>
+                                                                  <th>Hora Parto</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr v-for="f in formularios_encontrados">
+                                                                  <td>
+                                                                     <button class="btn btn-sm btn-primary"
+                                                                        @click.prevent="modificar_usuario_seleccionado(f)">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                     </button>
+                                                                  </td>
+                                                                  <td>{{f.n_correlativo_interno}}</td>
+                                                                  <td>{{f.run_madre}}</td>
+                                                                  <td>{{f.nombres_madre}}</td>
+                                                                  <td>{{f.estado_form_deis || 'disponible'}}</td>
+                                                                  <td>{{f.estado_formulario_completo_form_deis || 'Incompleto'}}</td>
+                                                                  <td>{{f.fecha_parto || 'No Ingresado'}}</td>
+                                                                  <td>{{f.hora_parto || 'No Ingresado'}}</td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_personas_run -->
+                                    </div><!-- .panel-heading -->
+                                 </div><!-- .panel-heading -->
+                              </div><!-- .panel-heading -->
+
+
+							      </slot>
+						      </div>
+
+						      <!--
+						      <div class="modal-footer">
+							      <slot name="footer">
+							         <button class="btn btn-sm btn-success" @click="$emit('close')">
+								         Aceptar
+							         </button>
+                           </slot>
+						      </div>
+						      -->
+					      </div>
+                  </div>
+				   </div>
+			   </transition>
+			`,
+         name: 'modal_formularios_encontrados',
+         data () {
+            return {
+               'run_madre':'',
+               'formularios':[],
+               'formularios_correlativo':[],
+               'formulario_vacio':true,
+               'formulario_vacio_correlativo':true,
+            }
+         },
+         ready () {
+         },
+         created () {
+         },
+         methods: {
+            modificar_usuario_seleccionado: function (formulario) {
+               this.$parent.renderizar_solo_inputs();
+               this.$parent.fdc = formulario;
+               this.$parent.fdc_temp = formulario;
+               this.$parent.formularioActivoObj = formulario;
+               this.$parent.show_modal_formularios_encontrados = false;
+               this.$parent.formularioEditActivo = true;
+               this.$parent.formularioNuevoActivo = false;
+
+               var formData = new FormData();
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('n_correlativo_interno', formulario.n_correlativo_interno);
+
+               this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                  this.$parent.fdc = response.body.fdc;
+                  //console.log(response);
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+            },
+         },
+         watch: {
+         },
+      },
       /*
        '':{
        props: [''],
@@ -608,25 +764,33 @@ const FormularioController = new Vue({
                   formData.append('run_madre', this.fdc[input.name]);
                   this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
                      //console.log(response);
-
-
-
-                     /*
-                     var rd = response.body.rd;
-                     if (rd == 'Existe') {
-                        this.fdc[input.name] = null;
+                     if (response.status == 200) {
+                        var rd = response.body.rd;
+                        this.formularios_encontrados = response.body.formularios;
+                        if (rd == 'Existe') {
+                           //this.fdc[input.name] = null;
+                           var self = this;
+                           swal({
+                              title: "Atencion",
+                              text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
+                              type: "success",
+                              confirmButtonClass: "btn-success",
+                              closeOnConfirm: true
+                           }, function(isConfirm){
+                              if (isConfirm) {
+                                 self.show_modal_formularios_encontrados = true;
+                              }
+                           });
+                        }
+                     }else{
                         swal({
                            title: "Advertencia",
-                           text: "El rut ingresado ya existe.",
-                           type: "warning",
+                           text: "Ocurrio un error al procesar la solicitud.",
+                           type: "error",
                            confirmButtonClass: "btn-danger",
                            closeOnConfirm: false
                         });
                      }
-                     */
-
-
-
                   }, response => { // error callback
                      //console.log(response);
                   });
@@ -1550,6 +1714,23 @@ const FormularioController = new Vue({
       crear_nuevo_formulario: function () {
          this.renderizar_formulario();
          this.formularioNuevoActivo = true;
+         this.show_modal_formularios_encontrados = false;
+
+         var self = this;
+         setTimeout(function () {
+            swal({
+               title: "Atencion",
+               text: `
+               Se está creando un nuevo formulario sin problemas
+
+               El número correlativo es el: ${self.fdc.n_correlativo_interno}
+            `,
+               type: "success",
+               confirmButtonClass: "btn-success",
+               closeOnConfirm: false
+            });
+         }, 1500);
+
          /*
          if (this.formularioNuevoActivo == false) {
             this.renderizar_formulario();

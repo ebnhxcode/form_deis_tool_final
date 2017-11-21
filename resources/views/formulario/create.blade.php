@@ -48,7 +48,7 @@
                            </button></button><!-- .btn .btn-info -->
 
                            <modal_buscar_formulario
-                              v-if="show_modal_buscar_formulario == true">
+                              v-show="show_modal_buscar_formulario == true">
                               <h3 slot="header">
                                  Búsqueda DEIS
                                  <button class="btn btn-sm btn-default pull-right" @click.prevent="show_modal_buscar_formulario = false">
@@ -57,6 +57,26 @@
                                  <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
                               </h3>
                            </modal_buscar_formulario>
+
+                           <modal_formularios_encontrados
+                              :formularios_encontrados="formularios_encontrados"
+                              v-show="show_modal_formularios_encontrados == true">
+                              <h3 slot="header">
+                                 Formularios encontrados
+
+                                 <button class="btn btn-sm btn-success pull-right small"
+                                         @click.prevent="crear_nuevo_formulario"
+                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
+                                    Ó Crear nuevo&nbsp;
+                                    <i class="fa fa-plus"></i>
+                                 </button><!-- .btn .btn-success -->
+
+                                 <button class="btn btn-sm btn-default pull-right" @click.prevent="show_modal_formularios_encontrados= false">
+                                    Cerrar
+                                 </button>
+                                 <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
+                              </h3>
+                           </modal_formularios_encontrados>
 
                            <div class="collapse" id="instructions">
                               <h4>Instrucciones:</h4> <br>
