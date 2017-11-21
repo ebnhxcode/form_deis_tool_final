@@ -601,7 +601,6 @@ const FormularioController = new Vue({
                   alert('Debe ingresar un rut valido');
                }
                */
-               /*
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
                   Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -624,7 +623,6 @@ const FormularioController = new Vue({
                      //console.log(response);
                   });
                }
-               */
                break;
             /*
             case 'run_recien_nacido':
