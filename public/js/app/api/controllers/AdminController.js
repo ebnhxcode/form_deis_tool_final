@@ -37053,6 +37053,9 @@ var AdminUsuarios = new _vue2.default({
    },
    created: function created() {
       this.fetchAdminUsuarios();
+      $(document).ready(function () {
+         $('[data-toggle="popover"]').popover();
+      });
       /*
        $(document).ready( function () {
        $('#toggle').click(function() {

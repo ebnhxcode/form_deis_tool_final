@@ -87,10 +87,16 @@
                                             v-else>
                                        <i class="fa fa-check"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-default"
+
+
+                                    <!-- v-if="user.establecimiento == 'minsal'" -->
+                                    <a class="btn btn-sm btn-default"
+                                            data-toggle="popover" data-trigger="hover" data-placement="bottom"
+                                            title="¡IMPORTANTE!" data-content="Desde esta opción puedes enviar un email al usuario para que pueda crear su clave a traves de un enlace enviado a su email."
+                                            tabindex="0"
                                             @click.prevent="sendEmailPasswordReset(user.email)">
                                        <i class="fa fa-envelope"></i>
-                                    </button>
+                                    </a>
                                  </td>
 
                                  <td>
@@ -152,6 +158,12 @@
          </div><!-- col-md-* -->
       </div><!-- .row -->
    </div><!-- .container -->
+
+   <script>
+      $(document).ready( function () {
+         $('[data-toggle="popover"]').popover();
+      });
+   </script>
 @endsection
 
 
