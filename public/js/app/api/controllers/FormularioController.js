@@ -37294,7 +37294,6 @@ var FormularioController = new _vue2.default({
       },
 
       verifica_validacion_change: function verifica_validacion_change(input) {
-         var _this4 = this;
 
          switch (input.id) {
 
@@ -37305,17 +37304,16 @@ var FormularioController = new _vue2.default({
                   alert('Debe ingresar un rut valido');
                }
                */
-
+               /*
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
-                  _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                  Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                   formData.append('run_madre', this.fdc[input.name]);
-                  this.$http.post('/formulario/buscar_run_existente', formData).then(function (response) {
-                     // success callback
+                  this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
                      //console.log(response);
                      var rd = response.body.rd;
                      if (rd == 'Existe') {
-                        _this4.fdc[input.name] = null;
+                        this.fdc[input.name] = null;
                         swal({
                            title: "Advertencia",
                            text: "El rut ingresado ya existe.",
@@ -37324,10 +37322,11 @@ var FormularioController = new _vue2.default({
                            closeOnConfirm: false
                         });
                      }
-                  }, function (response) {// error callback
+                   }, response => { // error callback
                      //console.log(response);
                   });
                }
+               */
                break;
             /*
             case 'run_recien_nacido':
@@ -38063,22 +38062,22 @@ var FormularioController = new _vue2.default({
       },
 
       fetch_formulario: function fetch_formulario() {
-         var _this5 = this;
+         var _this4 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
             // success callback
-            _this5.instructions = response.body.instructions;
-            _this5.auth = response.body.auth;
+            _this4.instructions = response.body.instructions;
+            _this4.auth = response.body.auth;
 
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            _this5.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
+            _this4.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
                //console.log(response);
             }, function (response) {// error callback
                //console.log(response);
             });
 
-            if (_this5.auth && _this5.auth.acepta_terminos != 'true') {
-               var self = _this5;
+            if (_this4.auth && _this4.auth.acepta_terminos != 'true') {
+               var self = _this4;
                swal({
                   title: "Términos y condiciones de uso",
                   text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
@@ -38115,7 +38114,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario: function guardar_formulario(tabName) {
-         var _this6 = this;
+         var _this5 = this;
 
          this.mini_loader = true;
          //this.spinner_finalizar = true;
@@ -38149,23 +38148,23 @@ var FormularioController = new _vue2.default({
             //alert('Guardado');
 
             //Si guardar salio bien
-            _this6.hayGuardadoActivo = true;
-            _this6.idFormularioActivo = _this6.fdc.id;
+            _this5.hayGuardadoActivo = true;
+            _this5.idFormularioActivo = _this5.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this6.mini_loader = false;
+            _this5.mini_loader = false;
             swal("Guardado", "El registro se guardó correctamente!", "success");
          }, function (response) {
             // error callback
             //console.log(response);
-            _this6.check_status_code(response.status);
+            _this5.check_status_code(response.status);
          });
 
          return;
       },
 
       guardar_formulario_completo: function guardar_formulario_completo() {
-         var _this7 = this;
+         var _this6 = this;
 
          this.mini_loader = true;
          //this.spinner_finalizar = true;
@@ -38197,16 +38196,16 @@ var FormularioController = new _vue2.default({
             //alert('Guardado');
 
             //Si guardar salio bien
-            _this7.hayGuardadoActivo = true;
-            _this7.idFormularioActivo = _this7.fdc.id;
+            _this6.hayGuardadoActivo = true;
+            _this6.idFormularioActivo = _this6.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this7.mini_loader = false;
+            _this6.mini_loader = false;
             swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
          }, function (response) {
             // error callback
             //console.log(response);
-            _this7.check_status_code(response.status);
+            _this6.check_status_code(response.status);
          });
 
          return;
@@ -38218,36 +38217,36 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this8 = this;
+         var _this7 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this8.inputs = response.body.inputs;
-            _this8.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this8.deis_form_table_options = response.body.deis_form_table_options;
-            _this8.pais_origen = response.body.pais_origen;
-            _this8.auth = response.body.auth;
-            _this8.validar_validaciones_previas();
+            _this7.inputs = response.body.inputs;
+            _this7.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this7.deis_form_table_options = response.body.deis_form_table_options;
+            _this7.pais_origen = response.body.pais_origen;
+            _this7.auth = response.body.auth;
+            _this7.validar_validaciones_previas();
          }, function (response) {// error callback
             //console.log('Error datos_formulario: '+response);
          });
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this9 = this;
+         var _this8 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this9.inputs = response.body.inputs;
-            _this9.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this9.deis_form_table_options = response.body.deis_form_table_options;
-            _this9.pais_origen = response.body.pais_origen;
-            _this9.fdc = response.body.fdc;
-            _this9.fdc_temp = response.body.fdc;
+            _this8.inputs = response.body.inputs;
+            _this8.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this8.deis_form_table_options = response.body.deis_form_table_options;
+            _this8.pais_origen = response.body.pais_origen;
+            _this8.fdc = response.body.fdc;
+            _this8.fdc_temp = response.body.fdc;
 
-            _this9.formularioActivoObj = response.body.fdc;
-            _this9.auth = response.body.auth;
-            _this9.validar_validaciones_previas();
+            _this8.formularioActivoObj = response.body.fdc;
+            _this8.auth = response.body.auth;
+            _this8.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
