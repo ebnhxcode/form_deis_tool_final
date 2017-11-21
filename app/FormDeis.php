@@ -130,6 +130,7 @@ class FormDeis extends Model
       'numero_contactos_sexuales_estudiados',
       'numero_contactos_sexuales_tratados',
       'otra_its_previa_embarazo',
+      'pasaporte_provisorio',
       'pais_origen',
       'pareja_vih_positivo',
       'peso_mujer_parto',

@@ -4374,6 +4374,9 @@ return [
       'fecha_nacimiento_madre' => [
          'text' => 'Fecha de nacimiento',
       ],
+      'pasaporte_provisorio' => [
+         'text' => 'Pasaporte',
+      ],
       'n_correlativo_interno' => [
          'text' => 'Nº correlativo Minsal',
       ],
