@@ -144,7 +144,7 @@ class FormDeisController extends Controller {
                 $formularios = FormDeis::where('run_madre', 'ilike', $run_madre.'%')->get();
                 #$formularios = FormDeis::where('run_madre', '=', $run_madre)->get();
                 if (count($formularios)>0){
-                    return response()->json(['rd'=>'Existe']);
+                    return response()->json(['rd'=>'Existe', 'formularios' => $formularios]);
                 }else{
                     return response()->json(['rd'=>'No existe']);
                 }
