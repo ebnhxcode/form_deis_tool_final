@@ -64,9 +64,9 @@
                               <h3 slot="header">
                                  Formularios encontrados
 
-                                 <button class="btn btn-sm btn-success pull-right small"
+                                 <button class="btn btn-sm btn-success pull-right"
                                          @click.prevent="crear_nuevo_formulario"
-                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
+                                         style="margin-left: 10px;">
                                     Ó Crear nuevo&nbsp;
                                     <i class="fa fa-plus"></i>
                                  </button><!-- .btn .btn-success -->
