@@ -38037,6 +38037,106 @@ var FormularioController = new _vue2.default({
          }
       },
 
+      verifica_validacion_blur: function verifica_validacion_blur(input) {
+         switch (input.id) {
+            case 'fecha_nacimiento_madre':
+               var date = this.fdc[input.name].split('-');
+               var ano_tope = new Date();
+               ano_tope = ano_tope.getFullYear();
+               var ano = date[0];
+               var mes = date[1];
+               var dia = date[2];
+               if (parseInt(ano) < 1930) {
+                  ano = 1930;
+                  this.fdc[input.name] = ano + '-' + mes + '-' + dia;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               } else if (parseInt(ano) > ano_tope) {
+                  this.fdc[input.name] = ano_tope + '-' + mes + '-' + dia;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+               break;
+            case 'fecha_ingreso_control_prenatal_embarazo':
+            case 'fecha_ultima_regla_gestacional':
+            case 'fecha_ultima_regla_operacional':
+            case 'fecha_1_vdrl_embarazo':
+            case 'fecha_2_vdrl_embarazo':
+            case 'fecha_3_vdrl_embarazo':
+            case 'fecha_administracion_1_dosis_penicilina_gestante':
+            case 'fecha_1_examen_vih_embarazo':
+            case 'fecha_2_examen_vih_embarazo':
+            case 'fecha_ingreso_control_unidad_alto_riesgo':
+            case 'fecha_ingreso_unacess':
+            case 'fecha_ingreso_control_otras_especialidades':
+            case 'fecha_examen_treponemico':
+            case 'fecha_administracion_ult_dosis_penicilina_gestante':
+            case 'fecha_ingreso_control_centro_atencion_vih':
+            case 'fecha_examen_linfocitos_cd4_ingreso_control_prenatal':
+            case 'fecha_examen_carga_viral_control_prenatal':
+            case 'fecha_examen_carga_viral_semana_34':
+            case 'fecha_inicio_tar_farmaco_1':
+            case 'fecha_inicio_tar_farmaco_2':
+            case 'fecha_inicio_tar_farmaco_3':
+            case 'fecha_parto':
+            case 'fecha_2_inicio_farmaco_1_vih':
+            case 'fecha_administracion_farmaco_suspencion_lactancia':
+            case 'fecha_nacimiento_recien_nacido':
+            case 'fecha_examen_vdrl_periferico_recien_nacido':
+            case 'fecha_examen_vdrl_liq_cefalo_recien_nacido':
+            case 'fecha_examen_treponemico_recien_nacido':
+            case 'fecha_inicio_sustituto_leche_materna':
+            case 'fecha_1_examen_pcr_recien_nacido':
+            case 'fecha_2_examen_pcr_recien_nacido':
+            case 'fecha_3_examen_pcr_recien_nacido':
+            case 'fecha_test_elisa_18_meses':
+            case 'fecha_resultado_final_isp_examen_vih':
+            case 'fecha_resultado_final_isp_examen_vih_recien_nacido':
+            case 'fecha_inicio_farmaco_1_vih_recien_nacido':
+            case 'fecha_inicio_farmaco_2_vih_recien_nacido':
+            case 'fecha_inicio_farmaco_2_vih':
+            case 'fecha_ingreso_control_recien_nacido_post_nacimiento':
+               var date = this.fdc[input.name].split('-');
+               var ano_tope = new Date();
+               ano_tope = ano_tope.getFullYear();
+               var ano = date[0];
+               var mes = date[1];
+               var dia = date[2];
+               if (parseInt(ano) < 2014) {
+                  ano = 2014;
+                  this.fdc[input.name] = ano + '-' + mes + '-' + dia;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               } else if (parseInt(ano) > ano_tope) {
+                  this.fdc[input.name] = ano_tope + '-' + mes + '-' + dia;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+               break;
+
+         }
+      },
+
       buscar_formulario: function buscar_formulario() {
          this.show_modal_buscar_formulario = true;
       },

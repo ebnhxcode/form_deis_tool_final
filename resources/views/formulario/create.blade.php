@@ -149,6 +149,7 @@
                                                           :pattern="i.pattern!=''?i.pattern:''"
                                                           @change.prevent="verifica_validacion_change(i)"
                                                           @keyup.prevent="verifica_validacion_keyup(i)"
+                                                          @blur.prevent="verifica_validacion_blur(i)"
                                                           v-model="fdc[i.name]"
                                                           v-if="inputInArray(i,inputTypes.basics)">
 
