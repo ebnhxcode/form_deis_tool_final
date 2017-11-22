@@ -80,6 +80,7 @@
                               <th style="min-width: 140px !important;">min</th>
                               <th style="min-width: 140px !important;">max</th>
                               <th style="min-width: 140px !important;">pattern</th>
+                              <th style="min-width: 140px !important;">format</th>
                               <th style="min-width: 140px !important;">seccion</th>
                               <th style="min-width: 140px !important;">class_custom</th>
                               <th style="min-width: 140px !important;">empty_column</th>
@@ -164,6 +165,10 @@
                               <td>
                                  <span v-if="editBy != input.id">@{{input.pattern}}</span>
                                  <input v-else type="text" class="form-control input-sm" v-model="input.pattern">
+                              </td>
+                              <td>
+                                 <span v-if="editBy != input.id">@{{input.format}}</span>
+                                 <input v-else type="text" class="form-control input-sm" v-model="input.format">
                               </td>
                               <td>
                                  <span v-if="editBy != input.id">@{{input.seccion}}</span>

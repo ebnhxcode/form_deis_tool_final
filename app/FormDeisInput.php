@@ -23,6 +23,7 @@ class FormDeisInput extends Model
       'min',
       'max',
       'pattern',
+      'format',
 
       'v_on_change',
 
