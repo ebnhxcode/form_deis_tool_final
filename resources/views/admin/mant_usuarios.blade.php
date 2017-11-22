@@ -82,6 +82,7 @@
                               <thead>
                               <tr>
                                  <th>Accion</th>
+                                 <th>Estado envio correo</th>
                                  <th>Id</th>
                                  <th>Nombre</th>
                                  <th>Email</th>
@@ -120,7 +121,9 @@
                                        <i class="fa fa-envelope"></i>
                                     </a>
                                  </td>
-
+                                 <td>
+                                    @{{ user.correo_resagado || 'No Aplica' }}
+                                 </td>
                                  <td>
                                     @{{ user.id }}
                                  </td>
