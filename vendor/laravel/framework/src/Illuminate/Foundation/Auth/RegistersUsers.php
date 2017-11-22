@@ -41,7 +41,8 @@ trait RegistersUsers
      */
     public function postRegister(Request $request)
     {
-        return $this->register($request);
+        return;
+        //return $this->register($request);
     }
 
     /**
