@@ -10,13 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/emails/password.blade.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
@@ -43,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="888" column="22" selection-start-line="888" selection-start-column="22" selection-end-line="888" selection-end-column="22" />
+              <caret line="867" column="0" selection-start-line="867" selection-start-column="0" selection-end-line="867" selection-end-column="0" />
               <folding>
                 <element signature="e#1581#1952#0" expanded="false" />
                 <element signature="e#1971#2330#0" expanded="false" />
@@ -131,8 +124,8 @@
       <file leaf-file-name="password.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/auth/emails/password.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25283632">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23176661">
+              <caret line="9" column="126" selection-start-line="9" selection-start-column="126" selection-end-line="9" selection-end-column="126" />
               <folding />
             </state>
           </provider>
@@ -1364,52 +1357,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.0">
-          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.5">
           <caret line="204" column="149" selection-start-line="204" selection-start-column="149" selection-end-line="204" selection-end-column="149" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="888" column="22" selection-start-line="888" selection-start-column="22" selection-end-line="888" selection-end-column="22" />
-          <folding>
-            <element signature="e#1581#1952#0" expanded="false" />
-            <element signature="e#1971#2330#0" expanded="false" />
-            <element signature="e#2353#2635#0" expanded="false" />
-            <element signature="e#2652#3467#0" expanded="false" />
-            <element signature="e#3485#3912#0" expanded="false" />
-            <element signature="e#3932#4365#0" expanded="false" />
-            <element signature="e#4399#25577#0" expanded="false" />
-            <element signature="e#19840#20309#0" expanded="false" />
-            <element signature="e#23304#24121#0" expanded="false" />
-            <element signature="e#25617#33291#0" expanded="false" />
-            <element signature="e#33299#33562#0" expanded="false" />
-            <element signature="e#33984#34970#0" expanded="false" />
-            <element signature="e#35179#36703#0" expanded="false" />
-            <element signature="e#36747#37330#0" expanded="false" />
-            <element signature="e#37386#37795#0" expanded="false" />
-            <element signature="e#47714#48110#0" expanded="false" />
-            <element signature="e#49411#49807#0" expanded="false" />
-            <element signature="e#51105#51501#0" expanded="false" />
-            <element signature="e#72549#75171#0" expanded="false" />
-            <element signature="e#79758#79818#0" expanded="false" />
-            <element signature="e#85827#87555#0" expanded="false" />
-            <marker date="1511300830153" expanded="true" signature="2870:3337" placeholder="..." />
-            <marker date="1511300830153" expanded="true" signature="3600:3760" placeholder="..." />
-            <marker date="1511300830153" expanded="true" signature="4051:4211" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1459,10 +1411,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.0">
+          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="867" column="0" selection-start-line="867" selection-start-column="0" selection-end-line="867" selection-end-column="0" />
+          <folding>
+            <element signature="e#1581#1952#0" expanded="false" />
+            <element signature="e#1971#2330#0" expanded="false" />
+            <element signature="e#2353#2635#0" expanded="false" />
+            <element signature="e#2652#3467#0" expanded="false" />
+            <element signature="e#3485#3912#0" expanded="false" />
+            <element signature="e#3932#4365#0" expanded="false" />
+            <element signature="e#4399#25577#0" expanded="false" />
+            <element signature="e#19840#20309#0" expanded="false" />
+            <element signature="e#23304#24121#0" expanded="false" />
+            <element signature="e#25617#33291#0" expanded="false" />
+            <element signature="e#33299#33562#0" expanded="false" />
+            <element signature="e#33984#34970#0" expanded="false" />
+            <element signature="e#35179#36703#0" expanded="false" />
+            <element signature="e#36747#37330#0" expanded="false" />
+            <element signature="e#37386#37795#0" expanded="false" />
+            <element signature="e#47714#48110#0" expanded="false" />
+            <element signature="e#49411#49807#0" expanded="false" />
+            <element signature="e#51105#51501#0" expanded="false" />
+            <element signature="e#72549#75171#0" expanded="false" />
+            <element signature="e#79758#79818#0" expanded="false" />
+            <element signature="e#85827#87555#0" expanded="false" />
+            <marker date="1511300830153" expanded="true" signature="2870:3337" placeholder="..." />
+            <marker date="1511300830153" expanded="true" signature="3600:3760" placeholder="..." />
+            <marker date="1511300830153" expanded="true" signature="4051:4211" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/emails/password.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25283632">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.23176661">
+          <caret line="9" column="126" selection-start-line="9" selection-start-column="126" selection-end-line="9" selection-end-column="126" />
           <folding />
         </state>
       </provider>
