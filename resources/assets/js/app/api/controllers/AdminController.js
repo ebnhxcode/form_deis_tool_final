@@ -540,18 +540,41 @@ const AdminUsuarios = new Vue({
    filters: {
    },
    methods: {
-      sendEmailPasswordReset: function (email) {
+      sendEmailPasswordReset: function (user) {
          var formData = new FormData();
-         formData.append('email', email);
-         formData.append('_token', $('#_token').val());
-         formData.append('token', $('#_token').val());
+         formData.append('email', user.email);
+         //formData.append('_token', $('#_token').val());
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.post('/password/email', formData).then(response => { // success callback
-            console.log(response);
-
+            //console.log(response);
             if (response.status == 200) {
-               swal("Enviado", `Se ha enviado el correo de creacion de claves al siguiente usuario: ${email}`, "success");
+               user.correo_resagado = 'enviado';
+               var formData = new FormData();
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //formData.append('_token', $('#_token').val());
+               formData.append('id', user.id);
+               this.$http.post('/admin/correo_resagado', formData).then(response => { // success callback
+                  if (response.status == 200) {
+                     return;
+                  }
+               }, response => { // error callback
+                  console.log('Error saveUser: ' + response);
+                  if (response.status == 500) {
+                     swal({
+                        title: "Atencion",
+                        text: "Ha ocurrido un error, favor recargar la página.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: true
+                     }, function (isConfirm) {
+                        if (isConfirm) {
+                           window.location.href = '/login';
+                        }
+                     });
+                  }
+               });
+               //swal("Enviado", `Se ha enviado el correo de creacion de claves al siguiente usuario: ${email}`, "success");
             }
 
 
@@ -560,12 +583,15 @@ const AdminUsuarios = new Vue({
             if (response.status == 500) {
                swal({
                   title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  text: "Ha ocurrido un error, favor recargar la página.",
                   type: "warning",
                   confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
                });
-               window.location.href = '/login';
             }
          });
       },

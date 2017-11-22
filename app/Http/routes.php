@@ -119,3 +119,5 @@ Route::get ('/home', 'HomeController@index') ;
 Route::get('/admin/mant_usuarios', 'AdminController@mant_usuarios');
 Route::get('/admin/mant_usuarios_data', 'AdminController@mant_usuarios_data');
 Route::post('/admin/guardar_usuario', 'AdminController@guardar_usuario');
+
+Route::post('/admin/correo_resagado', 'AdminController@correo_resagado');

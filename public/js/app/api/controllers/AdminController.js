@@ -37108,19 +37108,46 @@ var AdminUsuarios = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
-      sendEmailPasswordReset: function sendEmailPasswordReset(email) {
+      sendEmailPasswordReset: function sendEmailPasswordReset(user) {
+         var _this2 = this;
+
          var formData = new FormData();
-         formData.append('email', email);
-         formData.append('_token', $('#_token').val());
-         formData.append('token', $('#_token').val());
+         formData.append('email', user.email);
+         //formData.append('_token', $('#_token').val());
          _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.post('/password/email', formData).then(function (response) {
             // success callback
-            console.log(response);
-
+            //console.log(response);
             if (response.status == 200) {
-               swal("Enviado", 'Se ha enviado el correo de creacion de claves al siguiente usuario: ' + email, "success");
+               user.correo_resagado = 'enviado';
+               var formData = new FormData();
+               _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               //formData.append('_token', $('#_token').val());
+               formData.append('id', user.id);
+               _this2.$http.post('/admin/correo_resagado', formData).then(function (response) {
+                  // success callback
+                  if (response.status == 200) {
+                     return;
+                  }
+               }, function (response) {
+                  // error callback
+                  console.log('Error saveUser: ' + response);
+                  if (response.status == 500) {
+                     swal({
+                        title: "Atencion",
+                        text: "Ha ocurrido un error, favor recargar la página.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: true
+                     }, function (isConfirm) {
+                        if (isConfirm) {
+                           window.location.href = '/login';
+                        }
+                     });
+                  }
+               });
+               //swal("Enviado", `Se ha enviado el correo de creacion de claves al siguiente usuario: ${email}`, "success");
             }
          }, function (response) {
             // error callback
@@ -37128,12 +37155,15 @@ var AdminUsuarios = new _vue2.default({
             if (response.status == 500) {
                swal({
                   title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                  text: "Ha ocurrido un error, favor recargar la página.",
                   type: "warning",
                   confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
+                  closeOnConfirm: true
+               }, function (isConfirm) {
+                  if (isConfirm) {
+                     window.location.href = '/login';
+                  }
                });
-               window.location.href = '/login';
             }
          });
       },
@@ -37188,12 +37218,12 @@ var AdminUsuarios = new _vue2.default({
       },
       //camelCase() => for specific functions
       fetchAdminUsuarios: function fetchAdminUsuarios() {
-         var _this2 = this;
+         var _this3 = this;
 
          this.$http.get('/admin/mant_usuarios_data').then(function (response) {
             // success callback
             console.log(response);
-            _this2.users = response.body.users;
+            _this3.users = response.body.users;
             if (response.status == 500) {
                swal({
                   title: "Atencion",

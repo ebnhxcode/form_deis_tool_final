@@ -117,7 +117,7 @@
                                             data-toggle="popover" data-trigger="hover" data-placement="bottom"
                                             title="¡IMPORTANTE!" data-content="Desde esta opción puedes enviar un email al usuario para que pueda crear su clave a traves de un enlace enviado a su email."
                                             tabindex="0"
-                                            @click.prevent="sendEmailPasswordReset(user.email)">
+                                            @click.prevent="sendEmailPasswordReset(user)">
                                        <i class="fa fa-envelope"></i>
                                     </a>
                                  </td>

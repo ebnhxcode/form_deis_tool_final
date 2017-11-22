@@ -27,6 +27,16 @@ class AdminController extends Controller {
         }
     }
 
+    public function correo_resagado (Request $request) {
+        if ($request->wantsJson()) {
+            $user_id = $request->id;
+            $user = User::find($user_id);
+            $user->correo_resagado = 'enviado';
+            $user->save();
+            return response()->json(['rd'=>'Usuario Actualizado']);
+        }
+    }
+
     public function guardar_usuario (Request $request) {
 
         $user_parameters = $request->all();
