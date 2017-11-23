@@ -387,16 +387,18 @@ const AdminUsuarios = new Vue({
                                     <dt>Email (*)</dt>
                                     <dd>
                                        <p class="control has-icon has-icon-right">
-                                          <input name="email" type="email" id="email" v-model="user.email"
+                                          <input name="email"
                                                 v-validate="'required|email'" data-vv-delay="500"
-                                                class="form-control" />
-
+                                                :class="{'input': true, 'text-danger': errors.has('email'),
+                                                'form-control':true}"
+                                                type="text" placeholder="Email"
+                                                v-model="user.email">
                                           <transition name="bounce">
                                           <i v-show="errors.has('email')" class="fa fa-warning"></i>
                                           </transition>
                                           <transition name="bounce">
                                           <span v-show="errors.has('email')" class="text-danger">
-                                             Este campo es obligatorio
+                                             {{ errors.first('email') | replaceEmail}}
                                           </span>
                                           </transition>
                                        </p>
@@ -529,6 +531,10 @@ const AdminUsuarios = new Vue({
                if (fono != null) {fono = fono.replace('fono_responsable', 'telefono');}
                return fono;
             },
+            replaceEmail(email) {
+               if (email != null) {email = email.replace('email', 'email');}
+               return email;
+            },
             replacePlazoComprometido(plazo_comprometido) {
                if (plazo_comprometido != null) { plazo_comprometido = plazo_comprometido.replace('plazo_comprometido', 'para el plazo comprometido');}
                return plazo_comprometido;
@@ -559,11 +565,15 @@ const AdminUsuarios = new Vue({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+               }else{
+                  if (this.buscar_por_run(rut) == true) {
+                     this.user.rut = null;
+                  }
                }
             },
 
-            buscar_por_run: function () {
-               if (!this.user.rut || validate(this.user.rut) == false){
+            buscar_por_run: function (rut) {
+               if (!rut || validate(rut) == false){
                   swal({
                      title: "Advertencia",
                      text: "Debe ingresar un rut valido.",
@@ -578,13 +588,13 @@ const AdminUsuarios = new Vue({
 
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-               var rut_limpio = clean(this.user.rut);
+               var rut_limpio = clean(rut);
                rut_limpio = rut_limpio.substr(0, rut_limpio.length-1);
                //alert (run_limpio) ;
                //return;
 
                //formData.append('run_madre', this.run_madre);
-               formData.append('rut_limpio', rut_limpio);
+               formData.append('rut', rut_limpio);
 
                this.$http.post('/admin/buscar_rut', formData).then(response => { // success callback
                   //console.log(response);

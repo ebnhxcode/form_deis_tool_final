@@ -14,10 +14,16 @@ class AdminController extends Controller {
     }
 
     public function buscar_rut (Request $request) {
-
-
-        return response()->json(['rd' => 'Existe']);
-        return response()->json(['rd' => 'No existe']);
+        if ($request->wantsJson()) {
+            $rut = isset($request->rut)?$request->rut:null;
+            if ($rut) {
+                $user = User::where('rut', 'ilike', $rut.'%')->first();
+                if ($user) {#if (count($user)>0 && $user) {
+                    return response()->json(['rd' => 'Existe']);
+                }
+            }
+            return response()->json(['error'=>['rd' => 'No existe']]);
+        }
     }
 
     public function mant_usuarios (Request $request) {
