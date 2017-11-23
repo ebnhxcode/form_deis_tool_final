@@ -169,6 +169,7 @@
                                                           :min="i.min!=''?i.min:''"
                                                           :max="i.max!=''?i.max:''"
                                                           :pattern="i.pattern!=''?i.pattern:''"
+                                                          :format="i.format!=''?i.format:''"
                                                           @change.prevent="verifica_validacion_change(i)"
                                                           @keyup.prevent="verifica_validacion_keyup(i)"
                                                           @blur.prevent="verifica_validacion_blur(i)"
