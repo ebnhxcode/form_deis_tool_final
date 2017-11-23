@@ -364,7 +364,7 @@ const AdminUsuarios = new Vue({
 									   <div style="overflow-y: scroll;max-height: 400px;">
 
                                  <div class="col-md-6">
-                                    <dt>Nombre</dt>
+                                    <dt>Nombre (*)</dt>
                                     <dd>
                                        <p class="control has-icon has-icon-right">
                                           <input name="name" type="text" id="name" v-model="user.name"
@@ -384,27 +384,7 @@ const AdminUsuarios = new Vue({
                                  </div>
 
                                  <div class="col-md-6">
-                                    <dt>Run</dt>
-                                    <dd>
-                                       <p class="control has-icon has-icon-right">
-                                          <input name="rut" type="text" id="rut" v-model="user.rut"
-                                                v-validate="'required'" data-vv-delay="500"
-                                                class="form-control" />
-
-                                          <transition name="bounce">
-                                          <i v-show="errors.has('rut')" class="fa fa-warning"></i>
-                                          </transition>
-                                          <transition name="bounce">
-                                          <span v-show="errors.has('rut')" class="text-danger">
-                                             Este campo es obligatorio
-                                          </span>
-                                          </transition>
-                                       </p>
-                                    </dd>
-                                 </div>
-
-                                 <div class="col-md-6">
-                                    <dt>Email</dt>
+                                    <dt>Email (*)</dt>
                                     <dd>
                                        <p class="control has-icon has-icon-right">
                                           <input name="email" type="email" id="email" v-model="user.email"
@@ -424,83 +404,70 @@ const AdminUsuarios = new Vue({
                                  </div>
 
                                  <div class="col-md-6">
+                                    <dt>Rut (*)</dt>
+                                    <dd>
+                                       <p class="control has-icon has-icon-right">
+                                          <input name="rut" type="text" id="rut" v-model="user.rut"
+                                                v-validate="'required'" data-vv-delay="500"
+                                                class="form-control" />
+
+                                          <transition name="bounce">
+                                          <i v-show="errors.has('rut')" class="fa fa-warning"></i>
+                                          </transition>
+                                          <transition name="bounce">
+                                          <span v-show="errors.has('rut')" class="text-danger">
+                                             Este campo es obligatorio
+                                          </span>
+                                          </transition>
+                                       </p>
+                                    </dd>
+                                 </div>
+
+                                 <div class="col-md-6">
+                                    <dt>Telefono (*)</dt>
+                                    <dd>
+                                       <p class="control has-icon has-icon-right">
+                                          <input name="telefono" type="text" telefono="rut" v-model="user.telefono"
+                                             v-validate="'required'" data-vv-delay="500"
+                                             class="form-control" />
+
+                                          <transition name="bounce">
+                                          <i v-show="errors.has('telefono')" class="fa fa-warning"></i>
+                                          </transition>
+                                          <transition name="bounce">
+                                          <span v-show="errors.has('telefono')" class="text-danger">
+                                          Este campo es obligatorio
+                                          </span>
+                                          </transition>
+                                       </p>
+                                    </dd>
+                                 </div>
+
+                                 <div class="col-md-6">
                                     <dt>Cargo</dt>
                                     <dd>
-                                       <p class="control has-icon has-icon-right">
-                                          <input name="position" type="text" id="position" v-model="user.position"
-                                                v-validate="'required'" data-vv-delay="500"
-                                                class="form-control" />
-
-                                          <transition name="bounce">
-                                          <i v-show="errors.has('position')" class="fa fa-warning"></i>
-                                          </transition>
-                                          <transition name="bounce">
-                                          <span v-show="errors.has('position')" class="text-danger">
-                                             Este campo es obligatorio
-                                          </span>
-                                          </transition>
-                                       </p>
+                                       <input name="position" type="text" id="position" v-model="user.position"
+                                             class="form-control" />
                                     </dd>
                                  </div>
 
                                  <div class="col-md-6">
                                     <dt>Establecimiento</dt>
                                     <dd>
-                                       <p class="control has-icon has-icon-right">
-                                          <input name="establecimiento" type="text" id="position" v-model="user.establecimiento"
-                                                v-validate="'required'" data-vv-delay="500"
-                                                class="form-control" />
-
-                                          <transition name="bounce">
-                                          <i v-show="errors.has('establecimiento')" class="fa fa-warning"></i>
-                                          </transition>
-                                          <transition name="bounce">
-                                          <span v-show="errors.has('establecimiento')" class="text-danger">
-                                             Este campo es obligatorio
-                                          </span>
-                                          </transition>
-                                       </p>
-                                    </dd>
-                                 </div>
-
-                                 <div class="col-md-6">
-                                    <dt>Establecimiento</dt>
-                                    <dd>
-                                       <p class="control has-icon has-icon-right">
-                                          <input name="establecimiento" type="text" id="position" v-model="user.establecimiento"
-                                                v-validate="'required'" data-vv-delay="500"
-                                                class="form-control" />
-
-                                          <transition name="bounce">
-                                          <i v-show="errors.has('establecimiento')" class="fa fa-warning"></i>
-                                          </transition>
-                                          <transition name="bounce">
-                                          <span v-show="errors.has('establecimiento')" class="text-danger">
-                                             Este campo es obligatorio
-                                          </span>
-                                          </transition>
-                                       </p>
+                                       <input name="establecimiento" type="text" id="establecimiento" v-model="user.establecimiento"
+                                             class="form-control" />
                                     </dd>
                                  </div>
 
                                  <div class="col-md-6">
                                     <dt>Llave Electronica</dt>
                                     <dd>
-                                       <p class="control has-icon has-icon-right">
-                                          <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"
-                                                v-validate="'required'" data-vv-delay="500"
-                                                class="form-control" />
-
-                                          <transition name="bounce">
-                                          <i v-show="errors.has('clave_electronica')" class="fa fa-warning"></i>
-                                          </transition>
-                                          <transition name="bounce">
-                                          <span v-show="errors.has('clave_electronica')" class="text-danger">
-                                             Este campo es obligatorio
-                                          </span>
-                                          </transition>
-                                       </p>
+                                       <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"
+                                             class="form-control" />
                                     </dd>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <button @click.prevent="saveNewUser(user)" class="btn btn-sm btn-success pull-right">Guardar</button>
                                  </div>
 
                               </div><!-- styled -->
@@ -527,7 +494,18 @@ const AdminUsuarios = new Vue({
          name: 'modal-nuevousuario',
          data () {
             return {
-
+               'nuevo_usuario_en_creacion':false,
+               'user':{
+                  'name':'',
+                  'email':'',
+                  'rut':'',
+                  'position':'',
+                  'establecimiento':'',
+                  'telefono':'',
+                  'clave_electronica':'',
+                  'confirmado_llave_secreta':'',
+                  'password':''
+               }
             }
          },
          ready () {
@@ -556,6 +534,88 @@ const AdminUsuarios = new Vue({
             },
          },
          methods: {
+            saveNewUser: function (user) {
+               this.$validator.validateAll().then(result => {});
+               var n = user.name;
+               var e = user.email;
+               var t = user.telefono;
+               var r = user.rut;
+
+               if (n&&n!=null&&n!=''&&e&&e!=null&&e!=''&&t&&t!=null&&t!=''&&r&&r!=null&&r!='') {
+                  if (this.nuevo_usuario_en_creacion == false) {
+                     this.nuevo_usuario_en_creacion = true;
+
+                     var formData = new FormData();
+                     formData.append('name', user.name);//formData.append('_token', $('#_token').val());
+                     formData.append('email', user.email);
+                     formData.append('rut', user.rut);
+                     formData.append('position', user.position);
+                     formData.append('establecimiento', user.establecimiento || 'No definido');
+                     formData.append('telefono', user.telefono);
+                     formData.append('clave_electronica', user.clave_electronica);
+                     formData.append('confirmado_llave_secreta', 'enviar');
+                     formData.append('password', 'ASDASDASDASDASDasda');
+
+
+                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+                     this.$http.post('/admin/guardar_nuevo_usuario', formData).then(response => { // success callback
+                        this.nuevo_usuario_en_creacion = false;
+                        console.log(response);
+                        var user;
+                        if (response.status == 200) {
+                           user = response.body.user;
+                        }
+                        swal({
+                           title: "Guardado",
+                           text: `El usuario fué guardado correctamente`,
+                           type: "success",
+                           confirmButtonClass: "btn-success",
+                           closeOnConfirm: false
+                        });
+                        this.$parent.users.push(user);
+                        this.$parent.fetchAdminUsuarios();
+                        return user;
+
+                     }, response => { // error callback
+                        console.log('Error saveUser: ' + response);
+                        this.nuevo_usuario_en_creacion = false;
+                        if (response.status == 500) {
+                           swal({
+                              title: "Atencion",
+                              text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                              type: "warning",
+                              confirmButtonClass: "btn-danger",
+                              closeOnConfirm: false
+                           });
+                           window.location.href = '/login';
+                        }
+                     });
+                  }else{
+                     swal({
+                        title: "Atencion",
+                        text: `
+                           Estimado usuario, le informamos que el nuevo usuario se está procesando
+                        `,
+                        type: "error",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                  }
+
+               }else{
+                  swal({
+                     title: "Atencion",
+                     text: `
+                        Estimado usuario, debe completar todos los campos requeridos
+                     `,
+                     type: "error",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+
+            },
 
          },
          watch: {
@@ -707,16 +767,9 @@ const AdminUsuarios = new Vue({
       fetchAdminUsuarios: function () {
          this.$http.get('/admin/mant_usuarios_data').then(response => { // success callback
             console.log(response);
-            this.users = response.body.users;
-            if (response.status == 500) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "success",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
+            this.users = {};
+            if (response.status == 200) {
+               this.users = response.body.users;
             }
 
          }, response => { // error callback

@@ -37,6 +37,14 @@ class AdminController extends Controller {
         }
     }
 
+    public function guardar_nuevo_usuario (Request $request) {
+
+        $user = $request->all();
+        $user = User::create($user);
+        return response()->json(['rc' => '0', 'rd' => 'Success.', 'user' => $user]);
+
+    }
+
     public function guardar_usuario (Request $request) {
 
         $user_parameters = $request->all();

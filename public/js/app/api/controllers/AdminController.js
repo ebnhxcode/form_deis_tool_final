@@ -37034,10 +37034,23 @@ var AdminUsuarios = new _vue2.default({
       },
       'modal-nuevousuario': {
          props: [''],
-         template: '\n\t\t\t<!-- template for the modal component -->\n\t\t\t  <transition name="modal">\n\t\t\t\t <div class="modal-mask">\n\t\t\t\t\t<div class="modal-wrapper">\n\t\t\t\t\t  <div class="modal-container">\n\n\t\t\t\t\t\t <div class="modal-header">\n\t\t\t\t\t\t\t<slot name="header">\n\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\n\t\t\t\t\t\t <div class="modal-body">\n\t\t\t\t\t\t\t<slot name="body">\n                        <dl class="dl-vertical" style="margin: 20px;">\n                           <div class="row">\n\t\t\t\t\t\t\t\t\t   <div style="overflow-y: scroll;max-height: 400px;">\n\n                                 <div class="col-md-6">\n                                    <dt>Nombre</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="name" type="text" id="name" v-model="user.name"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'name\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'name\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Run</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="rut" type="text" id="rut" v-model="user.rut"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'rut\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'rut\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Email</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="email" type="email" id="email" v-model="user.email"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'email\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'email\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Cargo</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="position" type="text" id="position" v-model="user.position"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'position\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'position\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Establecimiento</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="establecimiento" type="text" id="position" v-model="user.establecimiento"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'establecimiento\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'establecimiento\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Establecimiento</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="establecimiento" type="text" id="position" v-model="user.establecimiento"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'establecimiento\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'establecimiento\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Llave Electronica</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'clave_electronica\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'clave_electronica\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                              </div><!-- styled -->\n                           </div><!-- .row -->\n                        </dl>\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\n\t\t\t\t\t\t <div class="modal-footer">\n\t\t\t\t\t\t\t<slot name="footer">\n\t\t\t\t\t\t\t\t<!--\n\t\t\t\t\t\t\t  \t<button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t\tAceptar\n\t\t\t\t\t\t\t  \t</button>\n\t\t\t\t\t\t\t  \t-->\n\t\t\t\t\t\t\t  \tLos campos con <b>*</b> son obligatorios\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t  </transition>\n\t\t\t',
+         template: '\n\t\t\t<!-- template for the modal component -->\n\t\t\t  <transition name="modal">\n\t\t\t\t <div class="modal-mask">\n\t\t\t\t\t<div class="modal-wrapper">\n\t\t\t\t\t  <div class="modal-container">\n\n\t\t\t\t\t\t <div class="modal-header">\n\t\t\t\t\t\t\t<slot name="header">\n\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\n\t\t\t\t\t\t <div class="modal-body">\n\t\t\t\t\t\t\t<slot name="body">\n                        <dl class="dl-vertical" style="margin: 20px;">\n                           <div class="row">\n\t\t\t\t\t\t\t\t\t   <div style="overflow-y: scroll;max-height: 400px;">\n\n                                 <div class="col-md-6">\n                                    <dt>Nombre (*)</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="name" type="text" id="name" v-model="user.name"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'name\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'name\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Email (*)</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="email" type="email" id="email" v-model="user.email"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'email\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'email\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Rut (*)</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="rut" type="text" id="rut" v-model="user.rut"\n                                                v-validate="\'required\'" data-vv-delay="500"\n                                                class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'rut\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'rut\')" class="text-danger">\n                                             Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Telefono (*)</dt>\n                                    <dd>\n                                       <p class="control has-icon has-icon-right">\n                                          <input name="telefono" type="text" telefono="rut" v-model="user.telefono"\n                                             v-validate="\'required\'" data-vv-delay="500"\n                                             class="form-control" />\n\n                                          <transition name="bounce">\n                                          <i v-show="errors.has(\'telefono\')" class="fa fa-warning"></i>\n                                          </transition>\n                                          <transition name="bounce">\n                                          <span v-show="errors.has(\'telefono\')" class="text-danger">\n                                          Este campo es obligatorio\n                                          </span>\n                                          </transition>\n                                       </p>\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Cargo</dt>\n                                    <dd>\n                                       <input name="position" type="text" id="position" v-model="user.position"\n                                             class="form-control" />\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Establecimiento</dt>\n                                    <dd>\n                                       <input name="establecimiento" type="text" id="establecimiento" v-model="user.establecimiento"\n                                             class="form-control" />\n                                    </dd>\n                                 </div>\n\n                                 <div class="col-md-6">\n                                    <dt>Llave Electronica</dt>\n                                    <dd>\n                                       <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"\n                                             class="form-control" />\n                                    </dd>\n                                 </div>\n                                 <div class="col-md-12">\n                                    <button @click.prevent="saveNewUser(user)" class="btn btn-sm btn-success pull-right">Guardar</button>\n                                 </div>\n\n                              </div><!-- styled -->\n                           </div><!-- .row -->\n                        </dl>\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\n\t\t\t\t\t\t <div class="modal-footer">\n\t\t\t\t\t\t\t<slot name="footer">\n\t\t\t\t\t\t\t\t<!--\n\t\t\t\t\t\t\t  \t<button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t\tAceptar\n\t\t\t\t\t\t\t  \t</button>\n\t\t\t\t\t\t\t  \t-->\n\t\t\t\t\t\t\t  \tLos campos con <b>*</b> son obligatorios\n\t\t\t\t\t\t\t</slot>\n\t\t\t\t\t\t </div>\n\t\t\t\t\t  </div>\n\t\t\t\t\t</div>\n\t\t\t\t </div>\n\t\t\t  </transition>\n\t\t\t',
          name: 'modal-nuevousuario',
          data: function data() {
-            return {};
+            return {
+               'nuevo_usuario_en_creacion': false,
+               'user': {
+                  'name': '',
+                  'email': '',
+                  'rut': '',
+                  'position': '',
+                  'establecimiento': '',
+                  'telefono': '',
+                  'clave_electronica': '',
+                  'confirmado_llave_secreta': '',
+                  'password': ''
+               }
+            };
          },
          ready: function ready() {},
          created: function created() {},
@@ -37068,7 +37081,87 @@ var AdminUsuarios = new _vue2.default({
                return nombre_compromiso_contraloria;
             }
          },
-         methods: {},
+         methods: {
+            saveNewUser: function saveNewUser(user) {
+               var _this2 = this;
+
+               this.$validator.validateAll().then(function (result) {});
+               var n = user.name;
+               var e = user.email;
+               var t = user.telefono;
+               var r = user.rut;
+
+               if (n && n != null && n != '' && e && e != null && e != '' && t && t != null && t != '' && r && r != null && r != '') {
+                  if (this.nuevo_usuario_en_creacion == false) {
+                     this.nuevo_usuario_en_creacion = true;
+
+                     var formData = new FormData();
+                     formData.append('name', user.name); //formData.append('_token', $('#_token').val());
+                     formData.append('email', user.email);
+                     formData.append('rut', user.rut);
+                     formData.append('position', user.position);
+                     formData.append('establecimiento', user.establecimiento || 'No definido');
+                     formData.append('telefono', user.telefono);
+                     formData.append('clave_electronica', user.clave_electronica);
+                     formData.append('confirmado_llave_secreta', 'enviar');
+                     formData.append('password', 'ASDASDASDASDASDasda');
+
+                     _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+                     this.$http.post('/admin/guardar_nuevo_usuario', formData).then(function (response) {
+                        // success callback
+                        _this2.nuevo_usuario_en_creacion = false;
+                        console.log(response);
+                        var user;
+                        if (response.status == 200) {
+                           user = response.body.user;
+                        }
+                        swal({
+                           title: "Guardado",
+                           text: 'El usuario fu\xE9 guardado correctamente',
+                           type: "success",
+                           confirmButtonClass: "btn-success",
+                           closeOnConfirm: false
+                        });
+                        _this2.$parent.users.push(user);
+                        _this2.$parent.fetchAdminUsuarios();
+                        return user;
+                     }, function (response) {
+                        // error callback
+                        console.log('Error saveUser: ' + response);
+                        _this2.nuevo_usuario_en_creacion = false;
+                        if (response.status == 500) {
+                           swal({
+                              title: "Atencion",
+                              text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                              type: "warning",
+                              confirmButtonClass: "btn-danger",
+                              closeOnConfirm: false
+                           });
+                           window.location.href = '/login';
+                        }
+                     });
+                  } else {
+                     swal({
+                        title: "Atencion",
+                        text: '\n                           Estimado usuario, le informamos que el nuevo usuario se est\xE1 procesando\n                        ',
+                        type: "error",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                  }
+               } else {
+                  swal({
+                     title: "Atencion",
+                     text: '\n                        Estimado usuario, debe completar todos los campos requeridos\n                     ',
+                     type: "error",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+            }
+
+         },
          watch: {}
       }
       /*
@@ -37109,7 +37202,7 @@ var AdminUsuarios = new _vue2.default({
    filters: {},
    methods: {
       sendEmailPasswordReset: function sendEmailPasswordReset(user) {
-         var _this2 = this;
+         var _this3 = this;
 
          var formData = new FormData();
          formData.append('email', user.email);
@@ -37125,7 +37218,7 @@ var AdminUsuarios = new _vue2.default({
                _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                //formData.append('_token', $('#_token').val());
                formData.append('id', user.id);
-               _this2.$http.post('/admin/correo_resagado', formData).then(function (response) {
+               _this3.$http.post('/admin/correo_resagado', formData).then(function (response) {
                   // success callback
                   if (response.status == 200) {
                      return;
@@ -37218,21 +37311,14 @@ var AdminUsuarios = new _vue2.default({
       },
       //camelCase() => for specific functions
       fetchAdminUsuarios: function fetchAdminUsuarios() {
-         var _this3 = this;
+         var _this4 = this;
 
          this.$http.get('/admin/mant_usuarios_data').then(function (response) {
             // success callback
             console.log(response);
-            _this3.users = response.body.users;
-            if (response.status == 500) {
-               swal({
-                  title: "Atencion",
-                  text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
-                  type: "success",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               window.location.href = '/login';
+            _this4.users = {};
+            if (response.status == 200) {
+               _this4.users = response.body.users;
             }
          }, function (response) {
             // error callback

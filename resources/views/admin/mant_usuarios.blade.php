@@ -39,7 +39,6 @@
                                  Cerrar
                                  </button>
                                  <span class="pull-right">&nbsp;&nbsp;</span>
-                                 <button @click.prevent="guardar_nuevo_usuario" class="btn btn-sm btn-success pull-right">Guardar</button>
                               </h3>
                            </modal-nuevousuario>
 
