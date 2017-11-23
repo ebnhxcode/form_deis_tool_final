@@ -11,7 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/AdminController.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,12 +39,12 @@
       <file leaf-file-name="AdminController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="5.5489893">
-              <caret line="669" column="30" selection-start-line="669" selection-start-column="30" selection-end-line="669" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.30171072">
+              <caret line="630" column="50" selection-start-line="630" selection-start-column="50" selection-end-line="630" selection-end-column="50" />
               <folding>
-                <marker date="1511449403413" expanded="true" signature="2582:3049" placeholder="..." />
-                <marker date="1511449403413" expanded="true" signature="3312:3472" placeholder="..." />
-                <marker date="1511449403413" expanded="true" signature="3763:3923" placeholder="..." />
+                <marker date="1511450281525" expanded="true" signature="2582:3049" placeholder="..." />
+                <marker date="1511450281525" expanded="true" signature="3312:3472" placeholder="..." />
+                <marker date="1511450281525" expanded="true" signature="3763:3923" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -63,13 +66,10 @@
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7375">
-              <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
+            <state vertical-scroll-proportion="-1.7875">
+              <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
-                <marker date="1511449403401" expanded="true" signature="2483:2506" placeholder="{...}" />
-                <marker date="1511449403401" expanded="true" signature="2682:2705" placeholder="{...}" />
-                <marker date="1511449403401" expanded="true" signature="2943:2966" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -209,9 +209,9 @@
         <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
       </list>
     </option>
   </component>
@@ -999,7 +999,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19044118" sideWeight="0.8313433" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19044118" sideWeight="0.8313433" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1414,19 +1414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7375">
-          <caret line="56" column="56" selection-start-line="56" selection-start-column="56" selection-end-line="56" selection-end-column="56" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-            <marker date="1511449403401" expanded="true" signature="2483:2506" placeholder="{...}" />
-            <marker date="1511449403401" expanded="true" signature="2682:2705" placeholder="{...}" />
-            <marker date="1511449403401" expanded="true" signature="2943:2966" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/GridContraloriaController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1477,14 +1464,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7875">
+          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.5489893">
-          <caret line="669" column="30" selection-start-line="669" selection-start-column="30" selection-end-line="669" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.30171072">
+          <caret line="630" column="50" selection-start-line="630" selection-start-column="50" selection-end-line="630" selection-end-column="50" />
           <folding>
-            <marker date="1511449403413" expanded="true" signature="2582:3049" placeholder="..." />
-            <marker date="1511449403413" expanded="true" signature="3312:3472" placeholder="..." />
-            <marker date="1511449403413" expanded="true" signature="3763:3923" placeholder="..." />
+            <marker date="1511450281525" expanded="true" signature="2582:3049" placeholder="..." />
+            <marker date="1511450281525" expanded="true" signature="3312:3472" placeholder="..." />
+            <marker date="1511450281525" expanded="true" signature="3763:3923" placeholder="..." />
           </folding>
         </state>
       </provider>

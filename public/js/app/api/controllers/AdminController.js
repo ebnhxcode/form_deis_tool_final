@@ -37171,7 +37171,7 @@ var AdminUsuarios = new _vue2.default({
                      var formData = new FormData();
                      formData.append('name', user.name); //formData.append('_token', $('#_token').val());
                      formData.append('email', user.email);
-                     formData.append('rut', user.rut);
+                     formData.append('rut', (0, _rut.clean)(user.rut));
                      formData.append('position', user.position);
                      formData.append('establecimiento', user.establecimiento || 'No definido');
                      formData.append('telefono', user.telefono);

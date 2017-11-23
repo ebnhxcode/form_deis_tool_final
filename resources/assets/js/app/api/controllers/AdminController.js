@@ -628,7 +628,7 @@ const AdminUsuarios = new Vue({
                      var formData = new FormData();
                      formData.append('name', user.name);//formData.append('_token', $('#_token').val());
                      formData.append('email', user.email);
-                     formData.append('rut', user.rut);
+                     formData.append('rut', clean(user.rut));
                      formData.append('position', user.position);
                      formData.append('establecimiento', user.establecimiento || 'No definido');
                      formData.append('telefono', user.telefono);

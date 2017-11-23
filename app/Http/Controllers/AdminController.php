@@ -56,6 +56,7 @@ class AdminController extends Controller {
         if ($user['password']){
             $user['password'] = bcrypt($user['password']);
         }
+        $user['rut'] = strtolower($user['rut']);
         $user = User::create($user);
         return response()->json(['rc' => '0', 'rd' => 'Success.', 'user' => $user]);
 
