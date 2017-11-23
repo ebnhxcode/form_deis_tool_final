@@ -443,7 +443,65 @@ const AdminUsuarios = new Vue({
                                     </dd>
                                  </div>
 
+                                 <div class="col-md-6">
+                                    <dt>Establecimiento</dt>
+                                    <dd>
+                                       <p class="control has-icon has-icon-right">
+                                          <input name="establecimiento" type="text" id="position" v-model="user.establecimiento"
+                                                v-validate="'required'" data-vv-delay="500"
+                                                class="form-control" />
 
+                                          <transition name="bounce">
+                                          <i v-show="errors.has('establecimiento')" class="fa fa-warning"></i>
+                                          </transition>
+                                          <transition name="bounce">
+                                          <span v-show="errors.has('establecimiento')" class="text-danger">
+                                             Este campo es obligatorio
+                                          </span>
+                                          </transition>
+                                       </p>
+                                    </dd>
+                                 </div>
+
+                                 <div class="col-md-6">
+                                    <dt>Establecimiento</dt>
+                                    <dd>
+                                       <p class="control has-icon has-icon-right">
+                                          <input name="establecimiento" type="text" id="position" v-model="user.establecimiento"
+                                                v-validate="'required'" data-vv-delay="500"
+                                                class="form-control" />
+
+                                          <transition name="bounce">
+                                          <i v-show="errors.has('establecimiento')" class="fa fa-warning"></i>
+                                          </transition>
+                                          <transition name="bounce">
+                                          <span v-show="errors.has('establecimiento')" class="text-danger">
+                                             Este campo es obligatorio
+                                          </span>
+                                          </transition>
+                                       </p>
+                                    </dd>
+                                 </div>
+
+                                 <div class="col-md-6">
+                                    <dt>Llave Electronica</dt>
+                                    <dd>
+                                       <p class="control has-icon has-icon-right">
+                                          <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"
+                                                v-validate="'required'" data-vv-delay="500"
+                                                class="form-control" />
+
+                                          <transition name="bounce">
+                                          <i v-show="errors.has('clave_electronica')" class="fa fa-warning"></i>
+                                          </transition>
+                                          <transition name="bounce">
+                                          <span v-show="errors.has('clave_electronica')" class="text-danger">
+                                             Este campo es obligatorio
+                                          </span>
+                                          </transition>
+                                       </p>
+                                    </dd>
+                                 </div>
 
                               </div><!-- styled -->
                            </div><!-- .row -->
