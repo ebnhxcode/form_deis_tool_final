@@ -37104,13 +37104,13 @@ var AdminUsuarios = new _vue2.default({
                      closeOnConfirm: false
                   });
                } else {
-                  if (this.buscar_por_run(rut) == true) {
-                     this.user.rut = null;
-                  }
+                  this.buscar_por_run(rut);
                }
             },
 
             buscar_por_run: function buscar_por_run(rut) {
+               var _this2 = this;
+
                if (!rut || (0, _rut.validate)(rut) == false) {
                   swal({
                      title: "Advertencia",
@@ -37146,6 +37146,7 @@ var AdminUsuarios = new _vue2.default({
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
                      });
+                     _this2.user.rut = null;
                      return true;
                   }
                   return false;
@@ -37155,7 +37156,7 @@ var AdminUsuarios = new _vue2.default({
             },
 
             saveNewUser: function saveNewUser(user) {
-               var _this2 = this;
+               var _this3 = this;
 
                this.$validator.validateAll().then(function (result) {});
                var n = user.name;
@@ -37176,13 +37177,13 @@ var AdminUsuarios = new _vue2.default({
                      formData.append('telefono', user.telefono);
                      formData.append('clave_electronica', user.clave_electronica);
                      formData.append('confirmado_llave_secreta', 'enviar');
-                     formData.append('password', 'ASDASDASDASDASDasda');
+                     formData.append('password', user.password);
 
                      _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                      this.$http.post('/admin/guardar_nuevo_usuario', formData).then(function (response) {
                         // success callback
-                        _this2.nuevo_usuario_en_creacion = false;
+                        _this3.nuevo_usuario_en_creacion = false;
                         console.log(response);
                         var user;
                         if (response.status == 200) {
@@ -37195,23 +37196,26 @@ var AdminUsuarios = new _vue2.default({
                            confirmButtonClass: "btn-success",
                            closeOnConfirm: false
                         });
-                        _this2.$parent.users.push(user);
-                        _this2.$parent.fetchAdminUsuarios();
-                        _this2.$parent.mostrar_modal_nuevo_usuario = false;
+                        _this3.$parent.users.push(user);
+                        _this3.$parent.fetchAdminUsuarios();
+                        _this3.$parent.mostrar_modal_nuevo_usuario = false;
                         return user;
                      }, function (response) {
                         // error callback
                         console.log('Error saveUser: ' + response);
-                        _this2.nuevo_usuario_en_creacion = false;
+                        _this3.nuevo_usuario_en_creacion = false;
                         if (response.status == 500) {
                            swal({
                               title: "Atencion",
-                              text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                              text: "Ha ocurrido un error al guardar, por favor intente nuevamente.",
                               type: "warning",
                               confirmButtonClass: "btn-danger",
-                              closeOnConfirm: false
+                              closeOnConfirm: true
+                           }, function (isConfirm) {
+                              if (isConfirm) {
+                                 window.location.href = '/admin/mant_usuarios';
+                              }
                            });
-                           window.location.href = '/login';
                         }
                      });
                   } else {
@@ -37275,7 +37279,7 @@ var AdminUsuarios = new _vue2.default({
    filters: {},
    methods: {
       sendEmailPasswordReset: function sendEmailPasswordReset(user) {
-         var _this3 = this;
+         var _this4 = this;
 
          var formData = new FormData();
          formData.append('email', user.email);
@@ -37291,7 +37295,7 @@ var AdminUsuarios = new _vue2.default({
                _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                //formData.append('_token', $('#_token').val());
                formData.append('id', user.id);
-               _this3.$http.post('/admin/correo_resagado', formData).then(function (response) {
+               _this4.$http.post('/admin/correo_resagado', formData).then(function (response) {
                   // success callback
                   if (response.status == 200) {
                      return;
@@ -37384,14 +37388,14 @@ var AdminUsuarios = new _vue2.default({
       },
       //camelCase() => for specific functions
       fetchAdminUsuarios: function fetchAdminUsuarios() {
-         var _this4 = this;
+         var _this5 = this;
 
          this.$http.get('/admin/mant_usuarios_data').then(function (response) {
             // success callback
             console.log(response);
-            _this4.users = {};
+            _this5.users = {};
             if (response.status == 200) {
-               _this4.users = response.body.users;
+               _this5.users = response.body.users;
             }
          }, function (response) {
             // error callback

@@ -565,10 +565,8 @@ const AdminUsuarios = new Vue({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
-               }else{
-                  if (this.buscar_por_run(rut) == true) {
-                     this.user.rut = null;
-                  }
+               }else {
+                  this.buscar_por_run(rut);
                }
             },
 
@@ -607,6 +605,7 @@ const AdminUsuarios = new Vue({
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
                      });
+                     this.user.rut = null;
                      return true;
                   }
                   return false;
@@ -635,7 +634,7 @@ const AdminUsuarios = new Vue({
                      formData.append('telefono', user.telefono);
                      formData.append('clave_electronica', user.clave_electronica);
                      formData.append('confirmado_llave_secreta', 'enviar');
-                     formData.append('password', 'ASDASDASDASDASDasda');
+                     formData.append('password', user.password);
 
                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
@@ -664,12 +663,16 @@ const AdminUsuarios = new Vue({
                         if (response.status == 500) {
                            swal({
                               title: "Atencion",
-                              text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
+                              text: "Ha ocurrido un error al guardar, por favor intente nuevamente.",
                               type: "warning",
                               confirmButtonClass: "btn-danger",
-                              closeOnConfirm: false
+                              closeOnConfirm: true
+                           }, function (isConfirm) {
+                              if (isConfirm) {
+                                 window.location.href = '/admin/mant_usuarios';
+                              }
                            });
-                           window.location.href = '/login';
+
                         }
                      });
                   }else{
