@@ -8,16 +8,16 @@
    <title>DEIS · Formulario</title>
 
    <!-- Fonts -->
-   {{--<link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">--}}
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
          integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-   <link rel="stylesheet" href="{{asset('/css/css?family=Lato:100,300,400,700')}}">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
    <!-- Styles -->
-   <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+         integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-   <!-- jQuery 2.2.1 -->
+      <!-- jQuery 2.2.1 -->
    {{--<script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>--}}
    <script src="{{ asset('/js/jquery-3.2.1.min.js') }}"></script>
 
@@ -27,9 +27,9 @@
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
    --}}
 
-   <!-- Select2 2.1.4 -->
+      <!-- Select2 2.1.4 -->
    <script src="{{ asset('/js/select2.min.js') }}"></script>
-   <link rel="stylesheet" type="text/css" href="{{ asset('/css/select2.min.css') }}" />
+   <link rel="stylesheet" type="text/css" href="{{ asset('/css/select2.min.css') }}"></link>
 
    <!-- Select2 4.0.4 -->
    {{--
@@ -37,7 +37,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
    --}}
 
-   <!-- Sweet Alert JS -->
+      <!-- Sweet Alert JS -->
    <script src="{{asset('/js/sweetalert.min.js')}}" type="text/javascript"></script>
 
    <!-- Sweet Alert CSS -->
@@ -128,9 +128,13 @@
    })
 </script>
 
-   <!-- JavaScripts -->
-<script src="{{asset('/js/jquery.min.js')}}"></script>
-<script src="{{asset('/js/bootstrap.min.js')}}"></script>
+<!-- JavaScripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
+        integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
