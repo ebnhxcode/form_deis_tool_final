@@ -122,3 +122,4 @@ Route::post('/admin/guardar_usuario', 'AdminController@guardar_usuario');
 Route::post('/admin/guardar_nuevo_usuario', 'AdminController@guardar_nuevo_usuario');
 
 Route::post('/admin/correo_resagado', 'AdminController@correo_resagado');
+Route::post('/admin/buscar_rut', 'AdminController@buscar_rut');

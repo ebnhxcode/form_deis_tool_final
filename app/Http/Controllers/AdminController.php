@@ -13,6 +13,13 @@ class AdminController extends Controller {
         $this->middleware('auth');
     }
 
+    public function buscar_rut (Request $request) {
+
+
+        return response()->json(['rd' => 'Existe']);
+        return response()->json(['rd' => 'No existe']);
+    }
+
     public function mant_usuarios (Request $request) {
 
 
@@ -40,6 +47,9 @@ class AdminController extends Controller {
     public function guardar_nuevo_usuario (Request $request) {
 
         $user = $request->all();
+        if ($user->password){
+            $user->password = bcrypt($user->password);
+        }
         $user = User::create($user);
         return response()->json(['rc' => '0', 'rd' => 'Success.', 'user' => $user]);
 

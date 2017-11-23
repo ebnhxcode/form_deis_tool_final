@@ -388,7 +388,7 @@ const AdminUsuarios = new Vue({
                                     <dd>
                                        <p class="control has-icon has-icon-right">
                                           <input name="email" type="email" id="email" v-model="user.email"
-                                                v-validate="'required'" data-vv-delay="500"
+                                                v-validate="'required|email'" data-vv-delay="500"
                                                 class="form-control" />
 
                                           <transition name="bounce">
@@ -409,6 +409,8 @@ const AdminUsuarios = new Vue({
                                        <p class="control has-icon has-icon-right">
                                           <input name="rut" type="text" id="rut" v-model="user.rut"
                                                 v-validate="'required'" data-vv-delay="500"
+                                                @keyup.prevent="formatear_rut"
+                                                @blur.prevent="validar_rut"
                                                 class="form-control" />
 
                                           <transition name="bounce">
@@ -440,6 +442,14 @@ const AdminUsuarios = new Vue({
                                           </span>
                                           </transition>
                                        </p>
+                                    </dd>
+                                 </div>
+
+                                 <div class="col-md-6">
+                                    <dt>Password</dt>
+                                    <dd>
+                                       <input name="password" type="password" telefono="password" v-model="user.password"
+                                          class="form-control" />
                                     </dd>
                                  </div>
 
@@ -534,6 +544,67 @@ const AdminUsuarios = new Vue({
             },
          },
          methods: {
+            formatear_rut: function () {
+               var rut = this.user.rut;
+               this.user.rut = format(rut);
+            },
+            validar_rut: function () {
+               var rut = this.user.rut;
+               if (validate(rut) == false) {
+                  this.user.rut = null;
+                  swal({
+                     title: "Atencion",
+                     text: `Estimado usuario, el rut es incorrecto`,
+                     type: "error",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+            },
+
+            buscar_por_run: function () {
+               if (!this.user.rut || validate(this.user.rut) == false){
+                  swal({
+                     title: "Advertencia",
+                     text: "Debe ingresar un rut valido.",
+                     type: "error",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return;
+               }
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               var rut_limpio = clean(this.user.rut);
+               rut_limpio = rut_limpio.substr(0, rut_limpio.length-1);
+               //alert (run_limpio) ;
+               //return;
+
+               //formData.append('run_madre', this.run_madre);
+               formData.append('rut_limpio', rut_limpio);
+
+               this.$http.post('/admin/buscar_rut', formData).then(response => { // success callback
+                  //console.log(response);
+                  var rd = response.body.rd;
+                  if (rd == 'Existe') {
+                     swal({
+                        title: "Atención",
+                        text: "El rut ingresado no se encuentra registrado.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                     return true;
+                  }
+                  return false;
+               }, response => { // error callback
+                  //console.log(response);
+               });
+            },
+
             saveNewUser: function (user) {
                this.$validator.validateAll().then(result => {});
                var n = user.name;
@@ -556,7 +627,6 @@ const AdminUsuarios = new Vue({
                      formData.append('confirmado_llave_secreta', 'enviar');
                      formData.append('password', 'ASDASDASDASDASDasda');
 
-
                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                      this.$http.post('/admin/guardar_nuevo_usuario', formData).then(response => { // success callback
@@ -575,6 +645,7 @@ const AdminUsuarios = new Vue({
                         });
                         this.$parent.users.push(user);
                         this.$parent.fetchAdminUsuarios();
+                        this.$parent.mostrar_modal_nuevo_usuario = false;
                         return user;
 
                      }, response => { // error callback
@@ -594,9 +665,7 @@ const AdminUsuarios = new Vue({
                   }else{
                      swal({
                         title: "Atencion",
-                        text: `
-                           Estimado usuario, le informamos que el nuevo usuario se está procesando
-                        `,
+                        text: `Estimado usuario, le informamos que el nuevo usuario se está procesando`,
                         type: "error",
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
@@ -606,9 +675,7 @@ const AdminUsuarios = new Vue({
                }else{
                   swal({
                      title: "Atencion",
-                     text: `
-                        Estimado usuario, debe completar todos los campos requeridos
-                     `,
+                     text: `Estimado usuario, debe completar todos los campos requeridos`,
                      type: "error",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
