@@ -37750,6 +37750,17 @@ var FormularioController = new _vue2.default({
                      if (this.inputs[_i16].name == 'fecha_1_examen_vih_embarazo' || this.inputs[_i16].name == 'eg_1_examen_vih') {
                         this.inputs[_i16].disabled = true;
                      }
+
+                     if (this.fdc['fecha_1_examen_vih_embarazo'] || this.fdc['eg_1_examen_vih']) {
+                        swal({
+                           title: "Advertencia",
+                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.fdc['eg_1_examen_vih'] = null;
+                     }
                   }
                } else {
                   for (var _i17 in this.inputs) {
@@ -37765,6 +37776,17 @@ var FormularioController = new _vue2.default({
                   for (var _i18 in this.inputs) {
                      if (this.inputs[_i18].name == 'fecha_2_examen_vih_embarazo' || this.inputs[_i18].name == 'eg_2_examen_vih') {
                         this.inputs[_i18].disabled = true;
+                     }
+
+                     if (this.fdc['fecha_2_examen_vih_embarazo'] || this.fdc['eg_2_examen_vih']) {
+                        swal({
+                           title: "Advertencia",
+                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.fdc['eg_2_examen_vih'] = null;
                      }
                   }
                } else {
