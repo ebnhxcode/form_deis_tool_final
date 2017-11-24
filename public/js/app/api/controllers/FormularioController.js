@@ -38219,8 +38219,8 @@ var FormularioController = new _vue2.default({
                var ano = date[0];
                var mes = date[1];
                var dia = date[2];
-               if (parseInt(ano) < 2014) {
-                  ano = 2014;
+               if (parseInt(ano) < 2000) {
+                  ano = 2000;
                   this.fdc[input.name] = ano + '-' + mes + '-' + dia;
                   swal({
                      title: "Advertencia",
