@@ -37555,6 +37555,17 @@ var FormularioController = new _vue2.default({
                      if (this.fdc[input.name] == 'No Realizado') {
                         if (this.inputs[_i4].name == 'resultado_dilucion_1_vdrl_embarazo' || this.inputs[_i4].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i4].name == 'eg_1_vdrl_embarazo') {
                            this.inputs[_i4].disabled = true;
+
+                           if (this.fdc['fecha_1_vdrl_embarazo'] || this.fdc['eg_1_vdrl_embarazo']) {
+                              swal({
+                                 title: "Advertencia",
+                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                                 type: "warning",
+                                 confirmButtonClass: "btn-danger",
+                                 closeOnConfirm: false
+                              });
+                              this.fdc['eg_1_vdrl_embarazo'] = null;
+                           }
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[_i4].name == 'fecha_1_vdrl_embarazo' || this.inputs[_i4].name == 'eg_1_vdrl_embarazo') {
@@ -37584,6 +37595,17 @@ var FormularioController = new _vue2.default({
                      if (this.fdc[input.name] == 'No Realizado') {
                         if (this.inputs[_i6].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i6].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i6].name == 'eg_2_vdrl_embarazo') {
                            this.inputs[_i6].disabled = true;
+
+                           if (this.fdc['fecha_2_vdrl_embarazo'] || this.fdc['eg_2_vdrl_embarazo']) {
+                              swal({
+                                 title: "Advertencia",
+                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                                 type: "warning",
+                                 confirmButtonClass: "btn-danger",
+                                 closeOnConfirm: false
+                              });
+                              this.fdc['eg_2_vdrl_embarazo'] = null;
+                           }
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[_i6].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i6].name == 'eg_2_vdrl_embarazo') {
@@ -37612,6 +37634,17 @@ var FormularioController = new _vue2.default({
                      if (this.fdc[input.name] == 'No Realizado') {
                         if (this.inputs[_i8].name == 'resultado_dilucion_3_vdrl_embarazo' || this.inputs[_i8].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i8].name == 'eg_3_vdrl_embarazo') {
                            this.inputs[_i8].disabled = true;
+                        }
+
+                        if (this.fdc['fecha_3_vdrl_embarazo'] || this.fdc['eg_3_vdrl_embarazo']) {
+                           swal({
+                              title: "Advertencia",
+                              text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                              type: "warning",
+                              confirmButtonClass: "btn-danger",
+                              closeOnConfirm: false
+                           });
+                           this.fdc['eg_3_vdrl_embarazo'] = null;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[_i8].name == 'fecha_3_vdrl_embarazo' || this.inputs[_i8].name == 'eg_3_vdrl_embarazo') {
