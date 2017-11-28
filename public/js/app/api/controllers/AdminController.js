@@ -36894,10 +36894,11 @@ var AdminUsuarios = new _vue2.default({
    data: function data() {
       return {
          'users': [],
+         'users_full': [],
          'filterTerm': '',
          'userEditId': '',
 
-         pagination: {},
+         'pagination': {},
 
          'mostrar_input_password': false,
          'mini_loader_visible': false,
@@ -36918,7 +36919,7 @@ var AdminUsuarios = new _vue2.default({
             establecimiento: false,
             rut: true,
             email: true,
-            password: false,
+            //password:false,
             //remember_token:false,
             clave_electronica: true,
             confirmado_llave_secreta: false,
@@ -37567,7 +37568,7 @@ var AdminUsuarios = new _vue2.default({
             _this7.users = {};
             if (response.status == 200) {
                _this7.users = response.data.users.data;
-
+               _this7.users_full = response.body.users_full;
                _this7.pagination = response.data.users;
 
                _this7.spinner_table_inputs = false;

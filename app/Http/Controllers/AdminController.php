@@ -43,6 +43,7 @@ class AdminController extends Controller {
 
             #$returnData['users'] = User::with('role')->get();
             $returnData['users'] = User::with('role')->paginate((int)$this->per_page);
+            $returnData['users_full'] = User::with('role')->get();
 
             return response()->json($returnData);
         }

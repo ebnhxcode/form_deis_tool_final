@@ -24,10 +24,11 @@ const AdminUsuarios = new Vue({
    data(){
       return {
          'users':[],
+         'users_full':[],
          'filterTerm':'',
          'userEditId':'',
 
-         pagination: {},
+         'pagination': {},
 
          'mostrar_input_password':false,
          'mini_loader_visible':false,
@@ -48,7 +49,7 @@ const AdminUsuarios = new Vue({
             establecimiento:false,
             rut:true,
             email:true,
-            password:false,
+            //password:false,
             //remember_token:false,
             clave_electronica:true,
             confirmado_llave_secreta:false,
@@ -1038,7 +1039,7 @@ const AdminUsuarios = new Vue({
             this.users = {};
             if (response.status == 200) {
                this.users = response.data.users.data;
-
+               this.users_full = response.body.users_full;
                this.pagination = response.data.users;
 
                this.spinner_table_inputs = false;

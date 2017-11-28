@@ -73,6 +73,8 @@
                               </div><!-- /.input-group -->
                            </div><!-- /.form-group -->
 
+
+                           <h5 style="position: relative;">Mostrar\Ocultar opciones de la tabla</h5>
                            <mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner>
                            <div class="btn-group" data-toggle="buttons" v-for="v,f,i in user_table_fields" v-else>
 
@@ -113,7 +115,7 @@
 
                         <!-- Estadísticas -->
                         <div class="col-md-6">
-
+                           <h5 style="position: relative;">Opciones</h5>
 
 
                         </div><!-- .col-* -->
@@ -123,7 +125,7 @@
                            <spinner></spinner>
                         </div>
                         <div class="table-responsive col-md-12" v-else>
-                           <table class="table table-striped">
+                           <table class="table table-striped table-hover">
 
                               <thead>
                               <tr>
