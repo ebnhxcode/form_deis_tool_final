@@ -36,7 +36,7 @@ class AdminController extends Controller {
         if ($request->wantsJson()) {
 
             if (!$request->per_page) {
-                $this->per_page = 50;
+                $this->per_page = 500;
             } else {
                 $this->per_page = $request->per_page;
             }
