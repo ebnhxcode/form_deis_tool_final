@@ -67,7 +67,8 @@
                            </div><!-- /.form-group -->
 
 
-                           <h5 style="position: relative;">Mostrar\Ocultar opciones de la tabla</h5>
+                           <h5 style="position: relative;">Mostrar\Ocultar opciones de la tabla
+                              (<small>Clic en un botón para mostrar en grilla</small>)</h5>
                            <mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner>
                            <div class="btn-group" data-toggle="buttons" v-for="v,f,i in user_table_fields" v-else>
 
@@ -113,8 +114,9 @@
 
                            <div class="dropdown" style="padding-right: 8px;">
                               <button class="btn btn-default btn-md dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                 <i class="fa fa-cog" aria-hidden="true"></i>
-                                 Opciones
+                                 {{--<i class="fa fa-excel" aria-hidden="true"></i>--}}
+                                 <img src="{{asset('/img/xls.png')}}" width="20" height="20" alt="">
+                                 Descargas
                                  <span class="caret"></span>
                               </button>
 
@@ -137,6 +139,8 @@
                                        :data="excel_json_data"
                                        :fields="excel_json_fields"
                                        name="users.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Completo {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -146,6 +150,8 @@
                                        :data="getExcelActivados(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_activados.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Activados {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -155,6 +161,8 @@
                                        :data="getExcelSinActivar(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_sin_activar.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios No Activados {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -164,6 +172,8 @@
                                        :data="getExcelSinTelefono(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_sin_telefono.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Sin Telefono {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -173,6 +183,8 @@
                                        :data="getExcelConTelefono(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_con_telefono.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Con Telefono {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -182,6 +194,8 @@
                                        :data="getExcelConTelefonoActivados(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_con_telefono_activados.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Con Telefono Activados {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -191,6 +205,8 @@
                                        :data="getExcelSinTelefonoActivados(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_sin_telefono_activados.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Sin Telefono Activados {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -200,6 +216,8 @@
                                        :data="getExcelConTelefonoSinActivar(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_con_telefono_sin_activar.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Con Telefono Sin Activar {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -209,6 +227,8 @@
                                        :data="getExcelSinTelefonoSinActivar(excel_json_data)"
                                        :fields="excel_json_fields"
                                        name="users_sin_telefono_sin_activar.xls">
+                                       <img src="{{asset('/img/xls_file.png')}}" width="20" height="20" alt="">
+                                       &nbsp;·&nbsp;
                                        Descargar Excel Usuarios Sin Telefono Sin Activar {{--<small>(@{{ excel_data_count }})</small>--}}
                                     </download-excel><!-- -btn .btn-default .btn-success -->
                                  </li>
@@ -252,10 +272,10 @@
                                  </thead>
                                  <tbody>
                                  <tr>
-                                    <td>@{{ getSinActivar(users_full) }}</td>
-                                    <td>@{{ getActivados(users_full) }}</td>
-                                    <td>@{{ getSinTelefono(users_full) }}</td>
-                                    <td>@{{ getConTelefono(users_full) }}</td>
+                                    <td>@{{ getSinTelefonoSinActivar(users_full) }}</td>
+                                    <td>@{{ getConTelefonoSinActivar(users_full) }}</td>
+                                    <td>@{{ getSinTelefonoActivados(users_full) }}</td>
+                                    <td>@{{ getConTelefonoActivados(users_full) }}</td>
                                  </tr>
                                  </tbody>
                               </table>

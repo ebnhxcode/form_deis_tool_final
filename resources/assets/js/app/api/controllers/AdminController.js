@@ -51,12 +51,12 @@ const AdminUsuarios = new Vue({
             email:true,
             //password:false,
             //remember_token:false,
-            clave_electronica:true,
+            clave_electronica:false,
             confirmado_llave_secreta:false,
             telefono:false,
             //id_role:false,
             acepta_terminos:false,
-            correo_resagado:true
+            correo_resagado:false
          },
          'user_table_labels': {
             id:'Id',
@@ -77,7 +77,7 @@ const AdminUsuarios = new Vue({
             correo_resagado:'Correo Enviado'
          },
 
-         excel_json_fields: {
+         'excel_json_fields': {
             'id':'String',
             'name':'String',
             'last_name':'String',
@@ -100,10 +100,9 @@ const AdminUsuarios = new Vue({
             'id_session':'String',
             'correo_resagado':'String'
          },
-         excel_json_data: [],
-         excel_data_count: '',
-         append_to_json_excel: {},
-
+         'excel_json_data': [],
+         'excel_data_count': '',
+         'append_to_json_excel': {},
 
       }
    },
@@ -1130,10 +1129,54 @@ const AdminUsuarios = new Vue({
          }
          return c;
       },
+      getConTelefonoActivados: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].telefono != null &&
+               users[u].telefono != '' &&
+               users[u].password != 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getConTelefonoSinActivar: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].telefono != null &&
+               users[u].telefono != '' &&
+               users[u].password == 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
       getSinTelefono: function (users) {
          var c = 0;
          for (let u in users) {
             if (users[u].telefono == null || users[u].telefono == '') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getSinTelefonoActivados: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].telefono == null ||
+               users[u].telefono == '' &&
+               users[u].password != 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getSinTelefonoSinActivar: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].telefono == null ||
+               users[u].telefono == '' &&
+               users[u].password == 'ASDASDASDASDASDasda') {
                c++;
             }
          }
@@ -1202,7 +1245,7 @@ const AdminUsuarios = new Vue({
          var users = [];
          for (let e in excel_json_data) {
             if (excel_json_data[e].telefono == null ||
-               excel_json_data[e].telefono == ''&&
+               excel_json_data[e].telefono == '' &&
                excel_json_data[e].password != 'ASDASDASDASDASDasda') {
                users.push(excel_json_data[e]);
             }

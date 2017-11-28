@@ -36923,12 +36923,12 @@ var AdminUsuarios = new _vue2.default({
             email: true,
             //password:false,
             //remember_token:false,
-            clave_electronica: true,
+            clave_electronica: false,
             confirmado_llave_secreta: false,
             telefono: false,
             //id_role:false,
             acepta_terminos: false,
-            correo_resagado: true
+            correo_resagado: false
          },
          'user_table_labels': {
             id: 'Id',
@@ -36949,7 +36949,7 @@ var AdminUsuarios = new _vue2.default({
             correo_resagado: 'Correo Enviado'
          },
 
-         excel_json_fields: {
+         'excel_json_fields': {
             'id': 'String',
             'name': 'String',
             'last_name': 'String',
@@ -36972,9 +36972,9 @@ var AdminUsuarios = new _vue2.default({
             'id_session': 'String',
             'correo_resagado': 'String'
          },
-         excel_json_data: [],
-         excel_data_count: '',
-         append_to_json_excel: {}
+         'excel_json_data': [],
+         'excel_data_count': '',
+         'append_to_json_excel': {}
 
       };
    },
@@ -37638,10 +37638,46 @@ var AdminUsuarios = new _vue2.default({
          }
          return c;
       },
+      getConTelefonoActivados: function getConTelefonoActivados(users) {
+         var c = 0;
+         for (var u in users) {
+            if (users[u].telefono != null && users[u].telefono != '' && users[u].password != 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getConTelefonoSinActivar: function getConTelefonoSinActivar(users) {
+         var c = 0;
+         for (var u in users) {
+            if (users[u].telefono != null && users[u].telefono != '' && users[u].password == 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
       getSinTelefono: function getSinTelefono(users) {
          var c = 0;
          for (var u in users) {
             if (users[u].telefono == null || users[u].telefono == '') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getSinTelefonoActivados: function getSinTelefonoActivados(users) {
+         var c = 0;
+         for (var u in users) {
+            if (users[u].telefono == null || users[u].telefono == '' && users[u].password != 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getSinTelefonoSinActivar: function getSinTelefonoSinActivar(users) {
+         var c = 0;
+         for (var u in users) {
+            if (users[u].telefono == null || users[u].telefono == '' && users[u].password == 'ASDASDASDASDASDasda') {
                c++;
             }
          }
