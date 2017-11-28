@@ -73,8 +73,8 @@
                               </div><!-- /.input-group -->
                            </div><!-- /.form-group -->
 
-
-                           <div class="btn-group" data-toggle="buttons" v-for="v,f,i in user_table_fields">
+                           <mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner>
+                           <div class="btn-group" data-toggle="buttons" v-for="v,f,i in user_table_fields" v-else>
 
                               <label :class="v==true?'btn btn-primary active':'btn btn-primary'" @click.prevent="changeVisibility(f)">
                                  <input type="checkbox" autocomplete="off"> @{{ user_table_labels[f] }}
@@ -94,8 +94,10 @@
                         </div><!-- .col-* -->
 
 
-
-                        <div class="table-responsive col-md-12">
+                        <div class="col-md-12" v-if="spinner_table_inputs == true">
+                           <spinner></spinner>
+                        </div>
+                        <div class="table-responsive col-md-12" v-else>
                            <table class="table table-striped">
 
                               <thead>

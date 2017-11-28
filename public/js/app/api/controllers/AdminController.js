@@ -36903,22 +36903,25 @@ var AdminUsuarios = new _vue2.default({
          'btn_generar_clave': false,
          'btn_finalizar': false,
 
+         'spinner_table_inputs': true,
+         'mini_spinner_table_inputs': true,
+
          'mostrar_modal_nuevo_usuario': false,
          'user_table_fields': {
             id: false,
             name: true,
-            last_name: false,
-            full_name: false,
+            //last_name:false,
+            //full_name:false,
             position: false,
             establecimiento: false,
             rut: true,
             email: true,
             password: false,
-            remember_token: false,
+            //remember_token:false,
             clave_electronica: true,
             confirmado_llave_secreta: false,
             telefono: false,
-            id_role: false,
+            //id_role:false,
             acepta_terminos: false,
             correo_resagado: true
          },
@@ -36950,7 +36953,7 @@ var AdminUsuarios = new _vue2.default({
       'mini-spinner': {
          props: [''],
          'name': 'mini-spinner',
-         'template': '\n\t         <div class="loader-mini text-center">Cargando tabla, espere por favor...</div>\n\t      ',
+         'template': '\n\t         <div class="loader-mini text-center small">Cargando items, espere por favor...</div>\n\t      ',
          data: function data() {
             return {
                visible: false
@@ -37438,6 +37441,8 @@ var AdminUsuarios = new _vue2.default({
             _this5.users = {};
             if (response.status == 200) {
                _this5.users = response.body.users;
+               _this5.spinner_table_inputs = false;
+               _this5.mini_spinner_table_inputs = false;
             }
          }, function (response) {
             // error callback

@@ -33,22 +33,25 @@ const AdminUsuarios = new Vue({
          'btn_generar_clave':false,
          'btn_finalizar':false,
 
+         'spinner_table_inputs':true,
+         'mini_spinner_table_inputs':true,
+
          'mostrar_modal_nuevo_usuario': false,
          'user_table_fields': {
             id:false,
             name:true,
-            last_name:false,
-            full_name:false,
+            //last_name:false,
+            //full_name:false,
             position:false,
             establecimiento:false,
             rut:true,
             email:true,
             password:false,
-            remember_token:false,
+            //remember_token:false,
             clave_electronica:true,
             confirmado_llave_secreta:false,
             telefono:false,
-            id_role:false,
+            //id_role:false,
             acepta_terminos:false,
             correo_resagado:true
          },
@@ -82,7 +85,7 @@ const AdminUsuarios = new Vue({
          props: [''],
          'name': 'mini-spinner',
          'template': `
-	         <div class="loader-mini text-center">Cargando tabla, espere por favor...</div>
+	         <div class="loader-mini text-center small">Cargando items, espere por favor...</div>
 	      `,
          data () {
             return {
@@ -893,6 +896,8 @@ const AdminUsuarios = new Vue({
             this.users = {};
             if (response.status == 200) {
                this.users = response.body.users;
+               this.spinner_table_inputs = false;
+               this.mini_spinner_table_inputs = false;
             }
 
          }, response => { // error callback
