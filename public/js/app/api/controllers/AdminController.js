@@ -36903,7 +36903,44 @@ var AdminUsuarios = new _vue2.default({
          'btn_generar_clave': false,
          'btn_finalizar': false,
 
-         'mostrar_modal_nuevo_usuario': false
+         'mostrar_modal_nuevo_usuario': false,
+         'user_table_fields': {
+            id: false,
+            name: true,
+            last_name: false,
+            full_name: false,
+            position: false,
+            establecimiento: false,
+            rut: true,
+            email: true,
+            password: false,
+            remember_token: false,
+            clave_electronica: true,
+            confirmado_llave_secreta: false,
+            telefono: false,
+            id_role: false,
+            acepta_terminos: false,
+            correo_resagado: true
+         },
+         'user_table_labels': {
+            id: 'Id',
+            name: 'Nombre',
+            last_name: 'Apellido',
+            full_name: 'Nombre Completo',
+            position: 'Cargo',
+            establecimiento: 'Establecimiento',
+            rut: 'Rut',
+            email: 'Email',
+            password: 'Clave',
+            remember_token: 'Token Ingreso',
+            clave_electronica: 'Llave Secreta',
+            confirmado_llave_secreta: 'Confirma llave',
+            telefono: 'Telefono',
+            id_role: 'Id Role',
+            acepta_terminos: 'Acepta Terminos',
+            correo_resagado: 'Correo Enviado'
+         }
+
       };
    },
 
@@ -37278,6 +37315,11 @@ var AdminUsuarios = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
+
+      changeVisibility: function changeVisibility(field) {
+         return this.user_table_fields[field] = !this.user_table_fields[field];
+      },
+
       sendEmailPasswordReset: function sendEmailPasswordReset(user) {
          var _this4 = this;
 

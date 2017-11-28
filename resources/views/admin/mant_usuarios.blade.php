@@ -46,7 +46,7 @@
 
 
                         <!-- Filtro por termino, otros filtros y funcionalidades-->
-                        <div class="col-md-offset-3 col-md-6">
+                        <div class="col-md-6">
                            <!-- Text animacion al termino de busqueda -->
                            <transition name="fade" mode="out-in">
                               <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>@{{ filterTerm }}</b>'</h5>
@@ -73,7 +73,27 @@
                               </div><!-- /.input-group -->
                            </div><!-- /.form-group -->
 
+
+                           <div class="btn-group" data-toggle="buttons" v-for="v,f,i in user_table_fields">
+
+                              <label :class="v==true?'btn btn-primary active':'btn btn-primary'" @click.prevent="changeVisibility(f)">
+                                 <input type="checkbox" autocomplete="off"> @{{ user_table_labels[f] }}
+                              </label>
+
+                           </div>
+
+
                         </div><!-- .col-* -->
+
+
+                        <!-- Estadísticas -->
+                        <div class="col-md-6">
+
+
+
+                        </div><!-- .col-* -->
+
+
 
                         <div class="table-responsive col-md-12">
                            <table class="table table-striped">
@@ -81,18 +101,18 @@
                               <thead>
                               <tr>
                                  <th>Accion</th>
-                                 <th>Estado envio correo</th>
-                                 <th>Id</th>
-                                 <th>Nombre</th>
-                                 <th>Email</th>
-                                 <th>Rut</th>
-                                 <th>Llave Secreta</th>
-                                 <th>Acepta Terminos</th>
-                                 <th>Cargo</th>
-                                 <th>Establecimiento</th>
-                                 <th>Telefono</th>
-                                 <th>Role</th>
-                                 <th>Se envió llave</th>
+                                 <th v-show="user_table_fields.correo_resagado == true">Estado envio correo</th>
+                                 <th v-show="user_table_fields.id == true">Id</th>
+                                 <th v-show="user_table_fields.name == true">Nombre</th>
+                                 <th v-show="user_table_fields.email == true">Email</th>
+                                 <th v-show="user_table_fields.rut == true">Rut</th>
+                                 <th v-show="user_table_fields.clave_electronica == true">Llave Secreta</th>
+                                 <th v-show="user_table_fields.acepta_terminos == true">Acepta Terminos</th>
+                                 <th v-show="user_table_fields.position == true">Cargo</th>
+                                 <th v-show="user_table_fields.establecimiento == true">Establecimiento</th>
+                                 <th v-show="user_table_fields.telefono == true">Telefono</th>
+                                 <th v-show="user_table_fields.id_role == true">Role</th>
+                                 <th v-show="user_table_fields.confirmado_llave_secreta == true">Se envió llave</th>
                               </tr>
                               </thead>
 
@@ -120,49 +140,49 @@
                                        <i class="fa fa-envelope"></i>
                                     </a>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.correo_resagado == true">
                                     @{{ user.correo_resagado || 'No Aplica' }}
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.id == true">
                                     @{{ user.id }}
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.name == true">
                                     <span v-if="userEditId!=user.id">@{{ user.name }}</span>
                                     <input type="text" v-model="user.name" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.email == true">
                                     <span v-if="userEditId!=user.id">@{{ user.email }}</span>
                                     <input type="text" v-model="user.email" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.rut == true">
                                     <span v-if="userEditId!=user.id">@{{ user.rut }}</span>
                                     <input type="text" v-model="user.rut" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.clave_electronica == true">
                                     <span v-if="userEditId!=user.id">@{{ user.clave_electronica }}</span>
                                     <input type="text" v-model="user.clave_electronica" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.acepta_terminos == true">
                                     <span v-if="userEditId!=user.id">@{{ user.acepta_terminos }}</span>
                                     <input type="text" v-model="user.acepta_terminos" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.position == true">
                                     <span v-if="userEditId!=user.id">@{{ user.position }}</span>
                                     <input type="text" v-model="user.position" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.establecimiento == true">
                                     <span v-if="userEditId!=user.id">@{{ user.establecimiento }}</span>
                                     <input type="text" v-model="user.establecimiento" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.telefono == true">
                                     <span v-if="userEditId!=user.id">@{{ user.telefono }}</span>
                                     <input type="text" v-model="user.telefono" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.id_role == true">
                                     <span v-if="userEditId!=user.id">@{{ user.id_role }}</span>
                                     <input type="text" v-model="user.id_role" class="form-control" v-else>
                                  </td>
-                                 <td>
+                                 <td v-show="user_table_fields.confirmado_llave_secreta == true">
                                     <span v-if="userEditId!=user.id">@{{ user.confirmado_llave_secreta }}</span>
                                     <input type="text" v-model="user.confirmado_llave_secreta" class="form-control" v-else>
                                  </td>
