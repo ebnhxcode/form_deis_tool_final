@@ -105,8 +105,15 @@
                               </select>
                            </div>
 
+                           <download-excel
+                              v-if="(excel_data_count = filterBy(users, filterTerm).length) > 0"
+                              :data="filterBy(users, filterTerm)"
+                              :fields="excel_json_fields"
+                              name="users.xls"
+                              class="btn btn-sm btn-success pull-right">
+                              Descargar lo que está en la grilla{{--<small>(@{{ excel_data_count }})</small>--}}
+                           </download-excel><!-- -btn .btn-default .btn-success -->
                         </div><!-- .col-* -->
-
 
                         <!-- Estadísticas -->
                         <div class="col-md-6">
@@ -293,18 +300,78 @@
                                  <thead>
                                  <tr>
                                     <th>Accion</th>
-                                    <th v-show="user_table_fields.correo_resagado == true">Estado envio correo</th>
-                                    <th v-show="user_table_fields.id == true">Id</th>
-                                    <th v-show="user_table_fields.name == true">Nombre</th>
-                                    <th v-show="user_table_fields.email == true">Email</th>
-                                    <th v-show="user_table_fields.rut == true">Rut</th>
-                                    <th v-show="user_table_fields.clave_electronica == true">Llave Secreta</th>
-                                    <th v-show="user_table_fields.acepta_terminos == true">Acepta Terminos</th>
-                                    <th v-show="user_table_fields.position == true">Cargo</th>
-                                    <th v-show="user_table_fields.establecimiento == true">Establecimiento</th>
-                                    <th v-show="user_table_fields.telefono == true">Telefono</th>
-                                    <th v-show="user_table_fields.id_role == true">Role</th>
-                                    <th v-show="user_table_fields.confirmado_llave_secreta == true">Se envió llave</th>
+                                    <th v-show="user_table_fields.correo_resagado == true">
+                                       <a href="#!" @click.prevent="changeListOrder('correo_resagado')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Estado envio correo
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.id == true">
+                                       <a href="#!" @click.prevent="changeListOrder('id')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Id
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.name == true">
+                                       <a href="#!" @click.prevent="changeListOrder('name')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Nombre
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.email == true">
+                                       <a href="#!" @click.prevent="changeListOrder('email')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Email
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.rut == true">
+                                       <a href="#!" @click.prevent="changeListOrder('rut')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Rut
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.clave_electronica == true">
+                                       <a href="#!" @click.prevent="changeListOrder('clave_electronica')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Llave Secreta
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.acepta_terminos == true">
+                                       <a href="#!" @click.prevent="changeListOrder('acepta_terminos')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Acepta Terminos
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.position == true">
+                                       <a href="#!" @click.prevent="changeListOrder('position')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Cargo
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.establecimiento == true">
+                                       <a href="#!" @click.prevent="changeListOrder('establecimiento')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Establecimiento
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.telefono == true">
+                                       <a href="#!" @click.prevent="changeListOrder('telefono')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Telefono
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.id_role == true">
+                                       <a href="#!" @click.prevent="changeListOrder('id_role')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Role
+                                       </a>
+                                    </th>
+                                    <th v-show="user_table_fields.confirmado_llave_secreta == true">
+                                       <a href="#!" @click.prevent="changeListOrder('confirmado_llave_secreta')">
+                                          <i class="fa fa-sort" aria-hidden="true"></i>&nbsp;
+                                          Se envió llave
+                                       </a>
+                                    </th>
                                  </tr>
                                  </thead>
 
@@ -406,7 +473,6 @@
                                  <option :value="1500">1500</option>
                                  </select>
                               </div>
-
 
                            </div>
 

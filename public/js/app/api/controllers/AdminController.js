@@ -36974,7 +36974,9 @@ var AdminUsuarios = new _vue2.default({
          },
          'excel_json_data': [],
          'excel_data_count': '',
-         'append_to_json_excel': {}
+         'append_to_json_excel': {},
+
+         'gridOrder': 'asc'
 
       };
    },
@@ -37567,6 +37569,18 @@ var AdminUsuarios = new _vue2.default({
 
       changeVisibility: function changeVisibility(field) {
          return this.user_table_fields[field] = !this.user_table_fields[field];
+      },
+
+      changeListOrder: function changeListOrder(column) {
+         this.gridOrder == 'asc' ? this.gridOrder = 'desc' : this.gridOrder = 'asc';
+         this.orderLists(column);
+      },
+
+      orderLists: function orderLists(column) {
+         this.users = _lodash._.orderBy(this.users, column, this.gridOrder);
+         //console.log(column);
+         //this.lists = this.shuffle(_.orderBy(this.lists, 'name', this.listOrder));
+         //console.log(this.lists.length);
       },
 
       sendEmailPasswordReset: function sendEmailPasswordReset(user) {

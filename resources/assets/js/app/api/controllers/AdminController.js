@@ -104,6 +104,8 @@ const AdminUsuarios = new Vue({
          'excel_data_count': '',
          'append_to_json_excel': {},
 
+         'gridOrder':'asc',
+
       }
    },
    computed: {},
@@ -1062,6 +1064,18 @@ const AdminUsuarios = new Vue({
 
       changeVisibility: function (field) {
          return this.user_table_fields[field] = !this.user_table_fields[field];
+      },
+
+      changeListOrder: function (column) {
+         this.gridOrder == 'asc' ? this.gridOrder = 'desc' : this.gridOrder = 'asc';
+         this.orderLists(column);
+      },
+
+      orderLists: function (column) {
+         this.users = _.orderBy(this.users, column, this.gridOrder);
+         //console.log(column);
+         //this.lists = this.shuffle(_.orderBy(this.lists, 'name', this.listOrder));
+         //console.log(this.lists.length);
       },
 
       sendEmailPasswordReset: function (user) {
