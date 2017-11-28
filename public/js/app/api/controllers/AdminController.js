@@ -37331,7 +37331,7 @@ var AdminUsuarios = new _vue2.default({
                   if (rd == 'Existe') {
                      swal({
                         title: "Atención",
-                        text: "El rut ingresado no se encuentra registrado.",
+                        text: "El rut ingresado ya se encuentra registrado.",
                         type: "warning",
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
