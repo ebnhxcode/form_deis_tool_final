@@ -14,9 +14,8 @@ class DigitadorMiddleware {
             case 'mantenedor':
             case 'digitador':
                 return $next($request);
-              break;
+                break;
         }
-        return redirect()->to('/');
-
+        return redirect()->to('/formulario/transmision_vertical');
     }
 }

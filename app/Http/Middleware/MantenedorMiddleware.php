@@ -15,6 +15,6 @@ class MantenedorMiddleware {
                 return $next($request);
                 break;
         }
-        return redirect()->to('/');
+        return redirect()->to('/formulario/transmision_vertical');
     }
 }
