@@ -23,13 +23,6 @@
                               <img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">
                            </h3> <!-- .text-center --> <br>
 
-                           {{-- @click.prevent="crear_nuevo_usuario" --}}
-                           <button class="btn btn-sm btn-success small"
-                                   style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;" @click.prevent="mostrar_modal_nuevo_usuario = true">
-                              Crear nuevo Usuario&nbsp;
-                              <i class="fa fa-plus"></i>
-                           </button><!-- .btn .btn-success -->
-
                            <!-- Componente para crear compromiso en modal -->
                            <modal-nuevousuario v-show="mostrar_modal_nuevo_usuario == true" @close="mostrar_modal_nuevo_usuario = false">
                               <h3 slot="header">
@@ -66,9 +59,6 @@
                                  <button @click.prevent="filterTerm=''" type="button" class="btn btn-default">
                                     Limpiar
                                  </button>
-                                 <button @click.prevent="filterTerm=''&&fetchAdminUsuarios" type="button" class="btn btn-default">
-                                    Recargar Grilla
-                                 </button>
                               </span><!-- .input-group-btn -->
                               </div><!-- /.input-group -->
                            </div><!-- /.form-group -->
@@ -84,6 +74,7 @@
 
                            </div>
 
+                           <h5 style="position: relative;">Paginar resultados</h5>
                            <paginators :pagination="pagination" @navigate="navigate"></paginators>
 
                            <div class="pull-left">
@@ -117,6 +108,153 @@
                         <div class="col-md-6">
                            <h5 style="position: relative;">Opciones</h5>
 
+                           <div class="dropdown" style="padding-right: 8px;">
+                              <button class="btn btn-default btn-md dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                 <i class="fa fa-cog" aria-hidden="true"></i>
+                                 Opciones
+                                 <span class="caret"></span>
+                              </button>
+
+                              {{-- @click.prevent="crear_nuevo_usuario" --}}
+                              <button class="btn btn-success" @click.prevent="mostrar_modal_nuevo_usuario = true"
+                                      style="margin-left: 1px;">
+                                 Crear nuevo Usuario&nbsp;
+                                 <i class="fa fa-plus"></i>
+                              </button><!-- .btn .btn-success -->
+
+                              <button @click.prevent="filterTerm=''&&fetchAdminUsuarios" type="button" class="btn btn-default">
+                                 Recargar Grilla
+                              </button>
+
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = excel_json_data.length) > 0"
+                                       :data="excel_json_data"
+                                       :fields="excel_json_fields"
+                                       name="users.xls">
+                                       Descargar Excel Completo {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelActivados(excel_json_data).length) > 0"
+                                       :data="getExcelActivados(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_activados.xls">
+                                       Descargar Excel Usuarios Activados {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelSinActivar(excel_json_data).length) > 0"
+                                       :data="getExcelSinActivar(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_sin_activar.xls">
+                                       Descargar Excel Usuarios No Activados {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelSinTelefono(excel_json_data).length) > 0"
+                                       :data="getExcelSinTelefono(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_sin_telefono.xls">
+                                       Descargar Excel Usuarios Sin Telefono {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelConTelefono(excel_json_data).length) > 0"
+                                       :data="getExcelConTelefono(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_con_telefono.xls">
+                                       Descargar Excel Usuarios Con Telefono {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelConTelefonoActivados(excel_json_data).length) > 0"
+                                       :data="getExcelConTelefonoActivados(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_con_telefono_activados.xls">
+                                       Descargar Excel Usuarios Con Telefono Activados {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelSinTelefonoActivados(excel_json_data).length) > 0"
+                                       :data="getExcelSinTelefonoActivados(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_sin_telefono_activados.xls">
+                                       Descargar Excel Usuarios Sin Telefono Activados {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelConTelefonoSinActivar(excel_json_data).length) > 0"
+                                       :data="getExcelConTelefonoSinActivar(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_con_telefono_sin_activar.xls">
+                                       Descargar Excel Usuarios Con Telefono Sin Activar {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                                 <li>
+                                    <download-excel
+                                       v-if="(excel_data_count = getExcelSinTelefonoSinActivar(excel_json_data).length) > 0"
+                                       :data="getExcelSinTelefonoSinActivar(excel_json_data)"
+                                       :fields="excel_json_fields"
+                                       name="users_sin_telefono_sin_activar.xls">
+                                       Descargar Excel Usuarios Sin Telefono Sin Activar {{--<small>(@{{ excel_data_count }})</small>--}}
+                                    </download-excel><!-- -btn .btn-default .btn-success -->
+                                 </li>
+                              </ul>
+                           </div>
+
+                           <h5 style="position: relative;">Estadísticas de Usuarios Registrados</h5>
+                           <mini-spinner v-if="mini_spinner_table_inputs == true"></mini-spinner>
+                           <div class="table-responsive" v-else>
+                              <table class="table table-striped table-hover small text-center">
+                                 <thead>
+                                 <tr>
+                                    <th>Totales</th>
+                                    <th>Sin Activar</th>
+                                    <th>Activados</th>
+                                    <th>Sin Teléfono</th>
+                                    <th>Con Teléfono</th>
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 <tr>
+                                    <td>@{{ users_full.length }}</td>
+                                    <td>@{{ getSinActivar(users_full) }}</td>
+                                    <td>@{{ getActivados(users_full) }}</td>
+                                    <td>@{{ getSinTelefono(users_full) }}</td>
+                                    <td>@{{ getConTelefono(users_full) }}</td>
+                                 </tr>
+                                 </tbody>
+                              </table>
+
+                              <table class="table table-striped table-hover small text-center">
+                                 <thead>
+                                 <tr>
+                                    <th>Sin Activar Sin Teléfono</th>
+                                    <th>Sin Activar Con Teléfono</th>
+                                    <th>Activados Sin Teléfono</th>
+                                    <th>Activados Con Teléfono</th>
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 <tr>
+                                    <td>@{{ getSinActivar(users_full) }}</td>
+                                    <td>@{{ getActivados(users_full) }}</td>
+                                    <td>@{{ getSinTelefono(users_full) }}</td>
+                                    <td>@{{ getConTelefono(users_full) }}</td>
+                                 </tr>
+                                 </tbody>
+                              </table>
+                           </div><!-- table-responsive -->
 
                         </div><!-- .col-* -->
 
@@ -125,7 +263,7 @@
                            <spinner></spinner>
                         </div>
                         <div class="table-responsive col-md-12" v-else>
-                           <table class="table table-striped table-hover">
+                           <table class="table table-striped table-hover small">
 
                               <thead>
                               <tr>

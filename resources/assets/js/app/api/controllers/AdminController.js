@@ -77,11 +77,67 @@ const AdminUsuarios = new Vue({
             correo_resagado:'Correo Enviado'
          },
 
+         excel_json_fields: {
+            'id':'String',
+            'name':'String',
+            'last_name':'String',
+            'full_name':'String',
+            'position':'String',
+            'establecimiento':'String',
+            'rut':'String',
+            'email':'String',
+            'password':'String',
+            'created_by':'String',
+            'updated_by':'String',
+            'remember_token':'String',
+            'created_at':'String',
+            'updated_at':'String',
+            'clave_electronica':'String',
+            'confirmado_llave_secreta':'String',
+            'telefono':'String',
+            'id_role':'String',
+            'acepta_terminos':'String',
+            'id_session':'String',
+            'correo_resagado':'String'
+         },
+         excel_json_data: [],
+         excel_data_count: '',
+         append_to_json_excel: {},
+
 
       }
    },
    computed: {},
    watch: {
+      users_full: function (users_full) {
+         var self = this;
+         this.excel_json_data = [];
+         return users_full.map(function (user, index) {
+            return self.excel_json_data.push({
+               'id':user.id,
+               'name':user.name,
+               'last_name':user.last_name,
+               'full_name':user.full_name,
+               'position':user.position,
+               'establecimiento':user.establecimiento,
+               'rut':user.rut,
+               'email':user.email,
+               'password':user.password,
+               'created_by':user.created_by,
+               'updated_by':user.updated_by,
+               'remember_token':user.remember_token,
+               'created_at':user.created_at,
+               'updated_at':user.updated_at,
+               'clave_electronica':user.clave_electronica,
+               'confirmado_llave_secreta':user.confirmado_llave_secreta,
+               'telefono':user.telefono,
+               'id_role':user.id_role,
+               'acepta_terminos':user.acepta_terminos,
+               'id_session':user.id_session,
+               'correo_resagado':user.correo_resagado
+            });
+         });
+      },
    },
    components: {
       'paginators': {
@@ -765,6 +821,20 @@ const AdminUsuarios = new Vue({
                });
             },
 
+            cleanNewUser: function () {
+               this.user = {
+                  'name':'',
+                  'email':'',
+                  'rut':'',
+                  'position':'',
+                  'establecimiento':'',
+                  'telefono':'',
+                  'clave_electronica':'',
+                  'confirmado_llave_secreta':'',
+                  'password':''
+               };
+            },
+
             saveNewUser: function (user) {
                this.$validator.validateAll().then(result => {});
                var n = user.name;
@@ -792,9 +862,10 @@ const AdminUsuarios = new Vue({
                      this.$http.post('/admin/guardar_nuevo_usuario', formData).then(response => { // success callback
                         this.nuevo_usuario_en_creacion = false;
                         console.log(response);
-                        var user;
+                        //var user;
                         if (response.status == 200) {
-                           user = response.body.user;
+                           //user = response.body.user;
+                           this.cleanNewUser();
                         }
                         swal({
                            title: "Guardado",
@@ -851,6 +922,106 @@ const AdminUsuarios = new Vue({
          },
          watch: {
          },
+      },
+      'download-excel': {
+         props: {
+            'data': {
+               type: Array,
+               required: true
+            },
+            'fields': {
+               type: Object,
+               required: true
+            },
+            'name': {
+               type: String,
+               default: "data.xls"
+            },
+         },
+         template: `
+            <a
+               href="#"
+               :id="id_name"
+               @click="generate_excel">
+               <slot>
+                  Download Excel
+               </slot>
+            </a>
+         `,
+         name: 'download-excel',
+         data: function () {
+            return {
+               animate: true,
+               animation: '',
+            }
+         },
+         created: function () {
+         },
+         computed: {
+            id_name: function () {
+               var now = new Date().getTime();
+               return 'export_' + now;
+            }
+         },
+         methods: {
+            emitXmlHeader: function () {
+               var headerRow = '<ss:Row>\n';
+               for (var colName in this.fields) {
+                  headerRow += '  <ss:Cell>\n';
+                  headerRow += '    <ss:Data ss:Type="String">';
+                  headerRow += colName + '</ss:Data>\n';
+                  headerRow += '  </ss:Cell>\n';
+               }
+               headerRow += '</ss:Row>\n';
+               return '<?xml version="1.0"?>\n' +
+                  '<ss:Workbook xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">\n' +
+                  '<ss:Worksheet ss:Name="Sheet1">\n' +
+                  '<ss:Table>\n\n' + headerRow;
+            },
+
+            emitXmlFooter: function () {
+               return '\n</ss:Table>\n' +
+                  '</ss:Worksheet>\n' +
+                  '</ss:Workbook>\n';
+            },
+
+            jsonToSsXml: function (jsonObject) {
+               var row;
+               var col;
+               var xml;
+               //console.log(jsonObject);
+               var data = typeof jsonObject != "object"
+                  ? JSON.parse(jsonObject)
+                  : jsonObject;
+
+               xml = this.emitXmlHeader();
+
+               for (row = 0; row < data.length; row++) {
+                  xml += '<ss:Row>\n';
+
+                  for (col in data[row]) {
+                     xml += '  <ss:Cell>\n';
+                     xml += '    <ss:Data ss:Type="' + this.fields[col] + '">';
+                     xml += String(data[row][col]).replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ]/g, '') + '</ss:Data>\n';
+                     xml += '  </ss:Cell>\n';
+                  }
+
+                  xml += '</ss:Row>\n';
+               }
+
+               xml += this.emitXmlFooter();
+               return xml;
+            },
+            generate_excel: function (content, filename, contentType) {
+               var blob = new Blob([this.jsonToSsXml(this.data)], {
+                  'type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+               });
+
+               var a = document.getElementById(this.id_name);
+               a.href = window.URL.createObjectURL(blob);
+               a.download = this.name;
+            }
+         }
       },
       /*
        '':{
@@ -948,6 +1119,124 @@ const AdminUsuarios = new Vue({
                });
             }
          });
+      },
+
+      getConTelefono: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].telefono != null && users[u].telefono != '') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getSinTelefono: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].telefono == null || users[u].telefono == '') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getActivados: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].password != 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
+      getSinActivar: function (users) {
+         var c = 0;
+         for (let u in users) {
+            if (users[u].password == 'ASDASDASDASDASDasda') {
+               c++;
+            }
+         }
+         return c;
+      },
+
+      getExcelConTelefono: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].telefono != null && excel_json_data[e].telefono != '') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelConTelefonoActivados: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].telefono != null &&
+               excel_json_data[e].telefono != '' &&
+               excel_json_data[e].password != 'ASDASDASDASDASDasda') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelConTelefonoSinActivar: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].telefono != null &&
+               excel_json_data[e].telefono != '' &&
+               excel_json_data[e].password == 'ASDASDASDASDASDasda') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelSinTelefono: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].telefono == null || excel_json_data[e].telefono == '') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelSinTelefonoActivados: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].telefono == null ||
+               excel_json_data[e].telefono == ''&&
+               excel_json_data[e].password != 'ASDASDASDASDASDasda') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelSinTelefonoSinActivar: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].telefono == null ||
+               excel_json_data[e].telefono == ''&&
+               excel_json_data[e].password == 'ASDASDASDASDASDasda') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelActivados: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].password != 'ASDASDASDASDASDasda') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
+      },
+      getExcelSinActivar: function (excel_json_data) {
+         var users = [];
+         for (let e in excel_json_data) {
+            if (excel_json_data[e].password == 'ASDASDASDASDASDasda') {
+               users.push(excel_json_data[e]);
+            }
+         }
+         return users;
       },
 
       editUser: function (id) {
