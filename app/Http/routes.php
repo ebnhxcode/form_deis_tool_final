@@ -21,13 +21,17 @@ Route::get('/demoemail', function () {
    return view ('email.envio_clave_electronica', $returnData) ;
 });
 */
+/*
 Route::get('/demo', function () {
    #return view('demo.demo');
    return redirect()->to('/login');
 });
-
+*/
 Route::post('/formulario/prueba_session', 'UserController@prueba_session');
 
+Route::get('/dashboard', function () {
+   return view ('usuarios.dashboard');
+});
 Route::get('/registro', 'UserController@registro');
 Route::get('/solicitud_clave', 'UserController@registro');
 Route::get('/clave_electronica', 'UserController@registro');
