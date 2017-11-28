@@ -21,6 +21,7 @@ class FormDeisController extends Controller {
     private $fdc;
     public function __construct () {
         $this->middleware('auth', ['except' => ['testapi']]);
+        $this->middleware('digitador');
     }
 
 

@@ -3,17 +3,20 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Auth;
+use Auth;
 
 class DigitadorMiddleware {
     private $auth;
     public function handle($request, Closure $next) {
         $this->auth = Auth::user();
-        foreach ($this->auth->role as $key => $role) {
-
-
-
+        switch ($this->auth->role->role) {
+            case 'admin':
+            case 'mantenedor':
+            case 'digitador':
+                return $next($request);
+              break;
         }
-        return $next($request);
+        return redirect()->to('/');
+
     }
 }
