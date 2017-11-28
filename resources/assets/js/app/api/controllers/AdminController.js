@@ -27,6 +27,8 @@ const AdminUsuarios = new Vue({
          'filterTerm':'',
          'userEditId':'',
 
+         pagination: {},
+
          'mostrar_input_password':false,
          'mini_loader_visible':false,
          'btn_procesar_clave':true,
@@ -81,6 +83,113 @@ const AdminUsuarios = new Vue({
    watch: {
    },
    components: {
+      'paginators': {
+         props: ['pagination'],
+         template: `
+            <nav aria-label="Page navigation">
+               <ul class="pagination">
+                  <li :class="{ disabled: pagination.current_page == 1}">
+                     <a href="#!" aria-label="Previous" @click="nextPrev($event, pagination.current_page-1)">
+                     <span aria-hidden="true">&laquo;</span>
+                     </a>
+                  </li>
+
+                  <li v-for="page in pages" track-by="$index" :class="{ active: pagination.current_page == page }">
+                     <span v-if="page == '...'">{{page}}</span>
+                     <a href="#!" v-if="page != '...'" @click="navigate($event, page)">{{page}}</a>
+                  </li>
+
+                  <li :class="{ disabled: pagination.current_page == pagination.last_page}">
+                     <a href="#!" aria-label="Next" @click="nextPrev($event, pagination.current_page+1)">
+                     <span aria-hidden="true">&raquo;</span>
+                     </a>
+                  </li>
+               </ul>
+            </nav>
+         `,
+         name: 'paginators',
+         data () {
+            return {
+               pages: []
+            }
+         },
+         ready () {
+         },
+         created () {
+            //console.log(this.pagination); //está trayendo pagination
+            let p = this.pagination;
+            this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
+         },
+
+         methods: {
+            navigate (ev, page) {
+               ev.preventDefault();
+               //console.log(page);
+               this.$emit('navigate', page);
+            },
+            nextPrev (ev, page) {
+               if (page == 0 || page == this.pagination.last_page + 1) {
+                  return;
+               }
+               this.navigate(ev, page);
+            },
+            generatePagesArray (currentPage, collectionLength, rowsPerPage, paginationRange){
+               var pages = [];
+               var totalPages = Math.ceil(collectionLength / rowsPerPage);
+               var halfWay = Math.ceil(paginationRange / 2);
+               var position;
+
+               if (currentPage <= halfWay) {
+                  position = 'start';
+               } else if (totalPages - halfWay < currentPage) {
+                  position = 'end';
+               } else {
+                  position = 'middle';
+               }
+
+               var ellipsesNeeded = paginationRange < totalPages;
+               var i = 1;
+               while (i <= totalPages && i <= paginationRange) {
+                  var pageNumber = this.calculatePageNumber(i, currentPage, paginationRange, totalPages);
+                  var openingEllipsesNeeded = (i === 2 && (position === 'middle' || position === 'end'));
+                  var closingEllipsesNeeded = (i === paginationRange - 1 && (position === 'middle' || position === 'start'));
+                  if (ellipsesNeeded && (openingEllipsesNeeded || closingEllipsesNeeded)) {
+                     pages.push('...');
+                  } else {
+                     pages.push(pageNumber);
+                  }
+                  i++;
+               }
+               return pages;
+            },
+            calculatePageNumber (i, currentPage, paginationRange, totalPages){
+               var halfWay = Math.ceil(paginationRange / 2);
+               if (i === paginationRange) {
+                  return totalPages;
+               } else if (i === 1) {
+                  return i;
+               } else if (paginationRange < totalPages) {
+                  if (totalPages - halfWay < currentPage) {
+                     return totalPages - paginationRange + i;
+                  } else if (halfWay < currentPage) {
+                     return currentPage - halfWay + i;
+                  } else {
+                     return i;
+                  }
+               } else {
+                  return i;
+               }
+            }
+         },
+
+         watch: {
+            pagination () {
+               //console.log('Estoy llegando al watch');
+               let p = this.pagination;
+               this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
+            }
+         },
+      },
       'mini-spinner': {
          props: [''],
          'name': 'mini-spinner',
@@ -889,6 +998,41 @@ const AdminUsuarios = new Vue({
          });
 
       },
+
+      // public method for navigate on paginator
+      navigate (page) {
+         this.spinner = true;
+         this.$http.get('/giud?page=' + page + '&per_page=' + this.pagination.per_page).then(response => {
+            // get body json data
+            this.condiciones_de_incidentes = response.data.condiciones_de_incidentes;
+            this.lists = response.data.list_incidente.data;
+            for (var index in this.lists) {
+               this.lists[index].estado_incidente.observacion = this.lists[index].incidente_estados[0] ? this.getCondicion(this.lists[index].id_incidente).condicion : 'SIN CONDICION';
+            }
+            this.listsTmp = this.lists;
+            this.pagination = response.data.list_incidente;
+            this.spinner = false;
+         }, response => {
+            // error callback
+         });
+      },
+      navigateCustom () {
+         this.spinner = true;
+         this.$http.get('/giud?page=' + 1 + '&per_page=' + this.pagination.per_page).then(response => {
+            // get body json data
+            this.condiciones_de_incidentes = response.data.condiciones_de_incidentes;
+            this.lists = response.data.list_incidente.data;
+            for (var index in this.lists) {
+               this.lists[index].estado_incidente.observacion = this.lists[index].incidente_estados[0] ? this.getCondicion(this.lists[index].id_incidente).condicion : 'SIN CONDICION';
+            }
+            this.listsTmp = this.lists;
+            this.pagination = response.data.list_incidente;
+            this.spinner = false;
+         }, response => {
+            // error callback
+         });
+      },
+
       //camelCase() => for specific functions
       fetchAdminUsuarios: function () {
          this.$http.get('/admin/mant_usuarios_data').then(response => { // success callback
@@ -896,6 +1040,7 @@ const AdminUsuarios = new Vue({
             this.users = {};
             if (response.status == 200) {
                this.users = response.body.users;
+               this.pagination = response.data.list_incidente;
                this.spinner_table_inputs = false;
                this.mini_spinner_table_inputs = false;
             }
