@@ -36897,6 +36897,8 @@ var AdminUsuarios = new _vue2.default({
          'filterTerm': '',
          'userEditId': '',
 
+         pagination: {},
+
          'mostrar_input_password': false,
          'mini_loader_visible': false,
          'btn_procesar_clave': true,
@@ -36950,6 +36952,92 @@ var AdminUsuarios = new _vue2.default({
    computed: {},
    watch: {},
    components: {
+      'paginators': {
+         props: ['pagination'],
+         template: '\n            <nav aria-label="Page navigation">\n               <ul class="pagination">\n                  <li :class="{ disabled: pagination.current_page == 1}">\n                     <a href="#!" aria-label="Previous" @click="nextPrev($event, pagination.current_page-1)">\n                     <span aria-hidden="true">&laquo;</span>\n                     </a>\n                  </li>\n\n                  <li v-for="page in pages" track-by="$index" :class="{ active: pagination.current_page == page }">\n                     <span v-if="page == \'...\'">{{page}}</span>\n                     <a href="#!" v-if="page != \'...\'" @click="navigate($event, page)">{{page}}</a>\n                  </li>\n\n                  <li :class="{ disabled: pagination.current_page == pagination.last_page}">\n                     <a href="#!" aria-label="Next" @click="nextPrev($event, pagination.current_page+1)">\n                     <span aria-hidden="true">&raquo;</span>\n                     </a>\n                  </li>\n               </ul>\n            </nav>\n         ',
+         name: 'paginators',
+         data: function data() {
+            return {
+               pages: []
+            };
+         },
+         ready: function ready() {},
+         created: function created() {
+            //console.log(this.pagination); //está trayendo pagination
+            var p = this.pagination;
+            this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
+         },
+
+
+         methods: {
+            navigate: function navigate(ev, page) {
+               ev.preventDefault();
+               //console.log(page);
+               this.$emit('navigate', page);
+            },
+            nextPrev: function nextPrev(ev, page) {
+               if (page == 0 || page == this.pagination.last_page + 1) {
+                  return;
+               }
+               this.navigate(ev, page);
+            },
+            generatePagesArray: function generatePagesArray(currentPage, collectionLength, rowsPerPage, paginationRange) {
+               var pages = [];
+               var totalPages = Math.ceil(collectionLength / rowsPerPage);
+               var halfWay = Math.ceil(paginationRange / 2);
+               var position;
+
+               if (currentPage <= halfWay) {
+                  position = 'start';
+               } else if (totalPages - halfWay < currentPage) {
+                  position = 'end';
+               } else {
+                  position = 'middle';
+               }
+
+               var ellipsesNeeded = paginationRange < totalPages;
+               var i = 1;
+               while (i <= totalPages && i <= paginationRange) {
+                  var pageNumber = this.calculatePageNumber(i, currentPage, paginationRange, totalPages);
+                  var openingEllipsesNeeded = i === 2 && (position === 'middle' || position === 'end');
+                  var closingEllipsesNeeded = i === paginationRange - 1 && (position === 'middle' || position === 'start');
+                  if (ellipsesNeeded && (openingEllipsesNeeded || closingEllipsesNeeded)) {
+                     pages.push('...');
+                  } else {
+                     pages.push(pageNumber);
+                  }
+                  i++;
+               }
+               return pages;
+            },
+            calculatePageNumber: function calculatePageNumber(i, currentPage, paginationRange, totalPages) {
+               var halfWay = Math.ceil(paginationRange / 2);
+               if (i === paginationRange) {
+                  return totalPages;
+               } else if (i === 1) {
+                  return i;
+               } else if (paginationRange < totalPages) {
+                  if (totalPages - halfWay < currentPage) {
+                     return totalPages - paginationRange + i;
+                  } else if (halfWay < currentPage) {
+                     return currentPage - halfWay + i;
+                  } else {
+                     return i;
+                  }
+               } else {
+                  return i;
+               }
+            }
+         },
+
+         watch: {
+            pagination: function pagination() {
+               //console.log('Estoy llegando al watch');
+               var p = this.pagination;
+               this.pages = this.generatePagesArray(p.current_page, p.total, p.per_page, 7);
+            }
+         }
+      },
       'mini-spinner': {
          props: [''],
          'name': 'mini-spinner',
@@ -37431,18 +37519,59 @@ var AdminUsuarios = new _vue2.default({
             }
          });
       },
+
+      // public method for navigate on paginator
+      navigate: function navigate(page) {
+         var _this5 = this;
+
+         //this.spinner_table_inputs = true;
+         //this.mini_spinner_table_inputs = true;
+         this.$http.get('/admin/mant_usuarios_data?page=' + page + '&per_page=' + this.pagination.per_page).then(function (response) {
+            // get body json data
+            if (response.status == 200) {
+               _this5.users = response.data.users.data;
+               _this5.pagination = response.data.users;
+               //this.spinner_table_inputs = false;
+               //this.mini_spinner_table_inputs = false;
+            }
+         }, function (response) {
+            // error callback
+         });
+      },
+      navigateCustom: function navigateCustom() {
+         var _this6 = this;
+
+         this.spinner_table_inputs = true;
+         //this.mini_spinner_table_inputs = true;
+         this.$http.get('/admin/mant_usuarios_data?page=' + 1 + '&per_page=' + this.pagination.per_page).then(function (response) {
+            // get body json data
+            if (response.status == 200) {
+               _this6.users = response.data.users.data;
+               _this6.pagination = response.data.users;
+               _this6.spinner_table_inputs = false;
+               //this.mini_spinner_table_inputs = false;
+            }
+         }, function (response) {
+            // error callback
+         });
+      },
+
+
       //camelCase() => for specific functions
       fetchAdminUsuarios: function fetchAdminUsuarios() {
-         var _this5 = this;
+         var _this7 = this;
 
          this.$http.get('/admin/mant_usuarios_data').then(function (response) {
             // success callback
             console.log(response);
-            _this5.users = {};
+            _this7.users = {};
             if (response.status == 200) {
-               _this5.users = response.body.users;
-               _this5.spinner_table_inputs = false;
-               _this5.mini_spinner_table_inputs = false;
+               _this7.users = response.data.users.data;
+
+               _this7.pagination = response.data.users;
+
+               _this7.spinner_table_inputs = false;
+               _this7.mini_spinner_table_inputs = false;
             }
          }, function (response) {
             // error callback

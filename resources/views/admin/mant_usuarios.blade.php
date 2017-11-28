@@ -82,6 +82,31 @@
 
                            </div>
 
+                           <paginators :pagination="pagination" @navigate="navigate"></paginators>
+
+                           <div class="pull-left">
+                              Ver mas resultados <small>(top)</small>
+                              <select style="width: 8rem !important;" v-model="pagination.per_page" @change="navigateCustom"
+                                 class="btn btn-default">
+                              <option selected disabled>@{{ pagination.per_page }}</option>
+                              <option :value="5">5</option>
+                              <option :value="10">10</option>
+                              <option :value="15">15</option>
+                              <option :value="20">20</option>
+                              <option :value="25">25</option>
+                              <option :value="30">30</option>
+                              <option :value="35">35</option>
+                              <option :value="40">40</option>
+                              <option :value="45">45</option>
+                              <option :value="50">50</option>
+                              <option :value="100">100</option>
+                              <option :value="250">250</option>
+                              <option :value="500">500</option>
+                              <option :value="750">750</option>
+                              <option :value="1250">1250</option>
+                              <option :value="1500">1500</option>
+                              </select>
+                           </div>
 
                         </div><!-- .col-* -->
 
@@ -193,11 +218,10 @@
 
                            </table>
 
-                           <paginators :pagination="pagination" @navigate="navigate"></paginators>
-
-                           <div class="pull-right">
+                           <div class="pull-left">
                               Ver mas resultados
-                              <select style="width: 5rem !important;" v-model="pagination.per_page" @change="navigateCustom">
+                              <select style="width: 8rem !important;" v-model="pagination.per_page" @change="navigateCustom"
+                                 class="btn btn-default">
                               <option selected disabled>@{{ pagination.per_page }}</option>
                               <option :value="5">5</option>
                               <option :value="10">10</option>
@@ -210,8 +234,11 @@
                               <option :value="45">45</option>
                               <option :value="50">50</option>
                               <option :value="100">100</option>
+                              <option :value="250">250</option>
                               <option :value="500">500</option>
-                              <option :value="1000">1000</option>
+                              <option :value="750">750</option>
+                              <option :value="1250">1250</option>
+                              <option :value="1500">1500</option>
                               </select>
                            </div>
 

@@ -1001,33 +1001,31 @@ const AdminUsuarios = new Vue({
 
       // public method for navigate on paginator
       navigate (page) {
-         this.spinner = true;
-         this.$http.get('/giud?page=' + page + '&per_page=' + this.pagination.per_page).then(response => {
+         //this.spinner_table_inputs = true;
+         //this.mini_spinner_table_inputs = true;
+         this.$http.get('/admin/mant_usuarios_data?page=' + page + '&per_page=' + this.pagination.per_page).then(response => {
             // get body json data
-            this.condiciones_de_incidentes = response.data.condiciones_de_incidentes;
-            this.lists = response.data.list_incidente.data;
-            for (var index in this.lists) {
-               this.lists[index].estado_incidente.observacion = this.lists[index].incidente_estados[0] ? this.getCondicion(this.lists[index].id_incidente).condicion : 'SIN CONDICION';
+            if (response.status == 200) {
+               this.users = response.data.users.data;
+               this.pagination = response.data.users;
+               //this.spinner_table_inputs = false;
+               //this.mini_spinner_table_inputs = false;
             }
-            this.listsTmp = this.lists;
-            this.pagination = response.data.list_incidente;
-            this.spinner = false;
          }, response => {
             // error callback
          });
       },
       navigateCustom () {
-         this.spinner = true;
-         this.$http.get('/giud?page=' + 1 + '&per_page=' + this.pagination.per_page).then(response => {
+         this.spinner_table_inputs = true;
+         //this.mini_spinner_table_inputs = true;
+         this.$http.get('/admin/mant_usuarios_data?page=' + 1 + '&per_page=' + this.pagination.per_page).then(response => {
             // get body json data
-            this.condiciones_de_incidentes = response.data.condiciones_de_incidentes;
-            this.lists = response.data.list_incidente.data;
-            for (var index in this.lists) {
-               this.lists[index].estado_incidente.observacion = this.lists[index].incidente_estados[0] ? this.getCondicion(this.lists[index].id_incidente).condicion : 'SIN CONDICION';
+            if (response.status == 200) {
+               this.users = response.data.users.data;
+               this.pagination = response.data.users;
+               this.spinner_table_inputs = false;
+               //this.mini_spinner_table_inputs = false;
             }
-            this.listsTmp = this.lists;
-            this.pagination = response.data.list_incidente;
-            this.spinner = false;
          }, response => {
             // error callback
          });
@@ -1039,8 +1037,10 @@ const AdminUsuarios = new Vue({
             console.log(response);
             this.users = {};
             if (response.status == 200) {
-               this.users = response.body.users;
-               this.pagination = response.data.list_incidente;
+               this.users = response.data.users.data;
+
+               this.pagination = response.data.users;
+
                this.spinner_table_inputs = false;
                this.mini_spinner_table_inputs = false;
             }

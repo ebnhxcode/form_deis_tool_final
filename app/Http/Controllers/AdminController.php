@@ -34,7 +34,15 @@ class AdminController extends Controller {
 
     public function mant_usuarios_data (Request $request) {
         if ($request->wantsJson()) {
-            $returnData['users'] = User::with('role')->get();
+
+            if (!$request->per_page) {
+                $this->per_page = 10;
+            } else {
+                $this->per_page = $request->per_page;
+            }
+
+            #$returnData['users'] = User::with('role')->get();
+            $returnData['users'] = User::with('role')->paginate((int)$this->per_page);
 
             return response()->json($returnData);
         }
