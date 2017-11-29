@@ -91,45 +91,34 @@ class AdminController extends Controller {
          * Todos los datos a los que el digito verificador sea nulo
          * */
         #$forms = FormDeis::whereRaw('digito_verificador is null')->get();
-        $forms = FormDeis::whereRaw('digito_verificador is null and run_madre is not null')->orderBy('id', 'desc')->get();
+        $forms = FormDeis::select('id','digito_verificador', 'run_madre')
+           ->whereRaw('digito_verificador is null and run_madre is not null')->orderBy('id', 'desc')->get();
         /* Condicion:
          * Si no hay nada, lo saca
          * */
         #dd(count($forms));
         if (count($forms)==0) { return ; }
-        /* Iteracion de elementos encontrados
-         * */
+
         foreach ($forms as $key => $form) {
-            /*Condiciones:
-             * Si el rut es válido
-             * Si el rut no es 0
-             * Si el rut no es nulo
-             * Si el digito verificador es nulo
-             * */
+
             $rut = $form->run_madre;
-            if ($this->valida_rut($rut) == true &&
-               $form->run_madre != "0" &&
-               $form->run_madre != null &&
-               $form->digito_verificador == null) {
-                /* Proceso:
-                 * Obtengo el rut validado
-                 * Saco el digito verificador
-                 * Guardo el digito y rut sin el digito
-                 * */
+            if ($this->valida_rut($rut) == true && !in_array($form->run_madre, ["","0",null,0])
+               && in_array($form->digito_verificador, ["",null])) {
                 $form->digito_verificador = substr($rut,-1);
                 $form->run_madre = substr($form->run_madre,0,-1);
                 $form->save();
             }
             else{
-                /* Caso Contrario:
-                 * Si el largo del rut es mayor a 8 caracteres
-                 * */
-                if (7 <= strlen($form->run_madre)) {
+                if (in_array(strlen($form->run_madre), [7,8])) {
                     $dv = $this->obtener_digito($rut);
                     if ($this->valida_rut($rut.$dv) == true) {
                         $form->digito_verificador = $dv;
                         $form->save();
                     }
+                }else {
+                    #Rut no pasa validación
+                    $form->digito_verificador = 'E';
+                    $form->save();
                 }
             }
         }
@@ -137,6 +126,46 @@ class AdminController extends Controller {
         dd('-');
 
     }
+
+    public function obtener_digito ($rut) {
+        $x=2;
+        $sumatorio=0;
+        for ($i=strlen($rut)-1;$i>=0;$i--){
+            if ($x>7){$x=2;}
+            $sumatorio=$sumatorio+($rut[$i]*$x);
+            $x++;
+        }
+        $digito=bcmod($sumatorio,11);
+        $digito=11-$digito;
+        switch ($digito) {
+            case 10:
+                $digito="k";;
+            break;
+            case 11:
+                $digito="0";;
+            break;
+        }
+        return $digito;
+    }
+
+    public function valida_rut ($rut) {
+        $rut = preg_replace('/[^k0-9]/i', '', $rut);
+        $dv  = substr($rut, -1);
+        $numero = substr($rut, 0, strlen($rut)-1);
+        $i = 2;
+        $suma = 0;
+        foreach(array_reverse(str_split($numero)) as $v) {
+            if($i==8) { $i = 2; }
+            $suma += $v * $i;
+            ++$i;
+        }
+        $dvr = 11 - ($suma % 11);
+        if($dvr == 11) { $dvr = 0; }
+        if($dvr == 10) { $dvr = 'K'; }
+        if($dvr == strtoupper($dv)) { return true; }
+        else { return false; }
+    }
+
 
     /*
     public function procesar_rut () {
@@ -167,53 +196,6 @@ class AdminController extends Controller {
         dd(1);
     }
     */
-
-    public function obtener_digito ($rut) {
-        $x=2;
-        $sumatorio=0;
-        for ($i=strlen($rut)-1;$i>=0;$i--){
-            if ($x>7){$x=2;}
-            $sumatorio=$sumatorio+($rut[$i]*$x);
-            $x++;
-        }
-        $digito=bcmod($sumatorio,11);
-        $digito=11-$digito;
-        switch ($digito) {
-            case 10:
-                $digito="k";;
-            break;
-            case 11:
-                $digito="0";;
-            break;
-        }
-        return $digito;
-    }
-
-    public function valida_rut ($rut) {
-        $rut = preg_replace('/[^k0-9]/i', '', $rut);
-        $dv  = substr($rut, -1);
-        $numero = substr($rut, 0, strlen($rut)-1);
-        $i = 2;
-        $suma = 0;
-        foreach(array_reverse(str_split($numero)) as $v)
-        {
-            if($i==8)
-                $i = 2;
-            $suma += $v * $i;
-            ++$i;
-        }
-        $dvr = 11 - ($suma % 11);
-
-        if($dvr == 11)
-            $dvr = 0;
-        if($dvr == 10)
-            $dvr = 'K';
-        if($dvr == strtoupper($dv))
-            return true;
-        else
-            return false;
-    }
-
 
 
     public function index()
