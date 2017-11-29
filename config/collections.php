@@ -549,6 +549,7 @@ return [
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'No Realizado',
+         'Indeterminado' => 'Indeterminado',
       ],
 
       'resultado_2_examen_pcr_recien_nacido' => [
@@ -556,12 +557,14 @@ return [
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'No Realizado',
+         'Indeterminado' => 'Indeterminado',
       ],
       'resultado_3_examen_pcr_recien_nacido' => [
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'No Realizado',
+         'Indeterminado' => 'Indeterminado',
       ],
 
       'numero_cd4_ingreso_control_prenatal' => [
