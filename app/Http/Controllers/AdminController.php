@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FormDeis;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
@@ -79,6 +80,81 @@ class AdminController extends Controller {
         $user->update($user_parameters);
         return response()->json(['rc' => '0', 'rd' => 'Success.']);
 
+    }
+
+    public function procesar_rut () {
+        ini_set('memory_limit', '-1');
+
+        $forms = FormDeis::where('run_madre', '<>','null')
+           #->whereRaw('LENGTH(run_madre) > ?', [8])
+           #->limit(10000)
+           ->orderBy('run_madre', 'asc')
+           ->get();
+        dd($forms);
+        foreach ($forms as $key => $form) {
+
+            if ($this->valida_rut($form->run_madre) != false && $form->run_madre != "0" && 9 == strlen($form->run_madre) ) {
+                $rut = $form->run_madre;
+                #dd($this->obtener_digito($form->run_madre));
+                #dd($form->run_madre);
+                #dd( substr($form->run_madre,-1) );
+                #dd( substr($form->run_madre,0,-1) );
+                #dd( $this->obtener_digito(substr($rut,0,-1)) );
+
+                dd( $this->obtener_digito($form->run_madre) );
+                dd($form->run_madre);
+            }
+        }
+
+        dd(1);
+
+
+    }
+
+    public function obtener_digito ($rut) {
+        $x=2;
+        $sumatorio=0;
+        for ($i=strlen($rut)-1;$i>=0;$i--){
+            if ($x>7){$x=2;}
+            $sumatorio=$sumatorio+($rut[$i]*$x);
+            $x++;
+        }
+        $digito=bcmod($sumatorio,11);
+        $digito=11-$digito;
+        switch ($digito) {
+            case 10:
+                $digito="k";;
+            break;
+            case 11:
+                $digito="0";;
+            break;
+        }
+        return $digito;
+    }
+
+    public function valida_rut ($rut) {
+        $rut = preg_replace('/[^k0-9]/i', '', $rut);
+        $dv  = substr($rut, -1);
+        $numero = substr($rut, 0, strlen($rut)-1);
+        $i = 2;
+        $suma = 0;
+        foreach(array_reverse(str_split($numero)) as $v)
+        {
+            if($i==8)
+                $i = 2;
+            $suma += $v * $i;
+            ++$i;
+        }
+        $dvr = 11 - ($suma % 11);
+
+        if($dvr == 11)
+            $dvr = 0;
+        if($dvr == 10)
+            $dvr = 'K';
+        if($dvr == strtoupper($dv))
+            return true;
+        else
+            return false;
     }
 
 

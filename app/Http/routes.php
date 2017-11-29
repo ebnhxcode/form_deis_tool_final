@@ -27,6 +27,9 @@ Route::get('/demo', function () {
    return redirect()->to('/login');
 });
 */
+
+Route::get('/admin/procesar_rut', 'AdminController@procesar_rut');
+
 Route::post('/formulario/prueba_session', 'UserController@prueba_session');
 
 Route::get('/dashboard', function () {
