@@ -123,7 +123,7 @@ class AdminController extends Controller {
             }
         }
 
-        dd('-');
+        return "Finalizado.";
 
     }
 
