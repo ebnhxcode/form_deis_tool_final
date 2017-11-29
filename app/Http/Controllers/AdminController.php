@@ -83,35 +83,68 @@ class AdminController extends Controller {
     }
 
     public function procesar_rut () {
+        /* Configuracion inicial:
+         * Sin limite de procesamiento de memoria
+         * */
         ini_set('memory_limit', '-1');
-        #$forms = FormDeis::where('run_madre', '<>','null')
-        #->whereRaw('LENGTH(run_madre) > ?', [8])
-        #->limit(10000)
-        #->orderBy('run_madre', 'asc')
-        #dd($forms);
-        $forms = FormDeis::whereRaw('digito_verificador is null')->limit(1000)->get();
+        /* Seleccion de datos a procesar:
+         * Todos los datos a los que el digito verificador sea nulo
+         * */
+        #$forms = FormDeis::whereRaw('digito_verificador is null')->get();
+        $forms = FormDeis::whereRaw('digito_verificador is null and run_madre is not null')->orderBy('id', 'desc')->get();
+        /* Condicion:
+         * Si no hay nada, lo saca
+         * */
+        #dd(count($forms));
+        if (count($forms)==0) { return ; }
+        /* Iteracion de elementos encontrados
+         * */
         foreach ($forms as $key => $form) {
-            #if ($this->valida_rut($form->run_madre) != false && $form->run_madre != "0" && 9 == strlen($form->run_madre) ) {
-            if ($this->valida_rut($form->run_madre) == true &&
+            /*Condiciones:
+             * Si el rut es válido
+             * Si el rut no es 0
+             * Si el rut no es nulo
+             * Si el largo del rut es mayor a 8 caracteres
+             * Si el digito verificador es nulo
+             * */
+            $rut = $form->run_madre;
+            if ($this->valida_rut($rut) == true &&
                $form->run_madre != "0" &&
-               $form->run_madre != null /*&&
-               7 < strlen($form->run_madre)*/ ) {
+               $form->run_madre != null &&
+               $form->digito_verificador == null) {
+                /* Proceso:
+                 * Obtengo el rut
+                 * Si es válido, tomo el digito y lo agrego al campo que corresponde
+                 * Si no es válido, proceso el valor para que me traiga el digito que corresponda,
+                   en caso de que esté incompleto y guardo el digito traido
+                 * */
+                $form->digito_verificador = substr($rut,-1);
+                $form->run_madre = substr($form->run_madre,0,-1);
+                $form->save();
 
-                $rut = $form->run_madre;
-                dd( $this->valida_rut($form->run_madre) );
+
+
                 #dd($this->obtener_digito($form->run_madre));
                 #dd($form->run_madre);
                 #dd( substr($form->run_madre,-1) );
                 #dd( substr($form->run_madre,0,-1) );
                 #dd( $this->obtener_digito(substr($rut,0,-1)) );
 
-                dd( $this->obtener_digito($form->run_madre) );
-                dd($form->run_madre);
+                #dd( $this->obtener_digito($form->run_madre) );
+                #dd($form->run_madre);
+            }
+            else{
+                if (7 <= strlen($form->run_madre)) {
+                    $dv = $this->obtener_digito($rut);
+                    if ($this->valida_rut($rut.$dv) == true) {
+                        $form->digito_verificador = $dv;
+                        $form->save();
+                    }
+                }
             }
         }
 
-        dd(1);
-
+        dd('-');
 
     }
 
