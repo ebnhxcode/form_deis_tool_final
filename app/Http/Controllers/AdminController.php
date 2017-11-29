@@ -127,6 +127,43 @@ class AdminController extends Controller {
 
     }
 
+    public function procesar_rut_resagados () {
+
+        ini_set('memory_limit', '-1');
+        $forms = FormDeis::select('id', 'run_madre')
+           ->whereRaw('LENGTH(run_madre) > ?', [8])->orderBy('id', 'desc')->get();
+
+        dd(count($forms));
+        if (count($forms)==0) { return ; }
+
+        foreach ($forms as $key => $form) {
+
+            $rut = $form->run_madre;
+            if ($this->valida_rut($rut) == true && !in_array($form->run_madre, ["","0",null,0])
+               && in_array($form->digito_verificador, ["",null])) {
+                $form->digito_verificador = substr($rut,-1);
+                $form->run_madre = substr($form->run_madre,0,-1);
+                $form->save();
+            }
+            else{
+                if (in_array(strlen($form->run_madre), [7,8])) {
+                    $dv = $this->obtener_digito($rut);
+                    if ($this->valida_rut($rut.$dv) == true) {
+                        $form->digito_verificador = $dv;
+                        $form->save();
+                    }
+                }else {
+                    #Rut no pasa validación
+                    $form->digito_verificador = 'E';
+                    $form->save();
+                }
+            }
+        }
+
+        return "Finalizado.";
+
+    }
+
     public function obtener_digito ($rut) {
         $x=2;
         $sumatorio=0;
