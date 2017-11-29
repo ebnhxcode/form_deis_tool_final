@@ -97,7 +97,7 @@ class AdminController extends Controller {
          * Si no hay nada, lo saca
          * */
         #dd(count($forms));
-        if (count($forms)==0) { return ; }
+        if (count($forms)==0) { return "Finalizado, nada que procesar"; }
 
         foreach ($forms as $key => $form) {
 
@@ -130,22 +130,56 @@ class AdminController extends Controller {
     public function procesar_rut_resagados () {
 
         ini_set('memory_limit', '-1');
-        $forms = FormDeis::select('id', 'run_madre')
+        $forms = FormDeis::select('id', 'digito_verificador', 'run_madre')
            ->whereRaw('LENGTH(run_madre) > ?', [8])->orderBy('id', 'desc')->get();
 
-        dd(count($forms));
-        if (count($forms)==0) { return ; }
+        #dd(count($forms));
+
+        if (count($forms)==0) { return "Finalizado, nada que procesar"; }
+
+        $casos_rut_correcto=0;
+        $casos_rut_nomatch=0;
+        $casos_rut_invalido=0;
+
+        $arr_casos_rut_correcto=[];
+        $arr_casos_rut_nomatch=[];
+        $arr_casos_rut_invalido=[];
 
         foreach ($forms as $key => $form) {
 
+            $dv = '';
             $rut = $form->run_madre;
-            if ($this->valida_rut($rut) == true && !in_array($form->run_madre, ["","0",null,0])
-               && in_array($form->digito_verificador, ["",null])) {
-                $form->digito_verificador = substr($rut,-1);
-                $form->run_madre = substr($form->run_madre,0,-1);
-                $form->save();
+
+            if ($this->valida_rut($rut) == true && !in_array($rut, ["","0",null,0])) {
+                $dv = substr($rut,-1);
+                if ($form->digito_verificador == $dv) {
+                    #$form->run_madre = substr($rut,0,-1);
+                    #$form->save();
+                    ++$casos_rut_correcto;
+                    array_push($arr_casos_rut_correcto, [
+                        'id'=>$form->id,
+                        'run_madre'=>$form->run_madre,
+                        'digito_verificador'=>$form->digito_verificador,
+                    ]);
+                }else{
+
+                    ++$casos_rut_nomatch;
+                    array_push($arr_casos_rut_nomatch, [
+                       'id'=>$form->id,
+                       'run_madre'=>$form->run_madre,
+                       'digito_verificador'=>$form->digito_verificador,
+                    ]);
+                }
+
             }
             else{
+                ++$casos_rut_invalido;
+                array_push($arr_casos_rut_invalido, [
+                   'id'=>$form->id,
+                   'run_madre'=>$form->run_madre,
+                   'digito_verificador'=>$form->digito_verificador,
+                ]);
+                /*
                 if (in_array(strlen($form->run_madre), [7,8])) {
                     $dv = $this->obtener_digito($rut);
                     if ($this->valida_rut($rut.$dv) == true) {
@@ -157,8 +191,24 @@ class AdminController extends Controller {
                     $form->digito_verificador = 'E';
                     $form->save();
                 }
+                */
             }
         }
+
+        dd([
+            'casos_rut_correcto'=>[
+                'cantidad'=>$casos_rut_correcto,
+                'detalle'=>$arr_casos_rut_correcto,
+            ],
+            'casos_rut_nomatch'=>[
+               'cantidad'=>$casos_rut_nomatch,
+               'detalle'=>$arr_casos_rut_nomatch,
+            ],
+            'casos_rut_invalido'=>[
+               'cantidad'=>$casos_rut_invalido,
+               'detalle'=>$arr_casos_rut_invalido,
+            ],
+        ]);
 
         return "Finalizado.";
 
