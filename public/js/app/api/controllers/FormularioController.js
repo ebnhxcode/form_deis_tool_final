@@ -37576,6 +37576,7 @@ var FormularioController = new _vue2.default({
                            }
                         }
                      }
+
                      this.fdc['resultado_dilucion_1_vdrl_embarazo'] = 'true';
                   }
                } else {
@@ -37914,7 +37915,7 @@ var FormularioController = new _vue2.default({
                   this.fdc[input.name] = 0;
                }
                break;
-
+               resultado_examen_vih_parto;
             case 'numero_carga_viral_control_prenatal':
 
             case 'carga_viral_numero_copia_semana_34':
@@ -37926,15 +37927,20 @@ var FormularioController = new _vue2.default({
             case 'resultado_vdrl_parto':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
                   for (var _i20 in this.inputs) {
-                     if (this.inputs[_i20].name == 'resultado_dilucion_vdrl_parto' || this.inputs[_i20].name == 'resultado_examen_treponemico_parto' || this.inputs[_i20].name == 'tratamiento_sifilis_parto') {
-                        this.inputs[_i20].disabled = true;
-                     }
+                     if (this.inputs[_i20].name == 'resultado_dilucion_vdrl_parto' /* ||
+                                                                                   this.inputs[i].name == 'resultado_examen_treponemico_parto' ||
+                                                                                   /*this.inputs[i].name == 'tratamiento_sifilis_parto'*/) {
+                           this.inputs[_i20].disabled = true;
+                        }
                   }
+                  this.fdc['resultado_dilucion_vdrl_parto'] = 'true';
                } else {
                   for (var _i21 in this.inputs) {
-                     if (this.inputs[_i21].name == 'resultado_dilucion_vdrl_parto' || this.inputs[_i21].name == 'resultado_examen_treponemico_parto' || this.inputs[_i21].name == 'tratamiento_sifilis_parto') {
-                        this.inputs[_i21].disabled = null;
-                     }
+                     if (this.inputs[_i21].name == 'resultado_dilucion_vdrl_parto' /*||
+                                                                                   this.inputs[i].name == 'resultado_examen_treponemico_parto' ||
+                                                                                   this.inputs[i].name == 'tratamiento_sifilis_parto'*/) {
+                           this.inputs[_i21].disabled = null;
+                        }
                   }
                }
                break;
@@ -38084,12 +38090,13 @@ var FormularioController = new _vue2.default({
 
                break;
             case 'resultado_examen_vih_parto':
-               if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'No Reactivo') {
+               if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Corresponde') {
                   for (var _i34 in this.inputs) {
                      if (this.inputs[_i34].name == 'tratamiento_retroviral_parto') {
                         this.inputs[_i34].disabled = true;
                      }
                   }
+                  this.fdc['tratamiento_retroviral_parto'] = 'true';
                } else {
                   for (var _i35 in this.inputs) {
                      if (this.inputs[_i35].name == 'tratamiento_retroviral_parto') {

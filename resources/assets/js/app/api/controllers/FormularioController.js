@@ -1090,6 +1090,7 @@ const FormularioController = new Vue({
 
                         }
                      }
+
                      this.fdc['resultado_dilucion_1_vdrl_embarazo'] = 'true';
 
                   }
@@ -1473,7 +1474,7 @@ const FormularioController = new Vue({
                   this.fdc[input.name] = 0;
                }
                break;
-
+               resultado_examen_vih_parto
             case 'numero_carga_viral_control_prenatal':
 
             case 'carga_viral_numero_copia_semana_34':
@@ -1485,18 +1486,19 @@ const FormularioController = new Vue({
             case 'resultado_vdrl_parto':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado'){
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_vdrl_parto' ||
+                     if (this.inputs[i].name == 'resultado_dilucion_vdrl_parto' /* ||
                         this.inputs[i].name == 'resultado_examen_treponemico_parto' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_parto' ) {
+                        /*this.inputs[i].name == 'tratamiento_sifilis_parto'*/ ) {
                         this.inputs[i].disabled = true;
                      }
                   }
+                  this.fdc['resultado_dilucion_vdrl_parto'] = 'true';
                }
                else{
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_vdrl_parto' ||
+                     if (this.inputs[i].name == 'resultado_dilucion_vdrl_parto' /*||
                         this.inputs[i].name == 'resultado_examen_treponemico_parto' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_parto' ) {
+                        this.inputs[i].name == 'tratamiento_sifilis_parto'*/ ) {
                         this.inputs[i].disabled = null;
                      }
                   }
@@ -1668,12 +1670,14 @@ const FormularioController = new Vue({
 
                break;
             case 'resultado_examen_vih_parto':
-               if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'No Reactivo') {
+               if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'No Reactivo'
+                  || this.fdc[input.name] == 'No Corresponde') {
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'tratamiento_retroviral_parto') {
                         this.inputs[i].disabled = true;
                      }
                   }
+                  this.fdc['tratamiento_retroviral_parto'] = 'true';
                }
                else {
                   for (let i in this.inputs){
