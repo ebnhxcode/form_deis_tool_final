@@ -104,7 +104,6 @@ class AdminController extends Controller {
              * Si el rut es válido
              * Si el rut no es 0
              * Si el rut no es nulo
-             * Si el largo del rut es mayor a 8 caracteres
              * Si el digito verificador es nulo
              * */
             $rut = $form->run_madre;
@@ -113,27 +112,18 @@ class AdminController extends Controller {
                $form->run_madre != null &&
                $form->digito_verificador == null) {
                 /* Proceso:
-                 * Obtengo el rut
-                 * Si es válido, tomo el digito y lo agrego al campo que corresponde
-                 * Si no es válido, proceso el valor para que me traiga el digito que corresponda,
-                   en caso de que esté incompleto y guardo el digito traido
+                 * Obtengo el rut validado
+                 * Saco el digito verificador
+                 * Guardo el digito y rut sin el digito
                  * */
                 $form->digito_verificador = substr($rut,-1);
                 $form->run_madre = substr($form->run_madre,0,-1);
                 $form->save();
-
-
-
-                #dd($this->obtener_digito($form->run_madre));
-                #dd($form->run_madre);
-                #dd( substr($form->run_madre,-1) );
-                #dd( substr($form->run_madre,0,-1) );
-                #dd( $this->obtener_digito(substr($rut,0,-1)) );
-
-                #dd( $this->obtener_digito($form->run_madre) );
-                #dd($form->run_madre);
             }
             else{
+                /* Caso Contrario:
+                 * Si el largo del rut es mayor a 8 caracteres
+                 * */
                 if (7 <= strlen($form->run_madre)) {
                     $dv = $this->obtener_digito($rut);
                     if ($this->valida_rut($rut.$dv) == true) {
