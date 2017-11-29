@@ -84,17 +84,21 @@ class AdminController extends Controller {
 
     public function procesar_rut () {
         ini_set('memory_limit', '-1');
-
-        $forms = FormDeis::where('run_madre', '<>','null')
-           #->whereRaw('LENGTH(run_madre) > ?', [8])
-           #->limit(10000)
-           ->orderBy('run_madre', 'asc')
-           ->get();
-        dd($forms);
+        #$forms = FormDeis::where('run_madre', '<>','null')
+        #->whereRaw('LENGTH(run_madre) > ?', [8])
+        #->limit(10000)
+        #->orderBy('run_madre', 'asc')
+        #dd($forms);
+        $forms = FormDeis::whereRaw('digito_verificador is null')->limit(1000)->get();
         foreach ($forms as $key => $form) {
+            #if ($this->valida_rut($form->run_madre) != false && $form->run_madre != "0" && 9 == strlen($form->run_madre) ) {
+            if ($this->valida_rut($form->run_madre) == true &&
+               $form->run_madre != "0" &&
+               $form->run_madre != null /*&&
+               7 < strlen($form->run_madre)*/ ) {
 
-            if ($this->valida_rut($form->run_madre) != false && $form->run_madre != "0" && 9 == strlen($form->run_madre) ) {
                 $rut = $form->run_madre;
+                dd( $this->valida_rut($form->run_madre) );
                 #dd($this->obtener_digito($form->run_madre));
                 #dd($form->run_madre);
                 #dd( substr($form->run_madre,-1) );
