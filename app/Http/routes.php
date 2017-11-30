@@ -114,7 +114,12 @@ Route::get ('/plataforma' , 'FormDeisController@create') ;
 Route::get ('/deis' , 'FormDeisController@create') ;
 Route::get ('/home' , 'FormDeisController@create') ;
 Route::get('/', function () {
-   return view ('usuarios.dashboard');
+   if (Auth::check()) {
+      return view ('usuarios.dashboard');
+   }else{
+      return redirect()->to('/login');
+   }
+
 });
 
 Route::resource ('/formulario' , 'FormDeisController') ;
