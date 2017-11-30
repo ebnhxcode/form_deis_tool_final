@@ -103,14 +103,15 @@ class AdminController extends Controller {
         foreach ($forms as $key => $form) {
 
             $rut = $form->run_madre;
-            if ($this->valida_rut($rut) == true && !in_array($form->run_madre, ["","0",null,0])
+            if (6 < strlen($rut) && $this->valida_rut($rut) == true && !in_array($rut, ["","0",null,0,1])
                && in_array($form->digito_verificador, ["",null])) {
+
                 $form->digito_verificador = substr($rut,-1);
-                $form->run_madre = substr($form->run_madre,0,-1);
+                $form->run_madre = substr($rut,0,-1);
                 $form->save();
             }
             else{
-                if (in_array(strlen($form->run_madre), [7,8])) {
+                if (in_array(strlen($rut), [7,8])) {
                     $dv = $this->obtener_digito($rut);
                     if ($this->valida_rut($rut.$dv) == true) {
                         $form->digito_verificador = $dv;
@@ -153,91 +154,54 @@ class AdminController extends Controller {
 
             if ($this->valida_rut($rut) == true && !in_array($rut, ["","0",null,0])) {
                 $dv = substr($rut,-1);
-                if ($form->digito_verificador == $dv) {
+
+                if (strtolower($form->digito_verificador) == strtolower($dv)) {
                     FormDeisValidacionRut::create([
                         'id_form_deis'=>$form->id,
                         'run_madre_inicial'=>$rut,
                         'run_madre_procesado'=>substr($rut,0,-1),
-                        'digito_verificador'=>$dv,
+                        'digito_verificador'=>strtolower($dv),
                         'estado_proceso_validacion'=>'casos_rut_correcto',
                     ]);
                     $form->run_madre = substr($rut,0,-1);
+                    $form->digito_verificador = strtolower($dv);
                     $form->save();
 
-                    #++$casos_rut_correcto;
-                    /*
-                    array_push($arr_casos_rut_correcto, [
-                        'id'=>$form->id,
-                        'run_madre'=>$form->run_madre,
-                        'digito_verificador'=>$form->digito_verificador,
-                    ]);
-                    */
                 }else{
                     FormDeisValidacionRut::create([
                        'id_form_deis'=>$form->id,
                        'run_madre_inicial'=>$rut,
                        #'run_madre_procesado'=>substr($rut,0,-1),
                        'digito_verificador'=>$form->digito_verificador,
-                       'estado_proceso_validacion'=>'casos_rut_nomatch',
+                       'estado_proceso_validacion'=>'casos_rut_nomatch_digito',
                     ]);
-                    #++$casos_rut_nomatch;
-                    /*
-                    array_push($arr_casos_rut_nomatch, [
-                       'id'=>$form->id,
-                       'run_madre'=>$form->run_madre,
-                       'digito_verificador'=>$form->digito_verificador,
-                    ]);
-                    */
+
                 }
 
             }
             else{
-                FormDeisValidacionRut::create([
-                   'id_form_deis'=>$form->id,
-                   'run_madre_inicial'=>$rut,
-                   #'run_madre_procesado'=>substr($rut,0,-1),
-                   'digito_verificador'=>$form->digito_verificador,
-                   'estado_proceso_validacion'=>'casos_rut_invalido',
-                ]);
-                #++$casos_rut_invalido;
-                /*
-                array_push($arr_casos_rut_invalido, [
-                   'id'=>$form->id,
-                   'run_madre'=>$form->run_madre,
-                   'digito_verificador'=>$form->digito_verificador,
-                ]);
-                */
-                /*
-                if (in_array(strlen($form->run_madre), [7,8])) {
-                    $dv = $this->obtener_digito($rut);
-                    if ($this->valida_rut($rut.$dv) == true) {
-                        $form->digito_verificador = $dv;
-                        $form->save();
-                    }
-                }else {
-                    #Rut no pasa validación
-                    $form->digito_verificador = 'E';
-                    $form->save();
+                $dv = substr($rut,-1);
+                if (strtolower($form->digito_verificador) == strtolower($dv)) {
+                    FormDeisValidacionRut::create([
+                       'id_form_deis'=>$form->id,
+                       'run_madre_inicial'=>$rut,
+                        #'run_madre_procesado'=>substr($rut,0,-1),
+                       'digito_verificador'=>$form->digito_verificador,
+                       'estado_proceso_validacion'=>'casos_rut_invalidos',
+                    ]);
+                }else{
+                    FormDeisValidacionRut::create([
+                       'id_form_deis'=>$form->id,
+                       'run_madre_inicial'=>$rut,
+                        #'run_madre_procesado'=>substr($rut,0,-1),
+                       'digito_verificador'=>$form->digito_verificador,
+                       'estado_proceso_validacion'=>'casos_rut_invalidos_nomatch_digito',
+                    ]);
                 }
-                */
+
             }
         }
-        /*
-        dd([
-            'casos_rut_correcto'=>[
-                'cantidad'=>$casos_rut_correcto,
-                'detalle'=>$arr_casos_rut_correcto,
-            ],
-            'casos_rut_nomatch'=>[
-               'cantidad'=>$casos_rut_nomatch,
-               'detalle'=>$arr_casos_rut_nomatch,
-            ],
-            'casos_rut_invalido'=>[
-               'cantidad'=>$casos_rut_invalido,
-               'detalle'=>$arr_casos_rut_invalido,
-            ],
-        ]);
-        */
+
         return "Finalizado.";
 
     }
