@@ -33,9 +33,7 @@ Route::get('/admin/procesar_rut', 'AdminController@procesar_rut');
 
 Route::post('/formulario/prueba_session', 'UserController@prueba_session');
 
-Route::get('/dashboard', function () {
-   return view ('usuarios.dashboard');
-});
+Route::get('/dashboard', 'UserController@dashboard');
 Route::get('/registro', 'UserController@registro');
 Route::get('/solicitud_clave', 'UserController@registro');
 Route::get('/clave_electronica', 'UserController@registro');
@@ -115,7 +113,9 @@ Route::get ('/plataforma/' , 'FormDeisController@create') ;
 Route::get ('/plataforma' , 'FormDeisController@create') ;
 Route::get ('/deis' , 'FormDeisController@create') ;
 Route::get ('/home' , 'FormDeisController@create') ;
-Route::get ('/' , 'FormDeisController@create') ;
+Route::get('/', function () {
+   return view ('usuarios.dashboard');
+});
 
 Route::resource ('/formulario' , 'FormDeisController') ;
 

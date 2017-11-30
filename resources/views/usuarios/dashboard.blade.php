@@ -20,53 +20,74 @@
 
                   <div class="row">
 
-                     <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-green">
-                           <div class="inner">
-                              <h3>Title</h3>
-                              <small>Compromisos vencidos</small>
-                              <p>Hasta 30 días</p>
+                     @if(in_array(Auth::user()->role->role, ['admin','mantenedor']))
+                        <div class="col-lg-4 col-xs-6">
+                           <!-- small box -->
+                           <div class="small-box bg-green">
+                              <div class="inner">
+                                 <h4>Mantenedor de Usuarios</h4>
+                                 <hr>
+                                 <small>
+                                    · Descargas de usuarios de sistema <br>
+                                    · Creación de usuarios <br>
+                                    · Mantenedor de usuarios <br>
+                                 </small>
+                              </div>
+                              <div class="icon">
+                                 <i class="ion ion-stats-bars"></i>
+                              </div>
+                              <a href="{{url('/admin/mant_usuarios')}}"data-tipo="verde"
+                                 class="alerta-semaforo small-box-footer">Acceder <i class="fa fa-arrow-circle-right"></i></a>
                            </div>
-                           <div class="icon">
-                              <i class="ion ion-stats-bars"></i>
-                           </div>
-                           <a href="#" data-toggle="modal" data-tipo="verde" data-target="#myModal"
-                              class="alerta-semaforo small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
-                     </div>
-                     <!-- ./col -->
-                     <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-yellow">
-                           <div class="inner">
-                              <h3>Title</h3>
-                              <small>Compromisos vencidos</small>
-                              <p>De 31 a 60 días</p>
+                        <!-- ./col -->
+                     @endif
+
+                     @if(in_array(Auth::user()->role->role, ['admin','mantenedor','digitador']))
+                        <div class="col-lg-4 col-xs-6">
+                           <!-- small box -->
+                           <div class="small-box bg-red">
+                              <div class="inner">
+                                 <h4>Formulario · DEIS</h4>
+                                 <hr>
+                                 <small>
+                                    · Formulario de ingreso de pacientes <br>
+                                    · Búsqueda de formularios <br>
+                                    · Creación de formularios <br>
+                                 </small>
+                              </div>
+                              <div class="icon">
+                                 <i class="ion ion-stats-bars"></i>
+                              </div>
+                              <a href="{{url('/formulario/transmision_vertical')}}" data-tipo="rojo"
+                                 class="alerta-semaforo small-box-footer">Acceder <i class="fa fa-arrow-circle-right"></i></a>
                            </div>
-                           <div class="icon">
-                              <i class="ion ion-stats-bars"></i>
-                           </div>
-                           <a href="#" data-toggle="modal" data-tipo="amarillo" data-target="#myModal"
-                              class="alerta-semaforo small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
-                     </div>
-                     <!-- ./col -->
-                     <div class="col-lg-4 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-red">
-                           <div class="inner">
-                              <h3>Title</h3>
-                              <small>Compromisos vencidos</small>
-                              <p>De 61 a más días</p>
+                        <!-- ./col -->
+                     @endif
+
+                     @if(in_array(Auth::user()->role->role, ['admin']))
+                        <div class="col-lg-4 col-xs-6">
+                           <!-- small box -->
+                           <div class="small-box bg-yellow">
+                              <div class="inner">
+                                 <h4>Mantenedor de Campos</h4>
+                                 <hr>
+                                 <small>
+                                    · Modificación de labels <br>
+                                    · Modificación de campos <br>
+                                    · Búsqueda de campos <br>
+                                 </small>
+                              </div>
+                              <div class="icon">
+                                 <i class="ion ion-stats-bars"></i>
+                              </div>
+                              <a href="{{url('/input')}}" data-tipo="amarillo"
+                                 class="alerta-semaforo small-box-footer">Acceder <i class="fa fa-arrow-circle-right"></i></a>
                            </div>
-                           <div class="icon">
-                              <i class="ion ion-stats-bars"></i>
-                           </div>
-                           <a href="#" data-toggle="modal" data-tipo="rojo" data-target="#myModal"
-                              class="alerta-semaforo small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
-                     </div>
+                        <!-- ./col -->
+                     @endif
 
                   </div><!-- .row -->
 

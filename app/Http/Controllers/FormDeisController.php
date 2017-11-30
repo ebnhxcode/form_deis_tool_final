@@ -25,7 +25,6 @@ class FormDeisController
         $this->middleware('digitador');
     }
 
-
     public function testapi (Request $request) {
 
         #https://api.minsal.cl
