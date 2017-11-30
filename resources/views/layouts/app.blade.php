@@ -43,6 +43,8 @@
    <!-- Sweet Alert CSS -->
    <link rel="stylesheet" href="{{asset('/css/sweetalert.min.css')}}">
 
+   <!-- Admin LTE -->
+   <link href="{{ asset('/css/AdminLTE.css') }}" rel="stylesheet" type="text/css"/>
 
    <!-- Recaptcha V2 Google -->
    <script src='https://www.google.com/recaptcha/api.js'></script>
