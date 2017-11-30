@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FormDeis;
 use Illuminate\Http\Request;
 use App\User;
+use App\FormDeisValidacionRut;
 use App\Http\Requests;
 
 class AdminController extends Controller {
@@ -153,32 +154,59 @@ class AdminController extends Controller {
             if ($this->valida_rut($rut) == true && !in_array($rut, ["","0",null,0])) {
                 $dv = substr($rut,-1);
                 if ($form->digito_verificador == $dv) {
-                    #$form->run_madre = substr($rut,0,-1);
-                    #$form->save();
-                    ++$casos_rut_correcto;
+                    FormDeisValidacionRut::create([
+                        'id_form_deis'=>$form->id,
+                        'run_madre_inicial'=>$rut,
+                        'run_madre_procesado'=>substr($rut,0,-1),
+                        'digito_verificador'=>$dv,
+                        'estado_proceso_validacion'=>'casos_rut_correcto',
+                    ]);
+                    $form->run_madre = substr($rut,0,-1);
+                    $form->save();
+
+                    #++$casos_rut_correcto;
+                    /*
                     array_push($arr_casos_rut_correcto, [
                         'id'=>$form->id,
                         'run_madre'=>$form->run_madre,
                         'digito_verificador'=>$form->digito_verificador,
                     ]);
+                    */
                 }else{
-
-                    ++$casos_rut_nomatch;
+                    FormDeisValidacionRut::create([
+                       'id_form_deis'=>$form->id,
+                       'run_madre_inicial'=>$rut,
+                       #'run_madre_procesado'=>substr($rut,0,-1),
+                       'digito_verificador'=>$form->digito_verificador,
+                       'estado_proceso_validacion'=>'casos_rut_nomatch',
+                    ]);
+                    #++$casos_rut_nomatch;
+                    /*
                     array_push($arr_casos_rut_nomatch, [
                        'id'=>$form->id,
                        'run_madre'=>$form->run_madre,
                        'digito_verificador'=>$form->digito_verificador,
                     ]);
+                    */
                 }
 
             }
             else{
-                ++$casos_rut_invalido;
+                FormDeisValidacionRut::create([
+                   'id_form_deis'=>$form->id,
+                   'run_madre_inicial'=>$rut,
+                   #'run_madre_procesado'=>substr($rut,0,-1),
+                   'digito_verificador'=>$form->digito_verificador,
+                   'estado_proceso_validacion'=>'casos_rut_invalido',
+                ]);
+                #++$casos_rut_invalido;
+                /*
                 array_push($arr_casos_rut_invalido, [
                    'id'=>$form->id,
                    'run_madre'=>$form->run_madre,
                    'digito_verificador'=>$form->digito_verificador,
                 ]);
+                */
                 /*
                 if (in_array(strlen($form->run_madre), [7,8])) {
                     $dv = $this->obtener_digito($rut);
@@ -194,7 +222,7 @@ class AdminController extends Controller {
                 */
             }
         }
-
+        /*
         dd([
             'casos_rut_correcto'=>[
                 'cantidad'=>$casos_rut_correcto,
@@ -209,7 +237,7 @@ class AdminController extends Controller {
                'detalle'=>$arr_casos_rut_invalido,
             ],
         ]);
-
+        */
         return "Finalizado.";
 
     }

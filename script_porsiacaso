@@ -1,0 +1,32 @@
+CREATE SEQUENCE public.form_deis_validacion_rut_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.form_deis_validacion_rut_id_seq
+    OWNER TO postgres;
+    
+    
+    
+CREATE TABLE public.form_deis_validacion_rut
+(
+    id integer NOT NULL DEFAULT nextval('form_deis_validacion_rut_id_seq'::regclass),
+    id_form_deis integer,
+    run_madre_inicial text,
+    run_madre_procesado text,
+    digito_verificador text,
+    estado_proceso_validacion text,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+
+    CONSTRAINT form_deis_validacion_rut_originaldata_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.form_deis_validacion_rut
+    OWNER to postgres;
