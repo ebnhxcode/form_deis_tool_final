@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/formulario/transmision_vertical';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
