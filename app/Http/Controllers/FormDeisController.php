@@ -16,8 +16,7 @@ use App\FormDeisInput;
 use Illuminate\Support\Facades\Hash;
 
 
-class FormDeisController
-   extends Controller {
+class FormDeisController extends Controller {
 
     private $fdc;
     public function __construct () {
