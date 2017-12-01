@@ -33,7 +33,6 @@ Route::get('/admin/procesar_rut', 'AdminController@procesar_rut');
 
 Route::post('/formulario/prueba_session', 'UserController@prueba_session');
 
-Route::get('/dashboard', 'UserController@dashboard');
 Route::get('/registro', 'UserController@registro');
 Route::get('/solicitud_clave', 'UserController@registro');
 Route::get('/clave_electronica', 'UserController@registro');
@@ -120,6 +119,14 @@ Route::get('/', function () {
       return redirect()->to('/login');
    }
 
+});
+
+Route::get('/dashboard', function () {
+   if (Auth::check()) {
+      return view ('usuarios.dashboard');
+   }else{
+      return redirect()->to('/login');
+   }
 });
 
 Route::resource ('/formulario' , 'FormDeisController') ;

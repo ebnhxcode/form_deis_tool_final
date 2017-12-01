@@ -14,7 +14,8 @@ class UserController extends Controller
 
     public function __construct () {
         $this->middleware('auth', ['except' => ['registro', 'procesar_solicitud_clave', 'crear_clave', 'enviar_llaves_secretas','prueba_session']]);
-        $this->middleware('mantenedor');
+        #$this->middleware('mantenedor');
+        $this->middleware('digitador',['except' => ['registro', 'procesar_solicitud_clave']]);
     }
 
     public function registro (Request $request) {
