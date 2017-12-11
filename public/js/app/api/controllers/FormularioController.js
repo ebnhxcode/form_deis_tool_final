@@ -37288,6 +37288,7 @@ var FormularioController = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
+
       check_status_code: function check_status_code(status_code) {
          switch (status_code) {
             case 401:
@@ -37376,6 +37377,10 @@ var FormularioController = new _vue2.default({
          var _this6 = this;
 
          switch (input.id) {
+
+            case 'lugar_control_prenatal':
+               alert('Cambio!');
+               break;
 
             case 'run_madre':
                /*
@@ -38159,6 +38164,7 @@ var FormularioController = new _vue2.default({
 
       verifica_validacion_click: function verifica_validacion_click(input) {
          switch (input.id) {
+
             case 'pais_origen':
                break;
 

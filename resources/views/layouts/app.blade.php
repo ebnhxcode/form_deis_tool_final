@@ -29,7 +29,7 @@
 
       <!-- Select2 2.1.4 -->
    <script src="{{ asset('/js/select2.min.js') }}"></script>
-   <link rel="stylesheet" type="text/css" href="{{ asset('/css/select2.min.css') }}"></link>
+   <link rel="stylesheet" type="text/css" href="{{ asset('/css/select2.min.css') }}">
 
    <!-- Select2 4.0.4 -->
    {{--

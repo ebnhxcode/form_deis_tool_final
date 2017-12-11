@@ -53,7 +53,6 @@ const FormularioController = new Vue({
          'formularioNuevoActivo':false,
          'formularioEditActivo':false,
 
-
          'formularioActivoObj':[],
 
          'hayGuardadoActivo':false,
@@ -772,12 +771,15 @@ const FormularioController = new Vue({
          window.onunload = function(e){
             return "Cierre de la ventana";
          };
+
+
       });
    },
    ready: {},
    filters: {
    },
    methods: {
+
       check_status_code: function (status_code) {
          switch (status_code) {
             case 401:
@@ -870,6 +872,10 @@ const FormularioController = new Vue({
 
 
          switch (input.id) {
+
+            case 'lugar_control_prenatal':
+               alert('Cambio!');
+               break;
 
 
             case 'run_madre':
@@ -1767,6 +1773,7 @@ const FormularioController = new Vue({
 
       verifica_validacion_click: function (input) {
          switch (input.id) {
+
             case 'pais_origen':
                break;
 

@@ -155,6 +155,7 @@
                                                 {{--v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'"--}}
                                                 <dd v-if="check_input(i,index) == true">
 
+
                                                    <input :name="i.name"
                                                           :id="i.id"
                                                           :disabled="i.disabled!=''?i.disabled:''"
@@ -256,6 +257,14 @@
    </div><!-- .container -->
 
    <script>
+
+
+      var self = $;
+      setInterval(function () {
+         if (!self(`#lugar_control_prenatal`).data('select2')) {
+            self(`#lugar_control_prenatal`).select2();
+         }
+      },1000);
 
    </script>
 @endsection
