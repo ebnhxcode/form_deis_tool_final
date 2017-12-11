@@ -190,6 +190,7 @@
                                                            v-model="fdc[i.name]"
                                                            @change.prevent="verifica_validacion_change(i)"
                                                            @click.prevent="verifica_validacion_click(i)"
+                                                           @blur.prevent="verifica_validacion_blur(i)"
                                                            v-else-if="inputInArray(i,inputTypes.select)">
 
                                                       {{--<option value="">Seleccione</option>--}}
@@ -258,13 +259,13 @@
 
    <script>
 
-
       var self = $;
       setInterval(function () {
          if (!self(`#lugar_control_prenatal`).data('select2')) {
             self(`#lugar_control_prenatal`).select2();
          }
       },1000);
+
 
    </script>
 @endsection

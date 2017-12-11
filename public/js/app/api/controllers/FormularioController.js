@@ -37378,10 +37378,6 @@ var FormularioController = new _vue2.default({
 
          switch (input.id) {
 
-            case 'lugar_control_prenatal':
-               alert('Cambio!');
-               break;
-
             case 'run_madre':
                /*
                if (validate(this.fdc[input.name]) == false) {
@@ -38232,6 +38228,10 @@ var FormularioController = new _vue2.default({
 
       verifica_validacion_blur: function verifica_validacion_blur(input) {
          switch (input.id) {
+
+            case 'lugar_control_prenatal':
+               console.log($(this));
+               break;
 
             case 'fecha_nacimiento_madre':
                var date = this.fdc[input.name].split('-');
