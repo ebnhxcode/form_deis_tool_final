@@ -20,7 +20,7 @@
 
                   <div class="row">
 
-                     @if(in_array(Auth::user()->role->role, ['admin','mantenedor']))
+                     @if(isset (Auth::user()->role) && in_array(Auth::user()->role->role, ['admin','mantenedor']))
                         <div class="col-lg-4 col-xs-6">
                            <!-- small box -->
                            <div class="small-box bg-green">
@@ -43,7 +43,7 @@
                         <!-- ./col -->
                      @endif
 
-                     @if(in_array(Auth::user()->role->role, ['admin','mantenedor','digitador']))
+                     @if(isset (Auth::user()->role) && in_array(Auth::user()->role->role, ['admin','mantenedor','digitador']))
                         <div class="col-lg-4 col-xs-6">
                            <!-- small box -->
                            <div class="small-box bg-red">
@@ -66,7 +66,7 @@
                         <!-- ./col -->
                      @endif
 
-                     @if(in_array(Auth::user()->role->role, ['admin']))
+                     @if(isset (Auth::user()->role) && in_array(Auth::user()->role->role, ['admin']))
                         <div class="col-lg-4 col-xs-6">
                            <!-- small box -->
                            <div class="small-box bg-yellow">
