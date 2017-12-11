@@ -724,7 +724,8 @@ const AdminUsuarios = new Vue({
                   'telefono':'',
                   'clave_electronica':'',
                   'confirmado_llave_secreta':'',
-                  'password':''
+                  'password':'',
+                  'id_role':4
                }
             }
          },
@@ -832,7 +833,8 @@ const AdminUsuarios = new Vue({
                   'telefono':'',
                   'clave_electronica':'',
                   'confirmado_llave_secreta':'',
-                  'password':''
+                  'password':'',
+                  'id_role':4
                };
             },
 
@@ -857,6 +859,7 @@ const AdminUsuarios = new Vue({
                      formData.append('clave_electronica', user.clave_electronica);
                      formData.append('confirmado_llave_secreta', 'enviar');
                      formData.append('password', user.password);
+                     formData.append('id_role', user.id_role);
 
                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
