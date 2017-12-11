@@ -37733,7 +37733,7 @@ var FormularioController = new _vue2.default({
                      /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
                         this.inputs[i].disabled = true;
                      }*/
-                     switch (this.inputs[_i14]) {
+                     switch (this.inputs[_i14].id) {
                         case 'resultado_1_examen_vih_embarazo':
                         case 'fecha_1_examen_vih_embarazo':
                         case 'eg_1_examen_vih':
@@ -37750,7 +37750,7 @@ var FormularioController = new _vue2.default({
                      /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
                         this.inputs[i].disabled = null;
                      }*/
-                     switch (this.inputs[_i15]) {
+                     switch (this.inputs[_i15].id) {
                         case 'resultado_1_examen_vih_embarazo':
                         case 'fecha_1_examen_vih_embarazo':
                         case 'eg_1_examen_vih':
