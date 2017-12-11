@@ -36,8 +36,8 @@ return [
    ],
    #Instrucciones
    'deis_form_instructions' => [
-      0=>'Debe completar todos los campos que han sido definidos como obligatorios, se pueden reconocer con el simbolo (*).',
-      1=>'Puede guardar el estado del formulario para no perder los cambios realizados (borrador).',
+      #0=>'Debe completar todos los campos que han sido definidos como obligatorios, se pueden reconocer con el simbolo (*).',
+      1=>'Puede guardar el estado del formulario en cada pestaña para no perder los cambios realizados.',
       2=>'Solo completar con los datos solicitados',
       3=>'Cuando digite fechas, siempre debe comenzar por el día',
    ],
