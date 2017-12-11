@@ -37238,7 +37238,8 @@ var AdminUsuarios = new _vue2.default({
                   'telefono': '',
                   'clave_electronica': '',
                   'confirmado_llave_secreta': '',
-                  'password': ''
+                  'password': '',
+                  'id_role': 4
                }
             };
          },
@@ -37355,7 +37356,8 @@ var AdminUsuarios = new _vue2.default({
                   'telefono': '',
                   'clave_electronica': '',
                   'confirmado_llave_secreta': '',
-                  'password': ''
+                  'password': '',
+                  'id_role': 4
                };
             },
 
@@ -37382,6 +37384,7 @@ var AdminUsuarios = new _vue2.default({
                      formData.append('clave_electronica', user.clave_electronica);
                      formData.append('confirmado_llave_secreta', 'enviar');
                      formData.append('password', user.password);
+                     formData.append('id_role', user.id_role);
 
                      _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
