@@ -1069,7 +1069,7 @@ const FormularioController = new Vue({
                            if (this.fdc['fecha_1_vdrl_embarazo'] || this.fdc['eg_1_vdrl_embarazo']) {
                               swal({
                                  title: "Advertencia",
-                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
                                  type: "warning",
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
@@ -1122,7 +1122,7 @@ const FormularioController = new Vue({
                            if (this.fdc['fecha_2_vdrl_embarazo'] || this.fdc['eg_2_vdrl_embarazo']) {
                               swal({
                                  title: "Advertencia",
-                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
                                  type: "warning",
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
@@ -1172,7 +1172,7 @@ const FormularioController = new Vue({
                         if (this.fdc['fecha_3_vdrl_embarazo'] || this.fdc['eg_3_vdrl_embarazo']) {
                            swal({
                               title: "Advertencia",
-                              text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                              text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
                               type: "warning",
                               confirmButtonClass: "btn-danger",
                               closeOnConfirm: false
@@ -1310,7 +1310,7 @@ const FormularioController = new Vue({
                      if (this.fdc['fecha_1_examen_vih_embarazo'] || this.fdc['eg_1_examen_vih']) {
                         swal({
                            title: "Advertencia",
-                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
                            type: "warning",
                            confirmButtonClass: "btn-danger",
                            closeOnConfirm: false
@@ -1340,7 +1340,7 @@ const FormularioController = new Vue({
                      if (this.fdc['fecha_2_examen_vih_embarazo'] || this.fdc['eg_2_examen_vih']) {
                         swal({
                            title: "Advertencia",
-                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Realizado y No Reactivo.",
+                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
                            type: "warning",
                            confirmButtonClass: "btn-danger",
                            closeOnConfirm: false
