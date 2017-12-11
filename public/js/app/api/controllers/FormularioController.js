@@ -37730,15 +37730,35 @@ var FormularioController = new _vue2.default({
                if (this.fdc[input.name] == 'Rechaza') {
                   for (var _i14 in this.inputs) {
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     if (input.bloque == this.inputs[_i14].bloque && input.name != this.inputs[_i14].name) {
-                        this.inputs[_i14].disabled = true;
+                     /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
+                        this.inputs[i].disabled = true;
+                     }*/
+                     switch (this.inputs[_i14]) {
+                        case 'resultado_1_examen_vih_embarazo':
+                        case 'fecha_1_examen_vih_embarazo':
+                        case 'eg_1_examen_vih':
+                        case 'resultado_2_examen_vih_embarazo':
+                        case 'fecha_2_examen_vih_embarazo':
+                        case 'eg_2_examen_vih':
+                           this.inputs[_i14].disabled = true;
+                           break;
                      }
                   }
                } else {
                   for (var _i15 in this.inputs) {
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     if (input.bloque == this.inputs[_i15].bloque && input.name != this.inputs[_i15].name) {
-                        this.inputs[_i15].disabled = null;
+                     /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
+                        this.inputs[i].disabled = null;
+                     }*/
+                     switch (this.inputs[_i15]) {
+                        case 'resultado_1_examen_vih_embarazo':
+                        case 'fecha_1_examen_vih_embarazo':
+                        case 'eg_1_examen_vih':
+                        case 'resultado_2_examen_vih_embarazo':
+                        case 'fecha_2_examen_vih_embarazo':
+                        case 'eg_2_examen_vih':
+                           this.inputs[_i15].disabled = null;
+                           break;
                      }
                   }
                }

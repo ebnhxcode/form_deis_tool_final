@@ -1282,33 +1282,44 @@ const FormularioController = new Vue({
             case 'acepta_rechaza_toma_examen_vih':
 
                if (this.fdc[input.name] == 'Rechaza') {
-                  /*for (let i in this.inputs){
+                  for (let i in this.inputs){
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
+                     /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
                         this.inputs[i].disabled = true;
+                     }*/
+                     switch (this.inputs[i].id) {
+                        case 'resultado_1_examen_vih_embarazo':
+                        case 'fecha_1_examen_vih_embarazo':
+                        case 'eg_1_examen_vih':
+                        case 'resultado_2_examen_vih_embarazo':
+                        case 'fecha_2_examen_vih_embarazo':
+                        case 'eg_2_examen_vih':
+                           this.inputs[i].disabled = true;
+                           break;
                      }
-                  }*/
-                  this.inputs['resultado_1_examen_vih_embarazo	'].disabled = true;
-                  this.inputs['fecha_1_examen_vih_embarazo	'].disabled = true;
-                  this.inputs['eg_1_examen_vih	'].disabled = true;
-                  this.inputs['resultado_2_examen_vih_embarazo	'].disabled = true;
-                  this.inputs['fecha_2_examen_vih_embarazo	'].disabled = true;
-                  this.inputs['eg_2_examen_vih	'].disabled = true;
+
+
+                  }
 
                }
                else{
-                  /*for (let i in this.inputs){
+                  for (let i in this.inputs){
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
+                     /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
                         this.inputs[i].disabled = null;
+                     }*/
+                     switch (this.inputs[i].id) {
+                        case 'resultado_1_examen_vih_embarazo':
+                        case 'fecha_1_examen_vih_embarazo':
+                        case 'eg_1_examen_vih':
+                        case 'resultado_2_examen_vih_embarazo':
+                        case 'fecha_2_examen_vih_embarazo':
+                        case 'eg_2_examen_vih':
+                           this.inputs[i].disabled = null;
+                           break;
                      }
-                  }*/
-                  this.inputs['resultado_1_examen_vih_embarazo	'].disabled = false;
-                  this.inputs['fecha_1_examen_vih_embarazo	'].disabled = false;
-                  this.inputs['eg_1_examen_vih	'].disabled = false;
-                  this.inputs['resultado_2_examen_vih_embarazo	'].disabled = false;
-                  this.inputs['fecha_2_examen_vih_embarazo	'].disabled = false;
-                  this.inputs['eg_2_examen_vih	'].disabled = false;
+                  }
+
                }
 
 
