@@ -96,6 +96,7 @@ Route::post ('/formulario/buscar_run_existente' , 'FormDeisController@buscar_run
 Route::post ('/formulario/buscar_por_correlativo' , 'FormDeisController@buscar_por_correlativo') ;
 Route::post ('/formulario/confirmar_confidencialidad_mujer_vih' , 'FormDeisController@confirmar_confidencialidad_mujer_vih') ;
 Route::post ('/formulario/confirmar_confidencialidad_usuario' , 'FormDeisController@confirmar_confidencialidad_usuario') ;
+Route::post ('/formulario/confirmar_mensaje_informativo' , 'FormDeisController@confirmar_mensaje_informativo') ;
 #Ruta para tomar el registro
 Route::post ('/formulario/marcar_registro_form_deis' , 'FormDeisController@marcar_registro_form_deis');
 Route::post ('/formulario/desmarcar_registro_form_deis' , 'FormDeisController@desmarcar_registro_form_deis');

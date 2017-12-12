@@ -2015,6 +2015,35 @@ const FormularioController = new Vue({
             if (this.auth && this.auth.acepta_terminos != 'true') {
                var self = this;
                swal({
+                  title: "Información sobre Mantenimiento del Sitio",
+                  text: `
+                     Estimado usuario, le informamos que la plataforma se encontrará en mantención los dias Martes y Jueves entre 18:00 y 18:30 horas, al aceptar este mensaje, queda en conformidad de que el usuario no deberá ingresar en ese horario a la plataforma de transmisión vertical.
+                     `,
+                  closeOnConfirm: true,
+                  confirmButtonText: 'Si, acepto',
+               }, function (isConfirm) {
+
+                  //alert(isConfirm);
+                  if (isConfirm == true) {
+                     swal.close();
+
+                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+                     self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(response => { // success callback
+                        //console.log(response);
+
+                     }, response => { // error callback
+                        //console.log(response);
+                     });
+                  }else{
+                     return ;
+                  }
+               });
+            }
+
+            if (this.auth && this.auth.acepta_terminos != 'true') {
+               var self = this;
+               swal({
                   title: "Términos y condiciones de uso",
                   text: `
                      Al ingresar y o realizar cualquier operación de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el artículo 7 de la ley 19628 dispone que  “Las personas que trabajan en el tratamiento de datos personales, tanto en organismos públicos como privados, están obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al público, como asimismo sobre los demás datos y antecedentes relacionados con el banco de datos, obligación que no cesa por haber terminado sus actividades en ese campo”. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son “datos sensibles” y por tanto los datos de este sistema sólo podrán ser tratados dentro de las finalidades que se declaran.

@@ -323,6 +323,17 @@ class FormDeisController extends Controller {
         }
     }
 
+    public function confirmar_mensaje_informativo (Request $request) {
+        if ($request->wantsJson()) {
+            $user = User::find(auth()->user()->id);
+            $user->mensajes_informativos = 'true';
+            $user->save();
+
+            #Retorna true o false
+            return response()->json(['rd' => 'true' ]);
+        }
+    }
+
     public function confirmar_confidencialidad_mujer_vih (Request $request) {
         if ($request->wantsJson()) {
             $password = Hash::check($request->clave_usuario, auth()->user()->password);
