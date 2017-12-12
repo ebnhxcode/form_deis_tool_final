@@ -2012,7 +2012,7 @@ const FormularioController = new Vue({
                //console.log(response);
             });
 
-            if (this.auth && this.auth.acepta_terminos != 'true') {
+            if (this.auth && this.auth.mensajes_informativos != 'true') {
                var self = this;
                swal({
                   title: "Información sobre Mantenimiento del Sitio",

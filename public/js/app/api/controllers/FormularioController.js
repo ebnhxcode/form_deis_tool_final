@@ -38401,7 +38401,7 @@ var FormularioController = new _vue2.default({
                //console.log(response);
             });
 
-            if (_this7.auth && _this7.auth.acepta_terminos != 'true') {
+            if (_this7.auth && _this7.auth.mensajes_informativos != 'true') {
                var self = _this7;
                swal({
                   title: "Información sobre Mantenimiento del Sitio",
