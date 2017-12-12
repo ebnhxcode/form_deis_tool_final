@@ -37344,6 +37344,7 @@ var FormularioController = new _vue2.default({
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
             if (this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '' && this.formularioNuevoActivo == false) {
+
                this.inputs[index].edicion_temporal = false;
             } else {
                //caso contrario, no es necesario completar

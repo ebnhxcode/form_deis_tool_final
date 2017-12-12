@@ -836,8 +836,11 @@ const FormularioController = new Vue({
             //por que se requiere completar
             if ( this.fdc_temp[this.inputs[index].id] != null &&
                this.fdc_temp[this.inputs[index].id] != ''
-               && this.formularioNuevoActivo == false) {
+               && this.formularioNuevoActivo == false
+            ) {
+
                this.inputs[index].edicion_temporal = false;
+
             }else{
                //caso contrario, no es necesario completar
                this.inputs[index].edicion_temporal = true;
