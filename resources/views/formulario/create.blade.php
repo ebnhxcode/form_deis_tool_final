@@ -275,9 +275,19 @@
 
       var self = $;
       setInterval(function () {
-         if (!self('#lugar_control_prenatal').data('select2') || !self('#lugar_atencion_parto').data('select2') ) {
+         if (!self('#lugar_control_prenatal').data('select2') ||
+            !self('#lugar_atencion_parto').data('select2') ||
+            !self('#lugar_control_embarazo').data('select2') ||
+            !self('#establecimiento_control_sifilis').data('select2') ||
+            !self('#establecimiento_control_vih').data('select2') ||
+            !self('#atencion_parto').data('select2')
+         ) {
             self('#lugar_control_prenatal').select2();
             self('#lugar_atencion_parto').select2();
+            self('#lugar_control_embarazo').select2();
+            self('#establecimiento_control_sifilis').select2();
+            self('#establecimiento_control_vih').select2();
+            self('#atencion_parto').select2();
          }
       },1000);
 
