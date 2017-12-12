@@ -37385,16 +37385,18 @@ var FormularioController = new _vue2.default({
 
          switch (input.id) {
 
-            case 'lugar_control_prenatal':
-               console.log('0');
-               break;
             case 'run_madre':
-               /*
-               if (validate(this.fdc[input.name]) == false) {
-                  this.fdc[input.name] = null;
-                  alert('Debe ingresar un rut valido');
+
+               if (!this.fdc[input.name] || this.fdc[input.name] == '' || this.fdc[input.name] == null || (0, _rut.validate)(this.fdc[input.name] + this.fdc['digito_verificador'])) {
+                  return;
                }
-               */
+
+               if ((0, _rut.validate)(this.fdc[input.name]) == false) {
+                  alert('Debe ingresar un rut completo valido, sin puntos ni guión.');
+                  this.fdc[input.name] = null;
+                  this.fdc['digito_verificador'] = dv;
+                  return;
+               }
 
                if (this.fdc[input.name] != null && this.fdc[input.name]) {
 
@@ -37405,10 +37407,19 @@ var FormularioController = new _vue2.default({
                   }
                }
 
+               var run_limpio = (0, _rut.clean)(this.fdc[input.name]);
+               var dv = run_limpio.substr(run_limpio.length - 1, run_limpio.length);
+               run_limpio = run_limpio.substr(0, run_limpio.length - 1);
+               this.fdc['run_madre'] = run_limpio;
+               this.fdc['digito_verificador'] = dv;
+
+               input.disabled = 'disabled';
+
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
                   _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-                  formData.append('run_madre', this.fdc[input.name]);
+                  //formData.append('run_madre', this.fdc[input.name]);
+                  formData.append('run_madre', run_limpio);
                   this.$http.post('/formulario/buscar_run_existente', formData).then(function (response) {
                      // success callback
                      //console.log(response);
@@ -38171,10 +38182,6 @@ var FormularioController = new _vue2.default({
       verifica_validacion_click: function verifica_validacion_click(input) {
          switch (input.id) {
 
-            case 'lugar_control_prenatal':
-               console.log('1');
-               break;
-
             case 'pais_origen':
                break;
 
@@ -38242,10 +38249,6 @@ var FormularioController = new _vue2.default({
 
       verifica_validacion_blur: function verifica_validacion_blur(input) {
          switch (input.id) {
-
-            case 'lugar_control_prenatal':
-               console.log('2');
-               break;
 
             case 'fecha_nacimiento_madre':
                var date = this.fdc[input.name].split('-');
