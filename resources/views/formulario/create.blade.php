@@ -237,8 +237,8 @@
                                                           class="btn btn-success" type="button" value="Guardar"
                                                           style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
 
-                                                   <input id="" name="" @click.prevent="buscar_formulario"
-                                                          class="btn btn-danger pull-right" type="button" value="Cerrar Formulario"
+                                                   <input id="" name="" @click.prevent="guardar_formulario_completo"
+                                                          class="btn btn-danger pull-right" type="button" value="Cerrar Ficha"
                                                           style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
                                                    <transition v-if="mini_loader == true" name="slide-fade">
                                                       <div class="pull-right">

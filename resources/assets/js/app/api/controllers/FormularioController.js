@@ -2138,18 +2138,20 @@ const FormularioController = new Vue({
             //console.log(response.status);
 
             //alert('Guardado');
-
+            this.buscar_formulario();
             //Si guardar salio bien
             this.hayGuardadoActivo = true;
             this.idFormularioActivo = this.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             this.mini_loader = false;
+            /*
             swal("Guardado", `
                El registro se ha guardado automáticamente con éxito.
 
                Recuerda que el registro se guarda cada 5 minutos.
-            `, "success")
+            `, "success");
+            */
 
          }, response => { // error callback
             //console.log(response);

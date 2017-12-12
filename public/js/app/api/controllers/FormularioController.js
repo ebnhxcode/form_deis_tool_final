@@ -38526,14 +38526,19 @@ var FormularioController = new _vue2.default({
             //console.log(response.status);
 
             //alert('Guardado');
-
+            _this9.buscar_formulario();
             //Si guardar salio bien
             _this9.hayGuardadoActivo = true;
             _this9.idFormularioActivo = _this9.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             _this9.mini_loader = false;
-            swal("Guardado", '\n               El registro se ha guardado autom\xE1ticamente con \xE9xito.\n\n               Recuerda que el registro se guarda cada 5 minutos.\n            ', "success");
+            /*
+            swal("Guardado", `
+               El registro se ha guardado automáticamente con éxito.
+                Recuerda que el registro se guarda cada 5 minutos.
+            `, "success");
+            */
          }, function (response) {
             // error callback
             //console.log(response);
