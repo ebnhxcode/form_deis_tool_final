@@ -37,9 +37,15 @@ return [
    #Instrucciones
    'deis_form_instructions' => [
       #0=>'Debe completar todos los campos que han sido definidos como obligatorios, se pueden reconocer con el simbolo (*).',
-      1=>'Puede guardar el estado del formulario en cada pestaña para no perder los cambios realizados.',
-      2=>'Solo completar con los datos solicitados',
-      3=>'Cuando digite fechas, siempre debe comenzar por el día',
+      #1=>'Puede guardar el estado del formulario en cada pestaña para no perder los cambios realizados.',
+      #2=>'Solo completar con los datos solicitados',
+      #3=>'Cuando digite fechas, siempre debe comenzar por el día',
+      0=>'Debe completar solo los campos que aparecen en el formulario de la sección/pestaña que le corresponda.',
+      1=>'Cuando digite fechas, siempre debe comenzar por el día.',
+      2=>'Si el formulario contiene datos que usted desconoce "NO LOS COMPLETE"',
+      3=>'Registre solo lo que se ha realizado en su servicio o establecimiento y usted tiene conocimiento y respaldo (ficha clínica, tarjeta control, etc.)',
+      4=>'Antes de guardar asegúrese de haber ingresado correctamente los datos. Después no podrá editar.',
+      5=>'Si cree haber cometido un error, envíe mail informativo a cperedo@minsal.cl  indicando Nº correlativo, variable del error y lo que DEBE DECIR.',
    ],
 
 
