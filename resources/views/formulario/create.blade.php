@@ -32,6 +32,10 @@
                                  <small>Leer instrucciones</small>
                               </button><!-- .btn .btn-success -->
 
+                              <a class="btn btn-link" href="{{url('/Manual_de_Usuario_Completo.pdf')}}" target="_blank">
+                                 Descargar Manual
+                              </a>
+                              
                               {{--
                               <button class="btn btn-sm btn-success pull-right small" @click.prevent="guardar_formulario_completo"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
