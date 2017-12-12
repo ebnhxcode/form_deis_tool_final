@@ -38404,6 +38404,33 @@ var FormularioController = new _vue2.default({
             if (_this7.auth && _this7.auth.acepta_terminos != 'true') {
                var self = _this7;
                swal({
+                  title: "Información sobre Mantenimiento del Sitio",
+                  text: '\n                     Estimado usuario, le informamos que la plataforma se encontrar\xE1 en mantenci\xF3n los dias Martes y Jueves entre 18:00 y 18:30 horas, al aceptar este mensaje, queda en conformidad de que el usuario no deber\xE1 ingresar en ese horario a la plataforma de transmisi\xF3n vertical.\n                     ',
+                  closeOnConfirm: true,
+                  confirmButtonText: 'Si, acepto'
+               }, function (isConfirm) {
+
+                  //alert(isConfirm);
+                  if (isConfirm == true) {
+                     swal.close();
+
+                     _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+                     self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(function (response) {// success callback
+                        //console.log(response);
+
+                     }, function (response) {// error callback
+                        //console.log(response);
+                     });
+                  } else {
+                     return;
+                  }
+               });
+            }
+
+            if (_this7.auth && _this7.auth.acepta_terminos != 'true') {
+               var self = _this7;
+               swal({
                   title: "Términos y condiciones de uso",
                   text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
                   closeOnConfirm: true,
