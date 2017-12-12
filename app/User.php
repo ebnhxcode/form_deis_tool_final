@@ -27,6 +27,7 @@ class User extends Authenticatable
         'telefono',
         'id_role',
         'acepta_terminos',
+        'mensajes_informativos',
     ];
 
     /**
