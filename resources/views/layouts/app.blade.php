@@ -105,6 +105,17 @@
                </li>
                {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
             @else
+               <li>
+                  <a role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom"
+                     title="¡Atención!" data-content="Martes y Jueves la plataforma se encontrará en mantenimiento entre 18:00 y 18:30 hrs."
+                     tabindex="0" href="{{ url('/#!') }}" style="font-size: 20px;">
+                     <span class="label label-warning small pull-right">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        &nbsp;
+                        Información Importante
+                     </span>
+                  </a>
+               </li>
                <li><a href="{{ url('/dashboard') }}">Menu</a></li>
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
