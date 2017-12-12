@@ -36909,6 +36909,7 @@ var AdminUsuarios = new _vue2.default({
          'btn_finalizar': false,
 
          'spinner_table_inputs': true,
+
          'mini_spinner_table_inputs': true,
 
          'mostrar_modal_nuevo_usuario': false,

@@ -34,6 +34,8 @@ const FormularioController = new Vue({
 
          'formularios_encontrados':{},
 
+         'spinner_form_deis':true,
+
          'inputTypes':{
             'basics':['text', 'number', 'email', 'password', 'date', 'time'],
             'select':['select'],
@@ -772,8 +774,12 @@ const FormularioController = new Vue({
             return "Cierre de la ventana";
          };
 
-
       });
+
+      setTimeout(function () {
+         self.spinner_form_deis = false;
+      }, 1500);
+
    },
    ready: {},
    filters: {
@@ -2019,6 +2025,7 @@ const FormularioController = new Vue({
                         if (rd == true) {
                            swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
                         }
+
                      }, response => { // error callback
                         //console.log(response);
                      });

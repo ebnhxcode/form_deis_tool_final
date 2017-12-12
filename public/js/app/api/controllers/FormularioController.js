@@ -36902,6 +36902,8 @@ var FormularioController = new _vue2.default({
 
          'formularios_encontrados': {},
 
+         'spinner_form_deis': true,
+
          'inputTypes': {
             'basics': ['text', 'number', 'email', 'password', 'date', 'time'],
             'select': ['select'],
@@ -37283,6 +37285,10 @@ var FormularioController = new _vue2.default({
             return "Cierre de la ventana";
          };
       });
+
+      setTimeout(function () {
+         self.spinner_form_deis = false;
+      }, 1500);
    },
 
    ready: {},
