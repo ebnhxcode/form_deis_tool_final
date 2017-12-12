@@ -263,7 +263,19 @@
 
    </div><!-- .container -->
 
+   <script>
 
+      var self = $;
+      setInterval(function () {
+         if (!self('#lugar_control_prenatal').data('select2')) {
+            self('#lugar_control_prenatal').select2();
+         }else{
+            this.fdc['lugar_control_prenatal'] = self('#lugar_control_prenatal').val();
+            //console.log(self(`#lugar_control_prenatal`).val());
+         }
+      },1000);
+      
+   </script>
 @endsection
 
 
