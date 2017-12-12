@@ -109,6 +109,12 @@ class FormDeisLog extends Model
       'id_region',
       'id_servicio_salud',
       'lugar_atencion_parto',
+
+      'lugar_control_embarazo',
+      'establecimiento_control_sifilis',
+      'establecimiento_control_vih',
+      'atencion_parto',
+
       'lugar_control_prenatal',
       'lugar_control_prenatal_otro',
       'lugar_derivacion_recien_nacido_a_seguimiento',
