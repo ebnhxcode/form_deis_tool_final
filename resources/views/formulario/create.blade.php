@@ -236,6 +236,10 @@
                                                    <input id="" name="" @click.prevent="guardar_formulario(tab.name)"
                                                           class="btn btn-success" type="button" value="Guardar"
                                                           style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
+
+                                                   <input id="" name="" @click.prevent="buscar_formulario"
+                                                          class="btn btn-danger pull-right" type="button" value="Cerrar Formulario"
+                                                          style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
                                                    <transition v-if="mini_loader == true" name="slide-fade">
                                                       <div class="pull-right">
                                                          <div class="circle-loader">
