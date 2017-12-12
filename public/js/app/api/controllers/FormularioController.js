@@ -37249,6 +37249,7 @@ var FormularioController = new _vue2.default({
       this.fetch_formulario();
       //Variable de contexto
       var self = this;
+
       //Funcion de auto guardado cada 5 minutos
       /*
       setInterval(function () {
@@ -37384,6 +37385,9 @@ var FormularioController = new _vue2.default({
 
          switch (input.id) {
 
+            case 'lugar_control_prenatal':
+               console.log('0');
+               break;
             case 'run_madre':
                /*
                if (validate(this.fdc[input.name]) == false) {
@@ -38167,6 +38171,10 @@ var FormularioController = new _vue2.default({
       verifica_validacion_click: function verifica_validacion_click(input) {
          switch (input.id) {
 
+            case 'lugar_control_prenatal':
+               console.log('1');
+               break;
+
             case 'pais_origen':
                break;
 
@@ -38236,7 +38244,7 @@ var FormularioController = new _vue2.default({
          switch (input.id) {
 
             case 'lugar_control_prenatal':
-               console.log($(this));
+               console.log('2');
                break;
 
             case 'fecha_nacimiento_madre':
@@ -38437,11 +38445,18 @@ var FormularioController = new _vue2.default({
          //console.log(tabName);
          for (var i in this.inputs) {
             if (this.inputs[i].seccion == tabName) {
+
+               if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto') {
+                  this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+               }
+
                if (this.fdc[this.inputs[i].name] != null) {
                   //Le pasa el valor en v-model
+
                   if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
                      this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
                   }
+
                   formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
                }
             }
