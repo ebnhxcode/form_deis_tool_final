@@ -2,6 +2,8 @@
 @include('layouts.styles')
 @section('content')
    <div class="{{--container--}}" id="FormularioController">
+      {{ csrf_field() }}
+      <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
       <spinner v-if="spinner_form_deis == true"></spinner>
       <div v-else>
          <div class="row" >
@@ -14,7 +16,7 @@
 
                         <div class="col-md-12">
 
-                           {{ csrf_field() }}
+
                            <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
                            <div class="well well-sm">
@@ -261,17 +263,7 @@
 
    </div><!-- .container -->
 
-   <script>
 
-      var self = $;
-      setInterval(function () {
-         if (!self(`#lugar_control_prenatal`).data('select2')) {
-            self(`#lugar_control_prenatal`).select2();
-         }
-      },1000);
-
-
-   </script>
 @endsection
 
 
