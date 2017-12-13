@@ -340,6 +340,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'No Realizado',
+         'Puncion Frustrada' => 'Punción Frustrada',
       ],
 
       'titulacion_vdrl_liq_cefalo_recien_nacido' => [
@@ -364,6 +365,7 @@ return [
          'Normal' => 'Normal',
          'Alterado' => 'Alterado',
          'No Realizado' => 'No Realizado',
+         'Puncion Frustrada' => 'Punción Frustrada',
       ],
 
       'resultado_estudio_placentario' => [
