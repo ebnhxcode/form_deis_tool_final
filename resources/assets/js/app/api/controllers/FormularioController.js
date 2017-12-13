@@ -2029,7 +2029,7 @@ const FormularioController = new Vue({
 
                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-                     self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(response => { // success callback
+                     self.$http.post('/formulario/confirmar_mensaje_informativo').then(response => { // success callback
                         //console.log(response);
 
                      }, response => { // error callback
