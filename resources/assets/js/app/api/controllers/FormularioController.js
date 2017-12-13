@@ -1099,6 +1099,7 @@ const FormularioController = new Vue({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc['fecha_1_vdrl_embarazo'] = null;
                               this.fdc['eg_1_vdrl_embarazo'] = null;
                            }
 
@@ -1152,6 +1153,7 @@ const FormularioController = new Vue({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc['fecha_2_vdrl_embarazo'] = null;
                               this.fdc['eg_2_vdrl_embarazo'] = null;
                            }
 
@@ -1202,6 +1204,7 @@ const FormularioController = new Vue({
                               confirmButtonClass: "btn-danger",
                               closeOnConfirm: false
                            });
+                           this.fdc['fecha_3_vdrl_embarazo'] = null;
                            this.fdc['eg_3_vdrl_embarazo'] = null;
                         }
 
