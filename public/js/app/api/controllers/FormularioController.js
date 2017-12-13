@@ -38416,7 +38416,7 @@ var FormularioController = new _vue2.default({
 
                      _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-                     self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(function (response) {// success callback
+                     self.$http.post('/formulario/confirmar_mensaje_informativo').then(function (response) {// success callback
                         //console.log(response);
 
                      }, function (response) {// error callback
