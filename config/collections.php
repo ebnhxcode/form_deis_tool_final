@@ -261,6 +261,7 @@ return [
          '1:64' => '1:64',
          '1:128' => '1:128',
          '1:256' => '1:256',
+         'No Se Titulo' => 'No Se Tituló',
       ],
 
       'resultado_examen_treponemico_parto' => [
@@ -334,6 +335,7 @@ return [
          '1:64' => '1:64',
          '1:128' => '1:128',
          '1:256' => '1:256',
+         'No Se Titulo' => 'No Se Tituló',
       ],
 
       'resultado_vdrl_liq_cefalo_recien_nacido' => [
@@ -353,6 +355,7 @@ return [
          '1:64' => '1:64',
          '1:128' => '1:128',
          '1:256' => '1:256',
+         'No Se Titulo' => 'No Se Tituló',
       ],
 
       'resultado_radiografia_huesos_largos' => [
@@ -494,6 +497,7 @@ return [
          '1:64' => '1:64',
          '1:128' => '1:128',
          '1:256' => '1:256',
+         'No Se Titulo' => 'No Se Tituló',
       ],
 
 
@@ -513,6 +517,7 @@ return [
          '1:64' => '1:64',
          '1:128' => '1:128',
          '1:256' => '1:256',
+         'No Se Titulo' => 'No Se Tituló',
       ],
 
       'resultado_3_vdrl_embarazo' => [
@@ -531,6 +536,7 @@ return [
          '1:64' => '1:64',
          '1:128' => '1:128',
          '1:256' => '1:256',
+         'No Se Titulo' => 'No Se Tituló',
       ],
 
       'resultado_1_examen_vih_embarazo' => [
