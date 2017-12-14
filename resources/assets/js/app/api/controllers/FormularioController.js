@@ -1566,7 +1566,7 @@ const FormularioController = new Vue({
                      swal({
                         title: "Advertencia",
                         text: `
-                        Ahora, debe completar el año cuando se diagnosticó esta patología.
+                        Ahora, debe completar el año cuando se diagnosticó esta patología en "Año sífilis previo a este embarazo".
                      `,
                         type: "warning",
                         confirmButtonClass: "btn-danger",
