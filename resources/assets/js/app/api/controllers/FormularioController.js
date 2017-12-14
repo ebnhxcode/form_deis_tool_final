@@ -1038,7 +1038,7 @@ const FormularioController = new Vue({
 
             case 'edad_gestacional_ingreso_control_embarazo':
                if (parseInt(this.fdc[input.name])<0) {
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
                break;
             case 'embarazo_con_control_parental':
@@ -1534,14 +1534,14 @@ const FormularioController = new Vue({
             case 'nacidos_muertos_previos_embarazo':
             case 'abortos_previos_embarazo':
                if (parseInt(this.fdc[input.name]) > 10 || parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
                break;
 
 
             case 'codigo_establecimiento':
                if (parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
                break;
 
@@ -1578,7 +1578,7 @@ const FormularioController = new Vue({
                var d = new Date();
                var y = d.getFullYear();
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > y || parseInt(this.fdc[input.name]) < 1920) {
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
                break;
             case 'numero_cd4_ingreso_control_prenatal':
@@ -1623,7 +1623,7 @@ const FormularioController = new Vue({
 
             case 'carga_viral_numero_copia_semana_34':
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
@@ -1667,7 +1667,7 @@ const FormularioController = new Vue({
                if (parseInt(this.fdc[input.name])>0) {
                   //this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                   if (parseInt(this.fdc[input.name]) > 999) {
-                     this.fdc[input.name] = null;
+                     this.fdc[input.name] = 0;
                   }
                   /*
                   this.fdc[input.name] =
@@ -1682,13 +1682,13 @@ const FormularioController = new Vue({
             case 'peso_recien_nacido':
                if (parseInt(this.fdc[input.name])>0) {
                   if (parseInt(this.fdc[input.name]) > 9999) {
-                     this.fdc[input.name] = null;
+                     this.fdc[input.name] = 0;
                   }else{
                      this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                   }
 
                }else{
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
                break;
             case 'resultado_treponemico':
@@ -1799,7 +1799,7 @@ const FormularioController = new Vue({
 
             case 'tratamiento_recien_nacido_frecuencia':
                if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = null;
+                  this.fdc[input.name] = 0;
                }
                break;
 
@@ -2131,6 +2131,17 @@ const FormularioController = new Vue({
                   swal({
                      title: "Advertencia",
                      text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               }
+
+               if (date=="") {
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese una fecha válida.",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
