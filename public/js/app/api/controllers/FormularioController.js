@@ -37585,6 +37585,7 @@ var FormularioController = new _vue2.default({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc['fecha_1_vdrl_embarazo'] = null;
                               this.fdc['eg_1_vdrl_embarazo'] = null;
                            }
                         }
@@ -37626,6 +37627,7 @@ var FormularioController = new _vue2.default({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc['fecha_2_vdrl_embarazo'] = null;
                               this.fdc['eg_2_vdrl_embarazo'] = null;
                            }
                         }
@@ -37666,6 +37668,7 @@ var FormularioController = new _vue2.default({
                               confirmButtonClass: "btn-danger",
                               closeOnConfirm: false
                            });
+                           this.fdc['fecha_3_vdrl_embarazo'] = null;
                            this.fdc['eg_3_vdrl_embarazo'] = null;
                         }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
@@ -37838,6 +37841,15 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i19].disabled = null;
                      }
                   }
+               }
+
+               break;
+
+            case 'derivada_a_especialidades_embarazo':
+               if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado' && this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
+                  this.fdc[input.name].disabled = true;
+               } else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo') {
+                  this.fdc[input.name].disabled = null;
                }
 
                break;

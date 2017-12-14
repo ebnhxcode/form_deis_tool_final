@@ -1417,7 +1417,11 @@ const FormularioController = new Vue({
                   this.fdc[input.name].disabled = true;
                }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo'){
-                  this.fdc[input.name].disabled = null;
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
                }
 
                break;
