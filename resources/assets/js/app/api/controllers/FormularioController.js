@@ -1379,9 +1379,9 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               
-               if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
+
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo') {
 
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
@@ -1426,8 +1426,8 @@ const FormularioController = new Vue({
                   }
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo') {
 
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
