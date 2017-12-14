@@ -2143,6 +2143,25 @@ const FormularioController = new Vue({
       },
 
       guardar_formulario: function (tabName) {
+         //Condicionales previas, preventivas al guardado.
+
+         if (tabName == 'patologias_sifilis' &&
+            !this.fdc['diagnostico_sifilis_embarazo'] &&
+            this.fdc['diagnostico_sifilis_embarazo'] == null) {
+            swal({
+               title: "Advertencia",
+               text: `
+                  El formulario no se podrá guardar hasta que el dato "Diagnostico de sífilis al embarazo" no esté ingresado, por favor ingrese la información y guarde el formulario.
+               `,
+               type: "warning",
+               confirmButtonClass: "btn-danger",
+               closeOnConfirm: false
+            });
+            return;
+         }
+
+
+
          this.mini_loader = true;
          //this.spinner_finalizar = true;
          var formData = new FormData();

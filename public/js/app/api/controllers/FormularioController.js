@@ -38521,6 +38521,10 @@ var FormularioController = new _vue2.default({
       guardar_formulario: function guardar_formulario(tabName) {
          var _this8 = this;
 
+         //Condicionales previas, preventivas al guardado.
+
+         console.log(tabName);
+
          this.mini_loader = true;
          //this.spinner_finalizar = true;
          var formData = new FormData();
