@@ -2074,6 +2074,23 @@ const FormularioController = new Vue({
                }
                break;
 
+            case 'resultado_test_elisa_18_meses':
+               if(this.fdc[input.name] == 'No Realizado'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_test_elisa_18_meses') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_test_elisa_18_meses') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }
+               break;
+               break;
+
 
             case 'estado_recien_nacido':
                if (this.fdc[input.name] == 'Muerto') {
