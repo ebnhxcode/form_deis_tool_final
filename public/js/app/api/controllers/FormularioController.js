@@ -37058,11 +37058,12 @@ var FormularioController = new _vue2.default({
                   //console.log(response);
                   _this.formularios = response.body.formularios;
                   _this.formulario_vacio = $.isEmptyObject(_this.formularios) == true ? true : false;
+                  _this.pasaporte_provisorio = null;
 
                   if (_this.formulario_vacio == true) {
                      swal({
                         title: "Atención",
-                        text: "El rut ingresado no se encuentra registrado.",
+                        text: "El pasaporte ingresado no se encuentra registrado.",
                         type: "warning",
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
@@ -37105,7 +37106,7 @@ var FormularioController = new _vue2.default({
                   //console.log(response);
                   _this2.formularios = response.body.formularios;
                   _this2.formulario_vacio = $.isEmptyObject(_this2.formularios) == true ? true : false;
-
+                  _this2.run_madre = null;
                   if (_this2.formulario_vacio == true) {
                      swal({
                         title: "Atención",
@@ -37136,6 +37137,7 @@ var FormularioController = new _vue2.default({
 
                   _this3.formularios_correlativo = response.body.formularios;
                   _this3.formulario_vacio_correlativo = $.isEmptyObject(_this3.formularios_correlativo) == true ? true : false;
+                  _this3.n_correlativo_interno = null;
                }, function (response) {
                   // error callback
                   //console.log(response);
@@ -37168,12 +37170,14 @@ var FormularioController = new _vue2.default({
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
                   // success callback
                   _this4.$parent.fdc = response.body.fdc;
+
                   //console.log(response);
                }, function (response) {
                   // error callback
                   //console.log(response);
                   _this4.$parent.check_status_code(response.status);
                });
+               this.formularios = [];
             }
          },
          watch: {}

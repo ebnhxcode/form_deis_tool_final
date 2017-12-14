@@ -46,15 +46,15 @@
 
                               <button class="btn btn-sm btn-success pull-right small" @click.prevent="crear_nuevo_formulario"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
-                                 Crear nuevo&nbsp;
+                                 Crear nueva ficha&nbsp;
                                  <i class="fa fa-plus"></i>
                               </button><!-- .btn .btn-success -->
 
                               <button class="btn btn-sm btn-info pull-right small" @click.prevent="buscar_formulario"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
-                                 Buscar&nbsp;
+                                 Buscar ficha&nbsp;
                                  <i class="fa fa-search"></i>
-                              </button></button><!-- .btn .btn-info -->
+                              </button><!-- .btn .btn-info -->
 
                               <modal_buscar_formulario
                                  v-show="show_modal_buscar_formulario == true">

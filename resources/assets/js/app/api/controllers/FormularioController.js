@@ -445,11 +445,12 @@ const FormularioController = new Vue({
                   //console.log(response);
                   this.formularios = response.body.formularios;
                   this.formulario_vacio = $.isEmptyObject(this.formularios)==true?true:false;
+                  this.pasaporte_provisorio = null;
 
                   if (this.formulario_vacio == true) {
                      swal({
                         title: "Atención",
-                        text: "El rut ingresado no se encuentra registrado.",
+                        text: "El pasaporte ingresado no se encuentra registrado.",
                         type: "warning",
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
@@ -489,7 +490,7 @@ const FormularioController = new Vue({
                   //console.log(response);
                   this.formularios = response.body.formularios;
                   this.formulario_vacio = $.isEmptyObject(this.formularios)==true?true:false;
-
+                  this.run_madre = null;
                   if (this.formulario_vacio == true) {
                      swal({
                         title: "Atención",
@@ -517,6 +518,7 @@ const FormularioController = new Vue({
 
                   this.formularios_correlativo = response.body.formularios;
                   this.formulario_vacio_correlativo = $.isEmptyObject(this.formularios_correlativo)==true?true:false;
+                  this.n_correlativo_interno = null;
 
                }, response => { // error callback
                   //console.log(response);
@@ -548,11 +550,13 @@ const FormularioController = new Vue({
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
                   this.$parent.fdc = response.body.fdc;
+
                   //console.log(response);
                }, response => { // error callback
                   //console.log(response);
                   this.$parent.check_status_code(response.status);
                });
+               this.formularios = [];
 
             },
          },

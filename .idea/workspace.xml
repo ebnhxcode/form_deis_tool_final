@@ -11,10 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.615385">
-              <caret line="50" column="65" selection-start-line="50" selection-start-column="65" selection-end-line="50" selection-end-column="65" />
+            <state vertical-scroll-proportion="0.363047">
+              <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -86,22 +86,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5645412">
-              <caret line="1151" column="97" selection-start-line="1151" selection-start-column="97" selection-end-line="1151" selection-end-column="97" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="558" column="37" selection-start-line="558" selection-start-column="37" selection-end-line="558" selection-end-column="37" />
               <folding>
-                <element signature="e#33616#35208#0" expanded="false" />
-                <element signature="e#35307#36831#0" expanded="false" />
-                <element signature="e#36875#37473#0" expanded="false" />
-                <element signature="e#37529#37938#0" expanded="false" />
-                <element signature="e#37991#38313#0" expanded="false" />
-                <element signature="e#117592#120215#0" expanded="false" />
-                <element signature="e#131769#132865#0" expanded="false" />
-                <marker date="1513285437360" expanded="true" signature="2905:3372" placeholder="..." />
-                <marker date="1513285437360" expanded="true" signature="3635:3795" placeholder="..." />
-                <marker date="1513285437360" expanded="true" signature="4086:4246" placeholder="..." />
+                <element signature="e#33806#35398#0" expanded="false" />
+                <element signature="e#35497#37021#0" expanded="false" />
+                <element signature="e#37065#37663#0" expanded="false" />
+                <element signature="e#37719#38128#0" expanded="false" />
+                <element signature="e#38181#38503#0" expanded="false" />
+                <element signature="e#117782#120405#0" expanded="false" />
+                <element signature="e#131959#133055#0" expanded="false" />
+                <marker date="1513285854525" expanded="true" signature="2905:3372" placeholder="..." />
+                <marker date="1513285854525" expanded="true" signature="3635:3795" placeholder="..." />
+                <marker date="1513285854525" expanded="true" signature="4086:4246" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -183,9 +183,9 @@
         <option value="$PROJECT_DIR$/public/js/kickass.js" />
         <option value="$PROJECT_DIR$/public/js/asteroids.min.js" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
         <option value="$PROJECT_DIR$/config/collections.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
+        <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
       </list>
     </option>
   </component>
@@ -725,30 +725,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.615385">
-          <caret line="50" column="65" selection-start-line="50" selection-start-column="65" selection-end-line="50" selection-end-column="65" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="558" column="37" selection-start-line="558" selection-start-column="37" selection-end-line="558" selection-end-column="37" />
+          <folding>
+            <element signature="e#33806#35398#0" expanded="false" />
+            <element signature="e#35497#37021#0" expanded="false" />
+            <element signature="e#37065#37663#0" expanded="false" />
+            <element signature="e#37719#38128#0" expanded="false" />
+            <element signature="e#38181#38503#0" expanded="false" />
+            <element signature="e#117782#120405#0" expanded="false" />
+            <element signature="e#131959#133055#0" expanded="false" />
+            <marker date="1513285854525" expanded="true" signature="2905:3372" placeholder="..." />
+            <marker date="1513285854525" expanded="true" signature="3635:3795" placeholder="..." />
+            <marker date="1513285854525" expanded="true" signature="4086:4246" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
+    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5645412">
-          <caret line="1151" column="97" selection-start-line="1151" selection-start-column="97" selection-end-line="1151" selection-end-column="97" />
-          <folding>
-            <element signature="e#33616#35208#0" expanded="false" />
-            <element signature="e#35307#36831#0" expanded="false" />
-            <element signature="e#36875#37473#0" expanded="false" />
-            <element signature="e#37529#37938#0" expanded="false" />
-            <element signature="e#37991#38313#0" expanded="false" />
-            <element signature="e#117592#120215#0" expanded="false" />
-            <element signature="e#131769#132865#0" expanded="false" />
-            <marker date="1513285437360" expanded="true" signature="2905:3372" placeholder="..." />
-            <marker date="1513285437360" expanded="true" signature="3635:3795" placeholder="..." />
-            <marker date="1513285437360" expanded="true" signature="4086:4246" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.363047">
+          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
