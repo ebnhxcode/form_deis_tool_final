@@ -1121,12 +1121,20 @@ const FormularioController = new Vue({
 
                   }
                }
-               else{
+               else if (this.fdc[input.name] == 'Reactivo') {
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'resultado_dilucion_1_vdrl_embarazo'
                         || this.inputs[i].name == 'fecha_1_vdrl_embarazo'
                         || this.inputs[i].name == 'eg_1_vdrl_embarazo') {
                         this.inputs[i].disabled = null;
+                     }
+                  }
+               } else {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'resultado_dilucion_1_vdrl_embarazo'
+                        || this.inputs[i].name == 'fecha_1_vdrl_embarazo'
+                        || this.inputs[i].name == 'eg_1_vdrl_embarazo') {
+                        this.inputs[i].disabled = true;
                      }
                   }
                }
