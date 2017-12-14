@@ -69,6 +69,7 @@ return [
       'acepta_rechaza_toma_examen_vih' => [
          'Acepta' => 'Acepta',
          'Rechaza' => 'Rechaza',
+         'No Corresponde' => 'No Corresponde',
       ],
 
       'resultado_final_isp_examen_vih' => [

@@ -1318,7 +1318,7 @@ const FormularioController = new Vue({
 
             case 'acepta_rechaza_toma_examen_vih':
 
-               if (this.fdc[input.name] == 'Rechaza') {
+               if (this.fdc[input.name] == 'Rechaza' || this.fdc[input.name] == 'No Corresponde') {
                   for (let i in this.inputs){
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
                      /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
