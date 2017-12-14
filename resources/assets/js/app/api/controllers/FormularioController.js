@@ -1678,15 +1678,10 @@ const FormularioController = new Vue({
                         this.inputs[i].name == 'tratamiento_sifilis_frecuencia' ||
                         this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ||
                         this.inputs[i].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[i].disabled = true;
+                        this.inputs[i].disabled = null;
                      }
                   }
-               }
-               if (this.fdc[input.name] == 'Sifilis Primaria' ||
-                  this.fdc[input.name] == 'Sifilis Secundaria' ||
-                  this.fdc[input.name] == 'Sifilis Latente Precoz' ||
-                  this.fdc[input.name] == 'Sifilis Latente Tardia' ||
-                  this.fdc[input.name] == 'Sifilis Sin Especificar' ) {
+               }else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'tratamiento_sifilis_farmaco' ||
                         this.inputs[i].name == 'tratamiento_sifilis_dosis' ||
@@ -1696,7 +1691,6 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-
                }
 
                break;
