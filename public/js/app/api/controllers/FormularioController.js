@@ -38086,11 +38086,10 @@ var FormularioController = new _vue2.default({
                if (this.fdc[input.name] == 'Sifilis Primaria' || this.fdc[input.name] == 'Sifilis Secundaria' || this.fdc[input.name] == 'Sifilis Latente Precoz' || this.fdc[input.name] == 'Sifilis Latente Tardia' || this.fdc[input.name] == 'Sifilis Sin Especificar') {
                   for (var _i30 in this.inputs) {
                      if (this.inputs[_i30].name == 'tratamiento_sifilis_farmaco' || this.inputs[_i30].name == 'tratamiento_sifilis_dosis' || this.inputs[_i30].name == 'tratamiento_sifilis_frecuencia' || this.inputs[_i30].name == 'fecha_administracion_1_dosis_penicilina_gestante' || this.inputs[_i30].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[_i30].disabled = true;
+                        this.inputs[_i30].disabled = null;
                      }
                   }
-               }
-               if (this.fdc[input.name] == 'Sifilis Primaria' || this.fdc[input.name] == 'Sifilis Secundaria' || this.fdc[input.name] == 'Sifilis Latente Precoz' || this.fdc[input.name] == 'Sifilis Latente Tardia' || this.fdc[input.name] == 'Sifilis Sin Especificar') {
+               } else {
                   for (var _i31 in this.inputs) {
                      if (this.inputs[_i31].name == 'tratamiento_sifilis_farmaco' || this.inputs[_i31].name == 'tratamiento_sifilis_dosis' || this.inputs[_i31].name == 'tratamiento_sifilis_frecuencia' || this.inputs[_i31].name == 'fecha_administracion_1_dosis_penicilina_gestante' || this.inputs[_i31].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
                         this.inputs[_i31].disabled = null;
