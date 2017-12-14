@@ -1945,6 +1945,87 @@ const FormularioController = new Vue({
                break;
 
 
+            case 'nombre_farmaco_2_vih':
+               if (this.fdc[input.name]) {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'dosis_farmaco_2_vih' ||
+                        this.inputs[i].name == 'fecha_inicio_farmaco_2_vih' ||
+                        this.inputs[i].name == 'hora_inicio_farmaco_2_vih') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'dosis_farmaco_2_vih' ||
+                        this.inputs[i].name == 'fecha_inicio_farmaco_2_vih' ||
+                        this.inputs[i].name == 'hora_inicio_farmaco_2_vih') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               if(this.fdc['nombre_farmaco_2_vih'] &&
+                  this.fdc['dosis_farmaco_2_vih'] &&
+                  this.fdc['fecha_inicio_farmaco_2_vih'] &&
+                  this.fdc['hora_inicio_farmaco_2_vih']){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'dosis_farmaco_2_vih':
+               if(this.fdc['nombre_farmaco_2_vih'] &&
+                  this.fdc['dosis_farmaco_2_vih'] &&
+                  this.fdc['fecha_inicio_farmaco_2_vih'] &&
+                  this.fdc['hora_inicio_farmaco_2_vih']){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'hora_inicio_farmaco_2_vih':
+               if(this.fdc['nombre_farmaco_2_vih'] &&
+                  this.fdc['dosis_farmaco_2_vih'] &&
+                  this.fdc['fecha_inicio_farmaco_2_vih'] &&
+                  this.fdc['hora_inicio_farmaco_2_vih']){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+
             case 'estado_recien_nacido':
                if (this.fdc[input.name] == 'Muerto') {
                   for (let i in this.inputs) {
@@ -2431,6 +2512,27 @@ const FormularioController = new Vue({
                   }
                }
 
+
+               if (this.fdc['fecha_inicio_farmaco_2_vih']) {
+                  if(this.fdc['nombre_farmaco_2_vih'] &&
+                     this.fdc['dosis_farmaco_2_vih'] &&
+                     this.fdc['fecha_inicio_farmaco_2_vih'] &&
+                     this.fdc['hora_inicio_farmaco_2_vih']){
+                     for (let i in this.inputs){
+                        if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                           this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                           this.inputs[i].disabled = null;
+                        }
+                     }
+                  }else{
+                     for (let i in this.inputs){
+                        if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
+                           this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                           this.inputs[i].disabled = true;
+                        }
+                     }
+                  }
+               }
 
 
 
