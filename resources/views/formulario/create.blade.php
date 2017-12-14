@@ -272,7 +272,7 @@
    </div><!-- .container -->
 
    @if( Auth::check() && isset(Auth::user()->role) && in_array(Auth::user()->id_role, [4,3]) )
-   <a href="javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://local.deisformtool/js/asteroids.min.js';void(0);">
+   <a href="javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='{{url('/js/kickass.js')}}';void(0);">
       Destruir Página
    </a>
    @endif
