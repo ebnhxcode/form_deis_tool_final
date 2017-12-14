@@ -38565,6 +38565,54 @@ var FormularioController = new _vue2.default({
 
                break;
 
+            case 'terapia_antiretroviral_farmaco_1':
+               if (this.fdc[input.name] != null) {
+                  for (var _i57 in this.inputs) {
+                     if (this.inputs[_i57].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i57].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i58 in this.inputs) {
+                     if (this.inputs[_i58].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i58].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'terapia_antiretroviral_tar_farmaco_2':
+               if (this.fdc[input.name] != null) {
+                  for (var _i59 in this.inputs) {
+                     if (this.inputs[_i59].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i59].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i60 in this.inputs) {
+                     if (this.inputs[_i60].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i60].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'terapia_antiretroviral_tar_farmaco_3':
+               if (this.fdc[input.name] != null) {
+                  for (var _i61 in this.inputs) {
+                     if (this.inputs[_i61].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i61].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i62 in this.inputs) {
+                     if (this.inputs[_i62].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i62].disabled = true;
+                     }
+                  }
+               }
+               break;
+
          }
       },
 
