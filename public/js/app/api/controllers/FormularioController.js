@@ -38612,6 +38612,48 @@ var FormularioController = new _vue2.default({
                   }
                }
 
+               if (this.fdc[terapia_antiretroviral_farmaco_1] != null) {
+                  for (var _i63 in this.inputs) {
+                     if (this.inputs[_i63].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i63].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i64 in this.inputs) {
+                     if (this.inputs[_i64].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i64].disabled = true;
+                     }
+                  }
+               }
+
+               if (this.fdc['terapia_antiretroviral_tar_farmaco_2'] != null) {
+                  for (var _i65 in this.inputs) {
+                     if (this.inputs[_i65].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i65].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i66 in this.inputs) {
+                     if (this.inputs[_i66].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i66].disabled = true;
+                     }
+                  }
+               }
+
+               if (this.fdc['terapia_antiretroviral_tar_farmaco_3'] != null) {
+                  for (var _i67 in this.inputs) {
+                     if (this.inputs[_i67].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i67].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i68 in this.inputs) {
+                     if (this.inputs[_i68].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i68].disabled = true;
+                     }
+                  }
+               }
+
                break;
 
          }
