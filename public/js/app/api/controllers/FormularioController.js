@@ -37991,7 +37991,7 @@ var FormularioController = new _vue2.default({
                   if (this.fdc[input.name] == 'Si') {
                      swal({
                         title: "Advertencia",
-                        text: '\n                        Ahora, debe completar el a\xF1o cuando se diagnostic\xF3 esta patolog\xEDa.\n                     ',
+                        text: '\n                        Ahora, debe completar el a\xF1o cuando se diagnostic\xF3 esta patolog\xEDa en "A\xF1o s\xEDfilis previo a este embarazo".\n                     ',
                         type: "warning",
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
