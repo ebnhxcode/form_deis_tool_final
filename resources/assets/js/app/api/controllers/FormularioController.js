@@ -1195,7 +1195,7 @@ const FormularioController = new Vue({
                      if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
                         this.inputs[i].name == 'fecha_2_vdrl_embarazo'
                         || this.inputs[i].name == 'eg_2_vdrl_embarazo') {
-                        this.inputs[i].disabled = null;
+                        this.inputs[i].disabled = true;
                      }
                   }
                }
