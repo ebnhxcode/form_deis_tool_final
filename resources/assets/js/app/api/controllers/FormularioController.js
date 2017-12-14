@@ -1411,6 +1411,17 @@ const FormularioController = new Vue({
 
                break;
 
+            case 'derivada_a_especialidades_embarazo':
+               if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
+                  this.fdc[input.name].disabled = true;
+               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo'){
+                  this.fdc[input.name].disabled = null;
+               }
+
+               break;
+
             //case 'anos_estudio':
             case 'escolaridad':
                $('.anos_estudio1').find('option').remove().end();
