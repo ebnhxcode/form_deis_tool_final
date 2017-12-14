@@ -202,7 +202,9 @@
                                                               v-else-if="inputInArray(i,inputTypes.select)">
 
                                                          {{--<option value="">Seleccione</option>--}}
-                                                         <option v-for="o,i in deis_form_table_options[i.name]" :value="i">
+
+                                                         <option v-for="o,i in deis_form_table_options[i.name]" :value="i"
+                                                                 :style="i=='No Realizado'?'font-weight:1000;':''">
                                                             @{{ o }}
                                                          </option>
 
