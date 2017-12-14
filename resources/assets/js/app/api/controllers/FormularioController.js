@@ -1807,7 +1807,8 @@ const FormularioController = new Vue({
                if (this.fdc[input.name] == 'No') {
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'fecha_inicio_sustituto_leche_materna' ||
-                        this.inputs[i].name == 'hora_inicio_sustituto_leche_materna') {
+                        this.inputs[i].name == 'hora_inicio_sustituto_leche_materna' ||
+                        this.inputs[i].name == 'entrega_sustituto_leche_materna_al_alta') {
                         this.inputs[i].disabled = true;
                      }
                   }
@@ -1815,7 +1816,8 @@ const FormularioController = new Vue({
                else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'fecha_inicio_sustituto_leche_materna' ||
-                        this.inputs[i].name == 'hora_inicio_sustituto_leche_materna') {
+                        this.inputs[i].name == 'hora_inicio_sustituto_leche_materna' ||
+                        this.inputs[i].name == 'entrega_sustituto_leche_materna_al_alta') {
                         this.inputs[i].disabled = null;
                      }
                   }
