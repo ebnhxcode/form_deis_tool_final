@@ -1562,6 +1562,15 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
+                  swal({
+                     title: "Advertencia",
+                     text: `
+                        Ahora, debe completar el año cuando se diagnosticó esta patología.
+                     `,
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
                }
 
 
