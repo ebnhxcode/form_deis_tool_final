@@ -38226,19 +38226,26 @@ var FormularioController = new _vue2.default({
                break;
          }
          //Validaciones latentes
-         if ((this.fdc['resultado_1_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_2_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_3_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'No Realizado')) {
-            for (var _i44 in this.inputs) {
-               if (this.inputs[_i44].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                  this.inputs[_i44].disabled = true;
-               }
-            }
-         } else {
-            for (var _i45 in this.inputs) {
-               if (this.inputs[_i45].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                  this.inputs[_i45].disabled = null;
+         /*
+         if (
+            (this.fdc['resultado_1_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'No Realizado') &&
+            (this.fdc['resultado_2_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'No Realizado') &&
+            (this.fdc['resultado_3_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'No Realizado')
+         ) {
+            for (let i in this.inputs){
+               if (this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
+                  this.inputs[i].disabled = true;
                }
             }
          }
+         else{
+            for (let i in this.inputs){
+               if (this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
+                  this.inputs[i].disabled = null;
+               }
+            }
+         }
+         */
 
          if ((this.fdc['resultado_1_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_2_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_3_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado') && (this.fdc['resultado_2_examen_vih_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado')) {
             /*

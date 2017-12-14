@@ -1589,7 +1589,6 @@ const FormularioController = new Vue({
                   this.fdc[input.name] = 0;
                }
                break;
-               resultado_examen_vih_parto
             case 'numero_carga_viral_control_prenatal':
 
             case 'carga_viral_numero_copia_semana_34':
@@ -1688,6 +1687,26 @@ const FormularioController = new Vue({
                         this.inputs[i].name == 'tratamiento_sifilis_frecuencia' ||
                         this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ||
                         this.inputs[i].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+
+               break;
+
+            case 'numero_contactos_sexuales_declarados':
+
+               if (parseInt(this.fdc[input.name])>0){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
+                        this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
+                        this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
                         this.inputs[i].disabled = true;
                      }
                   }
