@@ -77,6 +77,7 @@ return [
          'Registra Muestra Anterior' => 'Registra Muestra Anterior',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'derivada_a_especialidades_embarazo' => [
@@ -142,6 +143,7 @@ return [
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'diagnostico_sifilis_embarazo' => [
@@ -248,6 +250,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
 
@@ -268,12 +271,14 @@ return [
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_examen_treponemico_parto_madre' => [
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'tratamiento_sifilis_parto' => [
@@ -282,10 +287,12 @@ return [
       ],
 
       'resultado_examen_vih_parto' => [
+         'No Corresponde' => 'No Corresponde',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         'No Corresponde' => 'No Corresponde',
+         ''=>'',
+
       ],
 
       'tratamiento_retroviral_parto' => [
@@ -323,6 +330,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'titulacion_vdrl_periferico_recien_nacido' => [
@@ -339,10 +347,11 @@ return [
       ],
 
       'resultado_vdrl_liq_cefalo_recien_nacido' => [
+         'Puncion Frustrada' => 'Punción Frustrada',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         'Puncion Frustrada' => 'Punción Frustrada',
+         ''=>'',
       ],
 
       'titulacion_vdrl_liq_cefalo_recien_nacido' => [
@@ -362,19 +371,22 @@ return [
          'Normal' => 'Normal',
          'Alterado' => 'Alterado',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_citoquimico_liq_cefalo_raquideo' => [
+         'Puncion Frustrada' => 'Punción Frustrada',
          'Normal' => 'Normal',
          'Alterado' => 'Alterado',
          'No Realizado' => 'Examen No Realizado',
-         'Puncion Frustrada' => 'Punción Frustrada',
+         ''=>'',
       ],
 
       'resultado_estudio_placentario' => [
          'Infeccion por Treponema' => 'Infeccion por Treponema',
          'No Infeccion por Treponema' => 'No Infeccion por Treponema',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'tratamiento_recien_nacido_farmaco' => [
@@ -390,6 +402,7 @@ return [
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'sustituto_leche_materna' => [
@@ -421,6 +434,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
 
@@ -485,6 +499,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_dilucion_1_vdrl_embarazo' => [
@@ -505,6 +520,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_dilucion_2_vdrl_embarazo' => [
@@ -524,6 +540,7 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_dilucion_3_vdrl_embarazo' => [
@@ -543,36 +560,41 @@ return [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_2_examen_vih_embarazo' => [
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
 
       'resultado_1_examen_pcr_recien_nacido' => [
+         'Indeterminado' => 'Indeterminado',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         'Indeterminado' => 'Indeterminado',
+         ''=>'',
       ],
 
       'resultado_2_examen_pcr_recien_nacido' => [
+         'Indeterminado' => 'Indeterminado',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         'Indeterminado' => 'Indeterminado',
+         ''=>'',
       ],
       'resultado_3_examen_pcr_recien_nacido' => [
+         'Indeterminado' => 'Indeterminado',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         'Indeterminado' => 'Indeterminado',
+         ''=>'',
       ],
 
       'numero_cd4_ingreso_control_prenatal' => [
@@ -580,6 +602,7 @@ return [
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
 
@@ -588,6 +611,7 @@ return [
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
 
@@ -596,6 +620,7 @@ return [
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'resultado_final_isp_examen_vih_recien_nacido' => [
@@ -604,6 +629,7 @@ return [
          'Registra Muestra Anterior' => 'Registra Muestra Anterior',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
+         ''=>'',
       ],
 
       'edad_gestacional_ingreso_control_embarazo' => [

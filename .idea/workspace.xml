@@ -12,7 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/collections.php" afterPath="$PROJECT_DIR$/config/collections.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,35 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="collections.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="collections.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/collections.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-148.23077">
-              <caret line="78" column="35" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-              <caret line="143" column="35" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
-              <caret line="249" column="35" selection-start-line="249" selection-start-column="35" selection-end-line="249" selection-end-column="35" />
-              <caret line="269" column="35" selection-start-line="269" selection-start-column="35" selection-end-line="269" selection-end-column="35" />
-              <caret line="275" column="35" selection-start-line="275" selection-start-column="35" selection-end-line="275" selection-end-column="35" />
-              <caret line="286" column="35" selection-start-line="286" selection-start-column="35" selection-end-line="286" selection-end-column="35" />
-              <caret line="324" column="35" selection-start-line="324" selection-start-column="35" selection-end-line="324" selection-end-column="35" />
-              <caret line="343" column="35" selection-start-line="343" selection-start-column="35" selection-end-line="343" selection-end-column="35" />
-              <caret line="363" column="35" selection-start-line="363" selection-start-column="35" selection-end-line="363" selection-end-column="35" />
-              <caret line="369" column="35" selection-start-line="369" selection-start-column="35" selection-end-line="369" selection-end-column="35" />
-              <caret line="376" column="35" selection-start-line="376" selection-start-column="35" selection-end-line="376" selection-end-column="35" />
-              <caret line="391" column="35" selection-start-line="391" selection-start-column="35" selection-end-line="391" selection-end-column="35" />
-              <caret line="422" column="35" selection-start-line="422" selection-start-column="35" selection-end-line="422" selection-end-column="35" />
-              <caret line="486" column="35" selection-start-line="486" selection-start-column="35" selection-end-line="486" selection-end-column="35" />
-              <caret line="506" column="35" selection-start-line="506" selection-start-column="35" selection-end-line="506" selection-end-column="35" />
-              <caret line="525" column="35" selection-start-line="525" selection-start-column="35" selection-end-line="525" selection-end-column="35" />
-              <caret line="544" column="35" selection-start-line="544" selection-start-column="35" selection-end-line="544" selection-end-column="35" />
-              <caret line="550" column="35" selection-start-line="550" selection-start-column="35" selection-end-line="550" selection-end-column="35" />
-              <caret line="558" column="35" selection-start-line="558" selection-start-column="35" selection-end-line="558" selection-end-column="35" />
-              <caret line="566" column="35" selection-start-line="566" selection-start-column="35" selection-end-line="566" selection-end-column="35" />
-              <caret line="573" column="35" selection-start-line="573" selection-start-column="35" selection-end-line="573" selection-end-column="35" />
-              <caret line="581" column="35" selection-start-line="581" selection-start-column="35" selection-end-line="581" selection-end-column="35" />
-              <caret line="589" column="35" selection-start-line="589" selection-start-column="35" selection-end-line="589" selection-end-column="35" />
-              <caret line="597" column="35" selection-start-line="597" selection-start-column="35" selection-end-line="597" selection-end-column="35" />
-              <caret line="605" column="35" selection-start-line="605" selection-start-column="35" selection-end-line="605" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.3327674">
+              <caret line="78" column="49" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -88,10 +63,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35818475">
+            <state vertical-scroll-proportion="-7.0">
               <caret line="206" column="108" selection-start-line="206" selection-start-column="108" selection-end-line="206" selection-end-column="108" />
               <folding />
             </state>
@@ -222,8 +197,8 @@
         <option value="$PROJECT_DIR$/public/js/asteroids.min.js" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-        <option value="$PROJECT_DIR$/config/collections.php" />
         <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
+        <option value="$PROJECT_DIR$/config/collections.php" />
       </list>
     </option>
   </component>
@@ -767,34 +742,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/collections.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-148.23077">
-          <caret line="78" column="35" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-          <caret line="143" column="35" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
-          <caret line="249" column="35" selection-start-line="249" selection-start-column="35" selection-end-line="249" selection-end-column="35" />
-          <caret line="269" column="35" selection-start-line="269" selection-start-column="35" selection-end-line="269" selection-end-column="35" />
-          <caret line="275" column="35" selection-start-line="275" selection-start-column="35" selection-end-line="275" selection-end-column="35" />
-          <caret line="286" column="35" selection-start-line="286" selection-start-column="35" selection-end-line="286" selection-end-column="35" />
-          <caret line="324" column="35" selection-start-line="324" selection-start-column="35" selection-end-line="324" selection-end-column="35" />
-          <caret line="343" column="35" selection-start-line="343" selection-start-column="35" selection-end-line="343" selection-end-column="35" />
-          <caret line="363" column="35" selection-start-line="363" selection-start-column="35" selection-end-line="363" selection-end-column="35" />
-          <caret line="369" column="35" selection-start-line="369" selection-start-column="35" selection-end-line="369" selection-end-column="35" />
-          <caret line="376" column="35" selection-start-line="376" selection-start-column="35" selection-end-line="376" selection-end-column="35" />
-          <caret line="391" column="35" selection-start-line="391" selection-start-column="35" selection-end-line="391" selection-end-column="35" />
-          <caret line="422" column="35" selection-start-line="422" selection-start-column="35" selection-end-line="422" selection-end-column="35" />
-          <caret line="486" column="35" selection-start-line="486" selection-start-column="35" selection-end-line="486" selection-end-column="35" />
-          <caret line="506" column="35" selection-start-line="506" selection-start-column="35" selection-end-line="506" selection-end-column="35" />
-          <caret line="525" column="35" selection-start-line="525" selection-start-column="35" selection-end-line="525" selection-end-column="35" />
-          <caret line="544" column="35" selection-start-line="544" selection-start-column="35" selection-end-line="544" selection-end-column="35" />
-          <caret line="550" column="35" selection-start-line="550" selection-start-column="35" selection-end-line="550" selection-end-column="35" />
-          <caret line="558" column="35" selection-start-line="558" selection-start-column="35" selection-end-line="558" selection-end-column="35" />
-          <caret line="566" column="35" selection-start-line="566" selection-start-column="35" selection-end-line="566" selection-end-column="35" />
-          <caret line="573" column="35" selection-start-line="573" selection-start-column="35" selection-end-line="573" selection-end-column="35" />
-          <caret line="581" column="35" selection-start-line="581" selection-start-column="35" selection-end-line="581" selection-end-column="35" />
-          <caret line="589" column="35" selection-start-line="589" selection-start-column="35" selection-end-line="589" selection-end-column="35" />
-          <caret line="597" column="35" selection-start-line="597" selection-start-column="35" selection-end-line="597" selection-end-column="35" />
-          <caret line="605" column="35" selection-start-line="605" selection-start-column="35" selection-end-line="605" selection-end-column="35" />
+        <state vertical-scroll-proportion="-7.0">
+          <caret line="206" column="108" selection-start-line="206" selection-start-column="108" selection-end-line="206" selection-end-column="108" />
           <folding />
         </state>
       </provider>
@@ -807,10 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/config/collections.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35818475">
-          <caret line="206" column="108" selection-start-line="206" selection-start-column="108" selection-end-line="206" selection-end-column="108" />
+        <state vertical-scroll-proportion="0.3327674">
+          <caret line="78" column="49" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="49" />
           <folding />
         </state>
       </provider>
