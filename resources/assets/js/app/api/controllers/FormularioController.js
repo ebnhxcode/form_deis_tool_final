@@ -2137,18 +2137,18 @@ const FormularioController = new Vue({
 
             case 'tratamiento_recien_nacido_farmaco':
 
-               if(this.fdc[input.name] == 'No'){
+               if(this.fdc[input.name] != null && this.fdc[input.name] != ''){
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
-                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
-                        this.inputs[i].disabled = true;
+                     if (this.inputs[i].name == 'tratamiento_recien_nacido_dosis' ||
+                        this.inputs[i].name == 'tratamiento_recien_nacido_frecuencia') {
+                        this.inputs[i].disabled = null;
                      }
                   }
                }else{
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
-                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
-                        this.inputs[i].disabled = null;
+                     if (this.inputs[i].name == 'tratamiento_recien_nacido_dosis' ||
+                        this.inputs[i].name == 'tratamiento_recien_nacido_frecuencia') {
+                        this.inputs[i].disabled = true;
                      }
                   }
                }
