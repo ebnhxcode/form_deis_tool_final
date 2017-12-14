@@ -1576,6 +1576,7 @@ const FormularioController = new Vue({
 
                break;
             case 'ano_sifilis_previa_embarazo':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                var d = new Date();
                var y = d.getFullYear();
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > y || parseInt(this.fdc[input.name]) < 1920) {

@@ -37961,6 +37961,7 @@ var FormularioController = new _vue2.default({
             case 'nacidos_vivos_previos_embarazo':
             case 'nacidos_muertos_previos_embarazo':
             case 'abortos_previos_embarazo':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) > 10 || parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
                }
