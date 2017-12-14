@@ -37879,6 +37879,11 @@ var FormularioController = new _vue2.default({
                         case 'eg_2_examen_vih':
                            this.inputs[_i24].disabled = null;
                            break;
+                        case 'derivada_a_especialidades_embarazo':
+                           if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') {
+                              this.inputs[_i24].disabled = null;
+                           }
+                           break;
                      }
                   }
                }
