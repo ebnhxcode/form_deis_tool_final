@@ -1453,7 +1453,11 @@ const FormularioController = new Vue({
                         case 'eg_2_examen_vih':
                            this.inputs[i].disabled = true;
                            break;
+                        case 'derivada_a_especialidades_embarazo':
+                           this.inputs[i].disabled = null;
+                           break;
                      }
+
 
 
                   }
