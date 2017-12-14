@@ -76,8 +76,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8717949">
-              <caret line="1429" column="78" selection-start-line="1429" selection-start-column="78" selection-end-line="1429" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="1815" column="77" selection-start-line="1815" selection-start-column="43" selection-end-line="1815" selection-end-column="77" />
               <folding>
                 <element signature="e#1592#33602#0" expanded="false" />
                 <element signature="e#33616#35208#0" expanded="false" />
@@ -85,12 +85,14 @@
                 <element signature="e#36875#37473#0" expanded="false" />
                 <element signature="e#37529#37938#0" expanded="false" />
                 <element signature="e#37991#38313#0" expanded="false" />
-                <element signature="e#79890#82513#0" expanded="false" />
-                <element signature="e#82565#87058#0" expanded="false" />
-                <element signature="e#87203#88299#0" expanded="false" />
-                <marker date="1513211278679" expanded="true" signature="2905:3372" placeholder="..." />
-                <marker date="1513211278679" expanded="true" signature="3635:3795" placeholder="..." />
-                <marker date="1513211278679" expanded="true" signature="4086:4246" placeholder="..." />
+                <element signature="e#79950#82573#0" expanded="false" />
+                <element signature="e#82625#87118#0" expanded="false" />
+                <element signature="e#87263#88359#0" expanded="false" />
+                <marker date="1513211555474" expanded="true" signature="2905:3372" placeholder="..." />
+                <marker date="1513211555474" expanded="true" signature="3635:3795" placeholder="..." />
+                <marker date="1513211555474" expanded="true" signature="4086:4246" placeholder="..." />
+                <marker date="1513211555474" expanded="true" signature="79697:79861" placeholder="{...}" />
+                <marker date="1513211555474" expanded="true" signature="79779:79847" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -1350,8 +1352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8717949">
-          <caret line="1429" column="78" selection-start-line="1429" selection-start-column="78" selection-end-line="1429" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="1815" column="77" selection-start-line="1815" selection-start-column="43" selection-end-line="1815" selection-end-column="77" />
           <folding>
             <element signature="e#1592#33602#0" expanded="false" />
             <element signature="e#33616#35208#0" expanded="false" />
@@ -1359,12 +1361,14 @@
             <element signature="e#36875#37473#0" expanded="false" />
             <element signature="e#37529#37938#0" expanded="false" />
             <element signature="e#37991#38313#0" expanded="false" />
-            <element signature="e#79890#82513#0" expanded="false" />
-            <element signature="e#82565#87058#0" expanded="false" />
-            <element signature="e#87203#88299#0" expanded="false" />
-            <marker date="1513211278679" expanded="true" signature="2905:3372" placeholder="..." />
-            <marker date="1513211278679" expanded="true" signature="3635:3795" placeholder="..." />
-            <marker date="1513211278679" expanded="true" signature="4086:4246" placeholder="..." />
+            <element signature="e#79950#82573#0" expanded="false" />
+            <element signature="e#82625#87118#0" expanded="false" />
+            <element signature="e#87263#88359#0" expanded="false" />
+            <marker date="1513211555474" expanded="true" signature="2905:3372" placeholder="..." />
+            <marker date="1513211555474" expanded="true" signature="3635:3795" placeholder="..." />
+            <marker date="1513211555474" expanded="true" signature="4086:4246" placeholder="..." />
+            <marker date="1513211555474" expanded="true" signature="79697:79861" placeholder="{...}" />
+            <marker date="1513211555474" expanded="true" signature="79779:79847" placeholder="{...}" />
           </folding>
         </state>
       </provider>
