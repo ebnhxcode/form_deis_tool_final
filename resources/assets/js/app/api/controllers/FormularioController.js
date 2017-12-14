@@ -2093,19 +2093,37 @@ const FormularioController = new Vue({
             case 'resultado_final_isp_examen_vih_recien_nacido':
                if(this.fdc[input.name] == 'No Realizado'){
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido	') {
+                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido') {
                         this.inputs[i].disabled = true;
                      }
                   }
                }else{
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido	') {
+                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido') {
                         this.inputs[i].disabled = null;
                      }
                   }
                }
                break;
+            case 'derivacion_recien_nacido_a_seguimiento':
 
+               if(this.fdc[input.name] == 'No'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
+                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
+                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }
+
+               break;
 
 
 
