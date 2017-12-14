@@ -1680,11 +1680,11 @@ const FormularioController = new Vue({
                      (  parseInt(this.fdc[input.name])/1000).toFixed(1) + 'g' :
                         parseInt(this.fdc[input.name]).toFixed(1) + 'mg';
                   */
-                  if(this.fdc['nombre_farmaco_1_vih'] &&
-                     this.fdc['peso_mujer_parto'] &&
-                     this.fdc['dosis_farmaco_1_vih'] &&
-                     this.fdc['fecha_inicio_farmaco_1_vih'] &&
-                     this.fdc['hora_inicio_farmaco_1_vih']){
+                  if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
+                     this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
+                     this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
+                     this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
+                     this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
                      for (let i in this.inputs){
                         if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
                            this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
@@ -1850,11 +1850,11 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               if(this.fdc['nombre_farmaco_1_vih'] &&
-                  this.fdc['peso_mujer_parto'] &&
-                  this.fdc['dosis_farmaco_1_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] &&
-                  this.fdc['hora_inicio_farmaco_1_vih']){
+               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
+                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
+                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
                         this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
@@ -1873,11 +1873,11 @@ const FormularioController = new Vue({
                }
                break;
             case 'dosis_farmaco_1_vih':
-               if(this.fdc['nombre_farmaco_1_vih'] &&
-                  this.fdc['peso_mujer_parto'] &&
-                  this.fdc['dosis_farmaco_1_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] &&
-                  this.fdc['hora_inicio_farmaco_1_vih']){
+               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
+                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
+                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
                         this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
@@ -1897,11 +1897,11 @@ const FormularioController = new Vue({
                break;
 
             case 'fecha_inicio_farmaco_1_vih':
-               if(this.fdc['nombre_farmaco_1_vih'] &&
-                  this.fdc['peso_mujer_parto'] &&
-                  this.fdc['dosis_farmaco_1_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] &&
-                  this.fdc['hora_inicio_farmaco_1_vih']){
+               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
+                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
+                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
                         this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
@@ -1921,11 +1921,11 @@ const FormularioController = new Vue({
                break;
 
             case 'hora_inicio_farmaco_1_vih':
-               if(this.fdc['nombre_farmaco_1_vih'] &&
-                  this.fdc['peso_mujer_parto'] &&
-                  this.fdc['dosis_farmaco_1_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] &&
-                  this.fdc['hora_inicio_farmaco_1_vih']){
+               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
+                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
+                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
                         this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
@@ -1963,10 +1963,10 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               if(this.fdc['nombre_farmaco_2_vih'] &&
-                  this.fdc['dosis_farmaco_2_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_2_vih'] &&
-                  this.fdc['hora_inicio_farmaco_2_vih']){
+               if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
+                  this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
@@ -1984,10 +1984,10 @@ const FormularioController = new Vue({
                break;
 
             case 'dosis_farmaco_2_vih':
-               if(this.fdc['nombre_farmaco_2_vih'] &&
-                  this.fdc['dosis_farmaco_2_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_2_vih'] &&
-                  this.fdc['hora_inicio_farmaco_2_vih']){
+               if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
+                  this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
@@ -2005,10 +2005,10 @@ const FormularioController = new Vue({
                break;
 
             case 'hora_inicio_farmaco_2_vih':
-               if(this.fdc['nombre_farmaco_2_vih'] &&
-                  this.fdc['dosis_farmaco_2_vih'] &&
-                  this.fdc['fecha_inicio_farmaco_2_vih'] &&
-                  this.fdc['hora_inicio_farmaco_2_vih']){
+               if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
+                  this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
@@ -2514,10 +2514,10 @@ const FormularioController = new Vue({
 
 
                if (this.fdc['fecha_inicio_farmaco_2_vih']) {
-                  if(this.fdc['nombre_farmaco_2_vih'] &&
-                     this.fdc['dosis_farmaco_2_vih'] &&
-                     this.fdc['fecha_inicio_farmaco_2_vih'] &&
-                     this.fdc['hora_inicio_farmaco_2_vih']){
+                  if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
+                     this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
+                     this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
+                     this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
                      for (let i in this.inputs){
                         if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                            this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
