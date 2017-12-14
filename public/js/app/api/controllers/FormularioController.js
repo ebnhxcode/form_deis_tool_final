@@ -38459,6 +38459,21 @@ var FormularioController = new _vue2.default({
                      closeOnConfirm: false
                   });
                }
+
+               if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
+                  for (var i in this.inputs) {
+                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i46 in this.inputs) {
+                     if (this.inputs[_i46].name == 'numero_cd4_ingreso_control_prenatal') {
+                        this.inputs[_i46].disabled = true;
+                     }
+                  }
+               }
+
                break;
 
          }
