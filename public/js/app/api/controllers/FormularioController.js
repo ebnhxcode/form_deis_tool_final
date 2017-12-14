@@ -37531,7 +37531,7 @@ var FormularioController = new _vue2.default({
 
             case 'edad_gestacional_ingreso_control_embarazo':
                if (parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
                break;
             case 'embarazo_con_control_parental':
@@ -37962,13 +37962,13 @@ var FormularioController = new _vue2.default({
             case 'nacidos_muertos_previos_embarazo':
             case 'abortos_previos_embarazo':
                if (parseInt(this.fdc[input.name]) > 10 || parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
                break;
 
             case 'codigo_establecimiento':
                if (parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
                break;
 
@@ -38001,7 +38001,7 @@ var FormularioController = new _vue2.default({
                var d = new Date();
                var y = d.getFullYear();
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > y || parseInt(this.fdc[input.name]) < 1920) {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
                break;
             case 'numero_cd4_ingreso_control_prenatal':
@@ -38046,7 +38046,7 @@ var FormularioController = new _vue2.default({
 
             case 'carga_viral_numero_copia_semana_34':
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
@@ -38089,7 +38089,7 @@ var FormularioController = new _vue2.default({
                if (parseInt(this.fdc[input.name]) > 0) {
                   //this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                   if (parseInt(this.fdc[input.name]) > 999) {
-                     this.fdc[input.name] = 0;
+                     this.fdc[input.name] = null;
                   }
                   /*
                   this.fdc[input.name] =
@@ -38102,12 +38102,12 @@ var FormularioController = new _vue2.default({
             case 'peso_recien_nacido':
                if (parseInt(this.fdc[input.name]) > 0) {
                   if (parseInt(this.fdc[input.name]) > 9999) {
-                     this.fdc[input.name] = 0;
+                     this.fdc[input.name] = null;
                   } else {
                      this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                   }
                } else {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
                break;
             case 'resultado_treponemico':
@@ -38196,7 +38196,7 @@ var FormularioController = new _vue2.default({
 
             case 'tratamiento_recien_nacido_frecuencia':
                if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = 0;
+                  this.fdc[input.name] = null;
                }
                break;
 
