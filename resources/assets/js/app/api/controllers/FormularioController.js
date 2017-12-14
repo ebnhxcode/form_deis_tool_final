@@ -1139,6 +1139,38 @@ const FormularioController = new Vue({
                   }
                }
 
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
+
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.fdc['derivada_a_especialidades_embarazo']=' ';
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
+               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+                  swal({
+                     title: "Advertencia",
+                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+
                break;
             case 'resultado_2_vdrl_embarazo':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
@@ -1200,6 +1232,38 @@ const FormularioController = new Vue({
                   }
                }
 
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
+
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.fdc['derivada_a_especialidades_embarazo']=' ';
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
+               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+                  swal({
+                     title: "Advertencia",
+                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+               }
+
                break;
             case 'resultado_3_vdrl_embarazo':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
@@ -1255,6 +1319,38 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = true;
                      }
                   }
+               }
+
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
+
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.fdc['derivada_a_especialidades_embarazo']=' ';
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
+               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+                  swal({
+                     title: "Advertencia",
+                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
                }
 
                break;
@@ -1421,7 +1517,10 @@ const FormularioController = new Vue({
                }
 
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo') {
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
 
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
@@ -1431,7 +1530,10 @@ const FormularioController = new Vue({
                   }
 
                }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo'){
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
                         this.inputs[i].disabled = null;
@@ -1481,7 +1583,10 @@ const FormularioController = new Vue({
                }
 
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo') {
+                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
+                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
 
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
@@ -1491,7 +1596,10 @@ const FormularioController = new Vue({
                   }
 
                }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo'){
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
                         this.inputs[i].disabled = null;
