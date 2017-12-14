@@ -37966,9 +37966,6 @@ var FormularioController = new _vue2.default({
                }
                break;
 
-            case 'numero_contactos_sexuales_declarados':
-            case 'numero_contactos_sexuales_estudiados':
-            case 'numero_contactos_sexuales_tratados':
             case 'codigo_establecimiento':
                if (parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
@@ -38114,6 +38111,21 @@ var FormularioController = new _vue2.default({
                   }
                }
 
+               if (parseInt(this.fdc[input.name]) < 1) {
+                  this.fdc[input.name] = null;
+               }
+
+               break;
+
+            case 'numero_contactos_sexuales_estudiados':
+               if (parseInt(this.fdc[input.name]) < 1) {
+                  this.fdc[input.name] = null;
+               }
+               break;
+            case 'numero_contactos_sexuales_tratados':
+               if (parseInt(this.fdc[input.name]) < 1) {
+                  this.fdc[input.name] = null;
+               }
                break;
 
             case 'sustituto_leche_materna':
