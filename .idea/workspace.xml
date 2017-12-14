@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
     </list>
     <ignored path="deis_form_tool.iws" />
@@ -47,8 +46,8 @@
       <file leaf-file-name="collections.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/collections.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
-              <caret line="502" column="0" selection-start-line="502" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
+            <state vertical-scroll-proportion="-3.6296296">
+              <caret line="147" column="26" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -67,7 +66,7 @@
       <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7592592">
+            <state vertical-scroll-proportion="-2.0">
               <caret line="235" column="95" selection-start-line="235" selection-start-column="88" selection-end-line="235" selection-end-column="95" />
               <folding />
             </state>
@@ -77,8 +76,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8097561">
-              <caret line="1692" column="19" selection-start-line="1692" selection-start-column="19" selection-end-line="1692" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.92520326">
+              <caret line="1690" column="54" selection-start-line="1690" selection-start-column="54" selection-end-line="1690" selection-end-column="54" />
               <folding>
                 <element signature="e#33616#35208#0" expanded="false" />
                 <element signature="e#35307#36831#0" expanded="false" />
@@ -88,9 +87,9 @@
                 <element signature="e#83120#85743#0" expanded="false" />
                 <element signature="e#85795#90288#0" expanded="false" />
                 <element signature="e#90433#91529#0" expanded="false" />
-                <marker date="1513228114838" expanded="true" signature="2905:3372" placeholder="..." />
-                <marker date="1513228114838" expanded="true" signature="3635:3795" placeholder="..." />
-                <marker date="1513228114838" expanded="true" signature="4086:4246" placeholder="..." />
+                <marker date="1513228376379" expanded="true" signature="2905:3372" placeholder="..." />
+                <marker date="1513228376379" expanded="true" signature="3635:3795" placeholder="..." />
+                <marker date="1513228376379" expanded="true" signature="4086:4246" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -1334,15 +1333,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/collections.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="502" column="0" selection-start-line="502" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.6296296">
+          <caret line="147" column="26" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7592592">
+        <state vertical-scroll-proportion="-2.0">
           <caret line="235" column="95" selection-start-line="235" selection-start-column="88" selection-end-line="235" selection-end-column="95" />
           <folding />
         </state>
@@ -1350,8 +1349,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8097561">
-          <caret line="1692" column="19" selection-start-line="1692" selection-start-column="19" selection-end-line="1692" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.92520326">
+          <caret line="1690" column="54" selection-start-line="1690" selection-start-column="54" selection-end-line="1690" selection-end-column="54" />
           <folding>
             <element signature="e#33616#35208#0" expanded="false" />
             <element signature="e#35307#36831#0" expanded="false" />
@@ -1361,9 +1360,9 @@
             <element signature="e#83120#85743#0" expanded="false" />
             <element signature="e#85795#90288#0" expanded="false" />
             <element signature="e#90433#91529#0" expanded="false" />
-            <marker date="1513228114838" expanded="true" signature="2905:3372" placeholder="..." />
-            <marker date="1513228114838" expanded="true" signature="3635:3795" placeholder="..." />
-            <marker date="1513228114838" expanded="true" signature="4086:4246" placeholder="..." />
+            <marker date="1513228376379" expanded="true" signature="2905:3372" placeholder="..." />
+            <marker date="1513228376379" expanded="true" signature="3635:3795" placeholder="..." />
+            <marker date="1513228376379" expanded="true" signature="4086:4246" placeholder="..." />
           </folding>
         </state>
       </provider>

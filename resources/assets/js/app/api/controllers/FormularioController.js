@@ -1688,7 +1688,7 @@ const FormularioController = new Vue({
                         this.inputs[i].name == 'tratamiento_sifilis_frecuencia' ||
                         this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ||
                         this.inputs[i].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[i].disabled = null;
+                        this.inputs[i].disabled = true;
                      }
                   }
                }
