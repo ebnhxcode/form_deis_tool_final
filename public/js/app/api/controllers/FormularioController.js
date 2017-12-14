@@ -37657,7 +37657,7 @@ var FormularioController = new _vue2.default({
                } else {
                   for (var _i9 in this.inputs) {
                      if (this.inputs[_i9].name == 'resultado_dilucion_2_vdrl_embarazo' || this.inputs[_i9].name == 'fecha_2_vdrl_embarazo' || this.inputs[_i9].name == 'eg_2_vdrl_embarazo') {
-                        this.inputs[_i9].disabled = null;
+                        this.inputs[_i9].disabled = true;
                      }
                   }
                }
