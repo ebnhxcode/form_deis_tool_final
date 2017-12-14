@@ -1379,7 +1379,24 @@ const FormularioController = new Vue({
                      }
                   }
                }
+               
+               if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado' &&
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
 
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
+               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
+                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }
 
                break;
             case 'resultado_2_examen_vih_embarazo':
@@ -1409,12 +1426,15 @@ const FormularioController = new Vue({
                   }
                }
 
-               break;
-
-            case 'derivada_a_especialidades_embarazo':
                if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado' &&
                   this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
-                  this.fdc[input.name].disabled = true;
+
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
                }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo'){
                   for (let i in this.inputs){
@@ -1425,6 +1445,7 @@ const FormularioController = new Vue({
                }
 
                break;
+
 
             //case 'anos_estudio':
             case 'escolaridad':
