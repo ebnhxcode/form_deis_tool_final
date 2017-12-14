@@ -1605,7 +1605,7 @@ const FormularioController = new Vue({
 
                break;
             case 'numero_carga_viral_control_prenatal':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -1626,7 +1626,7 @@ const FormularioController = new Vue({
                break;
 
             case 'carga_viral_numero_copia_semana_34':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
                }
