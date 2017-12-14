@@ -38199,18 +38199,22 @@ var FormularioController = new _vue2.default({
          }
 
          if ((this.fdc['resultado_1_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_2_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_3_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'No Realizado') && (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado') && (this.fdc['resultado_2_examen_vih_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado')) {
-            for (var _i44 in this.inputs) {
-               if (this.inputs[_i44].name == 'derivada_a_especialidades_embarazo') {
-                  this.inputs[_i44].disabled = true;
+            /*
+            for (let i in this.inputs){
+               if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                  this.inputs[i].disabled = true;
                }
             }
+            */
          } else {
-            for (var _i45 in this.inputs) {
-               if (this.inputs[_i45].name == 'derivada_a_especialidades_embarazo') {
-                  this.inputs[_i45].disabled = null;
+               /*
+               for (let i in this.inputs){
+                  if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                     this.inputs[i].disabled = null;
+                  }
                }
+               */
             }
-         }
       },
 
       verifica_validacion_click: function verifica_validacion_click(input) {
