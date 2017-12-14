@@ -1585,6 +1585,21 @@ const FormularioController = new Vue({
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = 0;
                }
+
+               if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+
                break;
             case 'numero_carga_viral_control_prenatal':
 
@@ -2077,6 +2092,7 @@ const FormularioController = new Vue({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+                  this.fdc[input.name] = null;
                }else if(parseInt(ano)>ano_tope) {
                   this.fdc[input.name] = `${ano_tope}-${mes}-${dia}`;
                   swal({
@@ -2086,6 +2102,7 @@ const FormularioController = new Vue({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+                  this.fdc[input.name] = null;
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
