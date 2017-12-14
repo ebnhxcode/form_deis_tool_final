@@ -1841,6 +1841,7 @@ const FormularioController = new Vue({
                break;
          }
          //Validaciones latentes
+         /*
          if (
             (this.fdc['resultado_1_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'No Realizado') &&
             (this.fdc['resultado_2_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'No Realizado') &&
@@ -1859,6 +1860,7 @@ const FormularioController = new Vue({
                }
             }
          }
+         */
 
          if (
             (this.fdc['resultado_1_vdrl_embarazo'] == 'No Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'No Realizado') &&
