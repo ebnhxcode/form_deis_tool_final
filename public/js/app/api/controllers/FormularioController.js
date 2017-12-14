@@ -37615,7 +37615,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' && this.fdc['derivada_a_especialidades_embarazo'] != 'Rechaza' && this.fdc['derivada_a_especialidades_embarazo'] != 'No Corresponde') {
 
                   for (var _i7 in this.inputs) {
                      if (this.inputs[_i7].name == 'derivada_a_especialidades_embarazo') {
@@ -37685,7 +37685,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' && this.fdc['derivada_a_especialidades_embarazo'] != 'Rechaza' && this.fdc['derivada_a_especialidades_embarazo'] != 'No Corresponde') {
 
                   for (var _i12 in this.inputs) {
                      if (this.inputs[_i12].name == 'derivada_a_especialidades_embarazo') {
@@ -37754,7 +37754,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
+               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' && this.fdc['derivada_a_especialidades_embarazo'] != 'Rechaza' && this.fdc['derivada_a_especialidades_embarazo'] != 'No Corresponde') {
 
                   for (var _i17 in this.inputs) {
                      if (this.inputs[_i17].name == 'derivada_a_especialidades_embarazo') {

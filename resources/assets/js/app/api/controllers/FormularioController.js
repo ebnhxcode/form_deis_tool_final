@@ -1238,7 +1238,7 @@ const FormularioController = new Vue({
                   this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
                   this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
                   this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo'
+                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' &&
                   this.fdc['derivada_a_especialidades_embarazo'] != 'Rechaza' &&
                   this.fdc['derivada_a_especialidades_embarazo'] != 'No Corresponde') {
 
