@@ -2135,6 +2135,26 @@ const FormularioController = new Vue({
 
                break;
 
+            case 'tratamiento_recien_nacido_farmaco':
+
+               if(this.fdc[input.name] == 'No'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
+                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
+                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }
+
+               break;
+
 
 
             case 'estado_recien_nacido':
