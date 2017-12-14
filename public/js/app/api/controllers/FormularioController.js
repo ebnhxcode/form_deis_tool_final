@@ -38028,7 +38028,7 @@ var FormularioController = new _vue2.default({
 
                break;
             case 'numero_carga_viral_control_prenatal':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -38049,7 +38049,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'carga_viral_numero_copia_semana_34':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
                }
@@ -38102,17 +38102,17 @@ var FormularioController = new _vue2.default({
                      (  parseInt(this.fdc[input.name])/1000).toFixed(1) + 'g' :
                         parseInt(this.fdc[input.name]).toFixed(1) + 'mg';
                   */
-                  if (this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' && this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' && this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' && this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' && this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != '') {
-                     for (var _i34 in this.inputs) {
-                        if (this.inputs[_i34].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i34].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i34].name == 'hora_2_inicio_farmaco_1_vih') {
-                           this.inputs[_i34].disabled = null;
-                        }
+               }
+               if (this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' && this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' && this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' && this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' && this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != '') {
+                  for (var _i34 in this.inputs) {
+                     if (this.inputs[_i34].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i34].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i34].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[_i34].disabled = null;
                      }
-                  } else {
-                     for (var _i35 in this.inputs) {
-                        if (this.inputs[_i35].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i35].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i35].name == 'hora_2_inicio_farmaco_1_vih') {
-                           this.inputs[_i35].disabled = true;
-                        }
+                  }
+               } else {
+                  for (var _i35 in this.inputs) {
+                     if (this.inputs[_i35].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i35].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i35].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[_i35].disabled = true;
                      }
                   }
                }

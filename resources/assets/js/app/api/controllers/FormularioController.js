@@ -1680,25 +1680,25 @@ const FormularioController = new Vue({
                      (  parseInt(this.fdc[input.name])/1000).toFixed(1) + 'g' :
                         parseInt(this.fdc[input.name]).toFixed(1) + 'mg';
                   */
-                  if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
-                     this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
-                     this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
-                     this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
-                     this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
-                     for (let i in this.inputs){
-                        if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                           this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                           this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                           this.inputs[i].disabled = null;
-                        }
+               }
+               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
+                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
+                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
+                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
+                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
+                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
+                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[i].disabled = null;
                      }
-                  }else{
-                     for (let i in this.inputs){
-                        if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                           this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                           this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                           this.inputs[i].disabled = true;
-                        }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
+                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
+                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[i].disabled = true;
                      }
                   }
                }
