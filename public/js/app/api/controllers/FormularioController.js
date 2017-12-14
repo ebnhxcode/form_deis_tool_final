@@ -38092,7 +38092,7 @@ var FormularioController = new _vue2.default({
                } else {
                   for (var _i31 in this.inputs) {
                      if (this.inputs[_i31].name == 'tratamiento_sifilis_farmaco' || this.inputs[_i31].name == 'tratamiento_sifilis_dosis' || this.inputs[_i31].name == 'tratamiento_sifilis_frecuencia' || this.inputs[_i31].name == 'fecha_administracion_1_dosis_penicilina_gestante' || this.inputs[_i31].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[_i31].disabled = null;
+                        this.inputs[_i31].disabled = true;
                      }
                   }
                }
