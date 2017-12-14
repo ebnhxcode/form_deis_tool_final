@@ -2477,6 +2477,47 @@ const FormularioController = new Vue({
                }
                break;
 
+            case 'fecha_parto':
+               var date = this.fdc[input.name].split('-');
+               var ano_tope = new Date();
+               ano_tope = ano_tope.getFullYear();
+               var ano = date[0];
+               var mes = date[1];
+               var dia = date[2];
+               if (parseInt(ano)<2016) {
+                  ano = 2016;
+                  this.fdc[input.name] = `${ano}-${mes}-${dia}`;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido (Desde 01 de enero del 2016).",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               }else if(parseInt(ano)>ano_tope) {
+                  this.fdc[input.name] = `${ano_tope}-${mes}-${dia}`;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               }
+
+               if (date=="") {
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese una fecha válida.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               }
+               break;
 
             case 'fecha_ingreso_control_prenatal_embarazo':
             case 'fecha_ultima_regla_gestacional':
@@ -2499,7 +2540,6 @@ const FormularioController = new Vue({
             case 'fecha_inicio_tar_farmaco_1':
             case 'fecha_inicio_tar_farmaco_2':
             case 'fecha_inicio_tar_farmaco_3':
-            case 'fecha_parto':
             case 'fecha_2_inicio_farmaco_1_vih':
             case 'fecha_administracion_farmaco_suspencion_lactancia':
             case 'fecha_nacimiento_recien_nacido':
