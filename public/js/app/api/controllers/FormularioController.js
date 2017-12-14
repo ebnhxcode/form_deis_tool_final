@@ -38464,6 +38464,7 @@ var FormularioController = new _vue2.default({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+                  this.fdc[input.name] = null;
                } else if (parseInt(ano) > ano_tope) {
                   this.fdc[input.name] = ano_tope + '-' + mes + '-' + dia;
                   swal({
@@ -38473,6 +38474,7 @@ var FormularioController = new _vue2.default({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+                  this.fdc[input.name] = null;
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
