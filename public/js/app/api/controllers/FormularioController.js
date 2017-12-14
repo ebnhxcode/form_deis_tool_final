@@ -37618,7 +37618,7 @@ var FormularioController = new _vue2.default({
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' && this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' && this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
 
                   for (var _i7 in this.inputs) {
-                     if (this.inputs[_i7].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[_i7].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i7].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.fdc['derivada_a_especialidades_embarazo'] = ' ';
                         this.inputs[_i7].disabled = true;
                      }
@@ -37688,7 +37688,7 @@ var FormularioController = new _vue2.default({
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' && this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' && this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
 
                   for (var _i12 in this.inputs) {
-                     if (this.inputs[_i12].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[_i12].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i12].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.fdc['derivada_a_especialidades_embarazo'] = ' ';
                         this.inputs[_i12].disabled = true;
                      }
@@ -37757,7 +37757,7 @@ var FormularioController = new _vue2.default({
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' && this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' && this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' && this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' && this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
 
                   for (var _i17 in this.inputs) {
-                     if (this.inputs[_i17].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[_i17].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i17].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.fdc['derivada_a_especialidades_embarazo'] = ' ';
                         this.inputs[_i17].disabled = true;
                      }
