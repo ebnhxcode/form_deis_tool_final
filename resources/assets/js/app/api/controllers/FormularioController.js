@@ -1696,7 +1696,7 @@ const FormularioController = new Vue({
 
             case 'numero_contactos_sexuales_declarados':
 
-               if (parseInt(this.fdc[input.name])>0){
+               if (parseInt(this.fdc[input.name])>=1){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
                         this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
