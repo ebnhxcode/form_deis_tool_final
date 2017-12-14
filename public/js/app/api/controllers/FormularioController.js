@@ -38298,10 +38298,59 @@ var FormularioController = new _vue2.default({
 
                break;
 
+            case 'terapia_antiretroviral_farmaco_1':
+               if (this.fdc[input.name]) {
+                  for (var _i52 in this.inputs) {
+                     if (this.inputs[_i52].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i52].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i53 in this.inputs) {
+                     if (this.inputs[_i53].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i53].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'terapia_antiretroviral_tar_farmaco_2':
+               if (this.fdc[input.name]) {
+                  for (var _i54 in this.inputs) {
+                     if (this.inputs[_i54].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i54].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i55 in this.inputs) {
+                     if (this.inputs[_i55].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i55].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'terapia_antiretroviral_tar_farmaco_3':
+               if (this.fdc[input.name]) {
+                  for (var _i56 in this.inputs) {
+                     if (this.inputs[_i56].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i56].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i57 in this.inputs) {
+                     if (this.inputs[_i57].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i57].disabled = true;
+                     }
+                  }
+               }
+               break;
+
             default:
 
                break;
          }
+
          //Validaciones latentes
          /*
          if (
@@ -38443,54 +38492,6 @@ var FormularioController = new _vue2.default({
                }
                break;
 
-            case 'terapia_antiretroviral_farmaco_1':
-               if (this.fdc[input.name] != null) {
-                  for (var i in this.inputs) {
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               } else {
-                  for (var _i52 in this.inputs) {
-                     if (this.inputs[_i52].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[_i52].disabled = true;
-                     }
-                  }
-               }
-               break;
-
-            case 'terapia_antiretroviral_tar_farmaco_2':
-               if (this.fdc[input.name] != null) {
-                  for (var _i53 in this.inputs) {
-                     if (this.inputs[_i53].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[_i53].disabled = null;
-                     }
-                  }
-               } else {
-                  for (var _i54 in this.inputs) {
-                     if (this.inputs[_i54].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[_i54].disabled = true;
-                     }
-                  }
-               }
-               break;
-
-            case 'terapia_antiretroviral_tar_farmaco_3':
-               if (this.fdc[input.name] != null) {
-                  for (var _i55 in this.inputs) {
-                     if (this.inputs[_i55].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[_i55].disabled = null;
-                     }
-                  }
-               } else {
-                  for (var _i56 in this.inputs) {
-                     if (this.inputs[_i56].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[_i56].disabled = true;
-                     }
-                  }
-               }
-               break;
-
             case 'fecha_ingreso_control_prenatal_embarazo':
             case 'fecha_ultima_regla_gestacional':
             case 'fecha_ultima_regla_operacional':
@@ -38571,9 +38572,9 @@ var FormularioController = new _vue2.default({
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
-                  for (var _i57 in this.inputs) {
-                     if (this.inputs[_i57].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[_i57].disabled = null;
+                  for (var i in this.inputs) {
+                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
+                        this.inputs[i].disabled = null;
                      }
                   }
                } else {
@@ -38612,7 +38613,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (this.fdc[terapia_antiretroviral_farmaco_1] != null) {
+               if (this.fdc['terapia_antiretroviral_farmaco_1']) {
                   for (var _i63 in this.inputs) {
                      if (this.inputs[_i63].name == 'fecha_inicio_tar_farmaco_1') {
                         this.inputs[_i63].disabled = null;
@@ -38626,7 +38627,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (this.fdc['terapia_antiretroviral_tar_farmaco_2'] != null) {
+               if (this.fdc['terapia_antiretroviral_tar_farmaco_2']) {
                   for (var _i65 in this.inputs) {
                      if (this.inputs[_i65].name == 'fecha_inicio_tar_farmaco_2') {
                         this.inputs[_i65].disabled = null;
@@ -38640,7 +38641,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (this.fdc['terapia_antiretroviral_tar_farmaco_3'] != null) {
+               if (this.fdc['terapia_antiretroviral_tar_farmaco_3']) {
                   for (var _i67 in this.inputs) {
                      if (this.inputs[_i67].name == 'fecha_inicio_tar_farmaco_3') {
                         this.inputs[_i67].disabled = null;
