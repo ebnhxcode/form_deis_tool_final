@@ -38200,13 +38200,13 @@ var FormularioController = new _vue2.default({
 
                if (this.fdc[input.name] == 'No') {
                   for (var _i42 in this.inputs) {
-                     if (this.inputs[_i42].name == 'fecha_inicio_sustituto_leche_materna' || this.inputs[_i42].name == 'hora_inicio_sustituto_leche_materna') {
+                     if (this.inputs[_i42].name == 'fecha_inicio_sustituto_leche_materna' || this.inputs[_i42].name == 'hora_inicio_sustituto_leche_materna' || this.inputs[_i42].name == 'entrega_sustituto_leche_materna_al_alta') {
                         this.inputs[_i42].disabled = true;
                      }
                   }
                } else {
                   for (var _i43 in this.inputs) {
-                     if (this.inputs[_i43].name == 'fecha_inicio_sustituto_leche_materna' || this.inputs[_i43].name == 'hora_inicio_sustituto_leche_materna') {
+                     if (this.inputs[_i43].name == 'fecha_inicio_sustituto_leche_materna' || this.inputs[_i43].name == 'hora_inicio_sustituto_leche_materna' || this.inputs[_i43].name == 'entrega_sustituto_leche_materna_al_alta') {
                         this.inputs[_i43].disabled = null;
                      }
                   }
