@@ -37859,6 +37859,9 @@ var FormularioController = new _vue2.default({
                         case 'eg_2_examen_vih':
                            this.inputs[_i23].disabled = true;
                            break;
+                        case 'derivada_a_especialidades_embarazo':
+                           this.inputs[_i23].disabled = null;
+                           break;
                      }
                   }
                } else {
