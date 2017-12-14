@@ -37988,6 +37988,13 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i25].disabled = null;
                      }
                   }
+                  swal({
+                     title: "Advertencia",
+                     text: '\n                        Ahora, debe completar el a\xF1o cuando se diagnostic\xF3 esta patolog\xEDa.\n                     ',
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
                }
 
                break;
