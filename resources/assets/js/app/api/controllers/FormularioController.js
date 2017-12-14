@@ -1847,9 +1847,8 @@ const FormularioController = new Vue({
                   }
                }
 
-
-
                break;
+
 
 
             case 'tratamiento_recien_nacido_frecuencia':
