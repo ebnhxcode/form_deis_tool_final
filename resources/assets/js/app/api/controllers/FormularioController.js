@@ -2196,6 +2196,53 @@ const FormularioController = new Vue({
 
                break;
 
+            case 'terapia_antiretroviral_farmaco_1':
+               if (this.fdc[input.name] != null) {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'terapia_antiretroviral_tar_farmaco_2':
+               if (this.fdc[input.name] != null) {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               break;
+
+            case 'terapia_antiretroviral_tar_farmaco_3':
+               if (this.fdc[input.name] != null) {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+               break;
 
          }
       },
