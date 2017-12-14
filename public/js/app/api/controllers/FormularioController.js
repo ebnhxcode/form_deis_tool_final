@@ -38100,7 +38100,7 @@ var FormularioController = new _vue2.default({
 
             case 'numero_contactos_sexuales_declarados':
 
-               if (parseInt(this.fdc[input.name]) > 0) {
+               if (parseInt(this.fdc[input.name]) >= 1) {
                   for (var _i32 in this.inputs) {
                      if (this.inputs[_i32].name == 'numero_contactos_sexuales_estudiados' || this.inputs[_i32].name == 'numero_contactos_sexuales_tratados') {
                         this.inputs[_i32].disabled = null;
