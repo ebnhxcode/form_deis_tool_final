@@ -38007,6 +38007,7 @@ var FormularioController = new _vue2.default({
                }
                break;
             case 'numero_cd4_ingreso_control_prenatal':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -38027,6 +38028,7 @@ var FormularioController = new _vue2.default({
 
                break;
             case 'numero_carga_viral_control_prenatal':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -38047,6 +38049,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'carga_viral_numero_copia_semana_34':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
                }
@@ -38146,7 +38149,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'numero_contactos_sexuales_declarados':
-
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) >= 1) {
                   for (var _i38 in this.inputs) {
                      if (this.inputs[_i38].name == 'numero_contactos_sexuales_estudiados' || this.inputs[_i38].name == 'numero_contactos_sexuales_tratados') {
@@ -38168,11 +38171,13 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'numero_contactos_sexuales_estudiados':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 1) {
                   this.fdc[input.name] = null;
                }
                break;
             case 'numero_contactos_sexuales_tratados':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 1) {
                   this.fdc[input.name] = null;
                }
@@ -38197,6 +38202,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'tratamiento_recien_nacido_frecuencia':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
                }
