@@ -37965,7 +37965,7 @@ var FormularioController = new _vue2.default({
             case 'nacidos_vivos_previos_embarazo':
             case 'nacidos_muertos_previos_embarazo':
             case 'abortos_previos_embarazo':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) > 10 || parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
                }
@@ -38003,7 +38003,7 @@ var FormularioController = new _vue2.default({
 
                break;
             case 'ano_sifilis_previa_embarazo':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                var d = new Date();
                var y = d.getFullYear();
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > y || parseInt(this.fdc[input.name]) < 1920) {
@@ -38011,7 +38011,7 @@ var FormularioController = new _vue2.default({
                }
                break;
             case 'numero_cd4_ingreso_control_prenatal':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -38166,7 +38166,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'numero_contactos_sexuales_declarados':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) >= 1) {
                   for (var _i40 in this.inputs) {
                      if (this.inputs[_i40].name == 'numero_contactos_sexuales_estudiados' || this.inputs[_i40].name == 'numero_contactos_sexuales_tratados') {
@@ -38188,13 +38188,13 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'numero_contactos_sexuales_estudiados':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 1) {
                   this.fdc[input.name] = null;
                }
                break;
             case 'numero_contactos_sexuales_tratados':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 1) {
                   this.fdc[input.name] = null;
                }
@@ -38254,7 +38254,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'tratamiento_recien_nacido_frecuencia':
-               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
                }
@@ -38756,6 +38756,48 @@ var FormularioController = new _vue2.default({
                }
                break;
 
+            case 'fecha_parto':
+               var date = this.fdc[input.name].split('-');
+               var ano_tope = new Date();
+               ano_tope = ano_tope.getFullYear();
+               var ano = date[0];
+               var mes = date[1];
+               var dia = date[2];
+               if (parseInt(ano) < 2016) {
+                  ano = 2016;
+                  this.fdc[input.name] = ano + '-' + mes + '-' + dia;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido (Desde 01 de enero del 2016).",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               } else if (parseInt(ano) > ano_tope) {
+                  this.fdc[input.name] = ano_tope + '-' + mes + '-' + dia;
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese un año válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               }
+
+               if (date == "") {
+                  swal({
+                     title: "Advertencia",
+                     text: "Por favor ingrese una fecha válida.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  this.fdc[input.name] = null;
+               }
+               break;
+
             case 'fecha_ingreso_control_prenatal_embarazo':
             case 'fecha_ultima_regla_gestacional':
             case 'fecha_ultima_regla_operacional':
@@ -38777,7 +38819,6 @@ var FormularioController = new _vue2.default({
             case 'fecha_inicio_tar_farmaco_1':
             case 'fecha_inicio_tar_farmaco_2':
             case 'fecha_inicio_tar_farmaco_3':
-            case 'fecha_parto':
             case 'fecha_2_inicio_farmaco_1_vih':
             case 'fecha_administracion_farmaco_suspencion_lactancia':
             case 'fecha_nacimiento_recien_nacido':
