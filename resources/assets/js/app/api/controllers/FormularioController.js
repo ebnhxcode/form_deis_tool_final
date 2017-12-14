@@ -2980,6 +2980,7 @@ const FormularioController = new Vue({
                //console.log(response);
             });
 
+            /*
             if (this.auth && this.auth.mensajes_informativos != 'true') {
                var self = this;
                swal({
@@ -3008,6 +3009,7 @@ const FormularioController = new Vue({
                   }
                });
             }
+            */
 
             if (this.auth && this.auth.acepta_terminos != 'true') {
                var self = this;
