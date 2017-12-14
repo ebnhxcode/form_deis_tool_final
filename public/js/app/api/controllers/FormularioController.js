@@ -43521,6 +43521,8 @@ var FormularioController = new _vue2.default({
                      case 'fecha_1_vdrl_embarazo':
                      case 'fecha_2_vdrl_embarazo':
                      case 'fecha_3_vdrl_embarazo':
+                     case 'fecha_1_examen_vih_embarazo':
+                     case 'fecha_2_examen_vih_embarazo':
                         var fecha_vdrl = (0, _momentEs2.default)(this.fdc[this.inputs[i].name]);
                         var fecha_parto = (0, _momentEs2.default)(this.fdc['fecha_parto']);
                         //console.log(fecha2.diff(fecha1, 'days'), ' dias de diferencia');
@@ -43534,6 +43536,7 @@ var FormularioController = new _vue2.default({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc[this.inputs[i].name] = null;
                            } else if (fecha_parto.diff(fecha_vdrl, 'days') < 0) {
                               swal({
                                  title: "Advertencia",
@@ -43542,6 +43545,7 @@ var FormularioController = new _vue2.default({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc[this.inputs[i].name] = null;
                            }
                         }
                         break;

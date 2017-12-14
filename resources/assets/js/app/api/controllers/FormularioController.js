@@ -2794,6 +2794,7 @@ const FormularioController = new Vue({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc[this.inputs[i].name] = null
                            }else if (fecha_parto.diff(fecha_vdrl, 'days') < 0){
                               swal({
                                  title: "Advertencia",
@@ -2802,6 +2803,7 @@ const FormularioController = new Vue({
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
                               });
+                              this.fdc[this.inputs[i].name] = null
                            }
                         }
                         break;
