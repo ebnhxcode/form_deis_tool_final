@@ -10,6 +10,8 @@ import VeeValidate, { Validator } from 'vee-validate';
 
 import { validate, clean, format } from 'rut.js';
 
+import moment from 'moment-es6';
+
 // Add locale helper.
 Validator.addLocale(es);
 
@@ -2770,6 +2772,40 @@ const FormularioController = new Vue({
                      closeOnConfirm: false
                   });
                   this.fdc[input.name] = null;
+               }
+
+               for (let i in this.inputs){
+                  switch (this.inputs[i].name) {
+                     case 'fecha_1_vdrl_embarazo':
+                     case 'fecha_2_vdrl_embarazo':
+                     case 'fecha_3_vdrl_embarazo':
+                     case 'fecha_1_examen_vih_embarazo':
+                     case 'fecha_2_examen_vih_embarazo':
+                        var fecha_vdrl = moment(this.fdc[this.inputs[i].name]);
+                        var fecha_parto = moment(this.fdc['fecha_parto']);
+                        //console.log(fecha2.diff(fecha1, 'days'), ' dias de diferencia');
+                        //console.log(fecha_parto.diff(fecha_vdrl, 'days'));
+                        if (fecha_parto.diff(fecha_vdrl, 'days') != NaN) {
+                           if (fecha_parto.diff(fecha_vdrl, 'days') > 300) {
+                              swal({
+                                 title: "Advertencia",
+                                 text: "La diferencia de dias excede los 300 dias antes del parto.",
+                                 type: "warning",
+                                 confirmButtonClass: "btn-danger",
+                                 closeOnConfirm: false
+                              });
+                           }else if (fecha_parto.diff(fecha_vdrl, 'days') < 0){
+                              swal({
+                                 title: "Advertencia",
+                                 text: "La fecha no puede ser mayor a la fecha de parto.",
+                                 type: "warning",
+                                 confirmButtonClass: "btn-danger",
+                                 closeOnConfirm: false
+                              });
+                           }
+                        }
+                        break;
+                  }
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
