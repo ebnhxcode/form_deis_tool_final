@@ -1182,7 +1182,15 @@ const FormularioController = new Vue({
                      this.fdc['resultado_dilucion_2_vdrl_embarazo'] = 'true';
                   }
                }
-               else{
+               else if (this.fdc[input.name] == 'Reactivo') {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
+                        this.inputs[i].name == 'fecha_2_vdrl_embarazo'
+                        || this.inputs[i].name == 'eg_2_vdrl_embarazo') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
                         this.inputs[i].name == 'fecha_2_vdrl_embarazo'
@@ -1231,12 +1239,20 @@ const FormularioController = new Vue({
                      this.fdc['resultado_dilucion_3_vdrl_embarazo'] = 'true';
                   }
                }
-               else{
+               else if (this.fdc[input.name] == 'Reactivo') {
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo' ||
                         this.inputs[i].name == 'fecha_3_vdrl_embarazo'
                         || this.inputs[i].name == 'eg_3_vdrl_embarazo') {
                         this.inputs[i].disabled = null;
+                     }
+                  }
+               } else {
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo' ||
+                        this.inputs[i].name == 'fecha_3_vdrl_embarazo'
+                        || this.inputs[i].name == 'eg_3_vdrl_embarazo') {
+                        this.inputs[i].disabled = true;
                      }
                   }
                }
