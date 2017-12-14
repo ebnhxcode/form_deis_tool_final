@@ -37820,6 +37820,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i18 in this.inputs) {
                      if (this.inputs[_i18].name == 'derivada_a_especialidades_embarazo') {
+                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
                         this.inputs[_i18].disabled = true;
                      }
                   }
@@ -37862,6 +37863,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i22 in this.inputs) {
                      if (this.inputs[_i22].name == 'derivada_a_especialidades_embarazo') {
+                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
                         this.inputs[_i22].disabled = true;
                      }
                   }
