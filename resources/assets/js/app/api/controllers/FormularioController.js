@@ -2089,7 +2089,24 @@ const FormularioController = new Vue({
                   }
                }
                break;
+
+            case 'resultado_final_isp_examen_vih_recien_nacido':
+               if(this.fdc[input.name] == 'No Realizado'){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido	') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido	') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }
                break;
+
+
 
 
             case 'estado_recien_nacido':
