@@ -1148,7 +1148,8 @@ const FormularioController = new Vue({
                   this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
 
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
+                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.fdc['derivada_a_especialidades_embarazo']=' ';
                         this.inputs[i].disabled = true;
                      }
@@ -1244,7 +1245,8 @@ const FormularioController = new Vue({
                   this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
 
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
+                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.fdc['derivada_a_especialidades_embarazo']=' ';
                         this.inputs[i].disabled = true;
                      }
@@ -1336,7 +1338,8 @@ const FormularioController = new Vue({
                   this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
 
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
+                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.fdc['derivada_a_especialidades_embarazo']=' ';
                         this.inputs[i].disabled = true;
                      }

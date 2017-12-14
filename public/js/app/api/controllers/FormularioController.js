@@ -37625,7 +37625,7 @@ var FormularioController = new _vue2.default({
                   }
                } else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') {
                   for (var _i8 in this.inputs) {
-                     if (this.inputs[_i8].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[_i8].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i8].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.inputs[_i8].disabled = null;
                      }
                   }
@@ -37695,7 +37695,7 @@ var FormularioController = new _vue2.default({
                   }
                } else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') {
                   for (var _i13 in this.inputs) {
-                     if (this.inputs[_i13].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[_i13].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i13].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.inputs[_i13].disabled = null;
                      }
                   }
@@ -37764,7 +37764,7 @@ var FormularioController = new _vue2.default({
                   }
                } else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') {
                   for (var _i18 in this.inputs) {
-                     if (this.inputs[_i18].name == 'derivada_a_especialidades_embarazo') {
+                     if (this.inputs[_i18].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i18].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
                         this.inputs[_i18].disabled = null;
                      }
                   }
