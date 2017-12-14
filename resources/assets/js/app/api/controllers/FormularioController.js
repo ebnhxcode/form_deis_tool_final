@@ -1584,6 +1584,7 @@ const FormularioController = new Vue({
                }
                break;
             case 'numero_cd4_ingreso_control_prenatal':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -1604,6 +1605,7 @@ const FormularioController = new Vue({
 
                break;
             case 'numero_carga_viral_control_prenatal':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
                }
@@ -1624,6 +1626,7 @@ const FormularioController = new Vue({
                break;
 
             case 'carga_viral_numero_copia_semana_34':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
                }
@@ -1744,7 +1747,7 @@ const FormularioController = new Vue({
 
 
             case 'numero_contactos_sexuales_declarados':
-
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name])>=1){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
@@ -1768,11 +1771,13 @@ const FormularioController = new Vue({
                break;
 
             case 'numero_contactos_sexuales_estudiados':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name])<1) {
                   this.fdc[input.name] = null;
                }
                break;
             case 'numero_contactos_sexuales_tratados':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name])<1) {
                   this.fdc[input.name] = null;
                }
@@ -1800,6 +1805,7 @@ const FormularioController = new Vue({
                break;
 
             case 'tratamiento_recien_nacido_frecuencia':
+               this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
                }
