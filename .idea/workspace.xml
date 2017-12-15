@@ -11,10 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,41 +74,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="23" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="0.66288495">
+              <caret line="109" column="243" selection-start-line="109" selection-start-column="243" selection-end-line="109" selection-end-column="243" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5084112">
-              <caret line="1898" column="18" selection-start-line="1898" selection-start-column="18" selection-end-line="1898" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="1801" column="0" selection-start-line="1801" selection-start-column="0" selection-end-line="1801" selection-end-column="0" />
               <folding>
                 <element signature="e#33840#35432#0" expanded="false" />
                 <element signature="e#35531#37055#0" expanded="false" />
                 <element signature="e#37099#37697#0" expanded="false" />
                 <element signature="e#37753#38162#0" expanded="false" />
                 <element signature="e#38215#38537#0" expanded="false" />
-                <element signature="e#117877#120500#0" expanded="false" />
-                <element signature="e#134014#135110#0" expanded="false" />
-                <marker date="1513313264290" expanded="true" signature="2939:3406" placeholder="..." />
-                <marker date="1513313264290" expanded="true" signature="3669:3829" placeholder="..." />
-                <marker date="1513313264290" expanded="true" signature="4120:4280" placeholder="..." />
-                <marker date="1513313264290" expanded="true" signature="135757:136965" placeholder="{...}" />
-                <marker date="1513313264290" expanded="true" signature="135811:136330" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
-                <marker date="1513313264290" expanded="true" signature="136353:136949" placeholder="{...}" />
-                <marker date="1513313264290" expanded="true" signature="136435:136877" placeholder="{...}" />
-                <marker date="1513313264290" expanded="true" signature="136656:136750" placeholder="{...}" />
-                <marker date="1513313264290" expanded="true" signature="136658:136726" placeholder="//..." />
-                <marker date="1513313264290" expanded="true" signature="136764:136855" placeholder="{...}" />
-                <marker date="1513313264290" expanded="true" signature="136766:136832" placeholder="//..." />
-                <marker date="1513313264290" expanded="true" signature="136881:136932" placeholder="{...}" />
+                <element signature="e#118006#120629#0" expanded="false" />
+                <element signature="e#134143#135239#0" expanded="false" />
+                <marker date="1513341429950" expanded="true" signature="2939:3406" placeholder="..." />
+                <marker date="1513341429950" expanded="true" signature="3669:3829" placeholder="..." />
+                <marker date="1513341429950" expanded="true" signature="4120:4280" placeholder="..." />
+                <marker date="1513341429950" expanded="true" signature="135886:137094" placeholder="{...}" />
+                <marker date="1513341429950" expanded="true" signature="135940:136459" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
+                <marker date="1513341429950" expanded="true" signature="136482:137078" placeholder="{...}" />
+                <marker date="1513341429950" expanded="true" signature="136564:137006" placeholder="{...}" />
+                <marker date="1513341429950" expanded="true" signature="136785:136879" placeholder="{...}" />
+                <marker date="1513341429950" expanded="true" signature="136787:136855" placeholder="//..." />
+                <marker date="1513341429950" expanded="true" signature="136893:136984" placeholder="{...}" />
+                <marker date="1513341429950" expanded="true" signature="136895:136961" placeholder="//..." />
+                <marker date="1513341429950" expanded="true" signature="137010:137061" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -193,8 +193,8 @@
         <option value="$PROJECT_DIR$/public/js/asteroids.min.js" />
         <option value="$PROJECT_DIR$/config/collections.php" />
         <option value="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
       </list>
     </option>
   </component>
@@ -216,8 +216,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="8" />
-    <option name="width" value="1336" />
-    <option name="height" value="653" />
+    <option name="width" value="1360" />
+    <option name="height" value="761" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -328,8 +328,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="8" width="1336" height="653" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="8" width="1360" height="761" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20441176" sideWeight="0.72985077" order="0" side_tool="false" content_ui="combo" />
@@ -340,7 +340,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20434132" sideWeight="0.27014926" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2007353" sideWeight="0.27014926" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -712,38 +712,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="23" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5084112">
-          <caret line="1898" column="18" selection-start-line="1898" selection-start-column="18" selection-end-line="1898" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1801" column="0" selection-start-line="1801" selection-start-column="0" selection-end-line="1801" selection-end-column="0" />
           <folding>
             <element signature="e#33840#35432#0" expanded="false" />
             <element signature="e#35531#37055#0" expanded="false" />
             <element signature="e#37099#37697#0" expanded="false" />
             <element signature="e#37753#38162#0" expanded="false" />
             <element signature="e#38215#38537#0" expanded="false" />
-            <element signature="e#117877#120500#0" expanded="false" />
-            <element signature="e#134014#135110#0" expanded="false" />
-            <marker date="1513313264290" expanded="true" signature="2939:3406" placeholder="..." />
-            <marker date="1513313264290" expanded="true" signature="3669:3829" placeholder="..." />
-            <marker date="1513313264290" expanded="true" signature="4120:4280" placeholder="..." />
-            <marker date="1513313264290" expanded="true" signature="135757:136965" placeholder="{...}" />
-            <marker date="1513313264290" expanded="true" signature="135811:136330" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
-            <marker date="1513313264290" expanded="true" signature="136353:136949" placeholder="{...}" />
-            <marker date="1513313264290" expanded="true" signature="136435:136877" placeholder="{...}" />
-            <marker date="1513313264290" expanded="true" signature="136656:136750" placeholder="{...}" />
-            <marker date="1513313264290" expanded="true" signature="136658:136726" placeholder="//..." />
-            <marker date="1513313264290" expanded="true" signature="136764:136855" placeholder="{...}" />
-            <marker date="1513313264290" expanded="true" signature="136766:136832" placeholder="//..." />
-            <marker date="1513313264290" expanded="true" signature="136881:136932" placeholder="{...}" />
+            <element signature="e#118006#120629#0" expanded="false" />
+            <element signature="e#134143#135239#0" expanded="false" />
+            <marker date="1513341429950" expanded="true" signature="2939:3406" placeholder="..." />
+            <marker date="1513341429950" expanded="true" signature="3669:3829" placeholder="..." />
+            <marker date="1513341429950" expanded="true" signature="4120:4280" placeholder="..." />
+            <marker date="1513341429950" expanded="true" signature="135886:137094" placeholder="{...}" />
+            <marker date="1513341429950" expanded="true" signature="135940:136459" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
+            <marker date="1513341429950" expanded="true" signature="136482:137078" placeholder="{...}" />
+            <marker date="1513341429950" expanded="true" signature="136564:137006" placeholder="{...}" />
+            <marker date="1513341429950" expanded="true" signature="136785:136879" placeholder="{...}" />
+            <marker date="1513341429950" expanded="true" signature="136787:136855" placeholder="//..." />
+            <marker date="1513341429950" expanded="true" signature="136893:136984" placeholder="{...}" />
+            <marker date="1513341429950" expanded="true" signature="136895:136961" placeholder="//..." />
+            <marker date="1513341429950" expanded="true" signature="137010:137061" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -761,6 +753,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="115" column="29" selection-start-line="115" selection-start-column="29" selection-end-line="115" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66288495">
+          <caret line="109" column="243" selection-start-line="109" selection-start-column="243" selection-end-line="109" selection-end-column="243" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#2;n#ul#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
