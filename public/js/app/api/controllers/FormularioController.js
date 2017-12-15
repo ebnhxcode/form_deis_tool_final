@@ -42765,9 +42765,12 @@ var FormularioController = new _vue2.default({
                if (parseInt(this.fdc[input.name]) > 0) {
                   if (parseInt(this.fdc[input.name]) > 9999) {
                      this.fdc[input.name] = 0;
-                  } else {
+                  }
+                  /*
+                  else{
                      this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                   }
+                  */
                } else {
                   this.fdc[input.name] = 0;
                }
