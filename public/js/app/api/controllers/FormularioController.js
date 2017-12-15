@@ -43709,32 +43709,32 @@ var FormularioController = new _vue2.default({
                //console.log(response);
             });
 
-            if (_this7.auth && _this7.auth.mensajes_informativos != 'true') {
-               var self = _this7;
+            /*
+            if (this.auth && this.auth.mensajes_informativos != 'true') {
+               var self = this;
                swal({
                   title: "Información sobre Mantenimiento del Sitio",
-                  text: '\n                     Estimado usuario, le informamos que la plataforma se encontrar\xE1 en mantenci\xF3n los dias Martes y Jueves entre 18:00 y 18:30 horas, al aceptar este mensaje, queda en conformidad de que el usuario no deber\xE1 ingresar en ese horario a la plataforma de transmisi\xF3n vertical.\n                     ',
+                  text: `
+                     Estimado usuario, le informamos que la plataforma se encontrará en mantención los dias Martes y Jueves entre 18:00 y 18:30 horas, al aceptar este mensaje, queda en conformidad de que el usuario no deberá ingresar en ese horario a la plataforma de transmisión vertical.
+                     `,
                   closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto'
+                  confirmButtonText: 'Si, acepto',
                }, function (isConfirm) {
-
-                  //alert(isConfirm);
+                   //alert(isConfirm);
                   if (isConfirm == true) {
                      swal.close();
-
-                     _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-                     self.$http.post('/formulario/confirmar_mensaje_informativo').then(function (response) {// success callback
+                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                      self.$http.post('/formulario/confirmar_mensaje_informativo').then(response => { // success callback
                         //console.log(response);
-
-                     }, function (response) {// error callback
+                      }, response => { // error callback
                         //console.log(response);
                      });
-                  } else {
-                     return;
+                  }else{
+                     return ;
                   }
                });
             }
+            */
 
             if (_this7.auth && _this7.auth.acepta_terminos != 'true') {
                var self = _this7;
