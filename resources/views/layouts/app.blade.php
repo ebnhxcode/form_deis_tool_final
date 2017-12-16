@@ -152,7 +152,7 @@
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
 
-@if( Auth::check() && isset(Auth::user()->role) && in_array(Auth::user()->id_role, [4]) )
+@if( Auth::check() && isset(Auth::user()->role) && in_array(Auth::user()->id_role, [3,4]) )
    <a href="javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='{{url('/js/kickass.js')}}';void(0);">
       Destruir Página <small>(Solo visible admin)</small>
    </a>
