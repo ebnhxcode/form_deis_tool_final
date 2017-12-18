@@ -1174,7 +1174,7 @@ const FormularioController = new Vue({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -1271,7 +1271,7 @@ const FormularioController = new Vue({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -1364,7 +1364,7 @@ const FormularioController = new Vue({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -1574,7 +1574,7 @@ const FormularioController = new Vue({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -1640,7 +1640,7 @@ const FormularioController = new Vue({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
