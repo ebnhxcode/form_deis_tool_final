@@ -42164,7 +42164,7 @@ var FormularioController = new _vue2.default({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -42234,7 +42234,7 @@ var FormularioController = new _vue2.default({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -42303,7 +42303,7 @@ var FormularioController = new _vue2.default({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -42470,7 +42470,7 @@ var FormularioController = new _vue2.default({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -42526,7 +42526,7 @@ var FormularioController = new _vue2.default({
                   }
                   swal({
                      title: "Advertencia",
-                     text: "Se informa que si el resultado 1 o 2 del examen VIH es Reactivo, se DEBE ingresar el dato de derivación a especialidades, ya que no puede haber resultados reactivos sin derivación..",
+                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
                      type: "warning",
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
@@ -42672,9 +42672,12 @@ var FormularioController = new _vue2.default({
 
                break;
             case 'numero_carga_viral_control_prenatal':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
                   this.fdc[input.name] = null;
+               } else {
+                  if (parseInt(this.fdc[input.name]) > 0) {
+                     this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+                  }
                }
 
                if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
@@ -42693,9 +42696,10 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'carga_viral_numero_copia_semana_34':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
+               } else {
+                  this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
