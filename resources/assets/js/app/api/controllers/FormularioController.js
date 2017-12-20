@@ -3092,7 +3092,7 @@ const FormularioController = new Vue({
                if (this.inputs[i].name == 'lugar_control_prenatal' ||
                   this.inputs[i].name == 'lugar_atencion_parto' ||
                   this.inputs[i].name == 'lugar_control_embarazo' ||
-                  this.inputs[i].name == 'establecimiento_control_sifilis' ||
+                  this.inputs[i].name == 'establecimiento_control_sifilis' +
                   this.inputs[i].name == 'establecimiento_control_vih' ||
                   this.inputs[i].name == 'atencion_parto'
                ) {
