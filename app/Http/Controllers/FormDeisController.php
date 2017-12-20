@@ -370,9 +370,20 @@ class FormDeisController extends Controller {
             $returnData['deis_form_table_options'] = config('collections.deis_form_table_options');
             $returnData['deis_form_table_options'] += ['pais_origen' => Pais::pluck('nombre_pais', 'id_pais')];
 
-            $returnData['deis_form_table_options'] += ['lugar_atencion_parto' => Establecimiento::select(
+            $establecimientos = Establecimiento::select(
                DB::raw("CONCAT(id_establecimiento,' - ',nombre_establecimiento) AS nombre_establecimiento"),'id_establecimiento')
-               ->pluck('nombre_establecimiento', 'id_establecimiento')];
+               ->pluck('nombre_establecimiento', 'id_establecimiento');
+
+            $establecimientos_vih = Establecimiento::select(
+               DB::raw("CONCAT(id_establecimiento,' - ',nombre_establecimiento) AS nombre_establecimiento"),'id_establecimiento')
+               ->whereIn('id_establecimiento',['102100', '103100', '103101', '104100', '105101', '105100', '106100', '107100', '108100', '108101', '112100', '114101', '109100', '110100', '113160', '113100', '111100', '115100', '115107', '116105', '116108', '116100', '120101', '118100', '128109', '119100', '117101', '129100', '121109', '123100', '124105', '133150', '125100', '126100', '122100', '101100'])
+               ->pluck('nombre_establecimiento', 'id_establecimiento');
+
+            $returnData['deis_form_table_options'] += [
+               'lugar_atencion_parto' => $establecimientos,
+               'establecimiento_control_sifilis' => $establecimientos,
+               'establecimiento_control_vih' => $establecimientos_vih
+            ];
 
             $returnData['deis_form_table_options'] += ['lugar_control_prenatal' =>
                Establecimiento::select(DB::raw("CONCAT(id_establecimiento,' - ',nombre_establecimiento) AS nombre_establecimiento"),'id_establecimiento')

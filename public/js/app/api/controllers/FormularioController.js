@@ -43807,6 +43807,7 @@ var FormularioController = new _vue2.default({
 
                if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
                   this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+                  alert(this.fdc[this.inputs[i].name]);
                }
 
                if (this.fdc[this.inputs[i].name] != null) {
