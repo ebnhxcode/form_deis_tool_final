@@ -35,6 +35,7 @@ const FormularioController = new Vue({
          'auth':[],
 
          'formularios_encontrados':{},
+         'formulario_guardandose':false,
 
          'spinner_form_deis':true,
 
@@ -3062,80 +3063,98 @@ const FormularioController = new Vue({
 
       guardar_formulario: function (tabName) {
          //Condicionales previas, preventivas al guardado.
+         if (this.formulario_guardandose == false) {
+            this.formulario_guardandose = true;
 
-         if (tabName == 'patologias_sifilis' &&
-            !this.fdc['diagnostico_sifilis_embarazo'] &&
-            this.fdc['diagnostico_sifilis_embarazo'] == null) {
+
+            if (tabName == 'patologias_sifilis' &&
+               !this.fdc['diagnostico_sifilis_embarazo'] &&
+               this.fdc['diagnostico_sifilis_embarazo'] == null) {
+               swal({
+                  title: "Advertencia",
+                  text: `
+                  El formulario no se podrá guardar hasta que el dato "Diagnostico de sífilis al embarazo" no esté ingresado, por favor ingrese la información y guarde el formulario.
+               `,
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               return;
+            }
+
+
+
+            this.mini_loader = true;
+            //this.spinner_finalizar = true;
+            var formData = new FormData();
+            //var formData = [];
+            var permiteGuardar = false;
+            //console.log(tabName);
+            for (let i in this.inputs) {
+               if (this.inputs[i].seccion == tabName) {
+
+                  if (this.inputs[i].name == 'lugar_control_prenatal' ||
+                     this.inputs[i].name == 'lugar_atencion_parto' ||
+                     this.inputs[i].name == 'lugar_control_embarazo' ||
+                     this.inputs[i].name == 'establecimiento_control_sifilis' ||
+                     this.inputs[i].name == 'establecimiento_control_vih' ||
+                     this.inputs[i].name == 'atencion_parto'
+                  ) {
+                     this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
+                  }
+
+                  if (this.fdc[this.inputs[i].name] != null ) {
+                     //Le pasa el valor en v-model
+
+                     if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                        this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
+                     }
+
+                     formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+                  }
+               }
+            }
+
+            if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+               return false;
+            }
+
+            Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+            formData.append('_id_formulario', this.fdc.id);
+
+            this.$http.post('/formulario', formData).then(response => { // success callback
+               //console.log(response.status);
+
+               //alert('Guardado');
+
+               //Si guardar salio bien
+               this.hayGuardadoActivo = true;
+               this.idFormularioActivo = this.fdc.id;
+               $('.circle-loader').toggleClass('load-complete');
+               $('.checkmark').toggle();
+               this.mini_loader = false;
+               swal("Guardado", "El registro se guardó correctamente!", "success")
+
+            }, response => { // error callback
+               //console.log(response);
+               this.check_status_code(response.status);
+            });
+
+            this.formulario_guardandose = false;
+
+         }else{
             swal({
                title: "Advertencia",
                text: `
-                  El formulario no se podrá guardar hasta que el dato "Diagnostico de sífilis al embarazo" no esté ingresado, por favor ingrese la información y guarde el formulario.
+                  Espere por favor, el formulario se encuentra ocupado guardando otra ficha.
+
+                  Vuelva a intentar en 10 segundos.
                `,
                type: "warning",
                confirmButtonClass: "btn-danger",
                closeOnConfirm: false
             });
-            return;
          }
-
-
-
-         this.mini_loader = true;
-         //this.spinner_finalizar = true;
-         var formData = new FormData();
-         //var formData = [];
-         var permiteGuardar = false;
-         //console.log(tabName);
-         for (let i in this.inputs) {
-            if (this.inputs[i].seccion == tabName) {
-
-               if (this.inputs[i].name == 'lugar_control_prenatal' ||
-                  this.inputs[i].name == 'lugar_atencion_parto' ||
-                  this.inputs[i].name == 'lugar_control_embarazo' ||
-                  this.inputs[i].name == 'establecimiento_control_sifilis' ||
-                  this.inputs[i].name == 'establecimiento_control_vih' ||
-                  this.inputs[i].name == 'atencion_parto'
-               ) {
-                  this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
-               }
-
-               if (this.fdc[this.inputs[i].name] != null ) {
-                  //Le pasa el valor en v-model
-
-                  if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
-                     this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
-                  }
-
-                  formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
-               }
-            }
-         }
-
-         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
-            return false;
-         }
-
-         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         formData.append('_id_formulario', this.fdc.id);
-
-         this.$http.post('/formulario', formData).then(response => { // success callback
-            //console.log(response.status);
-
-            //alert('Guardado');
-
-            //Si guardar salio bien
-            this.hayGuardadoActivo = true;
-            this.idFormularioActivo = this.fdc.id;
-            $('.circle-loader').toggleClass('load-complete');
-            $('.checkmark').toggle();
-            this.mini_loader = false;
-            swal("Guardado", "El registro se guardó correctamente!", "success")
-
-         }, response => { // error callback
-            //console.log(response);
-            this.check_status_code(response.status);
-         });
-
 
 
          return;
