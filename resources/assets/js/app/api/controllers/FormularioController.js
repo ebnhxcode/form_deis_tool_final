@@ -3229,7 +3229,22 @@ const FormularioController = new Vue({
       renderizar_formulario: function () {
          this.$http.get('/formulario/datos_formulario').then(response => { // success callback
             this.inputs = response.body.inputs;
-            
+            //Validacion para mostrar los datos en los campos select
+            for (let i in this.inputs) {
+
+               if (this.inputs[i].name == 'lugar_control_prenatal' ||
+                  this.inputs[i].name == 'lugar_atencion_parto' ||
+                  this.inputs[i].name == 'lugar_control_embarazo' ||
+                  this.inputs[i].name == 'establecimiento_control_sifilis' ||
+                  this.inputs[i].name == 'establecimiento_control_vih' ||
+                  this.inputs[i].name == 'atencion_parto'
+               ) {
+                  if (this.fdc[this.inputs[i].name]) {
+                     $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
+                  }
+               }
+
+            }
 
 
             this.nav_tab_form_deis = response.body.nav_tab_form_deis;
