@@ -547,6 +547,13 @@ const FormularioController = new Vue({
                this.$parent.formularioEditActivo = true;
                this.$parent.formularioNuevoActivo = false;
 
+               //Generamos limpieza de los campos con el plugin
+               $('#select2-establecimiento_control_sifilis-container').val(null).empty();
+               $('#select2-establecimiento_control_vih-container').val(null).empty();
+               $('#select2-lugar_control_prenatal-container').val(null).empty();
+               $('#select2-lugar_control_embarazo-container').val(null).empty();
+               $('#select2-lugar_atencion_parto-container').val(null).empty();
+
                var formData = new FormData();
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                formData.append('n_correlativo_interno', formulario.n_correlativo_interno);
@@ -2218,14 +2225,15 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-               }else{
+               }
+               /*else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
                         this.inputs[i].disabled = true;
                      }
                   }
-               }
+               }*/
                break;
 
             case 'dosis_farmaco_2_vih':
@@ -2239,14 +2247,15 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-               }else{
+               }
+               /*else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
                         this.inputs[i].disabled = true;
                      }
                   }
-               }
+               }*/
                break;
 
             case 'hora_inicio_farmaco_2_vih':
@@ -2260,14 +2269,15 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-               }else{
+               }
+               /*else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
                         this.inputs[i].disabled = true;
                      }
                   }
-               }
+               }*/
                break;
 
             case 'resultado_test_elisa_18_meses':
@@ -2378,6 +2388,25 @@ const FormularioController = new Vue({
                }
                break;
 
+
+            case 'nombre_farmaco_suspencion_lactancia':
+
+               if(this.fdc[input.name] != null && this.fdc[input.name] != ''){
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia') {
+                        this.inputs[i].disabled = null;
+                     }
+                  }
+               }else{
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'tratamiento_recien_nacido_dosis' ||
+                        this.inputs[i].name == 'tratamiento_recien_nacido_frecuencia') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+               }
+
+               break;
             case 'resultado_1_examen_pcr_recien_nacido':
                if (this.fdc[input.name] == 'No Realizado') {
                   for (let i in this.inputs){
@@ -2917,14 +2946,15 @@ const FormularioController = new Vue({
                            this.inputs[i].disabled = null;
                         }
                      }
-                  }else{
+                  }
+                  /*else{
                      for (let i in this.inputs){
                         if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                            this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
                            this.inputs[i].disabled = true;
                         }
                      }
-                  }
+                  }*/
                }
 
 
@@ -3221,6 +3251,13 @@ const FormularioController = new Vue({
             this.pais_origen = response.body.pais_origen;
             this.auth = response.body.auth;
             this.validar_validaciones_previas();
+
+            //Generamos limpieza de los campos con el plugin
+            $('#select2-establecimiento_control_sifilis-container').val(null).empty();
+            $('#select2-establecimiento_control_vih-container').val(null).empty();
+            $('#select2-lugar_control_prenatal-container').val(null).empty();
+            $('#select2-lugar_control_embarazo-container').val(null).empty();
+            $('#select2-lugar_atencion_parto-container').val(null).empty();
 
             //Validacion para mostrar los datos en los campos select
             for (let i in this.inputs) {
