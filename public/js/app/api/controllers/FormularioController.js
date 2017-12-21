@@ -43937,19 +43937,19 @@ var FormularioController = new _vue2.default({
                switch (_this10.inputs[i].name) {
 
                   case 'lugar_control_prenatal':
-                     $('#select2-lugar_control_prenatal-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     $('#select2-lugar_control_prenatal-container').text(_this10.deis_form_table_options[_this10.inputs[i].name][_this10.fdc[_this10.inputs[i].name]]);
                      break;
                   case 'lugar_atencion_parto':
-                     $('#select2-lugar_atencion_parto-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     $('#select2-lugar_atencion_parto-container').text(_this10.deis_form_table_options[_this10.inputs[i].name][_this10.fdc[_this10.inputs[i].name]]);
                      break;
                   case 'lugar_control_embarazo':
-                     $('#select2-lugar_control_embarazo-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     $('#select2-lugar_control_embarazo-container').text(_this10.deis_form_table_options[_this10.inputs[i].name][_this10.fdc[_this10.inputs[i].name]]);
                      break;
                   case 'establecimiento_control_sifilis':
-                     $('#select2-establecimiento_control_sifilis-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     $('#select2-establecimiento_control_sifilis-container').text(_this10.deis_form_table_options[_this10.inputs[i].name][_this10.fdc[_this10.inputs[i].name]]);
                      break;
                   case 'establecimiento_control_vih':
-                     $('#select2-establecimiento_control_vih-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     $('#select2-establecimiento_control_vih-container').text(_this10.deis_form_table_options[_this10.inputs[i].name][_this10.fdc[_this10.inputs[i].name]]);
                      break;
 
                }
