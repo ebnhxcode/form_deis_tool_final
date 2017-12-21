@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bf228884-5e7b-46f8-99f5-a433acc0f398" name="AP Convergente" url="http://10.65.170.16">
+        <fileTransfer host="10.65.170.16" port="22" rootFolder="/var/www/html" accessType="SFTP" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

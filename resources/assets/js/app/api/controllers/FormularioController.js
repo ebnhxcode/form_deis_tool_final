@@ -2278,7 +2278,7 @@ const FormularioController = new Vue({
 
             case 'hora_inicio_farmaco_2_vih':
                /*
-               if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
+               if(this.fdc['nombre_farmaco_2_vi    h'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
                   this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
                   this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
                   this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
