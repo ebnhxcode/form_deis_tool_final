@@ -43156,17 +43156,34 @@ var FormularioController = new _vue2.default({
                }
                break;
 
-            case 'resultado_1_examen_pcr_recien_nacido':
-               if (this.fdc[input.name] == 'No Realizado') {
+            case 'nombre_farmaco_suspencion_lactancia':
+
+               if (this.fdc[input.name] != null && this.fdc[input.name] != '') {
                   for (var _i84 in this.inputs) {
-                     if (this.inputs[_i84].name == 'fecha_1_examen_pcr_recien_nacido') {
-                        this.inputs[_i84].disabled = true;
+                     if (this.inputs[_i84].name == 'nombre_farmaco_suspencion_lactancia') {
+                        this.inputs[_i84].disabled = null;
                      }
                   }
                } else {
                   for (var _i85 in this.inputs) {
-                     if (this.inputs[_i85].name == 'fecha_1_examen_pcr_recien_nacido') {
-                        this.inputs[_i85].disabled = null;
+                     if (this.inputs[_i85].name == 'tratamiento_recien_nacido_dosis' || this.inputs[_i85].name == 'tratamiento_recien_nacido_frecuencia') {
+                        this.inputs[_i85].disabled = true;
+                     }
+                  }
+               }
+
+               break;
+            case 'resultado_1_examen_pcr_recien_nacido':
+               if (this.fdc[input.name] == 'No Realizado') {
+                  for (var _i86 in this.inputs) {
+                     if (this.inputs[_i86].name == 'fecha_1_examen_pcr_recien_nacido') {
+                        this.inputs[_i86].disabled = true;
+                     }
+                  }
+               } else {
+                  for (var _i87 in this.inputs) {
+                     if (this.inputs[_i87].name == 'fecha_1_examen_pcr_recien_nacido') {
+                        this.inputs[_i87].disabled = null;
                      }
                   }
                }
@@ -43175,15 +43192,15 @@ var FormularioController = new _vue2.default({
 
             case 'resultado_2_examen_pcr_recien_nacido':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (var _i86 in this.inputs) {
-                     if (this.inputs[_i86].name == 'fecha_2_examen_pcr_recien_nacido') {
-                        this.inputs[_i86].disabled = true;
+                  for (var _i88 in this.inputs) {
+                     if (this.inputs[_i88].name == 'fecha_2_examen_pcr_recien_nacido') {
+                        this.inputs[_i88].disabled = true;
                      }
                   }
                } else {
-                  for (var _i87 in this.inputs) {
-                     if (this.inputs[_i87].name == 'fecha_2_examen_pcr_recien_nacido') {
-                        this.inputs[_i87].disabled = null;
+                  for (var _i89 in this.inputs) {
+                     if (this.inputs[_i89].name == 'fecha_2_examen_pcr_recien_nacido') {
+                        this.inputs[_i89].disabled = null;
                      }
                   }
                }
@@ -43192,15 +43209,15 @@ var FormularioController = new _vue2.default({
 
             case 'resultado_3_examen_pcr_recien_nacido':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (var _i88 in this.inputs) {
-                     if (this.inputs[_i88].name == 'fecha_3_examen_pcr_recien_nacido') {
-                        this.inputs[_i88].disabled = true;
+                  for (var _i90 in this.inputs) {
+                     if (this.inputs[_i90].name == 'fecha_3_examen_pcr_recien_nacido') {
+                        this.inputs[_i90].disabled = true;
                      }
                   }
                } else {
-                  for (var _i89 in this.inputs) {
-                     if (this.inputs[_i89].name == 'fecha_3_examen_pcr_recien_nacido') {
-                        this.inputs[_i89].disabled = null;
+                  for (var _i91 in this.inputs) {
+                     if (this.inputs[_i91].name == 'fecha_3_examen_pcr_recien_nacido') {
+                        this.inputs[_i91].disabled = null;
                      }
                   }
                }
@@ -43208,16 +43225,16 @@ var FormularioController = new _vue2.default({
                break;
             case 'resultado_examen_vih_parto':
                if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Corresponde') {
-                  for (var _i90 in this.inputs) {
-                     if (this.inputs[_i90].name == 'tratamiento_retroviral_parto') {
-                        this.inputs[_i90].disabled = true;
+                  for (var _i92 in this.inputs) {
+                     if (this.inputs[_i92].name == 'tratamiento_retroviral_parto') {
+                        this.inputs[_i92].disabled = true;
                      }
                   }
                   this.fdc['tratamiento_retroviral_parto'] = 'true';
                } else {
-                  for (var _i91 in this.inputs) {
-                     if (this.inputs[_i91].name == 'tratamiento_retroviral_parto') {
-                        this.inputs[_i91].disabled = null;
+                  for (var _i93 in this.inputs) {
+                     if (this.inputs[_i93].name == 'tratamiento_retroviral_parto') {
+                        this.inputs[_i93].disabled = null;
                      }
                   }
                }
@@ -43226,15 +43243,15 @@ var FormularioController = new _vue2.default({
 
             case 'terapia_antiretroviral_farmaco_1':
                if (this.fdc[input.name]) {
-                  for (var _i92 in this.inputs) {
-                     if (this.inputs[_i92].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[_i92].disabled = null;
+                  for (var _i94 in this.inputs) {
+                     if (this.inputs[_i94].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i94].disabled = null;
                      }
                   }
                } else {
-                  for (var _i93 in this.inputs) {
-                     if (this.inputs[_i93].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[_i93].disabled = true;
+                  for (var _i95 in this.inputs) {
+                     if (this.inputs[_i95].name == 'fecha_inicio_tar_farmaco_1') {
+                        this.inputs[_i95].disabled = true;
                      }
                   }
                }
@@ -43242,15 +43259,15 @@ var FormularioController = new _vue2.default({
 
             case 'terapia_antiretroviral_tar_farmaco_2':
                if (this.fdc[input.name]) {
-                  for (var _i94 in this.inputs) {
-                     if (this.inputs[_i94].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[_i94].disabled = null;
+                  for (var _i96 in this.inputs) {
+                     if (this.inputs[_i96].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i96].disabled = null;
                      }
                   }
                } else {
-                  for (var _i95 in this.inputs) {
-                     if (this.inputs[_i95].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[_i95].disabled = true;
+                  for (var _i97 in this.inputs) {
+                     if (this.inputs[_i97].name == 'fecha_inicio_tar_farmaco_2') {
+                        this.inputs[_i97].disabled = true;
                      }
                   }
                }
@@ -43258,15 +43275,15 @@ var FormularioController = new _vue2.default({
 
             case 'terapia_antiretroviral_tar_farmaco_3':
                if (this.fdc[input.name]) {
-                  for (var _i96 in this.inputs) {
-                     if (this.inputs[_i96].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[_i96].disabled = null;
+                  for (var _i98 in this.inputs) {
+                     if (this.inputs[_i98].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i98].disabled = null;
                      }
                   }
                } else {
-                  for (var _i97 in this.inputs) {
-                     if (this.inputs[_i97].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[_i97].disabled = true;
+                  for (var _i99 in this.inputs) {
+                     if (this.inputs[_i99].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i99].disabled = true;
                      }
                   }
                }
@@ -43575,94 +43592,94 @@ var FormularioController = new _vue2.default({
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
-                  for (var _i98 in this.inputs) {
-                     if (this.inputs[_i98].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[_i98].disabled = null;
-                     }
-                  }
-               } else {
-                  for (var _i99 in this.inputs) {
-                     if (this.inputs[_i99].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[_i99].disabled = true;
-                     }
-                  }
-               }
-
-               if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
                   for (var _i100 in this.inputs) {
-                     if (this.inputs[_i100].name == 'numero_carga_viral_control_prenatal') {
+                     if (this.inputs[_i100].name == 'numero_cd4_ingreso_control_prenatal') {
                         this.inputs[_i100].disabled = null;
                      }
                   }
                } else {
                   for (var _i101 in this.inputs) {
-                     if (this.inputs[_i101].name == 'numero_carga_viral_control_prenatal') {
+                     if (this.inputs[_i101].name == 'numero_cd4_ingreso_control_prenatal') {
                         this.inputs[_i101].disabled = true;
                      }
                   }
                }
 
-               if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
+               if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
                   for (var _i102 in this.inputs) {
-                     if (this.inputs[_i102].name == 'carga_viral_numero_copia_semana_34') {
+                     if (this.inputs[_i102].name == 'numero_carga_viral_control_prenatal') {
                         this.inputs[_i102].disabled = null;
                      }
                   }
                } else {
                   for (var _i103 in this.inputs) {
-                     if (this.inputs[_i103].name == 'carga_viral_numero_copia_semana_34') {
+                     if (this.inputs[_i103].name == 'numero_carga_viral_control_prenatal') {
                         this.inputs[_i103].disabled = true;
                      }
                   }
                }
 
-               if (this.fdc['terapia_antiretroviral_farmaco_1']) {
+               if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
                   for (var _i104 in this.inputs) {
-                     if (this.inputs[_i104].name == 'fecha_inicio_tar_farmaco_1') {
+                     if (this.inputs[_i104].name == 'carga_viral_numero_copia_semana_34') {
                         this.inputs[_i104].disabled = null;
                      }
                   }
                } else {
                   for (var _i105 in this.inputs) {
-                     if (this.inputs[_i105].name == 'fecha_inicio_tar_farmaco_1') {
+                     if (this.inputs[_i105].name == 'carga_viral_numero_copia_semana_34') {
                         this.inputs[_i105].disabled = true;
                      }
                   }
                }
 
-               if (this.fdc['terapia_antiretroviral_tar_farmaco_2']) {
+               if (this.fdc['terapia_antiretroviral_farmaco_1']) {
                   for (var _i106 in this.inputs) {
-                     if (this.inputs[_i106].name == 'fecha_inicio_tar_farmaco_2') {
+                     if (this.inputs[_i106].name == 'fecha_inicio_tar_farmaco_1') {
                         this.inputs[_i106].disabled = null;
                      }
                   }
                } else {
                   for (var _i107 in this.inputs) {
-                     if (this.inputs[_i107].name == 'fecha_inicio_tar_farmaco_2') {
+                     if (this.inputs[_i107].name == 'fecha_inicio_tar_farmaco_1') {
                         this.inputs[_i107].disabled = true;
                      }
                   }
                }
 
-               if (this.fdc['terapia_antiretroviral_tar_farmaco_3']) {
+               if (this.fdc['terapia_antiretroviral_tar_farmaco_2']) {
                   for (var _i108 in this.inputs) {
-                     if (this.inputs[_i108].name == 'fecha_inicio_tar_farmaco_3') {
+                     if (this.inputs[_i108].name == 'fecha_inicio_tar_farmaco_2') {
                         this.inputs[_i108].disabled = null;
                      }
                   }
                } else {
                   for (var _i109 in this.inputs) {
-                     if (this.inputs[_i109].name == 'fecha_inicio_tar_farmaco_3') {
+                     if (this.inputs[_i109].name == 'fecha_inicio_tar_farmaco_2') {
                         this.inputs[_i109].disabled = true;
+                     }
+                  }
+               }
+
+               if (this.fdc['terapia_antiretroviral_tar_farmaco_3']) {
+                  for (var _i110 in this.inputs) {
+                     if (this.inputs[_i110].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i110].disabled = null;
+                     }
+                  }
+               } else {
+                  for (var _i111 in this.inputs) {
+                     if (this.inputs[_i111].name == 'fecha_inicio_tar_farmaco_3') {
+                        this.inputs[_i111].disabled = true;
                      }
                   }
                }
 
                if (this.fdc['fecha_inicio_farmaco_2_vih']) {
                   if (this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' && this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' && this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' && this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != '') {
-                     for (var _i110 in this.inputs) {
-                        if (this.inputs[_i110].name == 'nombre_farmaco_suspencion_lactancia' || this.inputs[_i110].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                           this.inputs[_i110].disabled = null;
+                     for (var _i112 in this.inputs) {
+                        if (this.inputs[_i112].name == 'nombre_farmaco_suspencion_lactancia' || this.inputs[_i112].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
+                           this.inputs[_i112].disabled = null;
                         }
                      }
                   }
