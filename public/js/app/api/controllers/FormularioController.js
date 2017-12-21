@@ -42905,13 +42905,13 @@ var FormularioController = new _vue2.default({
 
                if (this.fdc[input.name] != null && this.fdc[input.name] != '') {
                   for (var _i55 in this.inputs) {
-                     if (this.inputs[_i55].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i55].name == 'hora_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i55].name == 'dosis_farmaco_2_vih_recien_nacido' || this.inputs[_i55].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i55].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i55].name == 'hora_2_inicio_farmaco_1_vih') {
+                     if (this.inputs[_i55].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i55].name == 'hora_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i55].name == 'dosis_farmaco_2_vih_recien_nacido') {
                         this.inputs[_i55].disabled = null;
                      }
                   }
                } else {
                   for (var _i56 in this.inputs) {
-                     if (this.inputs[_i56].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i56].name == 'hora_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i56].name == 'dosis_farmaco_2_vih_recien_nacido' || this.inputs[_i56].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i56].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i56].name == 'hora_2_inicio_farmaco_1_vih') {
+                     if (this.inputs[_i56].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i56].name == 'hora_inicio_farmaco_2_vih_recien_nacido' || this.inputs[_i56].name == 'dosis_farmaco_2_vih_recien_nacido') {
                         this.inputs[_i56].disabled = true;
                      }
                   }
@@ -42929,13 +42929,13 @@ var FormularioController = new _vue2.default({
             case 'nombre_farmaco_1_vih':
                if (this.fdc[input.name]) {
                   for (var _i57 in this.inputs) {
-                     if (this.inputs[_i57].name == 'peso_mujer_parto' || this.inputs[_i57].name == 'dosis_farmaco_1_vih' || this.inputs[_i57].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i57].name == 'hora_inicio_farmaco_1_vih') {
+                     if (this.inputs[_i57].name == 'peso_mujer_parto' || this.inputs[_i57].name == 'dosis_farmaco_1_vih' || this.inputs[_i57].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i57].name == 'hora_inicio_farmaco_1_vih' || this.inputs[_i57].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i57].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i57].name == 'hora_2_inicio_farmaco_1_vih') {
                         this.inputs[_i57].disabled = null;
                      }
                   }
                } else {
                   for (var _i58 in this.inputs) {
-                     if (this.inputs[_i58].name == 'peso_mujer_parto' || this.inputs[_i58].name == 'dosis_farmaco_1_vih' || this.inputs[_i58].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i58].name == 'hora_inicio_farmaco_1_vih') {
+                     if (this.inputs[_i58].name == 'peso_mujer_parto' || this.inputs[_i58].name == 'dosis_farmaco_1_vih' || this.inputs[_i58].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i58].name == 'hora_inicio_farmaco_1_vih' || this.inputs[_i58].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i58].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i58].name == 'hora_2_inicio_farmaco_1_vih') {
                         this.inputs[_i58].disabled = true;
                      }
                   }
