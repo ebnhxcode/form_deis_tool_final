@@ -331,8 +331,8 @@ class FormDeisController extends Controller {
                ->pluck('nombre_establecimiento', 'id_establecimiento');
 
             $returnData['deis_form_table_options'] += [
-               'lugar_control_prenatal' => $establecimientos,
                'lugar_atencion_parto' => $establecimientos,
+               'lugar_control_prenatal' => $establecimientos,
                'lugar_control_embarazo' => $establecimientos,
                'establecimiento_control_sifilis' => $establecimientos,
                'establecimiento_control_vih' => $establecimientos_vih,
@@ -381,8 +381,11 @@ class FormDeisController extends Controller {
 
             $returnData['deis_form_table_options'] += [
                'lugar_atencion_parto' => $establecimientos,
+               'lugar_control_prenatal' => $establecimientos,
+               'lugar_control_embarazo' => $establecimientos,
                'establecimiento_control_sifilis' => $establecimientos,
-               'establecimiento_control_vih' => $establecimientos_vih
+               'establecimiento_control_vih' => $establecimientos_vih,
+               'atencion_parto' => $establecimientos,
             ];
 
             $returnData['deis_form_table_options'] += ['lugar_control_prenatal' =>
