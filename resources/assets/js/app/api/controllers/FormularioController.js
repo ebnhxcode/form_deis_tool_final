@@ -3079,6 +3079,7 @@ const FormularioController = new Vue({
                   confirmButtonClass: "btn-danger",
                   closeOnConfirm: false
                });
+               this.formulario_guardandose = false;
                return;
             }
 
@@ -3116,6 +3117,7 @@ const FormularioController = new Vue({
             }
 
             if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+               this.formulario_guardandose = false;
                return false;
             }
 
@@ -3133,27 +3135,20 @@ const FormularioController = new Vue({
                $('.circle-loader').toggleClass('load-complete');
                $('.checkmark').toggle();
                this.mini_loader = false;
-               swal("Guardado", "El registro se guardó correctamente!", "success")
-
+               swal("Guardado", "El registro se guardó correctamente!", "success");
+               this.formulario_guardandose = false;
             }, response => { // error callback
                //console.log(response);
                this.check_status_code(response.status);
+               this.formulario_guardandose = false;
             });
-
-            this.formulario_guardandose = false;
 
          }else{
-            swal({
-               title: "Advertencia",
-               text: `
-                  Espere por favor, el formulario se encuentra ocupado guardando otra ficha.
+            alert(`
+               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.
 
-                  Vuelva a intentar en 10 segundos.
-               `,
-               type: "warning",
-               confirmButtonClass: "btn-danger",
-               closeOnConfirm: false
-            });
+               Vuelva a intentar en 10 segundos.
+            `);
          }
 
 
@@ -3234,6 +3229,9 @@ const FormularioController = new Vue({
       renderizar_formulario: function () {
          this.$http.get('/formulario/datos_formulario').then(response => { // success callback
             this.inputs = response.body.inputs;
+            
+
+
             this.nav_tab_form_deis = response.body.nav_tab_form_deis;
             this.deis_form_table_options = response.body.deis_form_table_options;
             this.pais_origen = response.body.pais_origen;

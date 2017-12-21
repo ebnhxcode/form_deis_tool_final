@@ -41430,6 +41430,7 @@ var FormularioController = new _vue2.default({
          'auth': [],
 
          'formularios_encontrados': {},
+         'formulario_guardandose': false,
 
          'spinner_form_deis': true,
 
@@ -43784,68 +43785,77 @@ var FormularioController = new _vue2.default({
          var _this8 = this;
 
          //Condicionales previas, preventivas al guardado.
+         if (this.formulario_guardandose == false) {
+            this.formulario_guardandose = true;
 
-         if (tabName == 'patologias_sifilis' && !this.fdc['diagnostico_sifilis_embarazo'] && this.fdc['diagnostico_sifilis_embarazo'] == null) {
-            swal({
-               title: "Advertencia",
-               text: '\n                  El formulario no se podr\xE1 guardar hasta que el dato "Diagnostico de s\xEDfilis al embarazo" no est\xE9 ingresado, por favor ingrese la informaci\xF3n y guarde el formulario.\n               ',
-               type: "warning",
-               confirmButtonClass: "btn-danger",
-               closeOnConfirm: false
-            });
-            return;
-         }
+            if (tabName == 'patologias_sifilis' && !this.fdc['diagnostico_sifilis_embarazo'] && this.fdc['diagnostico_sifilis_embarazo'] == null) {
+               swal({
+                  title: "Advertencia",
+                  text: '\n                  El formulario no se podr\xE1 guardar hasta que el dato "Diagnostico de s\xEDfilis al embarazo" no est\xE9 ingresado, por favor ingrese la informaci\xF3n y guarde el formulario.\n               ',
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               this.formulario_guardandose = false;
+               return;
+            }
 
-         this.mini_loader = true;
-         //this.spinner_finalizar = true;
-         var formData = new FormData();
-         //var formData = [];
-         var permiteGuardar = false;
-         //console.log(tabName);
-         for (var i in this.inputs) {
-            if (this.inputs[i].seccion == tabName) {
+            this.mini_loader = true;
+            //this.spinner_finalizar = true;
+            var formData = new FormData();
+            //var formData = [];
+            var permiteGuardar = false;
+            //console.log(tabName);
+            for (var i in this.inputs) {
+               if (this.inputs[i].seccion == tabName) {
 
-               if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
-                  this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
-               }
-
-               if (this.fdc[this.inputs[i].name] != null) {
-                  //Le pasa el valor en v-model
-
-                  if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
-                     this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
+                  if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
+                     this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
                   }
 
-                  formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+                  if (this.fdc[this.inputs[i].name] != null) {
+                     //Le pasa el valor en v-model
+
+                     if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                        this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
+                     }
+
+                     formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+                  }
                }
             }
+
+            if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+               this.formulario_guardandose = false;
+               return false;
+            }
+
+            _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+            formData.append('_id_formulario', this.fdc.id);
+
+            this.$http.post('/formulario', formData).then(function (response) {
+               // success callback
+               //console.log(response.status);
+
+               //alert('Guardado');
+
+               //Si guardar salio bien
+               _this8.hayGuardadoActivo = true;
+               _this8.idFormularioActivo = _this8.fdc.id;
+               $('.circle-loader').toggleClass('load-complete');
+               $('.checkmark').toggle();
+               _this8.mini_loader = false;
+               swal("Guardado", "El registro se guardó correctamente!", "success");
+               _this8.formulario_guardandose = false;
+            }, function (response) {
+               // error callback
+               //console.log(response);
+               _this8.check_status_code(response.status);
+               _this8.formulario_guardandose = false;
+            });
+         } else {
+            alert('\n               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.\n\n               Vuelva a intentar en 10 segundos.\n            ');
          }
-
-         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
-            return false;
-         }
-
-         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         formData.append('_id_formulario', this.fdc.id);
-
-         this.$http.post('/formulario', formData).then(function (response) {
-            // success callback
-            //console.log(response.status);
-
-            //alert('Guardado');
-
-            //Si guardar salio bien
-            _this8.hayGuardadoActivo = true;
-            _this8.idFormularioActivo = _this8.fdc.id;
-            $('.circle-loader').toggleClass('load-complete');
-            $('.checkmark').toggle();
-            _this8.mini_loader = false;
-            swal("Guardado", "El registro se guardó correctamente!", "success");
-         }, function (response) {
-            // error callback
-            //console.log(response);
-            _this8.check_status_code(response.status);
-         });
 
          return;
       },
