@@ -43805,7 +43805,7 @@ var FormularioController = new _vue2.default({
          for (var i in this.inputs) {
             if (this.inputs[i].seccion == tabName) {
 
-               if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
+               if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' + this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
                   this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
                }
 
@@ -43939,6 +43939,13 @@ var FormularioController = new _vue2.default({
             _this11.formularioActivoObj = response.body.fdc;
             _this11.auth = response.body.auth;
             _this11.validar_validaciones_previas();
+
+            //Generamos limpieza de los campos con el plugin
+            for (var i in _this11.inputs) {
+               if (_this11.inputs[i].name == 'lugar_control_prenatal' || _this11.inputs[i].name == 'lugar_atencion_parto' || _this11.inputs[i].name == 'lugar_control_embarazo' || _this11.inputs[i].name == 'establecimiento_control_sifilis' + _this11.inputs[i].name == 'establecimiento_control_vih' || _this11.inputs[i].name == 'atencion_parto') {
+                  $('#' + _this11.inputs[i].name).value = null;
+               }
+            }
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
