@@ -2215,6 +2215,7 @@ const FormularioController = new Vue({
                      }
                   }
                }
+               /*
                if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
                   this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
                   this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
@@ -2226,7 +2227,7 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               /*else{
+               else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
@@ -2237,6 +2238,7 @@ const FormularioController = new Vue({
                break;
 
             case 'dosis_farmaco_2_vih':
+               /*
                if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
                   this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
                   this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
@@ -2248,7 +2250,7 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               /*else{
+               else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
@@ -2259,6 +2261,7 @@ const FormularioController = new Vue({
                break;
 
             case 'hora_inicio_farmaco_2_vih':
+               /*
                if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
                   this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
                   this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
@@ -2270,7 +2273,7 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               /*else{
+               else{
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                         this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
@@ -2393,14 +2396,13 @@ const FormularioController = new Vue({
 
                if(this.fdc[input.name] != null && this.fdc[input.name] != ''){
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia') {
+                     if (this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
                         this.inputs[i].disabled = null;
                      }
                   }
                }else{
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_recien_nacido_dosis' ||
-                        this.inputs[i].name == 'tratamiento_recien_nacido_frecuencia') {
+                     if (this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
                         this.inputs[i].disabled = true;
                      }
                   }
@@ -2936,6 +2938,7 @@ const FormularioController = new Vue({
 
 
                if (this.fdc['fecha_inicio_farmaco_2_vih']) {
+                  /*
                   if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
                      this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
                      this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
@@ -2947,7 +2950,7 @@ const FormularioController = new Vue({
                         }
                      }
                   }
-                  /*else{
+                  else{
                      for (let i in this.inputs){
                         if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
                            this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
