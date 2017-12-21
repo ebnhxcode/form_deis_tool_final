@@ -41874,6 +41874,7 @@ var FormularioController = new _vue2.default({
                break;
          }
       },
+
       check_input: function check_input(input, index) {
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
@@ -43854,7 +43855,7 @@ var FormularioController = new _vue2.default({
                _this8.formulario_guardandose = false;
             });
          } else {
-            alert('\n               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.\n\n               Vuelva a intentar en 10 segundos.\n            ');
+            alert('\n               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.\n               Vuelva a intentar en 10 segundos.\n            ');
          }
 
          return;
@@ -43929,6 +43930,43 @@ var FormularioController = new _vue2.default({
             _this10.pais_origen = response.body.pais_origen;
             _this10.auth = response.body.auth;
             _this10.validar_validaciones_previas();
+
+            //Validacion para mostrar los datos en los campos select
+            for (var i in _this10.inputs) {
+
+               switch (_this10.inputs[i].name) {
+
+                  case 'lugar_control_prenatal':
+                     $('#select2-lugar_control_prenatal-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     break;
+                  case 'lugar_atencion_parto':
+                     $('#select2-lugar_atencion_parto-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     break;
+                  case 'lugar_control_embarazo':
+                     $('#select2-lugar_control_embarazo-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     break;
+                  case 'establecimiento_control_sifilis':
+                     $('#select2-establecimiento_control_sifilis-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     break;
+                  case 'establecimiento_control_vih':
+                     $('#select2-establecimiento_control_vih-container').text(_this10.fdc[_this10.inputs[i].name]);
+                     break;
+
+               }
+               /*
+                if (this.inputs[i].name == 'lugar_control_prenatal' ||
+                this.inputs[i].name == 'lugar_atencion_parto' ||
+                this.inputs[i].name == 'lugar_control_embarazo' ||
+                this.inputs[i].name == 'establecimiento_control_sifilis' ||
+                this.inputs[i].name == 'establecimiento_control_vih' ||
+                this.inputs[i].name == 'atencion_parto'
+                ) {
+                if (this.fdc[this.inputs[i].name]) {
+                $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
+                }
+                }
+                */
+            }
          }, function (response) {// error callback
             //console.log('Error datos_formulario: '+response);
          });
@@ -43940,6 +43978,14 @@ var FormularioController = new _vue2.default({
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
             _this11.inputs = response.body.inputs;
+
+            //Generamos limpieza de los campos con el plugin
+            $('#select2-establecimiento_control_sifilis-container').val(null).empty();
+            $('#select2-establecimiento_control_vih-container').val(null).empty();
+            $('#select2-lugar_control_prenatal-container').val(null).empty();
+            $('#select2-lugar_control_embarazo-container').val(null).empty();
+            $('#select2-lugar_atencion_parto-container').val(null).empty();
+
             _this11.nav_tab_form_deis = response.body.nav_tab_form_deis;
             _this11.deis_form_table_options = response.body.deis_form_table_options;
             _this11.pais_origen = response.body.pais_origen;
@@ -43949,13 +43995,6 @@ var FormularioController = new _vue2.default({
             _this11.formularioActivoObj = response.body.fdc;
             _this11.auth = response.body.auth;
             _this11.validar_validaciones_previas();
-
-            //Generamos limpieza de los campos con el plugin
-            $('#select2-establecimiento_control_sifilis-container').val(null).empty();
-            $('#select2-establecimiento_control_vih-container').val(null).empty();
-            $('#select2-lugar_control_prenatal-container').val(null).empty();
-            $('#select2-lugar_control_embarazo-container').val(null).empty();
-            $('#select2-lugar_atencion_parto-container').val(null).empty();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit

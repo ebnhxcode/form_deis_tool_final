@@ -838,6 +838,7 @@ const FormularioController = new Vue({
                break;
          }
       },
+
       check_input: function (input,index) {
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
@@ -3146,7 +3147,6 @@ const FormularioController = new Vue({
          }else{
             alert(`
                Espere por favor, el formulario se encuentra ocupado guardando otra ficha.
-
                Vuelva a intentar en 10 segundos.
             `);
          }
@@ -3221,6 +3221,55 @@ const FormularioController = new Vue({
             this.pais_origen = response.body.pais_origen;
             this.auth = response.body.auth;
             this.validar_validaciones_previas();
+
+            //Validacion para mostrar los datos en los campos select
+            for (let i in this.inputs) {
+
+               switch (this.inputs[i].name) {
+
+
+                  case 'lugar_control_prenatal':
+                     $('#select2-lugar_control_prenatal-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
+                     break;
+                  case 'lugar_atencion_parto':
+                     $('#select2-lugar_atencion_parto-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
+                     break;
+                  case 'lugar_control_embarazo':
+                     $('#select2-lugar_control_embarazo-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
+                     break;
+                  case 'establecimiento_control_sifilis':
+                     $('#select2-establecimiento_control_sifilis-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
+                     break;
+                  case 'establecimiento_control_vih':
+                     $('#select2-establecimiento_control_vih-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
+                     break;
+
+               }
+               /*
+                if (this.inputs[i].name == 'lugar_control_prenatal' ||
+                this.inputs[i].name == 'lugar_atencion_parto' ||
+                this.inputs[i].name == 'lugar_control_embarazo' ||
+                this.inputs[i].name == 'establecimiento_control_sifilis' ||
+                this.inputs[i].name == 'establecimiento_control_vih' ||
+                this.inputs[i].name == 'atencion_parto'
+                ) {
+                if (this.fdc[this.inputs[i].name]) {
+                $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
+                }
+                }
+                */
+            }
+
          }, response => { // error callback
             //console.log('Error datos_formulario: '+response);
          });
@@ -3229,22 +3278,13 @@ const FormularioController = new Vue({
       renderizar_formulario: function () {
          this.$http.get('/formulario/datos_formulario').then(response => { // success callback
             this.inputs = response.body.inputs;
-            //Validacion para mostrar los datos en los campos select
-            for (let i in this.inputs) {
 
-               if (this.inputs[i].name == 'lugar_control_prenatal' ||
-                  this.inputs[i].name == 'lugar_atencion_parto' ||
-                  this.inputs[i].name == 'lugar_control_embarazo' ||
-                  this.inputs[i].name == 'establecimiento_control_sifilis' ||
-                  this.inputs[i].name == 'establecimiento_control_vih' ||
-                  this.inputs[i].name == 'atencion_parto'
-               ) {
-                  if (this.fdc[this.inputs[i].name]) {
-                     $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
-                  }
-               }
-
-            }
+            //Generamos limpieza de los campos con el plugin
+            $('#select2-establecimiento_control_sifilis-container').val(null).empty();
+            $('#select2-establecimiento_control_vih-container').val(null).empty();
+            $('#select2-lugar_control_prenatal-container').val(null).empty();
+            $('#select2-lugar_control_embarazo-container').val(null).empty();
+            $('#select2-lugar_atencion_parto-container').val(null).empty();
 
 
             this.nav_tab_form_deis = response.body.nav_tab_form_deis;
@@ -3257,13 +3297,6 @@ const FormularioController = new Vue({
             this.auth = response.body.auth;
             this.validar_validaciones_previas();
 
-
-            //Generamos limpieza de los campos con el plugin
-            $('#select2-establecimiento_control_sifilis-container').val(null).empty();
-            $('#select2-establecimiento_control_vih-container').val(null).empty();
-            $('#select2-lugar_control_prenatal-container').val(null).empty();
-            $('#select2-lugar_control_embarazo-container').val(null).empty();
-            $('#select2-lugar_atencion_parto-container').val(null).empty();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
