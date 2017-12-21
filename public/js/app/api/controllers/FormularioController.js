@@ -43942,6 +43942,8 @@ var FormularioController = new _vue2.default({
 
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_vih-container').val(null).empty();
+
+            console.log($('.select2'));
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
             if (this.fdc != null) {

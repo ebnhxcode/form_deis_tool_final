@@ -3227,7 +3227,12 @@ const FormularioController = new Vue({
 
 
             //Generamos limpieza de los campos con el plugin
+            $('#select2-establecimiento_control_sifilis-container').val(null).empty();
             $('#select2-establecimiento_control_vih-container').val(null).empty();
+            $('#select2-lugar_control_prenatal-container').val(null).empty();
+            $('#select2-lugar_control_embarazo-container').val(null).empty();
+            $('#select2-lugar_atencion_parto-container').val(null).empty();
+
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
             if (this.fdc != null) {
