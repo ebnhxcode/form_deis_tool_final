@@ -2060,10 +2060,7 @@ const FormularioController = new Vue({
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' ||
                         this.inputs[i].name == 'hora_inicio_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[i].name == 'dosis_farmaco_2_vih_recien_nacido') {
                         this.inputs[i].disabled = null;
                      }
                   }
@@ -2072,10 +2069,7 @@ const FormularioController = new Vue({
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' ||
                         this.inputs[i].name == 'hora_inicio_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[i].name == 'dosis_farmaco_2_vih_recien_nacido') {
                         this.inputs[i].disabled = true;
                      }
                   }
@@ -2096,7 +2090,10 @@ const FormularioController = new Vue({
                      if (this.inputs[i].name == 'peso_mujer_parto' ||
                         this.inputs[i].name == 'dosis_farmaco_1_vih' ||
                         this.inputs[i].name == 'fecha_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_1_vih') {
+                        this.inputs[i].name == 'hora_inicio_farmaco_1_vih' ||
+                        this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
+                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
+                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
                         this.inputs[i].disabled = null;
                      }
                   }
@@ -2105,7 +2102,10 @@ const FormularioController = new Vue({
                      if (this.inputs[i].name == 'peso_mujer_parto' ||
                         this.inputs[i].name == 'dosis_farmaco_1_vih' ||
                         this.inputs[i].name == 'fecha_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_1_vih') {
+                        this.inputs[i].name == 'hora_inicio_farmaco_1_vih' ||
+                        this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
+                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
+                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
                         this.inputs[i].disabled = true;
                      }
                   }
