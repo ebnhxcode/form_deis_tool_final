@@ -3227,9 +3227,9 @@ const FormularioController = new Vue({
 
 
             //Generamos limpieza de los campos con el plugin
-            $(".select2").select2("val", "");
-
-
+            $(document).ready(function () {
+               $(".select2").val(null)
+            });
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
             if (this.fdc != null) {
