@@ -3092,7 +3092,7 @@ const FormularioController = new Vue({
                if (this.inputs[i].name == 'lugar_control_prenatal' ||
                   this.inputs[i].name == 'lugar_atencion_parto' ||
                   this.inputs[i].name == 'lugar_control_embarazo' ||
-                  this.inputs[i].name == 'establecimiento_control_sifilis' +
+                  this.inputs[i].name == 'establecimiento_control_sifilis' ||
                   this.inputs[i].name == 'establecimiento_control_vih' ||
                   this.inputs[i].name == 'atencion_parto'
                ) {
@@ -3227,9 +3227,7 @@ const FormularioController = new Vue({
 
 
             //Generamos limpieza de los campos con el plugin
-            $(document).ready(function () {
-               $(".select2").val(null)
-            });
+            $('#select2-establecimiento_control_vih-container').val(null).empty();
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
             if (this.fdc != null) {
