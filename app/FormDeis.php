@@ -111,11 +111,12 @@ class FormDeis extends Model
       'lugar_atencion_parto',
 
       'lugar_control_embarazo',
+      'lugar_control_prenatal',
       'establecimiento_control_sifilis',
       'establecimiento_control_vih',
       'atencion_parto',
 
-      'lugar_control_prenatal',
+
       'lugar_control_prenatal_otro',
       'lugar_derivacion_recien_nacido_a_seguimiento',
       'mujer_continua_tratamiento_antiretroviral',
