@@ -42364,7 +42364,7 @@ var FormularioController = new _vue2.default({
 
             case 'resultado_vdrl_liq_cefalo_recien_nacido':
 
-               if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
+               if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
                   for (var _i21 in this.inputs) {
 
                      if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
@@ -42376,14 +42376,11 @@ var FormularioController = new _vue2.default({
 
                         if (this.inputs[_i21].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
                            this.inputs[_i21].disabled = null;
-                        }
-                        /*
-                        else {
-                           if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
-                              this.inputs[i].disabled = true;
+                        } else {
+                           if (this.inputs[_i21].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
+                              this.inputs[_i21].disabled = true;
                            }
                         }
-                        */
                      }
                      this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
                   }

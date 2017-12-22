@@ -1432,7 +1432,7 @@ const FormularioController = new Vue({
 
             case 'resultado_vdrl_liq_cefalo_recien_nacido':
 
-               if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
+               if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
                   for (let i in this.inputs){
 
                      if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
@@ -1446,13 +1446,11 @@ const FormularioController = new Vue({
                            this.inputs[i].disabled = null;
 
                         }
-                        /*
                         else {
                            if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
                               this.inputs[i].disabled = true;
                            }
                         }
-                        */
 
                      }
                      this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
