@@ -42367,9 +42367,9 @@ var FormularioController = new _vue2.default({
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
                   for (var _i21 in this.inputs) {
 
-                     if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[_i21].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' /*||
-                                                                                                   this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' */) {
+                     if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
+                        if (this.inputs[_i21].name == 'titulacion_vdrl_periferico_recien_nacido' /*||
+                                                                                                 this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' */) {
                               this.inputs[_i21].disabled = true;
                            }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
@@ -42380,11 +42380,6 @@ var FormularioController = new _vue2.default({
                            if (this.inputs[_i21].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
                               this.inputs[_i21].disabled = true;
                            }
-                        }
-                     } else if (this.fdc[input.name] == 'Puncion Frustrada') {
-
-                        if (this.inputs[_i21].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
-                           this.inputs[_i21].disabled = true;
                         }
                      }
                      this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
