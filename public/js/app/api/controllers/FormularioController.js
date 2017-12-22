@@ -42338,7 +42338,9 @@ var FormularioController = new _vue2.default({
                         } else {
                            if (this.inputs[_i19].name == 'titulacion_vdrl_periferico_recien_nacido' ||
                            //this.inputs[i].name == 'resultado_vdrl_periferico_recien_nacido' | |
-                           this.inputs[_i19].name == 'resultado_citoquimico_liq_cefalo_raquideo' || this.inputs[_i19].name == 'resultado_radiografia_huesos_largos' || this.inputs[_i19].name == 'resultado_vdrl_liq_cefalo_recien_nacido') {
+                           this.inputs[_i19].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
+                           //this.inputs[i].name == 'resultado_radiografia_huesos_largos' ||
+                           this.inputs[_i19].name == 'resultado_vdrl_liq_cefalo_recien_nacido') {
                               this.inputs[_i19].disabled = true;
                            }
                         }
