@@ -1436,7 +1436,7 @@ const FormularioController = new Vue({
                   for (let i in this.inputs){
 
                      if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
-                        if (this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' /*||
+                        if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido' /*||
                            this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' */) {
                            this.inputs[i].disabled = true;
                         }
