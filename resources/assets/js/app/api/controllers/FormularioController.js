@@ -1445,11 +1445,14 @@ const FormularioController = new Vue({
                         if (this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
                            this.inputs[i].disabled = null;
 
-                        }else {
+                        }
+                        /*
+                        else {
                            if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
                               this.inputs[i].disabled = true;
                            }
                         }
+                        */
 
                      }
                      this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
