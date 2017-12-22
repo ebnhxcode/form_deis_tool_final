@@ -1396,10 +1396,12 @@ const FormularioController = new Vue({
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[i].name == 'fecha_examen_vdrl_periferico_recien_nacido') {
-                           this.inputs[i].disabled = null;
+                           this.inputs[i].disabled
+
+                              = null;
 
                         }else {
-                           if (this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' ||
+                           if (this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' //||
                               //this.inputs[i].name == 'resultado_vdrl_periferico_recien_nacido' | |
                               //this.inputs[i].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
                               //this.inputs[i].name == 'resultado_radiografia_huesos_largos' ||
@@ -1433,12 +1435,13 @@ const FormularioController = new Vue({
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
                   for (let i in this.inputs){
 
-                     if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' ||
-                           this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido') {
+                     if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
+                        if (this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' /*||
+                           this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' */) {
                            this.inputs[i].disabled = true;
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
+
                         if (this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
                            this.inputs[i].disabled = null;
 

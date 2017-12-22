@@ -42336,13 +42336,14 @@ var FormularioController = new _vue2.default({
                         if (this.inputs[_i19].name == 'fecha_examen_vdrl_periferico_recien_nacido') {
                            this.inputs[_i19].disabled = null;
                         } else {
-                           if (this.inputs[_i19].name == 'titulacion_vdrl_periferico_recien_nacido' ||
+                           if (this.inputs[_i19].name == 'titulacion_vdrl_periferico_recien_nacido' //||
                            //this.inputs[i].name == 'resultado_vdrl_periferico_recien_nacido' | |
-                           this.inputs[_i19].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
+                           //this.inputs[i].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
                            //this.inputs[i].name == 'resultado_radiografia_huesos_largos' ||
-                           this.inputs[_i19].name == 'resultado_vdrl_liq_cefalo_recien_nacido') {
-                              this.inputs[_i19].disabled = true;
-                           }
+                           //this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido'
+                           ) {
+                                 this.inputs[_i19].disabled = true;
+                              }
                         }
                      }
                      this.fdc['titulacion_vdrl_periferico_recien_nacido'] = 'true';
@@ -42367,16 +42368,23 @@ var FormularioController = new _vue2.default({
                   for (var _i21 in this.inputs) {
 
                      if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[_i21].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' || this.inputs[_i21].name == 'titulacion_vdrl_periferico_recien_nacido') {
-                           this.inputs[_i21].disabled = true;
-                        }
+                        if (this.inputs[_i21].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' /*||
+                                                                                                   this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' */) {
+                              this.inputs[_i21].disabled = true;
+                           }
                      } else if (this.fdc[input.name] == 'No Reactivo') {
+
                         if (this.inputs[_i21].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
                            this.inputs[_i21].disabled = null;
                         } else {
                            if (this.inputs[_i21].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
                               this.inputs[_i21].disabled = true;
                            }
+                        }
+                     } else if (this.fdc[input.name] == 'Puncion Frustrada') {
+
+                        if (this.inputs[_i21].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
+                           this.inputs[_i21].disabled = true;
                         }
                      }
                      this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
