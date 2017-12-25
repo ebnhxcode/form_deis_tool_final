@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @include('layouts.styles')
 @section('content')
-   <div class="{{--container--}}" id="FormularioController">
+   <div class="container" id="FormularioController">
       {{ csrf_field() }}
       <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
       <spinner v-if="spinner_form_deis == true"></spinner>
       <div v-else>
          <div class="row" >
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-12">
                <div class="{{--panel panel-default--}}">
-                  <div class="panel-heading"></div><!-- .panel-heading -->
+                  <div class="{{--panel-heading--}}"></div><!-- .panel-heading -->
 
                   <div class="{{--panel-body--}}">
                      <div class="row">
