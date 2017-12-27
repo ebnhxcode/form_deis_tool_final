@@ -3134,7 +3134,6 @@ const FormularioController = new Vue({
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
-
             for (let i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
@@ -3160,7 +3159,6 @@ const FormularioController = new Vue({
                }
             }
 
-
             if (tabName == 'patologias_sifilis' &&
                !this.fdc['diagnostico_sifilis_embarazo'] &&
                this.fdc['diagnostico_sifilis_embarazo'] == null) {
@@ -3181,12 +3179,15 @@ const FormularioController = new Vue({
                return;
             }
 
+
+
             this.mini_loader = true;
             //this.spinner_finalizar = true;
             var formData = new FormData();
             //var formData = [];
             var permiteGuardar = false;
             //console.log(tabName);
+
 
             if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
                this.formulario_guardandose = false;

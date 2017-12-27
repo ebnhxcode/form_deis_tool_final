@@ -43914,12 +43914,6 @@ var FormularioController = new _vue2.default({
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
-            this.mini_loader = true;
-            //this.spinner_finalizar = true;
-            var formData = new FormData();
-            //var formData = [];
-            var permiteGuardar = false;
-            //console.log(tabName);
             for (var i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
@@ -43953,6 +43947,14 @@ var FormularioController = new _vue2.default({
             if (this.formulario_guardandose == false) {
                return;
             }
+
+            this.mini_loader = true;
+            //this.spinner_finalizar = true;
+            var formData = new FormData();
+            //var formData = [];
+            var permiteGuardar = false;
+            //console.log(tabName);
+
 
             if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
                this.formulario_guardandose = false;
