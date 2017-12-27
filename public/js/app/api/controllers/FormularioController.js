@@ -43914,21 +43914,6 @@ var FormularioController = new _vue2.default({
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
-            if (tabName == 'patologias_sifilis' && !this.fdc['diagnostico_sifilis_embarazo'] && this.fdc['diagnostico_sifilis_embarazo'] == null) {
-               swal({
-                  title: "Advertencia",
-                  text: '\n                  El formulario no se podr\xE1 guardar hasta que el dato "Diagnostico de s\xEDfilis al embarazo" no est\xE9 ingresado, por favor ingrese la informaci\xF3n y guarde el formulario.\n               ',
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               this.formulario_guardandose = false;
-            }
-
-            if (this.formulario_guardandose == false) {
-               return;
-            }
-
             this.mini_loader = true;
             //this.spinner_finalizar = true;
             var formData = new FormData();
@@ -43952,6 +43937,21 @@ var FormularioController = new _vue2.default({
                      formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
                   }
                }
+            }
+
+            if (tabName == 'patologias_sifilis' && !this.fdc['diagnostico_sifilis_embarazo'] && this.fdc['diagnostico_sifilis_embarazo'] == null) {
+               swal({
+                  title: "Advertencia",
+                  text: '\n                  El formulario no se podr\xE1 guardar hasta que el dato "Diagnostico de s\xEDfilis al embarazo" no est\xE9 ingresado, por favor ingrese la informaci\xF3n y guarde el formulario.\n               ',
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               this.formulario_guardandose = false;
+            }
+
+            if (this.formulario_guardandose == false) {
+               return;
             }
 
             if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
