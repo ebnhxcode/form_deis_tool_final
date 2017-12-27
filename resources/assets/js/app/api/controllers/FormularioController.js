@@ -3135,27 +3135,6 @@ const FormularioController = new Vue({
             this.formulario_guardandose = true;
 
 
-            if (tabName == 'patologias_sifilis' &&
-               !this.fdc['diagnostico_sifilis_embarazo'] &&
-               this.fdc['diagnostico_sifilis_embarazo'] == null) {
-               swal({
-                  title: "Advertencia",
-                  text: `
-                  El formulario no se podrá guardar hasta que el dato "Diagnostico de sífilis al embarazo" no esté ingresado, por favor ingrese la información y guarde el formulario.
-               `,
-                  type: "warning",
-                  confirmButtonClass: "btn-danger",
-                  closeOnConfirm: false
-               });
-               this.formulario_guardandose = false;
-
-            }
-
-            if (this.formulario_guardandose == false) {
-               return;
-            }
-
-
 
             this.mini_loader = true;
             //this.spinner_finalizar = true;
@@ -3187,6 +3166,29 @@ const FormularioController = new Vue({
                   }
                }
             }
+
+
+            if (tabName == 'patologias_sifilis' &&
+               !this.fdc['diagnostico_sifilis_embarazo'] &&
+               this.fdc['diagnostico_sifilis_embarazo'] == null) {
+               swal({
+                  title: "Advertencia",
+                  text: `
+                  El formulario no se podrá guardar hasta que el dato "Diagnostico de sífilis al embarazo" no esté ingresado, por favor ingrese la información y guarde el formulario.
+               `,
+                  type: "warning",
+                  confirmButtonClass: "btn-danger",
+                  closeOnConfirm: false
+               });
+               this.formulario_guardandose = false;
+
+            }
+
+            if (this.formulario_guardandose == false) {
+               return;
+            }
+
+
 
             if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
                this.formulario_guardandose = false;

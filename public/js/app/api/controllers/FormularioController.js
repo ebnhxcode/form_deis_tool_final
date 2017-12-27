@@ -43923,6 +43923,9 @@ var FormularioController = new _vue2.default({
                   closeOnConfirm: false
                });
                this.formulario_guardandose = false;
+            }
+
+            if (this.formulario_guardandose == false) {
                return;
             }
 
