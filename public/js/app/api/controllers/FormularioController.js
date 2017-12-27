@@ -42168,7 +42168,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i7 in this.inputs) {
                      if (this.inputs[_i7].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i7].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
+                        this.fdc['derivada_a_especialidades_embarazo'] = '';
                         this.inputs[_i7].disabled = true;
                      }
                   }
@@ -42238,7 +42238,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i12 in this.inputs) {
                      if (this.inputs[_i12].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i12].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
+                        this.fdc['derivada_a_especialidades_embarazo'] = '';
                         this.inputs[_i12].disabled = true;
                      }
                   }
@@ -42307,7 +42307,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i17 in this.inputs) {
                      if (this.inputs[_i17].name == 'derivada_a_especialidades_embarazo' || this.inputs[_i17].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
+                        this.fdc['derivada_a_especialidades_embarazo'] = '';
                         this.inputs[_i17].disabled = true;
                      }
                   }
@@ -42484,7 +42484,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i28 in this.inputs) {
                      if (this.inputs[_i28].name == 'derivada_a_especialidades_embarazo') {
-                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
+                        this.fdc['derivada_a_especialidades_embarazo'] = '';
                         this.inputs[_i28].disabled = true;
                      }
                   }
@@ -42540,7 +42540,7 @@ var FormularioController = new _vue2.default({
 
                   for (var _i33 in this.inputs) {
                      if (this.inputs[_i33].name == 'derivada_a_especialidades_embarazo') {
-                        this.fdc['derivada_a_especialidades_embarazo'] = ' ';
+                        this.fdc['derivada_a_especialidades_embarazo'] = '';
                         this.inputs[_i33].disabled = true;
                      }
                   }

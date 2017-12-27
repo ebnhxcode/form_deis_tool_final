@@ -3148,6 +3148,10 @@ const FormularioController = new Vue({
                   closeOnConfirm: false
                });
                this.formulario_guardandose = false;
+
+            }
+
+            if (this.formulario_guardandose == false) {
                return;
             }
 
