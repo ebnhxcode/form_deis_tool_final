@@ -3210,14 +3210,16 @@ const FormularioController = new Vue({
       },
 
       guardar_formulario_completo: function () {
+         //Carga el loader
          this.mini_loader = true;
          //this.spinner_finalizar = true;
+         //Crea objeto de parametros
          var formData = new FormData();
-         //var formData = [];
+         //Variable de control de flujo
          var permiteGuardar = false;
 
-
-         //console.log(tabName);
+         //Ciclo para validar los campos que requieren filtrado previo
+         //Guardado especial por plugin select2
          for (let i in this.inputs) {
             if (this.inputs[i].name == 'lugar_control_prenatal' ||
                this.inputs[i].name == 'lugar_atencion_parto' ||
