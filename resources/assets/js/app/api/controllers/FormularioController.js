@@ -3160,6 +3160,8 @@ const FormularioController = new Vue({
                      formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
                   }
                }
+
+
             }
 
             if (tabName == 'patologias_sifilis' &&

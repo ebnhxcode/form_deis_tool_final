@@ -506,7 +506,7 @@ class FormDeisController extends Controller {
             $formData['_id_formulario'] = null;
 
             foreach ($formData as $key => $d){
-                if ($d) {
+                if ($d || $d == 0) {
                     if (strpos($key, 'fecha' && !in_array($key, ['fecha_ingreso_control_otras_especialidades_otro'])) > -1) {
                         $f = explode('-',$d);
                         $d = $f[2].'-'.$f[1].'-'.$f[0];
@@ -514,8 +514,7 @@ class FormDeisController extends Controller {
                     $fd[$key] = $d;
                 }
             }
-
-
+            
             #$result = FormDeis::create($fd);
             $result = $form_deis->update($fd);
 
