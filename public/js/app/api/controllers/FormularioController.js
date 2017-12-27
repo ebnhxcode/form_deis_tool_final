@@ -43976,13 +43976,16 @@ var FormularioController = new _vue2.default({
       guardar_formulario_completo: function guardar_formulario_completo() {
          var _this9 = this;
 
+         //Carga el loader
          this.mini_loader = true;
          //this.spinner_finalizar = true;
+         //Crea objeto de parametros
          var formData = new FormData();
-         //var formData = [];
+         //Variable de control de flujo
          var permiteGuardar = false;
 
-         //console.log(tabName);
+         //Ciclo para validar los campos que requieren filtrado previo
+         //Guardado especial por plugin select2
          for (var i in this.inputs) {
             if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
                this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
