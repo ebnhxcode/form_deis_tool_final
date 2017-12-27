@@ -7,15 +7,14 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" line="143" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="0" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="447" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2425" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2429" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2285" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1406" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1437" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2289" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1410" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1441" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
     </list>
     <ignored path="deis_form_tool.iws" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36422414">
-              <caret line="3235" column="0" selection-start-line="3235" selection-start-column="0" selection-end-line="3236" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5711207">
+              <caret line="898" column="47" selection-start-line="898" selection-start-column="47" selection-end-line="898" selection-end-column="47" />
               <folding>
                 <element signature="e#601#1610#0" expanded="false" />
                 <element signature="e#1691#2062#0" expanded="false" />
@@ -59,25 +58,34 @@
                 <element signature="e#37623#38221#0" expanded="false" />
                 <element signature="e#38277#38686#0" expanded="false" />
                 <element signature="e#38739#39061#0" expanded="false" />
-                <element signature="e#39115#119585#0" expanded="false" />
-                <element signature="e#119638#122261#0" expanded="false" />
-                <element signature="e#122313#135672#0" expanded="false" />
-                <element signature="e#135712#135772#0" expanded="false" />
-                <element signature="e#135817#136913#0" expanded="false" />
-                <element signature="e#136952#141293#0" expanded="false" />
-                <marker date="1514381161026" expanded="true" signature="2980:3447" placeholder="..." />
-                <marker date="1514381161026" expanded="true" signature="3710:3870" placeholder="..." />
-                <marker date="1514381161026" expanded="true" signature="4161:4321" placeholder="..." />
-                <marker date="1514381161026" expanded="true" signature="137560:138768" placeholder="{...}" />
-                <marker date="1514381161026" expanded="true" signature="137614:138133" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
-                <marker date="1514381161026" expanded="true" signature="138156:138752" placeholder="{...}" />
-                <marker date="1514381161026" expanded="true" signature="138238:138680" placeholder="{...}" />
-                <marker date="1514381161026" expanded="true" signature="138459:138553" placeholder="{...}" />
-                <marker date="1514381161026" expanded="true" signature="138461:138529" placeholder="//..." />
-                <marker date="1514381161026" expanded="true" signature="138567:138658" placeholder="{...}" />
-                <marker date="1514381161026" expanded="true" signature="138569:138635" placeholder="//..." />
-                <marker date="1514381161026" expanded="true" signature="138684:138735" placeholder="{...}" />
+                <element signature="e#119801#122424#0" expanded="false" />
+                <element signature="e#122476#135835#0" expanded="false" />
+                <element signature="e#135875#135935#0" expanded="false" />
+                <element signature="e#135980#137076#0" expanded="false" />
+                <element signature="e#137115#141456#0" expanded="false" />
+                <marker date="1514386320439" expanded="true" signature="2980:3447" placeholder="..." />
+                <marker date="1514386320439" expanded="true" signature="3710:3870" placeholder="..." />
+                <marker date="1514386320439" expanded="true" signature="4161:4321" placeholder="..." />
+                <marker date="1514386320439" expanded="true" signature="137723:138931" placeholder="{...}" />
+                <marker date="1514386320439" expanded="true" signature="137777:138296" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
+                <marker date="1514386320439" expanded="true" signature="138319:138915" placeholder="{...}" />
+                <marker date="1514386320439" expanded="true" signature="138401:138843" placeholder="{...}" />
+                <marker date="1514386320439" expanded="true" signature="138622:138716" placeholder="{...}" />
+                <marker date="1514386320439" expanded="true" signature="138624:138692" placeholder="//..." />
+                <marker date="1514386320439" expanded="true" signature="138730:138821" placeholder="{...}" />
+                <marker date="1514386320439" expanded="true" signature="138732:138798" placeholder="//..." />
+                <marker date="1514386320439" expanded="true" signature="138847:138898" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-33.464287">
+              <caret line="1014" column="0" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +103,7 @@
       <file leaf-file-name="mant_usuarios.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
@@ -534,27 +542,27 @@
     <frame x="1360" y="-23" width="1280" height="1047" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890624" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2234375" sideWeight="0.64083767" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2234375" sideWeight="0.3591623" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -577,7 +585,7 @@
           <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="63" />
+      <option name="time" value="64" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -779,13 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="21" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769">
@@ -928,10 +929,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/AdminController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-33.464287">
+          <caret line="1014" column="0" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36422414">
-          <caret line="3235" column="0" selection-start-line="3235" selection-start-column="0" selection-end-line="3236" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5711207">
+          <caret line="898" column="47" selection-start-line="898" selection-start-column="47" selection-end-line="898" selection-end-column="47" />
           <folding>
             <element signature="e#601#1610#0" expanded="false" />
             <element signature="e#1691#2062#0" expanded="false" />
@@ -948,41 +973,24 @@
             <element signature="e#37623#38221#0" expanded="false" />
             <element signature="e#38277#38686#0" expanded="false" />
             <element signature="e#38739#39061#0" expanded="false" />
-            <element signature="e#39115#119585#0" expanded="false" />
-            <element signature="e#119638#122261#0" expanded="false" />
-            <element signature="e#122313#135672#0" expanded="false" />
-            <element signature="e#135712#135772#0" expanded="false" />
-            <element signature="e#135817#136913#0" expanded="false" />
-            <element signature="e#136952#141293#0" expanded="false" />
-            <marker date="1514381161026" expanded="true" signature="2980:3447" placeholder="..." />
-            <marker date="1514381161026" expanded="true" signature="3710:3870" placeholder="..." />
-            <marker date="1514381161026" expanded="true" signature="4161:4321" placeholder="..." />
-            <marker date="1514381161026" expanded="true" signature="137560:138768" placeholder="{...}" />
-            <marker date="1514381161026" expanded="true" signature="137614:138133" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
-            <marker date="1514381161026" expanded="true" signature="138156:138752" placeholder="{...}" />
-            <marker date="1514381161026" expanded="true" signature="138238:138680" placeholder="{...}" />
-            <marker date="1514381161026" expanded="true" signature="138459:138553" placeholder="{...}" />
-            <marker date="1514381161026" expanded="true" signature="138461:138529" placeholder="//..." />
-            <marker date="1514381161026" expanded="true" signature="138567:138658" placeholder="{...}" />
-            <marker date="1514381161026" expanded="true" signature="138569:138635" placeholder="//..." />
-            <marker date="1514381161026" expanded="true" signature="138684:138735" placeholder="{...}" />
+            <element signature="e#119801#122424#0" expanded="false" />
+            <element signature="e#122476#135835#0" expanded="false" />
+            <element signature="e#135875#135935#0" expanded="false" />
+            <element signature="e#135980#137076#0" expanded="false" />
+            <element signature="e#137115#141456#0" expanded="false" />
+            <marker date="1514386320439" expanded="true" signature="2980:3447" placeholder="..." />
+            <marker date="1514386320439" expanded="true" signature="3710:3870" placeholder="..." />
+            <marker date="1514386320439" expanded="true" signature="4161:4321" placeholder="..." />
+            <marker date="1514386320439" expanded="true" signature="137723:138931" placeholder="{...}" />
+            <marker date="1514386320439" expanded="true" signature="137777:138296" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
+            <marker date="1514386320439" expanded="true" signature="138319:138915" placeholder="{...}" />
+            <marker date="1514386320439" expanded="true" signature="138401:138843" placeholder="{...}" />
+            <marker date="1514386320439" expanded="true" signature="138622:138716" placeholder="{...}" />
+            <marker date="1514386320439" expanded="true" signature="138624:138692" placeholder="//..." />
+            <marker date="1514386320439" expanded="true" signature="138730:138821" placeholder="{...}" />
+            <marker date="1514386320439" expanded="true" signature="138732:138798" placeholder="//..." />
+            <marker date="1514386320439" expanded="true" signature="138847:138898" placeholder="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/mant_usuarios.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

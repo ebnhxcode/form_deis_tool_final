@@ -895,6 +895,10 @@ const FormularioController = new Vue({
 
       verifica_validacion_change: function (input) {
 
+         for (let i in this.inputs){
+            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
+         }
+
 
          switch (input.id) {
 
