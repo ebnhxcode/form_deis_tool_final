@@ -3135,13 +3135,6 @@ const FormularioController = new Vue({
             this.formulario_guardandose = true;
 
 
-
-            this.mini_loader = true;
-            //this.spinner_finalizar = true;
-            var formData = new FormData();
-            //var formData = [];
-            var permiteGuardar = false;
-            //console.log(tabName);
             for (let i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
@@ -3188,7 +3181,12 @@ const FormularioController = new Vue({
                return;
             }
 
-
+            this.mini_loader = true;
+            //this.spinner_finalizar = true;
+            var formData = new FormData();
+            //var formData = [];
+            var permiteGuardar = false;
+            //console.log(tabName);
 
             if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
                this.formulario_guardandose = false;
