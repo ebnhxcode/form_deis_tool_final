@@ -3134,6 +3134,9 @@ const FormularioController = new Vue({
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
+            var formData = new FormData();
+            //var formData = [];}
+
             for (let i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
@@ -3172,19 +3175,14 @@ const FormularioController = new Vue({
                   closeOnConfirm: false
                });
                this.formulario_guardandose = false;
-
-            }
-
-            if (this.formulario_guardandose == false) {
                return;
             }
 
 
 
+
             this.mini_loader = true;
             //this.spinner_finalizar = true;
-            var formData = new FormData();
-            //var formData = [];
             var permiteGuardar = false;
             //console.log(tabName);
 

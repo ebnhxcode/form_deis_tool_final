@@ -43914,6 +43914,9 @@ var FormularioController = new _vue2.default({
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
+            var formData = new FormData();
+            //var formData = [];}
+
             for (var i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
@@ -43942,16 +43945,11 @@ var FormularioController = new _vue2.default({
                   closeOnConfirm: false
                });
                this.formulario_guardandose = false;
-            }
-
-            if (this.formulario_guardandose == false) {
                return;
             }
 
             this.mini_loader = true;
             //this.spinner_finalizar = true;
-            var formData = new FormData();
-            //var formData = [];
             var permiteGuardar = false;
             //console.log(tabName);
 
