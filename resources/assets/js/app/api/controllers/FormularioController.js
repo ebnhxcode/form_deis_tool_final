@@ -895,9 +895,12 @@ const FormularioController = new Vue({
 
       verifica_validacion_change: function (input) {
 
+         /*
          for (let i in this.inputs){
-            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
+            //this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóúscript;:\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
+            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.ÑÍÉÓÁÚ@_]/g, '');
          }
+         */
 
 
          switch (input.id) {
@@ -2688,6 +2691,12 @@ const FormularioController = new Vue({
       },
 
       verifica_validacion_blur: function (input) {
+
+         for (let i in this.inputs){
+            //this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóúscript;:\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
+            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\:ÑÍÉÓÁÚ@_]/g, '');
+         }
+
          switch (input.id) {
 
             case 'fecha_nacimiento_madre':
