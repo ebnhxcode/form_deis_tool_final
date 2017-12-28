@@ -1840,7 +1840,7 @@ const FormularioController = new Vue({
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
                }else{
-                  this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+                  this.fdc[input.name] = this.fdc[input.name]>0?Math.round(parseInt(this.fdc[input.name])):null;
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
@@ -1984,8 +1984,7 @@ const FormularioController = new Vue({
 
             case 'numero_contactos_sexuales_declarados':
                //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-
-               if (this.fdc[input.name]>=1){
+               if (parseInt(this.fdc[input.name])>=1){
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
                         this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
@@ -1994,14 +1993,14 @@ const FormularioController = new Vue({
                   }
                }else{
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == carga_viral_numero_copia_semana_34'numero_contactos_sexuales_estudiados' ||
+                     if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
                         this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
                         this.inputs[i].disabled = true;
                      }
                   }
                }
 
-               if (this.fdc[input.name]<0) {
+               if (parseInt(this.fdc[input.name])<0) {
                   this.fdc[input.name] = null;
                }
 
@@ -2009,13 +2008,13 @@ const FormularioController = new Vue({
 
             case 'numero_contactos_sexuales_estudiados':
                //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (this.fdc[input.name]<0) {
+               if (parseInt(this.fdc[input.name])<0) {
                   this.fdc[input.name] = null;
                }
                break;
             case 'numero_contactos_sexuales_tratados':
                //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (this.fdc[input.name]<0) {
+               if (parseInt(this.fdc[input.name])<0) {
                   this.fdc[input.name] = null;
                }
                break;

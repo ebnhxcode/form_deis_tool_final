@@ -42725,7 +42725,7 @@ var FormularioController = new _vue2.default({
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = 0;
                } else {
-                  this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
+                  this.fdc[input.name] = this.fdc[input.name] > 0 ? Math.round(parseInt(this.fdc[input.name])) : null;
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
