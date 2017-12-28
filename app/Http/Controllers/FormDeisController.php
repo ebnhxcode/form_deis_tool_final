@@ -502,6 +502,7 @@ class FormDeisController extends Controller {
             $formData = $request->all();
             $fd = [];
 
+
             $form_deis = FormDeis::find($formData['_id_formulario']);
             $formData['_id_formulario'] = null;
 
@@ -514,7 +515,7 @@ class FormDeisController extends Controller {
                     $fd[$key] = $d;
                 }
             }
-            
+
             #$result = FormDeis::create($fd);
             $result = $form_deis->update($fd);
 
