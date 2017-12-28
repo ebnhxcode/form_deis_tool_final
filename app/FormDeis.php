@@ -201,4 +201,9 @@ class FormDeis extends Model
       'via_parto',
       'vih_conocido_previa_embarazo'
    ];
+
+   public function form_deis_user () {
+      return $this->hasMany('App\FormDeisUser', 'id');
+   }
+
 }

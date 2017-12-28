@@ -15,4 +15,12 @@ class FormDeisUser extends Model
       'created_at',
       'updated_at',
    ];
+
+   public function user () {
+      return $this->belongsTo('App\User','usuario_modifica_form_deis');
+   }
+
+   public function form_deis () {
+      return $this->belongsTo('App\FormDeis','id_form_deis');
+   }
 }

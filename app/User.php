@@ -43,5 +43,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role', 'id_role');
     }
 
+    public function form_deis () {
+        return $this->hasMany('App\FormDeisUser', 'id');
+    }
 
 }

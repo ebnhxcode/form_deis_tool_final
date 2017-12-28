@@ -28,6 +28,7 @@ Route::get('/demo', function () {
 });
 */
 
+
 Route::get('/admin/procesar_rut_resagados', 'AdminController@procesar_rut_resagados');
 Route::get('/admin/procesar_rut', 'AdminController@procesar_rut');
 

@@ -237,9 +237,6 @@ class FormDeisController extends Controller {
         exit;
     }
 
-
-
-
     public function index (Request $request) {
         return $this->create($request);
     }
