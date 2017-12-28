@@ -847,6 +847,7 @@ const FormularioController = new Vue({
       },
 
       check_input: function (input,index) {
+         console.log(this.fdc_temp);
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
             if ( this.fdc_temp[this.inputs[index].id] != null &&
@@ -860,6 +861,16 @@ const FormularioController = new Vue({
                //caso contrario, no es necesario completar
                this.inputs[index].edicion_temporal = true;
             }
+
+            if (this.fdc_temp['form_deis_user'] && this.fdc_temp['form_deis_user'] != null){
+               var form_deis_user = this.fdc_temp['form_deis_user'];
+               for (var i,o in form_deis_user) {
+                  console.log(o);
+               }
+            }
+
+
+
             return this.inputs[index].edicion_temporal;
          }
          return true;

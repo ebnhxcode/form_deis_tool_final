@@ -41883,6 +41883,7 @@ var FormularioController = new _vue2.default({
       },
 
       check_input: function check_input(input, index) {
+         console.log(this.fdc_temp);
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
             if (this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '' && this.formularioNuevoActivo == false) {
@@ -41892,6 +41893,14 @@ var FormularioController = new _vue2.default({
                //caso contrario, no es necesario completar
                this.inputs[index].edicion_temporal = true;
             }
+
+            if (this.fdc_temp['form_deis_user'] && this.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = this.fdc_temp['form_deis_user'];
+               for (var i in form_deis_user) {
+                  console.log(i);
+               }
+            }
+
             return this.inputs[index].edicion_temporal;
          }
          return true;
