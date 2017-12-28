@@ -203,7 +203,7 @@ class FormDeis extends Model
    ];
 
    public function form_deis_user () {
-      return $this->hasMany('App\FormDeisUser', 'id');
+      return $this->hasMany('App\FormDeisUser', 'id_form_deis');
    }
 
 }
