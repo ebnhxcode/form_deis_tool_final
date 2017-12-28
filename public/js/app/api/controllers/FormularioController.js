@@ -42864,7 +42864,7 @@ var FormularioController = new _vue2.default({
                   }
                }
 
-               if (parseInt(this.fdc[input.name]) < 1) {
+               if (parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = null;
                }
 
@@ -42872,13 +42872,13 @@ var FormularioController = new _vue2.default({
 
             case 'numero_contactos_sexuales_estudiados':
                //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (parseInt(this.fdc[input.name]) < 1) {
+               if (parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = null;
                }
                break;
             case 'numero_contactos_sexuales_tratados':
                //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (parseInt(this.fdc[input.name]) < 1) {
+               if (parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = null;
                }
                break;
