@@ -55,6 +55,8 @@ const FormularioController = new Vue({
          'spinner_finalizar':false,
          'mini_loader':false,
 
+         'permiso_temporal_edicion':false,
+
          'formularioNuevoActivo':false,
          'formularioEditActivo':false,
 
@@ -860,17 +862,6 @@ const FormularioController = new Vue({
             }else{
                //caso contrario, no es necesario completar
                this.inputs[index].edicion_temporal = true;
-            }
-
-            if (this.fdc_temp['form_deis_user'] && this.fdc_temp['form_deis_user'] != null){
-               var form_deis_user = this.fdc_temp['form_deis_user'];
-               var user = null;
-               for (var i in form_deis_user) {
-                  user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == this.auth.id) {
-                     this.inputs[index].edicion_temporal = true;
-                  }
-               }
             }
 
             return this.inputs[index].edicion_temporal;
@@ -3319,7 +3310,20 @@ const FormularioController = new Vue({
             this.deis_form_table_options = response.body.deis_form_table_options;
             this.pais_origen = response.body.pais_origen;
             this.auth = response.body.auth;
+
+            if (this.fdc_temp['form_deis_user'] && this.fdc_temp['form_deis_user'] != null){
+               var form_deis_user = this.fdc_temp['form_deis_user'];
+               var user = null;
+               for (var i in form_deis_user) {
+                  user = form_deis_user[i];
+                  if (user.usuario_modifica_form_deis == this.auth.id) {
+                     this.permiso_temporal_edicion = true;
+                  }
+               }
+            }
+
             this.validar_validaciones_previas();
+
 
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
@@ -3401,6 +3405,18 @@ const FormularioController = new Vue({
 
             this.formularioActivoObj = response.body.fdc;
             this.auth = response.body.auth;
+
+            if (this.fdc_temp['form_deis_user'] && this.fdc_temp['form_deis_user'] != null){
+               var form_deis_user = this.fdc_temp['form_deis_user'];
+               var user = null;
+               for (var i in form_deis_user) {
+                  user = form_deis_user[i];
+                  if (user.usuario_modifica_form_deis == this.auth.id) {
+                     this.permiso_temporal_edicion = true;
+                  }
+               }
+            }
+
             this.validar_validaciones_previas();
 
 

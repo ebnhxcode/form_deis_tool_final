@@ -161,7 +161,7 @@
 
                                                    <!-- Input basicos como text,number,time,date,etc -->
                                                    {{--v-if="tab.name != 'patologias_sifilis' && tab.name != 'patologias_vih'"--}}
-                                                   <dd v-if="check_input(i,index) == true || auth.id_role == 3">
+                                                   <dd v-if="check_input(i,index) == true || auth.id_role == 2 || permiso_temporal_edicion == true">
 
 
                                                       <input :name="i.name"
