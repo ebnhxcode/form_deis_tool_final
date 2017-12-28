@@ -507,7 +507,7 @@ class FormDeisController extends Controller {
             $formData['_id_formulario'] = null;
 
             foreach ($formData as $key => $d){
-                if ($d || $d == 0) {
+                if ($d || $d == 0 && $d != '') {
                     if (strpos($key, 'fecha' && !in_array($key, ['fecha_ingreso_control_otras_especialidades_otro'])) > -1) {
                         $f = explode('-',$d);
                         $d = $f[2].'-'.$f[1].'-'.$f[0];
