@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="bf228884-5e7b-46f8-99f5-a433acc0f398" name="AP Convergente" url="http://10.65.170.16">
-        <fileTransfer host="10.65.170.16" port="22" rootFolder="/var/www/html" accessType="SFTP" username="root">
+      <webServer id="bf228884-5e7b-46f8-99f5-a433acc0f398" name="Acceso Funfamilia" url="http://200.68.55.228">
+        <fileTransfer host="200.68.55.228" port="22" rootFolder="/var/www" accessType="SFTP" password="dfccdfdfdfc4dfccdfcbdfd9dfc3dfcfdfdedfcfdfd8dfcfdfcddfc3dfc5dfc4dfcfdfd9df98df9adf9bdf9d" username="maraya">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
