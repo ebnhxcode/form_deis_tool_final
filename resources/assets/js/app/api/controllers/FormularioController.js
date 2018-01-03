@@ -3170,6 +3170,7 @@ const FormularioController = new Vue({
 
             if (tabName == 'patologias_sifilis' &&
                !this.fdc['diagnostico_sifilis_embarazo'] &&
+               this.fdc['resultado_treponemico'] != 'No Realizado' &&
                this.fdc['diagnostico_sifilis_embarazo'] == null) {
                swal({
                   title: "Advertencia",
