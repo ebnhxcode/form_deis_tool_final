@@ -1939,16 +1939,16 @@ const FormularioController = new Vue({
             case 'resultado_treponemico':
                if (this.fdc[input.name] == 'No Realizado') {
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_examen_treponemico' ||
-                        this.inputs[i].name == 'diagnostico_sifilis_embarazo') {
+                     if (this.inputs[i].name == 'fecha_examen_treponemico' /*||
+                        this.inputs[i].name == 'diagnostico_sifilis_embarazo'*/) {
                         this.inputs[i].disabled = true;
                      }
                   }
                }
                else{
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_examen_treponemico' ||
-                        this.inputs[i].name == 'diagnostico_sifilis_embarazo') {
+                     if (this.inputs[i].name == 'fecha_examen_treponemico' /*||
+                        this.inputs[i].name == 'diagnostico_sifilis_embarazo'*/) {
                         this.inputs[i].disabled = null;
                      }
                   }
