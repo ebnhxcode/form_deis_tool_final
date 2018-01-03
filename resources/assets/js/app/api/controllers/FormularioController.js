@@ -171,7 +171,7 @@ const FormularioController = new Vue({
          methods: {},
       },
       'modal_buscar_formulario':{
-         props: [],
+         props: ['auth'],
          template: `
 			   <!-- template for the modal component -->
 			   <transition name="modal">
@@ -202,6 +202,14 @@ const FormularioController = new Vue({
                                           <a href="#lista_personas_pasaporte" aria-controls="lista_personas_pasaporte"
                                              role="tab" data-toggle="tab">
                                              Búsqueda de Personas - <b>Pasaporte</b>
+                                          </a>
+                                       </li>
+
+                                       <!-- solo se habilita para el perfil 3 -->
+                                       <li role="presentation" v-if="auth && auth.id_role==3">
+                                          <a href="#lista_personas_correlativo" aria-controls="lista_personas_correlativo"
+                                             role="tab" data-toggle="tab">
+                                             Búsqueda de Personas - <b>Correlativo</b>
                                           </a>
                                        </li>
 
@@ -296,6 +304,7 @@ const FormularioController = new Vue({
 
                                        </div><!-- .tab-pane .fade #lista_personas_run -->
 
+<!--////////////////////////////////////////////////////////////////////////////////////-->
 
                                        <div role="tabpanel" class="tab-pane fade" id="lista_personas_pasaporte">
 
@@ -381,6 +390,90 @@ const FormularioController = new Vue({
                                        </div><!-- .tab-pane .fade #lista_personas_pasaporte -->
 
 
+<!--////////////////////////////////////////////////////////////////////////////////////-->
+
+                                       <div role="tabpanel" class="tab-pane fade" id="lista_personas_correlativo">
+
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <dt>
+                                                      Pasaporte
+                                                   </dt>
+                                                   <dd>
+
+                                                      <!-- Busqueda por CORRELATIVO -->
+                                                      <div class="form-group">
+                                                         <div class="input-group input-group-sm">
+                                                            <div class="input-group-addon">
+                                                               <i class="fa fa-user"></i>
+                                                            </div>
+
+                                                            <input class="form-control"
+                                                             type="text"
+                                                             style="padding-bottom: 5px;"
+                                                             name="n_correlativo_interno"
+                                                             placeholder="Ej: 403230"
+                                                             id="n_correlativo_interno"
+                                                             maxlength="12"
+                                                             v-model="n_correlativo_interno"
+                                                             @change="buscar_por_correlativo">
+
+                                                            <span class="input-group-btn">
+                                                               <button class="btn btn-sm btn-info"
+                                                                  @click.prevent="buscar_por_pasaporte">
+                                                                  Buscar&nbsp;<i class="fa fa-search"></i>
+                                                               </button>
+                                                            </span><!-- .input-group-btn -->
+                                                         </div><!-- /.input-group -->
+                                                      </div><!-- /.form-group -->
+
+
+                                                      <div class="table-responsive" v-if="formulario_vacio == false">
+                                                         <small class="text-info">Resultados encontrados</small>
+                                                         <br>
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <th>Correlativo</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Nombres</th>
+                                                                  <th>Disponibilidad Registro</th>
+                                                                  <th>Estado Registro</th>
+                                                                  <th>Fecha Parto</th>
+                                                                  <th>Hora Parto</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr v-for="f in formularios">
+                                                                  <td>
+                                                                     <button class="btn btn-sm btn-primary"
+                                                                        @click.prevent="modificar_usuario_seleccionado(f)">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                     </button>
+                                                                  </td>
+                                                                  <td>{{f.n_correlativo_interno}}</td>
+                                                                  <td>{{f.run_madre}}</td>
+                                                                  <td>{{f.nombres_madre}}</td>
+                                                                  <td>{{f.estado_form_deis || 'disponible'}}</td>
+                                                                  <td>{{f.estado_formulario_completo_form_deis || 'Incompleto'}}</td>
+                                                                  <td>{{f.fecha_parto || 'No Ingresado'}}</td>
+                                                                  <td>{{f.hora_parto || 'No Ingresado'}}</td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_personas_pasaporte -->
 
 
                                     </div><!-- .panel-heading -->

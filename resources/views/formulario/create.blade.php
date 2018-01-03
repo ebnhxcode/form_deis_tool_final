@@ -57,6 +57,7 @@
                               </button><!-- .btn .btn-info -->
 
                               <modal_buscar_formulario
+                                 :auth="auth"
                                  v-show="show_modal_buscar_formulario == true">
                                  <h3 slot="header">
                                     Búsqueda DEIS
