@@ -400,7 +400,7 @@ const FormularioController = new Vue({
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
                                                    <dt>
-                                                      Pasaporte
+                                                      Correlativo
                                                    </dt>
                                                    <dd>
 
@@ -419,11 +419,11 @@ const FormularioController = new Vue({
                                                              id="n_correlativo_interno"
                                                              maxlength="12"
                                                              v-model="n_correlativo_interno"
-                                                             @change="buscar_por_correlativo">
+                                                             @change="buscar_por_correlativo" />
 
                                                             <span class="input-group-btn">
                                                                <button class="btn btn-sm btn-info"
-                                                                  @click.prevent="buscar_por_pasaporte">
+                                                                  @click.prevent="buscar_por_correlativo">
                                                                   Buscar&nbsp;<i class="fa fa-search"></i>
                                                                </button>
                                                             </span><!-- .input-group-btn -->
@@ -614,9 +614,22 @@ const FormularioController = new Vue({
                this.$http.post('/formulario/buscar_por_correlativo', formData).then(response => { // success callback
                   //console.log(response);
 
-                  this.formularios_correlativo = response.body.formularios;
-                  this.formulario_vacio_correlativo = $.isEmptyObject(this.formularios_correlativo)==true?true:false;
+                  //this.formularios_correlativo = response.body.formularios;
+                  //this.formulario_vacio_correlativo = $.isEmptyObject(this.formularios_correlativo)==true?true:false;
+                  this.formularios = response.body.formularios;
+                  this.formulario_vacio = $.isEmptyObject(this.formularios)==true?true:false;
                   this.n_correlativo_interno = null;
+
+                  if (this.formulario_vacio == true) {
+                     swal({
+                        title: "Atención",
+                        text: "El pasaporte ingresado no se encuentra registrado.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                  }
+
 
                }, response => { // error callback
                   //console.log(response);
