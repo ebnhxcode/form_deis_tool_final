@@ -14,10 +14,11 @@
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1448" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1169" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2020" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="134" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/formulario/create.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,8 +43,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.642857">
-              <caret line="1984" column="21" selection-start-line="1984" selection-start-column="21" selection-end-line="1984" selection-end-column="21" />
+            <state vertical-scroll-proportion="-20.642857">
+              <caret line="2012" column="40" selection-start-line="2012" selection-start-column="40" selection-end-line="2012" selection-end-column="40" />
               <folding>
                 <element signature="e#1735#2106#0" expanded="false" />
                 <element signature="e#2125#2484#0" expanded="false" />
@@ -82,8 +83,8 @@
       <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6270588">
-              <caret line="162" column="94" selection-start-line="162" selection-start-column="94" selection-end-line="162" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.1835294">
+              <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -977,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.642857">
-          <caret line="1984" column="21" selection-start-line="1984" selection-start-column="21" selection-end-line="1984" selection-end-column="21" />
+        <state vertical-scroll-proportion="-20.642857">
+          <caret line="2012" column="40" selection-start-line="2012" selection-start-column="40" selection-end-line="2012" selection-end-column="40" />
           <folding>
             <element signature="e#1735#2106#0" expanded="false" />
             <element signature="e#2125#2484#0" expanded="false" />
@@ -1015,8 +1016,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6270588">
-          <caret line="162" column="94" selection-start-line="162" selection-start-column="94" selection-end-line="162" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.1835294">
+          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
           <folding />
         </state>
       </provider>
