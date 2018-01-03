@@ -42822,15 +42822,17 @@ var FormularioController = new _vue2.default({
             case 'resultado_treponemico':
                if (this.fdc[input.name] == 'No Realizado') {
                   for (var _i45 in this.inputs) {
-                     if (this.inputs[_i45].name == 'fecha_examen_treponemico' || this.inputs[_i45].name == 'diagnostico_sifilis_embarazo') {
-                        this.inputs[_i45].disabled = true;
-                     }
+                     if (this.inputs[_i45].name == 'fecha_examen_treponemico' /*||
+                                                                              this.inputs[i].name == 'diagnostico_sifilis_embarazo'*/) {
+                           this.inputs[_i45].disabled = true;
+                        }
                   }
                } else {
                   for (var _i46 in this.inputs) {
-                     if (this.inputs[_i46].name == 'fecha_examen_treponemico' || this.inputs[_i46].name == 'diagnostico_sifilis_embarazo') {
-                        this.inputs[_i46].disabled = null;
-                     }
+                     if (this.inputs[_i46].name == 'fecha_examen_treponemico' /*||
+                                                                              this.inputs[i].name == 'diagnostico_sifilis_embarazo'*/) {
+                           this.inputs[_i46].disabled = null;
+                        }
                   }
                }
                break;
