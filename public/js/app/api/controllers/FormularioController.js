@@ -43811,6 +43811,9 @@ var FormularioController = new _vue2.default({
 
       buscar_formulario: function buscar_formulario() {
          this.show_modal_buscar_formulario = true;
+         if (this.fdc.length > 0) {
+            this.guardar_formulario_completo();
+         }
       },
 
       crear_nuevo_formulario: function crear_nuevo_formulario() {

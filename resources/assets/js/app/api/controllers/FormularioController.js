@@ -3115,7 +3115,7 @@ const FormularioController = new Vue({
 
       buscar_formulario: function () {
          this.show_modal_buscar_formulario = true;
-         if (this.fdc.length > 0) {
+         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
             this.guardar_formulario_completo();
          }
 
