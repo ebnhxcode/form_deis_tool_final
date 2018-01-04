@@ -3115,6 +3115,10 @@ const FormularioController = new Vue({
 
       buscar_formulario: function () {
          this.show_modal_buscar_formulario = true;
+         if (this.fdc.length > 0) {
+            this.guardar_formulario_completo();
+         }
+
       },
 
       crear_nuevo_formulario: function () {
