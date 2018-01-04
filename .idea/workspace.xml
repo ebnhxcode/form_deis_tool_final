@@ -5,13 +5,13 @@
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/UsuarioCreateController.js" line="390" />
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" line="143" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="0" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2542" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2541" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2402" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1523" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1554" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1275" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2126" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2401" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1522" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1553" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1274" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2125" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="135" />
   </component>
   <component name="ChangeListManager">
@@ -44,8 +44,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58960176">
-              <caret line="3117" column="76" selection-start-line="3117" selection-start-column="76" selection-end-line="3117" selection-end-column="76" />
+            <state vertical-scroll-proportion="0.7267699">
+              <caret line="3383" column="0" selection-start-line="3383" selection-start-column="0" selection-end-line="3383" selection-end-column="0" />
               <folding>
                 <element signature="e#1735#2106#0" expanded="false" />
                 <element signature="e#2125#2484#0" expanded="false" />
@@ -58,26 +58,25 @@
                 <element signature="e#41557#41820#0" expanded="false" />
                 <element signature="e#41839#43431#0" expanded="false" />
                 <element signature="e#43530#45054#0" expanded="false" />
-                <element signature="e#45099#45737#0" expanded="false" />
-                <element signature="e#45793#46202#0" expanded="false" />
-                <element signature="e#46255#46577#0" expanded="false" />
-                <element signature="e#46631#127439#0" expanded="false" />
-                <element signature="e#127492#130115#0" expanded="false" />
-                <element signature="e#130167#143812#0" expanded="false" />
-                <element signature="e#144097#145193#0" expanded="false" />
-                <marker date="1515072200579" expanded="true" signature="3024:3491" placeholder="..." />
-                <marker date="1515072200579" expanded="true" signature="3754:3914" placeholder="..." />
-                <marker date="1515072200579" expanded="true" signature="4205:4365" placeholder="..." />
-                <marker date="1515072200579" expanded="true" signature="130205:130331" placeholder="{...}" />
-                <marker date="1515072200579" expanded="true" signature="145840:147048" placeholder="{...}" />
-                <marker date="1515072200579" expanded="true" signature="145894:146413" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
-                <marker date="1515072200579" expanded="true" signature="146436:147032" placeholder="{...}" />
-                <marker date="1515072200579" expanded="true" signature="146518:146960" placeholder="{...}" />
-                <marker date="1515072200579" expanded="true" signature="146739:146833" placeholder="{...}" />
-                <marker date="1515072200579" expanded="true" signature="146741:146809" placeholder="//..." />
-                <marker date="1515072200579" expanded="true" signature="146847:146938" placeholder="{...}" />
-                <marker date="1515072200579" expanded="true" signature="146849:146915" placeholder="//..." />
-                <marker date="1515072200579" expanded="true" signature="146964:147015" placeholder="{...}" />
+                <element signature="e#45098#45736#0" expanded="false" />
+                <element signature="e#45792#46201#0" expanded="false" />
+                <element signature="e#46254#46576#0" expanded="false" />
+                <element signature="e#46630#127438#0" expanded="false" />
+                <element signature="e#127491#130114#0" expanded="false" />
+                <element signature="e#130166#143811#0" expanded="false" />
+                <marker date="1515073276907" expanded="true" signature="3024:3491" placeholder="..." />
+                <marker date="1515073276907" expanded="true" signature="3754:3914" placeholder="..." />
+                <marker date="1515073276907" expanded="true" signature="4205:4365" placeholder="..." />
+                <marker date="1515073276907" expanded="true" signature="130204:130330" placeholder="{...}" />
+                <marker date="1515073276907" expanded="true" signature="145844:147052" placeholder="{...}" />
+                <marker date="1515073276907" expanded="true" signature="145898:146417" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
+                <marker date="1515073276907" expanded="true" signature="146440:147036" placeholder="{...}" />
+                <marker date="1515073276907" expanded="true" signature="146522:146964" placeholder="{...}" />
+                <marker date="1515073276907" expanded="true" signature="146743:146837" placeholder="{...}" />
+                <marker date="1515073276907" expanded="true" signature="146745:146813" placeholder="//..." />
+                <marker date="1515073276907" expanded="true" signature="146851:146942" placeholder="{...}" />
+                <marker date="1515073276907" expanded="true" signature="146853:146919" placeholder="//..." />
+                <marker date="1515073276907" expanded="true" signature="146968:147019" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -989,8 +988,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58960176">
-          <caret line="3117" column="76" selection-start-line="3117" selection-start-column="76" selection-end-line="3117" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.7267699">
+          <caret line="3383" column="0" selection-start-line="3383" selection-start-column="0" selection-end-line="3383" selection-end-column="0" />
           <folding>
             <element signature="e#1735#2106#0" expanded="false" />
             <element signature="e#2125#2484#0" expanded="false" />
@@ -1003,26 +1002,25 @@
             <element signature="e#41557#41820#0" expanded="false" />
             <element signature="e#41839#43431#0" expanded="false" />
             <element signature="e#43530#45054#0" expanded="false" />
-            <element signature="e#45099#45737#0" expanded="false" />
-            <element signature="e#45793#46202#0" expanded="false" />
-            <element signature="e#46255#46577#0" expanded="false" />
-            <element signature="e#46631#127439#0" expanded="false" />
-            <element signature="e#127492#130115#0" expanded="false" />
-            <element signature="e#130167#143812#0" expanded="false" />
-            <element signature="e#144097#145193#0" expanded="false" />
-            <marker date="1515072200579" expanded="true" signature="3024:3491" placeholder="..." />
-            <marker date="1515072200579" expanded="true" signature="3754:3914" placeholder="..." />
-            <marker date="1515072200579" expanded="true" signature="4205:4365" placeholder="..." />
-            <marker date="1515072200579" expanded="true" signature="130205:130331" placeholder="{...}" />
-            <marker date="1515072200579" expanded="true" signature="145840:147048" placeholder="{...}" />
-            <marker date="1515072200579" expanded="true" signature="145894:146413" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
-            <marker date="1515072200579" expanded="true" signature="146436:147032" placeholder="{...}" />
-            <marker date="1515072200579" expanded="true" signature="146518:146960" placeholder="{...}" />
-            <marker date="1515072200579" expanded="true" signature="146739:146833" placeholder="{...}" />
-            <marker date="1515072200579" expanded="true" signature="146741:146809" placeholder="//..." />
-            <marker date="1515072200579" expanded="true" signature="146847:146938" placeholder="{...}" />
-            <marker date="1515072200579" expanded="true" signature="146849:146915" placeholder="//..." />
-            <marker date="1515072200579" expanded="true" signature="146964:147015" placeholder="{...}" />
+            <element signature="e#45098#45736#0" expanded="false" />
+            <element signature="e#45792#46201#0" expanded="false" />
+            <element signature="e#46254#46576#0" expanded="false" />
+            <element signature="e#46630#127438#0" expanded="false" />
+            <element signature="e#127491#130114#0" expanded="false" />
+            <element signature="e#130166#143811#0" expanded="false" />
+            <marker date="1515073276907" expanded="true" signature="3024:3491" placeholder="..." />
+            <marker date="1515073276907" expanded="true" signature="3754:3914" placeholder="..." />
+            <marker date="1515073276907" expanded="true" signature="4205:4365" placeholder="..." />
+            <marker date="1515073276907" expanded="true" signature="130204:130330" placeholder="{...}" />
+            <marker date="1515073276907" expanded="true" signature="145844:147052" placeholder="{...}" />
+            <marker date="1515073276907" expanded="true" signature="145898:146417" placeholder="{&quot;title&quot;: &quot;Información sobre Mantenimiento del Sitio&quot;...}" />
+            <marker date="1515073276907" expanded="true" signature="146440:147036" placeholder="{...}" />
+            <marker date="1515073276907" expanded="true" signature="146522:146964" placeholder="{...}" />
+            <marker date="1515073276907" expanded="true" signature="146743:146837" placeholder="{...}" />
+            <marker date="1515073276907" expanded="true" signature="146745:146813" placeholder="//..." />
+            <marker date="1515073276907" expanded="true" signature="146851:146942" placeholder="{...}" />
+            <marker date="1515073276907" expanded="true" signature="146853:146919" placeholder="//..." />
+            <marker date="1515073276907" expanded="true" signature="146968:147019" placeholder="{...}" />
           </folding>
         </state>
       </provider>

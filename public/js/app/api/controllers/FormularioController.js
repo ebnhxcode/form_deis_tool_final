@@ -41895,7 +41895,6 @@ var FormularioController = new _vue2.default({
                break;
          }
       },
-
       check_input: function check_input(input, index) {
          //console.log(this.fdc_temp);
          if (input.bloque == 'campo_limitado') {
@@ -43810,10 +43809,10 @@ var FormularioController = new _vue2.default({
       },
 
       buscar_formulario: function buscar_formulario() {
-         this.show_modal_buscar_formulario = true;
-         if (this.fdc.length > 0) {
+         if (this.fdc.id && this.fdc.id != null && this.fdc.id != undefined) {
             this.guardar_formulario_completo();
          }
+         return this.show_modal_buscar_formulario = true;
       },
 
       crear_nuevo_formulario: function crear_nuevo_formulario() {

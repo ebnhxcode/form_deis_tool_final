@@ -953,7 +953,6 @@ const FormularioController = new Vue({
                break;
          }
       },
-
       check_input: function (input,index) {
          //console.log(this.fdc_temp);
          if (input.bloque == 'campo_limitado') {
@@ -3114,11 +3113,10 @@ const FormularioController = new Vue({
       },
 
       buscar_formulario: function () {
-         this.show_modal_buscar_formulario = true;
-         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+         if (this.fdc.id && this.fdc.id != null && this.fdc.id != undefined) {
             this.guardar_formulario_completo();
          }
-
+         return this.show_modal_buscar_formulario = true;
       },
 
       crear_nuevo_formulario: function () {
@@ -3342,6 +3340,70 @@ const FormularioController = new Vue({
          return;
       },
 
+      guardar_formulario_completo_silencioso: function () {
+         //Carga el loader
+         this.mini_loader = true;
+         //this.spinner_finalizar = true;
+         //Crea objeto de parametros
+         var formData = new FormData();
+         //Variable de control de flujo
+         var permiteGuardar = false;
+
+         //Ciclo para validar los campos que requieren filtrado previo
+         //Guardado especial por plugin select2
+         for (let i in this.inputs) {
+            if (this.inputs[i].name == 'lugar_control_prenatal' ||
+               this.inputs[i].name == 'lugar_atencion_parto' ||
+               this.inputs[i].name == 'lugar_control_embarazo' ||
+               this.inputs[i].name == 'establecimiento_control_sifilis' ||
+               this.inputs[i].name == 'establecimiento_control_vih' ||
+               this.inputs[i].name == 'atencion_parto'
+            ) {
+               this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
+            }
+
+            if (this.fdc[this.inputs[i].name] != null ) {
+               //Le pasa el valor en v-model
+               if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                  this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
+               }
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+            }
+         }
+
+         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+            return false;
+         }
+
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         formData.append('_id_formulario', this.fdc.id);
+
+         this.$http.post('/formulario', formData).then(response => { // success callback
+            //console.log(response.status);
+
+            //Si guardar salio bien
+            this.hayGuardadoActivo = true;
+            this.idFormularioActivo = this.fdc.id;
+            $('.circle-loader').toggleClass('load-complete');
+            $('.checkmark').toggle();
+            this.mini_loader = false;
+            /*
+             swal("Guardado", `
+             El registro se ha guardado automáticamente con éxito.
+
+             Recuerda que el registro se guarda cada 5 minutos.
+             `, "success");
+             */
+
+         }, response => { // error callback
+            //console.log(response);
+            this.check_status_code(response.status);
+         });
+
+
+
+         return;
+      },
       guardar_formulario_completo: function () {
          //Carga el loader
          this.mini_loader = true;
