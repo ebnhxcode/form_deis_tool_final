@@ -3114,7 +3114,7 @@ const FormularioController = new Vue({
 
       buscar_formulario: function () {
          if (this.fdc.id && this.fdc.id != null && this.fdc.id != undefined) {
-            this.guardar_formulario_completo();
+            this.guardar_formulario_completo_silencioso();
          }
          return this.show_modal_buscar_formulario = true;
       },
@@ -3404,6 +3404,7 @@ const FormularioController = new Vue({
 
          return;
       },
+
       guardar_formulario_completo: function () {
          //Carga el loader
          this.mini_loader = true;

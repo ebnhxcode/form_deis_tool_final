@@ -43810,7 +43810,7 @@ var FormularioController = new _vue2.default({
 
       buscar_formulario: function buscar_formulario() {
          if (this.fdc.id && this.fdc.id != null && this.fdc.id != undefined) {
-            this.guardar_formulario_completo();
+            this.guardar_formulario_completo_silencioso();
          }
          return this.show_modal_buscar_formulario = true;
       },
@@ -44067,6 +44067,7 @@ var FormularioController = new _vue2.default({
 
          return;
       },
+
       guardar_formulario_completo: function guardar_formulario_completo() {
          var _this10 = this;
 
