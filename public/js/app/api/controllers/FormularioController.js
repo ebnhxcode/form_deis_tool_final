@@ -44009,7 +44009,7 @@ var FormularioController = new _vue2.default({
          return;
       },
 
-      guardar_formulario_completo: function guardar_formulario_completo() {
+      guardar_formulario_completo_silencioso: function guardar_formulario_completo_silencioso() {
          var _this9 = this;
 
          //Carga el loader
@@ -44047,14 +44047,72 @@ var FormularioController = new _vue2.default({
             // success callback
             //console.log(response.status);
 
-            //alert('Guardado');
-            _this9.buscar_formulario();
             //Si guardar salio bien
             _this9.hayGuardadoActivo = true;
             _this9.idFormularioActivo = _this9.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             _this9.mini_loader = false;
+            /*
+             swal("Guardado", `
+             El registro se ha guardado automáticamente con éxito.
+              Recuerda que el registro se guarda cada 5 minutos.
+             `, "success");
+             */
+         }, function (response) {
+            // error callback
+            //console.log(response);
+            _this9.check_status_code(response.status);
+         });
+
+         return;
+      },
+      guardar_formulario_completo: function guardar_formulario_completo() {
+         var _this10 = this;
+
+         //Carga el loader
+         this.mini_loader = true;
+         //this.spinner_finalizar = true;
+         //Crea objeto de parametros
+         var formData = new FormData();
+         //Variable de control de flujo
+         var permiteGuardar = false;
+
+         //Ciclo para validar los campos que requieren filtrado previo
+         //Guardado especial por plugin select2
+         for (var i in this.inputs) {
+            if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
+               this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+            }
+
+            if (this.fdc[this.inputs[i].name] != null) {
+               //Le pasa el valor en v-model
+               if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                  this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
+               }
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+            }
+         }
+
+         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+            return false;
+         }
+
+         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         formData.append('_id_formulario', this.fdc.id);
+
+         this.$http.post('/formulario', formData).then(function (response) {
+            // success callback
+            //console.log(response.status);
+
+            //alert('Guardado');
+            _this10.buscar_formulario();
+            //Si guardar salio bien
+            _this10.hayGuardadoActivo = true;
+            _this10.idFormularioActivo = _this10.fdc.id;
+            $('.circle-loader').toggleClass('load-complete');
+            $('.checkmark').toggle();
+            _this10.mini_loader = false;
             /*
             swal("Guardado", `
                El registro se ha guardado automáticamente con éxito.
@@ -44064,7 +44122,7 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this9.check_status_code(response.status);
+            _this10.check_status_code(response.status);
          });
 
          return;
@@ -44076,28 +44134,28 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this10 = this;
+         var _this11 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this10.inputs = response.body.inputs;
-            _this10.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this10.deis_form_table_options = response.body.deis_form_table_options;
-            _this10.pais_origen = response.body.pais_origen;
-            _this10.auth = response.body.auth;
+            _this11.inputs = response.body.inputs;
+            _this11.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this11.deis_form_table_options = response.body.deis_form_table_options;
+            _this11.pais_origen = response.body.pais_origen;
+            _this11.auth = response.body.auth;
 
-            if (_this10.fdc_temp['form_deis_user'] && _this10.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this10.fdc_temp['form_deis_user'];
+            if (_this11.fdc_temp['form_deis_user'] && _this11.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this11.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this10.auth.id) {
-                     _this10.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this11.auth.id) {
+                     _this11.permiso_temporal_edicion = true;
                   }
                }
             }
 
-            _this10.validar_validaciones_previas();
+            _this11.validar_validaciones_previas();
 
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
@@ -44107,24 +44165,24 @@ var FormularioController = new _vue2.default({
             $('#select2-lugar_atencion_parto-container').val(null).empty();
 
             //Validacion para mostrar los datos en los campos select
-            for (var _i100 in _this10.inputs) {
+            for (var _i100 in _this11.inputs) {
 
-               switch (_this10.inputs[_i100].name) {
+               switch (_this11.inputs[_i100].name) {
 
                   case 'lugar_control_prenatal':
-                     $('#select2-lugar_control_prenatal-container').text(_this10.deis_form_table_options[_this10.inputs[_i100].name][_this10.fdc[_this10.inputs[_i100].name]]);
+                     $('#select2-lugar_control_prenatal-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
                      break;
                   case 'lugar_atencion_parto':
-                     $('#select2-lugar_atencion_parto-container').text(_this10.deis_form_table_options[_this10.inputs[_i100].name][_this10.fdc[_this10.inputs[_i100].name]]);
+                     $('#select2-lugar_atencion_parto-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
                      break;
                   case 'lugar_control_embarazo':
-                     $('#select2-lugar_control_embarazo-container').text(_this10.deis_form_table_options[_this10.inputs[_i100].name][_this10.fdc[_this10.inputs[_i100].name]]);
+                     $('#select2-lugar_control_embarazo-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
                      break;
                   case 'establecimiento_control_sifilis':
-                     $('#select2-establecimiento_control_sifilis-container').text(_this10.deis_form_table_options[_this10.inputs[_i100].name][_this10.fdc[_this10.inputs[_i100].name]]);
+                     $('#select2-establecimiento_control_sifilis-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
                      break;
                   case 'establecimiento_control_vih':
-                     $('#select2-establecimiento_control_vih-container').text(_this10.deis_form_table_options[_this10.inputs[_i100].name][_this10.fdc[_this10.inputs[_i100].name]]);
+                     $('#select2-establecimiento_control_vih-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
                      break;
 
                }
@@ -44148,11 +44206,11 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this11 = this;
+         var _this12 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this11.inputs = response.body.inputs;
+            _this12.inputs = response.body.inputs;
 
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
@@ -44161,27 +44219,27 @@ var FormularioController = new _vue2.default({
             $('#select2-lugar_control_embarazo-container').val(null).empty();
             $('#select2-lugar_atencion_parto-container').val(null).empty();
 
-            _this11.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this11.deis_form_table_options = response.body.deis_form_table_options;
-            _this11.pais_origen = response.body.pais_origen;
-            _this11.fdc = response.body.fdc;
-            _this11.fdc_temp = response.body.fdc;
+            _this12.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this12.deis_form_table_options = response.body.deis_form_table_options;
+            _this12.pais_origen = response.body.pais_origen;
+            _this12.fdc = response.body.fdc;
+            _this12.fdc_temp = response.body.fdc;
 
-            _this11.formularioActivoObj = response.body.fdc;
-            _this11.auth = response.body.auth;
+            _this12.formularioActivoObj = response.body.fdc;
+            _this12.auth = response.body.auth;
 
-            if (_this11.fdc_temp['form_deis_user'] && _this11.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this11.fdc_temp['form_deis_user'];
+            if (_this12.fdc_temp['form_deis_user'] && _this12.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this12.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this11.auth.id) {
-                     _this11.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this12.auth.id) {
+                     _this12.permiso_temporal_edicion = true;
                   }
                }
             }
 
-            _this11.validar_validaciones_previas();
+            _this12.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
