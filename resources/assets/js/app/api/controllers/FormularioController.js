@@ -886,8 +886,9 @@ const FormularioController = new Vue({
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
-                                                                  <!-- <th>Accion</th> -->
-                                                                  <th>ID</th>
+                                                                  <th>Accion</th>
+                                                                  <!-- <th>ID</th> -->
+                                                                  <th># Registro</th>
                                                                   <th>ID Ficha</th>
                                                                   <th>Run Madre</th>
                                                                   <th>Glosa Error</th>
@@ -896,15 +897,17 @@ const FormularioController = new Vue({
                                                             </thead>
                                                             <tbody>
 
-                                                               <tr v-for="e in auth['form_deis_errores']">
-                                                                  <!--
+                                                               <tr v-for="e,i in auth['form_deis_errores']"
+                                                                  v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'">
                                                                   <td>
-                                                                     <button class="btn btn-sm btn-primary">
-                                                                        <i class="fa fa-pencil"></i>
+                                                                     <button class="btn btn-sm btn-success">
+                                                                        <i class="fa fa-check"
+                                                                           @click.prevent="marcar_error_revisado(e.id)"></i>
+                                                                        Marcar Revisado
                                                                      </button>
                                                                   </td>
-                                                                  -->
-                                                                  <td>{{e.id}}</td>
+                                                                  <!-- <td>{{e.id}}</td> -->
+                                                                  <td>{{(i+1)}}</td>
                                                                   <td>{{e.id_form_deis}}</td>
                                                                   <td>{{e.run_madre}}</td>
                                                                   <td>{{e.glosa_error}}</td>
@@ -955,6 +958,35 @@ const FormularioController = new Vue({
          created () {
          },
          methods: {
+            marcar_error_revisado: function (id_error) {
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('id_error', id_error);
+
+               this.$http.post('/formulario/marcar_error_revisado', formData).then(response => { // success callback
+                  console.log(response.status);
+
+                  if (response.status == 200) {
+                     for (var e in auth['form_deis_errores']) {
+                        if (e.id == id_error) {
+                           e.estado = 'Revisado';
+                        }
+                     }
+
+                  }
+
+                  /*
+                   swal("Guardado", `
+                   El registro se ha guardado automáticamente con éxito.
+
+                   Recuerda que el registro se guarda cada 5 minutos.
+                   `, "success");
+                   */
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.check_status_code(response.status);
+               });
+            }
          },
          watch: {
          },

@@ -48,6 +48,9 @@
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
                                  Errores&nbsp;
                                  <i class="fa fa-exclamation"></i>
+                                 <small v-if="auth['form_deis_errores']">
+                                    <b>@{{ auth['form_deis_errores'].length }}</b>
+                                 </small>
                               </button><!-- .btn .btn-success -->
 
                               <button class="btn btn-sm btn-success pull-right small" @click.prevent="crear_nuevo_formulario"

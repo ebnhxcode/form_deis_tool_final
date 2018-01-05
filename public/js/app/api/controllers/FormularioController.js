@@ -41781,7 +41781,7 @@ var FormularioController = new _vue2.default({
       },
       'modal_errores_formulario': {
          props: ['auth'],
-         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_errores_formulario" aria-controls="lista_errores_formulario" role="tab" data-toggle="tab">\n                                             Lista de errores de ingreso de informaci\xF3n en fichas\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_errores_formulario">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <dt>\n                                                      Errores identificados\n                                                   </dt>\n                                                   <dd>\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <!-- <th>Accion</th> -->\n                                                                  <th>ID</th>\n                                                                  <th>ID Ficha</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Glosa Error</th>\n                                                                  <th>Estado</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="e in auth[\'form_deis_errores\']">\n                                                                  <!--\n                                                                  <td>\n                                                                     <button class="btn btn-sm btn-primary">\n                                                                        <i class="fa fa-pencil"></i>\n                                                                     </button>\n                                                                  </td>\n                                                                  -->\n                                                                  <td>{{e.id}}</td>\n                                                                  <td>{{e.id_form_deis}}</td>\n                                                                  <td>{{e.run_madre}}</td>\n                                                                  <td>{{e.glosa_error}}</td>\n                                                                  <td>{{e.estado || \'Pendiente\'}}</td>\n\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_personas_run -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
+         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_errores_formulario" aria-controls="lista_errores_formulario" role="tab" data-toggle="tab">\n                                             Lista de errores de ingreso de informaci\xF3n en fichas\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_errores_formulario">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <dt>\n                                                      Errores identificados\n                                                   </dt>\n                                                   <dd>\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <th>Accion</th>\n                                                                  <!-- <th>ID</th> -->\n                                                                  <th># Registro</th>\n                                                                  <th>ID Ficha</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Glosa Error</th>\n                                                                  <th>Estado</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="e,i in auth[\'form_deis_errores\']"\n                                                                  v-if="!e.estado || e.estado==\'Pendiente\' || e.estado==\'pendiente\'">\n                                                                  <td>\n                                                                     <button class="btn btn-sm btn-success">\n                                                                        <i class="fa fa-check"\n                                                                           @click.prevent="marcar_error_revisado(e.id)"></i>\n                                                                        Marcar Revisado\n                                                                     </button>\n                                                                  </td>\n                                                                  <!-- <td>{{e.id}}</td> -->\n                                                                  <td>{{(i+1)}}</td>\n                                                                  <td>{{e.id_form_deis}}</td>\n                                                                  <td>{{e.run_madre}}</td>\n                                                                  <td>{{e.glosa_error}}</td>\n                                                                  <td>{{e.estado || \'Pendiente\'}}</td>\n\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_personas_run -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
          name: 'modal_errores_formulario',
          data: function data() {
             return {};
@@ -41789,7 +41789,38 @@ var FormularioController = new _vue2.default({
          ready: function ready() {},
          created: function created() {},
 
-         methods: {},
+         methods: {
+            marcar_error_revisado: function marcar_error_revisado(id_error) {
+               var _this6 = this;
+
+               _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('id_error', id_error);
+
+               this.$http.post('/formulario/marcar_error_revisado', formData).then(function (response) {
+                  // success callback
+                  console.log(response.status);
+
+                  if (response.status == 200) {
+                     for (var e in auth['form_deis_errores']) {
+                        if (e.id == id_error) {
+                           e.estado = 'Revisado';
+                        }
+                     }
+                  }
+
+                  /*
+                   swal("Guardado", `
+                   El registro se ha guardado automáticamente con éxito.
+                    Recuerda que el registro se guarda cada 5 minutos.
+                   `, "success");
+                   */
+               }, function (response) {
+                  // error callback
+                  //console.log(response);
+                  _this6.check_status_code(response.status);
+               });
+            }
+         },
          watch: {}
       }
       /*
@@ -41953,7 +41984,7 @@ var FormularioController = new _vue2.default({
       },
 
       verifica_validacion_change: function verifica_validacion_change(input) {
-         var _this6 = this;
+         var _this7 = this;
 
          /*
          for (let i in this.inputs){
@@ -42004,10 +42035,10 @@ var FormularioController = new _vue2.default({
                      //console.log(response);
                      if (response.status == 200) {
                         var rd = response.body.rd;
-                        _this6.formularios_encontrados = response.body.formularios;
+                        _this7.formularios_encontrados = response.body.formularios;
                         if (rd == 'Existe') {
                            //this.fdc[input.name] = null;
-                           var self = _this6;
+                           var self = _this7;
                            swal({
                               title: "Atencion",
                               text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
@@ -43867,15 +43898,15 @@ var FormularioController = new _vue2.default({
       },
 
       fetch_formulario: function fetch_formulario() {
-         var _this7 = this;
+         var _this8 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
             // success callback
-            _this7.instructions = response.body.instructions;
-            _this7.auth = response.body.auth;
+            _this8.instructions = response.body.instructions;
+            _this8.auth = response.body.auth;
 
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            _this7.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
+            _this8.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
                //console.log(response);
             }, function (response) {// error callback
                //console.log(response);
@@ -43908,8 +43939,8 @@ var FormularioController = new _vue2.default({
             }
             */
 
-            if (_this7.auth && _this7.auth.acepta_terminos != 'true') {
-               var self = _this7;
+            if (_this8.auth && _this8.auth.acepta_terminos != 'true') {
+               var self = _this8;
                swal({
                   title: "Términos y condiciones de uso",
                   text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
@@ -43946,7 +43977,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario: function guardar_formulario(tabName) {
-         var _this8 = this;
+         var _this9 = this;
 
          //Condicionales previas, preventivas al guardado.
          if (this.formulario_guardandose == false) {
@@ -44007,18 +44038,18 @@ var FormularioController = new _vue2.default({
                //alert('Guardado');
 
                //Si guardar salio bien
-               _this8.hayGuardadoActivo = true;
-               _this8.idFormularioActivo = _this8.fdc.id;
+               _this9.hayGuardadoActivo = true;
+               _this9.idFormularioActivo = _this9.fdc.id;
                $('.circle-loader').toggleClass('load-complete');
                $('.checkmark').toggle();
-               _this8.mini_loader = false;
+               _this9.mini_loader = false;
                swal("Guardado", "El registro se guardó correctamente!", "success");
-               _this8.formulario_guardandose = false;
+               _this9.formulario_guardandose = false;
             }, function (response) {
                // error callback
                //console.log(response);
-               _this8.check_status_code(response.status);
-               _this8.formulario_guardandose = false;
+               _this9.check_status_code(response.status);
+               _this9.formulario_guardandose = false;
             });
          } else {
             alert('\n               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.\n               Vuelva a intentar en 10 segundos.\n            ');
@@ -44028,65 +44059,6 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario_completo_silencioso: function guardar_formulario_completo_silencioso() {
-         var _this9 = this;
-
-         //Carga el loader
-         this.mini_loader = true;
-         //this.spinner_finalizar = true;
-         //Crea objeto de parametros
-         var formData = new FormData();
-         //Variable de control de flujo
-         var permiteGuardar = false;
-
-         //Ciclo para validar los campos que requieren filtrado previo
-         //Guardado especial por plugin select2
-         for (var i in this.inputs) {
-            if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
-               this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
-            }
-
-            if (this.fdc[this.inputs[i].name] != null) {
-               //Le pasa el valor en v-model
-               if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
-                  this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
-               }
-               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
-            }
-         }
-
-         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
-            return false;
-         }
-
-         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-         formData.append('_id_formulario', this.fdc.id);
-
-         this.$http.post('/formulario', formData).then(function (response) {
-            // success callback
-            //console.log(response.status);
-
-            //Si guardar salio bien
-            _this9.hayGuardadoActivo = true;
-            _this9.idFormularioActivo = _this9.fdc.id;
-            $('.circle-loader').toggleClass('load-complete');
-            $('.checkmark').toggle();
-            _this9.mini_loader = false;
-            /*
-             swal("Guardado", `
-             El registro se ha guardado automáticamente con éxito.
-              Recuerda que el registro se guarda cada 5 minutos.
-             `, "success");
-             */
-         }, function (response) {
-            // error callback
-            //console.log(response);
-            _this9.check_status_code(response.status);
-         });
-
-         return;
-      },
-
-      guardar_formulario_completo: function guardar_formulario_completo() {
          var _this10 = this;
 
          //Carga el loader
@@ -44124,14 +44096,73 @@ var FormularioController = new _vue2.default({
             // success callback
             //console.log(response.status);
 
-            //alert('Guardado');
-            _this10.buscar_formulario();
             //Si guardar salio bien
             _this10.hayGuardadoActivo = true;
             _this10.idFormularioActivo = _this10.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
             _this10.mini_loader = false;
+            /*
+             swal("Guardado", `
+             El registro se ha guardado automáticamente con éxito.
+              Recuerda que el registro se guarda cada 5 minutos.
+             `, "success");
+             */
+         }, function (response) {
+            // error callback
+            //console.log(response);
+            _this10.check_status_code(response.status);
+         });
+
+         return;
+      },
+
+      guardar_formulario_completo: function guardar_formulario_completo() {
+         var _this11 = this;
+
+         //Carga el loader
+         this.mini_loader = true;
+         //this.spinner_finalizar = true;
+         //Crea objeto de parametros
+         var formData = new FormData();
+         //Variable de control de flujo
+         var permiteGuardar = false;
+
+         //Ciclo para validar los campos que requieren filtrado previo
+         //Guardado especial por plugin select2
+         for (var i in this.inputs) {
+            if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
+               this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+            }
+
+            if (this.fdc[this.inputs[i].name] != null) {
+               //Le pasa el valor en v-model
+               if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
+                  this.fdc[this.inputs[i].name] = (0, _rut.clean)(this.fdc[this.inputs[i].name]);
+               }
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+            }
+         }
+
+         if (!this.fdc.id || this.fdc.id == null || this.fdc.id == undefined) {
+            return false;
+         }
+
+         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+         formData.append('_id_formulario', this.fdc.id);
+
+         this.$http.post('/formulario', formData).then(function (response) {
+            // success callback
+            //console.log(response.status);
+
+            //alert('Guardado');
+            _this11.buscar_formulario();
+            //Si guardar salio bien
+            _this11.hayGuardadoActivo = true;
+            _this11.idFormularioActivo = _this11.fdc.id;
+            $('.circle-loader').toggleClass('load-complete');
+            $('.checkmark').toggle();
+            _this11.mini_loader = false;
             /*
             swal("Guardado", `
                El registro se ha guardado automáticamente con éxito.
@@ -44141,7 +44172,7 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this10.check_status_code(response.status);
+            _this11.check_status_code(response.status);
          });
 
          return;
@@ -44153,28 +44184,28 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this11 = this;
+         var _this12 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this11.inputs = response.body.inputs;
-            _this11.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this11.deis_form_table_options = response.body.deis_form_table_options;
-            _this11.pais_origen = response.body.pais_origen;
-            _this11.auth = response.body.auth;
+            _this12.inputs = response.body.inputs;
+            _this12.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this12.deis_form_table_options = response.body.deis_form_table_options;
+            _this12.pais_origen = response.body.pais_origen;
+            _this12.auth = response.body.auth;
 
-            if (_this11.fdc_temp['form_deis_user'] && _this11.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this11.fdc_temp['form_deis_user'];
+            if (_this12.fdc_temp['form_deis_user'] && _this12.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this12.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this11.auth.id) {
-                     _this11.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this12.auth.id) {
+                     _this12.permiso_temporal_edicion = true;
                   }
                }
             }
 
-            _this11.validar_validaciones_previas();
+            _this12.validar_validaciones_previas();
 
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
@@ -44184,24 +44215,24 @@ var FormularioController = new _vue2.default({
             $('#select2-lugar_atencion_parto-container').val(null).empty();
 
             //Validacion para mostrar los datos en los campos select
-            for (var _i100 in _this11.inputs) {
+            for (var _i100 in _this12.inputs) {
 
-               switch (_this11.inputs[_i100].name) {
+               switch (_this12.inputs[_i100].name) {
 
                   case 'lugar_control_prenatal':
-                     $('#select2-lugar_control_prenatal-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
+                     $('#select2-lugar_control_prenatal-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
                      break;
                   case 'lugar_atencion_parto':
-                     $('#select2-lugar_atencion_parto-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
+                     $('#select2-lugar_atencion_parto-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
                      break;
                   case 'lugar_control_embarazo':
-                     $('#select2-lugar_control_embarazo-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
+                     $('#select2-lugar_control_embarazo-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
                      break;
                   case 'establecimiento_control_sifilis':
-                     $('#select2-establecimiento_control_sifilis-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
+                     $('#select2-establecimiento_control_sifilis-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
                      break;
                   case 'establecimiento_control_vih':
-                     $('#select2-establecimiento_control_vih-container').text(_this11.deis_form_table_options[_this11.inputs[_i100].name][_this11.fdc[_this11.inputs[_i100].name]]);
+                     $('#select2-establecimiento_control_vih-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
                      break;
 
                }
@@ -44225,11 +44256,11 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this12 = this;
+         var _this13 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this12.inputs = response.body.inputs;
+            _this13.inputs = response.body.inputs;
 
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
@@ -44238,27 +44269,27 @@ var FormularioController = new _vue2.default({
             $('#select2-lugar_control_embarazo-container').val(null).empty();
             $('#select2-lugar_atencion_parto-container').val(null).empty();
 
-            _this12.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this12.deis_form_table_options = response.body.deis_form_table_options;
-            _this12.pais_origen = response.body.pais_origen;
-            _this12.fdc = response.body.fdc;
-            _this12.fdc_temp = response.body.fdc;
+            _this13.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this13.deis_form_table_options = response.body.deis_form_table_options;
+            _this13.pais_origen = response.body.pais_origen;
+            _this13.fdc = response.body.fdc;
+            _this13.fdc_temp = response.body.fdc;
 
-            _this12.formularioActivoObj = response.body.fdc;
-            _this12.auth = response.body.auth;
+            _this13.formularioActivoObj = response.body.fdc;
+            _this13.auth = response.body.auth;
 
-            if (_this12.fdc_temp['form_deis_user'] && _this12.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this12.fdc_temp['form_deis_user'];
+            if (_this13.fdc_temp['form_deis_user'] && _this13.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this13.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this12.auth.id) {
-                     _this12.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this13.auth.id) {
+                     _this13.permiso_temporal_edicion = true;
                   }
                }
             }
 
-            _this12.validar_validaciones_previas();
+            _this13.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit

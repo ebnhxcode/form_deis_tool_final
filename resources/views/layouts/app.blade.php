@@ -106,8 +106,8 @@
                {{--<li><a href="{{ url('/register') }}">Register</a></li>--}}
             @else
                <li>
-                  <a role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom"
-                     title="Estimado usuario/a" data-content="Le informamos que hemos incluido nuevas funciones a la plataforma, lo cual  amablemente solicitamos que pueda actualizar la página presionando la siguiente combinación en su teclado: Tecla Control (Ctrl) + Tecla F5, una vez que lea este mensaje o si presenta problemas, de antemano muchas gracias."
+                  <a role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-html="true"
+                     title="Estimado usuario/a" data-content="Le informamos que hemos incluido nuevas funciones a la plataforma, lo cual  amablemente solicitamos que pueda actualizar la página presionando la siguiente combinación en su teclado: Tecla Control (Ctrl) + Tecla F5, una vez que lea este mensaje o si presenta problemas, de antemano muchas gracias.<br><img class='img-responsive' src='{{url('/img/ctrl+f5.png')}}'>"
                      tabindex="0" href="#!" style="font-size: 20px;">
                      <span class="label label-info small pull-right">
                         <i class="fa fa-exclamation-triangle"></i>

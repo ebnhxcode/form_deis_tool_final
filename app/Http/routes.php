@@ -103,6 +103,8 @@ Route::post ('/formulario/confirmar_mensaje_informativo' , 'FormDeisController@c
 Route::post ('/formulario/marcar_registro_form_deis' , 'FormDeisController@marcar_registro_form_deis');
 Route::post ('/formulario/desmarcar_registro_form_deis' , 'FormDeisController@desmarcar_registro_form_deis');
 
+Route::post ('/formulario/marcar_error_revisado' , 'FormDeisController@marcar_error_revisado');
+
 
 Route::get ('/formulario/datos_formulario' , 'FormDeisController@datos_formulario') ;
 Route::get ('/formulario/inputs_formulario' , 'FormDeisController@inputs_formulario') ;
