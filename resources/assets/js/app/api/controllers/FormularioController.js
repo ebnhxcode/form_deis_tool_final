@@ -908,7 +908,7 @@ const FormularioController = new Vue({
                                                                   <td>{{e.id_form_deis}}</td>
                                                                   <td>{{e.run_madre}}</td>
                                                                   <td>{{e.glosa_error}}</td>
-                                                                  <td>{{e.estado}}</td>
+                                                                  <td>{{e.estado || 'Pendiente'}}</td>
 
                                                                </tr>
                                                             </tbody>
