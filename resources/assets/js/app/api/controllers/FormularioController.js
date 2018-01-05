@@ -888,11 +888,11 @@ const FormularioController = new Vue({
                                                                <tr>
                                                                   <th>Accion</th>
                                                                   <!-- <th>ID</th> -->
-                                                                  <th># Registro</th>
-                                                                  <th>ID Ficha</th>
+                                                                  <!-- <th># Registro</th> -->
+                                                                  <th>Correlativo</th>
                                                                   <th>Run Madre</th>
                                                                   <th>Glosa Error</th>
-                                                                  <th>Estado</th>
+                                                                  <!-- <th>Estado</th> -->
                                                                </tr>
                                                             </thead>
                                                             <tbody>
@@ -911,13 +911,16 @@ const FormularioController = new Vue({
                                                                      </button>
                                                                   </td>
                                                                   <!-- <td>{{e.id}}</td> -->
-                                                                  <td>{{(i+1)}}</td>
+                                                                  <!-- <td>{{(i+1)}}</td> -->
                                                                   <td>{{e.id_form_deis}}</td>
                                                                   <td>{{e.run_madre}}</td>
                                                                   <td>{{e.glosa_error}}</td>
-                                                                  <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
+
+                                                                  <!--
+                                                                   <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
                                                                      {{e.estado || 'Pendiente'}}
                                                                   </td>
+                                                                  -->
 
                                                                </tr>
                                                             </tbody>
