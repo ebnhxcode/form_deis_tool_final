@@ -900,11 +900,11 @@ const FormularioController = new Vue({
                                                                <tr v-for="e,i in auth['form_deis_errores']"
                                                                   v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'">
                                                                   <td>
-                                                                     <button class="btn btn-sm btn-success">
-                                                                        <i class="fa fa-check"
-                                                                           @click.prevent="marcar_error_revisado(e.id)"></i>
-                                                                        Marcar Revisado
+                                                                     <button class="btn btn-sm btn-success"
+                                                                        @click.prevent="marcar_error_revisado(e.id)">
+                                                                        <i class="fa fa-check"></i>
                                                                      </button>
+                                                                     Marcar Revisado
                                                                   </td>
                                                                   <!-- <td>{{e.id}}</td> -->
                                                                   <td>{{(i+1)}}</td>
@@ -960,13 +960,14 @@ const FormularioController = new Vue({
          methods: {
             marcar_error_revisado: function (id_error) {
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               var formData = new FormData();
                formData.append('id_error', id_error);
 
                this.$http.post('/formulario/marcar_error_revisado', formData).then(response => { // success callback
                   console.log(response.status);
 
                   if (response.status == 200) {
-                     for (var e in auth['form_deis_errores']) {
+                     for (var e in this.gauth['form_deis_errores']) {
                         if (e.id == id_error) {
                            e.estado = 'Revisado';
                         }

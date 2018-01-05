@@ -400,7 +400,7 @@ class FormDeisController extends Controller {
     public function marcar_error_revisado (Request $request) {
         if ($request->wantsJson()) {
             $form_deis_error = FormDeisError::where('id', $request->id_error)->first();
-            $form_deis_error->estado == 'Revisado';
+            $form_deis_error->estado = 'Revisado';
             $form_deis_error->save();
             return response()->json(['rc' => 0, 'rd' => 'Success.']);
         }
