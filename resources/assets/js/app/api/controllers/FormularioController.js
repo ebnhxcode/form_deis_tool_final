@@ -886,7 +886,7 @@ const FormularioController = new Vue({
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
-                                                                  <th>Accion</th>
+                                                                  <!-- <th>Accion</th> -->
                                                                   <th>ID</th>
                                                                   <th>ID Ficha</th>
                                                                   <th>Run Madre</th>
@@ -897,16 +897,18 @@ const FormularioController = new Vue({
                                                             <tbody>
 
                                                                <tr v-for="e in auth['form_deis_errores']">
+                                                                  <!--
                                                                   <td>
                                                                      <button class="btn btn-sm btn-primary">
                                                                         <i class="fa fa-pencil"></i>
                                                                      </button>
                                                                   </td>
-                                                                  <td>
-                                                                     <pre>
-                                                                        {{e}}
-                                                                     </pre>
-                                                                  </td>
+                                                                  -->
+                                                                  <td>{{e.id}}</td>
+                                                                  <td>{{e.id_form_deis}}</td>
+                                                                  <td>{{e.run_madre}}</td>
+                                                                  <td>{{e.glosa_error}}</td>
+                                                                  <td>{{e.estado}}</td>
 
                                                                </tr>
                                                             </tbody>
