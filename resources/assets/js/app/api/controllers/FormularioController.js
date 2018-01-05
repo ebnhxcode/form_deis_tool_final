@@ -900,13 +900,13 @@ const FormularioController = new Vue({
                                                                <tr v-for="e,i in auth['form_deis_errores']">
                                                                <!-- v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'" -->
                                                                   <td>
-                                                                     <button class="btn btn-sm btn-success"
+                                                                     <button class="btn btn-xs btn-success"
                                                                         @click.prevent="marcar_error_revisado(e.id)"
                                                                          v-if="e.estado!='Revisado'">
                                                                         <i class="fa fa-check"></i>
                                                                         <small>Marcar Revisado</small>
                                                                      </button>
-                                                                     <button class="btn btn-xs btn-success" v-else>
+                                                                     <button class="btn btn-xs btn-info" v-else>
                                                                         Revisado
                                                                      </button>
                                                                   </td>
@@ -970,13 +970,13 @@ const FormularioController = new Vue({
                formData.append('id_error', id_error);
 
                this.$http.post('/formulario/marcar_error_revisado', formData).then(response => { // success callback
-                  console.log(response.status);
+                  //console.log(response.status);
 
                   if (response.status == 200) {
-                     for (var e in this.auth['form_deis_errores']) {
-                        console.log(e);
-                        if (e.id == id_error) {
-                           e.estado = 'Revisado';
+                     let form_deis_errores = this.auth['form_deis_errores'];
+                     for (var e in form_deis_errores) {
+                        if (form_deis_errores[e].id == id_error) {
+                           form_deis_errores[e].estado = 'Revisado';
                         }
                      }
 
