@@ -46,7 +46,7 @@
 
                               <button class="btn btn-sm btn-warning pull-right small" @click.prevent="visualizar_errores"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
-                                 Ver lista de Errores&nbsp;
+                                 Número de Inconsistencias&nbsp;
                                  <i class="fa fa-exclamation"></i>
                                  <small v-if="auth['form_deis_errores']">
                                     <b>@{{ auth['form_deis_errores'].length }}</b>

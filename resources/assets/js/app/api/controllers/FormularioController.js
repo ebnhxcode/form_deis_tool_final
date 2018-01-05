@@ -858,7 +858,7 @@ const FormularioController = new Vue({
 
                                        <li role="presentation" class="active">
                                           <a href="#lista_errores_formulario" aria-controls="lista_errores_formulario" role="tab" data-toggle="tab">
-                                             Lista de errores de ingreso de información en fichas
+                                             Lista de inconsistencias al ingreso de información en fichas
                                           </a>
                                        </li>
 
@@ -877,7 +877,7 @@ const FormularioController = new Vue({
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
                                                    <dt>
-                                                      Errores identificados
+                                                      Inconsistencias identificadas
                                                    </dt>
                                                    <dd>
                                                       <div class="table-responsive">
