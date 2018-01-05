@@ -44,7 +44,7 @@
                               </button></button><!-- .btn .btn-info -->
                               --}}
 
-                              <button class="btn btn-sm btn-warning pull-right small" @click.prevent=""
+                              <button class="btn btn-sm btn-warning pull-right small" @click.prevent="visualizar_errores"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
                                  Errores&nbsp;
                                  <i class="fa fa-exclamation"></i>

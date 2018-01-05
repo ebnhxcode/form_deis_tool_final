@@ -886,31 +886,22 @@ const FormularioController = new Vue({
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
-                                                                  <th>Accion</th>
-                                                                  <th>Correlativo</th>
-                                                                  <th>Run Madre</th>
-                                                                  <th>Nombres</th>
-                                                                  <th>Disponibilidad Registro</th>
-                                                                  <th>Estado Registro</th>
-                                                                  <th>Fecha Parto</th>
-                                                                  <th>Hora Parto</th>
+                                                                  <th>ID</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
-                                                               <tr v-for="f in formularios_encontrados">
+                                                               <tr v-for="e in auth['form_deis_errores']">
                                                                   <td>
-                                                                     <button class="btn btn-sm btn-primary"
-                                                                        @click.prevent="modificar_usuario_seleccionado(f)">
+                                                                     <button class="btn btn-sm btn-primary">
                                                                         <i class="fa fa-pencil"></i>
                                                                      </button>
                                                                   </td>
-                                                                  <td>{{f.n_correlativo_interno}}</td>
-                                                                  <td>{{f.run_madre}}</td>
-                                                                  <td>{{f.nombres_madre}}</td>
-                                                                  <td>{{f.estado_form_deis || 'disponible'}}</td>
-                                                                  <td>{{f.estado_formulario_completo_form_deis || 'Incompleto'}}</td>
-                                                                  <td>{{f.fecha_parto || 'No Ingresado'}}</td>
-                                                                  <td>{{f.hora_parto || 'No Ingresado'}}</td>
+                                                                  <td>
+                                                                     <pre>
+                                                                        {{form_deis_errores}}
+                                                                     </pre>
+                                                                  </td>
+
                                                                </tr>
                                                             </tbody>
                                                          </table>
@@ -3244,6 +3235,10 @@ const FormularioController = new Vue({
             this.guardar_formulario_completo_silencioso();
          }
          return this.show_modal_buscar_formulario = true;
+      },
+
+      visualizar_errores: function () {
+         return this.show_modal_errores_formulario = true;
       },
 
       crear_nuevo_formulario: function () {
