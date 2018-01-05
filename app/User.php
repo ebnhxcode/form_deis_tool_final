@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
 
     public function form_deis_errores () {
-        return $this->hasMany('App\FormDeisError', 'id');
+        return $this->hasMany('App\FormDeisError', 'usuario_modifica_form_deis'); //el id con el que hace la referencia
     }
 
 }
