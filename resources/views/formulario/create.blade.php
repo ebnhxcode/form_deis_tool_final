@@ -44,6 +44,12 @@
                               </button></button><!-- .btn .btn-info -->
                               --}}
 
+                              <button class="btn btn-sm btn-warning pull-right small" @click.prevent=""
+                                      style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
+                                 Errores&nbsp;
+                                 <i class="fa fa-exclamation"></i>
+                              </button><!-- .btn .btn-success -->
+
                               <button class="btn btn-sm btn-success pull-right small" @click.prevent="crear_nuevo_formulario"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
                                  Crear nueva ficha&nbsp;
@@ -55,6 +61,8 @@
                                  Buscar ficha&nbsp;
                                  <i class="fa fa-search"></i>
                               </button><!-- .btn .btn-info -->
+
+                              <!-- Seccion de Modals -->
 
                               <modal_buscar_formulario
                                  :auth="auth"
@@ -89,6 +97,20 @@
                                     <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
                                  </h3>
                               </modal_formularios_encontrados>
+
+                              <modal_errores_formulario
+                                 :auth="auth"
+                                 v-show="show_modal_errores_formulario == true">
+                                 <h3 slot="header">
+                                    Glosa historica de errores
+                                    <button class="btn btn-sm btn-default pull-right" @click.prevent="show_modal_errores_formulario = false">
+                                       Cerrar
+                                    </button>
+                                    <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
+                                 </h3>
+                              </modal_errores_formulario>
+
+
 
                               <div class="collapse" id="instructions">
                                  <h4>Instrucciones:</h4> <br>
