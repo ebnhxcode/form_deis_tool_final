@@ -16,9 +16,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/FormDeisLog.php" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-    </list>
+    <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="" />
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -42,8 +40,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33870968">
-              <caret line="894" column="86" selection-start-line="894" selection-start-column="86" selection-end-line="894" selection-end-column="86" />
+            <state vertical-scroll-proportion="0.46451613">
+              <caret line="891" column="86" selection-start-line="891" selection-start-column="86" selection-end-line="891" selection-end-column="86" />
               <folding>
                 <element signature="e#1783#2154#0" expanded="false" />
                 <element signature="e#2173#2532#0" expanded="false" />
@@ -986,8 +984,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33870968">
-          <caret line="894" column="86" selection-start-line="894" selection-start-column="86" selection-end-line="894" selection-end-column="86" />
+        <state vertical-scroll-proportion="0.46451613">
+          <caret line="891" column="86" selection-start-line="891" selection-start-column="86" selection-end-line="891" selection-end-column="86" />
           <folding>
             <element signature="e#1783#2154#0" expanded="false" />
             <element signature="e#2173#2532#0" expanded="false" />
