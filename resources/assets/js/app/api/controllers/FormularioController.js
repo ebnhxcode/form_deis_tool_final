@@ -897,21 +897,27 @@ const FormularioController = new Vue({
                                                             </thead>
                                                             <tbody>
 
-                                                               <tr v-for="e,i in auth['form_deis_errores']"
-                                                                  v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'">
+                                                               <tr v-for="e,i in auth['form_deis_errores']">
+                                                               <!-- v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'" -->
                                                                   <td>
                                                                      <button class="btn btn-sm btn-success"
-                                                                        @click.prevent="marcar_error_revisado(e.id)">
+                                                                        @click.prevent="marcar_error_revisado(e.id)"
+                                                                         v-if="e.estado!='Revisado'">
                                                                         <i class="fa fa-check"></i>
+                                                                        <small>Marcar Revisado</small>
                                                                      </button>
-                                                                     Marcar Revisado
+                                                                     <button class="btn btn-xs btn-success" v-else>
+                                                                        Revisado
+                                                                     </button>
                                                                   </td>
                                                                   <!-- <td>{{e.id}}</td> -->
                                                                   <td>{{(i+1)}}</td>
                                                                   <td>{{e.id_form_deis}}</td>
                                                                   <td>{{e.run_madre}}</td>
                                                                   <td>{{e.glosa_error}}</td>
-                                                                  <td>{{e.estado || 'Pendiente'}}</td>
+                                                                  <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
+                                                                     {{e.estado || 'Pendiente'}}
+                                                                  </td>
 
                                                                </tr>
                                                             </tbody>
@@ -967,7 +973,8 @@ const FormularioController = new Vue({
                   console.log(response.status);
 
                   if (response.status == 200) {
-                     for (var e in this.gauth['form_deis_errores']) {
+                     for (var e in this.auth['form_deis_errores']) {
+                        console.log(e);
                         if (e.id == id_error) {
                            e.estado = 'Revisado';
                         }
