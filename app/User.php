@@ -47,4 +47,8 @@ class User extends Authenticatable
         return $this->hasMany('App\FormDeisUser', 'id');
     }
 
+    public function form_deis_errores () {
+        return $this->hasMany('App\FormDeisError', 'id');
+    }
+
 }

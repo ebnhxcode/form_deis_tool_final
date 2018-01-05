@@ -247,7 +247,7 @@ class FormDeisController extends Controller {
             $run_madre = isset($request->run_madre)?$request->run_madre:null;
             if ($run_madre) {
                 #$formularios = FormDeis::where('run_madre', 'ilike', $run_madre.'%')->get();
-                $formularios = FormDeis::where('run_madre', '=', $run_madre)->with('form_deis_user')->get();
+                $formularios = FormDeis::where('run_madre', '=', $run_madre)->with(['form_deis_user','form_deis_errores'])->get();
                 if (count($formularios)>0){
                     return response()->json(['rd'=>'Existe', 'formularios' => $formularios]);
 
@@ -266,7 +266,7 @@ class FormDeisController extends Controller {
         if ($request->wantsJson()) {
             $run_madre = isset($request->run_madre)?$request->run_madre:null;
             if ($run_madre) {
-                $formularios = FormDeis::where('run_madre', 'ilike', $run_madre.'%')->with('form_deis_user')->get();
+                $formularios = FormDeis::where('run_madre', 'ilike', $run_madre.'%')->with(['form_deis_user','form_deis_errores'])->get();
                 #$formularios = FormDeis::where('run_madre', '=', $run_madre)->get();
                 return response()->json(['formularios'=>$formularios]);
             }else{
@@ -279,7 +279,7 @@ class FormDeisController extends Controller {
         if ($request->wantsJson()) {
             $pasaporte_provisorio = isset($request->pasaporte_provisorio)?$request->pasaporte_provisorio:null;
             if ($pasaporte_provisorio) {
-                $formularios = FormDeis::where('pasaporte_provisorio', 'ilike', $pasaporte_provisorio.'%')->with('form_deis_user')->get();
+                $formularios = FormDeis::where('pasaporte_provisorio', 'ilike', $pasaporte_provisorio.'%')->with(['form_deis_user','form_deis_errores'])->get();
                 #$formularios = FormDeis::where('run_madre', '=', $run_madre)->get();
                 return response()->json(['formularios'=>$formularios]);
             }else{
@@ -294,7 +294,7 @@ class FormDeisController extends Controller {
             $correlativo = isset($request->n_correlativo_interno)?$request->n_correlativo_interno:null;
             if ($correlativo) {
                 #$formularios = FormDeis::where('n_correlativo_interno', 'ilike', $correlativo.'%')->get();
-                $formularios = FormDeis::where('n_correlativo_interno', '=', $correlativo)->with('form_deis_user')->get();
+                $formularios = FormDeis::where('n_correlativo_interno', '=', $correlativo)->with(['form_deis_user','form_deis_errores'])->get();
                 return response()->json(['formularios'=>$formularios]);
             }else{
                 return response()->json(['error'=>['rd' => 'El correlativo no existe']]);

@@ -50,6 +50,7 @@ const FormularioController = new Vue({
 
          'show_modal_buscar_formulario':false,
          'show_modal_formularios_encontrados':false,
+         'show_modal_errores_formulario':false,
 
          'spinner_iniciar':true,
          'spinner_finalizar':false,
@@ -829,6 +830,132 @@ const FormularioController = new Vue({
                });
 
             },
+         },
+         watch: {
+         },
+      },
+      'modal_errores_formulario':{
+         props: ['auth'],
+         template: `
+			   <!-- template for the modal component -->
+			   <transition name="modal">
+				   <div class="modal-mask">
+					   <div class="modal-wrapper">
+					      <div class="modal-container">
+
+						      <div class="modal-header">
+							      <slot name="header"></slot>
+						      </div>
+
+						      <div class="modal-body">
+							      <slot name="body">
+
+                              <div id="" class="panel with-nav-tabs panel-primary">
+                                 <!-- Items elementos de cabecera -->
+                                 <div class="panel-heading">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs small" role="tablist">
+
+                                       <li role="presentation" class="active">
+                                          <a href="#lista_errores_formulario" aria-controls="lista_errores_formulario" role="tab" data-toggle="tab">
+                                             Lista de errores de ingreso de información en fichas
+                                          </a>
+                                       </li>
+
+                                    </ul>
+                                 </div><!-- .panel-heading -->
+
+                                 <div class="panel-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+
+                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_errores_formulario">
+
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <dt>
+                                                      Errores identificados
+                                                   </dt>
+                                                   <dd>
+                                                      <div class="table-responsive">
+                                                         <small class="text-info">Resultados encontrados</small>
+                                                         <br>
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <th>Correlativo</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Nombres</th>
+                                                                  <th>Disponibilidad Registro</th>
+                                                                  <th>Estado Registro</th>
+                                                                  <th>Fecha Parto</th>
+                                                                  <th>Hora Parto</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                               <tr v-for="f in formularios_encontrados">
+                                                                  <td>
+                                                                     <button class="btn btn-sm btn-primary"
+                                                                        @click.prevent="modificar_usuario_seleccionado(f)">
+                                                                        <i class="fa fa-pencil"></i>
+                                                                     </button>
+                                                                  </td>
+                                                                  <td>{{f.n_correlativo_interno}}</td>
+                                                                  <td>{{f.run_madre}}</td>
+                                                                  <td>{{f.nombres_madre}}</td>
+                                                                  <td>{{f.estado_form_deis || 'disponible'}}</td>
+                                                                  <td>{{f.estado_formulario_completo_form_deis || 'Incompleto'}}</td>
+                                                                  <td>{{f.fecha_parto || 'No Ingresado'}}</td>
+                                                                  <td>{{f.hora_parto || 'No Ingresado'}}</td>
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_personas_run -->
+                                    </div><!-- .panel-heading -->
+                                 </div><!-- .panel-heading -->
+                              </div><!-- .panel-heading -->
+
+
+							      </slot>
+						      </div>
+
+						      <!--
+						      <div class="modal-footer">
+							      <slot name="footer">
+							         <button class="btn btn-sm btn-success" @click="$emit('close')">
+								         Aceptar
+							         </button>
+                           </slot>
+						      </div>
+						      -->
+					      </div>
+                  </div>
+				   </div>
+			   </transition>
+			`,
+         name: 'modal_errores_formulario',
+         data () {
+            return {
+
+            }
+         },
+         ready () {
+         },
+         created () {
+         },
+         methods: {
          },
          watch: {
          },
