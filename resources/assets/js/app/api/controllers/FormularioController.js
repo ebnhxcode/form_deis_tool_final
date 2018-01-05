@@ -886,10 +886,16 @@ const FormularioController = new Vue({
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
+                                                                  <th>Accion</th>
                                                                   <th>ID</th>
+                                                                  <th>ID Ficha</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Glosa Error</th>
+                                                                  <th>Estado</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
+
                                                                <tr v-for="e in auth['form_deis_errores']">
                                                                   <td>
                                                                      <button class="btn btn-sm btn-primary">
@@ -898,7 +904,7 @@ const FormularioController = new Vue({
                                                                   </td>
                                                                   <td>
                                                                      <pre>
-                                                                        {{form_deis_errores}}
+                                                                        {{e}}
                                                                      </pre>
                                                                   </td>
 
