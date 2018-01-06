@@ -913,7 +913,7 @@ const FormularioController = new Vue({
                                                                   <!-- <td>{{e.id}}</td> -->
                                                                   <!-- <td>{{(i+1)}}</td> -->
                                                                   <td>{{e.id_form_deis}}</td>
-                                                                  <td>{{e.run_madre}}</td>
+                                                                  <td>{{e.run_madre+e.digito_verificador}}</td>
                                                                   <td>{{e.glosa_error}}</td>
 
                                                                   <!--

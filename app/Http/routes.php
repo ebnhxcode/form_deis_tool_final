@@ -89,7 +89,8 @@ Route::get('/testapi', function () {
 });
 */
 
-Route::get('/formulario/testapi', 'FormDeisController@testapi');
+#Route::get('/formulario/testapi', 'FormDeisController@testapi');
+Route::get('/formulario/traspasar_dv_tabla_errores', 'FormDeisController@traspasar_dv_tabla_errores');
 #Route::get('/formulario/api_registro_civil', 'FormDeisController@api_registro_civil');
 
 Route::post ('/formulario/buscar_por_run' , 'FormDeisController@buscar_por_run') ;

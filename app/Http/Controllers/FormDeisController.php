@@ -238,6 +238,22 @@ class FormDeisController extends Controller {
         exit;
     }
 
+    public function traspasar_dv_tabla_errores () {
+        $form_deis_errores = FormDeisError::where('digito_verificador', null)->get();
+
+        foreach ($form_deis_errores as $key => $fde) {
+            $fd_dv = FormDeis::select('digito_verificador')->where('run_madre', $fde->run_madre)->first();
+            if ($fd_dv != null) {
+                $fde->digito_verificador = $fd_dv->digito_verificador;
+                $fde->save();
+            }
+        }
+
+
+        dd($form_deis_errores);
+
+    }
+
     public function index (Request $request) {
         return $this->create($request);
     }
