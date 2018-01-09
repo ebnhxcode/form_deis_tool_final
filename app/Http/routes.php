@@ -100,6 +100,7 @@ Route::post ('/formulario/buscar_por_correlativo' , 'FormDeisController@buscar_p
 Route::post ('/formulario/confirmar_confidencialidad_mujer_vih' , 'FormDeisController@confirmar_confidencialidad_mujer_vih') ;
 Route::post ('/formulario/confirmar_confidencialidad_usuario' , 'FormDeisController@confirmar_confidencialidad_usuario') ;
 Route::post ('/formulario/confirmar_mensaje_informativo' , 'FormDeisController@confirmar_mensaje_informativo') ;
+
 #Ruta para tomar el registro
 Route::post ('/formulario/marcar_registro_form_deis' , 'FormDeisController@marcar_registro_form_deis');
 Route::post ('/formulario/desmarcar_registro_form_deis' , 'FormDeisController@desmarcar_registro_form_deis');
@@ -109,6 +110,7 @@ Route::post ('/formulario/marcar_error_revisado' , 'FormDeisController@marcar_er
 
 Route::get ('/formulario/datos_formulario' , 'FormDeisController@datos_formulario') ;
 Route::get ('/formulario/inputs_formulario' , 'FormDeisController@inputs_formulario') ;
+
 
 Route::get ('/formulario/transmision_vertical' , 'FormDeisController@create') ;
 Route::get ('/formulario/create' , 'FormDeisController@create') ;

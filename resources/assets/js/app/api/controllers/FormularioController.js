@@ -3341,27 +3341,35 @@ const FormularioController = new Vue({
                //console.log(response);
             });
 
-            /*
             if (this.auth && this.auth.mensajes_informativos != 'true') {
                var self = this;
                swal({
-                  title: "Información sobre Mantenimiento del Sitio",
+                  title: "Información importante sobre actualizaciones",
                   text: `
-                     Estimado usuario, le informamos que la plataforma se encontrará en mantención los dias Martes y Jueves entre 18:00 y 18:30 horas, al aceptar este mensaje, queda en conformidad de que el usuario no deberá ingresar en ese horario a la plataforma de transmisión vertical.
+                     Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la página.
+
+                     Ctrl + F5
+                     o
+                     Ctrl+Shift+R
+
+                     Al aceptar el proceso, la página se refrescará automaticamente, pero se le sugiere también realizar el procedimiento mencionado anteriormente de forma manual.
+
+                     Se agradece su colaboración, saludos.
                      `,
                   closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto',
+                  confirmButtonText: 'Si, acepto realizar',
                }, function (isConfirm) {
 
                   //alert(isConfirm);
                   if (isConfirm == true) {
+
                      swal.close();
 
                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
                      self.$http.post('/formulario/confirmar_mensaje_informativo').then(response => { // success callback
                         //console.log(response);
-
+                        window.location.reload(true);
                      }, response => { // error callback
                         //console.log(response);
                      });
@@ -3370,7 +3378,6 @@ const FormularioController = new Vue({
                   }
                });
             }
-            */
 
             if (this.auth && this.auth.acepta_terminos != 'true') {
                var self = this;

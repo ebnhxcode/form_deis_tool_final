@@ -323,7 +323,7 @@ class FormDeisController extends Controller {
     public function inputs_formulario (Request $request) {
         if ($request->wantsJson()) {
             #Preparacion de variables que contienen la informacion del renderizado de los inputs y de las colecciones que llenan los comboboxes
-            $returnData['auth'] = auth()->user()->with('form_deis_errores')->first();
+            $returnData['auth'] = User::where('id',auth()->user()->id)->with('form_deis_errores')->first();
             $returnData['inputs'] = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
             $returnData['estades_gestacionales'] = config('collections.estades_gestacionales');
             $returnData['nav_tab_form_deis'] = config('collections.nav_tab_form_deis');
@@ -377,7 +377,7 @@ class FormDeisController extends Controller {
 
             #Preparacion de variables que contienen la informacion del renderizado de los inputs y de las colecciones que llenan los comboboxes
             $returnData['fdc'] = $this->fdc;
-            $returnData['auth'] = auth()->user()->with('form_deis_errores')->first();
+            $returnData['auth'] = User::where('id',auth()->user()->id)->with('form_deis_errores')->first();
             $returnData['inputs'] = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
             $returnData['estades_gestacionales'] = config('collections.estades_gestacionales');
             $returnData['nav_tab_form_deis'] = config('collections.nav_tab_form_deis');
@@ -488,6 +488,7 @@ class FormDeisController extends Controller {
         }
     }
 
+
     public function confirmar_mensaje_informativo (Request $request) {
         if ($request->wantsJson()) {
             $user = User::find(auth()->user()->id);
@@ -510,7 +511,7 @@ class FormDeisController extends Controller {
 
     public function create (Request $request) {
         $returnData['instructions'] = config('collection.deis_form_instructions');
-        $returnData['auth'] = auth()->user()->with('form_deis_errores')->first();
+        $returnData['auth'] = User::where('id',auth()->user()->id)->with('form_deis_errores')->first();
 
         if (!$request->wantsJson()) {
             return view('formulario.create', $returnData);

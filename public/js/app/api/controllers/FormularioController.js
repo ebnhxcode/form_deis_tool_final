@@ -43914,32 +43914,34 @@ var FormularioController = new _vue2.default({
                //console.log(response);
             });
 
-            /*
-            if (this.auth && this.auth.mensajes_informativos != 'true') {
-               var self = this;
+            if (_this8.auth && _this8.auth.mensajes_informativos != 'true') {
+               var self = _this8;
                swal({
                   title: "Información sobre Mantenimiento del Sitio",
-                  text: `
-                     Estimado usuario, le informamos que la plataforma se encontrará en mantención los dias Martes y Jueves entre 18:00 y 18:30 horas, al aceptar este mensaje, queda en conformidad de que el usuario no deberá ingresar en ese horario a la plataforma de transmisión vertical.
-                     `,
+                  text: '\n                     Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la p\xE1gina.\n\n                     Ctrl + F5\n                     o\n                     Ctrl+Shift+R\n\n                     Al aceptar el proceso, la p\xE1gina se refrescar\xE1 automaticamente, pero se le sugiere tambi\xE9n realizar el procedimiento mencionado anteriormente de forma manual.\n\n                     Se agradece su colaboraci\xF3n, saludos.\n                     ',
                   closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto',
+                  confirmButtonText: 'Si, acepto realizar'
                }, function (isConfirm) {
-                   //alert(isConfirm);
+
+                  //alert(isConfirm);
                   if (isConfirm == true) {
+
                      swal.close();
-                      Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-                      self.$http.post('/formulario/confirmar_mensaje_informativo').then(response => { // success callback
+
+                     _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+                     self.$http.post('/formulario/confirmar_mensaje_informativo').then(function (response) {
+                        // success callback
                         //console.log(response);
-                      }, response => { // error callback
+                        window.location.reload(true);
+                     }, function (response) {// error callback
                         //console.log(response);
                      });
-                  }else{
-                     return ;
+                  } else {
+                     return;
                   }
                });
             }
-            */
 
             if (_this8.auth && _this8.auth.acepta_terminos != 'true') {
                var self = _this8;
