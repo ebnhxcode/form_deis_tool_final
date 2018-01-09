@@ -43917,7 +43917,7 @@ var FormularioController = new _vue2.default({
             if (_this8.auth && _this8.auth.mensajes_informativos != 'true') {
                var self = _this8;
                swal({
-                  title: "Información sobre Mantenimiento del Sitio",
+                  title: "Información importante sobre actualizaciones",
                   text: '\n                     Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la p\xE1gina.\n\n                     Ctrl + F5\n                     o\n                     Ctrl+Shift+R\n\n                     Al aceptar el proceso, la p\xE1gina se refrescar\xE1 automaticamente, pero se le sugiere tambi\xE9n realizar el procedimiento mencionado anteriormente de forma manual.\n\n                     Se agradece su colaboraci\xF3n, saludos.\n                     ',
                   closeOnConfirm: true,
                   confirmButtonText: 'Si, acepto realizar'
