@@ -3808,9 +3808,3 @@ const FormularioController = new Vue({
 
    },
 });
-
-const ListaController = new Vue({
-
-
-
-});
