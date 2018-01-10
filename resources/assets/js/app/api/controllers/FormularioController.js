@@ -3303,6 +3303,13 @@ const FormularioController = new Vue({
          }
       },
 
+      //*******************************//
+      // FIN * VALIDACIONES DE INPUTS *//
+      //*******************************//
+
+
+
+
       buscar_formulario: function () {
          if (this.fdc.id && this.fdc.id != null && this.fdc.id != undefined) {
             this.guardar_formulario_completo_silencioso();
@@ -3332,7 +3339,7 @@ const FormularioController = new Vue({
                confirmButtonClass: "btn-success",
                closeOnConfirm: false
             });
-         }, 1500);
+         }, 1200);
 
          /*
          if (this.formularioNuevoActivo == false) {
@@ -3351,23 +3358,12 @@ const FormularioController = new Vue({
          */
       },
 
-      fetch_formulario: function () {
-         this.$http.get('/formulario/create').then(response => { // success callback
-            this.instructions = response.body.instructions;
-            this.auth = response.body.auth;
-
-            Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            this.$http.post('/formulario/desmarcar_registro_form_deis').then(response => { // success callback
-               //console.log(response);
-            }, response => { // error callback
-               //console.log(response);
-            });
-
-            if (this.auth && this.auth.mensajes_informativos != 'true') {
-               var self = this;
-               swal({
-                  title: "Información importante sobre actualizaciones",
-                  text: `
+      check_mensajes_informativos: function () {
+         if (this.auth && this.auth.mensajes_informativos != 'true') {
+            var self = this;
+            swal({
+               title: "Información importante sobre actualizaciones",
+               text: `
                      Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la página.
 
                      Ctrl + F5
@@ -3378,63 +3374,85 @@ const FormularioController = new Vue({
 
                      Se agradece su colaboración, saludos.
                      `,
-                  closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto realizar',
-               }, function (isConfirm) {
+               closeOnConfirm: true,
+               confirmButtonText: 'Si, acepto realizar',
+            }, function (isConfirm) {
+               if (isConfirm == true) {
+                  swal.close();
+                  Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                  self.$http.post('/formulario/confirmar_mensaje_informativo').then(response => { // success callback
+                     //console.log(response);
+                     window.location.reload(true);
+                  }, response => { // error callback
+                     //console.log(response);
+                  });
+               }else{
+                  return ;
+               }
+            });
+         }
 
-                  //alert(isConfirm);
-                  if (isConfirm == true) {
+      },
 
-                     swal.close();
+      check_acepta_terminos: function () {
 
-                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-                     self.$http.post('/formulario/confirmar_mensaje_informativo').then(response => { // success callback
-                        //console.log(response);
-                        window.location.reload(true);
-                     }, response => { // error callback
-                        //console.log(response);
-                     });
-                  }else{
-                     return ;
-                  }
-               });
-            }
-
-            if (this.auth && this.auth.acepta_terminos != 'true') {
-               var self = this;
-               swal({
-                  title: "Términos y condiciones de uso",
-                  text: `
+         if (this.auth && this.auth.acepta_terminos != 'true') {
+            var self = this;
+            swal({
+               title: "Términos y condiciones de uso",
+               text: `
                      Al ingresar y o realizar cualquier operación de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el artículo 7 de la ley 19628 dispone que  “Las personas que trabajan en el tratamiento de datos personales, tanto en organismos públicos como privados, están obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al público, como asimismo sobre los demás datos y antecedentes relacionados con el banco de datos, obligación que no cesa por haber terminado sus actividades en ese campo”. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son “datos sensibles” y por tanto los datos de este sistema sólo podrán ser tratados dentro de las finalidades que se declaran.
 
                      Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta información, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.
                      `,
-                  closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto',
-               }, function (isConfirm) {
+               closeOnConfirm: true,
+               confirmButtonText: 'Si, acepto',
+            }, function (isConfirm) {
 
-                  //alert(isConfirm);
-                  if (isConfirm == true) {
-                     swal.close();
+               //alert(isConfirm);
+               if (isConfirm == true) {
+                  swal.close();
 
-                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                  Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-                     self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(response => { // success callback
-                        //console.log(response);
-                        var rd = response.body.rd;
-                        if (rd == true) {
-                           swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
-                        }
+                  self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(response => { // success callback
+                     //console.log(response);
+                     var rd = response.body.rd;
+                     if (rd == true) {
+                        swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
+                     }
 
-                     }, response => { // error callback
-                        //console.log(response);
-                     });
-                  }else{
-                     return ;
-                  }
-               });
-            }
+                  }, response => { // error callback
+                     //console.log(response);
+                  });
+               }else{
+                  return ;
+               }
+            });
+         }
+
+      },
+
+      fetch_formulario: function () {
+
+         this.$http.get('/formulario/create').then(response => { // success callback
+            //Se reciben los recursos desde el backend para renderizar el formulario
+            this.instructions = response.body.instructions;
+            this.auth = response.body.auth;
+
+            //Se disponibilizan para edición, todos los formularios tomados por el usuario en sesión.
+            Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+            this.$http.post('/formulario/desmarcar_registro_form_deis').then(response => { // success callback
+               //console.log(response);
+            }, response => { // error callback
+               //console.log(response);
+            });
+
+            //Fx para checkear mensajes informativos directos a los usuarios
+            this.check_mensajes_informativos();
+
+            //Fx para checkear si los usuarios aceptaron los terminos y condiciones
+            this.check_acepta_terminos();
 
          }, response => { // error callback
             //console.log('Error fetch_formulario: '+response);
