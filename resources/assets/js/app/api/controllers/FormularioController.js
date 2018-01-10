@@ -3462,13 +3462,13 @@ const FormularioController = new Vue({
       },
 
       guardar_formulario: function (tabName) {
-         //Condicionales previas, preventivas al guardado.
+         //Condicionales previas, preventivas al guardado, para evitar doble envío.
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
             var formData = new FormData();
-            //var formData = [];}
 
+            //Validacion de seteo algunos campos
             for (let i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
