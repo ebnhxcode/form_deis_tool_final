@@ -5,19 +5,18 @@
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/UsuarioCreateController.js" line="390" />
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" line="144" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="0" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2710" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2732" />
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2570" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1691" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1722" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1443" />
-    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2294" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2592" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1713" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1744" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="1465" />
+    <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" line="2316" />
     <bookmark url="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php" line="160" />
     <bookmark url="file://$PROJECT_DIR$/app/FormDeisLog.php" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
     </list>
     <ignored path="deis_form_tool.iws" />
@@ -43,8 +42,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8994845">
-              <caret line="3810" column="0" selection-start-line="3810" selection-start-column="0" selection-end-line="3810" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.50128865">
+              <caret line="1177" column="45" selection-start-line="1177" selection-start-column="45" selection-end-line="1177" selection-end-column="45" />
               <folding>
                 <element signature="e#1783#2154#0" expanded="false" />
                 <element signature="e#2173#2532#0" expanded="false" />
@@ -57,21 +56,19 @@
                 <element signature="e#41632#49973#0" expanded="false" />
                 <element signature="e#49981#50244#0" expanded="false" />
                 <element signature="e#50263#51855#0" expanded="false" />
-                <element signature="e#51954#53478#0" expanded="false" />
-                <element signature="e#53522#54160#0" expanded="false" />
-                <element signature="e#54216#54625#0" expanded="false" />
-                <element signature="e#54678#55000#0" expanded="false" />
-                <element signature="e#55054#135862#0" expanded="false" />
-                <element signature="e#135915#138538#0" expanded="false" />
-                <element signature="e#138590#152235#0" expanded="false" />
-                <element signature="e#152645#153741#0" expanded="false" />
-                <element signature="e#158494#162175#0" expanded="false" />
-                <element signature="e#162236#164633#0" expanded="false" />
-                <element signature="e#164683#167152#0" expanded="false" />
-                <marker date="1515591611406" expanded="true" signature="3072:3539" placeholder="..." />
-                <marker date="1515591611406" expanded="true" signature="3802:3962" placeholder="..." />
-                <marker date="1515591611406" expanded="true" signature="4253:4413" placeholder="..." />
-                <marker date="1515591611406" expanded="true" signature="138628:138754" placeholder="{...}" />
+                <element signature="e#53648#54248#0" expanded="false" />
+                <element signature="e#54395#54804#0" expanded="false" />
+                <element signature="e#55532#136340#0" expanded="false" />
+                <element signature="e#136393#139016#0" expanded="false" />
+                <element signature="e#139068#152713#0" expanded="false" />
+                <element signature="e#153123#154219#0" expanded="false" />
+                <element signature="e#158972#162653#0" expanded="false" />
+                <element signature="e#162714#165111#0" expanded="false" />
+                <element signature="e#165161#167630#0" expanded="false" />
+                <marker date="1515592152775" expanded="true" signature="3072:3539" placeholder="..." />
+                <marker date="1515592152775" expanded="true" signature="3802:3962" placeholder="..." />
+                <marker date="1515592152775" expanded="true" signature="4253:4413" placeholder="..." />
+                <marker date="1515592152775" expanded="true" signature="139106:139232" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -590,11 +587,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="1" width="1280" height="895" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34296876" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22109374" sideWeight="0.61403507" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22109374" sideWeight="0.61403507" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -996,8 +993,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8994845">
-          <caret line="3810" column="0" selection-start-line="3810" selection-start-column="0" selection-end-line="3810" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.50128865">
+          <caret line="1177" column="45" selection-start-line="1177" selection-start-column="45" selection-end-line="1177" selection-end-column="45" />
           <folding>
             <element signature="e#1783#2154#0" expanded="false" />
             <element signature="e#2173#2532#0" expanded="false" />
@@ -1010,21 +1007,19 @@
             <element signature="e#41632#49973#0" expanded="false" />
             <element signature="e#49981#50244#0" expanded="false" />
             <element signature="e#50263#51855#0" expanded="false" />
-            <element signature="e#51954#53478#0" expanded="false" />
-            <element signature="e#53522#54160#0" expanded="false" />
-            <element signature="e#54216#54625#0" expanded="false" />
-            <element signature="e#54678#55000#0" expanded="false" />
-            <element signature="e#55054#135862#0" expanded="false" />
-            <element signature="e#135915#138538#0" expanded="false" />
-            <element signature="e#138590#152235#0" expanded="false" />
-            <element signature="e#152645#153741#0" expanded="false" />
-            <element signature="e#158494#162175#0" expanded="false" />
-            <element signature="e#162236#164633#0" expanded="false" />
-            <element signature="e#164683#167152#0" expanded="false" />
-            <marker date="1515591611406" expanded="true" signature="3072:3539" placeholder="..." />
-            <marker date="1515591611406" expanded="true" signature="3802:3962" placeholder="..." />
-            <marker date="1515591611406" expanded="true" signature="4253:4413" placeholder="..." />
-            <marker date="1515591611406" expanded="true" signature="138628:138754" placeholder="{...}" />
+            <element signature="e#53648#54248#0" expanded="false" />
+            <element signature="e#54395#54804#0" expanded="false" />
+            <element signature="e#55532#136340#0" expanded="false" />
+            <element signature="e#136393#139016#0" expanded="false" />
+            <element signature="e#139068#152713#0" expanded="false" />
+            <element signature="e#153123#154219#0" expanded="false" />
+            <element signature="e#158972#162653#0" expanded="false" />
+            <element signature="e#162714#165111#0" expanded="false" />
+            <element signature="e#165161#167630#0" expanded="false" />
+            <marker date="1515592152775" expanded="true" signature="3072:3539" placeholder="..." />
+            <marker date="1515592152775" expanded="true" signature="3802:3962" placeholder="..." />
+            <marker date="1515592152775" expanded="true" signature="4253:4413" placeholder="..." />
+            <marker date="1515592152775" expanded="true" signature="139106:139232" placeholder="{...}" />
           </folding>
         </state>
       </provider>

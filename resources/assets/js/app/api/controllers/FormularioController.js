@@ -1078,9 +1078,14 @@ const FormularioController = new Vue({
    },
    methods: {
 
+
+
+
       check_status_code: function (status_code) {
          switch (status_code) {
+
             case 401:
+
                swal({
                   title: "Atencion",
                   text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
@@ -1094,7 +1099,9 @@ const FormularioController = new Vue({
                });
 
                break;
+
             case 500:
+
                swal({
                   title: "Atencion",
                   text: "Ocurrio un error al guardar, por favor actualice la página.",
@@ -1106,7 +1113,9 @@ const FormularioController = new Vue({
                      window.location.href = '/login';
                   }
                });
+
                break;
+
             default :
                swal({
                   title: "Atencion",
@@ -1122,8 +1131,12 @@ const FormularioController = new Vue({
                break;
          }
       },
+
+
+
+      //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
-         //console.log(this.fdc_temp);
+
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
             if ( this.fdc_temp[this.inputs[index].id] != null &&
@@ -1144,6 +1157,7 @@ const FormularioController = new Vue({
 
       },
 
+      //Valida que los campos de cierta pestaña estén completados , actualmente deprecated
       validar_campos_completados: function (tabName) {
          var validation = true;
          for (let i in this.inputs){
@@ -1157,6 +1171,15 @@ const FormularioController = new Vue({
          return validation;
       },
 
+
+      /*
+      * VALIDACIONES DE INPUTS
+      * Validacion de campos en los eventos JS, se condiciona mediante un switch para analizar el campo,
+      * segun el evento, y de forma reactiva.
+      *
+      * */
+
+      //Validacion de campos 1 a 1 al evento keyup filtrado por un case sobre el cambio
       verifica_validacion_keyup: function (input) {
          /*
          switch (input.id) {
@@ -1168,7 +1191,6 @@ const FormularioController = new Vue({
                break;
          }
          */
-
       },
 
       verifica_validacion_change: function (input) {
