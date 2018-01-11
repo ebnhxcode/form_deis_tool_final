@@ -1002,6 +1002,7 @@ const FormularioController = new Vue({
          watch: {
          },
       },
+      'modal_seleccion_establecimiento':{},
       /*
        '':{
        props: [''],
@@ -3472,6 +3473,7 @@ const FormularioController = new Vue({
             for (let i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
+                  /* //Se quita temporalmente el select2 para seleccionar establecimiento
                   if (this.inputs[i].name == 'lugar_control_prenatal' ||
                      this.inputs[i].name == 'lugar_atencion_parto' ||
                      this.inputs[i].name == 'lugar_control_embarazo' ||
@@ -3481,6 +3483,7 @@ const FormularioController = new Vue({
                   ) {
                      this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
                   }
+                  */
 
                   if (this.fdc[this.inputs[i].name] != null ) {
                      //Le pasa el valor en v-model
@@ -3572,6 +3575,7 @@ const FormularioController = new Vue({
          //Ciclo para validar los campos que requieren filtrado previo
          //Guardado especial por plugin select2
          for (let i in this.inputs) {
+            /* // Se quito temporalmente el input select
             if (this.inputs[i].name == 'lugar_control_prenatal' ||
                this.inputs[i].name == 'lugar_atencion_parto' ||
                this.inputs[i].name == 'lugar_control_embarazo' ||
@@ -3581,6 +3585,7 @@ const FormularioController = new Vue({
             ) {
                this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
             }
+            */
 
             if (this.fdc[this.inputs[i].name] != null ) {
                //Le pasa el valor en v-model
@@ -3637,6 +3642,7 @@ const FormularioController = new Vue({
          //Ciclo para validar los campos que requieren filtrado previo
          //Guardado especial por plugin select2
          for (let i in this.inputs) {
+            /*
             if (this.inputs[i].name == 'lugar_control_prenatal' ||
                this.inputs[i].name == 'lugar_atencion_parto' ||
                this.inputs[i].name == 'lugar_control_embarazo' ||
@@ -3646,6 +3652,7 @@ const FormularioController = new Vue({
             ) {
                this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
             }
+            */
 
             if (this.fdc[this.inputs[i].name] != null ) {
                //Le pasa el valor en v-model
@@ -3716,6 +3723,7 @@ const FormularioController = new Vue({
                }
             }
 
+            /* // Se quita temporalmente el plugin select2
             this.validar_validaciones_previas();
 
 
@@ -3759,20 +3767,23 @@ const FormularioController = new Vue({
                      break;
 
                }
-               /*
-                if (this.inputs[i].name == 'lugar_control_prenatal' ||
-                this.inputs[i].name == 'lugar_atencion_parto' ||
-                this.inputs[i].name == 'lugar_control_embarazo' ||
-                this.inputs[i].name == 'establecimiento_control_sifilis' ||
-                this.inputs[i].name == 'establecimiento_control_vih' ||
-                this.inputs[i].name == 'atencion_parto'
-                ) {
-                if (this.fdc[this.inputs[i].name]) {
-                $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
-                }
-                }
-                */
+
             }
+            */
+
+            /*
+             if (this.inputs[i].name == 'lugar_control_prenatal' ||
+             this.inputs[i].name == 'lugar_atencion_parto' ||
+             this.inputs[i].name == 'lugar_control_embarazo' ||
+             this.inputs[i].name == 'establecimiento_control_sifilis' ||
+             this.inputs[i].name == 'establecimiento_control_vih' ||
+             this.inputs[i].name == 'atencion_parto'
+             ) {
+             if (this.fdc[this.inputs[i].name]) {
+             $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
+             }
+             }
+             */
 
          }, response => { // error callback
             //console.log('Error datos_formulario: '+response);
@@ -3783,12 +3794,14 @@ const FormularioController = new Vue({
          this.$http.get('/formulario/datos_formulario').then(response => { // success callback
             this.inputs = response.body.inputs;
 
+            /*
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
             $('#select2-establecimiento_control_vih-container').val(null).empty();
             $('#select2-lugar_control_prenatal-container').val(null).empty();
             $('#select2-lugar_control_embarazo-container').val(null).empty();
             $('#select2-lugar_atencion_parto-container').val(null).empty();
+            */
 
 
             this.nav_tab_form_deis = response.body.nav_tab_form_deis;

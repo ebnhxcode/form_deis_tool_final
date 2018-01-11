@@ -300,6 +300,7 @@
 
    <script>
 
+      /*
       var self = $;
       setInterval(function () {
          if (!self('#lugar_control_prenatal').data('select2')) {
@@ -321,6 +322,7 @@
             self('#atencion_parto').select2();
          }
       },1000);
+      */
 
    </script>
 @endsection
