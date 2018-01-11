@@ -51,6 +51,7 @@ const FormularioController = new Vue({
          'show_modal_buscar_formulario':false,
          'show_modal_formularios_encontrados':false,
          'show_modal_errores_formulario':false,
+         'show_modal_seleccion_establecimiento':false,
 
          'spinner_iniciar':true,
          'spinner_finalizar':false,
@@ -656,12 +657,15 @@ const FormularioController = new Vue({
                this.$parent.formularioEditActivo = true;
                this.$parent.formularioNuevoActivo = false;
 
+               /*
                //Generamos limpieza de los campos con el plugin
                $('#select2-establecimiento_control_sifilis-container').val(null).empty();
                $('#select2-establecimiento_control_vih-container').val(null).empty();
                $('#select2-lugar_control_prenatal-container').val(null).empty();
                $('#select2-lugar_control_embarazo-container').val(null).empty();
                $('#select2-lugar_atencion_parto-container').val(null).empty();
+               */
+
 
                var formData = new FormData();
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -1002,7 +1006,145 @@ const FormularioController = new Vue({
          watch: {
          },
       },
-      'modal_seleccion_establecimiento':{},
+      'modal_seleccion_establecimiento':{
+         props: ['auth'],
+         template: `
+			   <!-- template for the modal component -->
+			   <transition name="modal">
+				   <div class="modal-mask">
+					   <div class="modal-wrapper">
+					      <div class="modal-container">
+
+						      <div class="modal-header">
+							      <slot name="header"></slot>
+						      </div>
+
+						      <div class="modal-body">
+							      <slot name="body">
+
+                              <div id="" class="panel with-nav-tabs panel-primary">
+                                 <!-- Items elementos de cabecera -->
+                                 <div class="panel-heading">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs small" role="tablist">
+
+                                       <li role="presentation" class="active">
+                                          <a href="#lista_establecimientos" aria-controls="lista_establecimientos" role="tab" data-toggle="tab">
+                                             Lista de inconsistencias al ingreso de información en fichas
+                                          </a>
+                                       </li>
+
+                                    </ul>
+                                 </div><!-- .panel-heading -->
+
+                                 <div class="panel-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+
+                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_establecimientos">
+
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <dt>
+                                                      Inconsistencias identificadas
+                                                   </dt>
+                                                   <dd>
+                                                      <div class="table-responsive">
+                                                         <small class="text-info">Resultados encontrados</small>
+                                                         <br>
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <!-- <th>ID</th> -->
+                                                                  <!-- <th># Registro</th> -->
+                                                                  <th>Correlativo</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Glosa Error</th>
+                                                                  <!-- <th>Estado</th> -->
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                               <tr v-for="e,i in auth['form_deis_errores']">
+                                                               <!-- v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'" -->
+                                                                  <td>
+                                                                     <button class="btn btn-xs btn-success"
+                                                                        @click.prevent="marcar_error_revisado(e.id)"
+                                                                         v-if="e.estado!='Revisado'">
+                                                                        <i class="fa fa-check"></i>
+                                                                        <small>Marcar Revisado</small>
+                                                                     </button>
+                                                                     <button class="btn btn-xs btn-info" v-else>
+                                                                        Revisado
+                                                                     </button>
+                                                                  </td>
+                                                                  <!-- <td>{{e.id}}</td> -->
+                                                                  <!-- <td>{{(i+1)}}</td> -->
+                                                                  <td>{{e.id_form_deis}}</td>
+                                                                  <td>{{e.run_madre+e.digito_verificador}}</td>
+                                                                  <td>{{e.glosa_error}}</td>
+
+                                                                  <!--
+                                                                   <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
+                                                                     {{e.estado || 'Pendiente'}}
+                                                                  </td>
+                                                                  -->
+
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_establecimientos -->
+                                    </div><!-- .panel-heading -->
+                                 </div><!-- .panel-heading -->
+                              </div><!-- .panel-heading -->
+
+
+							      </slot>
+						      </div>
+
+						      <!--
+						      <div class="modal-footer">
+							      <slot name="footer">
+							         <button class="btn btn-sm btn-success" @click="$emit('close')">
+								         Aceptar
+							         </button>
+                           </slot>
+						      </div>
+						      -->
+					      </div>
+                  </div>
+				   </div>
+			   </transition>
+			`,
+         name: 'modal_seleccion_establecimiento',
+         data () {
+            return {
+
+            }
+         },
+         ready () {
+         },
+         created () {
+         },
+         methods: {
+
+         },
+         watch: {
+         },
+      },
+
       /*
        '':{
        props: [''],
@@ -2925,6 +3067,29 @@ const FormularioController = new Vue({
 
       verifica_validacion_click: function (input) {
          switch (input.id) {
+
+            case 'lugar_control_prenatal':
+
+
+               break;
+
+            case 'lugar_control_embarazo':
+
+               break;
+
+            case 'establecimiento_control_sifilis':
+
+               break;
+
+            case 'establecimiento_control_vih':
+
+               break;
+
+            case 'lugar_atencion_parto':
+
+               break;
+
+
 
             case 'pais_origen':
                break;
