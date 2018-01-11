@@ -1048,7 +1048,35 @@ const FormularioController = new Vue({
 
                                           <dl class="dl-vertical">
                                              <div class="row">
+
+
+
+
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                              <!-- Text animacion al termino de busqueda -->
+                                                <transition name="fade" mode="out-in">
+                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
+                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
+                                                </transition>
+
+                                                <!-- Input filterTerm -->
+                                                <div class="form-group">
+                                                   <div class="input-group input-group-sm">
+                                                      <div class="input-group-addon">
+                                                         <i class="fa fa-font"></i>
+                                                      </div>
+                                                      <!-- Input para escribir el termino a buscar -->
+                                                      <input type="text" class="form-control" placeholder="Ingrese criterio de búsqueda para filtrar"
+                                                             v-model="filterTerm" id="filterTerm">
+                                                      <!-- Boton para limpiar contenido del filtro por criterio -->
+                                                         <span class="input-group-btn">
+                                                            <button @click.prevent="filterTerm=''" type="button" class="btn btn-default">
+                                                               Limpiar
+                                                            </button>
+                                                         </span><!-- .input-group-btn -->
+                                                   </div><!-- /.input-group -->
+                                                </div><!-- /.form-group -->
 
                                                    <dt>
                                                       Seleccione establecimiento
@@ -1067,10 +1095,22 @@ const FormularioController = new Vue({
                                                             </thead>
                                                             <tbody>
 
-                                                               {{deis_form_table_options['establecimiento_a_editar']}}
-                                                               <tr v-for="e,i in
-                                                                  deis_form_table_options['establecimiento_a_editar']">
+                                                               <tr v-for="e in
+                                                               filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">
 
+                                                                  <td>
+                                                                     <button class="btn btn-xs btn-success"
+                                                                        @click.prevent="seleccionar_establecimiento(e['$key'])">
+                                                                        <i class="fa fa-check"></i>
+                                                                        <small>Seleccionar</small>
+                                                                     </button>
+                                                                  </td>
+                                                                  <td>
+                                                                     {{e["$key"]}}
+                                                                  </td>
+                                                                  <td>
+                                                                     {{e["$value"]}}
+                                                                  </td>
 
                                                                </tr>
                                                             </tbody>
@@ -1109,7 +1149,7 @@ const FormularioController = new Vue({
          name: 'modal_seleccion_establecimiento',
          data () {
             return {
-
+               'filterTerm':null,
             }
          },
          ready () {
@@ -1117,7 +1157,11 @@ const FormularioController = new Vue({
          created () {
          },
          methods: {
-
+            seleccionar_establecimiento: function (codigo_establecimiento) {
+               this.$parent.fdc[this.establecimiento_a_editar] = codigo_establecimiento;
+               this.$parent.show_modal_seleccion_establecimiento = false;
+               return 0;
+            },
          },
          watch: {
          },

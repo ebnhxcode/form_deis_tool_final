@@ -41432,6 +41432,8 @@ var FormularioController = new _vue2.default({
          'formularios_encontrados': {},
          'formulario_guardandose': false,
 
+         'establecimiento_a_editar': null,
+
          'spinner_form_deis': true,
 
          'inputTypes': {
@@ -41444,6 +41446,7 @@ var FormularioController = new _vue2.default({
          'show_modal_buscar_formulario': false,
          'show_modal_formularios_encontrados': false,
          'show_modal_errores_formulario': false,
+         'show_modal_seleccion_establecimiento': false,
 
          'spinner_iniciar': true,
          'spinner_finalizar': false,
@@ -41708,12 +41711,14 @@ var FormularioController = new _vue2.default({
                this.$parent.formularioEditActivo = true;
                this.$parent.formularioNuevoActivo = false;
 
+               /*
                //Generamos limpieza de los campos con el plugin
                $('#select2-establecimiento_control_sifilis-container').val(null).empty();
                $('#select2-establecimiento_control_vih-container').val(null).empty();
                $('#select2-lugar_control_prenatal-container').val(null).empty();
                $('#select2-lugar_control_embarazo-container').val(null).empty();
                $('#select2-lugar_atencion_parto-container').val(null).empty();
+               */
 
                var formData = new FormData();
                _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -41824,7 +41829,29 @@ var FormularioController = new _vue2.default({
             }
          },
          watch: {}
+      },
+      'modal_seleccion_establecimiento': {
+         props: ['auth', 'deis_form_table_options', 'establecimiento_a_editar'],
+         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_establecimientos" aria-controls="lista_establecimientos" role="tab" data-toggle="tab">\n                                             Lista de establecimientos\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_establecimientos">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n\n\n\n\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                              <!-- Text animacion al termino de busqueda -->\n                                                <transition name="fade" mode="out-in">\n                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n                                                </transition>\n\n                                                <!-- Input filterTerm -->\n                                                <div class="form-group">\n                                                   <div class="input-group input-group-sm">\n                                                      <div class="input-group-addon">\n                                                         <i class="fa fa-font"></i>\n                                                      </div>\n                                                      <!-- Input para escribir el termino a buscar -->\n                                                      <input type="text" class="form-control" placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                             v-model="filterTerm" id="filterTerm">\n                                                      <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                         <span class="input-group-btn">\n                                                            <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                               Limpiar\n                                                            </button>\n                                                         </span><!-- .input-group-btn -->\n                                                   </div><!-- /.input-group -->\n                                                </div><!-- /.form-group -->\n\n                                                   <dt>\n                                                      Seleccione establecimiento\n                                                   </dt>\n                                                   <dd>\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>Establecimientos actuales\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <th>Accion</th>\n                                                                  <th>Codigo</th>\n                                                                  <th>Completo</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="e in\n                                                               filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">\n\n                                                                  <td>\n                                                                     <button class="btn btn-xs btn-success"\n                                                                        @click.prevent="seleccionar_establecimiento(e[\'$key\'])">\n                                                                        <i class="fa fa-check"></i>\n                                                                        <small>Seleccionar</small>\n                                                                     </button>\n                                                                  </td>\n                                                                  <td>\n                                                                     {{e["$key"]}}\n                                                                  </td>\n                                                                  <td>\n                                                                     {{e["$value"]}}\n                                                                  </td>\n\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_establecimientos -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
+         name: 'modal_seleccion_establecimiento',
+         data: function data() {
+            return {
+               'filterTerm': null
+            };
+         },
+         ready: function ready() {},
+         created: function created() {},
+
+         methods: {
+            seleccionar_establecimiento: function seleccionar_establecimiento(codigo_establecimiento) {
+               this.$parent.fdc[this.establecimiento_a_editar] = codigo_establecimiento;
+               this.$parent.show_modal_seleccion_establecimiento = false;
+               return 0;
+            }
+         },
+         watch: {}
       }
+
       /*
        '':{
        props: [''],
@@ -41900,7 +41927,9 @@ var FormularioController = new _vue2.default({
 
       check_status_code: function check_status_code(status_code) {
          switch (status_code) {
+
             case 401:
+
                swal({
                   title: "Atencion",
                   text: "Su sesión ha expirado, por favor inicie sesion nuevamente.",
@@ -41914,7 +41943,9 @@ var FormularioController = new _vue2.default({
                });
 
                break;
+
             case 500:
+
                swal({
                   title: "Atencion",
                   text: "Ocurrio un error al guardar, por favor actualice la página.",
@@ -41926,7 +41957,9 @@ var FormularioController = new _vue2.default({
                      window.location.href = '/login';
                   }
                });
+
                break;
+
             default:
                swal({
                   title: "Atencion",
@@ -41942,8 +41975,10 @@ var FormularioController = new _vue2.default({
                break;
          }
       },
+
+      //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function check_input(input, index) {
-         //console.log(this.fdc_temp);
+
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
             if (this.fdc_temp[this.inputs[index].id] != null && this.fdc_temp[this.inputs[index].id] != '' && this.formularioNuevoActivo == false) {
@@ -41959,6 +41994,7 @@ var FormularioController = new _vue2.default({
          return true;
       },
 
+      //Valida que los campos de cierta pestaña estén completados , actualmente deprecated
       validar_campos_completados: function validar_campos_completados(tabName) {
          var validation = true;
          for (var i in this.inputs) {
@@ -41971,6 +42007,14 @@ var FormularioController = new _vue2.default({
          return validation;
       },
 
+      /*
+      * VALIDACIONES DE INPUTS
+      * Validacion de campos en los eventos JS, se condiciona mediante un switch para analizar el campo,
+      * segun el evento, y de forma reactiva.
+      *
+      * */
+
+      //Validacion de campos 1 a 1 al evento keyup filtrado por un case sobre el cambio
       verifica_validacion_keyup: function verifica_validacion_keyup(input) {
          /*
          switch (input.id) {
@@ -41982,7 +42026,6 @@ var FormularioController = new _vue2.default({
                break;
          }
          */
-
       },
 
       verifica_validacion_change: function verifica_validacion_change(input) {
@@ -43484,6 +43527,15 @@ var FormularioController = new _vue2.default({
       verifica_validacion_click: function verifica_validacion_click(input) {
          switch (input.id) {
 
+            case 'lugar_control_prenatal':
+            case 'lugar_control_embarazo':
+            case 'establecimiento_control_sifilis':
+            case 'establecimiento_control_vih':
+            case 'lugar_atencion_parto':
+               this.establecimiento_a_editar = input.id;
+               this.show_modal_seleccion_establecimiento = true;
+               break;
+
             case 'pais_origen':
                break;
 
@@ -43855,6 +43907,11 @@ var FormularioController = new _vue2.default({
          }
       },
 
+      //*******************************//
+      // FIN * VALIDACIONES DE INPUTS *//
+      //*******************************//
+
+
       buscar_formulario: function buscar_formulario() {
          if (this.fdc.id && this.fdc.id != null && this.fdc.id != undefined) {
             this.guardar_formulario_completo_silencioso();
@@ -43880,7 +43937,7 @@ var FormularioController = new _vue2.default({
                confirmButtonClass: "btn-success",
                closeOnConfirm: false
             });
-         }, 1500);
+         }, 1200);
 
          /*
          if (this.formularioNuevoActivo == false) {
@@ -43899,14 +43956,76 @@ var FormularioController = new _vue2.default({
          */
       },
 
+      check_mensajes_informativos: function check_mensajes_informativos() {
+         if (this.auth && this.auth.mensajes_informativos != 'true') {
+            var self = this;
+            swal({
+               title: "Información importante sobre actualizaciones",
+               text: '\n                     Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la p\xE1gina.\n\n                     Ctrl + F5\n                     o\n                     Ctrl+Shift+R\n\n                     Al aceptar el proceso, la p\xE1gina se refrescar\xE1 automaticamente, pero se le sugiere tambi\xE9n realizar el procedimiento mencionado anteriormente de forma manual.\n\n                     Se agradece su colaboraci\xF3n, saludos.\n                     ',
+               closeOnConfirm: true,
+               confirmButtonText: 'Si, acepto realizar'
+            }, function (isConfirm) {
+               if (isConfirm == true) {
+                  swal.close();
+                  _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                  self.$http.post('/formulario/confirmar_mensaje_informativo').then(function (response) {
+                     // success callback
+                     //console.log(response);
+                     window.location.reload(true);
+                  }, function (response) {// error callback
+                     //console.log(response);
+                  });
+               } else {
+                  return;
+               }
+            });
+         }
+      },
+
+      check_acepta_terminos: function check_acepta_terminos() {
+
+         if (this.auth && this.auth.acepta_terminos != 'true') {
+            var self = this;
+            swal({
+               title: "Términos y condiciones de uso",
+               text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
+               closeOnConfirm: true,
+               confirmButtonText: 'Si, acepto'
+            }, function (isConfirm) {
+
+               //alert(isConfirm);
+               if (isConfirm == true) {
+                  swal.close();
+
+                  _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+                  self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(function (response) {
+                     // success callback
+                     //console.log(response);
+                     var rd = response.body.rd;
+                     if (rd == true) {
+                        swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
+                     }
+                  }, function (response) {// error callback
+                     //console.log(response);
+                  });
+               } else {
+                  return;
+               }
+            });
+         }
+      },
+
       fetch_formulario: function fetch_formulario() {
          var _this8 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
             // success callback
+            //Se reciben los recursos desde el backend para renderizar el formulario
             _this8.instructions = response.body.instructions;
             _this8.auth = response.body.auth;
 
+            //Se disponibilizan para edición, todos los formularios tomados por el usuario en sesión.
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
             _this8.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
                //console.log(response);
@@ -43914,65 +44033,11 @@ var FormularioController = new _vue2.default({
                //console.log(response);
             });
 
-            if (_this8.auth && _this8.auth.mensajes_informativos != 'true') {
-               var self = _this8;
-               swal({
-                  title: "Información importante sobre actualizaciones",
-                  text: '\n                     Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la p\xE1gina.\n\n                     Ctrl + F5\n                     o\n                     Ctrl+Shift+R\n\n                     Al aceptar el proceso, la p\xE1gina se refrescar\xE1 automaticamente, pero se le sugiere tambi\xE9n realizar el procedimiento mencionado anteriormente de forma manual.\n\n                     Se agradece su colaboraci\xF3n, saludos.\n                     ',
-                  closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto realizar'
-               }, function (isConfirm) {
+            //Fx para checkear mensajes informativos directos a los usuarios
+            _this8.check_mensajes_informativos();
 
-                  //alert(isConfirm);
-                  if (isConfirm == true) {
-
-                     swal.close();
-
-                     _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-                     self.$http.post('/formulario/confirmar_mensaje_informativo').then(function (response) {
-                        // success callback
-                        //console.log(response);
-                        window.location.reload(true);
-                     }, function (response) {// error callback
-                        //console.log(response);
-                     });
-                  } else {
-                     return;
-                  }
-               });
-            }
-
-            if (_this8.auth && _this8.auth.acepta_terminos != 'true') {
-               var self = _this8;
-               swal({
-                  title: "Términos y condiciones de uso",
-                  text: '\n                     Al ingresar y o realizar cualquier operaci\xF3n de tratamiento de datos en esta base de datos declaro que tengo conocimiento que el art\xEDculo 7 de la ley 19628 dispone que  \u201CLas personas que trabajan en el tratamiento de datos personales, tanto en organismos p\xFAblicos como privados, est\xE1n obligadas a guardar secreto sobre los mismos, cuando provengan o hayan sido recolectados de fuentes no accesibles al p\xFAblico, como asimismo sobre los dem\xE1s datos y antecedentes relacionados con el banco de datos, obligaci\xF3n que no cesa por haber terminado sus actividades en ese campo\u201D. Asimismo, declaro que tengo conocimiento de que los datos que se tratan en este sistema son \u201Cdatos sensibles\u201D y por tanto los datos de este sistema s\xF3lo podr\xE1n ser tratados dentro de las finalidades que se declaran.\n\n                     Adicionalmente, si de acuerdo a mis funciones no me corresponde tener acceso a esta informaci\xF3n, me hago responsable de notificar inmediatamente al administrador (cperedo@minsal.cl o gberrios@minsal.cl), sin perjuicio de cancelar los datos que se me hayan comunicado por error.\n                     ',
-                  closeOnConfirm: true,
-                  confirmButtonText: 'Si, acepto'
-               }, function (isConfirm) {
-
-                  //alert(isConfirm);
-                  if (isConfirm == true) {
-                     swal.close();
-
-                     _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-
-                     self.$http.post('/formulario/confirmar_confidencialidad_usuario').then(function (response) {
-                        // success callback
-                        //console.log(response);
-                        var rd = response.body.rd;
-                        if (rd == true) {
-                           swal("Gracias!", "Te recordamos que al ser información sensible solicitamos tomar con seriedad el ingreso de la información.");
-                        }
-                     }, function (response) {// error callback
-                        //console.log(response);
-                     });
-                  } else {
-                     return;
-                  }
-               });
-            }
+            //Fx para checkear si los usuarios aceptaron los terminos y condiciones
+            _this8.check_acepta_terminos();
          }, function (response) {// error callback
             //console.log('Error fetch_formulario: '+response);
          });
@@ -43983,19 +44048,27 @@ var FormularioController = new _vue2.default({
       guardar_formulario: function guardar_formulario(tabName) {
          var _this9 = this;
 
-         //Condicionales previas, preventivas al guardado.
+         //Condicionales previas, preventivas al guardado, para evitar doble envío.
          if (this.formulario_guardandose == false) {
             this.formulario_guardandose = true;
 
             var formData = new FormData();
-            //var formData = [];}
 
+            //Validacion de seteo algunos campos
             for (var i in this.inputs) {
                if (this.inputs[i].seccion == tabName) {
 
-                  if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
-                     this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+                  /* //Se quita temporalmente el select2 para seleccionar establecimiento
+                  if (this.inputs[i].name == 'lugar_control_prenatal' ||
+                     this.inputs[i].name == 'lugar_atencion_parto' ||
+                     this.inputs[i].name == 'lugar_control_embarazo' ||
+                     this.inputs[i].name == 'establecimiento_control_sifilis' ||
+                     this.inputs[i].name == 'establecimiento_control_vih' ||
+                     this.inputs[i].name == 'atencion_parto'
+                  ) {
+                     this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
                   }
+                  */
 
                   if (this.fdc[this.inputs[i].name] != null) {
                      //Le pasa el valor en v-model
@@ -44076,9 +44149,17 @@ var FormularioController = new _vue2.default({
          //Ciclo para validar los campos que requieren filtrado previo
          //Guardado especial por plugin select2
          for (var i in this.inputs) {
-            if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
-               this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+            /* // Se quito temporalmente el input select
+            if (this.inputs[i].name == 'lugar_control_prenatal' ||
+               this.inputs[i].name == 'lugar_atencion_parto' ||
+               this.inputs[i].name == 'lugar_control_embarazo' ||
+               this.inputs[i].name == 'establecimiento_control_sifilis' ||
+               this.inputs[i].name == 'establecimiento_control_vih' ||
+               this.inputs[i].name == 'atencion_parto'
+            ) {
+               this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
             }
+            */
 
             if (this.fdc[this.inputs[i].name] != null) {
                //Le pasa el valor en v-model
@@ -44135,9 +44216,17 @@ var FormularioController = new _vue2.default({
          //Ciclo para validar los campos que requieren filtrado previo
          //Guardado especial por plugin select2
          for (var i in this.inputs) {
-            if (this.inputs[i].name == 'lugar_control_prenatal' || this.inputs[i].name == 'lugar_atencion_parto' || this.inputs[i].name == 'lugar_control_embarazo' || this.inputs[i].name == 'establecimiento_control_sifilis' || this.inputs[i].name == 'establecimiento_control_vih' || this.inputs[i].name == 'atencion_parto') {
-               this.fdc[this.inputs[i].name] = $('#' + this.inputs[i].name).val();
+            /*
+            if (this.inputs[i].name == 'lugar_control_prenatal' ||
+               this.inputs[i].name == 'lugar_atencion_parto' ||
+               this.inputs[i].name == 'lugar_control_embarazo' ||
+               this.inputs[i].name == 'establecimiento_control_sifilis' ||
+               this.inputs[i].name == 'establecimiento_control_vih' ||
+               this.inputs[i].name == 'atencion_parto'
+            ) {
+               this.fdc[this.inputs[i].name] = $(`#${this.inputs[i].name}`).val();
             }
+            */
 
             if (this.fdc[this.inputs[i].name] != null) {
                //Le pasa el valor en v-model
@@ -44209,51 +44298,59 @@ var FormularioController = new _vue2.default({
                }
             }
 
-            _this12.validar_validaciones_previas();
-
-            //Generamos limpieza de los campos con el plugin
+            /* // Se quita temporalmente el plugin select2
+            this.validar_validaciones_previas();
+              //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
             $('#select2-establecimiento_control_vih-container').val(null).empty();
             $('#select2-lugar_control_prenatal-container').val(null).empty();
             $('#select2-lugar_control_embarazo-container').val(null).empty();
             $('#select2-lugar_atencion_parto-container').val(null).empty();
-
-            //Validacion para mostrar los datos en los campos select
-            for (var _i100 in _this12.inputs) {
-
-               switch (_this12.inputs[_i100].name) {
-
-                  case 'lugar_control_prenatal':
-                     $('#select2-lugar_control_prenatal-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
+             //Validacion para mostrar los datos en los campos select
+            for (let i in this.inputs) {
+                switch (this.inputs[i].name) {
+                    case 'lugar_control_prenatal':
+                     $('#select2-lugar_control_prenatal-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
                      break;
                   case 'lugar_atencion_parto':
-                     $('#select2-lugar_atencion_parto-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
+                     $('#select2-lugar_atencion_parto-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
                      break;
                   case 'lugar_control_embarazo':
-                     $('#select2-lugar_control_embarazo-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
+                     $('#select2-lugar_control_embarazo-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
                      break;
                   case 'establecimiento_control_sifilis':
-                     $('#select2-establecimiento_control_sifilis-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
+                     $('#select2-establecimiento_control_sifilis-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
                      break;
                   case 'establecimiento_control_vih':
-                     $('#select2-establecimiento_control_vih-container').text(_this12.deis_form_table_options[_this12.inputs[_i100].name][_this12.fdc[_this12.inputs[_i100].name]]);
+                     $('#select2-establecimiento_control_vih-container').text(
+                        this.deis_form_table_options[this.inputs[i].name][this.fdc[this.inputs[i].name]]
+                     );
                      break;
+                }
+             }
+            */
 
-               }
-               /*
-                if (this.inputs[i].name == 'lugar_control_prenatal' ||
-                this.inputs[i].name == 'lugar_atencion_parto' ||
-                this.inputs[i].name == 'lugar_control_embarazo' ||
-                this.inputs[i].name == 'establecimiento_control_sifilis' ||
-                this.inputs[i].name == 'establecimiento_control_vih' ||
-                this.inputs[i].name == 'atencion_parto'
-                ) {
-                if (this.fdc[this.inputs[i].name]) {
-                $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
-                }
-                }
-                */
-            }
+            /*
+             if (this.inputs[i].name == 'lugar_control_prenatal' ||
+             this.inputs[i].name == 'lugar_atencion_parto' ||
+             this.inputs[i].name == 'lugar_control_embarazo' ||
+             this.inputs[i].name == 'establecimiento_control_sifilis' ||
+             this.inputs[i].name == 'establecimiento_control_vih' ||
+             this.inputs[i].name == 'atencion_parto'
+             ) {
+             if (this.fdc[this.inputs[i].name]) {
+             $(`#${this.inputs[i].name}`).val(this.fdc[this.inputs[i].name]);
+             }
+             }
+             */
          }, function (response) {// error callback
             //console.log('Error datos_formulario: '+response);
          });
@@ -44266,12 +44363,14 @@ var FormularioController = new _vue2.default({
             // success callback
             _this13.inputs = response.body.inputs;
 
+            /*
             //Generamos limpieza de los campos con el plugin
             $('#select2-establecimiento_control_sifilis-container').val(null).empty();
             $('#select2-establecimiento_control_vih-container').val(null).empty();
             $('#select2-lugar_control_prenatal-container').val(null).empty();
             $('#select2-lugar_control_embarazo-container').val(null).empty();
             $('#select2-lugar_atencion_parto-container').val(null).empty();
+            */
 
             _this13.nav_tab_form_deis = response.body.nav_tab_form_deis;
             _this13.deis_form_table_options = response.body.deis_form_table_options;
@@ -44322,8 +44421,6 @@ var FormularioController = new _vue2.default({
 
    }
 });
-
-var ListaController = new _vue2.default({});
 
 },{"lodash":2,"moment-es6":3,"rut.js":6,"vee-validate":8,"vee-validate/dist/locale/es":7,"vue-resource":9,"vue/dist/vue.common":10,"vue2-filters":11}]},{},[12]);
 

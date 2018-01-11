@@ -116,11 +116,12 @@
                               <modal_seleccion_establecimiento
                                  :auth="auth"
                                  :deis_form_table_options="deis_form_table_options"
-                                 establecimiento_a_editar="establecimiento_a_editar"
+                                 :establecimiento_a_editar="establecimiento_a_editar"
                                  v-show="show_modal_seleccion_establecimiento == true">
                                  <h3 slot="header">
                                     Selección de establecimiento
-                                    <button class="btn btn-sm btn-default pull-right" @click.prevent="show_modal_seleccion_establecimiento = false">
+                                    <button class="btn btn-sm btn-default pull-right"
+                                            @click.prevent="show_modal_seleccion_establecimiento = false">
                                        Cerrar
                                     </button>
                                     <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
@@ -217,6 +218,7 @@
                                                              :pattern="i.pattern!=''?i.pattern:''"
                                                              :format="i.format!=''?i.format:''"
                                                              @change.prevent="verifica_validacion_change(i)"
+                                                             @click.prevent="verifica_validacion_click(i)"
                                                              @keyup.prevent="verifica_validacion_keyup(i)"
                                                              @blur.prevent="verifica_validacion_blur(i)"
                                                              v-model="fdc[i.name]"
