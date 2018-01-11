@@ -113,7 +113,17 @@
                                  </h3>
                               </modal_errores_formulario>
 
-
+                              <modal_seleccion_establecimiento
+                                 :auth="auth"
+                                 v-show="show_modal_seleccion_establecimiento == true">
+                                 <h3 slot="header">
+                                    Selección de establecimiento
+                                    <button class="btn btn-sm btn-default pull-right" @click.prevent="show_modal_seleccion_establecimiento = false">
+                                       Cerrar
+                                    </button>
+                                    <!--<button @click.prevent="" class="btn btn-sm btn-success pull-right">Guardar</button>-->
+                                 </h3>
+                              </modal_seleccion_establecimiento>
 
                               <div class="collapse" id="instructions">
                                  <h4>Instrucciones:</h4> <br>

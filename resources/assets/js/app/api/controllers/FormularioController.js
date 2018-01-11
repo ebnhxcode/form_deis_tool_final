@@ -1007,7 +1007,7 @@ const FormularioController = new Vue({
          },
       },
       'modal_seleccion_establecimiento':{
-         props: ['auth'],
+         props: ['auth', ''],
          template: `
 			   <!-- template for the modal component -->
 			   <transition name="modal">
@@ -1030,7 +1030,7 @@ const FormularioController = new Vue({
 
                                        <li role="presentation" class="active">
                                           <a href="#lista_establecimientos" aria-controls="lista_establecimientos" role="tab" data-toggle="tab">
-                                             Lista de inconsistencias al ingreso de información en fichas
+                                             Lista de establecimientos
                                           </a>
                                        </li>
 
