@@ -488,7 +488,6 @@ class FormDeisController extends Controller {
         }
     }
 
-
     public function confirmar_mensaje_informativo (Request $request) {
         if ($request->wantsJson()) {
             $user = User::find(auth()->user()->id);

@@ -28,7 +28,6 @@ Route::get('/demo', function () {
 });
 */
 
-
 Route::get('/admin/procesar_rut_resagados', 'AdminController@procesar_rut_resagados');
 Route::get('/admin/procesar_rut', 'AdminController@procesar_rut');
 
@@ -90,7 +89,7 @@ Route::get('/testapi', function () {
 */
 
 #Route::get('/formulario/testapi', 'FormDeisController@testapi');
-Route::get('/formulario/traspasar_dv_tabla_errores', 'FormDeisController@traspasar_dv_tabla_errores');
+#Route::get('/formulario/traspasar_dv_tabla_errores', 'FormDeisController@traspasar_dv_tabla_errores');
 #Route::get('/formulario/api_registro_civil', 'FormDeisController@api_registro_civil');
 
 Route::post ('/formulario/buscar_por_run' , 'FormDeisController@buscar_por_run') ;
