@@ -3547,6 +3547,8 @@ const FormularioController = new Vue({
 
                      Al aceptar el proceso, la página se refrescará automaticamente, pero se le sugiere también realizar el procedimiento mencionado anteriormente de forma manual.
 
+                     La nueva versión incluye un panel para el ingreso de los establecimientos de una forma más dinánmica, mediante un botón en lugar de una lista desplegable con los establecimientos. Este botón gatillará la aparición de un panel intuitivo donde usted podrá buscar el establecimiento por referencia o por código de establecimiento, permitiendo seleccionar  el establecimiento mediante un botón de color verde.
+
                      Se agradece su colaboración, saludos.
                      `,
                closeOnConfirm: true,
