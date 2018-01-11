@@ -37,6 +37,8 @@ const FormularioController = new Vue({
          'formularios_encontrados':{},
          'formulario_guardandose':false,
 
+         'establecimiento_a_editar':null,
+
          'spinner_form_deis':true,
 
          'inputTypes':{
@@ -1007,7 +1009,7 @@ const FormularioController = new Vue({
          },
       },
       'modal_seleccion_establecimiento':{
-         props: ['auth', ''],
+         props: ['auth', 'deis_form_table_options','establecimiento_a_editar'],
          template: `
 			   <!-- template for the modal component -->
 			   <transition name="modal">
@@ -1049,50 +1051,26 @@ const FormularioController = new Vue({
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
                                                    <dt>
-                                                      Inconsistencias identificadas
+                                                      Seleccione establecimiento
                                                    </dt>
                                                    <dd>
                                                       <div class="table-responsive">
                                                          <small class="text-info">Resultados encontrados</small>
-                                                         <br>
+                                                         <br>Establecimientos actuales
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
                                                                   <th>Accion</th>
-                                                                  <!-- <th>ID</th> -->
-                                                                  <!-- <th># Registro</th> -->
-                                                                  <th>Correlativo</th>
-                                                                  <th>Run Madre</th>
-                                                                  <th>Glosa Error</th>
-                                                                  <!-- <th>Estado</th> -->
+                                                                  <th>Codigo</th>
+                                                                  <th>Completo</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
 
-                                                               <tr v-for="e,i in auth['form_deis_errores']">
-                                                               <!-- v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'" -->
-                                                                  <td>
-                                                                     <button class="btn btn-xs btn-success"
-                                                                        @click.prevent="marcar_error_revisado(e.id)"
-                                                                         v-if="e.estado!='Revisado'">
-                                                                        <i class="fa fa-check"></i>
-                                                                        <small>Marcar Revisado</small>
-                                                                     </button>
-                                                                     <button class="btn btn-xs btn-info" v-else>
-                                                                        Revisado
-                                                                     </button>
-                                                                  </td>
-                                                                  <!-- <td>{{e.id}}</td> -->
-                                                                  <!-- <td>{{(i+1)}}</td> -->
-                                                                  <td>{{e.id_form_deis}}</td>
-                                                                  <td>{{e.run_madre+e.digito_verificador}}</td>
-                                                                  <td>{{e.glosa_error}}</td>
+                                                               {{deis_form_table_options['establecimiento_a_editar']}}
+                                                               <tr v-for="e,i in
+                                                                  deis_form_table_options['establecimiento_a_editar']">
 
-                                                                  <!--
-                                                                   <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
-                                                                     {{e.estado || 'Pendiente'}}
-                                                                  </td>
-                                                                  -->
 
                                                                </tr>
                                                             </tbody>
@@ -3069,26 +3047,13 @@ const FormularioController = new Vue({
          switch (input.id) {
 
             case 'lugar_control_prenatal':
-
-
-               break;
-
             case 'lugar_control_embarazo':
-
-               break;
-
             case 'establecimiento_control_sifilis':
-
-               break;
-
             case 'establecimiento_control_vih':
-
-               break;
-
             case 'lugar_atencion_parto':
-
+               this.establecimiento_a_editar = input.id;
+               this.show_modal_seleccion_establecimiento = true;
                break;
-
 
 
             case 'pais_origen':

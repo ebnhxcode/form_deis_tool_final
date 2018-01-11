@@ -115,6 +115,8 @@
 
                               <modal_seleccion_establecimiento
                                  :auth="auth"
+                                 :deis_form_table_options="deis_form_table_options"
+                                 establecimiento_a_editar="establecimiento_a_editar"
                                  v-show="show_modal_seleccion_establecimiento == true">
                                  <h3 slot="header">
                                     Selección de establecimiento
