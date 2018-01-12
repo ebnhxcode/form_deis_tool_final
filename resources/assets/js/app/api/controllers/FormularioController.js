@@ -54,7 +54,7 @@ const FormularioController = new Vue({
          'show_modal_formularios_encontrados':false,
          'show_modal_errores_formulario':false,
          'show_modal_seleccion_establecimiento':false,
-         'show_modal_mis_fichas':false,
+         'show_modal_mis_formularios':false,
 
          'spinner_iniciar':true,
          'spinner_finalizar':false,
@@ -1190,8 +1190,8 @@ const FormularioController = new Vue({
                                     <ul class="nav nav-tabs small" role="tablist">
 
                                        <li role="presentation" class="active">
-                                          <a href="#lista_establecimientos" aria-controls="lista_establecimientos" role="tab" data-toggle="tab">
-                                             Lista de establecimientos
+                                          <a href="#lista_mis_formularios" aria-controls="lista_mis_formularios" role="tab" data-toggle="tab">
+                                             Mis fichas gestionadas
                                           </a>
                                        </li>
 
@@ -1202,7 +1202,7 @@ const FormularioController = new Vue({
                                     <!-- Tab panes -->
                                     <div class="tab-content">
 
-                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_establecimientos">
+                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">
 
 
                                           <dl class="dl-vertical">
@@ -1238,15 +1238,17 @@ const FormularioController = new Vue({
                                                 </div><!-- /.form-group -->
 
                                                    <dt>
-                                                      Seleccione establecimiento
+                                                      Seleccione ficha
                                                    </dt>
                                                    <dd>
                                                       <div class="table-responsive">
                                                          <small class="text-info">Resultados encontrados</small>
-                                                         <br>Establecimientos actuales
+                                                         <br>
+
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
+
                                                                   <th>Accion</th>
                                                                   <th>Codigo</th>
                                                                   <th>Completo</th>
@@ -3652,6 +3654,19 @@ const FormularioController = new Vue({
       },
 
       visualizar_mis_formularios: function () {
+         Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.post('/formulario/mis_formularios', formData).then(response => { // success callback
+            console.log(response);
+
+
+
+         }, response => { // error callback
+            //console.log(response);
+            this.check_status_code(response.status);
+         });
+
+
          return this.show_modal_mis_formularios = true;
       },
 

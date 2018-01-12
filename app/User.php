@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->hasMany('App\FormDeisUser', 'id');
     }
 
+    public function form_deis_user () {
+        return $this->hasMany('App\FormDeisUser', 'id');
+    }
+
     public function form_deis_errores () {
         return $this->hasMany('App\FormDeisError', 'usuario_modifica_form_deis'); //el id con el que hace la referencia
     }

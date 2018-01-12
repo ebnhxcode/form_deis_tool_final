@@ -424,6 +424,16 @@ class FormDeisController extends Controller {
 
 
 
+    public function mis_formularios (Request $request) {
+        if ($request->wantsJson()) {
+            $user_mis_formularios = User::where('id', auth()->user()->id)->with('form_deis_user.form_deis')->first();
+            #dd($user_mis_formularios);
+            return response()->json([
+                'auth' => $user_mis_formularios,
+            ]);
+        }
+    }
+
     #Funcion que marca un registro como ocupado cuando se estaá modificando
     public function marcar_registro_form_deis (Request $request) {
         if ($request->wantsJson()) {

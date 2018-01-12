@@ -46,7 +46,7 @@
 
                               <button class="btn btn-sm btn-warning pull-right small" @click.prevent="visualizar_mis_formularios"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
-                                 Mis Formularios&nbsp;
+                                 Mis Fichas&nbsp;
                                  <i class="fa fa-check-square-o"></i>
                               </button><!-- .btn .btn-success -->
 
@@ -138,7 +138,7 @@
                                  :auth="auth"
                                  v-show="show_modal_mis_formularios == true">
                                  <h3 slot="header">
-                                    Selección de establecimiento
+                                    Mis fichas gestionadas
                                     <button class="btn btn-sm btn-default pull-right"
                                             @click.prevent="show_modal_mis_formularios = false">
                                        Cerrar

@@ -41447,7 +41447,7 @@ var FormularioController = new _vue2.default({
          'show_modal_formularios_encontrados': false,
          'show_modal_errores_formulario': false,
          'show_modal_seleccion_establecimiento': false,
-         'show_modal_mis_fichas': false,
+         'show_modal_mis_formularios': false,
 
          'spinner_iniciar': true,
          'spinner_finalizar': false,
