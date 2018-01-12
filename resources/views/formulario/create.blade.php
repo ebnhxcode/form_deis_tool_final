@@ -44,10 +44,10 @@
                               </button></button><!-- .btn .btn-info -->
                               --}}
 
-                              <button class="btn btn-sm btn-danger pull-right small" @click.prevent="visualizar_mis_formularios"
+                              <button class="btn btn-sm btn-warning pull-right small" @click.prevent="visualizar_mis_formularios"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
                                  Mis Formularios&nbsp;
-                                 <i class="fa fa-form"></i>
+                                 <i class="fa fa-check-square-o"></i>
                               </button><!-- .btn .btn-success -->
 
                               <button class="btn btn-sm btn-danger pull-right small" @click.prevent="visualizar_errores"
