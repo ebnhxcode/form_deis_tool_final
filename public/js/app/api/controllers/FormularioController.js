@@ -41854,7 +41854,7 @@ var FormularioController = new _vue2.default({
       },
       'modal_mis_formularios': {
          props: ['auth'],
-         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_establecimientos" aria-controls="lista_establecimientos" role="tab" data-toggle="tab">\n                                             Lista de establecimientos\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_establecimientos">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n\n\n\n\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                              <!-- Text animacion al termino de busqueda -->\n                                                <transition name="fade" mode="out-in">\n                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n                                                </transition>\n\n                                                <!-- Input filterTerm -->\n                                                <div class="form-group">\n                                                   <div class="input-group input-group-sm">\n                                                      <div class="input-group-addon">\n                                                         <i class="fa fa-font"></i>\n                                                      </div>\n                                                      <!-- Input para escribir el termino a buscar -->\n                                                      <input type="text" class="form-control" placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                             v-model="filterTerm" id="filterTerm">\n                                                      <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                         <span class="input-group-btn">\n                                                            <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                               Limpiar\n                                                            </button>\n                                                         </span><!-- .input-group-btn -->\n                                                   </div><!-- /.input-group -->\n                                                </div><!-- /.form-group -->\n\n                                                   <dt>\n                                                      Seleccione establecimiento\n                                                   </dt>\n                                                   <dd>\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>Establecimientos actuales\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n                                                                  <th>Accion</th>\n                                                                  <th>Codigo</th>\n                                                                  <th>Completo</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="e in\n                                                               filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">\n\n                                                                  <td>\n                                                                     <button class="btn btn-xs btn-success"\n                                                                        @click.prevent="seleccionar_establecimiento(e[\'$key\'])">\n                                                                        <i class="fa fa-check"></i>\n                                                                        <small>Seleccionar</small>\n                                                                     </button>\n                                                                  </td>\n                                                                  <td>\n                                                                     {{e["$key"]}}\n                                                                  </td>\n                                                                  <td>\n                                                                     {{e["$value"]}}\n                                                                  </td>\n\n                                                               </tr>\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_establecimientos -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
+         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_mis_formularios" aria-controls="lista_mis_formularios" role="tab" data-toggle="tab">\n                                             Mis fichas gestionadas\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n\n\n\n\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                              <!-- Text animacion al termino de busqueda -->\n                                                <transition name="fade" mode="out-in">\n                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n                                                </transition>\n\n                                                <!-- Input filterTerm -->\n                                                <div class="form-group">\n                                                   <div class="input-group input-group-sm">\n                                                      <div class="input-group-addon">\n                                                         <i class="fa fa-font"></i>\n                                                      </div>\n                                                      <!-- Input para escribir el termino a buscar -->\n                                                      <input type="text" class="form-control" placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                             v-model="filterTerm" id="filterTerm">\n                                                      <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                         <span class="input-group-btn">\n                                                            <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                               Limpiar\n                                                            </button>\n                                                         </span><!-- .input-group-btn -->\n                                                   </div><!-- /.input-group -->\n                                                </div><!-- /.form-group -->\n\n                                                   <dt>\n                                                      Seleccione ficha\n                                                   </dt>\n                                                   <dd>\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n\n                                                                  <th>Accion</th>\n                                                                  <th>Codigo</th>\n                                                                  <th>Completo</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="e in\n                                                               filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">\n\n                                                                  <td>\n                                                                     <button class="btn btn-xs btn-success"\n                                                                        @click.prevent="seleccionar_establecimiento(e[\'$key\'])">\n                                                                        <i class="fa fa-check"></i>\n                                                                        <small>Seleccionar</small>\n                                                                     </button>\n                                                                  </td>\n                                                                  <td>\n                                                                     {{e["$key"]}}\n                                                                  </td>\n                                                                  <td>\n                                                                     {{e["$value"]}}\n                                                                  </td>\n\n                                                               </tr>\n\n\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_establecimientos -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
          name: 'modal_mis_formularios',
          data: function data() {
             return {
@@ -43940,6 +43940,19 @@ var FormularioController = new _vue2.default({
       },
 
       visualizar_mis_formularios: function visualizar_mis_formularios() {
+         var _this8 = this;
+
+         _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+         this.$http.post('/formulario/mis_formularios').then(function (response) {
+            // success callback
+            console.log(response);
+         }, function (response) {
+            // error callback
+            //console.log(response);
+            _this8.check_status_code(response.status);
+         });
+
          return this.show_modal_mis_formularios = true;
       },
 
@@ -44037,27 +44050,27 @@ var FormularioController = new _vue2.default({
       },
 
       fetch_formulario: function fetch_formulario() {
-         var _this8 = this;
+         var _this9 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
             // success callback
             //Se reciben los recursos desde el backend para renderizar el formulario
-            _this8.instructions = response.body.instructions;
-            _this8.auth = response.body.auth;
+            _this9.instructions = response.body.instructions;
+            _this9.auth = response.body.auth;
 
             //Se disponibilizan para edición, todos los formularios tomados por el usuario en sesión.
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            _this8.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
+            _this9.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
                //console.log(response);
             }, function (response) {// error callback
                //console.log(response);
             });
 
             //Fx para checkear mensajes informativos directos a los usuarios
-            _this8.check_mensajes_informativos();
+            _this9.check_mensajes_informativos();
 
             //Fx para checkear si los usuarios aceptaron los terminos y condiciones
-            _this8.check_acepta_terminos();
+            _this9.check_acepta_terminos();
          }, function (response) {// error callback
             //console.log('Error fetch_formulario: '+response);
          });
@@ -44066,7 +44079,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario: function guardar_formulario(tabName) {
-         var _this9 = this;
+         var _this10 = this;
 
          //Condicionales previas, preventivas al guardado, para evitar doble envío.
          if (this.formulario_guardandose == false) {
@@ -44135,18 +44148,18 @@ var FormularioController = new _vue2.default({
                //alert('Guardado');
 
                //Si guardar salio bien
-               _this9.hayGuardadoActivo = true;
-               _this9.idFormularioActivo = _this9.fdc.id;
+               _this10.hayGuardadoActivo = true;
+               _this10.idFormularioActivo = _this10.fdc.id;
                $('.circle-loader').toggleClass('load-complete');
                $('.checkmark').toggle();
-               _this9.mini_loader = false;
+               _this10.mini_loader = false;
                swal("Guardado", "El registro se guardó correctamente!", "success");
-               _this9.formulario_guardandose = false;
+               _this10.formulario_guardandose = false;
             }, function (response) {
                // error callback
                //console.log(response);
-               _this9.check_status_code(response.status);
-               _this9.formulario_guardandose = false;
+               _this10.check_status_code(response.status);
+               _this10.formulario_guardandose = false;
             });
          } else {
             alert('\n               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.\n               Vuelva a intentar en 10 segundos.\n            ');
@@ -44156,7 +44169,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario_completo_silencioso: function guardar_formulario_completo_silencioso() {
-         var _this10 = this;
+         var _this11 = this;
 
          //Carga el loader
          this.mini_loader = true;
@@ -44202,11 +44215,11 @@ var FormularioController = new _vue2.default({
             //console.log(response.status);
 
             //Si guardar salio bien
-            _this10.hayGuardadoActivo = true;
-            _this10.idFormularioActivo = _this10.fdc.id;
+            _this11.hayGuardadoActivo = true;
+            _this11.idFormularioActivo = _this11.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this10.mini_loader = false;
+            _this11.mini_loader = false;
             /*
              swal("Guardado", `
              El registro se ha guardado automáticamente con éxito.
@@ -44216,14 +44229,14 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this10.check_status_code(response.status);
+            _this11.check_status_code(response.status);
          });
 
          return;
       },
 
       guardar_formulario_completo: function guardar_formulario_completo() {
-         var _this11 = this;
+         var _this12 = this;
 
          //Carga el loader
          this.mini_loader = true;
@@ -44269,13 +44282,13 @@ var FormularioController = new _vue2.default({
             //console.log(response.status);
 
             //alert('Guardado');
-            _this11.buscar_formulario();
+            _this12.buscar_formulario();
             //Si guardar salio bien
-            _this11.hayGuardadoActivo = true;
-            _this11.idFormularioActivo = _this11.fdc.id;
+            _this12.hayGuardadoActivo = true;
+            _this12.idFormularioActivo = _this12.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this11.mini_loader = false;
+            _this12.mini_loader = false;
             /*
             swal("Guardado", `
                El registro se ha guardado automáticamente con éxito.
@@ -44285,7 +44298,7 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this11.check_status_code(response.status);
+            _this12.check_status_code(response.status);
          });
 
          return;
@@ -44297,23 +44310,23 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this12 = this;
+         var _this13 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this12.inputs = response.body.inputs;
-            _this12.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this12.deis_form_table_options = response.body.deis_form_table_options;
-            _this12.pais_origen = response.body.pais_origen;
-            _this12.auth = response.body.auth;
+            _this13.inputs = response.body.inputs;
+            _this13.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this13.deis_form_table_options = response.body.deis_form_table_options;
+            _this13.pais_origen = response.body.pais_origen;
+            _this13.auth = response.body.auth;
 
-            if (_this12.fdc_temp['form_deis_user'] && _this12.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this12.fdc_temp['form_deis_user'];
+            if (_this13.fdc_temp['form_deis_user'] && _this13.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this13.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this12.auth.id) {
-                     _this12.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this13.auth.id) {
+                     _this13.permiso_temporal_edicion = true;
                   }
                }
             }
@@ -44377,11 +44390,11 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this13 = this;
+         var _this14 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this13.inputs = response.body.inputs;
+            _this14.inputs = response.body.inputs;
 
             /*
             //Generamos limpieza de los campos con el plugin
@@ -44392,27 +44405,27 @@ var FormularioController = new _vue2.default({
             $('#select2-lugar_atencion_parto-container').val(null).empty();
             */
 
-            _this13.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this13.deis_form_table_options = response.body.deis_form_table_options;
-            _this13.pais_origen = response.body.pais_origen;
-            _this13.fdc = response.body.fdc;
-            _this13.fdc_temp = response.body.fdc;
+            _this14.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this14.deis_form_table_options = response.body.deis_form_table_options;
+            _this14.pais_origen = response.body.pais_origen;
+            _this14.fdc = response.body.fdc;
+            _this14.fdc_temp = response.body.fdc;
 
-            _this13.formularioActivoObj = response.body.fdc;
-            _this13.auth = response.body.auth;
+            _this14.formularioActivoObj = response.body.fdc;
+            _this14.auth = response.body.auth;
 
-            if (_this13.fdc_temp['form_deis_user'] && _this13.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this13.fdc_temp['form_deis_user'];
+            if (_this14.fdc_temp['form_deis_user'] && _this14.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this14.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this13.auth.id) {
-                     _this13.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this14.auth.id) {
+                     _this14.permiso_temporal_edicion = true;
                   }
                }
             }
 
-            _this13.validar_validaciones_previas();
+            _this14.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit

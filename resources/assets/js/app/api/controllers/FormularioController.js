@@ -1274,6 +1274,8 @@ const FormularioController = new Vue({
                                                                   </td>
 
                                                                </tr>
+
+
                                                             </tbody>
                                                          </table>
                                                       </div><!-- .table-responsive -->
@@ -1311,11 +1313,16 @@ const FormularioController = new Vue({
          data () {
             return {
                'filterTerm':null,
+               'mis_formularios':{},
+
             }
          },
          ready () {
          },
          created () {
+            console.log(auth);
+            //this.mis_formularios =
+
          },
          methods: {
 
@@ -3656,7 +3663,7 @@ const FormularioController = new Vue({
       visualizar_mis_formularios: function () {
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
-         this.$http.post('/formulario/mis_formularios', formData).then(response => { // success callback
+         this.$http.post('/formulario/mis_formularios').then(response => { // success callback
             console.log(response);
 
 
