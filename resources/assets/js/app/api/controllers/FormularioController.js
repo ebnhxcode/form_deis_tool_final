@@ -54,6 +54,7 @@ const FormularioController = new Vue({
          'show_modal_formularios_encontrados':false,
          'show_modal_errores_formulario':false,
          'show_modal_seleccion_establecimiento':false,
+         'show_modal_mis_fichas':false,
 
          'spinner_iniciar':true,
          'spinner_finalizar':false,
@@ -1162,6 +1163,160 @@ const FormularioController = new Vue({
                this.$parent.show_modal_seleccion_establecimiento = false;
                return 0;
             },
+         },
+         watch: {
+         },
+      },
+      'modal_mis_formularios':{
+         props: ['auth'],
+         template: `
+			   <!-- template for the modal component -->
+			   <transition name="modal">
+				   <div class="modal-mask">
+					   <div class="modal-wrapper">
+					      <div class="modal-container">
+
+						      <div class="modal-header">
+							      <slot name="header"></slot>
+						      </div>
+
+						      <div class="modal-body">
+							      <slot name="body">
+
+                              <div id="" class="panel with-nav-tabs panel-primary">
+                                 <!-- Items elementos de cabecera -->
+                                 <div class="panel-heading">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs small" role="tablist">
+
+                                       <li role="presentation" class="active">
+                                          <a href="#lista_establecimientos" aria-controls="lista_establecimientos" role="tab" data-toggle="tab">
+                                             Lista de establecimientos
+                                          </a>
+                                       </li>
+
+                                    </ul>
+                                 </div><!-- .panel-heading -->
+
+                                 <div class="panel-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+
+                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_establecimientos">
+
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+
+
+
+
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                              <!-- Text animacion al termino de busqueda -->
+                                                <transition name="fade" mode="out-in">
+                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
+                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
+                                                </transition>
+
+                                                <!-- Input filterTerm -->
+                                                <div class="form-group">
+                                                   <div class="input-group input-group-sm">
+                                                      <div class="input-group-addon">
+                                                         <i class="fa fa-font"></i>
+                                                      </div>
+                                                      <!-- Input para escribir el termino a buscar -->
+                                                      <input type="text" class="form-control" placeholder="Ingrese criterio de búsqueda para filtrar"
+                                                             v-model="filterTerm" id="filterTerm">
+                                                      <!-- Boton para limpiar contenido del filtro por criterio -->
+                                                         <span class="input-group-btn">
+                                                            <button @click.prevent="filterTerm=''" type="button" class="btn btn-default">
+                                                               Limpiar
+                                                            </button>
+                                                         </span><!-- .input-group-btn -->
+                                                   </div><!-- /.input-group -->
+                                                </div><!-- /.form-group -->
+
+                                                   <dt>
+                                                      Seleccione establecimiento
+                                                   </dt>
+                                                   <dd>
+                                                      <div class="table-responsive">
+                                                         <small class="text-info">Resultados encontrados</small>
+                                                         <br>Establecimientos actuales
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <th>Codigo</th>
+                                                                  <th>Completo</th>
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                               <tr v-for="e in
+                                                               filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">
+
+                                                                  <td>
+                                                                     <button class="btn btn-xs btn-success"
+                                                                        @click.prevent="seleccionar_establecimiento(e['$key'])">
+                                                                        <i class="fa fa-check"></i>
+                                                                        <small>Seleccionar</small>
+                                                                     </button>
+                                                                  </td>
+                                                                  <td>
+                                                                     {{e["$key"]}}
+                                                                  </td>
+                                                                  <td>
+                                                                     {{e["$value"]}}
+                                                                  </td>
+
+                                                               </tr>
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_establecimientos -->
+                                    </div><!-- .panel-heading -->
+                                 </div><!-- .panel-heading -->
+                              </div><!-- .panel-heading -->
+
+
+							      </slot>
+						      </div>
+
+						      <!--
+						      <div class="modal-footer">
+							      <slot name="footer">
+							         <button class="btn btn-sm btn-success" @click="$emit('close')">
+								         Aceptar
+							         </button>
+                           </slot>
+						      </div>
+						      -->
+					      </div>
+                  </div>
+				   </div>
+			   </transition>
+			`,
+         name: 'modal_mis_formularios',
+         data () {
+            return {
+               'filterTerm':null,
+            }
+         },
+         ready () {
+         },
+         created () {
+         },
+         methods: {
+
          },
          watch: {
          },
@@ -3494,6 +3649,10 @@ const FormularioController = new Vue({
 
       visualizar_errores: function () {
          return this.show_modal_errores_formulario = true;
+      },
+
+      visualizar_mis_formularios: function () {
+         return this.show_modal_mis_formularios = true;
       },
 
       crear_nuevo_formulario: function () {
