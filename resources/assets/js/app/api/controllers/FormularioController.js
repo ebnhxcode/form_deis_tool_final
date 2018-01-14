@@ -1256,6 +1256,9 @@ const FormularioController = new Vue({
                                                             </thead>
                                                             <tbody>
 
+                                                            <!--
+
+
                                                                <tr v-for="e in
                                                                filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">
 
@@ -1274,6 +1277,9 @@ const FormularioController = new Vue({
                                                                   </td>
 
                                                                </tr>
+
+
+                                                            -->
 
 
                                                             </tbody>
@@ -1318,9 +1324,10 @@ const FormularioController = new Vue({
             }
          },
          ready () {
+            console.log(this.auth);
          },
          created () {
-            console.log(auth);
+
             //this.mis_formularios =
 
          },
@@ -3664,7 +3671,7 @@ const FormularioController = new Vue({
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.post('/formulario/mis_formularios').then(response => { // success callback
-            console.log(response);
+            //console.log(response);
 
 
 
