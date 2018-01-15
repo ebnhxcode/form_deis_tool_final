@@ -1058,7 +1058,7 @@ const FormularioController = new Vue({
 
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
-                                              <!-- Text animacion al termino de busqueda -->
+                                                <!-- Text animacion al termino de busqueda -->
                                                 <transition name="fade" mode="out-in">
                                                    <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
                                                    <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
@@ -1211,10 +1211,32 @@ const FormularioController = new Vue({
                                           <dl class="dl-vertical">
                                              <div class="row">
 
-
-
-
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <!-- Text animacion al termino de busqueda -->
+                                                   <transition name="fade" mode="out-in">
+                                                      <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
+                                                      <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
+                                                   </transition>
+
+                                                   <!-- Input filterTerm -->
+                                                   <div class="form-group">
+                                                      <div class="input-group input-group-sm">
+                                                         <div class="input-group-addon">
+                                                            <i class="fa fa-font"></i>
+                                                         </div>
+                                                         <!-- Input para escribir el termino a buscar -->
+                                                         <input type="text" class="form-control" placeholder="Ingrese criterio de búsqueda para filtrar"
+                                                                v-model="filterTerm" id="filterTerm">
+                                                         <!-- Boton para limpiar contenido del filtro por criterio -->
+                                                            <span class="input-group-btn">
+                                                               <button @click.prevent="filterTerm=''" type="button" class="btn btn-default">
+                                                                  Limpiar
+                                                               </button>
+                                                            </span><!-- .input-group-btn -->
+                                                      </div><!-- /.input-group -->
+                                                   </div><!-- /.form-group -->
+
 
                                                    <dt>
                                                       Seleccione ficha
@@ -1238,8 +1260,8 @@ const FormularioController = new Vue({
 
 
                                                                <tr v-for="f,i in
-                                                                  mis_formularios"
-                                                                  v-if="mis_formularios != null">
+                                                                  filterBy(mis_formularios, filterTerm)"
+                                                                  v-if="f.form_deis != null">
 
                                                                   <td>
                                                                      <button class="btn btn-xs btn-info"
@@ -1248,24 +1270,18 @@ const FormularioController = new Vue({
                                                                      </button>
                                                                   </td>
                                                                   <td>
-                                                                     <pre>
-                                                                        {{f.form_deis}}
-                                                                     </pre>
+                                                                     {{f.form_deis.id}}
                                                                   </td>
 
-                                                                  <td>
-
-                                                                     <!--
-                                                                     {{mis_formularios[i]['form_deis']}}
+                                                                  <td v-if="mis_formularios[i].form_deis.run_madre != null &&
+                                                                  mis_formularios[i].form_deis.digito_verificador != null">
                                                                      {{mis_formularios[i].form_deis.run_madre}}
-                                                                      mis_formularios[i].digito_verificador}}
-                                                                     -->
-
+                                                                     {{mis_formularios[i].digito_verificador}}
+                                                                  </td>
+                                                                  <td v-else>
+                                                                     Run sin ingresar
                                                                   </td>
 
-                                                               </tr>
-                                                               <tr v-else>
-                                                                  No tiene formularios gestionados.
                                                                </tr>
 
 
