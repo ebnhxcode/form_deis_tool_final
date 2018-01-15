@@ -37,6 +37,9 @@ const FormularioController = new Vue({
          'formularios_encontrados':{},
          'formulario_guardandose':false,
 
+         //Objeto para modal Mis Formularios gestionados
+         'mis_formularios':{},
+
          'establecimiento_a_editar':null,
 
          'spinner_form_deis':true,
@@ -1168,7 +1171,7 @@ const FormularioController = new Vue({
          },
       },
       'modal_mis_formularios':{
-         props: ['auth'],
+         props: ['auth', 'mis_formularios'],
          template: `
 			   <!-- template for the modal component -->
 			   <transition name="modal">
@@ -1319,12 +1322,12 @@ const FormularioController = new Vue({
          data () {
             return {
                'filterTerm':null,
-               'mis_formularios':{},
+               //'mis_formularios':{},
 
             }
          },
          ready () {
-            console.log(this.auth);
+            //console.log(this.auth);
          },
          created () {
 
@@ -3672,8 +3675,11 @@ const FormularioController = new Vue({
 
          this.$http.post('/formulario/mis_formularios').then(response => { // success callback
             //console.log(response);
+            if (response.status == 200) {
 
+               console.log(response.body);
 
+            }
 
          }, response => { // error callback
             //console.log(response);
