@@ -1253,39 +1253,50 @@ const FormularioController = new Vue({
                                                                   <th>Accion</th>
                                                                   <th>Correlativo</th>
                                                                   <th>Run Madre</th>
+                                                                  <th>Nombre</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
 
-
-
-                                                               <tr v-for="f,i in
+                                                               <tr v-for="f in
                                                                   filterBy(mis_formularios, filterTerm)"
                                                                   v-if="f.form_deis != null">
 
+                                                                  <!-- Botón de acción -->
                                                                   <td>
                                                                      <button class="btn btn-xs btn-info"
                                                                         @click.prevent="null">
                                                                         <i class="fa fa-eye"></i>
                                                                      </button>
                                                                   </td>
+
+                                                                  <!-- Correlativo -->
                                                                   <td>
                                                                      {{f.form_deis.id}}
                                                                   </td>
 
-                                                                  <td v-if="mis_formularios[i].form_deis.run_madre != null &&
-                                                                  mis_formularios[i].form_deis.digito_verificador != null">
-                                                                     {{mis_formularios[i].form_deis.run_madre}}
-                                                                     {{mis_formularios[i].digito_verificador}}
+                                                                  <!-- Run madre y dv -->
+                                                                  <td v-if="f.form_deis.run_madre != null &&
+                                                                     f.form_deis.digito_verificador != null">
+                                                                     {{
+                                                                        f.form_deis.run_madre
+                                                                        +""+
+                                                                        f.form_deis.digito_verificador
+                                                                     }}
                                                                   </td>
-                                                                  <td v-else>
+                                                                  <td v-else class="text-warning">
                                                                      Run sin ingresar
                                                                   </td>
 
+                                                                  <!-- Nombre Paciente -->
+                                                                  <td>
+                                                                     {{f.form_deis.nombres_madre ||
+                                                                        'Sin Nombre'}}
+                                                                     {{f.form_deis.primer_apellido_madre ||
+                                                                        'Sin Apellido'}}
+                                                                  </td>
+
                                                                </tr>
-
-
-
 
                                                             </tbody>
                                                          </table>
