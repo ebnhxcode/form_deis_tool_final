@@ -1250,8 +1250,8 @@ const FormularioController = new Vue({
                                                                <tr>
 
                                                                   <th>Accion</th>
-                                                                  <th>Codigo</th>
-                                                                  <th>Completo</th>
+                                                                  <th>Código</th>
+                                                                  <th>Run Madre</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
