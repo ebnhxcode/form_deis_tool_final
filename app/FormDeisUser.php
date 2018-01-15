@@ -21,6 +21,6 @@ class FormDeisUser extends Model
    }
 
    public function form_deis () {
-      return $this->belongsTo('App\FormDeis','id');
+      return $this->belongsTo('App\FormDeis','id_form_deis');
    }
 }

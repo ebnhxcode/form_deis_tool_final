@@ -425,9 +425,13 @@ class FormDeisController extends Controller {
 
 
     public function mis_formularios (Request $request) {
+        #if ($request->wantsJson() || true) {
         if ($request->wantsJson()) {
+            #$user_mis_formularios = FormDeisUser::where('usuario_modifica_form_deis', auth()->user()->id)->with('form_deis')->get();
             $user_mis_formularios = FormDeisUser::where('usuario_modifica_form_deis', auth()->user()->id)->with('form_deis')->get();
-            #dd($user_mis_formularios);
+
+
+            //dd($user_mis_formularios);
             return response()->json([
                 'mis_formularios' => $user_mis_formularios,
             ]);

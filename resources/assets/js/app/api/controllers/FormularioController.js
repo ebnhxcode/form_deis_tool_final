@@ -38,7 +38,7 @@ const FormularioController = new Vue({
          'formulario_guardandose':false,
 
          //Objeto para modal Mis Formularios gestionados
-         'mis_formularios':{},
+         'mis_formularios':[],
 
          'establecimiento_a_editar':null,
 
@@ -1216,30 +1216,6 @@ const FormularioController = new Vue({
 
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
-                                              <!-- Text animacion al termino de busqueda -->
-                                                <transition name="fade" mode="out-in">
-                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
-                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
-                                                </transition>
-
-                                                <!-- Input filterTerm -->
-                                                <div class="form-group">
-                                                   <div class="input-group input-group-sm">
-                                                      <div class="input-group-addon">
-                                                         <i class="fa fa-font"></i>
-                                                      </div>
-                                                      <!-- Input para escribir el termino a buscar -->
-                                                      <input type="text" class="form-control" placeholder="Ingrese criterio de búsqueda para filtrar"
-                                                             v-model="filterTerm" id="filterTerm">
-                                                      <!-- Boton para limpiar contenido del filtro por criterio -->
-                                                         <span class="input-group-btn">
-                                                            <button @click.prevent="filterTerm=''" type="button" class="btn btn-default">
-                                                               Limpiar
-                                                            </button>
-                                                         </span><!-- .input-group-btn -->
-                                                   </div><!-- /.input-group -->
-                                                </div><!-- /.form-group -->
-
                                                    <dt>
                                                       Seleccione ficha
                                                    </dt>
@@ -1253,36 +1229,46 @@ const FormularioController = new Vue({
                                                                <tr>
 
                                                                   <th>Accion</th>
-                                                                  <th>Código</th>
+                                                                  <th>Correlativo</th>
                                                                   <th>Run Madre</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
 
-                                                            <!--
 
 
-                                                               <tr v-for="e in
-                                                               filterBy(deis_form_table_options[establecimiento_a_editar], filterTerm)">
+                                                               <tr v-for="f,i in
+                                                                  mis_formularios"
+                                                                  v-if="mis_formularios != null">
 
                                                                   <td>
-                                                                     <button class="btn btn-xs btn-success"
-                                                                        @click.prevent="seleccionar_establecimiento(e['$key'])">
-                                                                        <i class="fa fa-check"></i>
-                                                                        <small>Seleccionar</small>
+                                                                     <button class="btn btn-xs btn-info"
+                                                                        @click.prevent="null">
+                                                                        <i class="fa fa-eye"></i>
                                                                      </button>
                                                                   </td>
                                                                   <td>
-                                                                     {{e["$key"]}}
+                                                                     <pre>
+                                                                        {{f.form_deis}}
+                                                                     </pre>
                                                                   </td>
+
                                                                   <td>
-                                                                     {{e["$value"]}}
+
+                                                                     <!--
+                                                                     {{mis_formularios[i]['form_deis']}}
+                                                                     {{mis_formularios[i].form_deis.run_madre}}
+                                                                      mis_formularios[i].digito_verificador}}
+                                                                     -->
+
                                                                   </td>
 
                                                                </tr>
+                                                               <tr v-else>
+                                                                  No tiene formularios gestionados.
+                                                               </tr>
 
 
-                                                            -->
 
 
                                                             </tbody>
@@ -3343,7 +3329,7 @@ const FormularioController = new Vue({
 
          for (let i in this.inputs){
             //this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóúscript;:\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
-            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.\:ÑÍÉÓÁÚ@_]/g, '');
+            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\+\\/,\.\:ÑÍÉÓÁÚ@_]/g, '');
          }
 
          switch (input.id) {
@@ -3674,18 +3660,24 @@ const FormularioController = new Vue({
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.post('/formulario/mis_formularios').then(response => { // success callback
-            //console.log(response);
+            //console.log(response.body.mis_formularios);
             if (response.status == 200) {
-
-               console.log(response.body);
-
+               if (response.body.mis_formularios != null && response.body.mis_formularios.length > 0) {
+                  this.mis_formularios = response.body.mis_formularios;
+                  /*
+                  for (var i in this.mis_formularios) {
+                     if (this.mis_formularios[i].form_deis != null) {console.log(this.mis_formularios[i].form_deis.id);}
+                     else{console.log('Formulario eliminado.');}
+                  }
+                  */
+               }
             }
 
+            //console.log(this.mis_formularios);
          }, response => { // error callback
             //console.log(response);
             this.check_status_code(response.status);
          });
-
 
          return this.show_modal_mis_formularios = true;
       },
@@ -3733,7 +3725,7 @@ const FormularioController = new Vue({
             swal({
                title: "Información importante sobre actualizaciones",
                text: `
-                     Estimado/a usuario/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la página.
+                     Estimado/a usuariore/a, le informamos que se encuentra utilizando una version antigua del aplicativo, le sugerimos que presione la siguiente combinacion de teclas para incorporar las nuevas funcionalidades y actualizar la página.
 
                      Ctrl + F5
                      o
@@ -3741,7 +3733,7 @@ const FormularioController = new Vue({
 
                      Al aceptar el proceso, la página se refrescará automaticamente, pero se le sugiere también realizar el procedimiento mencionado anteriormente de forma manual.
 
-                     La nueva versión incluye un panel para el ingreso de los establecimientos de una forma más dinánmica, mediante un botón en lugar de una lista desplegable con los establecimientos. Este botón gatillará la aparición de un panel intuitivo donde usted podrá buscar el establecimiento por referencia o por código de establecimiento, permitiendo seleccionar  el establecimiento mediante un botón de color verde.
+                     La nueva versión incluye correcciones en la selección de fármacos.
 
                      Se agradece su colaboración, saludos.
                      `,
