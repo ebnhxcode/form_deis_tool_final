@@ -18,9 +18,6 @@
   <component name="ChangeListManager">
     <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" afterPath="$PROJECT_DIR$/public/js/app/api/controllers/FormularioController.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
     </list>
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +42,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5251142">
-              <caret line="1285" column="59" selection-start-line="1285" selection-start-column="59" selection-end-line="1285" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.2888128">
+              <caret line="180" column="32" selection-start-line="180" selection-start-column="32" selection-end-line="180" selection-end-column="32" />
               <folding>
                 <element signature="e#2405#2764#0" expanded="false" />
                 <element signature="e#2787#3069#0" expanded="false" />
@@ -57,6 +54,7 @@
                 <element signature="e#34192#41866#0" expanded="false" />
                 <element signature="e#41901#50242#0" expanded="false" />
                 <element signature="e#50284#58587#0" expanded="false" />
+                <element signature="e#58619#68385#0" expanded="false" />
                 <element signature="e#68676#70268#0" expanded="false" />
                 <element signature="e#70370#71900#0" expanded="false" />
                 <element signature="e#72061#72661#0" expanded="false" />
@@ -77,10 +75,10 @@
                 <element signature="e#188399#188478#0" expanded="false" />
                 <element signature="e#188523#192323#0" expanded="false" />
                 <element signature="e#192367#194795#0" expanded="false" />
-                <marker date="1516041446598" expanded="true" signature="3304:3771" placeholder="..." />
-                <marker date="1516041446598" expanded="true" signature="4034:4194" placeholder="..." />
-                <marker date="1516041446598" expanded="true" signature="4485:4645" placeholder="..." />
-                <marker date="1516041446598" expanded="true" signature="157892:158018" placeholder="{...}" />
+                <marker date="1516042252522" expanded="true" signature="3304:3771" placeholder="..." />
+                <marker date="1516042252522" expanded="true" signature="4034:4194" placeholder="..." />
+                <marker date="1516042252522" expanded="true" signature="4485:4645" placeholder="..." />
+                <marker date="1516042252522" expanded="true" signature="157892:158018" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -1071,8 +1069,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5251142">
-          <caret line="1285" column="59" selection-start-line="1285" selection-start-column="59" selection-end-line="1285" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.2888128">
+          <caret line="180" column="32" selection-start-line="180" selection-start-column="32" selection-end-line="180" selection-end-column="32" />
           <folding>
             <element signature="e#2405#2764#0" expanded="false" />
             <element signature="e#2787#3069#0" expanded="false" />
@@ -1083,6 +1081,7 @@
             <element signature="e#34192#41866#0" expanded="false" />
             <element signature="e#41901#50242#0" expanded="false" />
             <element signature="e#50284#58587#0" expanded="false" />
+            <element signature="e#58619#68385#0" expanded="false" />
             <element signature="e#68676#70268#0" expanded="false" />
             <element signature="e#70370#71900#0" expanded="false" />
             <element signature="e#72061#72661#0" expanded="false" />
@@ -1103,10 +1102,10 @@
             <element signature="e#188399#188478#0" expanded="false" />
             <element signature="e#188523#192323#0" expanded="false" />
             <element signature="e#192367#194795#0" expanded="false" />
-            <marker date="1516041446598" expanded="true" signature="3304:3771" placeholder="..." />
-            <marker date="1516041446598" expanded="true" signature="4034:4194" placeholder="..." />
-            <marker date="1516041446598" expanded="true" signature="4485:4645" placeholder="..." />
-            <marker date="1516041446598" expanded="true" signature="157892:158018" placeholder="{...}" />
+            <marker date="1516042252522" expanded="true" signature="3304:3771" placeholder="..." />
+            <marker date="1516042252522" expanded="true" signature="4034:4194" placeholder="..." />
+            <marker date="1516042252522" expanded="true" signature="4485:4645" placeholder="..." />
+            <marker date="1516042252522" expanded="true" signature="157892:158018" placeholder="{...}" />
           </folding>
         </state>
       </provider>
