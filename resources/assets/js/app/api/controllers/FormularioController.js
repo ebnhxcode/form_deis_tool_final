@@ -34,6 +34,8 @@ const FormularioController = new Vue({
          'fdc_temp':[],
          'auth':[],
 
+         'formulario_tmp':{},
+
          'formularios_encontrados':{},
          'formulario_guardandose':false,
 
@@ -1241,7 +1243,7 @@ const FormularioController = new Vue({
                                                    <dt>
                                                       Seleccione ficha
                                                    </dt>
-                                                   <dd>
+                                                   <dd v-if="show_mis_formularios_grid == true">
                                                       <div class="table-responsive">
                                                          <small class="text-info">Resultados encontrados</small>
                                                          <br>
@@ -1265,8 +1267,8 @@ const FormularioController = new Vue({
                                                                   <!-- Botón de acción -->
                                                                   <td>
                                                                      <button class="btn btn-xs btn-info"
-                                                                        @click.prevent="null">
-                                                                        <i class="fa fa-eye"></i>
+                                                                        @click.prevent="mostrar_detalles_formulario(f)">
+                                                                        <i class="fa fa-external-link-square"></i>
                                                                      </button>
                                                                   </td>
 
@@ -1301,6 +1303,26 @@ const FormularioController = new Vue({
                                                             </tbody>
                                                          </table>
                                                       </div><!-- .table-responsive -->
+
+                                                   </dd>
+                                                   <dd v-else>
+                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->
+
+                                                      <pre>
+                                                         {{formulario_tmp}}
+                                                      </pre>
+
+
+
+
+
+
+
+
+                                                      <button class="btn btn-success btn-xs"
+                                                         @click.prevent="show_mis_formularios_grid=true">
+                                                         Volver
+                                                      </button>
                                                    </dd>
 
                                                 </div><!-- .col-md-12 -->
@@ -1335,6 +1357,7 @@ const FormularioController = new Vue({
          data () {
             return {
                'filterTerm':null,
+               'show_mis_formularios_grid':true,
                //'mis_formularios':{},
 
             }
@@ -1348,6 +1371,14 @@ const FormularioController = new Vue({
 
          },
          methods: {
+            mostrar_detalles_formulario: function (formulario) {
+               this.formlario_tmp = formulario || null;
+               if (this.formlario_tmp != null) {
+                  this.show_mis_formularios_grid = false;
+               }
+               return alert("No se ha seleccionador un formulario.");
+            },
+
 
          },
          watch: {
