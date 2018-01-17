@@ -35122,13 +35122,38 @@ var FormularioController = new _vue2.default({
                //console.log();
                this.formulario_tmp = formulario || null;
                if (this.formulario_tmp != null) {
+                  var im = 0;var ce = 0;var ps = 0;var pv = 0;var dp = 0;var drn = 0;
 
-                  var control_embarazo = ["nombres_madre"];
-                  for (var i in this.formulario_tmp) {
-                     //console.log(this.formulario_tmp[i]);
+                  for (var i in this.inputs_formulario) {
+                     switch (this.inputs_formulario[i].seccion) {
+                        case "identificacion_mujer":
+                           im++;
+                           break;
 
+                        case "control_embarazo":
+                           ce++;
+                           break;
 
+                        case "patologias_sifilis":
+                           ps++;
+                           break;
+
+                        case "patologias_vih":
+                           pv++;
+                           break;
+
+                        case "datos_parto":
+                           dp++;
+                           break;
+
+                        case "datos_recien_nacido":
+                           drn++;
+                           break;
+
+                     }
                   }
+
+                  console.log('\n                        identificacion_mujer:' + im + '\n                        control_embarazo:' + ce + '\n                        patologias_sifilis:' + ps + '\n                        patologias_vih:' + pv + '\n                        datos_parto:' + dp + '\n                        datos_recien_nacido:' + drn + '\n                     ');
 
                   this.show_mis_formularios_grid = false;
                   return;
