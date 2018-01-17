@@ -32,8 +32,6 @@ const FormularioController = new Vue({
          'fdc_temp':[],
          'auth':[],
 
-         'formulario_tmp':{},
-
          'formularios_encontrados':{},
          'formulario_guardandose':false,
 
@@ -1267,7 +1265,8 @@ const FormularioController = new Vue({
                                                                   <td>
                                                                      <button class="btn btn-xs btn-info"
                                                                         @click.prevent="mostrar_detalles_formulario(f.form_deis)">
-                                                                        <i class="fa fa-external-link-square"></i>
+                                                                        <!-- <i class="fa fa-external-link-square"></i> -->
+                                                                        Revisar
                                                                      </button>
                                                                   </td>
 
@@ -1305,24 +1304,61 @@ const FormularioController = new Vue({
 
                                                    </dd>
                                                    <dd v-else>
-                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->
-
-
-
-
-                                                      {{formulario_tmp}}
-
-
-
-
-
-
-
 
                                                       <button class="btn btn-success btn-xs"
                                                          @click.prevent="show_mis_formularios_grid=true">
                                                          Volver
                                                       </button>
+
+                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->
+
+                                                      <div class="row">
+                                                      <div class="col-sm-6 col-md-6"
+                                                         v-for="o,i in datos_estadisticas_mi_formulario">
+                                                         <h4>{{ o[Object.keys(o)[0]].title }}</h4> <br>
+                                                         <span>
+                                                            <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>
+                                                            <small class="pull-right text-success">
+                                                               {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
+                                                            </small>
+                                                         </span>
+
+                                                         <br>
+
+                                                         <span>
+                                                            <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
+                                                            <small class="pull-right text-warning">
+                                                               {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
+                                                            </small>
+                                                         </span>
+
+                                                         <br>
+
+                                                         <span>
+                                                            <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>
+                                                         </span>
+
+                                                         <br>
+                                                         <br>
+
+                                                         <div class="progress">
+                                                            <div class="progress-bar progress-bar-success progress-bar-striped active"
+                                                               :style="'width: '+o[Object.keys(o)[0]].completion+'%'">
+                                                               <span class="">
+                                                                  +{{Math.round(o[Object.keys(o)[0]].completion) }}%
+                                                               </span>
+                                                            </div>
+                                                            <div class="progress-bar progress-bar-warning progress-bar-striped active"
+                                                               :style="'width: '+o[Object.keys(o)[0]].remaining+'%'">
+                                                               <span class="">
+                                                                  -{{Math.round(o[Object.keys(o)[0]].remaining)}}%
+                                                               </span>
+                                                            </div>
+                                                         </div>
+
+                                                      </div><!-- .col -->
+                                                      </div><!-- .row -->
+
                                                    </dd>
 
                                                 </div><!-- .col-md-12 -->
@@ -1358,12 +1394,15 @@ const FormularioController = new Vue({
             return {
                'filterTerm':null,
                'show_mis_formularios_grid':true,
+               'formulario_tmp':{},
+               'datos_estadisticas_mi_formulario':[],
                //'mis_formularios':{},
 
             }
          },
          ready () {
             //console.log(this.auth);
+            this.show_mis_formularios_grid=false;
          },
          created () {
 
@@ -1373,41 +1412,137 @@ const FormularioController = new Vue({
          methods: {
             mostrar_detalles_formulario: function (formulario) { //console.log();
                this.formulario_tmp = formulario || null;
-               if (this.formulario_tmp != null) {
+               var inputs = this.inputs_formulario;
+               this.datos_estadisticas_mi_formulario=[];
+               //Variables contenedoras de los inputs y el valor
+               var identificacion_mujer = [];
+               var control_embarazo = [];
+               var patologias_sifilis = [];
+               var patologias_vih = [];
+               var datos_parto = [];
+               var datos_recien_nacido = [];
+
+               if (this.formulario_tmp != null && this.formulario_tmp != null) {
+
                   var im=0; var ce=0; var ps=0; var pv=0; var dp=0; var drn=0;
+                  var im_null=0; var ce_null=0; var ps_null=0; var pv_null=0; var dp_null=0; var drn_null=0;
+                  var im_not_null=0; var ce_not_null=0; var ps_not_null=0; var pv_not_null=0; var dp_not_null=0; var drn_not_null=0;
+
+                  var key = null;
+                  var value = null;
 
                   for (var i in this.inputs_formulario) {
-                     switch (this.inputs_formulario[i].seccion) {
+
+                     key = inputs[i].id;
+                     value = this.formulario_tmp[inputs[i].id];
+
+                     switch (inputs[i].seccion) {
                         case "identificacion_mujer":
-                           im++;
+                           identificacion_mujer.push({key:value});//Mis elementos de la seccion
+                           im++; //Mi total de elementos en esta seccion
+                           if (value != null) { im_not_null++; } else { im_null++; }
                            break;
 
                         case "control_embarazo":
-                           ce++;
+                           control_embarazo.push({key:value});//Mis elementos de la seccion
+                           ce++; //Mi total de elementos en esta seccion
+                           if (value != null) { ce_not_null++; } else { ce_null++; }
                            break;
 
                         case "patologias_sifilis":
-                           ps++;
+                           patologias_sifilis.push({key:value});//Mis elementos de la seccion
+                           ps++; //Mi total de elementos en esta seccion
+                           if (value != null) { ps_not_null++; } else { ps_null++; }
                            break;
 
                         case "patologias_vih":
-                           pv++;
+                           patologias_vih.push({key:value});//Mis elementos de la seccion
+                           pv++; //Mi total de elementos en esta seccion
+                           if (value != null) { pv_not_null++; } else { pv_null++; }
                            break;
 
                         case "datos_parto":
-                           dp++;
+                           datos_parto.push({key:value});//Mis elementos de la seccion
+                           dp++; //Mi total de elementos en esta seccion
+                           if (value != null) { dp_not_null++; } else { dp_null++; }
                            break;
 
                         case "datos_recien_nacido":
-                           drn++;
+                           datos_recien_nacido.push({key:value});//Mis elementos de la seccion
+                           drn++; //Mi total de elementos en esta seccion
+                           if (value != null) { drn_not_null++; } else { drn_null++; }
                            break;
 
+                     }//Fin switch
+                  }//Fin for
+
+                  this.datos_estadisticas_mi_formulario.push({
+                     'identificacion_mujer':{
+                        'total':im,
+                        'null':im_null,
+                        'not_null':im_not_null,
+                        'title':'Pestaña Identificacion de la Mujer',
+                        'completion':(im_not_null/im)*100,
+                        'remaining':(im_null/im)*100,
                      }
+                  });
+
+                  this.datos_estadisticas_mi_formulario.push({
+                     'control_embarazo':{
+                        'total':ce,
+                        'null':ce_null,
+                        'not_null':ce_not_null,
+                        'title':'Pestaña Control de Embarazo (APS)',
+                        'completion':(ce_not_null/ce)*100,
+                        'remaining':(ce_null/ce)*100,
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'patologias_sifilis':{
+                        'total':ps,
+                        'null':ps_null,
+                        'not_null':ps_not_null,
+                        'title':'Pestaña Control Sífilis (Especialidades)',
+                        'completion':(ps_not_null/ps)*100,
+                        'remaining':(ps_null/ps)*100,
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'patologias_vih':{
+                        'total':pv,
+                        'null':pv_null,
+                        'not_null':pv_not_null,
+                        'title':'Pestaña Control VIH (Especialidades)',
+                        'completion':(pv_not_null/pv)*100,
+                        'remaining':(pv_null/pv)*100,
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'datos_parto':{
+                        'total':dp,
+                        'null':dp_null,
+                        'not_null':dp_not_null,
+                        'title':'Pestaña Datos del Parto',
+                        'completion':(dp_not_null/dp)*100,
+                        'remaining':(dp_null/dp)*100,
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'datos_recien_nacido':{
+                        'total':drn,
+                        'null':drn_null,
+                        'not_null':drn_not_null,
+                        'title':'Pestaña Datos recien nacido',
+                        'completion':(drn_not_null/drn)*100,
+                        'remaining':(drn_null/drn)*100,
+                     }
+                  });
 
 
 
-                  }
-
+                  //console.log(control_embarazo);
+                  /*
+                  //Lo comentamos por que ya sabemos que tenemos los numeros y los totales.
                   console.log(`
                         identificacion_mujer:${im}
                         control_embarazo:${ce}
@@ -1416,6 +1551,7 @@ const FormularioController = new Vue({
                         datos_parto:${dp}
                         datos_recien_nacido:${drn}
                      `);
+                  */
 
 
                   this.show_mis_formularios_grid = false;

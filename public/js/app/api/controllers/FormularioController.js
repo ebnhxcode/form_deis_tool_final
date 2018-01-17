@@ -34667,8 +34667,6 @@ var FormularioController = new _vue2.default({
          'fdc_temp': [],
          'auth': [],
 
-         'formulario_tmp': {},
-
          'formularios_encontrados': {},
          'formulario_guardandose': false,
 
@@ -35098,18 +35096,21 @@ var FormularioController = new _vue2.default({
       },
       'modal_mis_formularios': {
          props: ['auth', 'mis_formularios', 'inputs_formulario'],
-         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_mis_formularios" aria-controls="lista_mis_formularios" role="tab" data-toggle="tab">\n                                             Mis fichas gestionadas\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <!-- Text animacion al termino de busqueda -->\n                                                   <transition name="fade" mode="out-in">\n                                                      <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                      <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n                                                   </transition>\n\n                                                   <!-- Input filterTerm -->\n                                                   <div class="form-group">\n                                                      <div class="input-group input-group-sm">\n                                                         <div class="input-group-addon">\n                                                            <i class="fa fa-font"></i>\n                                                         </div>\n                                                         <!-- Input para escribir el termino a buscar -->\n                                                         <input type="text" class="form-control" placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                                v-model="filterTerm" id="filterTerm">\n                                                         <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                            <span class="input-group-btn">\n                                                               <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                                  Limpiar\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                      </div><!-- /.input-group -->\n                                                   </div><!-- /.form-group -->\n\n\n                                                   <dt>\n                                                      Seleccion de ficha\n                                                   </dt>\n                                                   <dd v-if="show_mis_formularios_grid == true">\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n\n                                                                  <th>Accion</th>\n                                                                  <th>Correlativo</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Nombre</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="f in\n                                                                  filterBy(mis_formularios, filterTerm)"\n                                                                  v-if="f.form_deis != null">\n\n                                                                  <!-- Bot\xF3n de acci\xF3n -->\n                                                                  <td>\n                                                                     <button class="btn btn-xs btn-info"\n                                                                        @click.prevent="mostrar_detalles_formulario(f.form_deis)">\n                                                                        <i class="fa fa-external-link-square"></i>\n                                                                     </button>\n                                                                  </td>\n\n                                                                  <!-- Correlativo -->\n                                                                  <td>\n                                                                     {{f.form_deis.id}}\n                                                                  </td>\n\n                                                                  <!-- Run madre y dv -->\n                                                                  <td v-if="f.form_deis.run_madre != null &&\n                                                                     f.form_deis.digito_verificador != null">\n                                                                     {{\n                                                                        f.form_deis.run_madre\n                                                                        +""+\n                                                                        f.form_deis.digito_verificador\n                                                                     }}\n                                                                  </td>\n                                                                  <td v-else class="text-warning">\n                                                                     Run sin ingresar\n                                                                  </td>\n\n                                                                  <!-- Nombre Paciente -->\n                                                                  <td>\n                                                                     {{f.form_deis.nombres_madre ||\n                                                                        \'Sin Nombre\'}}\n                                                                     {{f.form_deis.primer_apellido_madre ||\n                                                                        \'Sin Apellido\'}}\n                                                                  </td>\n\n                                                               </tr>\n\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n\n                                                   </dd>\n                                                   <dd v-else>\n                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->\n\n\n\n\n                                                      {{formulario_tmp}}\n\n\n\n\n\n\n\n\n                                                      <button class="btn btn-success btn-xs"\n                                                         @click.prevent="show_mis_formularios_grid=true">\n                                                         Volver\n                                                      </button>\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_establecimientos -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
+         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_mis_formularios" aria-controls="lista_mis_formularios" role="tab" data-toggle="tab">\n                                             Mis fichas gestionadas\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">\n\n\n                                          <dl class="dl-vertical">\n                                             <div class="row">\n\n                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                   <!-- Text animacion al termino de busqueda -->\n                                                   <transition name="fade" mode="out-in">\n                                                      <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                      <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n                                                   </transition>\n\n                                                   <!-- Input filterTerm -->\n                                                   <div class="form-group">\n                                                      <div class="input-group input-group-sm">\n                                                         <div class="input-group-addon">\n                                                            <i class="fa fa-font"></i>\n                                                         </div>\n                                                         <!-- Input para escribir el termino a buscar -->\n                                                         <input type="text" class="form-control" placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                                v-model="filterTerm" id="filterTerm">\n                                                         <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                            <span class="input-group-btn">\n                                                               <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                                  Limpiar\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                      </div><!-- /.input-group -->\n                                                   </div><!-- /.form-group -->\n\n\n                                                   <dt>\n                                                      Seleccion de ficha\n                                                   </dt>\n                                                   <dd v-if="show_mis_formularios_grid == true">\n                                                      <div class="table-responsive">\n                                                         <small class="text-info">Resultados encontrados</small>\n                                                         <br>\n\n                                                         <table class="table table-striped small">\n                                                            <thead>\n                                                               <tr>\n\n                                                                  <th>Accion</th>\n                                                                  <th>Correlativo</th>\n                                                                  <th>Run Madre</th>\n                                                                  <th>Nombre</th>\n                                                               </tr>\n                                                            </thead>\n                                                            <tbody>\n\n                                                               <tr v-for="f in\n                                                                  filterBy(mis_formularios, filterTerm)"\n                                                                  v-if="f.form_deis != null">\n\n                                                                  <!-- Bot\xF3n de acci\xF3n -->\n                                                                  <td>\n                                                                     <button class="btn btn-xs btn-info"\n                                                                        @click.prevent="mostrar_detalles_formulario(f.form_deis)">\n                                                                        <!-- <i class="fa fa-external-link-square"></i> -->\n                                                                        Revisar\n                                                                     </button>\n                                                                  </td>\n\n                                                                  <!-- Correlativo -->\n                                                                  <td>\n                                                                     {{f.form_deis.id}}\n                                                                  </td>\n\n                                                                  <!-- Run madre y dv -->\n                                                                  <td v-if="f.form_deis.run_madre != null &&\n                                                                     f.form_deis.digito_verificador != null">\n                                                                     {{\n                                                                        f.form_deis.run_madre\n                                                                        +""+\n                                                                        f.form_deis.digito_verificador\n                                                                     }}\n                                                                  </td>\n                                                                  <td v-else class="text-warning">\n                                                                     Run sin ingresar\n                                                                  </td>\n\n                                                                  <!-- Nombre Paciente -->\n                                                                  <td>\n                                                                     {{f.form_deis.nombres_madre ||\n                                                                        \'Sin Nombre\'}}\n                                                                     {{f.form_deis.primer_apellido_madre ||\n                                                                        \'Sin Apellido\'}}\n                                                                  </td>\n\n                                                               </tr>\n\n                                                            </tbody>\n                                                         </table>\n                                                      </div><!-- .table-responsive -->\n\n                                                   </dd>\n                                                   <dd v-else>\n\n                                                      <button class="btn btn-success btn-xs"\n                                                         @click.prevent="show_mis_formularios_grid=true">\n                                                         Volver\n                                                      </button>\n\n                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->\n\n                                                      <div class="row">\n                                                      <div class="col-sm-6 col-md-6"\n                                                         v-for="o,i in datos_estadisticas_mi_formulario">\n                                                         <h4>{{ o[Object.keys(o)[0]].title }}</h4> <br>\n                                                         <span>\n                                                            <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>\n                                                            <small class="pull-right text-success">\n                                                               {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado\n                                                            </small>\n                                                         </span>\n\n                                                         <br>\n\n                                                         <span>\n                                                            <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>\n                                                            <small class="pull-right text-warning">\n                                                               {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante\n                                                            </small>\n                                                         </span>\n\n                                                         <br>\n\n                                                         <span>\n                                                            <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>\n                                                         </span>\n\n                                                         <br>\n\n                                                         <div class="progress">\n                                                            <div class="progress-bar progress-bar-success progress-bar-striped active"\n                                                               :style="\'width: \'+o[Object.keys(o)[0]].completion+\'%\'">\n                                                               <span class="">\n                                                                  +{{Math.round(o[Object.keys(o)[0]].completion) }}%\n                                                               </span>\n                                                            </div>\n                                                            <div class="progress-bar progress-bar-warning progress-bar-striped active"\n                                                               :style="\'width: \'+o[Object.keys(o)[0]].remaining+\'%\'">\n                                                               <span class="">\n                                                                  -{{Math.round(o[Object.keys(o)[0]].remaining)}}%\n                                                               </span>\n                                                            </div>\n                                                         </div>\n\n                                                      </div><!-- .col -->\n                                                      </div><!-- .row -->\n\n                                                   </dd>\n\n                                                </div><!-- .col-md-12 -->\n                                             </div>\n                                          </dl><!-- dl-horizontal -->\n\n\n                                       </div><!-- .tab-pane .fade #lista_establecimientos -->\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
          name: 'modal_mis_formularios',
          data: function data() {
             return {
                'filterTerm': null,
-               'show_mis_formularios_grid': true
+               'show_mis_formularios_grid': true,
+               'formulario_tmp': {},
+               'datos_estadisticas_mi_formulario': []
                //'mis_formularios':{},
 
             };
          },
          ready: function ready() {
             //console.log(this.auth);
+            this.show_mis_formularios_grid = false;
          },
          created: function created() {
 
@@ -35121,39 +35122,168 @@ var FormularioController = new _vue2.default({
             mostrar_detalles_formulario: function mostrar_detalles_formulario(formulario) {
                //console.log();
                this.formulario_tmp = formulario || null;
-               if (this.formulario_tmp != null) {
+               var inputs = this.inputs_formulario;
+               this.datos_estadisticas_mi_formulario = [];
+               //Variables contenedoras de los inputs y el valor
+               var identificacion_mujer = [];
+               var control_embarazo = [];
+               var patologias_sifilis = [];
+               var patologias_vih = [];
+               var datos_parto = [];
+               var datos_recien_nacido = [];
+
+               if (this.formulario_tmp != null && this.formulario_tmp != null) {
+
                   var im = 0;var ce = 0;var ps = 0;var pv = 0;var dp = 0;var drn = 0;
+                  var im_null = 0;var ce_null = 0;var ps_null = 0;var pv_null = 0;var dp_null = 0;var drn_null = 0;
+                  var im_not_null = 0;var ce_not_null = 0;var ps_not_null = 0;var pv_not_null = 0;var dp_not_null = 0;var drn_not_null = 0;
+
+                  var key = null;
+                  var value = null;
 
                   for (var i in this.inputs_formulario) {
-                     switch (this.inputs_formulario[i].seccion) {
+
+                     key = inputs[i].id;
+                     value = this.formulario_tmp[inputs[i].id];
+
+                     switch (inputs[i].seccion) {
                         case "identificacion_mujer":
-                           im++;
+                           identificacion_mujer.push({ key: value }); //Mis elementos de la seccion
+                           im++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              im_not_null++;
+                           } else {
+                              im_null++;
+                           }
                            break;
 
                         case "control_embarazo":
-                           ce++;
+                           control_embarazo.push({ key: value }); //Mis elementos de la seccion
+                           ce++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              ce_not_null++;
+                           } else {
+                              ce_null++;
+                           }
                            break;
 
                         case "patologias_sifilis":
-                           ps++;
+                           patologias_sifilis.push({ key: value }); //Mis elementos de la seccion
+                           ps++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              ps_not_null++;
+                           } else {
+                              ps_null++;
+                           }
                            break;
 
                         case "patologias_vih":
-                           pv++;
+                           patologias_vih.push({ key: value }); //Mis elementos de la seccion
+                           pv++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              pv_not_null++;
+                           } else {
+                              pv_null++;
+                           }
                            break;
 
                         case "datos_parto":
-                           dp++;
+                           datos_parto.push({ key: value }); //Mis elementos de la seccion
+                           dp++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              dp_not_null++;
+                           } else {
+                              dp_null++;
+                           }
                            break;
 
                         case "datos_recien_nacido":
-                           drn++;
+                           datos_recien_nacido.push({ key: value }); //Mis elementos de la seccion
+                           drn++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              drn_not_null++;
+                           } else {
+                              drn_null++;
+                           }
                            break;
 
-                     }
-                  }
+                     } //Fin switch
+                  } //Fin for
 
-                  console.log('\n                        identificacion_mujer:' + im + '\n                        control_embarazo:' + ce + '\n                        patologias_sifilis:' + ps + '\n                        patologias_vih:' + pv + '\n                        datos_parto:' + dp + '\n                        datos_recien_nacido:' + drn + '\n                     ');
+                  this.datos_estadisticas_mi_formulario.push({
+                     'identificacion_mujer': {
+                        'total': im,
+                        'null': im_null,
+                        'not_null': im_not_null,
+                        'title': 'Pestaña Identificacion de la Mujer',
+                        'completion': im_not_null / im * 100,
+                        'remaining': im_null / im * 100
+                     }
+                  });
+
+                  this.datos_estadisticas_mi_formulario.push({
+                     'control_embarazo': {
+                        'total': ce,
+                        'null': ce_null,
+                        'not_null': ce_not_null,
+                        'title': 'Pestaña Control de Embarazo (APS)',
+                        'completion': ce_not_null / ce * 100,
+                        'remaining': ce_null / ce * 100
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'patologias_sifilis': {
+                        'total': ps,
+                        'null': ps_null,
+                        'not_null': ps_not_null,
+                        'title': 'Pestaña Control Sífilis (Especialidades)',
+                        'completion': ps_not_null / ps * 100,
+                        'remaining': ps_null / ps * 100
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'patologias_vih': {
+                        'total': pv,
+                        'null': pv_null,
+                        'not_null': pv_not_null,
+                        'title': 'Pestaña Control VIH (Especialidades)',
+                        'completion': pv_not_null / pv * 100,
+                        'remaining': pv_null / pv * 100
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'datos_parto': {
+                        'total': dp,
+                        'null': dp_null,
+                        'not_null': dp_not_null,
+                        'title': 'Pestaña Datos del Parto',
+                        'completion': dp_not_null / dp * 100,
+                        'remaining': dp_null / dp * 100
+                     }
+                  });
+                  this.datos_estadisticas_mi_formulario.push({
+                     'datos_recien_nacido': {
+                        'total': drn,
+                        'null': drn_null,
+                        'not_null': drn_not_null,
+                        'title': 'Pestaña Datos recien nacido',
+                        'completion': drn_not_null / drn * 100,
+                        'remaining': drn_null / drn * 100
+                     }
+                  });
+
+                  //console.log(control_embarazo);
+                  /*
+                  //Lo comentamos por que ya sabemos que tenemos los numeros y los totales.
+                  console.log(`
+                        identificacion_mujer:${im}
+                        control_embarazo:${ce}
+                        patologias_sifilis:${ps}
+                        patologias_vih:${pv}
+                        datos_parto:${dp}
+                        datos_recien_nacido:${drn}
+                     `);
+                  */
 
                   this.show_mis_formularios_grid = false;
                   return;
