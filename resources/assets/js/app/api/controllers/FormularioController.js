@@ -5,20 +5,18 @@ import { _ , range } from 'lodash';
 import Vue2Filters from 'vue2-filters';
 Vue.use(Vue2Filters);
 
-import es from 'vee-validate/dist/locale/es';
-import VeeValidate, { Validator } from 'vee-validate';
+//import es from 'vee-validate/dist/locale/es';
+//import VeeValidate, { Validator } from 'vee-validate';
 
 import { validate, clean, format } from 'rut.js';
 
 import moment from 'moment-es6';
 
 // Add locale helper.
-Validator.addLocale(es);
+//Validator.addLocale(es);
 
 // Install the Plugin and set the locale.
-Vue.use(VeeValidate, {
-   locale: 'es'
-});
+//Vue.use(VeeValidate, { locale: 'es' });
 
 const FormularioController = new Vue({
    el: '#FormularioController ',
@@ -41,6 +39,7 @@ const FormularioController = new Vue({
 
          //Objeto para modal Mis Formularios gestionados
          'mis_formularios':[],
+         'inputs_formulario':[],
 
          'establecimiento_a_editar':null,
 
@@ -1173,7 +1172,7 @@ const FormularioController = new Vue({
          },
       },
       'modal_mis_formularios':{
-         props: ['auth', 'mis_formularios'],
+         props: ['auth', 'mis_formularios', 'inputs_formulario'],
          template: `
 			   <!-- template for the modal component -->
 			   <transition name="modal">
@@ -1241,7 +1240,7 @@ const FormularioController = new Vue({
 
 
                                                    <dt>
-                                                      Seleccione ficha
+                                                      Seleccion de ficha
                                                    </dt>
                                                    <dd v-if="show_mis_formularios_grid == true">
                                                       <div class="table-responsive">
@@ -1267,7 +1266,7 @@ const FormularioController = new Vue({
                                                                   <!-- Botón de acción -->
                                                                   <td>
                                                                      <button class="btn btn-xs btn-info"
-                                                                        @click.prevent="mostrar_detalles_formulario(f)">
+                                                                        @click.prevent="mostrar_detalles_formulario(f.form_deis)">
                                                                         <i class="fa fa-external-link-square"></i>
                                                                      </button>
                                                                   </td>
@@ -1308,9 +1307,10 @@ const FormularioController = new Vue({
                                                    <dd v-else>
                                                       <!-- Si entra aqui es por que estoy viendo un solo item -->
 
-                                                      <pre>
-                                                         {{formulario_tmp}}
-                                                      </pre>
+
+
+
+                                                      {{formulario_tmp}}
 
 
 
@@ -1371,10 +1371,22 @@ const FormularioController = new Vue({
 
          },
          methods: {
-            mostrar_detalles_formulario: function (formulario) {
-               this.formlario_tmp = formulario || null;
-               if (this.formlario_tmp != null) {
+            mostrar_detalles_formulario: function (formulario) { //console.log();
+               this.formulario_tmp = formulario || null;
+               if (this.formulario_tmp != null) {
+
+                  var control_embarazo = ["nombres_madre"];
+                  for (var i in this.formulario_tmp) {
+                     //console.log(this.formulario_tmp[i]);
+
+
+
+                  }
+
+
+
                   this.show_mis_formularios_grid = false;
+                  return ;
                }
                return alert("No se ha seleccionador un formulario.");
             },
@@ -3722,6 +3734,7 @@ const FormularioController = new Vue({
             if (response.status == 200) {
                if (response.body.mis_formularios != null && response.body.mis_formularios.length > 0) {
                   this.mis_formularios = response.body.mis_formularios;
+                  this.inputs_formulario = response.body.inputs_formulario;
                   /*
                   for (var i in this.mis_formularios) {
                      if (this.mis_formularios[i].form_deis != null) {console.log(this.mis_formularios[i].form_deis.id);}

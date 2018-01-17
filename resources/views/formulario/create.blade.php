@@ -137,6 +137,7 @@
                               <modal_mis_formularios
                                  :auth="auth"
                                  :mis_formularios="mis_formularios"
+                                 :inputs_formulario="inputs_formulario"
                                  v-show="show_modal_mis_formularios == true">
                                  <h3 slot="header">
                                     Mis fichas gestionadas

@@ -429,11 +429,12 @@ class FormDeisController extends Controller {
         if ($request->wantsJson()) {
             #$user_mis_formularios = FormDeisUser::where('usuario_modifica_form_deis', auth()->user()->id)->with('form_deis')->get();
             $user_mis_formularios = FormDeisUser::where('usuario_modifica_form_deis', auth()->user()->id)->with('form_deis')->get();
-
+            $inputs_formulario = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
 
             //dd($user_mis_formularios);
             return response()->json([
                 'mis_formularios' => $user_mis_formularios,
+                'inputs_formulario' => $inputs_formulario,
             ]);
         }
     }
