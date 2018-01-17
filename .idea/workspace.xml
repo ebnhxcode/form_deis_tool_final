@@ -42,8 +42,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2888128">
-              <caret line="180" column="32" selection-start-line="180" selection-start-column="32" selection-end-line="180" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.33639705">
+              <caret line="1213" column="48" selection-start-line="1213" selection-start-column="48" selection-end-line="1213" selection-end-column="48" />
               <folding>
                 <element signature="e#2405#2764#0" expanded="false" />
                 <element signature="e#2787#3069#0" expanded="false" />
@@ -54,7 +54,6 @@
                 <element signature="e#34192#41866#0" expanded="false" />
                 <element signature="e#41901#50242#0" expanded="false" />
                 <element signature="e#50284#58587#0" expanded="false" />
-                <element signature="e#58619#68385#0" expanded="false" />
                 <element signature="e#68676#70268#0" expanded="false" />
                 <element signature="e#70370#71900#0" expanded="false" />
                 <element signature="e#72061#72661#0" expanded="false" />
@@ -87,8 +86,8 @@
       <file leaf-file-name="FormDeis.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-38.76923">
-              <caret line="183" column="50" selection-start-line="183" selection-start-column="50" selection-end-line="183" selection-end-column="50" />
+            <state vertical-scroll-proportion="-5.923077">
+              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -97,7 +96,7 @@
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/input/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
               <folding />
             </state>
@@ -117,7 +116,7 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.269231">
+            <state vertical-scroll-proportion="0.0">
               <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
               <folding />
             </state>
@@ -127,7 +126,7 @@
       <file leaf-file-name="FormDeisController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
+            <state vertical-scroll-proportion="0.0">
               <caret line="433" column="14" selection-start-line="433" selection-start-column="14" selection-end-line="433" selection-end-column="14" />
               <folding />
             </state>
@@ -147,7 +146,7 @@
       <file leaf-file-name="FormDeisUser.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/FormDeisUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.5">
+            <state vertical-scroll-proportion="0.0">
               <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
               <folding />
             </state>
@@ -157,7 +156,7 @@
       <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
@@ -221,8 +220,8 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php" />
-        <option value="$PROJECT_DIR$/app/FormDeis.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
+        <option value="$PROJECT_DIR$/app/FormDeis.php" />
       </list>
     </option>
   </component>
@@ -244,8 +243,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="1" />
-    <option name="width" value="1280" />
-    <option name="height" value="1023" />
+    <option name="width" value="1336" />
+    <option name="height" value="663" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -291,7 +290,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -587,6 +585,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -658,12 +657,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="1" width="1280" height="1023" extended-state="6" />
+    <frame x="0" y="1" width="1336" height="663" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34296876" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21875" sideWeight="0.60601" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21407185" sideWeight="0.60601" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1003,18 +1002,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="34" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="34" />
+        <state vertical-scroll-proportion="-5.923077">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1027,25 +1018,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/formulario/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeisUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.5">
-          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.269231">
+        <state vertical-scroll-proportion="0.0">
           <caret line="106" column="1" selection-start-line="106" selection-start-column="1" selection-end-line="106" selection-end-column="1" />
           <folding />
         </state>
@@ -1053,24 +1036,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FormDeisController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
+        <state vertical-scroll-proportion="0.0">
           <caret line="433" column="14" selection-start-line="433" selection-start-column="14" selection-end-line="433" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/FormDeis.php">
+    <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.76923">
-          <caret line="183" column="50" selection-start-line="183" selection-start-column="50" selection-end-line="183" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/FormDeisUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="58" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2888128">
-          <caret line="180" column="32" selection-start-line="180" selection-start-column="32" selection-end-line="180" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.33639705">
+          <caret line="1213" column="48" selection-start-line="1213" selection-start-column="48" selection-end-line="1213" selection-end-column="48" />
           <folding>
             <element signature="e#2405#2764#0" expanded="false" />
             <element signature="e#2787#3069#0" expanded="false" />
@@ -1081,7 +1080,6 @@
             <element signature="e#34192#41866#0" expanded="false" />
             <element signature="e#41901#50242#0" expanded="false" />
             <element signature="e#50284#58587#0" expanded="false" />
-            <element signature="e#58619#68385#0" expanded="false" />
             <element signature="e#68676#70268#0" expanded="false" />
             <element signature="e#70370#71900#0" expanded="false" />
             <element signature="e#72061#72661#0" expanded="false" />
