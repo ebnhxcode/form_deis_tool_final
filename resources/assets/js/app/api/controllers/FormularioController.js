@@ -3896,6 +3896,11 @@ const FormularioController = new Vue({
       },
 
       visualizar_mis_formularios: function () {
+
+         //console.log(this.$children[4].show_mis_formularios_grid = false);//.show_mis_formularios_grid = true;
+         //Forma no muuy optima para volver a mostrar el grid tras el cierre.
+         this.$children[4].show_mis_formularios_grid = true;
+
          Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
 
          this.$http.post('/formulario/mis_formularios').then(response => { // success callback
@@ -4460,6 +4465,7 @@ const FormularioController = new Vue({
             this.verifica_validacion_change(this.inputs[i]);
          }
       },
+
 
    },
 });
