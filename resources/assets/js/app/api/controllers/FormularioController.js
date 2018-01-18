@@ -932,6 +932,10 @@ const FormularioController = new Vue({
                                                                   -->
 
                                                                </tr>
+                                                               <tr v-if="auth['form_deis_errores'].length==0">
+                                                                  <small>No hay inconsistencias</small>
+                                                               </tr>
+
                                                             </tbody>
                                                          </table>
                                                       </div><!-- .table-responsive -->
