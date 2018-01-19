@@ -22,7 +22,7 @@ class FormDeisController extends Controller {
     private $fdc;
     public function __construct () {
         $this->middleware('auth', ['except' => ['testapi']]);
-        $this->middleware('digitador');
+        $this->middleware(['digitador', 'observador']);
     }
 
     public function testapi (Request $request) {
