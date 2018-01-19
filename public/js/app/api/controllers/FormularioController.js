@@ -36100,7 +36100,9 @@ var FormularioController = new _vue2.default({
                         case 'resultado_2_examen_vih_embarazo':
                         case 'fecha_2_examen_vih_embarazo':
                         case 'eg_2_examen_vih':
+
                            this.inputs[_i23].disabled = true;
+
                            break;
                         case 'derivada_a_especialidades_embarazo':
                            this.inputs[_i23].disabled = null;
@@ -36113,15 +36115,29 @@ var FormularioController = new _vue2.default({
                      /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
                         this.inputs[i].disabled = null;
                      }*/
+
                      switch (this.inputs[_i24].id) {
                         case 'resultado_1_examen_vih_embarazo':
                         case 'fecha_1_examen_vih_embarazo':
                         case 'eg_1_examen_vih':
+
+                           if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado') {
+                              this.inputs[_i24].disabled = true;
+                           } else {
+                              this.inputs[_i24].disabled = null;
+                           }
+                           break;
+
                         case 'resultado_2_examen_vih_embarazo':
                         case 'fecha_2_examen_vih_embarazo':
                         case 'eg_2_examen_vih':
-                           this.inputs[_i24].disabled = null;
+                           if (this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
+                              this.inputs[_i24].disabled = true;
+                           } else {
+                              this.inputs[_i24].disabled = null;
+                           }
                            break;
+
                         case 'derivada_a_especialidades_embarazo':
                            if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') {
                               this.inputs[_i24].disabled = null;
@@ -36206,6 +36222,7 @@ var FormularioController = new _vue2.default({
                         this.fdc['eg_2_examen_vih'] = null;
                      }
                   }
+                  return;
                } else if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'Reactivo') {
                   for (var _i31 in this.inputs) {
                      if (this.inputs[_i31].name == 'fecha_2_examen_vih_embarazo' || this.inputs[_i31].name == 'eg_2_examen_vih') {
