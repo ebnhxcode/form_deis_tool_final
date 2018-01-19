@@ -1870,6 +1870,11 @@ const FormularioController = new Vue({
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
 
+         if (this.auth.id_role == 5) {
+            this.inputs[index].readonly = 'readonly';
+            this.inputs[index].disabled = 'disabled';
+         }
+
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
             if ( this.fdc_temp[this.inputs[index].id] != null &&

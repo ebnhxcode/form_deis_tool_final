@@ -15,6 +15,6 @@ class ObservadorMiddleware{
                 return $next($request);
                 break;
         }
-        return redirect()->to('/formulario/transmision_vertical');
+        return redirect()->to('/dashboard');
     }
 }

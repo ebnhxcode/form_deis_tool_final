@@ -35144,14 +35144,16 @@ var FormularioController = new _vue2.default({
                formData.append('run_madre', run_limpio);
 
                var formularios = null;
+               var formulario_vacio = null;
                this.$http.post('/formulario/buscar_por_run', formData).then(function (response) {
                   // success callback
-                  //console.log(response);
-                  formularios = response.body.formularios[0];
-                  //return console.log(formularios);
 
-                  var formulario_vacio = $.isEmptyObject(formularios) == true ? true : false;
-                  //this.run_madre = null;
+                  if (response.status == 200) {
+                     formularios = response.body.formularios.get(0);
+                  }
+
+                  formulario_vacio = $.isEmptyObject(formularios) == true ? true : false;
+
                   if (formulario_vacio == true) {
                      swal({
                         title: "Atención",
@@ -35166,6 +35168,8 @@ var FormularioController = new _vue2.default({
                   //console.log(response);
                   _this7.$parent.check_status_code(response.status);
                });
+
+               return console.log(formularios);
 
                this.$parent.fdc = formularios;
                this.$parent.fdc_temp = formularios;
@@ -35465,6 +35469,11 @@ var FormularioController = new _vue2.default({
 
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function check_input(input, index) {
+
+         if (this.auth.id_role == 5) {
+            this.inputs[index].readonly = 'readonly';
+            this.inputs[index].disabled = 'disabled';
+         }
 
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
