@@ -1211,16 +1211,16 @@ const FormularioController = new Vue({
                                        <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">
 
 
-                                          <dl class="dl-vertical">
-                                             <div class="row">
+                                          <div class="row">
 
-                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+                                             <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
-                                                   <!-- Text animacion al termino de busqueda -->
-                                                   <transition name="fade" mode="out-in">
-                                                      <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
-                                                      <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
-                                                   </transition>
+                                                <div v-if="show_mis_formularios_grid == true">
+
+
+                                                   <!--// buscador en grid //-->
+                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
+                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
 
                                                    <!-- Input filterTerm -->
                                                    <div class="form-group">
@@ -1229,7 +1229,8 @@ const FormularioController = new Vue({
                                                             <i class="fa fa-font"></i>
                                                          </div>
                                                          <!-- Input para escribir el termino a buscar -->
-                                                         <input type="text" class="form-control" placeholder="Ingrese criterio de búsqueda para filtrar"
+                                                         <input type="text" class="form-control"
+                                                            placeholder="Ingrese criterio de búsqueda para filtrar"
                                                                 v-model="filterTerm" id="filterTerm">
                                                          <!-- Boton para limpiar contenido del filtro por criterio -->
                                                             <span class="input-group-btn">
@@ -1241,140 +1242,224 @@ const FormularioController = new Vue({
                                                    </div><!-- /.form-group -->
 
 
-                                                   <dt>
-                                                      Seleccion de ficha
-                                                   </dt>
-                                                   <dd v-if="show_mis_formularios_grid == true">
-                                                      <div class="table-responsive">
-                                                         <small class="text-info">Resultados encontrados</small>
-                                                         <br>
 
-                                                         <table class="table table-striped small">
-                                                            <thead>
-                                                               <tr>
+                                                   <dl class="dl-vertical">
+                                                      <dt>
+                                                         Seleccion de ficha
+                                                      </dt>
 
-                                                                  <th>Accion</th>
-                                                                  <th>Correlativo</th>
-                                                                  <th>Run Madre</th>
-                                                                  <th>Nombre</th>
-                                                               </tr>
-                                                            </thead>
-                                                            <tbody>
 
-                                                               <tr v-for="f in
-                                                                  filterBy(mis_formularios, filterTerm)"
-                                                                  v-if="f.form_deis != null">
+                                                      <dd>
+                                                         <div class="table-responsive">
+                                                            <small class="text-info">Resultados encontrados</small>
+                                                            <br>
 
-                                                                  <!-- Botón de acción -->
-                                                                  <td>
-                                                                     <!-- Boton revisar cumplimiento -->
-                                                                     <button class="btn btn-xs btn-success"
-                                                                        @click.prevent="mostrar_detalles_formulario(f.form_deis)">
-                                                                        <!-- <i class="fa fa-external-link-square"></i> -->
-                                                                        Revisar cumplimiento <i class="fa fa-check"></i>
-                                                                     </button>
+                                                            <table class="table table-striped small">
+                                                               <thead>
+                                                                  <tr>
 
-                                                                     <!-- Boton editar formulario cumplimiento -->
-                                                                     <button class="btn btn-xs btn-primary"
-                                                                        @click.prevent="">
-                                                                        &nbsp;<i class="fa fa-pencil"></i>
-                                                                     </button>
-                                                                  </td>
+                                                                     <th>Accion</th>
+                                                                     <th>Correlativo</th>
+                                                                     <th>Run Madre</th>
+                                                                     <th>Nombre</th>
+                                                                  </tr>
+                                                               </thead>
+                                                               <tbody>
 
-                                                                  <!-- Correlativo -->
-                                                                  <td>
-                                                                     {{f.form_deis.id}}
-                                                                  </td>
+                                                                  <tr v-for="f in
+                                                                     filterBy(mis_formularios, filterTerm)"
+                                                                     v-if="f.form_deis != null">
 
-                                                                  <!-- Run madre y dv -->
-                                                                  <td v-if="f.form_deis.run_madre != null &&
-                                                                     f.form_deis.digito_verificador != null">
-                                                                     {{
-                                                                        f.form_deis.run_madre
-                                                                        +""+
-                                                                        f.form_deis.digito_verificador
-                                                                     }}
-                                                                  </td>
-                                                                  <td v-else class="text-warning">
-                                                                     Run sin ingresar
-                                                                  </td>
+                                                                     <!-- Botón de acción -->
+                                                                     <td>
+                                                                        <!-- Boton revisar cumplimiento -->
+                                                                        <button class="btn btn-xs btn-success"
+                                                                           @click.prevent="mostrar_detalles_formulario(f.form_deis)">
+                                                                           <!-- <i class="fa fa-external-link-square"></i> -->
+                                                                           Revisar cumplimiento <i class="fa fa-check"></i>
+                                                                        </button>
 
-                                                                  <!-- Nombre Paciente -->
-                                                                  <td>
-                                                                     {{f.form_deis.nombres_madre ||
-                                                                        'Sin Nombre'}}
-                                                                     {{f.form_deis.primer_apellido_madre ||
-                                                                        'Sin Apellido'}}
-                                                                  </td>
+                                                                        <!-- Boton editar formulario cumplimiento -->
+                                                                        <button class="btn btn-xs btn-primary"
+                                                                           @click.prevent="">
+                                                                           &nbsp;<i class="fa fa-pencil"></i>
+                                                                        </button>
+                                                                     </td>
 
-                                                               </tr>
+                                                                     <!-- Correlativo -->
+                                                                     <td>
+                                                                        {{f.form_deis.id}}
+                                                                     </td>
 
-                                                            </tbody>
-                                                         </table>
-                                                      </div><!-- .table-responsive -->
+                                                                     <!-- Run madre y dv -->
+                                                                     <td v-if="f.form_deis.run_madre != null &&
+                                                                        f.form_deis.digito_verificador != null">
+                                                                        {{
+                                                                           f.form_deis.run_madre
+                                                                           +""+
+                                                                           f.form_deis.digito_verificador
+                                                                        }}
+                                                                     </td>
+                                                                     <td v-else class="text-warning">
+                                                                        Run sin ingresar
+                                                                     </td>
 
-                                                   </dd>
-                                                   <dd v-else>
+                                                                     <!-- Nombre Paciente -->
+                                                                     <td>
+                                                                        {{f.form_deis.nombres_madre ||
+                                                                           'Sin Nombre'}}
+                                                                        {{f.form_deis.primer_apellido_madre ||
+                                                                           'Sin Apellido'}}
+                                                                     </td>
 
-                                                      <button class="btn btn-success btn-xs"
-                                                         @click.prevent="show_mis_formularios_grid=true">
-                                                         Volver
-                                                      </button>
+                                                                  </tr>
 
-                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->
+                                                               </tbody>
+                                                            </table>
+                                                         </div><!-- .table-responsive -->
 
-                                                      <div class="row">
-                                                      <div class="col-sm-6 col-md-6"
-                                                         v-for="o,i in datos_estadisticas_mi_formulario">
-                                                         <h4>{{ o[Object.keys(o)[0]].title }}</h4> <br>
-                                                         <span>
-                                                            <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>
-                                                            <small class="pull-right text-success">
-                                                               {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
-                                                            </small>
-                                                         </span>
+                                                      </dd>
+                                                   </dl><!-- dl-vertical -->
 
-                                                         <br>
 
-                                                         <span>
-                                                            <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
-                                                            <small class="pull-right text-warning">
-                                                               {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
-                                                            </small>
-                                                         </span>
+                                                </div>
+                                                <div style="padding: 10px;" v-else>
 
-                                                         <br>
+                                                   <button class="btn btn-success btn-sm"
+                                                      @click.prevent="show_mis_formularios_grid=true">
+                                                      Volver
+                                                   </button>
+                                                   <br>
 
-                                                         <span>
-                                                            <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>
-                                                         </span>
 
-                                                         <br>
-                                                         <br>
+                                                   <dl class="dl-vertical">
+                                                      <dt>
+                                                      <!-- por el momento, asi vacio se ve bien -->
+                                                      </dt>
 
-                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-success progress-bar-striped active"
-                                                               :style="'width: '+o[Object.keys(o)[0]].completion+'%'">
-                                                               <span class="">
-                                                                  +{{Math.round(o[Object.keys(o)[0]].completion) }}%
-                                                               </span>
-                                                            </div>
-                                                            <div class="progress-bar progress-bar-warning progress-bar-striped active"
-                                                               :style="'width: '+o[Object.keys(o)[0]].remaining+'%'">
-                                                               <span class="">
-                                                                  -{{Math.round(o[Object.keys(o)[0]].remaining)}}%
-                                                               </span>
-                                                            </div>
-                                                         </div>
 
-                                                      </div><!-- .col -->
-                                                      </div><!-- .row -->
+                                                      <dd>
 
-                                                   </dd>
+                                                         <div id="" class="panel with-nav-tabs panel-primary">
 
-                                                </div><!-- .col-md-12 -->
-                                             </div>
-                                          </dl><!-- dl-horizontal -->
+                                                            <!-- Items elementos de cabecera -->
+                                                            <div class="panel-heading">
+                                                               <!-- Nav tabs -->
+                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 18px;">
+
+                                                                  <li role="presentation" class="active">
+                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
+                                                                        role="tab" data-toggle="tab"
+                                                                        style="padding-top: 2px;padding-bottom: 0px;height: 19px;">
+                                                                        Estadíticas generales
+                                                                     </a>
+                                                                  </li>
+
+                                                                  <li role="presentation" class="">
+                                                                     <a href="#estadistica_detalle" aria-controls="estadistica_detalle"
+                                                                        role="tab" data-toggle="tab"
+                                                                        style="padding-top: 2px;padding-bottom: 0px;height: 19px;">
+                                                                        Detalle de estadística
+                                                                     </a>
+                                                                  </li>
+
+                                                               </ul>
+                                                            </div><!-- .panel-heading -->
+
+                                                            <div class="panel-body">
+                                                               <!-- Tab panes -->
+                                                               <div class="tab-content">
+
+                                                                  <div role="tabpanel" class="tab-pane fade in active" id="estadisticas_generales">
+
+
+
+                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->
+
+                                                                  <div role="tabpanel" class="tab-pane fade in active" id="estadistica_detalle">
+
+
+
+                                                                     <!-- Si entra aqui es por que estoy viendo un solo item -->
+
+                                                                     <div class="row">
+                                                                     <div class="col-sm-6 col-md-6"
+                                                                        v-for="o,i in datos_estadisticas_mi_formulario">
+
+                                                                        <div class="list-group">
+                                                                           <div class="list-group-item">
+
+                                                                           <h5>{{ o[Object.keys(o)[0]].title }}</h5>
+
+                                                                           </div>
+
+                                                                           <div class="list-group-item">
+
+                                                                        <span>
+                                                                           <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>
+                                                                           <small class="pull-right text-success">
+                                                                              {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
+                                                                           </small>
+                                                                        </span>
+
+                                                                        <br>
+
+                                                                        <span>
+                                                                           <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
+                                                                           <small class="pull-right text-warning">
+                                                                              {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
+                                                                           </small>
+                                                                        </span>
+
+                                                                        <br>
+
+                                                                        <span>
+                                                                           <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>
+                                                                        </span>
+
+                                                                        <br>
+                                                                        <br>
+
+                                                                        <div class="progress">
+                                                                           <div class="progress-bar progress-bar-success progress-bar-striped active"
+                                                                              :style="'width: '+o[Object.keys(o)[0]].completion+'%'">
+                                                                              <span class="">
+                                                                                 +{{Math.round(o[Object.keys(o)[0]].completion) }}%
+                                                                              </span>
+                                                                           </div>
+                                                                           <div class="progress-bar progress-bar-warning progress-bar-striped active"
+                                                                              :style="'width: '+o[Object.keys(o)[0]].remaining+'%'">
+                                                                              <span class="">
+                                                                                 -{{Math.round(o[Object.keys(o)[0]].remaining)}}%
+                                                                              </span>
+                                                                           </div>
+                                                                        </div>
+
+
+
+                                                                           </div>
+
+                                                                        </div>
+
+
+                                                                     </div><!-- .col -->
+                                                                     </div><!-- .row -->
+
+
+                                                                  </div><!-- .tab-pane .fade #estadistica_detalle -->
+                                                               </div><!-- .tab-content -->
+                                                            </div><!-- .panel-body -->
+                                                         </div><!-- .panel -->
+
+
+                                                      </dd>
+
+                                                   </dl><!-- dl-horizontal -->
+
+                                                </div>
+
+                                             </div><!-- .col-md-12 -->
+                                          </div>
 
 
                                        </div><!-- .tab-pane .fade #lista_establecimientos -->
