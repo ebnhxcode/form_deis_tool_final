@@ -1281,7 +1281,8 @@ const FormularioController = new Vue({
 
                                                                         <!-- Boton editar formulario cumplimiento -->
                                                                         <button class="btn btn-xs btn-primary"
-                                                                           @click.prevent="">
+                                                                           v-if="f.form_deis.run_madre!=null&&f.form_deis.digito_verificador!=null"
+                                                                           @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">
                                                                            &nbsp;<i class="fa fa-pencil"></i>
                                                                         </button>
                                                                      </td>
@@ -1533,6 +1534,103 @@ const FormularioController = new Vue({
 
          },
          methods: {
+
+            modificar_usuario_seleccionado: function (run_madre,digito_verificador) {
+               console.log(run_madre);
+               return console.log(digito_verificador);
+
+               if (!this.run_madre || validate(this.run_madre) == false){
+                  swal({
+                     title: "Advertencia",
+                     text: "Debe ingresar un rut valido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return;
+               }
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               var run_limpio = clean(this.run_madre);
+               run_limpio = run_limpio.substr(0, run_limpio.length-1);
+               //alert (run_limpio) ;
+               //return;
+
+               //formData.append('run_madre', this.run_madre);
+               formData.append('run_madre', run_limpio);
+
+               this.$http.post('/formulario/buscar_por_run', formData).then(response => { // success callback
+                  //console.log(response);
+                  this.formularios = response.body.formularios;
+                  this.formulario_vacio = $.isEmptyObject(this.formularios)==true?true:false;
+                  this.run_madre = null;
+                  if (this.formulario_vacio == true) {
+                     swal({
+                        title: "Atención",
+                        text: "El rut ingresado no se encuentra registrado.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                  }
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+
+
+
+
+               /*
+                for (let f in formulario) {
+
+                if (f.indexOf('fecha')>-1 && formulario[f]) {
+                let fecha_x = formulario[f].split('-');
+                formulario[f] = fecha_x[2]+'-'+fecha_x[1]+'-'+fecha_x[0];
+                }
+
+                }
+                */
+               this.$parent.renderizar_solo_inputs();
+               this.$parent.fdc = formulario;
+               this.$parent.fdc_temp = formulario;
+               this.$parent.formularioActivoObj = formulario;
+               this.$parent.show_modal_buscar_formulario = false;
+               this.$parent.formularioEditActivo = true;
+               this.$parent.formularioNuevoActivo = false;
+
+               /*
+                //Generamos limpieza de los campos con el plugin
+                $('#select2-establecimiento_control_sifilis-container').val(null).empty();
+                $('#select2-establecimiento_control_vih-container').val(null).empty();
+                $('#select2-lugar_control_prenatal-container').val(null).empty();
+                $('#select2-lugar_control_embarazo-container').val(null).empty();
+                $('#select2-lugar_atencion_parto-container').val(null).empty();
+                */
+
+
+               var formData = new FormData();
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('n_correlativo_interno', formulario.n_correlativo_interno);
+
+               this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                  this.$parent.fdc = response.body.fdc;
+
+                  //console.log(response);
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+               this.formularios = [];
+
+            },
+
             mostrar_detalles_formulario: function (formulario) { //console.log();
                this.formulario_tmp = formulario || null;
                var inputs = this.inputs_formulario;
