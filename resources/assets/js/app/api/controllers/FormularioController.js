@@ -918,6 +918,13 @@ const FormularioController = new Vue({
                                                                      <button class="btn btn-xs btn-info" v-else>
                                                                         Revisado
                                                                      </button>
+                                                                     <!-- Boton editar formulario cumplimiento -->
+                                                                     <button class="btn btn-xs btn-primary"
+                                                                        v-if="e.run_madre!=null&&e.digito_verificador!=null"
+                                                                        @click.prevent="modificar_usuario_seleccionado
+                                                                        (e.run_madre,e.digito_verificador)">
+                                                                        &nbsp;<i class="fa fa-pencil"></i>
+                                                                     </button>
                                                                   </td>
                                                                   <!-- <td>{{e.id}}</td> -->
                                                                   <!-- <td>{{(i+1)}}</td> -->
@@ -980,6 +987,86 @@ const FormularioController = new Vue({
          created () {
          },
          methods: {
+            modificar_usuario_seleccionado: function (run_madre,digito_verificador) {
+
+               if (!run_madre || !digito_verificador || validate(run_madre+""+digito_verificador) == false){
+                  swal({
+                     title: "Advertencia",
+                     text: "Debe ingresar un rut valido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return;
+               }
+
+               this.$parent.show_modal_errores_formulario = false;
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+               var run_limpio = clean(run_madre+""+digito_verificador);
+               run_limpio = run_limpio.substr(0, run_limpio.length-1);
+
+               formData.append('run_madre', run_limpio);
+
+               var formularios = null;
+               var formulario_vacio = null;
+               this.$http.post('/formulario/buscar_por_run', formData).then(response => { // success callback
+
+                  if (response.status == 200) {
+
+                     formularios = response.body.formularios[0];
+
+                     formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
+
+                     if (formulario_vacio == true) {
+                        swal({
+                           title: "Atención",
+                           text: "El rut ingresado no se encuentra registrado.",
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                     }
+
+                     this.$parent.fdc = formularios;
+                     this.$parent.fdc_temp = formularios;
+                     this.$parent.formularioActivoObj = formularios;
+
+                     this.$parent.formularioEditActivo = true;
+                     this.$parent.formularioNuevoActivo = false;
+
+                     this.$parent.renderizar_solo_inputs();
+
+
+                     var formData = new FormData();
+                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                     formData.append('n_correlativo_interno', formularios.n_correlativo_interno);
+
+                     this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                        this.$parent.fdc = response.body.fdc;
+
+                        //console.log(response);
+                     }, response => { // error callback
+                        //console.log(response);
+                        this.$parent.check_status_code(response.status);
+                     });
+
+                  }
+
+                  //console.log(formularios);
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+               return ;
+
+            },
+
             marcar_error_revisado: function (id_error) {
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                var formData = new FormData();
@@ -1809,9 +1896,6 @@ const FormularioController = new Vue({
    filters: {
    },
    methods: {
-
-
-
 
       check_status_code: function (status_code) {
          switch (status_code) {

@@ -10,6 +10,7 @@ class ObservadorMiddleware{
     public function handle($request, Closure $next){
         $this->auth = Auth::user();
         switch ($this->auth->role->role) {
+            case 'admin':
             case 'observador':
             case 'mantenedor':
                 return $next($request);
