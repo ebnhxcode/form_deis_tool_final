@@ -933,7 +933,7 @@ const FormularioController = new Vue({
 
                                                                </tr>
                                                                <tr v-if="auth['form_deis_errores'].length==0">
-                                                                  <small>No hay inconsistencias</small>
+                                                                  <small>No hay más inconsistencias</small>
                                                                </tr>
 
                                                             </tbody>
@@ -1267,10 +1267,17 @@ const FormularioController = new Vue({
 
                                                                   <!-- Botón de acción -->
                                                                   <td>
-                                                                     <button class="btn btn-xs btn-info"
+                                                                     <!-- Boton revisar cumplimiento -->
+                                                                     <button class="btn btn-xs btn-success"
                                                                         @click.prevent="mostrar_detalles_formulario(f.form_deis)">
                                                                         <!-- <i class="fa fa-external-link-square"></i> -->
-                                                                        Revisar
+                                                                        Revisar cumplimiento <i class="fa fa-check"></i>
+                                                                     </button>
+
+                                                                     <!-- Boton editar formulario cumplimiento -->
+                                                                     <button class="btn btn-xs btn-primary"
+                                                                        @click.prevent="">
+                                                                        &nbsp;<i class="fa fa-pencil"></i>
                                                                      </button>
                                                                   </td>
 
@@ -1437,8 +1444,8 @@ const FormularioController = new Vue({
 
                   for (var i in this.inputs_formulario) {
 
-                     key = inputs[i].id;
-                     value = this.formulario_tmp[inputs[i].id];
+                     key = inputs[i].id; //Le paso el nombre del campo\input
+                     value = this.formulario_tmp[inputs[i].id]; //Le paso el value del campo\input
 
                      switch (inputs[i].seccion) {
                         case "identificacion_mujer":
@@ -1480,69 +1487,18 @@ const FormularioController = new Vue({
                      }//Fin switch
                   }//Fin for
 
-                  this.datos_estadisticas_mi_formulario.push({
-                     'identificacion_mujer':{
-                        'total':im,
-                        'null':im_null,
-                        'not_null':im_not_null,
-                        'title':'Pestaña Identificacion de la Mujer',
-                        'completion':(im_not_null/im)*100,
-                        'remaining':(im_null/im)*100,
-                     }
-                  });
 
-                  this.datos_estadisticas_mi_formulario.push({
-                     'control_embarazo':{
-                        'total':ce,
-                        'null':ce_null,
-                        'not_null':ce_not_null,
-                        'title':'Pestaña Control de Embarazo (APS)',
-                        'completion':(ce_not_null/ce)*100,
-                        'remaining':(ce_null/ce)*100,
-                     }
-                  });
-                  this.datos_estadisticas_mi_formulario.push({
-                     'patologias_sifilis':{
-                        'total':ps,
-                        'null':ps_null,
-                        'not_null':ps_not_null,
-                        'title':'Pestaña Control Sífilis (Especialidades)',
-                        'completion':(ps_not_null/ps)*100,
-                        'remaining':(ps_null/ps)*100,
-                     }
-                  });
-                  this.datos_estadisticas_mi_formulario.push({
-                     'patologias_vih':{
-                        'total':pv,
-                        'null':pv_null,
-                        'not_null':pv_not_null,
-                        'title':'Pestaña Control VIH (Especialidades)',
-                        'completion':(pv_not_null/pv)*100,
-                        'remaining':(pv_null/pv)*100,
-                     }
-                  });
-                  this.datos_estadisticas_mi_formulario.push({
-                     'datos_parto':{
-                        'total':dp,
-                        'null':dp_null,
-                        'not_null':dp_not_null,
-                        'title':'Pestaña Datos del Parto',
-                        'completion':(dp_not_null/dp)*100,
-                        'remaining':(dp_null/dp)*100,
-                     }
-                  });
-                  this.datos_estadisticas_mi_formulario.push({
-                     'datos_recien_nacido':{
-                        'total':drn,
-                        'null':drn_null,
-                        'not_null':drn_not_null,
-                        'title':'Pestaña Datos recien nacido',
-                        'completion':(drn_not_null/drn)*100,
-                        'remaining':(drn_null/drn)*100,
-                     }
-                  });
+                  this.empaquetar_datos_estadistica(im,im_null,im_not_null,"Pestaña Identificacion de la Mujer",key);
 
+                  this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Pestaña Control de Embarazo (APS)",key);
 
+                  this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Pestaña Control Sífilis (Especialidades)",key);
+
+                  this.empaquetar_datos_estadistica(pv,pv_null,pv_not_null,"Pestaña Control VIH (Especialidades)",key);
+
+                  this.empaquetar_datos_estadistica(dp,dp_null,dp_not_null,"Pestaña Datos del Parto",key);
+
+                  this.empaquetar_datos_estadistica(drn,drn_null,drn_not_null,"Pestaña Datos recien nacido",key);
 
                   //console.log(control_embarazo);
                   /*
@@ -1562,6 +1518,20 @@ const FormularioController = new Vue({
                   return ;
                }
                return alert("No se ha seleccionador un formulario.");
+            },
+
+            empaquetar_datos_estadistica: function (total, nulls, not_null, title, field_name) {
+               this.datos_estadisticas_mi_formulario.push({
+                  field_name:{
+                     'total':total,
+                     'null':nulls,
+                     'not_null':not_null,
+                     'title':title,
+                     'completion':(not_null/total)*100,
+                     'remaining':(nulls/total)*100,
+                  }
+               });
+               return;
             },
 
 
