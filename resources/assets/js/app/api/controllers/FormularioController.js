@@ -1558,13 +1558,15 @@ const FormularioController = new Vue({
                formData.append('run_madre', run_limpio);
 
                var formularios = null;
+               var formulario_vacio = null;
                this.$http.post('/formulario/buscar_por_run', formData).then(response => { // success callback
-                  //console.log(response);
-                  formularios = response.body.formularios[0];
-                  //return console.log(formularios);
 
-                  var formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
-                  //this.run_madre = null;
+                  if (response.status == 200) {
+                     formularios = response.body.formularios.get(0);
+                  }
+
+                  formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
+
                   if (formulario_vacio == true) {
                      swal({
                         title: "Atención",
@@ -1575,15 +1577,13 @@ const FormularioController = new Vue({
                      });
                   }
 
-
-
-
-
                }, response => { // error callback
                   //console.log(response);
                   this.$parent.check_status_code(response.status);
                });
 
+
+               return console.log(formularios);
 
                this.$parent.fdc = formularios;
                this.$parent.fdc_temp = formularios;
