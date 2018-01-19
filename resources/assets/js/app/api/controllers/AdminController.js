@@ -686,6 +686,19 @@ const AdminUsuarios = new Vue({
                                              class="form-control" />
                                     </dd>
                                  </div>
+                                 <div class="col-md-6">
+                                    <dt>Perfil</dt>
+                                    <dd>
+                                       <select name="id_role" class="form-control" v-model="user.id_role">
+                                          <option value="3">Mantenedor</option>
+                                          <option value="4">Digitador</option>
+                                          <option value="5">Observador</option>
+                                       </select>
+
+                                       <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"
+                                             class="form-control" />
+                                    </dd>
+                                 </div>
                                  <div class="col-md-12">
                                     <button @click.prevent="saveNewUser(user)" class="btn btn-sm btn-success pull-right">Guardar</button>
                                  </div>
