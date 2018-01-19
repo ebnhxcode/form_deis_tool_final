@@ -13,6 +13,7 @@ class ObservadorMiddleware{
             case 'admin':
             case 'observador':
             case 'mantenedor':
+            case 'digitador':
                 return $next($request);
                 break;
         }
