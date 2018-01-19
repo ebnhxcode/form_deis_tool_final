@@ -51,6 +51,7 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'mantenedor' => \App\Http\Middleware\MantenedorMiddleware::class,
         'digitador' => \App\Http\Middleware\DigitadorMiddleware::class,
+        'observador' => \App\Http\Middleware\ObservadorMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }
