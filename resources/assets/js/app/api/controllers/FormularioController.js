@@ -1330,6 +1330,7 @@ const FormularioController = new Vue({
                                                       Volver
                                                    </button>
                                                    <br>
+                                                   <br>
 
 
                                                    <dl class="dl-vertical">
@@ -1350,7 +1351,7 @@ const FormularioController = new Vue({
                                                                   <li role="presentation" class="active">
                                                                      <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
                                                                         role="tab" data-toggle="tab"
-                                                                        style="padding-top: 2px;padding-bottom: 0px;height: 19px;">
+                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
                                                                         Estadíticas generales
                                                                      </a>
                                                                   </li>
@@ -1358,7 +1359,7 @@ const FormularioController = new Vue({
                                                                   <li role="presentation" class="">
                                                                      <a href="#estadistica_detalle" aria-controls="estadistica_detalle"
                                                                         role="tab" data-toggle="tab"
-                                                                        style="padding-top: 2px;padding-bottom: 0px;height: 19px;">
+                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
                                                                         Detalle de estadística
                                                                      </a>
                                                                   </li>
@@ -1389,51 +1390,51 @@ const FormularioController = new Vue({
                                                                         <div class="list-group">
                                                                            <div class="list-group-item">
 
-                                                                           <h5>{{ o[Object.keys(o)[0]].title }}</h5>
+                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h5>
 
                                                                            </div>
 
                                                                            <div class="list-group-item">
 
-                                                                        <span>
-                                                                           <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>
-                                                                           <small class="pull-right text-success">
-                                                                              {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
-                                                                           </small>
-                                                                        </span>
-
-                                                                        <br>
-
-                                                                        <span>
-                                                                           <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
-                                                                           <small class="pull-right text-warning">
-                                                                              {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
-                                                                           </small>
-                                                                        </span>
-
-                                                                        <br>
-
-                                                                        <span>
-                                                                           <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>
-                                                                        </span>
-
-                                                                        <br>
-                                                                        <br>
-
-                                                                        <div class="progress">
-                                                                           <div class="progress-bar progress-bar-success progress-bar-striped active"
-                                                                              :style="'width: '+o[Object.keys(o)[0]].completion+'%'">
-                                                                              <span class="">
-                                                                                 +{{Math.round(o[Object.keys(o)[0]].completion) }}%
+                                                                              <span>
+                                                                                 <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>
+                                                                                 <small class="pull-right text-success">
+                                                                                    {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
+                                                                                 </small>
                                                                               </span>
-                                                                           </div>
-                                                                           <div class="progress-bar progress-bar-warning progress-bar-striped active"
-                                                                              :style="'width: '+o[Object.keys(o)[0]].remaining+'%'">
-                                                                              <span class="">
-                                                                                 -{{Math.round(o[Object.keys(o)[0]].remaining)}}%
+
+                                                                              <br>
+
+                                                                              <span>
+                                                                                 <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
+                                                                                 <small class="pull-right text-warning">
+                                                                                    {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
+                                                                                 </small>
                                                                               </span>
-                                                                           </div>
-                                                                        </div>
+
+                                                                              <br>
+
+                                                                              <span>
+                                                                                 <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>
+                                                                              </span>
+
+                                                                              <br>
+                                                                              <br>
+
+                                                                              <div class="progress">
+                                                                                 <div class="progress-bar progress-bar-success progress-bar-striped active"
+                                                                                    :style="'width: '+o[Object.keys(o)[0]].completion+'%'">
+                                                                                    <span class="">
+                                                                                       +{{Math.round(o[Object.keys(o)[0]].completion) }}%
+                                                                                    </span>
+                                                                                 </div>
+                                                                                 <div class="progress-bar progress-bar-warning progress-bar-striped active"
+                                                                                    :style="'width: '+o[Object.keys(o)[0]].remaining+'%'">
+                                                                                    <span class="">
+                                                                                       -{{Math.round(o[Object.keys(o)[0]].remaining)}}%
+                                                                                    </span>
+                                                                                 </div>
+                                                                              </div>
 
 
 
@@ -1573,17 +1574,17 @@ const FormularioController = new Vue({
                   }//Fin for
 
 
-                  this.empaquetar_datos_estadistica(im,im_null,im_not_null,"Pestaña Identificacion de la Mujer",key);
+                  this.empaquetar_datos_estadistica(im,im_null,im_not_null,"Identificacion de la Mujer",key);
 
-                  this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Pestaña Control de Embarazo (APS)",key);
+                  this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Control de Embarazo (APS)",key);
 
-                  this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Pestaña Control Sífilis (Especialidades)",key);
+                  this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Control Sífilis (Especialidades)",key);
 
-                  this.empaquetar_datos_estadistica(pv,pv_null,pv_not_null,"Pestaña Control VIH (Especialidades)",key);
+                  this.empaquetar_datos_estadistica(pv,pv_null,pv_not_null,"Control VIH (Especialidades)",key);
 
-                  this.empaquetar_datos_estadistica(dp,dp_null,dp_not_null,"Pestaña Datos del Parto",key);
+                  this.empaquetar_datos_estadistica(dp,dp_null,dp_not_null,"Datos del Parto",key);
 
-                  this.empaquetar_datos_estadistica(drn,drn_null,drn_not_null,"Pestaña Datos recien nacido",key);
+                  this.empaquetar_datos_estadistica(drn,drn_null,drn_not_null,"Datos recien nacido",key);
 
                   //console.log(control_embarazo);
                   /*
