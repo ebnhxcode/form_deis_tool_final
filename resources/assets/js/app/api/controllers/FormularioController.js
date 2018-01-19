@@ -1349,23 +1349,22 @@ const FormularioController = new Vue({
                                                                <!-- Nav tabs -->
                                                                <ul class="nav nav-tabs small" role="tablist" style="height: 18px;">
 
-                                                                  <!--
                                                                   <li role="presentation" class="active">
-                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
-                                                                        role="tab" data-toggle="tab"
-                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
-                                                                        Estadíticas generales
-                                                                     </a>
-                                                                  </li>
-                                                                  -->
-
-                                                                  <li role="presentation" class="">
                                                                      <a href="#estadistica_detalle" aria-controls="estadistica_detalle"
                                                                         role="tab" data-toggle="tab"
                                                                         style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
-                                                                        Detalle de estadística
+                                                                        Detalle de ficha
                                                                      </a>
                                                                   </li>
+
+                                                                  <li role="presentation" class="">
+                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
+                                                                        role="tab" data-toggle="tab"
+                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
+                                                                        Estadísticas generales
+                                                                     </a>
+                                                                  </li>
+
 
                                                                </ul>
                                                             </div><!-- .panel-heading -->
@@ -1374,14 +1373,8 @@ const FormularioController = new Vue({
                                                                <!-- Tab panes -->
                                                                <div class="tab-content">
 
-                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"
-                                                                     id="estadisticas_generales">
-
-
-
-                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->
-
-                                                                  <div role="tabpanel" class="tab-pane active" id="estadistica_detalle">
+                                                                  <div role="tabpanel" class="tab-pane fade in active"
+                                                                     id="estadistica_detalle">
 
 
 
@@ -1462,9 +1455,6 @@ const FormularioController = new Vue({
 
                                                                               </div>
 
-
-
-
                                                                            </div>
 
                                                                         </div>
@@ -1472,9 +1462,16 @@ const FormularioController = new Vue({
 
                                                                      </div><!-- .col -->
                                                                      </div><!-- .row -->
-
-
                                                                   </div><!-- .tab-pane .fade #estadistica_detalle -->
+
+
+                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"
+                                                                     id="estadisticas_generales">
+
+                                                                     <small>Temporalmente sin datos</small>
+
+                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->
+
                                                                </div><!-- .tab-content -->
                                                             </div><!-- .panel-body -->
                                                          </div><!-- .panel -->
@@ -1548,6 +1545,8 @@ const FormularioController = new Vue({
                   return;
                }
 
+               this.$parent.show_modal_mis_formularios = false;
+
                var formData = new FormData();
 
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -1562,54 +1561,54 @@ const FormularioController = new Vue({
                this.$http.post('/formulario/buscar_por_run', formData).then(response => { // success callback
 
                   if (response.status == 200) {
-                     formularios = response.body.formularios.get(0);
-                  }
 
-                  formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
+                     formularios = response.body.formularios[0];
 
-                  if (formulario_vacio == true) {
-                     swal({
-                        title: "Atención",
-                        text: "El rut ingresado no se encuentra registrado.",
-                        type: "warning",
-                        confirmButtonClass: "btn-danger",
-                        closeOnConfirm: false
+                     formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
+
+                     if (formulario_vacio == true) {
+                        swal({
+                           title: "Atención",
+                           text: "El rut ingresado no se encuentra registrado.",
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                     }
+
+                     this.$parent.fdc = formularios;
+                     this.$parent.fdc_temp = formularios;
+                     this.$parent.formularioActivoObj = formularios;
+
+                     this.$parent.formularioEditActivo = true;
+                     this.$parent.formularioNuevoActivo = false;
+
+                     this.$parent.renderizar_solo_inputs();
+
+
+                     var formData = new FormData();
+                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                     formData.append('n_correlativo_interno', formularios.n_correlativo_interno);
+
+                     this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                        this.$parent.fdc = response.body.fdc;
+
+                        //console.log(response);
+                     }, response => { // error callback
+                        //console.log(response);
+                        this.$parent.check_status_code(response.status);
                      });
+
                   }
 
+                  //console.log(formularios);
                }, response => { // error callback
                   //console.log(response);
                   this.$parent.check_status_code(response.status);
                });
 
 
-               return console.log(formularios);
-
-               this.$parent.fdc = formularios;
-               this.$parent.fdc_temp = formularios;
-               this.$parent.formularioActivoObj = formularios;
-
-               this.$parent.show_modal_mis_formularios = false;
-               this.$parent.formularioEditActivo = true;
-               this.$parent.formularioNuevoActivo = false;
-
-               this.$parent.renderizar_solo_inputs();
-
-
-               var formData = new FormData();
-               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               formData.append('n_correlativo_interno', formularios.n_correlativo_interno);
-
-               this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
-                  this.$parent.fdc = response.body.fdc;
-
-                  //console.log(response);
-               }, response => { // error callback
-                  //console.log(response);
-                  this.$parent.check_status_code(response.status);
-               });
-
-               formularios = [];
+               return ;
 
             },
 
