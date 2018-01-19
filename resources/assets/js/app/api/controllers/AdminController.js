@@ -54,7 +54,7 @@ const AdminUsuarios = new Vue({
             clave_electronica:false,
             confirmado_llave_secreta:false,
             telefono:false,
-            //id_role:false,
+            id_role:false,
             acepta_terminos:false,
             correo_resagado:false
          },
@@ -694,9 +694,6 @@ const AdminUsuarios = new Vue({
                                           <option value="4">Digitador</option>
                                           <option value="5">Observador</option>
                                        </select>
-
-                                       <input name="clave_electronica" type="text" id="position" v-model="user.clave_electronica"
-                                             class="form-control" />
                                     </dd>
                                  </div>
                                  <div class="col-md-12">
@@ -1326,7 +1323,7 @@ const AdminUsuarios = new Vue({
          formData.append('rut', user.rut);
          formData.append('telefono', user.telefono);
          formData.append('clave_electronica', user.clave_electronica);
-         //formData.append('id_role', user.id_role);
+         formData.append('id_role', user.id_role);
          formData.append('confirmado_llave_secreta', user.confirmado_llave_secreta);
          formData.append('acepta_terminos', user.acepta_terminos);
 

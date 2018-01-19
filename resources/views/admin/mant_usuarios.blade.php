@@ -441,7 +441,13 @@
                                     </td>
                                     <td v-show="user_table_fields.id_role == true">
                                        <span v-if="userEditId!=user.id">@{{ user.id_role }}</span>
-                                       <input type="text" v-model="user.id_role" class="form-control" v-else>
+                                       <!-- <input type="text" v-model="user.id_role" class="form-control" v-else> -->
+                                       <select name="id_role" class="form-control" v-model="user.id_role" v-else>
+                                          <option value="3">Mantenedor</option>
+                                          <option value="4">Digitador</option>
+                                          <option value="5">Observador</option>
+                                       </select>
+
                                     </td>
                                     <td v-show="user_table_fields.confirmado_llave_secreta == true">
                                        <span v-if="userEditId!=user.id">@{{ user.confirmado_llave_secreta }}</span>
