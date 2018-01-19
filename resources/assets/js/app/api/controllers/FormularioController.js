@@ -1348,6 +1348,7 @@ const FormularioController = new Vue({
                                                                <!-- Nav tabs -->
                                                                <ul class="nav nav-tabs small" role="tablist" style="height: 18px;">
 
+                                                                  <!--
                                                                   <li role="presentation" class="active">
                                                                      <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
                                                                         role="tab" data-toggle="tab"
@@ -1355,6 +1356,7 @@ const FormularioController = new Vue({
                                                                         Estadíticas generales
                                                                      </a>
                                                                   </li>
+                                                                  -->
 
                                                                   <li role="presentation" class="">
                                                                      <a href="#estadistica_detalle" aria-controls="estadistica_detalle"
@@ -1371,13 +1373,14 @@ const FormularioController = new Vue({
                                                                <!-- Tab panes -->
                                                                <div class="tab-content">
 
-                                                                  <div role="tabpanel" class="tab-pane fade in active" id="estadisticas_generales">
+                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"
+                                                                     id="estadisticas_generales">
 
 
 
                                                                   </div><!-- .tab-pane .fade #estadisticas_generales -->
 
-                                                                  <div role="tabpanel" class="tab-pane fade in active" id="estadistica_detalle">
+                                                                  <div role="tabpanel" class="tab-pane active" id="estadistica_detalle">
 
 
 
@@ -1390,7 +1393,7 @@ const FormularioController = new Vue({
                                                                         <div class="list-group">
                                                                            <div class="list-group-item">
 
-                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h5>
+                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h4>
 
                                                                            </div>
 
@@ -1407,6 +1410,7 @@ const FormularioController = new Vue({
 
                                                                               <span>
                                                                                  <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
+
                                                                                  <small class="pull-right text-warning">
                                                                                     {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
                                                                                  </small>
@@ -1435,6 +1439,28 @@ const FormularioController = new Vue({
                                                                                     </span>
                                                                                  </div>
                                                                               </div>
+
+                                                                              <div v-if="o.field_name.field_name.length > 0">
+
+                                                                                 <button class="btn btn-danger btn-sm"
+                                                                                    type="button" data-toggle="collapse"
+                                                                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;"
+                                                                                         :data-target="'#fields'+i" aria-expanded="false"
+                                                                                         :aria-controls="'fields'+i">
+                                                                                    <small>Ver campos por completar</small>
+                                                                                 </button><!-- .btn .btn-success -->
+
+
+                                                                                 <div class="collapse" :id="'fields'+i"
+                                                                                    style="overflow-y: scroll;max-height: 200px;">
+                                                                                    <h5>Campos por completar</h5>
+                                                                                    <ul v-for="i in o.field_name.field_name">
+                                                                                       <li class="small">{{i.keyjs}}</li>
+                                                                                    </ul>
+                                                                                 </div><!-- .collapse #fields -->
+
+                                                                              </div>
+
 
 
 
@@ -1525,66 +1551,68 @@ const FormularioController = new Vue({
                   var im_null=0; var ce_null=0; var ps_null=0; var pv_null=0; var dp_null=0; var drn_null=0;
                   var im_not_null=0; var ce_not_null=0; var ps_not_null=0; var pv_not_null=0; var dp_not_null=0; var drn_not_null=0;
 
-                  var key = null;
+                  var keyjs = null;
                   var value = null;
+                  var label = null;
 
                   for (var i in this.inputs_formulario) {
 
-                     key = inputs[i].id; //Le paso el nombre del campo\input
+                     keyjs = inputs[i].id; //Le paso el nombre del campo\input
                      value = this.formulario_tmp[inputs[i].id]; //Le paso el value del campo\input
+                     label = inputs[i].label; //Le paso el nombre del label
 
                      switch (inputs[i].seccion) {
                         case "identificacion_mujer":
-                           identificacion_mujer.push({key:value});//Mis elementos de la seccion
+                           //identificacion_mujer.push({key:value});//Mis elementos de la seccion
                            im++; //Mi total de elementos en esta seccion
-                           if (value != null) { im_not_null++; } else { im_null++; }
+                           if (value != null) { im_not_null++; } else { im_null++; identificacion_mujer.push({keyjs:label}); }
                            break;
 
                         case "control_embarazo":
-                           control_embarazo.push({key:value});//Mis elementos de la seccion
+                           //control_embarazo.push({key:value});//Mis elementos de la seccion
                            ce++; //Mi total de elementos en esta seccion
-                           if (value != null) { ce_not_null++; } else { ce_null++; }
+                           if (value != null) { ce_not_null++; } else { ce_null++; control_embarazo.push({keyjs:label}); }
                            break;
 
                         case "patologias_sifilis":
-                           patologias_sifilis.push({key:value});//Mis elementos de la seccion
+                           //patologias_sifilis.push({key:value});//Mis elementos de la seccion
                            ps++; //Mi total de elementos en esta seccion
-                           if (value != null) { ps_not_null++; } else { ps_null++; }
+                           if (value != null) { ps_not_null++; } else { ps_null++; patologias_sifilis.push({keyjs:label}); }
                            break;
 
                         case "patologias_vih":
-                           patologias_vih.push({key:value});//Mis elementos de la seccion
+                           //patologias_vih.push({key:value});//Mis elementos de la seccion
                            pv++; //Mi total de elementos en esta seccion
-                           if (value != null) { pv_not_null++; } else { pv_null++; }
+                           if (value != null) { pv_not_null++; } else { pv_null++; patologias_vih.push({keyjs:label}); }
                            break;
 
                         case "datos_parto":
-                           datos_parto.push({key:value});//Mis elementos de la seccion
+                           //datos_parto.push({key:value});//Mis elementos de la seccion
                            dp++; //Mi total de elementos en esta seccion
-                           if (value != null) { dp_not_null++; } else { dp_null++; }
+                           if (value != null) { dp_not_null++; } else { dp_null++; datos_parto.push({keyjs:label}); }
                            break;
 
                         case "datos_recien_nacido":
-                           datos_recien_nacido.push({key:value});//Mis elementos de la seccion
+                           //datos_recien_nacido.push({key:value});//Mis elementos de la seccion
                            drn++; //Mi total de elementos en esta seccion
-                           if (value != null) { drn_not_null++; } else { drn_null++; }
+                           if (value != null) { drn_not_null++; } else { drn_null++; datos_recien_nacido.push({keyjs:label}); }
                            break;
 
                      }//Fin switch
                   }//Fin for
 
 
-                  this.empaquetar_datos_estadistica(im,im_null,im_not_null,"Identificacion de la Mujer",key);
+                  this.empaquetar_datos_estadistica(im,im_null,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
 
-                  this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Control de Embarazo (APS)",key);
+                  this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
 
-                  this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Control Sífilis (Especialidades)",key);
+                  this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
 
-                  this.empaquetar_datos_estadistica(pv,pv_null,pv_not_null,"Control VIH (Especialidades)",key);
+                  this.empaquetar_datos_estadistica(pv,pv_null,pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
 
-                  this.empaquetar_datos_estadistica(dp,dp_null,dp_not_null,"Datos del Parto",key);
+                  this.empaquetar_datos_estadistica(dp,dp_null,dp_not_null,"Datos del Parto",keyjs,datos_parto);
 
-                  this.empaquetar_datos_estadistica(drn,drn_null,drn_not_null,"Datos recien nacido",key);
+                  this.empaquetar_datos_estadistica(drn,drn_null,drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
 
                   //console.log(control_embarazo);
                   /*
@@ -1606,7 +1634,7 @@ const FormularioController = new Vue({
                return alert("No se ha seleccionador un formulario.");
             },
 
-            empaquetar_datos_estadistica: function (total, nulls, not_null, title, field_name) {
+            empaquetar_datos_estadistica: function (total, nulls, not_null, title, field_name, arr_detail) {
                this.datos_estadisticas_mi_formulario.push({
                   field_name:{
                      'total':total,
@@ -1615,6 +1643,7 @@ const FormularioController = new Vue({
                      'title':title,
                      'completion':(not_null/total)*100,
                      'remaining':(nulls/total)*100,
+                     'field_name':arr_detail,
                   }
                });
                return;

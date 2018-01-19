@@ -58,6 +58,11 @@
       }
 
    </style>
+   <script>
+      $(function () {
+         $('[data-toggle="popover"]').popover();
+      })
+   </script>
 </head>
 <body id="app-layout">
 <nav class="navbar navbar-default navbar-static-top">
