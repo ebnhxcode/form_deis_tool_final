@@ -20,11 +20,17 @@
                            <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
                            <div class="well well-sm">
-                              <h3 class="text-center">
-                                 Levantamiento información TV minsal
+                              <h3 class=""><!-- text-center -->
+                                 Levantamiento información Transmisión Vertical minsal
                                  {{--Plataforma Informática Seguimiento de la Prevención de la Transmisión Vertical de VIH y Sífilis--}}
+                                 {{--
                                  <img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">
-                              </h3> <!-- .text-center --> <br>
+                                 --}}
+                              </h3> <!-- .text-center -->
+                              <br>
+                              <br>
+                              <br>
+                              <br>
 
                               <button class="btn btn-success" type="button" data-toggle="collapse"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;"
@@ -296,13 +302,21 @@
                                                 <dt>
                                                 </dt>
                                                 <dd>
-                                                   <input id="" name="" @click.prevent="guardar_formulario(tab.name)"
-                                                          class="btn btn-success" type="button" value="Guardar"
+                                                   <button id="" name="" @click.prevent="guardar_formulario(tab.name)"
+                                                          class="btn btn-success" type="button"
                                                           style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
+                                                         Guardar &nbsp;&nbsp;&nbsp;
+                                                      <i class="fa fa-btn fa-floppy-o"></i>
+                                                   </button>
 
-                                                   <input id="" name="" @click.prevent="guardar_formulario_completo"
-                                                          class="btn btn-danger pull-right" type="button" value="Cerrar Ficha"
+                                                   <button id="" name="" @click.prevent="guardar_formulario_completo"
+                                                          class="btn btn-danger pull-right" type="button"
                                                           style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
+                                                         Cerrar Ficha &nbsp;&nbsp;&nbsp;
+                                                      <i class="fa fa-btn fa-times"></i>+
+                                                      <i class="fa fa-btn fa-floppy-o"></i>
+                                                   </button>
+
                                                    <transition v-if="mini_loader == true" name="slide-fade">
                                                       <div class="pull-right">
                                                          <div class="circle-loader">

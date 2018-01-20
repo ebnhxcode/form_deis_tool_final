@@ -37,7 +37,7 @@
                                  <i class="ion ion-stats-bars"></i>
                               </div>
                               <a href="{{url('/admin/mant_usuarios')}}"data-tipo="verde"
-                                 class="alerta-semaforo small-box-footer">Acceder <i class="fa fa-arrow-circle-right"></i></a>
+                                 class="alerta-semaforo small-box-footer">Click para abrir y buscar fichas <i class="fa fa-arrow-circle-right"></i></a>
                            </div>
                         </div>
                         <!-- ./col -->
@@ -60,7 +60,7 @@
                                  <i class="ion ion-stats-bars"></i>
                               </div>
                               <a href="{{url('/formulario/transmision_vertical')}}" data-tipo="rojo"
-                                 class="alerta-semaforo small-box-footer">Acceder <i class="fa fa-arrow-circle-right"></i></a>
+                                 class="alerta-semaforo small-box-footer">Click para abrir y buscar fichas <i class="fa fa-arrow-circle-right"></i></a>
                            </div>
                         </div>
                         <!-- ./col -->
@@ -83,7 +83,7 @@
                                  <i class="ion ion-stats-bars"></i>
                               </div>
                               <a href="{{url('/input')}}" data-tipo="amarillo"
-                                 class="alerta-semaforo small-box-footer">Acceder <i class="fa fa-arrow-circle-right"></i></a>
+                                 class="alerta-semaforo small-box-footer">Click para abrir y buscar fichas <i class="fa fa-arrow-circle-right"></i></a>
                            </div>
                         </div>
                         <!-- ./col -->

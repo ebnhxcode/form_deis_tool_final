@@ -1952,11 +1952,15 @@ const FormularioController = new Vue({
 
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
-
-         if (this.auth.id_role == 5) {
-            this.inputs[index].readonly = 'readonly';
-            this.inputs[index].disabled = 'disabled';
-         }
+         /*if (this.auth.id_role == 5 && this.auth.form_deis_user != null && this.fdc.id != null) {
+            for (var i in this.auth.form_deis_user) {
+               console.log(this.auth.form_deis_user[i].id_form_deis);
+               if (this.auth.form_deis_user[i].id_form_deis != this.fdc.id) {
+                  //this.inputs[index].readonly = 'readonly';
+                  //this.inputs[index].disabled = 'disabled';
+               }
+            }
+         }*/
 
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
@@ -2743,6 +2747,7 @@ const FormularioController = new Vue({
 
                break;
             case 'resultado_2_examen_vih_embarazo':
+
                if (this.fdc[input.name] == 'No Realizado') {
 
                   if (this.fdc['fecha_2_examen_vih_embarazo'] || this.fdc['eg_2_examen_vih']) {

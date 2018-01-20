@@ -35552,11 +35552,15 @@ var FormularioController = new _vue2.default({
 
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function check_input(input, index) {
-
-         if (this.auth.id_role == 5) {
-            this.inputs[index].readonly = 'readonly';
-            this.inputs[index].disabled = 'disabled';
-         }
+         /*if (this.auth.id_role == 5 && this.auth.form_deis_user != null && this.fdc.id != null) {
+            for (var i in this.auth.form_deis_user) {
+               console.log(this.auth.form_deis_user[i].id_form_deis);
+               if (this.auth.form_deis_user[i].id_form_deis != this.fdc.id) {
+                  //this.inputs[index].readonly = 'readonly';
+                  //this.inputs[index].disabled = 'disabled';
+               }
+            }
+         }*/
 
          if (input.bloque == 'campo_limitado') {
             //por que se requiere completar
@@ -36205,31 +36209,34 @@ var FormularioController = new _vue2.default({
 
                break;
             case 'resultado_2_examen_vih_embarazo':
+
                if (this.fdc[input.name] == 'No Realizado') {
+
+                  if (this.fdc['fecha_2_examen_vih_embarazo'] || this.fdc['eg_2_examen_vih']) {
+                     swal({
+                        title: "Advertencia",
+                        text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                     this.fdc['eg_2_examen_vih'] = null;
+                  }
+
                   for (var _i30 in this.inputs) {
                      if (this.inputs[_i30].name == 'fecha_2_examen_vih_embarazo' || this.inputs[_i30].name == 'eg_2_examen_vih') {
                         this.inputs[_i30].disabled = true;
                      }
-
-                     if (this.fdc['fecha_2_examen_vih_embarazo'] || this.fdc['eg_2_examen_vih']) {
-                        swal({
-                           title: "Advertencia",
-                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
-                           type: "warning",
-                           confirmButtonClass: "btn-danger",
-                           closeOnConfirm: false
-                        });
-                        this.fdc['eg_2_examen_vih'] = null;
-                     }
                   }
-                  return;
                } else if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'Reactivo') {
+
                   for (var _i31 in this.inputs) {
                      if (this.inputs[_i31].name == 'fecha_2_examen_vih_embarazo' || this.inputs[_i31].name == 'eg_2_examen_vih') {
                         this.inputs[_i31].disabled = null;
                      }
                   }
                } else {
+
                   for (var _i32 in this.inputs) {
                      if (this.inputs[_i32].name == 'fecha_2_examen_vih_embarazo' || this.inputs[_i32].name == 'eg_2_examen_vih') {
                         this.inputs[_i32].disabled = true;
