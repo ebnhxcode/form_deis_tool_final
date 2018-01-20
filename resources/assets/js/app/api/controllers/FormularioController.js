@@ -1443,7 +1443,7 @@ const FormularioController = new Vue({
                                                                         Detalle de ficha
                                                                      </a>
                                                                   </li>
-
+                                                                  <!--
                                                                   <li role="presentation" class="">
                                                                      <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
                                                                         role="tab" data-toggle="tab"
@@ -1451,6 +1451,7 @@ const FormularioController = new Vue({
                                                                         Estadísticas generales
                                                                      </a>
                                                                   </li>
+                                                                  -->
 
 
                                                                </ul>
