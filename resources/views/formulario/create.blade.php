@@ -52,7 +52,7 @@
 
                               <button class="btn btn-sm btn-warning pull-right small" @click.prevent="visualizar_mis_formularios"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
-                                 Mis Fichas&nbsp;
+                                 Mis Fichas&nbsp;&nbsp;&nbsp;
                                  <i class="fa fa-check-square-o"></i>
                               </button><!-- .btn .btn-success -->
 
@@ -62,19 +62,19 @@
                                  Número de Inconsistencias&nbsp;
                                  <small v-if="auth['form_deis_errores']">
                                     <b>@{{ auth['form_deis_errores'].length }}</b>
-                                 </small>
-                                 <i class="fa fa-exclamation"></i>
+                                 </small>&nbsp;&nbsp;&nbsp;
+                                 <i class="fa fa-exclamation-triangle"></i>
                               </button><!-- .btn .btn-success -->
 
                               <button class="btn btn-sm btn-success pull-right small" @click.prevent="crear_nuevo_formulario"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;margin-left: 10px;">
-                                 Crear nueva ficha&nbsp;
-                                 <i class="fa fa-plus"></i>
+                                 Crear nueva ficha&nbsp;&nbsp;&nbsp;
+                                 <i class="fa fa-plus-circle"></i>
                               </button><!-- .btn .btn-success -->
 
                               <button class="btn btn-sm btn-info pull-right small" @click.prevent="buscar_formulario"
                                       style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
-                                 Buscar ficha&nbsp;
+                                 Buscar ficha&nbsp;&nbsp;&nbsp;
                                  <i class="fa fa-search"></i>
                               </button><!-- .btn .btn-info -->
 
@@ -313,8 +313,7 @@
                                                           class="btn btn-danger pull-right" type="button"
                                                           style="box-shadow: 2px 1px 2px 1px #dbdbdb;">
                                                          Cerrar Ficha &nbsp;&nbsp;&nbsp;
-                                                      <i class="fa fa-btn fa-times"></i>+
-                                                      <i class="fa fa-btn fa-floppy-o"></i>
+                                                      <i class="fa fa-btn fa-times-circle-o"></i>+<i class="fa fa-btn fa-floppy-o"></i>
                                                    </button>
 
                                                    <transition v-if="mini_loader == true" name="slide-fade">
