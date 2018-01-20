@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\FormDeisUser;
 
 class User extends Authenticatable
 {
@@ -49,6 +50,14 @@ class User extends Authenticatable
 
     public function form_deis_user () {
         return $this->hasMany('App\FormDeisUser', 'id');
+    }
+
+    public function form_deis_count ($id) {
+
+        $formularios = FormDeisUser::where('usuario_modifica_form_deis', $id)->get();
+        $ctd_formularios_reales = count($formularios) > 0 ? count($formularios) : 0;
+        #return $this->hasMany('App\FormDeisUser', 'id');
+        return $ctd_formularios_reales;
     }
 
     public function form_deis_errores () {

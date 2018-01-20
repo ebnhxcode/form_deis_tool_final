@@ -133,6 +133,7 @@
                   </ul>
                   -->
 
+
                   <ul class="dropdown-menu" role="menu">
                      <li>
                         <a href="{{ url('/dashboard') }}">
@@ -142,7 +143,24 @@
 
                         <a href="{{ url('/formulario/transmision_vertical') }}">
                            <!-- <i class="fa fa-btn fa-sign-out"></i> -->
-                           Fichas
+                           Ir a Fichas
+                        </a>
+
+
+                        <a href="{{ url('#!') }}">
+                           <!-- <i class="fa fa-btn fa-sign-out"></i> -->
+                           Fichas creadas
+                           <small class="pull-right label label-danger" style="border-radius: 50rem;">
+                              {{ auth()->user()->form_deis_count(auth()->user()->id) }}
+
+
+                              {{--
+                              @if(auth()->user()->form_deis_user())
+                                 {{auth()->user()->form_deis_user()->get()->count()}}
+                              @endif
+                              --}}
+
+                           </small>
                         </a>
 
                         {{--
@@ -178,7 +196,6 @@
       </div>
    </div>
 </nav>
-
 @yield('content')
 @yield('VueControllers')
 

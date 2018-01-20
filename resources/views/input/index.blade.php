@@ -17,10 +17,15 @@
                   <div class="col-md-12">
 
                      <div class="well well-sm">
-                        <h3 class="text-center">
+                        <h3 class="">
                            Inputs · Mantenedor de columnas para formularios
-                           <img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">
-                        </h3> <!-- .text-center --> <br>
+                           {{--<img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">--}}
+                        </h3> <!-- .text-center -->
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
 
 
                      </div><!-- .well .well-sm -->

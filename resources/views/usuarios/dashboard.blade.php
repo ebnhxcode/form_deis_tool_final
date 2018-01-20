@@ -11,11 +11,18 @@
                   <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
 
                   <div class="well small">
-                     <h3 class="text-center">
+                     <h3 class="">
                         Dashboard
                         {{--Plataforma Informática Seguimiento de la Prevención de la Transmisión Vertical de VIH y Sífilis--}}
+                        {{--
                         <img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">
-                     </h3> <!-- .text-center --> <br>
+                        --}}
+                     </h3> <!-- .text-center -->
+
+                     <br>
+                     <br>
+                     <br>
+                     <br>
                   </div><!-- .well .small -->
 
                   <div class="row">

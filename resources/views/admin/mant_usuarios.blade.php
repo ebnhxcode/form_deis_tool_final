@@ -20,11 +20,17 @@
                            <div class="well well-sm">
 
 
-                              <h3 class="text-center">
+                              <h3 class="">
                                  Mantenedor de Usuarios
+                                 {{--
                                  <img class="pull-right" width="90" src="{{url('img/logo.png')}}" alt="" style="border-radius: 3px;box-shadow: 2px 1px 2px 1px #dbdbdb;">
+                                 --}}
                               </h3> <!-- .text-center --> <br>
 
+                              <br>
+                              <br>
+                              <br>
+                              <br>
                               <!-- Componente para crear compromiso en modal -->
                               <modal-nuevousuario v-show="mostrar_modal_nuevo_usuario == true" @close="mostrar_modal_nuevo_usuario = false">
                               <h3 slot="header">
