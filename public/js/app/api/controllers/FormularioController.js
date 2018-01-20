@@ -36098,10 +36098,10 @@ var FormularioController = new _vue2.default({
                         this.inputs[i].disabled = true;
                      }*/
                      switch (this.inputs[_i23].id) {
-                        case 'resultado_1_examen_vih_embarazo':
+                        //case 'resultado_1_examen_vih_embarazo':
                         case 'fecha_1_examen_vih_embarazo':
                         case 'eg_1_examen_vih':
-                        case 'resultado_2_examen_vih_embarazo':
+                        //case 'resultado_2_examen_vih_embarazo':
                         case 'fecha_2_examen_vih_embarazo':
                         case 'eg_2_examen_vih':
 
@@ -36120,30 +36120,38 @@ var FormularioController = new _vue2.default({
                         this.inputs[i].disabled = null;
                      }*/
 
+                     //console.log(this.fdc['resultado_1_examen_vih_embarazo']);
+
                      switch (this.inputs[_i24].id) {
-                        case 'resultado_1_examen_vih_embarazo':
+                        //case 'resultado_1_examen_vih_embarazo':
                         case 'fecha_1_examen_vih_embarazo':
                         case 'eg_1_examen_vih':
 
                            if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado') {
-                              this.inputs[_i24].disabled = true;
+                              this.inputs[_i24].disabled = 'disabled';
+                              //this.fdc[input.id] = null;
                            } else {
                               this.inputs[_i24].disabled = null;
                            }
+
                            break;
 
-                        case 'resultado_2_examen_vih_embarazo':
+                        //case 'resultado_2_examen_vih_embarazo':
                         case 'fecha_2_examen_vih_embarazo':
                         case 'eg_2_examen_vih':
+
                            if (this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
-                              this.inputs[_i24].disabled = true;
+                              this.inputs[_i24].disabled = 'disabled';
+                              //this.fdc[input.id] = null;
                            } else {
                               this.inputs[_i24].disabled = null;
                            }
+
                            break;
 
                         case 'derivada_a_especialidades_embarazo':
-                           if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') {
+                           if ((this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' || this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' || this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo') && this.fdc['resultado_1_examen_vih_embarazo'] != 'No Realizado' && this.fdc['resultado_2_examen_vih_embarazo'] != 'No Realizado') {
+
                               this.inputs[_i24].disabled = null;
                            }
                            break;
@@ -36168,6 +36176,7 @@ var FormularioController = new _vue2.default({
                            closeOnConfirm: false
                         });
                         this.fdc['eg_1_examen_vih'] = null;
+                        this.fdc['fecha_1_examen_vih_embarazo'] = null;
                      }
                   }
                } else if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'Reactivo') {
@@ -36221,6 +36230,7 @@ var FormularioController = new _vue2.default({
                         closeOnConfirm: false
                      });
                      this.fdc['eg_2_examen_vih'] = null;
+                     this.fdc['fecha_2_examen_vih_embarazo'] = null;
                   }
 
                   for (var _i30 in this.inputs) {
@@ -37975,6 +37985,7 @@ var FormularioController = new _vue2.default({
                 }
              }
             */
+            _this15.validar_validaciones_previas();
 
             /*
              if (this.inputs[i].name == 'lugar_control_prenatal' ||
