@@ -1464,7 +1464,11 @@ const FormularioController = new Vue({
                                                                   <div role="tabpanel" class="tab-pane fade in active"
                                                                      id="estadistica_detalle">
 
-
+                                                                     <!-- Mensaje -->
+                                                                     <div class="alert alert-info alert-dismissable">
+                                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                        El porcentaje es solo referencial, existen campos en el formulario que son opcionales y otros que por reglas de negocio no pueden ser completados.
+                                                                     </div>
 
                                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->
 
@@ -1769,7 +1773,7 @@ const FormularioController = new Vue({
                   }//Fin for
 
 
-                  this.empaquetar_datos_estadistica(im,im_null,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
+                  this.empaquetar_datos_estadistica(im-1,im_null-1,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
 
                   this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
 
@@ -4390,15 +4394,17 @@ const FormularioController = new Vue({
                   }
                   */
 
-                  if (this.fdc[this.inputs[i].name] != null ) {
+                  //if (this.fdc[this.inputs[i].name] != null ) {
                      //Le pasa el valor en v-model
 
                      if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
                         this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
                      }
 
-                     formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
-                  }
+                     formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+                  //}
+
+
                }
 
 

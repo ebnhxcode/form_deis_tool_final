@@ -548,10 +548,20 @@ class FormDeisController extends Controller {
             foreach ($formData as $key => $d){
                 if ($d || $d == 0 && $d != '') {
                     if (strpos($key, 'fecha' && !in_array($key, ['fecha_ingreso_control_otras_especialidades_otro'])) > -1) {
-                        $f = explode('-',$d);
-                        $d = $f[2].'-'.$f[1].'-'.$f[0];
+                        if ($d == 'null') {
+                            $fd[$key] = null;
+                        }else{
+                            $f = explode('-',$d);
+                            $d = $f[2].'-'.$f[1].'-'.$f[0];
+                        }
                     }
-                    $fd[$key] = $d;
+
+                    if ($d == 'null') {
+                        $fd[$key] = null;
+                    }else{
+                        $fd[$key] = $d;
+                    }
+
                 }
             }
 
