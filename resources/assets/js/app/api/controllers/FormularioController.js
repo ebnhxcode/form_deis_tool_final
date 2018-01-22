@@ -655,6 +655,8 @@ const FormularioController = new Vue({
                 }
                 */
                this.$parent.renderizar_solo_inputs();
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
                this.$parent.fdc = formulario;
                this.$parent.fdc_temp = formulario;
                this.$parent.formularioActivoObj = formulario;
@@ -677,6 +679,7 @@ const FormularioController = new Vue({
                formData.append('n_correlativo_interno', formulario.n_correlativo_interno);
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                  this.$parent.fdc = [];
                   this.$parent.fdc = response.body.fdc;
 
                   //console.log(response);
@@ -819,6 +822,8 @@ const FormularioController = new Vue({
          methods: {
             modificar_usuario_seleccionado: function (formulario) {
                this.$parent.renderizar_solo_inputs();
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
                this.$parent.fdc = formulario;
                this.$parent.fdc_temp = formulario;
                this.$parent.formularioActivoObj = formulario;
@@ -831,6 +836,7 @@ const FormularioController = new Vue({
                formData.append('n_correlativo_interno', formulario.n_correlativo_interno);
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                  this.$parent.fdc = [];
                   this.$parent.fdc = response.body.fdc;
                   //console.log(response);
                }, response => { // error callback
@@ -1001,6 +1007,8 @@ const FormularioController = new Vue({
                }
 
                this.$parent.show_modal_errores_formulario = false;
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
 
                var formData = new FormData();
 
@@ -1030,6 +1038,7 @@ const FormularioController = new Vue({
                            closeOnConfirm: false
                         });
                      }
+
 
                      this.$parent.fdc = formularios;
                      this.$parent.fdc_temp = formularios;
@@ -1638,6 +1647,8 @@ const FormularioController = new Vue({
                }
 
                this.$parent.show_modal_mis_formularios = false;
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
 
                var formData = new FormData();
 

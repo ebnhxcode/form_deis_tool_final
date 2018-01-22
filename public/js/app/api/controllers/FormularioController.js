@@ -34947,6 +34947,8 @@ var FormularioController = new _vue2.default({
                  }
                 */
                this.$parent.renderizar_solo_inputs();
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
                this.$parent.fdc = formulario;
                this.$parent.fdc_temp = formulario;
                this.$parent.formularioActivoObj = formulario;
@@ -34969,6 +34971,7 @@ var FormularioController = new _vue2.default({
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
                   // success callback
+                  _this4.$parent.fdc = [];
                   _this4.$parent.fdc = response.body.fdc;
 
                   //console.log(response);
@@ -35003,6 +35006,8 @@ var FormularioController = new _vue2.default({
                var _this5 = this;
 
                this.$parent.renderizar_solo_inputs();
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
                this.$parent.fdc = formulario;
                this.$parent.fdc_temp = formulario;
                this.$parent.formularioActivoObj = formulario;
@@ -35016,6 +35021,7 @@ var FormularioController = new _vue2.default({
 
                this.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
                   // success callback
+                  _this5.$parent.fdc = [];
                   _this5.$parent.fdc = response.body.fdc;
                   //console.log(response);
                }, function (response) {
@@ -35053,6 +35059,8 @@ var FormularioController = new _vue2.default({
                }
 
                this.$parent.show_modal_errores_formulario = false;
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
 
                var formData = new FormData();
 
@@ -35216,6 +35224,8 @@ var FormularioController = new _vue2.default({
                }
 
                this.$parent.show_modal_mis_formularios = false;
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
 
                var formData = new FormData();
 
