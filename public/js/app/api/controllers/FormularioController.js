@@ -35877,10 +35877,10 @@ var FormularioController = new _vue2.default({
                      }
                   }
                   swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
+                     title: "Recuerde",
+                     text: "Si usted marcó un resultado reactivo, señale si realizó derivación a especialidades, si ya lo realizó, omita este mensaje.",
+                     type: "success",
+                     confirmButtonClass: "btn-success",
                      closeOnConfirm: false
                   });
                }
