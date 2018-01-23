@@ -2998,6 +2998,7 @@ const FormularioController = new Vue({
                   }
                }
 
+
                if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'numero_carga_viral_control_prenatal') {
