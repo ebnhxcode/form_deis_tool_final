@@ -36406,7 +36406,7 @@ var FormularioController = new _vue2.default({
                break;
             case 'numero_cd4_ingreso_control_prenatal':
                //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
+               if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = null;
                }
 
