@@ -2990,7 +2990,7 @@ const FormularioController = new Vue({
 
                break;
             case 'numero_carga_viral_control_prenatal':
-               if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999) {
+               if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = null;
                }else{
                   if (parseInt(this.fdc[input.name]) > 0) {
