@@ -1719,6 +1719,7 @@ const FormularioController = new Vue({
                this.formulario_tmp = formulario || null;
                var inputs = this.inputs_formulario;
                this.datos_estadisticas_mi_formulario=[];
+
                //Variables contenedoras de los inputs y el valor
                var identificacion_mujer = [];
                var control_embarazo = [];
@@ -1729,9 +1730,34 @@ const FormularioController = new Vue({
 
                if (this.formulario_tmp != null && this.formulario_tmp != null) {
 
-                  var im=0; var ce=0; var ps=0; var pv=0; var dp=0; var drn=0;
-                  var im_null=0; var ce_null=0; var ps_null=0; var pv_null=0; var dp_null=0; var drn_null=0;
-                  var im_not_null=0; var ce_not_null=0; var ps_not_null=0; var pv_not_null=0; var dp_not_null=0; var drn_not_null=0;
+                  var im=0; //identificacion mujer
+                  var imrn=0; //identificacion mujer regla de negocio
+                  var ce=0; //control embarazo
+                  var cern=0; //control embarazo regla de negocio
+                  var ps=0; //patologias sifilis
+                  var psrn=0; //patologias sifilis regla de negocio
+                  var pv=0; //patologias vih
+                  var pvrn=0; //patologias vih regla de negocio
+                  var dp=0; //datos parto
+                  var dprn=0; //datos parto regla de negocio
+                  var drn=0; //datos recien nacido
+                  var drnrn=0; //datos recien nacido regla de negocio
+
+                  //Todas las null
+                  var im_null=0;
+                  var ce_null=0;
+                  var ps_null=0;
+                  var pv_null=0;
+                  var dp_null=0;
+                  var drn_null=0;
+
+                  //Todas las completas o no null
+                  var im_not_null=0;
+                  var ce_not_null=0;
+                  var ps_not_null=0;
+                  var pv_not_null=0;
+                  var dp_not_null=0;
+                  var drn_not_null=0;
 
                   var keyjs = null;
                   var value = null;
@@ -1754,6 +1780,25 @@ const FormularioController = new Vue({
                            //control_embarazo.push({key:value});//Mis elementos de la seccion
                            ce++; //Mi total de elementos en esta seccion
                            if (value != null) { ce_not_null++; } else { ce_null++; control_embarazo.push({keyjs:label}); }
+
+                           switch (keyjs) {
+                              case 'resultado_1_vdrl_embarazo':
+                              case 'resultado_2_vdrl_embarazo':
+                              case 'resultado_3_vdrl_embarazo':
+                                 if (value == "No Reactivo") {
+                                    cern += 1;
+                                 }else if (value == "No Realizado") {
+                                    cern += 3;
+                                 }
+                                 break;
+                              case 'resultado_1_examen_vih_embarazo':
+                              case 'resultado_2_examen_vih_embarazo':
+                                 if (value == "No Realizado") {
+                                    cern += 2;
+                                 }
+                                 break;
+                           }
+                           
                            break;
 
                         case "patologias_sifilis":
@@ -1783,10 +1828,11 @@ const FormularioController = new Vue({
                      }//Fin switch
                   }//Fin for
 
+                  console.log(cern);
 
                   this.empaquetar_datos_estadistica(im-1,im_null-1,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
 
-                  this.empaquetar_datos_estadistica(ce,ce_null,ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
+                  this.empaquetar_datos_estadistica(ce-cern,ce_null-cern,ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
 
                   this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
 
