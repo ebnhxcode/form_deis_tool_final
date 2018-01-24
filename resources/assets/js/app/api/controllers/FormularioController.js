@@ -1779,7 +1779,7 @@ const FormularioController = new Vue({
                         case "control_embarazo":
                            //control_embarazo.push({key:value});//Mis elementos de la seccion
                            ce++; //Mi total de elementos en esta seccion
-                           if (value != null) { ce_not_null++; } else { ce_null++; control_embarazo.push({keyjs:label}); }
+                           if (value != null) { ce_not_null++; } else { ce_null++; }
 
                            switch (keyjs) {
                               case 'resultado_1_vdrl_embarazo':
@@ -1787,24 +1787,60 @@ const FormularioController = new Vue({
                               case 'resultado_3_vdrl_embarazo':
                                  if (value == "No Reactivo") {
                                     cern += 1;
-                                 }else if (value == "No Realizado") {
+                                 } else if (value == "No Realizado") {
                                     cern += 3;
+                                 } else if (value == null) {
+                                    control_embarazo.push({keyjs:label});
                                  }
                                  break;
                               case 'resultado_1_examen_vih_embarazo':
                               case 'resultado_2_examen_vih_embarazo':
                                  if (value == "No Realizado") {
                                     cern += 2;
+                                 } else if (value == null) {
+                                    control_embarazo.push({keyjs:label});
                                  }
                                  break;
                            }
-                           
+
+
+
                            break;
 
                         case "patologias_sifilis":
                            //patologias_sifilis.push({key:value});//Mis elementos de la seccion
                            ps++; //Mi total de elementos en esta seccion
-                           if (value != null) { ps_not_null++; } else { ps_null++; patologias_sifilis.push({keyjs:label}); }
+                           if (value != null) { ps_not_null++; } else { ps_null++; }
+
+                           switch (keyjs) {
+                              case 'sifilis_previa_embarazo':
+                                 if (value == "No") {
+                                    psrn += 1;
+                                 } else {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+
+                                 break;
+                              case 'resultado_treponemico':
+                                 if (value == "No Realizado") {
+                                    psrn += 1;
+                                 } else if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_declarados':
+                                 if (value == "0") {
+                                    psrn += 2;
+                                 } else {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              default:
+
+                                 break;
+
+                           }
+
                            break;
 
                         case "patologias_vih":
@@ -1828,19 +1864,20 @@ const FormularioController = new Vue({
                      }//Fin switch
                   }//Fin for
 
-                  console.log(cern);
 
+
+                  // Los 1 en duro son por campos opcionales, quedó clarito
                   this.empaquetar_datos_estadistica(im-1,im_null-1,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
 
-                  this.empaquetar_datos_estadistica(ce-cern,ce_null-cern,ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
+                  this.empaquetar_datos_estadistica(ce-(cern-1),ce_null-(cern-1),ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
 
-                  this.empaquetar_datos_estadistica(ps,ps_null,ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
+                  this.empaquetar_datos_estadistica(ps-(psrn+1),ps_null-(psrn+1),ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
 
-                  this.empaquetar_datos_estadistica(pv,pv_null,pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
+                  this.empaquetar_datos_estadistica(pv-pvrn,pv_null-pvrn,pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
 
-                  this.empaquetar_datos_estadistica(dp,dp_null,dp_not_null,"Datos del Parto",keyjs,datos_parto);
+                  this.empaquetar_datos_estadistica(dp-dprn,dp_null-dprn,dp_not_null,"Datos del Parto",keyjs,datos_parto);
 
-                  this.empaquetar_datos_estadistica(drn,drn_null,drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
+                  this.empaquetar_datos_estadistica(drn-drnrn,drn_null-drnrn,drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
 
                   //console.log(control_embarazo);
                   /*
@@ -4452,7 +4489,7 @@ const FormularioController = new Vue({
                   }
                   */
 
-                  //if (this.fdc[this.inputs[i].name] != null ) {
+                  if (this.fdc[this.inputs[i].name] != null ) {
                      //Le pasa el valor en v-model
 
                      if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
@@ -4460,7 +4497,15 @@ const FormularioController = new Vue({
                      }
 
                      formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
-                  //}
+                     if (this.fdc[this.inputs[i].name] == 0) {
+                        formData.append(this.inputs[i].name, 0);
+                     } else {
+                        formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+                     }
+
+                  } else {
+                     formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+                  }
 
 
                }
@@ -4558,10 +4603,20 @@ const FormularioController = new Vue({
 
             if (this.fdc[this.inputs[i].name] != null ) {
                //Le pasa el valor en v-model
+
                if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
                   this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
                }
-               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+               if (this.fdc[this.inputs[i].name] == 0) {
+                  formData.append(this.inputs[i].name, 0);
+               } else {
+                  formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+               }
+
+            } else {
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
             }
          }
 
@@ -4625,10 +4680,20 @@ const FormularioController = new Vue({
 
             if (this.fdc[this.inputs[i].name] != null ) {
                //Le pasa el valor en v-model
+
                if (this.inputs[i].name == 'run_madre' || this.inputs[i].name == 'run_recien_nacido') {
                   this.fdc[this.inputs[i].name] = clean(this.fdc[this.inputs[i].name]);
                }
-               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name]);
+
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+               if (this.fdc[this.inputs[i].name] == 0) {
+                  formData.append(this.inputs[i].name, 0);
+               } else {
+                  formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
+               }
+
+            } else {
+               formData.append(this.inputs[i].name, this.fdc[this.inputs[i].name] || null);
             }
          }
 
