@@ -35439,6 +35439,30 @@ var FormularioController = new _vue2.default({
                            } else {
                               pv_null++;patologias_vih.push({ keyjs: label });
                            }
+
+                           switch (keyjs) {
+                              case 'numero_contactos_sexuales_declarados':
+                                 if (value == "0") {
+                                    pvrn += 2;
+                                 } else {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_examen_linfocitos_cd4_ingreso_control_prenatal':
+                              case 'fecha_examen_carga_viral_control_prenatal':
+                              case 'fecha_examen_carga_viral_semana_34':
+                              case 'terapia_antiretroviral_farmaco_1':
+                              case 'terapia_antiretroviral_tar_farmaco_2':
+                              case 'terapia_antiretroviral_tar_farmaco_3':
+                                 if (value == null) {
+                                    pvrn += 1;
+                                 } else {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+
+                           }
+
                            break;
 
                         case "datos_parto":
@@ -35472,7 +35496,7 @@ var FormularioController = new _vue2.default({
 
                   this.empaquetar_datos_estadistica(ps - (psrn + 1), ps_null - (psrn + 1), ps_not_null, "Control Sífilis (Especialidades)", keyjs, patologias_sifilis);
 
-                  this.empaquetar_datos_estadistica(pv - pvrn, pv_null - pvrn, pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
+                  this.empaquetar_datos_estadistica(pv - (pvrn - 2), pv_null - (pvrn - 2), pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
 
                   this.empaquetar_datos_estadistica(dp - dprn, dp_null - dprn, dp_not_null, "Datos del Parto", keyjs, datos_parto);
 
