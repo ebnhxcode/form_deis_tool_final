@@ -1848,7 +1848,7 @@ const FormularioController = new Vue({
 
                            switch (keyjs) {
                               case 'numero_contactos_sexuales_declarados':
-                                 if (value == "0") {
+                                 if (value == "0" || value == 0) {
                                     pvrn += 2;
                                  } else {
                                     patologias_sifilis.push({keyjs:label});
@@ -2021,6 +2021,19 @@ const FormularioController = new Vue({
    filters: {
    },
    methods: {
+
+      alert_if_info_reactivo_especialidades: function () {
+         if (this.fdc['derivada_a_especialidades_embarazo'] == null) {
+            swal({
+               title: "Recuerde",
+               text: "Si usted marcó un resultado reactivo, señale si realizó derivación a especialidades, si ya lo realizó, omita este mensaje.",
+               type: "success",
+               confirmButtonClass: "btn-success",
+               closeOnConfirm: false
+            });
+         }
+
+      },
 
       check_status_code: function (status_code) {
          switch (status_code) {
@@ -2438,13 +2451,9 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Recuerde",
-                     text: "Si usted marcó un resultado reactivo, señale si realizó derivación a especialidades, si ya lo realizó, omita este mensaje.",
-                     type: "success",
-                     confirmButtonClass: "btn-success",
-                     closeOnConfirm: false
-                  });
+                  if (this.fdc['derivada_a_especialidades_embarazo'] == null) {
+                     this.alert_if_info_reactivo_especialidades();
+                  }
                }
 
                break;
@@ -2535,13 +2544,7 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
@@ -2628,13 +2631,7 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
@@ -2874,13 +2871,7 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
@@ -2945,13 +2936,7 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;

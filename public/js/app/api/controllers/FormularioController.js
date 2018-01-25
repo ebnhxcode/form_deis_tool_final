@@ -35442,7 +35442,7 @@ var FormularioController = new _vue2.default({
 
                            switch (keyjs) {
                               case 'numero_contactos_sexuales_declarados':
-                                 if (value == "0") {
+                                 if (value == "0" || value == 0) {
                                     pvrn += 2;
                                  } else {
                                     patologias_sifilis.push({ keyjs: label });
@@ -35459,6 +35459,7 @@ var FormularioController = new _vue2.default({
                                  } else {
                                     patologias_sifilis.push({ keyjs: label });
                                  }
+
                                  break;
 
                            }
@@ -35612,6 +35613,18 @@ var FormularioController = new _vue2.default({
    ready: {},
    filters: {},
    methods: {
+
+      alert_if_info_reactivo_especialidades: function alert_if_info_reactivo_especialidades() {
+         if (this.fdc['derivada_a_especialidades_embarazo'] == null) {
+            swal({
+               title: "Recuerde",
+               text: "Si usted marcó un resultado reactivo, señale si realizó derivación a especialidades, si ya lo realizó, omita este mensaje.",
+               type: "success",
+               confirmButtonClass: "btn-success",
+               closeOnConfirm: false
+            });
+         }
+      },
 
       check_status_code: function check_status_code(status_code) {
          switch (status_code) {
@@ -35980,13 +35993,9 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i8].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Recuerde",
-                     text: "Si usted marcó un resultado reactivo, señale si realizó derivación a especialidades, si ya lo realizó, omita este mensaje.",
-                     type: "success",
-                     confirmButtonClass: "btn-success",
-                     closeOnConfirm: false
-                  });
+                  if (this.fdc['derivada_a_especialidades_embarazo'] == null) {
+                     this.alert_if_info_reactivo_especialidades();
+                  }
                }
 
                break;
@@ -36050,13 +36059,7 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i13].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
@@ -36119,13 +36122,7 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i18].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
@@ -36321,13 +36318,7 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i29].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
@@ -36382,13 +36373,7 @@ var FormularioController = new _vue2.default({
                         this.inputs[_i34].disabled = null;
                      }
                   }
-                  swal({
-                     title: "Advertencia",
-                     text: "Marcó un resultado reactivo, señale si realizó derivación a especialidades",
-                     type: "warning",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
+                  this.alert_if_info_reactivo_especialidades();
                }
 
                break;
