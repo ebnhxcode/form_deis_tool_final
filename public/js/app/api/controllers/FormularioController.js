@@ -35340,12 +35340,14 @@ var FormularioController = new _vue2.default({
                   var keyjs = null;
                   var value = null;
                   var label = null;
+                  var ftmp = [];
 
                   for (var i in this.inputs_formulario) {
 
                      keyjs = inputs[i].id; //Le paso el nombre del campo\input
                      value = this.formulario_tmp[inputs[i].id]; //Le paso el value del campo\input
                      label = inputs[i].label; //Le paso el nombre del label
+                     ftmp = this.formulario_tmp; //Le paso el formulario
 
                      switch (inputs[i].seccion) {
                         case "identificacion_mujer":
@@ -35354,7 +35356,8 @@ var FormularioController = new _vue2.default({
                            if (value != null) {
                               im_not_null++;
                            } else {
-                              im_null++;identificacion_mujer.push({ keyjs: label });
+                              im_null++;
+                              identificacion_mujer.push({ keyjs: label });
                            }
                            break;
 
@@ -35373,9 +35376,12 @@ var FormularioController = new _vue2.default({
                               case 'resultado_3_vdrl_embarazo':
                                  if (value == "No Reactivo") {
                                     cern += 1;
+                                    break;
                                  } else if (value == "No Realizado") {
                                     cern += 3;
-                                 } else if (value == null) {
+                                    break;
+                                 }
+                                 if (value == null) {
                                     control_embarazo.push({ keyjs: label });
                                  }
                                  break;
@@ -35383,7 +35389,16 @@ var FormularioController = new _vue2.default({
                               case 'resultado_2_examen_vih_embarazo':
                                  if (value == "No Realizado") {
                                     cern += 2;
-                                 } else if (value == null) {
+                                    break;
+                                 }
+
+                                 if (value == null) {
+                                    control_embarazo.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              default:
+                                 if (value == null) {
                                     control_embarazo.push({ keyjs: label });
                                  }
                                  break;
@@ -35401,30 +35416,63 @@ var FormularioController = new _vue2.default({
                            }
 
                            switch (keyjs) {
+                              case 'ano_sifilis_previa_embarazo':
+                                 if (ftmp["sifilis_previa_embarazo"] == "No") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
                               case 'sifilis_previa_embarazo':
                                  if (value == "No") {
                                     psrn += 1;
-                                 } else {
+                                    break;
+                                 }
+                                 if (value == null) {
                                     patologias_sifilis.push({ keyjs: label });
                                  }
-
+                                 break;
+                              case 'fecha_examen_treponemico':
+                                 if (ftmp["resultado_treponemico"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
                                  break;
                               case 'resultado_treponemico':
                                  if (value == "No Realizado") {
                                     psrn += 1;
-                                 } else if (value == null) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_estudiados':
+                              case 'numero_contactos_sexuales_tratados':
+                                 //console.log(ftmp[keyjs]);
+                                 if (ftmp["numero_contactos_sexuales_declarados"] == 0 || ftmp["numero_contactos_sexuales_declarados"] == "0") {
+                                    break;
+                                 }
+                                 if (value == null) {
                                     patologias_sifilis.push({ keyjs: label });
                                  }
                                  break;
                               case 'numero_contactos_sexuales_declarados':
                                  if (value == "0") {
                                     psrn += 2;
-                                 } else {
+                                    break;
+                                 }
+                                 if (value == null) {
                                     patologias_sifilis.push({ keyjs: label });
                                  }
                                  break;
                               default:
-
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
                                  break;
 
                            }
@@ -35437,15 +35485,27 @@ var FormularioController = new _vue2.default({
                            if (value != null) {
                               pv_not_null++;
                            } else {
-                              pv_null++;patologias_vih.push({ keyjs: label });
+                              pv_null++;
                            }
 
                            switch (keyjs) {
+                              case 'numero_contactos_sexuales_estudiados':
+                              case 'numero_contactos_sexuales_tratados':
+                                 //console.log(ftmp[keyjs]);
+                                 if (ftmp["numero_contactos_sexuales_declarados"] == 0 || ftmp["numero_contactos_sexuales_declarados"] == "0") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
+                                 break;
                               case 'numero_contactos_sexuales_declarados':
                                  if (value == "0" || value == 0) {
                                     pvrn += 2;
-                                 } else {
-                                    patologias_sifilis.push({ keyjs: label });
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
                                  }
                                  break;
                               case 'fecha_examen_linfocitos_cd4_ingreso_control_prenatal':
@@ -35456,12 +35516,17 @@ var FormularioController = new _vue2.default({
                               case 'terapia_antiretroviral_tar_farmaco_3':
                                  if (value == null) {
                                     pvrn += 1;
-                                 } else {
-                                    patologias_sifilis.push({ keyjs: label });
+                                    break;
                                  }
-
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
                                  break;
-
+                              default:
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
+                                 break;
                            }
 
                            break;
@@ -35472,7 +35537,7 @@ var FormularioController = new _vue2.default({
                            if (value != null) {
                               dp_not_null++;
                            } else {
-                              dp_null++;datos_parto.push({ keyjs: label });
+                              dp_null++;
                            }
                            break;
 
@@ -35482,7 +35547,8 @@ var FormularioController = new _vue2.default({
                            if (value != null) {
                               drn_not_null++;
                            } else {
-                              drn_null++;datos_recien_nacido.push({ keyjs: label });
+                              drn_null++;
+                              datos_recien_nacido.push({ keyjs: label });
                            }
                            break;
 
@@ -35490,14 +35556,14 @@ var FormularioController = new _vue2.default({
                   } //Fin for
 
 
-                  // Los 1 en duro son por campos opcionales, quedó clarito
+                  // Los 1 en duro son por campos opcionales, eso es todo quedó clarito
                   this.empaquetar_datos_estadistica(im - 1, im_null - 1, im_not_null, "Identificacion de la Mujer", keyjs, identificacion_mujer);
 
                   this.empaquetar_datos_estadistica(ce - (cern - 1), ce_null - (cern - 1), ce_not_null, "Control de Embarazo (APS)", keyjs, control_embarazo);
 
-                  this.empaquetar_datos_estadistica(ps - (psrn + 1), ps_null - (psrn + 1), ps_not_null, "Control Sífilis (Especialidades)", keyjs, patologias_sifilis);
+                  this.empaquetar_datos_estadistica(ps - psrn, ps_null - psrn, ps_not_null, "Control Sífilis (Especialidades)", keyjs, patologias_sifilis);
 
-                  this.empaquetar_datos_estadistica(pv - (pvrn - 2), pv_null - (pvrn - 2), pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
+                  this.empaquetar_datos_estadistica(pv - pvrn, pv_null - pvrn, pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
 
                   this.empaquetar_datos_estadistica(dp - dprn, dp_null - dprn, dp_not_null, "Datos del Parto", keyjs, datos_parto);
 
