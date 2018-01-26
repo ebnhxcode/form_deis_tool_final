@@ -2640,6 +2640,9 @@ const FormularioController = new Vue({
 
          switch (input.id) {
 
+            case 'digito_verificador':
+               input.disabled = 'disabled';
+               break;
             case 'run_madre':
 
                if (!this.fdc[input.name] ||
@@ -2659,7 +2662,8 @@ const FormularioController = new Vue({
                if (this.fdc[input.name] != null && this.fdc[input.name]) {
 
                   for (let i in this.inputs){
-                     if (this.inputs[i].name == 'pasaporte_provisorio') {
+                     if (this.inputs[i].name == 'pasaporte_provisorio' ||
+                        this.inputs[i].name == 'digito_verificador') {
                         this.inputs[i].disabled = true;
                      }
                   }

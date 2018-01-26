@@ -36182,6 +36182,9 @@ var FormularioController = new _vue2.default({
 
          switch (input.id) {
 
+            case 'digito_verificador':
+               input.disabled = 'disabled';
+               break;
             case 'run_madre':
 
                if (!this.fdc[input.name] || this.fdc[input.name] == '' || this.fdc[input.name] == null || (0, _rut.validate)(this.fdc[input.name] + this.fdc['digito_verificador'])) {
@@ -36198,7 +36201,7 @@ var FormularioController = new _vue2.default({
                if (this.fdc[input.name] != null && this.fdc[input.name]) {
 
                   for (var _i in this.inputs) {
-                     if (this.inputs[_i].name == 'pasaporte_provisorio') {
+                     if (this.inputs[_i].name == 'pasaporte_provisorio' || this.inputs[_i].name == 'digito_verificador') {
                         this.inputs[_i].disabled = true;
                      }
                   }
