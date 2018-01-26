@@ -2088,22 +2088,18 @@ const FormularioController = new Vue({
                            }
 
                            switch (keyjs) {
-                              /*
-                              case 'resultado_1_vdrl_embarazo':
-                              case 'resultado_2_vdrl_embarazo':
-                              case 'resultado_3_vdrl_embarazo':
-                                 if (value == "No Reactivo") {
+                              case 'resultado_vdrl_periferico_recien_nacido':
+                              case 'titulacion_vdrl_periferico_recien_nacido':
+                              case 'fecha_examen_vdrl_periferico_recien_nacido':
+                                 if (value != "Reactivo" || value == "") {
                                     drnrn += 1;
-                                    break;
-                                 } else if (value == "No Realizado") {
-                                    drnrn += 3;
                                     break;
                                  }
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
                                  }
-                                 break
-                              case 'resultado_1_examen_vih_embarazo':
+                                 break;
+                              /*
                               case 'resultado_2_examen_vih_embarazo':
                                  if (value == "No Realizado") {
                                     drnrn += 2;
