@@ -2088,6 +2088,7 @@ const FormularioController = new Vue({
                            }
 
                            switch (keyjs) {
+                              /*
                               case 'resultado_1_vdrl_embarazo':
                               case 'resultado_2_vdrl_embarazo':
                               case 'resultado_3_vdrl_embarazo':
@@ -2119,6 +2120,7 @@ const FormularioController = new Vue({
                                     datos_recien_nacido.push({keyjs:label});
                                  }
                                  break;
+                              */
                            }
 
                            break;
