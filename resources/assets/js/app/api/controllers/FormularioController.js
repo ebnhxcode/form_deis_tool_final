@@ -2288,7 +2288,14 @@ const FormularioController = new Vue({
          }
       },
 
-
+      find_input: function (inputs, ref) {
+         for (var i in inputs) {
+            if (inputs[i].name == ref) {
+               return inputs[i];
+            }
+         }
+         return null;
+      },
 
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
@@ -2564,6 +2571,9 @@ const FormularioController = new Vue({
                               } else if (this.fdc['resultado_1_vdrl_embarazo'] == "No Reactivo" &&
                                  this.inputs[i].name != "resultado_dilucion_1_vdrl_embarazo") {
                                  this.inputs[i].disabled = null;
+                              } else {
+                                 var input = this.find_input(this.inputs, 'resultado_1_vdrl_embarazo');
+                                 input.disabled = null;
                               }
 
                               break;
@@ -2579,6 +2589,9 @@ const FormularioController = new Vue({
                               } else if (this.fdc['resultado_2_vdrl_embarazo'] == "No Reactivo" &&
                                  this.inputs[i].name != "resultado_dilucion_2_vdrl_embarazo") {
                                  this.inputs[i].disabled = null;
+                              } else {
+                                 var input = this.find_input(this.inputs, 'resultado_2_vdrl_embarazo');
+                                 input.disabled = null;
                               }
                               break;
 
@@ -2590,6 +2603,12 @@ const FormularioController = new Vue({
                               this.fdc['resultado_3_vdrl_embarazo'] == null ||
                               this.fdc['resultado_3_vdrl_embarazo'] == "") {
                                  this.inputs[i].disabled = null;
+                              } else if (this.fdc['resultado_3_vdrl_embarazo'] == "No Reactivo" &&
+                                 this.inputs[i].name != "resultado_dilucion_3_vdrl_embarazo") {
+                                 this.inputs[i].disabled = null;
+                              } else {
+                                 var input = this.find_input(this.inputs, 'resultado_3_vdrl_embarazo');
+                                 input.disabled = null;
                               }
                               break;
 
@@ -2600,6 +2619,9 @@ const FormularioController = new Vue({
                               this.fdc['resultado_1_examen_vih_embarazo'] == null ||
                               this.fdc['resultado_1_examen_vih_embarazo'] == "") {
                                  this.inputs[i].disabled = null;
+                              } else {
+                                 var input = this.find_input(this.inputs, 'resultado_1_examen_vih_embarazo');
+                                 input.disabled = null;
                               }
                               break;
 
@@ -2610,6 +2632,9 @@ const FormularioController = new Vue({
                               this.fdc['resultado_2_examen_vih_embarazo'] == null ||
                               this.fdc['resultado_2_examen_vih_embarazo'] == "") {
                                  this.inputs[i].disabled = null;
+                              } else {
+                                 var input = this.find_input(this.inputs, 'resultado_2_examen_vih_embarazo');
+                                 input.disabled = null;
                               }
                               break;
 
