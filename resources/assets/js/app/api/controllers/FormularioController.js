@@ -2122,7 +2122,7 @@ const FormularioController = new Vue({
                                  if (value == "Puncion Frustrada" ||
                                     value == "No Reactivo" ||
                                     value == "No Realizado") {
-                                    drnrn += 1;
+                                    drnrn += 2;
                                     break;
                                  }
                                  if ( value == null ) {
@@ -2130,6 +2130,7 @@ const FormularioController = new Vue({
                                  }
                                  break;
                               case 'titulacion_vdrl_liq_cefalo_recien_nacido':
+                              case 'fecha_examen_vdrl_liq_cefalo_recien_nacido':
                                  if (ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "Puncion Frustrada" ||
                                     ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Reactivo" ||
                                     ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Realizado") {
@@ -2380,7 +2381,7 @@ const FormularioController = new Vue({
 
                   this.empaquetar_datos_estadistica(dp-(dprn-2),dp_null-(dprn-2),dp_not_null,"Datos del Parto",keyjs,datos_parto);
 
-                  this.empaquetar_datos_estadistica(drn-drnrn,drn_null-drnrn,drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
+                  this.empaquetar_datos_estadistica(drn-(drnrn-2),drn_null-(drnrn-2),drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
 
 
                   this.show_mis_formularios_grid = false;
@@ -3191,16 +3192,12 @@ const FormularioController = new Vue({
                         if (this.inputs[i].name == 'fecha_examen_vdrl_periferico_recien_nacido' ||
                            this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' /*||
                            this.inputs[i].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
-                           this.inputs[i].name == 'resultado_radiografia_huesos_largos' ||
-                           this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido'*/) {
+                           this.inputs[i].name == 'resultado_radiografia_huesos_largos' || this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido'*/) {
                            this.inputs[i].disabled = true;
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
                         if (this.inputs[i].name == 'fecha_examen_vdrl_periferico_recien_nacido') {
-                           this.inputs[i].disabled
-
-                              = null;
-
+                           this.inputs[i].disabled = null;
                         }else {
                            if (this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' //||
                               //this.inputs[i].name == 'resultado_vdrl_periferico_recien_nacido' | |
@@ -3233,12 +3230,16 @@ const FormularioController = new Vue({
 
             case 'resultado_vdrl_liq_cefalo_recien_nacido':
 
-               if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
+               if (this.fdc[input.name] == 'No Reactivo' ||
+                  this.fdc[input.name] == 'No Realizado' ||
+                  this.fdc[input.name] == 'Puncion Frustrada'
+               ) {
+
                   for (let i in this.inputs){
 
                      if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
-                        if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido' /*||
-                           this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' */) {
+                        if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido' ||
+                           this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
                            this.inputs[i].disabled = true;
                         }
                      }else if (this.fdc[input.name] == 'No Reactivo') {
