@@ -35656,8 +35656,10 @@ var FormularioController = new _vue2.default({
                               drn_not_null++;
                            } else {
                               drn_null++;
-                              datos_recien_nacido.push({ keyjs: label });
                            }
+
+                           switch (keyjs) {}
+
                            break;
 
                      } //Fin switch
@@ -35676,19 +35678,6 @@ var FormularioController = new _vue2.default({
                   this.empaquetar_datos_estadistica(dp - (dprn - 2), dp_null - (dprn - 2), dp_not_null, "Datos del Parto", keyjs, datos_parto);
 
                   this.empaquetar_datos_estadistica(drn - drnrn, drn_null - drnrn, drn_not_null, "Datos recien nacido", keyjs, datos_recien_nacido);
-
-                  //console.log(control_embarazo);
-                  /*
-                  //Lo comentamos por que ya sabemos que tenemos los numeros y los totales.
-                  console.log(`
-                        identificacion_mujer:${im}
-                        control_embarazo:${ce}
-                        patologias_sifilis:${ps}
-                        patologias_vih:${pv}
-                        datos_parto:${dp}
-                        datos_recien_nacido:${drn}
-                     `);
-                  */
 
                   this.show_mis_formularios_grid = false;
                   return;
