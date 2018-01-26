@@ -2341,7 +2341,7 @@ const FormularioController = new Vue({
                                     datos_recien_nacido.push({keyjs:label});
                                  }
                                  break;
-                              case 'derivacion_recien_nacido_a_seguimiento':
+                              case 'lugar_derivacion_recien_nacido_a_seguimiento':
                               case 'fecha_ingreso_control_recien_nacido_post_nacimiento':
                                  if (ftmp["derivacion_recien_nacido_a_seguimiento"] == "No") {
                                     break;
