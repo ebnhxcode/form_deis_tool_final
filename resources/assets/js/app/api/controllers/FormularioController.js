@@ -2085,8 +2085,42 @@ const FormularioController = new Vue({
                               drn_not_null++;
                            } else {
                               drn_null++;
-                              datos_recien_nacido.push({keyjs:label});
                            }
+
+                           switch (keyjs) {
+                              case 'resultado_1_vdrl_embarazo':
+                              case 'resultado_2_vdrl_embarazo':
+                              case 'resultado_3_vdrl_embarazo':
+                                 if (value == "No Reactivo") {
+                                    drnrn += 1;
+                                    break;
+                                 } else if (value == "No Realizado") {
+                                    drnrn += 3;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break
+                              case 'resultado_1_examen_vih_embarazo':
+                              case 'resultado_2_examen_vih_embarazo':
+                                 if (value == "No Realizado") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              default:
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                           }
+
                            break;
 
                      }//Fin switch
@@ -2106,19 +2140,6 @@ const FormularioController = new Vue({
                   this.empaquetar_datos_estadistica(dp-(dprn-2),dp_null-(dprn-2),dp_not_null,"Datos del Parto",keyjs,datos_parto);
 
                   this.empaquetar_datos_estadistica(drn-drnrn,drn_null-drnrn,drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
-
-                  //console.log(control_embarazo);
-                  /*
-                  //Lo comentamos por que ya sabemos que tenemos los numeros y los totales.
-                  console.log(`
-                        identificacion_mujer:${im}
-                        control_embarazo:${ce}
-                        patologias_sifilis:${ps}
-                        patologias_vih:${pv}
-                        datos_parto:${dp}
-                        datos_recien_nacido:${drn}
-                     `);
-                  */
 
 
                   this.show_mis_formularios_grid = false;
