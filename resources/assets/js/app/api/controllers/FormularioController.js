@@ -2644,6 +2644,12 @@ const FormularioController = new Vue({
                input.disabled = 'disabled';
                break;
             case 'run_madre':
+               console.log(this.formularioEditActivo);
+               console.log(this.formularioNuevoActivo);
+
+               if (this.formularioNuevoActivo == false && this.formularioEditActivo == true) {
+
+               }
 
                if (!this.fdc[input.name] ||
                   this.fdc[input.name] == '' ||
@@ -4890,6 +4896,7 @@ const FormularioController = new Vue({
       crear_nuevo_formulario: function () {
          this.renderizar_formulario();
          this.formularioNuevoActivo = true;
+         this.formularioEditActivo = false;
          this.show_modal_formularios_encontrados = false;
 
          var self = this;

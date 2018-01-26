@@ -36186,6 +36186,10 @@ var FormularioController = new _vue2.default({
                input.disabled = 'disabled';
                break;
             case 'run_madre':
+               console.log(this.formularioEditActivo);
+               console.log(this.formularioNuevoActivo);
+
+               if (this.formularioNuevoActivo == false && this.formularioEditActivo == true) {}
 
                if (!this.fdc[input.name] || this.fdc[input.name] == '' || this.fdc[input.name] == null || (0, _rut.validate)(this.fdc[input.name] + this.fdc['digito_verificador'])) {
                   return;
@@ -38168,6 +38172,7 @@ var FormularioController = new _vue2.default({
       crear_nuevo_formulario: function crear_nuevo_formulario() {
          this.renderizar_formulario();
          this.formularioNuevoActivo = true;
+         this.formularioEditActivo = false;
          this.show_modal_formularios_encontrados = false;
 
          var self = this;
