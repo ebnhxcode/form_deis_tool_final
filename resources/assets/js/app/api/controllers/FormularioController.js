@@ -2089,9 +2089,10 @@ const FormularioController = new Vue({
 
                            switch (keyjs) {
                               case 'resultado_vdrl_periferico_recien_nacido':
-                              case 'titulacion_vdrl_periferico_recien_nacido':
-                              case 'fecha_examen_vdrl_periferico_recien_nacido':
-                                 if (value != "Reactivo" || value == "") {
+                                 if (value == "No Realizado") {
+                                    drnrn += 2;
+                                    break;
+                                 } else if (value == "No Reactivo") {
                                     drnrn += 1;
                                     break;
                                  }
@@ -2099,24 +2100,266 @@ const FormularioController = new Vue({
                                     datos_recien_nacido.push({keyjs:label});
                                  }
                                  break;
-                              /*
-                              case 'resultado_2_examen_vih_embarazo':
-                                 if (value == "No Realizado") {
-                                    drnrn += 2;
+                              case 'titulacion_vdrl_periferico_recien_nacido':
+                                 if (ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Realizado" ||
+                                    ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Reactivo") {
                                     break;
                                  }
-
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
                                  }
                                  break;
+                              case 'fecha_examen_vdrl_periferico_recien_nacido':
+                                 if (ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_vdrl_liq_cefalo_recien_nacido':
+                                 if (value == "Puncion Frustrada" ||
+                                    value == "No Reactivo" ||
+                                    value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'titulacion_vdrl_liq_cefalo_recien_nacido':
+                                 if (ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "Puncion Frustrada" ||
+                                    ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Reactivo" ||
+                                    ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'tratamiento_recien_nacido_farmaco':
+                                 if (value == null || value == "Reactivo") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'tratamiento_recien_nacido_dosis':
+                              case 'tratamiento_recien_nacido_frecuencia':
+                                 if (ftmp["tratamiento_recien_nacido_farmaco"] == null ||
+                                    ftmp["tratamiento_recien_nacido_farmaco"] == "") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+
+
+                              case 'resultado_examen_treponemico_parto_madre':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_examen_treponemico_recien_nacido':
+                                 if (ftmp["resultado_examen_treponemico_parto_madre"] == null ||
+                                    ftmp["resultado_examen_treponemico_parto_madre"] == "") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'sustituto_leche_materna':
+                                 if (value == "No") {
+                                    drnrn += 3;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_inicio_sustituto_leche_materna':
+                              case 'hora_inicio_sustituto_leche_materna':
+                              case 'entrega_sustituto_leche_materna_al_alta':
+                                 if (ftmp["sustituto_leche_materna"] == "No") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'nombre_farmaco_1_vih_recien_nacido':
+                                 if (value == "" || value == null) {
+                                    drnrn += 3;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_inicio_farmaco_1_vih_recien_nacido':
+                              case 'hora_inicio_farmaco_1_vih_recien_nacido':
+                              case 'dosis_farmaco_1_vih_recien_nacido':
+                                 if (ftmp["nombre_farmaco_1_vih_recien_nacido"] == "" ||
+                                    ftmp["nombre_farmaco_1_vih_recien_nacido"] == null) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+
+                              case 'nombre_farmaco_2_vih_recien_nacido':
+                                 if (value == "" || value == null) {
+                                    drnrn += 3;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_inicio_farmaco_2_vih_recien_nacido':
+                              case 'hora_inicio_farmaco_2_vih_recien_nacido':
+                              case 'dosis_farmaco_2_vih_recien_nacido':
+                                 if (ftmp["nombre_farmaco_2_vih_recien_nacido"] == "" ||
+                                    ftmp["nombre_farmaco_2_vih_recien_nacido"] == null) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_1_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_1_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_1_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_2_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_2_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_2_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_3_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_3_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_3_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_test_elisa_18_meses':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_test_elisa_18_meses':
+                                 if (ftmp["resultado_test_elisa_18_meses"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_final_isp_examen_vih_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_resultado_final_isp_examen_vih_recien_nacido':
+                                 if (ftmp["resultado_final_isp_examen_vih_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'derivacion_recien_nacido_a_seguimiento':
+                                 if (value == "No") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'derivacion_recien_nacido_a_seguimiento':
+                              case 'fecha_ingreso_control_recien_nacido_post_nacimiento':
+                                 if (ftmp["derivacion_recien_nacido_a_seguimiento"] == "No") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
 
                               default:
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
                                  }
                                  break;
-                              */
+
+
+
                            }
 
                            break;
