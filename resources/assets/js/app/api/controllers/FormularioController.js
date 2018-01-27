@@ -2687,6 +2687,9 @@ const FormularioController = new Vue({
 
                input.disabled = 'disabled';
 
+               // Validacion para recordar al usuario que ese rut ingresado ya existe en el sistema,
+               // entonces le pregunta si es nuevo o lo sigue creando
+
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
                   Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
