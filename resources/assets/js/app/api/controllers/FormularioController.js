@@ -660,9 +660,9 @@ const FormularioController = new Vue({
                this.$parent.fdc = formulario;
                this.$parent.fdc_temp = formulario;
                this.$parent.formularioActivoObj = formulario;
-               this.$parent.show_modal_buscar_formulario = false;
                this.$parent.formularioEditActivo = true;
                this.$parent.formularioNuevoActivo = false;
+               this.$parent.show_modal_buscar_formulario = false;
 
                /*
                //Generamos limpieza de los campos con el plugin
@@ -827,9 +827,9 @@ const FormularioController = new Vue({
                this.$parent.fdc = formulario;
                this.$parent.fdc_temp = formulario;
                this.$parent.formularioActivoObj = formulario;
-               this.$parent.show_modal_formularios_encontrados = false;
                this.$parent.formularioEditActivo = true;
                this.$parent.formularioNuevoActivo = false;
+               this.$parent.show_modal_formularios_encontrados = false;
 
                var formData = new FormData();
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
@@ -1006,7 +1006,6 @@ const FormularioController = new Vue({
                   return;
                }
 
-               this.$parent.show_modal_errores_formulario = false;
                this.$parent.fdc = [];
                this.$parent.fdc_temp = [];
 
@@ -1046,6 +1045,8 @@ const FormularioController = new Vue({
 
                      this.$parent.formularioEditActivo = true;
                      this.$parent.formularioNuevoActivo = false;
+
+                     this.$parent.show_modal_errores_formulario = false;
 
                      this.$parent.renderizar_solo_inputs();
 
@@ -1646,7 +1647,6 @@ const FormularioController = new Vue({
                   return;
                }
 
-               this.$parent.show_modal_mis_formularios = false;
                this.$parent.fdc = [];
                this.$parent.fdc_temp = [];
 
@@ -1685,6 +1685,8 @@ const FormularioController = new Vue({
 
                      this.$parent.formularioEditActivo = true;
                      this.$parent.formularioNuevoActivo = false;
+
+                     this.$parent.show_modal_mis_formularios = false;
 
                      this.$parent.renderizar_solo_inputs();
 
@@ -2560,6 +2562,15 @@ const FormularioController = new Vue({
          return null;
       },
 
+      is_undefined: function (v) { return (typeof v == undefined)?true:false; },
+      is_null: function (v) { return v==null?true:false; },
+      is_empty: function () {
+         if (!v || v==null || v=='' || typeof v == undefined) {
+            return true;
+         }
+         return false;
+      },
+
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
          /*if (this.auth.id_role == 5 && this.auth.form_deis_user != null && this.fdc.id != null) {
@@ -2630,52 +2641,47 @@ const FormularioController = new Vue({
 
       verifica_validacion_change: function (input) {
 
-         /*
-         for (let i in this.inputs){
-            //this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóúscript;:\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
-            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\#\,\.ÑÍÉÓÁÚ@_]/g, '');
-         }
-         */
-
-
          switch (input.id) {
 
             case 'digito_verificador':
                input.disabled = 'disabled';
                break;
             case 'run_madre':
-               console.log(this.formularioEditActivo);
-               console.log(this.formularioNuevoActivo);
 
-               if (this.formularioNuevoActivo == false && this.formularioEditActivo == true) {
-
+               // Valida si es distinto a null, bloquea digito y pasaporte
+               if (this.fdc[input.name] != null /*&& this.fdc[input.name]*/) {
+                  this.find_input(this.inputs, 'pasaporte_provisorio').disabled = 'disabled';
+                  this.find_input(this.inputs, 'digito_verificador').disabled = 'disabled';
                }
 
-               if (!this.fdc[input.name] ||
-                  this.fdc[input.name] == '' ||
-                  this.fdc[input.name] == null ||
+               // Valida si se está editando para bloquear la edicion del campo
+               if ( this.formularioEditActivo == true /* && this.formularioNuevoActivo == false*/ ) {
+                  input.disabled = 'disabled';
+                  return;
+               }
+
+               //Valida si lo que tiene actualmente el objeto es válido -- temporalmente deprecated
+               /*
+               if (this.is_null(this.fdc[input.name]) ||
                   validate(this.fdc[input.name]+this.fdc['digito_verificador'])){
-                  return;
+                  break;
                }
+               */
 
+               //this.is_null(this.fdc[input.name]) ||
                if (validate(this.fdc[input.name]) == false) {
-                  alert('Debe ingresar un rut completo valido, sin puntos ni guión.');
+                  swal({
+                     title: "Error",
+                     text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                     type: "error",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
                   this.fdc[input.name] = null;
-                  this.fdc['digito_verificador'] = dv;
-                  return;
+                  break;
                }
 
-               if (this.fdc[input.name] != null && this.fdc[input.name]) {
-
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'pasaporte_provisorio' ||
-                        this.inputs[i].name == 'digito_verificador') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-
-               }
-
+               //Aca ya está validado el rut
                var run_limpio = clean(this.fdc[input.name]);
                var dv = run_limpio.substr(run_limpio.length-1, run_limpio.length);
                run_limpio = run_limpio.substr(0, run_limpio.length-1);
@@ -2687,15 +2693,12 @@ const FormularioController = new Vue({
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
                   Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-                  //formData.append('run_madre', this.fdc[input.name]);
                   formData.append('run_madre', run_limpio);
                   this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
-                     //console.log(response);
                      if (response.status == 200) {
                         var rd = response.body.rd;
                         this.formularios_encontrados = response.body.formularios;
                         if (rd == 'Existe') {
-                           //this.fdc[input.name] = null;
                            var self = this;
                            swal({
                               title: "Atencion",
@@ -2703,11 +2706,7 @@ const FormularioController = new Vue({
                               type: "success",
                               confirmButtonClass: "btn-success",
                               closeOnConfirm: true
-                           }, function(isConfirm){
-                              if (isConfirm) {
-                                 self.show_modal_formularios_encontrados = true;
-                              }
-                           });
+                           }, function(isConfirm){ if (isConfirm) { self.show_modal_formularios_encontrados = true; } });
                         }
                      }else{
                         swal({
@@ -2718,22 +2717,13 @@ const FormularioController = new Vue({
                            closeOnConfirm: false
                         });
                      }
-                  }, response => { // error callback
-                     //console.log(response);
-                  });
+                  }, response => { }); // error callback //console.log(response);
                }
 
                break;
-            /*
-            case 'run_recien_nacido':
-               if (validate(this.fdc[input.name]) == false) {
-                  this.fdc[input.name] = null;
-                  alert('Debe ingresar un rut valido');
-               }
-               break;
-            */
 
             case 'mujer_es_vih_positivo':
+               break;
                if (this.fdc[input.name] == 'Si') {
                   var self = this;
                   swal({
@@ -2788,8 +2778,6 @@ const FormularioController = new Vue({
                      });
                      return false;
                   });
-
-
                   /*
                   swal({
                      title: "",
@@ -2800,7 +2788,6 @@ const FormularioController = new Vue({
                   });
                   */
                }
-
                break;
 
             case 'edad_gestacional_ingreso_control_embarazo':
@@ -2835,8 +2822,6 @@ const FormularioController = new Vue({
                            case 'eg_1_vdrl_embarazo':
 
 
-
-
                               if (this.fdc['resultado_1_vdrl_embarazo'] == "Reactivo" ||
                               this.fdc['resultado_1_vdrl_embarazo'] == null ||
                               this.fdc['resultado_1_vdrl_embarazo'] == "") {
@@ -2862,10 +2847,7 @@ const FormularioController = new Vue({
                               } else if (this.fdc['resultado_2_vdrl_embarazo'] == "No Reactivo" &&
                                  this.inputs[i].name != "resultado_dilucion_2_vdrl_embarazo") {
                                  this.inputs[i].disabled = null;
-                              } else {
-                                 var input = this.find_input(this.inputs, 'resultado_2_vdrl_embarazo');
-                                 input.disabled = null;
-                              }
+                              } else { this.find_input(this.inputs, 'resultado_2_vdrl_embarazo').disabled = null; }
                               break;
 
                            case 'resultado_3_vdrl_embarazo':
@@ -2879,10 +2861,7 @@ const FormularioController = new Vue({
                               } else if (this.fdc['resultado_3_vdrl_embarazo'] == "No Reactivo" &&
                                  this.inputs[i].name != "resultado_dilucion_3_vdrl_embarazo") {
                                  this.inputs[i].disabled = null;
-                              } else {
-                                 var input = this.find_input(this.inputs, 'resultado_3_vdrl_embarazo');
-                                 input.disabled = null;
-                              }
+                              } else { this.find_input(this.inputs, 'resultado_3_vdrl_embarazo').disabled = null; }
                               break;
 
                            case 'resultado_1_examen_vih_embarazo':
@@ -2892,10 +2871,7 @@ const FormularioController = new Vue({
                               this.fdc['resultado_1_examen_vih_embarazo'] == null ||
                               this.fdc['resultado_1_examen_vih_embarazo'] == "") {
                                  this.inputs[i].disabled = null;
-                              } else {
-                                 var input = this.find_input(this.inputs, 'resultado_1_examen_vih_embarazo');
-                                 input.disabled = null;
-                              }
+                              } else { this.find_input(this.inputs, 'resultado_1_examen_vih_embarazo').disabled = null; }
                               break;
 
                            case 'resultado_2_examen_vih_embarazo':
@@ -2905,10 +2881,7 @@ const FormularioController = new Vue({
                               this.fdc['resultado_2_examen_vih_embarazo'] == null ||
                               this.fdc['resultado_2_examen_vih_embarazo'] == "") {
                                  this.inputs[i].disabled = null;
-                              } else {
-                                 var input = this.find_input(this.inputs, 'resultado_2_examen_vih_embarazo');
-                                 input.disabled = null;
-                              }
+                              } else { this.find_input(this.inputs, 'resultado_2_examen_vih_embarazo').disabled = null }
                               break;
 
                            default:
@@ -3031,7 +3004,10 @@ const FormularioController = new Vue({
                            if (this.fdc['fecha_2_vdrl_embarazo'] || this.fdc['eg_2_vdrl_embarazo']) {
                               swal({
                                  title: "Advertencia",
-                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
+                                 text: `
+                                    Si el resultado del examen es No Realizado,
+                                    No debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.
+                                 `,
                                  type: "warning",
                                  confirmButtonClass: "btn-danger",
                                  closeOnConfirm: false
