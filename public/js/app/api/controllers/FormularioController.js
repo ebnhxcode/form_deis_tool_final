@@ -36198,7 +36198,7 @@ var FormularioController = new _vue2.default({
             case 'run_madre':
 
                // Valida si es distinto a null, bloquea digito y pasaporte
-               if (this.fdc[input.name] != null /*&& this.fdc[input.name]*/) {
+               if (this.is_null(this.fdc[input.name]) == false /*&& this.fdc[input.name]*/) {
                      this.find_input(this.inputs, 'pasaporte_provisorio').disabled = 'disabled';
                      this.find_input(this.inputs, 'digito_verificador').disabled = 'disabled';
                   }
@@ -36209,13 +36209,9 @@ var FormularioController = new _vue2.default({
                      return;
                   }
 
-               //Valida
-               /*
-               if (this.is_null(this.fdc[input.name]) ||
-                  validate(this.fdc[input.name]+this.fdc['digito_verificador'])){
-                  break;
-               }
-               */
+               if (this.formularioNuevoActivo == true && this.fdc[input.name] == null /* && this.formularioNuevoActivo == false*/) {
+                     break;
+                  }
 
                //this.is_null(this.fdc[input.name]) ||
                if ((0, _rut.validate)(this.fdc[input.name]) == false) {
@@ -36226,9 +36222,9 @@ var FormularioController = new _vue2.default({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+                  this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
                   this.fdc[input.name] = null;
                   break;
-                  return;
                }
 
                //Aca ya está validado el rut
@@ -36243,16 +36239,13 @@ var FormularioController = new _vue2.default({
                if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
                   var formData = new FormData();
                   _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-                  //formData.append('run_madre', this.fdc[input.name]);
                   formData.append('run_madre', run_limpio);
                   this.$http.post('/formulario/buscar_run_existente', formData).then(function (response) {
                      // success callback
-                     //console.log(response);
                      if (response.status == 200) {
                         var rd = response.body.rd;
                         _this9.formularios_encontrados = response.body.formularios;
                         if (rd == 'Existe') {
-                           //this.fdc[input.name] = null;
                            var self = _this9;
                            swal({
                               title: "Atencion",
@@ -36275,12 +36268,8 @@ var FormularioController = new _vue2.default({
                            closeOnConfirm: false
                         });
                      }
-                  }, function (response) {// error callback
-                     //console.log(response);
-                  });
+                  }, function (response) {}); // error callback //console.log(response);
                }
-
-               break;
 
                break;
 
@@ -36352,10 +36341,13 @@ var FormularioController = new _vue2.default({
                }
                break;
             case 'embarazo_con_control_parental':
+               if (this.fdc[input.name] == null) {
+                  break;
+               }
                if (this.fdc[input.name] == 'No' || this.fdc[input.name] == 'Desconocido') {
                   for (var _i in this.inputs) {
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     if (input.seccion == this.inputs[_i].seccion && input.name != this.inputs[_i].name) {
+                     if (input.seccion == this.inputs[_i].seccion && input.name != this.inputs[_i].name && this.inputs[_i].disabled != 'disabled') {
                         this.inputs[_i].disabled = true;
                      }
                   }
@@ -38180,21 +38172,26 @@ var FormularioController = new _vue2.default({
       },
 
       crear_nuevo_formulario: function crear_nuevo_formulario() {
-         this.renderizar_formulario();
          this.formularioNuevoActivo = true;
          this.formularioEditActivo = false;
          this.show_modal_formularios_encontrados = false;
+         this.renderizar_formulario();
 
+         /*
          var self = this;
          setTimeout(function () {
             swal({
                title: "Atencion",
-               text: '\n               Se est\xE1 creando un nuevo formulario sin problemas\n\n               El n\xFAmero correlativo es el: ' + self.fdc.n_correlativo_interno + '\n            ',
+               text: `
+               Se está creando un nuevo formulario sin problemas
+                El número correlativo es el: ${self.fdc.n_correlativo_interno}
+            `,
                type: "success",
                confirmButtonClass: "btn-success",
                closeOnConfirm: false
             });
-         }, 1200);
+         }, 2000);
+         */
 
          /*
          if (this.formularioNuevoActivo == false) {

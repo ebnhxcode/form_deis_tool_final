@@ -2649,7 +2649,7 @@ const FormularioController = new Vue({
             case 'run_madre':
 
                // Valida si es distinto a null, bloquea digito y pasaporte
-               if (this.fdc[input.name] != null /*&& this.fdc[input.name]*/) {
+               if (this.is_null(this.fdc[input.name]) == false /*&& this.fdc[input.name]*/) {
                   this.find_input(this.inputs, 'pasaporte_provisorio').disabled = 'disabled';
                   this.find_input(this.inputs, 'digito_verificador').disabled = 'disabled';
                }
@@ -2660,13 +2660,9 @@ const FormularioController = new Vue({
                   return;
                }
 
-               //Valida si lo que tiene actualmente el objeto es válido -- temporalmente deprecated
-               /*
-               if (this.is_null(this.fdc[input.name]) ||
-                  validate(this.fdc[input.name]+this.fdc['digito_verificador'])){
+               if ( this.formularioNuevoActivo == true && this.fdc[input.name] == null /* && this.formularioNuevoActivo == false*/ ) {
                   break;
                }
-               */
 
                //this.is_null(this.fdc[input.name]) ||
                if (validate(this.fdc[input.name]) == false) {
@@ -2677,6 +2673,7 @@ const FormularioController = new Vue({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
+                  this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
                   this.fdc[input.name] = null;
                   break;
                }
@@ -2796,12 +2793,14 @@ const FormularioController = new Vue({
                }
                break;
             case 'embarazo_con_control_parental':
+               if (this.fdc[input.name] == null) { break; }
                if (this.fdc[input.name] == 'No' || this.fdc[input.name] == 'Desconocido') {
                   for (let i in this.inputs){
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     if (input.seccion == this.inputs[i].seccion && input.name != this.inputs[i].name) {
-                        this.inputs[i].disabled = true;
-                     }
+                     if (input.seccion == this.inputs[i].seccion &&
+                        input.name != this.inputs[i].name &&
+                        this.inputs[i].disabled != 'disabled'
+                     ) { this.inputs[i].disabled = true; }
                   }
                }
                else{
@@ -4870,11 +4869,13 @@ const FormularioController = new Vue({
       },
 
       crear_nuevo_formulario: function () {
-         this.renderizar_formulario();
          this.formularioNuevoActivo = true;
          this.formularioEditActivo = false;
          this.show_modal_formularios_encontrados = false;
+         this.renderizar_formulario();
 
+
+         /*
          var self = this;
          setTimeout(function () {
             swal({
@@ -4888,7 +4889,8 @@ const FormularioController = new Vue({
                confirmButtonClass: "btn-success",
                closeOnConfirm: false
             });
-         }, 1200);
+         }, 2000);
+         */
 
          /*
          if (this.formularioNuevoActivo == false) {
