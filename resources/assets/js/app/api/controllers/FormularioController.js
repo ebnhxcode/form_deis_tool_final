@@ -3952,120 +3952,41 @@ const FormularioController = new Vue({
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_cd4_ingreso_control_prenatal').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_cd4_ingreso_control_prenatal').disabled = true;
                }
 
                if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_carga_viral_control_prenatal') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_carga_viral_control_prenatal').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_carga_viral_control_prenatal') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_carga_viral_control_prenatal').disabled = true;
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'carga_viral_numero_copia_semana_34') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'carga_viral_numero_copia_semana_34').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'carga_viral_numero_copia_semana_34') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'carga_viral_numero_copia_semana_34').disabled = true;
                }
 
-
-
                if (this.fdc['terapia_antiretroviral_farmaco_1']) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_1').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_1').disabled = true;
                }
 
                if (this.fdc['terapia_antiretroviral_tar_farmaco_2']) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = true;
                }
 
                if (this.fdc['terapia_antiretroviral_tar_farmaco_3']) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = true;
                }
-
-
-               if (this.fdc['fecha_inicio_farmaco_2_vih']) {
-                  /*
-                  if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
-                     this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
-                     this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
-                     this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
-                     for (let i in this.inputs){
-                        if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                           this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                           this.inputs[i].disabled = null;
-                        }
-                     }
-                  }
-                  else{
-                     for (let i in this.inputs){
-                        if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                           this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                           this.inputs[i].disabled = true;
-                        }
-                     }
-                  }*/
-               }
-
-
-
                break;
-
-
 
          }
       },
