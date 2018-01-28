@@ -1796,9 +1796,10 @@ const FormularioController = new Vue({
                            } else {
                               ce_null++;
                            }
-
+                           //cuando está, manda la posicion
+                           //cuando no está, manda -1
+                           //this.$parent.in_array(["a",undefined,3,"4","e",true,1],"e");
                            switch (keyjs) {
-
 
                               case 'resultado_1_vdrl_embarazo':
                               case 'resultado_2_vdrl_embarazo':
@@ -1815,13 +1816,43 @@ const FormularioController = new Vue({
                                  }
                                  break;
                               case 'resultado_dilucion_1_vdrl_embarazo':
-                                 if (ftmp["resultado_1_vdrl_embarazo"] == "No Reactivo" ||
-                                    ftmp["resultado_1_vdrl_embarazo"] == "No Realizado" ) {
+                              case 'resultado_dilucion_2_vdrl_embarazo':
+                              case 'resultado_dilucion_3_vdrl_embarazo':
+                                 if (this.$parent.in_array(["No Reactivo","No Realizado"],ftmp[keyjs]) == true) {
                                     break;
                                  }
                                  if ( value == null ) {
                                     control_embarazo.push({keyjs:label});
                                  }
+                                 break;
+                              case 'fecha_1_vdrl_embarazo':
+                              case 'eg_1_vdrl_embarazo':
+                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_vdrl_embarazo"]) == true) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    control_embarazo.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_2_vdrl_embarazo':
+                              case 'eg_2_vdrl_embarazo':
+                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_vdrl_embarazo"]) == true) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    control_embarazo.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_3_vdrl_embarazo':
+                              case 'eg_3_vdrl_embarazo':
+                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_3_vdrl_embarazo"]) == true) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    control_embarazo.push({keyjs:label});
+                                 }
+                                 break;
+
                               case 'resultado_1_examen_vih_embarazo':
                               case 'resultado_2_examen_vih_embarazo':
                                  if (value == "No Realizado") {
@@ -1833,6 +1864,25 @@ const FormularioController = new Vue({
                                     control_embarazo.push({keyjs:label});
                                  }
                                  break;
+                              case 'fecha_1_examen_vih_embarazo':
+                              case 'eg_1_examen_vih':
+                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_examen_vih_embarazo"]) == true) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    control_embarazo.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_2_examen_vih_embarazo':
+                              case 'eg_2_examen_vih':
+                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_examen_vih_embarazo"]) == true) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    control_embarazo.push({keyjs:label});
+                                 }
+                                 break;
+
 
                               default:
                                  if ( value == null ) {
@@ -2388,7 +2438,7 @@ const FormularioController = new Vue({
                   // Los 1 en duro son por campos opcionales, eso es todo quedó clarito
                   this.empaquetar_datos_estadistica(im-1,im_null-1,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
 
-                  this.empaquetar_datos_estadistica(ce-(cern-1),ce_null-(cern-1),ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
+                  this.empaquetar_datos_estadistica(ce-(cern),ce_null-(cern),ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
 
                   this.empaquetar_datos_estadistica(ps-(psrn),ps_null-(psrn),ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
 
@@ -2583,6 +2633,7 @@ const FormularioController = new Vue({
          }
          return false;
       },
+      in_array: function (array, v) { return (array.indexOf(v) > -1) ? true : false; },
 
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
