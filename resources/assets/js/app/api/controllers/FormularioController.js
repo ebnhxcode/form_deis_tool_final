@@ -2617,6 +2617,41 @@ const FormularioController = new Vue({
          return validation;
       },
 
+      validar_derivada_especialidad: function () {
+
+         if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
+            this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
+            this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
+            this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
+            this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' &&
+            this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' &&
+            this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
+
+            for (let i in this.inputs){
+               if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
+                  this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
+                  this.fdc['derivada_a_especialidades_embarazo']='';
+                  this.inputs[i].disabled = true;
+               }
+            }
+
+         }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
+            this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
+            this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
+            this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
+            this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
+            for (let i in this.inputs){
+               if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
+                  this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ) {
+                  this.inputs[i].disabled = null;
+               }
+            }
+            if (this.fdc['derivada_a_especialidades_embarazo'] == null) {
+               this.alert_if_info_reactivo_especialidades();
+            }
+         }
+
+      },
 
       /*
       * VALIDACIONES DE INPUTS
@@ -2901,319 +2936,156 @@ const FormularioController = new Vue({
                break;
             case 'resultado_1_vdrl_embarazo':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
+                  if (this.fdc[input.name] == 'No Realizado') {
 
-                     if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[i].name == 'resultado_dilucion_1_vdrl_embarazo' ||
-                           this.inputs[i].name == 'fecha_1_vdrl_embarazo' ||
-                           this.inputs[i].name == 'eg_1_vdrl_embarazo') {
-                           this.inputs[i].disabled = true;
+                     this.find_input(this.inputs, 'resultado_dilucion_1_vdrl_embarazo').disabled = true;
+                     this.find_input(this.inputs, 'fecha_1_vdrl_embarazo').disabled = true;
+                     this.find_input(this.inputs, 'eg_1_vdrl_embarazo').disabled = true;
 
-                           if (this.fdc['fecha_1_vdrl_embarazo'] || this.fdc['eg_1_vdrl_embarazo']) {
-                              swal({
-                                 title: "Advertencia",
-                                 text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
-                                 type: "warning",
-                                 confirmButtonClass: "btn-danger",
-                                 closeOnConfirm: false
-                              });
-                              this.fdc['fecha_1_vdrl_embarazo'] = null;
-                              this.fdc['eg_1_vdrl_embarazo'] = null;
-                           }
-
-                        }
-                     }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_1_vdrl_embarazo' ||
-                           this.inputs[i].name == 'eg_1_vdrl_embarazo') {
-                           this.inputs[i].disabled = null;
-
-                        }else {
-                           if (this.inputs[i].name == 'resultado_dilucion_1_vdrl_embarazo') {
-                              this.inputs[i].disabled = true;
-                           }
-
-                        }
+                     if (this.fdc['fecha_1_vdrl_embarazo'] || this.fdc['eg_1_vdrl_embarazo']) {
+                        swal({
+                           title: "Advertencia",
+                           text:  `
+                              Si el resultado del examen es No Realizado,
+                              No debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.
+                           `,
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.fdc['fecha_1_vdrl_embarazo'] = null;
+                        this.fdc['eg_1_vdrl_embarazo'] = null;
                      }
 
-                     this.fdc['resultado_dilucion_1_vdrl_embarazo'] = 'true';
+
+                  }else if (this.fdc[input.name] == 'No Reactivo') {
+                     this.find_input(this.inputs, 'fecha_1_vdrl_embarazo').disabled = null;
+                     this.find_input(this.inputs, 'eg_1_vdrl_embarazo').disabled = null;
+                     this.find_input(this.inputs, 'resultado_dilucion_1_vdrl_embarazo').disabled = true;
 
                   }
+                  //Mara marcar como dato ya ingresado
+                  this.fdc['resultado_dilucion_1_vdrl_embarazo'] = 'true';
+
                }
                else if (this.fdc[input.name] == 'Reactivo') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_1_vdrl_embarazo'
-                        || this.inputs[i].name == 'fecha_1_vdrl_embarazo'
-                        || this.inputs[i].name == 'eg_1_vdrl_embarazo') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_1_vdrl_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'fecha_1_vdrl_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'eg_1_vdrl_embarazo').disabled = null;
                } else {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_1_vdrl_embarazo'
-                        || this.inputs[i].name == 'fecha_1_vdrl_embarazo'
-                        || this.inputs[i].name == 'eg_1_vdrl_embarazo') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_1_vdrl_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'fecha_1_vdrl_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_1_vdrl_embarazo').disabled = true;
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' &&
-                  this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
-
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                        this.fdc['derivada_a_especialidades_embarazo']='';
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-
-               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ) {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-                  if (this.fdc['derivada_a_especialidades_embarazo'] == null) {
-                     this.alert_if_info_reactivo_especialidades();
-                  }
-               }
-
+               this.validar_derivada_especialidad();
                break;
+
             case 'resultado_2_vdrl_embarazo':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
+                  if (this.fdc[input.name] == 'No Realizado') {
 
+                     this.find_input(this.inputs, 'resultado_dilucion_2_vdrl_embarazo').disabled = true;
+                     this.find_input(this.inputs, 'fecha_2_vdrl_embarazo').disabled = true;
+                     this.find_input(this.inputs, 'eg_2_vdrl_embarazo').disabled = true;
 
-
-                  for (let i in this.inputs){
-
-                     if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
-                           this.inputs[i].name == 'fecha_2_vdrl_embarazo' ||
-                           this.inputs[i].name == 'eg_2_vdrl_embarazo') {
-                           this.inputs[i].disabled = true;
-
-                           if (this.fdc['fecha_2_vdrl_embarazo'] || this.fdc['eg_2_vdrl_embarazo']) {
-                              swal({
-                                 title: "Advertencia",
-                                 text: `
-                                    Si el resultado del examen es No Realizado,
-                                    No debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.
-                                 `,
-                                 type: "warning",
-                                 confirmButtonClass: "btn-danger",
-                                 closeOnConfirm: false
-                              });
-                              this.fdc['fecha_2_vdrl_embarazo'] = null;
-                              this.fdc['eg_2_vdrl_embarazo'] = null;
-                           }
-
-                        }
-                     }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_2_vdrl_embarazo'||
-                           this.inputs[i].name == 'eg_2_vdrl_embarazo') {
-                           this.inputs[i].disabled = null;
-
-                        }else {
-                           if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo') {
-                              this.inputs[i].disabled = true;
-                           }
-                        }
-
-
+                     if (this.fdc['fecha_2_vdrl_embarazo'] || this.fdc['eg_2_vdrl_embarazo']) {
+                        swal({
+                           title: "Advertencia",
+                           text: `
+                              Si el resultado del examen es No Realizado,
+                              No debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.
+                           `,
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.fdc['fecha_2_vdrl_embarazo'] = null;
+                        this.fdc['eg_2_vdrl_embarazo'] = null;
                      }
-                     this.fdc['resultado_dilucion_2_vdrl_embarazo'] = 'true';
+
+                  }else if (this.fdc[input.name] == 'No Reactivo') {
+                     this.find_input(this.inputs, 'fecha_2_vdrl_embarazo').disabled = null;
+                     this.find_input(this.inputs, 'eg_2_vdrl_embarazo').disabled = null;
+                     this.find_input(this.inputs, 'resultado_dilucion_2_vdrl_embarazo').disabled = true;
+
                   }
+                  //Mara marcar como dato ya ingresado
+                  this.fdc['resultado_dilucion_2_vdrl_embarazo'] = 'true';
                }
                else if (this.fdc[input.name] == 'Reactivo') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
-                        this.inputs[i].name == 'fecha_2_vdrl_embarazo'
-                        || this.inputs[i].name == 'eg_2_vdrl_embarazo') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_2_vdrl_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'fecha_2_vdrl_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'eg_2_vdrl_embarazo').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_2_vdrl_embarazo' ||
-                        this.inputs[i].name == 'fecha_2_vdrl_embarazo'
-                        || this.inputs[i].name == 'eg_2_vdrl_embarazo') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_2_vdrl_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'fecha_2_vdrl_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_2_vdrl_embarazo').disabled = true;
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' &&
-                  this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
-
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                        this.fdc['derivada_a_especialidades_embarazo']='';
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-
-               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ) {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-                  this.alert_if_info_reactivo_especialidades();
-               }
-
+               this.validar_derivada_especialidad();
                break;
+
             case 'resultado_3_vdrl_embarazo':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
 
-                     if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo' ||
-                           this.inputs[i].name == 'fecha_3_vdrl_embarazo' ||
-                           this.inputs[i].name == 'eg_3_vdrl_embarazo') {
-                           this.inputs[i].disabled = true;
-                        }
+                  if (this.fdc[input.name] == 'No Realizado') {
+                     this.find_input(this.inputs, 'resultado_dilucion_3_vdrl_embarazo').disabled = true;
+                     this.find_input(this.inputs, 'fecha_3_vdrl_embarazo').disabled = true;
+                     this.find_input(this.inputs, 'eg_3_vdrl_embarazo').disabled = true;
 
-                        if (this.fdc['fecha_3_vdrl_embarazo'] || this.fdc['eg_3_vdrl_embarazo']) {
-                           swal({
-                              title: "Advertencia",
-                              text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
-                              type: "warning",
-                              confirmButtonClass: "btn-danger",
-                              closeOnConfirm: false
-                           });
-                           this.fdc['fecha_3_vdrl_embarazo'] = null;
-                           this.fdc['eg_3_vdrl_embarazo'] = null;
-                        }
-
-                     }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_3_vdrl_embarazo' ||
-                           this.inputs[i].name == 'eg_3_vdrl_embarazo') {
-                           this.inputs[i].disabled = null;
-
-                        }else {
-                           if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo') {
-                              this.inputs[i].disabled = true;
-                           }
-                        }
-
+                     if (this.fdc['fecha_3_vdrl_embarazo'] || this.fdc['eg_3_vdrl_embarazo']) {
+                        swal({
+                           title: "Advertencia",
+                           text:  `
+                              Si el resultado del examen es No Realizado,
+                              No debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.
+                           `,
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.fdc['fecha_3_vdrl_embarazo'] = null;
+                        this.fdc['eg_3_vdrl_embarazo'] = null;
                      }
-                     this.fdc['resultado_dilucion_3_vdrl_embarazo'] = 'true';
+
+                  }else if (this.fdc[input.name] == 'No Reactivo') {
+                     this.find_input(this.inputs, 'fecha_3_vdrl_embarazo').disabled = null;
+                     this.find_input(this.inputs, 'eg_3_vdrl_embarazo').disabled = null;
+                     this.find_input(this.inputs, 'resultado_dilucion_3_vdrl_embarazo').disabled = true;
                   }
+                  //Mara marcar como dato ya ingresado
+                  this.fdc['resultado_dilucion_3_vdrl_embarazo'] = 'true';
                }
                else if (this.fdc[input.name] == 'Reactivo') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo' ||
-                        this.inputs[i].name == 'fecha_3_vdrl_embarazo'
-                        || this.inputs[i].name == 'eg_3_vdrl_embarazo') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_3_vdrl_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'fecha_3_vdrl_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'eg_3_vdrl_embarazo').disabled = null;
                } else {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_3_vdrl_embarazo' ||
-                        this.inputs[i].name == 'fecha_3_vdrl_embarazo'
-                        || this.inputs[i].name == 'eg_3_vdrl_embarazo') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_3_vdrl_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'fecha_3_vdrl_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_3_vdrl_embarazo').disabled = true;
                }
 
-               if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_examen_vih_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_1_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo' &&
-                  this.fdc['acepta_rechaza_toma_examen_vih'] != 'Rechaza' &&
-                  this.fdc['acepta_rechaza_toma_examen_vih'] != 'No Corresponde') {
-
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante') {
-                        this.fdc['derivada_a_especialidades_embarazo']='';
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-
-               }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
-                  this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ) {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-                  this.alert_if_info_reactivo_especialidades();
-               }
-
+               this.validar_derivada_especialidad();
                break;
+
             case 'resultado_vdrl_periferico_recien_nacido':
-
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
+                  if (this.fdc[input.name] == 'No Realizado') {
+                     this.find_input(this.inputs, 'fecha_examen_vdrl_periferico_recien_nacido').disabled = true;
+                     this.find_input(this.inputs, 'titulacion_vdrl_periferico_recien_nacido').disabled = true;
 
-                     if (this.fdc[input.name] == 'No Realizado') {
-                        if (this.inputs[i].name == 'fecha_examen_vdrl_periferico_recien_nacido' ||
-                           this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' /*||
-                           this.inputs[i].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
-                           this.inputs[i].name == 'resultado_radiografia_huesos_largos' || this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido'*/) {
-                           this.inputs[i].disabled = true;
-                        }
-                     }else if (this.fdc[input.name] == 'No Reactivo') {
-                        if (this.inputs[i].name == 'fecha_examen_vdrl_periferico_recien_nacido') {
-                           this.inputs[i].disabled = null;
-                        }else {
-                           if (this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' //||
-                              //this.inputs[i].name == 'resultado_vdrl_periferico_recien_nacido' | |
-                              //this.inputs[i].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
-                              //this.inputs[i].name == 'resultado_radiografia_huesos_largos' ||
-                              //this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido'
-                           ) {
-                              this.inputs[i].disabled = true;
-                           }
-                        }
-
-                     }
-                     this.fdc['titulacion_vdrl_periferico_recien_nacido'] = 'true';
+                  } else if (this.fdc[input.name] == 'No Reactivo') {
+                     this.find_input(this.inputs, 'fecha_examen_vdrl_periferico_recien_nacido').disabled = null;
+                     this.find_input(this.inputs, 'titulacion_vdrl_periferico_recien_nacido').disabled = true;
                   }
-               }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_examen_vdrl_periferico_recien_nacido' ||
-                        this.inputs[i].name == 'titulacion_vdrl_periferico_recien_nacido' /*||
-                        //this.inputs[i].name == 'resultado_vdrl_periferico_recien_nacido' ||
-                        this.inputs[i].name == 'resultado_citoquimico_liq_cefalo_raquideo' ||
-                        this.inputs[i].name == 'resultado_radiografia_huesos_largos' ||
-                        this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido'*/) {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }
+                  this.fdc['titulacion_vdrl_periferico_recien_nacido'] = 'true';
 
+               } else {
+                  this.find_input(this.inputs, 'fecha_examen_vdrl_periferico_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'titulacion_vdrl_periferico_recien_nacido').disabled = null;
+               }
                break;
 
             case 'resultado_vdrl_liq_cefalo_recien_nacido':
@@ -3223,37 +3095,23 @@ const FormularioController = new Vue({
                   this.fdc[input.name] == 'Puncion Frustrada'
                ) {
 
-                  for (let i in this.inputs){
+                  if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
 
-                     if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'Puncion Frustrada') {
-                        if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido' ||
-                           this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
-                           this.inputs[i].disabled = true;
-                        }
-                     }else if (this.fdc[input.name] == 'No Reactivo') {
+                     this.find_input(this.inputs, 'titulacion_vdrl_liq_cefalo_recien_nacido').disabled = true;
+                     this.find_input(this.inputs, 'fecha_examen_vdrl_liq_cefalo_recien_nacido').disabled = true;
 
-                        if (this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido') {
-                           this.inputs[i].disabled = null;
+                  }else if (this.fdc[input.name] == 'No Reactivo') {
+                     this.find_input(this.inputs, 'fecha_examen_vdrl_liq_cefalo_recien_nacido').disabled = null;
+                     this.find_input(this.inputs, 'titulacion_vdrl_liq_cefalo_recien_nacido').disabled = true;
 
-                        }
-                        else {
-                           if (this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido') {
-                              this.inputs[i].disabled = true;
-                           }
-                        }
-
-                     }
-                     this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
                   }
-               }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_examen_vdrl_liq_cefalo_recien_nacido' ||
-                        this.inputs[i].name == 'titulacion_vdrl_liq_cefalo_recien_nacido'
-                        || this.inputs[i].name == 'resultado_vdrl_liq_cefalo_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.fdc['titulacion_vdrl_liq_cefalo_recien_nacido'] = 'true';
+
+               } else {
+                  this.find_input(this.inputs, 'fecha_examen_vdrl_liq_cefalo_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'titulacion_vdrl_liq_cefalo_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'resultado_vdrl_liq_cefalo_recien_nacido').disabled = null;
+
                }
 
                break;
@@ -3261,69 +3119,34 @@ const FormularioController = new Vue({
             case 'acepta_rechaza_toma_examen_vih':
 
                if (this.fdc[input.name] == 'Rechaza' || this.fdc[input.name] == 'No Corresponde') {
+
+                  this.find_input(this.inputs, 'fecha_1_examen_vih_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_1_examen_vih').disabled = true;
+                  this.find_input(this.inputs, 'fecha_2_examen_vih_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_2_examen_vih').disabled = true;
+                  this.find_input(this.inputs, 'derivada_a_especialidades_embarazo').disabled = null;
+
+               } else {
+
                   for (let i in this.inputs){
-                     //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
-                        this.inputs[i].disabled = true;
-                     }*/
-                     switch (this.inputs[i].id) {
-                        //case 'resultado_1_examen_vih_embarazo':
-                        case 'fecha_1_examen_vih_embarazo':
-                        case 'eg_1_examen_vih':
-                        //case 'resultado_2_examen_vih_embarazo':
-                        case 'fecha_2_examen_vih_embarazo':
-                        case 'eg_2_examen_vih':
-
-
-                           this.inputs[i].disabled = true;
-
-                           break;
-                        case 'derivada_a_especialidades_embarazo':
-                           this.inputs[i].disabled = null;
-                           break;
-                     }
-
-
-
-                  }
-
-               }
-               else{
-                  for (let i in this.inputs){
-                     //Aqui agregar la validacion del bloque para que no se lo pase de largo
-                     /*if (input.bloque == this.inputs[i].bloque && input.name != this.inputs[i].name) {
-                        this.inputs[i].disabled = null;
-                     }*/
-
-                     //console.log(this.fdc['resultado_1_examen_vih_embarazo']);
 
                      switch (this.inputs[i].id) {
-                        //case 'resultado_1_examen_vih_embarazo':
                         case 'fecha_1_examen_vih_embarazo':
                         case 'eg_1_examen_vih':
-
-
                            if (this.fdc['resultado_1_examen_vih_embarazo'] == 'No Realizado') {
                               this.inputs[i].disabled = 'disabled';
-                              //this.fdc[input.id] = null;
                            }else{
                               this.inputs[i].disabled = null;
                            }
-
                            break;
 
-                        //case 'resultado_2_examen_vih_embarazo':
                         case 'fecha_2_examen_vih_embarazo':
                         case 'eg_2_examen_vih':
-
                            if (this.fdc['resultado_2_examen_vih_embarazo'] == 'No Realizado') {
                               this.inputs[i].disabled = 'disabled';
-                              //this.fdc[input.id] = null;
                            }else{
                               this.inputs[i].disabled = null;
                            }
-
-
                            break;
 
                         case 'derivada_a_especialidades_embarazo':
@@ -3335,7 +3158,6 @@ const FormularioController = new Vue({
                               && (this.fdc['resultado_1_examen_vih_embarazo'] != 'No Realizado' &&
                                  this.fdc['resultado_2_examen_vih_embarazo'] != 'No Realizado')
                            ) {
-
                               this.inputs[i].disabled = null;
                            }
                            break;
@@ -3351,37 +3173,30 @@ const FormularioController = new Vue({
                break;
             case 'resultado_1_examen_vih_embarazo':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_1_examen_vih_embarazo' || this.inputs[i].name == 'eg_1_examen_vih') {
-                        this.inputs[i].disabled = true;
-                     }
+                  this.find_input(this.inputs, 'fecha_1_examen_vih_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_1_examen_vih').disabled = true;
 
-                     if (this.fdc['fecha_1_examen_vih_embarazo'] || this.fdc['eg_1_examen_vih']) {
-                        swal({
-                           title: "Advertencia",
-                           text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
-                           type: "warning",
-                           confirmButtonClass: "btn-danger",
-                           closeOnConfirm: false
-                        });
-                        this.fdc['eg_1_examen_vih'] = null;
-                        this.fdc['fecha_1_examen_vih_embarazo'] = null;
-                     }
+                  if (this.fdc['fecha_1_examen_vih_embarazo'] || this.fdc['eg_1_examen_vih']) {
+                     swal({
+                        title: "Advertencia",
+                        text: "Si el resultado del examen es No Realizado, NO debe ir la Fecha ni Edad Gestacional ya que solo aplica para los resultados Reactivo y No Reactivo.",
+                        type: "warning",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
 
+                     this.fdc['eg_1_examen_vih'] = null;
+                     this.fdc['fecha_1_examen_vih_embarazo'] = null;
                   }
+
+
                }
                else if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'Reactivo') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_1_examen_vih_embarazo' || this.inputs[i].name == 'eg_1_examen_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_1_examen_vih_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'eg_1_examen_vih').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_1_examen_vih_embarazo' || this.inputs[i].name == 'eg_1_examen_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_1_examen_vih_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_1_examen_vih').disabled = true;
                }
 
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
@@ -3390,23 +3205,15 @@ const FormularioController = new Vue({
                   this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
                   this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
 
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
-                        this.fdc['derivada_a_especialidades_embarazo']='';
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'derivada_a_especialidades_embarazo').disabled = true;
 
                }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+
+                  this.find_input(this.inputs, 'derivada_a_especialidades_embarazo').disabled = null;
                   this.alert_if_info_reactivo_especialidades();
                }
 
@@ -3427,26 +3234,15 @@ const FormularioController = new Vue({
                      this.fdc['fecha_2_examen_vih_embarazo'] = null;
                   }
 
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_2_examen_vih_embarazo' || this.inputs[i].name == 'eg_2_examen_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               else if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'Reactivo') {
+                  this.find_input(this.inputs, 'fecha_2_examen_vih_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_2_examen_vih').disabled = true;
 
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_2_examen_vih_embarazo' || this.inputs[i].name == 'eg_2_examen_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+               } else if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'Reactivo') {
+                  this.find_input(this.inputs, 'fecha_2_examen_vih_embarazo').disabled = null;
+                  this.find_input(this.inputs, 'eg_2_examen_vih').disabled = null;
                } else {
-
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_2_examen_vih_embarazo' || this.inputs[i].name == 'eg_2_examen_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_2_examen_vih_embarazo').disabled = true;
+                  this.find_input(this.inputs, 'eg_2_examen_vih').disabled = true;
                }
 
                if (this.fdc['resultado_1_examen_vih_embarazo'] != 'Reactivo' &&
@@ -3455,23 +3251,16 @@ const FormularioController = new Vue({
                   this.fdc['resultado_2_vdrl_embarazo'] != 'Reactivo' &&
                   this.fdc['resultado_3_vdrl_embarazo'] != 'Reactivo') {
 
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
-                        this.fdc['derivada_a_especialidades_embarazo']='';
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.fdc['derivada_a_especialidades_embarazo']='';
+                  this.find_input(this.inputs, 'derivada_a_especialidades_embarazo').disabled = true;
 
                }else if (this.fdc['resultado_1_examen_vih_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_2_examen_vih_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_1_vdrl_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_2_vdrl_embarazo'] == 'Reactivo' ||
                   this.fdc['resultado_3_vdrl_embarazo'] == 'Reactivo'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'derivada_a_especialidades_embarazo') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+
+                  this.find_input(this.inputs, 'derivada_a_especialidades_embarazo').disabled = null;
                   this.alert_if_info_reactivo_especialidades();
                }
 
@@ -3548,12 +3337,10 @@ const FormularioController = new Vue({
             case 'nacidos_vivos_previos_embarazo':
             case 'nacidos_muertos_previos_embarazo':
             case 'abortos_previos_embarazo':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (parseInt(this.fdc[input.name]) > 10 || parseInt(this.fdc[input.name]) < 0) {
+               if (parseInt(this.fdc[input.name]) > 30 || parseInt(this.fdc[input.name]) < 0) {
                   this.fdc[input.name] = 0;
                }
                break;
-
 
             case 'codigo_establecimiento':
                if (parseInt(this.fdc[input.name]) < 0) {
@@ -3563,24 +3350,17 @@ const FormularioController = new Vue({
 
             case 'sifilis_previa_embarazo':
                if (this.fdc[input.name] == 'No') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'ano_sifilis_previa_embarazo') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'ano_sifilis_previa_embarazo').disabled = true;
                }
                else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'ano_sifilis_previa_embarazo') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'ano_sifilis_previa_embarazo').disabled = null;
+
                   if (this.fdc[input.name] == 'Si') {
                      swal({
                         title: "Advertencia",
                         text: `
                         Ahora, debe completar el año cuando se diagnosticó esta patología en "Año sífilis previo a este embarazo".
-                     `,
+                        `,
                         type: "warning",
                         confirmButtonClass: "btn-danger",
                         closeOnConfirm: false
@@ -3591,7 +3371,6 @@ const FormularioController = new Vue({
 
                break;
             case 'ano_sifilis_previa_embarazo':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                var d = new Date();
                var y = d.getFullYear();
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > y || parseInt(this.fdc[input.name]) < 1920) {
@@ -3599,26 +3378,16 @@ const FormularioController = new Vue({
                }
                break;
             case 'numero_cd4_ingreso_control_prenatal':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = null;
                }
-
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_cd4_ingreso_control_prenatal').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_cd4_ingreso_control_prenatal').disabled = true;
                }
-
                break;
+
             case 'numero_carga_viral_control_prenatal':
                if (parseInt(this.fdc[input.name]) < 0 || parseInt(this.fdc[input.name]) > 9999999) {
                   this.fdc[input.name] = null;
@@ -3627,20 +3396,10 @@ const FormularioController = new Vue({
                      this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                   }
                }
-
-
                if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_carga_viral_control_prenatal') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_carga_viral_control_prenatal').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_carga_viral_control_prenatal') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_carga_viral_control_prenatal').disabled = true;
                }
                break;
 
@@ -3650,112 +3409,44 @@ const FormularioController = new Vue({
                }else{
                   this.fdc[input.name] = this.fdc[input.name]>0?Math.round(parseInt(this.fdc[input.name])):null;
                }
-
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'carga_viral_numero_copia_semana_34') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'carga_viral_numero_copia_semana_34').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'carga_viral_numero_copia_semana_34') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'carga_viral_numero_copia_semana_34').disabled = true;
                }
-
                break;
 
             case 'resultado_vdrl_parto':
                if (this.fdc[input.name] == 'No Reactivo' || this.fdc[input.name] == 'No Realizado'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_vdrl_parto' /* ||
-                        this.inputs[i].name == 'resultado_examen_treponemico_parto' ||
-                        /*this.inputs[i].name == 'tratamiento_sifilis_parto'*/ ) {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_vdrl_parto').disabled = true;
                   this.fdc['resultado_dilucion_vdrl_parto'] = 'true';
                }
                else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'resultado_dilucion_vdrl_parto' /*||
-                        this.inputs[i].name == 'resultado_examen_treponemico_parto' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_parto'*/ ) {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'resultado_dilucion_vdrl_parto').disabled = null;
                }
                break;
             case 'peso_mujer_parto':
                if (parseInt(this.fdc[input.name])>0) {
-                  //this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                   if (parseInt(this.fdc[input.name]) > 999) {
                      this.fdc[input.name] = 0;
                   }
-                  /*
-                  this.fdc[input.name] =
-                     parseInt(this.fdc[input.name]) > 999 ?
-                     (  parseInt(this.fdc[input.name])/1000).toFixed(1) + 'g' :
-                        parseInt(this.fdc[input.name]).toFixed(1) + 'mg';
-                  */
                }
-               /*
-               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
-                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
-                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               */
                break;
             case 'peso_recien_nacido':
                if (parseInt(this.fdc[input.name])>0) {
                   if (parseInt(this.fdc[input.name]) > 9999) {
                      this.fdc[input.name] = 0;
                   }
-                  /*
-                  else{
-                     this.fdc[input.name] = this.fdc[input.name].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                  }
-                  */
-
                }else{
                   this.fdc[input.name] = 0;
                }
                break;
             case 'resultado_treponemico':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_examen_treponemico' /*||
-                        this.inputs[i].name == 'diagnostico_sifilis_embarazo'*/) {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_examen_treponemico').disabled = true;
                }
                else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_examen_treponemico' /*||
-                        this.inputs[i].name == 'diagnostico_sifilis_embarazo'*/) {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_examen_treponemico').disabled = null;
                }
                break;
 
@@ -3791,117 +3482,64 @@ const FormularioController = new Vue({
 
 
             case 'numero_contactos_sexuales_declarados':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name])>=1){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
-                        this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_contactos_sexuales_estudiados').disabled = null;
+                  this.find_input(this.inputs, 'numero_contactos_sexuales_tratados').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'numero_contactos_sexuales_estudiados' ||
-                        this.inputs[i].name == 'numero_contactos_sexuales_tratados') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_contactos_sexuales_estudiados').disabled = true;
+                  this.find_input(this.inputs, 'numero_contactos_sexuales_tratados').disabled = true;
                }
-
-               if (parseInt(this.fdc[input.name])<0) {
-                  this.fdc[input.name] = null;
-               }
-
+               if (parseInt(this.fdc[input.name])<0) { this.fdc[input.name] = null; }
                break;
 
             case 'numero_contactos_sexuales_estudiados':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (parseInt(this.fdc[input.name])<0) {
-                  this.fdc[input.name] = null;
-               }
+               if (parseInt(this.fdc[input.name])<0) { this.fdc[input.name] = null; }
                break;
             case 'numero_contactos_sexuales_tratados':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
                if (parseInt(this.fdc[input.name])<0) {
                   this.fdc[input.name] = null;
                }
                break;
 
             case 'sustituto_leche_materna':
-
                if (this.fdc[input.name] == 'No') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_sustituto_leche_materna' ||
-                        this.inputs[i].name == 'hora_inicio_sustituto_leche_materna' ||
-                        this.inputs[i].name == 'entrega_sustituto_leche_materna_al_alta') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_sustituto_leche_materna').disabled = true;
+                  this.find_input(this.inputs, 'hora_inicio_sustituto_leche_materna').disabled = true;
+                  this.find_input(this.inputs, 'entrega_sustituto_leche_materna_al_alta').disabled = true;
                }
                else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_sustituto_leche_materna' ||
-                        this.inputs[i].name == 'hora_inicio_sustituto_leche_materna' ||
-                        this.inputs[i].name == 'entrega_sustituto_leche_materna_al_alta') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_sustituto_leche_materna').disabled = null;
+                  this.find_input(this.inputs, 'hora_inicio_sustituto_leche_materna').disabled = null;
+                  this.find_input(this.inputs, 'entrega_sustituto_leche_materna_al_alta').disabled = null;
                }
-
-
-
                break;
+
             case 'nombre_farmaco_1_vih_recien_nacido':
-
                if (this.fdc[input.name] != null && this.fdc[input.name] != '') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_farmaco_1_vih_recien_nacido' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_1_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_farmaco_1_vih_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_farmaco_1_vih_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'hora_inicio_farmaco_1_vih_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'dosis_farmaco_1_vih_recien_nacido').disabled = null;
+               } else {
+                  this.find_input(this.inputs, 'fecha_inicio_farmaco_1_vih_recien_nacido').disabled = true;
+                  this.find_input(this.inputs, 'hora_inicio_farmaco_1_vih_recien_nacido').disabled = true;
+                  this.find_input(this.inputs, 'dosis_farmaco_1_vih_recien_nacido').disabled = true;
                }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_farmaco_1_vih_recien_nacido' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_1_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_farmaco_1_vih_recien_nacido') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-
                break;
 
             case 'nombre_farmaco_2_vih_recien_nacido':
-
                if (this.fdc[input.name] != null && this.fdc[input.name] != '') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_farmaco_2_vih_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_farmaco_2_vih_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'hora_inicio_farmaco_2_vih_recien_nacido').disabled = null;
+                  this.find_input(this.inputs, 'dosis_farmaco_2_vih_recien_nacido').disabled = null;
+               } else {
+                  this.find_input(this.inputs, 'fecha_inicio_farmaco_2_vih_recien_nacido').disabled = true;
+                  this.find_input(this.inputs, 'hora_inicio_farmaco_2_vih_recien_nacido').disabled = true;
+                  this.find_input(this.inputs, 'dosis_farmaco_2_vih_recien_nacido').disabled = true;
                }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_inicio_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_2_vih_recien_nacido' ||
-                        this.inputs[i].name == 'dosis_farmaco_2_vih_recien_nacido') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-
                break;
 
             case 'tratamiento_recien_nacido_frecuencia':
-               //this.fdc[input.name] = Math.round(parseInt(this.fdc[input.name]));
-               if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) {
-                  this.fdc[input.name] = 0;
-               }
+               if (parseInt(this.fdc[input.name]) > 99 || parseInt(this.fdc[input.name]) < 0) { this.fdc[input.name] = 0; }
                break;
 
             case 'nombre_farmaco_1_vih':
@@ -3917,7 +3555,7 @@ const FormularioController = new Vue({
                         this.inputs[i].disabled = null;
                      }
                   }
-               }else{
+               } else {
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'peso_mujer_parto' ||
                         this.inputs[i].name == 'dosis_farmaco_1_vih' ||
@@ -3930,267 +3568,55 @@ const FormularioController = new Vue({
                      }
                   }
                }
-               /*
-               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
-                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
-                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               */
                break;
-            case 'dosis_farmaco_1_vih':/*
-
-               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
-                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
-                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               */
-               break;
-
-            case 'fecha_inicio_farmaco_1_vih':
-               /*
-               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
-                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
-                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               */
-               break;
-
-            case 'hora_inicio_farmaco_1_vih':
-               /*
-               if(this.fdc['nombre_farmaco_1_vih'] != null && this.fdc['nombre_farmaco_1_vih'] != '' &&
-                  this.fdc['peso_mujer_parto'] != null && this.fdc['peso_mujer_parto'] != '' &&
-                  this.fdc['dosis_farmaco_1_vih'] != null && this.fdc['dosis_farmaco_1_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_1_vih'] != null && this.fdc['fecha_inicio_farmaco_1_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_1_vih'] != null && this.fdc['hora_inicio_farmaco_1_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_2_farmaco_1_vih' ||
-                        this.inputs[i].name == 'fecha_2_inicio_farmaco_1_vih' ||
-                        this.inputs[i].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               */
-               break;
-
 
             case 'nombre_farmaco_2_vih':
                if (this.fdc[input.name]) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_farmaco_2_vih' ||
-                        this.inputs[i].name == 'fecha_inicio_farmaco_2_vih' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_2_vih') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'dosis_farmaco_2_vih' ||
-                        this.inputs[i].name == 'fecha_inicio_farmaco_2_vih' ||
-                        this.inputs[i].name == 'hora_inicio_farmaco_2_vih') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'dosis_farmaco_2_vih').disabled = null;
+                  this.find_input(this.inputs, 'fecha_inicio_farmaco_2_vih').disabled = null;
+                  this.find_input(this.inputs, 'hora_inicio_farmaco_2_vih').disabled = null;
+               } else {
+                  this.find_input(this.inputs, 'dosis_farmaco_2_vih').disabled = true;
+                  this.find_input(this.inputs, 'fecha_inicio_farmaco_2_vih').disabled = true;
+                  this.find_input(this.inputs, 'hora_inicio_farmaco_2_vih').disabled = true;
                }
-               /*
-               if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
-                  this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }*/
-               break;
-
-            case 'dosis_farmaco_2_vih':
-               /*
-               if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
-                  this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }*/
-               break;
-
-            case 'hora_inicio_farmaco_2_vih':
-               /*
-               if(this.fdc['nombre_farmaco_2_vi    h'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
-                  this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
-                  this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
-                  this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }
-               else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                        this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }*/
                break;
 
             case 'resultado_test_elisa_18_meses':
                if(this.fdc[input.name] == 'No Realizado'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_test_elisa_18_meses') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_test_elisa_18_meses') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_test_elisa_18_meses').disabled = true;
+               } else {
+                  this.find_input(this.inputs, 'fecha_test_elisa_18_meses').disabled = null;
                }
                break;
 
             case 'resultado_final_isp_examen_vih_recien_nacido':
                if(this.fdc[input.name] == 'No Realizado'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_resultado_final_isp_examen_vih_recien_nacido').disabled = true;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_resultado_final_isp_examen_vih_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_resultado_final_isp_examen_vih_recien_nacido').disabled = null;
                }
                break;
+
             case 'derivacion_recien_nacido_a_seguimiento':
-
                if(this.fdc[input.name] == 'No'){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
-                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'lugar_derivacion_recien_nacido_a_seguimiento' ||
-                        this.inputs[i].name == 'fecha_ingreso_control_recien_nacido_post_nacimiento') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'lugar_derivacion_recien_nacido_a_seguimiento').disabled = true;
+                  this.find_input(this.inputs, 'fecha_ingreso_control_recien_nacido_post_nacimiento').disabled = true;
+               } else {
+                  this.find_input(this.inputs, 'lugar_derivacion_recien_nacido_a_seguimiento').disabled = null;
+                  this.find_input(this.inputs, 'fecha_ingreso_control_recien_nacido_post_nacimiento').disabled = null;
                }
-
                break;
 
             case 'tratamiento_recien_nacido_farmaco':
-
                if(this.fdc[input.name] != null && this.fdc[input.name] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_recien_nacido_dosis' ||
-                        this.inputs[i].name == 'tratamiento_recien_nacido_frecuencia') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
-               }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_recien_nacido_dosis' ||
-                        this.inputs[i].name == 'tratamiento_recien_nacido_frecuencia') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'tratamiento_recien_nacido_dosis').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_recien_nacido_frecuencia').disabled = null;
+               } else {
+                  this.find_input(this.inputs, 'tratamiento_recien_nacido_dosis').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_recien_nacido_frecuencia').disabled = true;
                }
-
                break;
-
-
 
             case 'estado_recien_nacido':
                if (this.fdc[input.name] == 'Muerto') {
@@ -4202,26 +3628,8 @@ const FormularioController = new Vue({
                }
                else {
                   for (let i in this.inputs) {
-                     if (
-                        this.inputs[i].bloque == input.bloque && this.inputs[i].name != input.name
-                     ) {
-                        /*
-                         (
-                         this.inputs[i].name != 'fecha_inicio_sustituto_leche_materna' &&
-                         this.inputs[i].name != 'hora_inicio_sustituto_leche_materna' &&
-                         this.inputs[i].name != 'fecha_1_examen_pcr_recien_nacido' &&
-                         this.inputs[i].name != 'fecha_2_examen_pcr_recien_nacido' &&
-                         this.inputs[i].name != 'fecha_3_examen_pcr_recien_nacido' &&
-                         (
-                         this.fdc['resultado_1_examen_pcr_recien_nacido'] == 'No Realizado' ||
-                         this.fdc['resultado_2_examen_pcr_recien_nacido'] == 'No Realizado' ||
-                         this.fdc['resultado_3_examen_pcr_recien_nacido'] == 'No Realizado'
-                         )
-
-                         )
-                        */
+                     if ( this.inputs[i].bloque == input.bloque && this.inputs[i].name != input.name) {
                         this.inputs[i].disabled = null;
-
                      }
                   }
                }
@@ -4231,34 +3639,17 @@ const FormularioController = new Vue({
             case 'nombre_farmaco_suspencion_lactancia':
 
                if(this.fdc[input.name] != null && this.fdc[input.name] != ''){
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_administracion_farmaco_suspencion_lactancia').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_administracion_farmaco_suspencion_lactancia').disabled = true;
                }
 
                break;
             case 'resultado_1_examen_pcr_recien_nacido':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_1_examen_pcr_recien_nacido') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               else {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_1_examen_pcr_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_1_examen_pcr_recien_nacido').disabled = true;
+               } else {
+                  this.find_input(this.inputs, 'fecha_1_examen_pcr_recien_nacido').disabled = null;
                }
 
                break;
@@ -4266,18 +3657,9 @@ const FormularioController = new Vue({
 
             case 'resultado_2_examen_pcr_recien_nacido':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_2_examen_pcr_recien_nacido') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
-               }
-               else {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_2_examen_pcr_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_2_examen_pcr_recien_nacido').disabled = true;
+               } else {
+                  this.find_input(this.inputs, 'fecha_2_examen_pcr_recien_nacido').disabled = null;
                }
 
                break;
@@ -4285,47 +3667,31 @@ const FormularioController = new Vue({
 
             case 'resultado_3_examen_pcr_recien_nacido':
                if (this.fdc[input.name] == 'No Realizado') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_3_examen_pcr_recien_nacido') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_3_examen_pcr_recien_nacido').disabled = true;
                }
                else {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'fecha_3_examen_pcr_recien_nacido') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_3_examen_pcr_recien_nacido').disabled = null;
                }
-
                break;
             case 'resultado_examen_vih_parto':
                if (this.fdc[input.name] == 'No Realizado' || this.fdc[input.name] == 'No Reactivo'
                   || this.fdc[input.name] == 'No Corresponde') {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_retroviral_parto') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'tratamiento_retroviral_parto').disabled = true;
                   this.fdc['tratamiento_retroviral_parto'] = 'true';
                }
                else {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_retroviral_parto') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'tratamiento_retroviral_parto').disabled = null;
                }
-
                break;
 
 
             case 'terapia_antiretroviral_farmaco_1':
                if (this.fdc[input.name]) {
+
                   for (let i in this.inputs){
                      if (this.inputs[i].name == 'fecha_inicio_tar_farmaco_1') {
                         this.inputs[i].disabled = null;
+                        break;
                      }
                   }
                }else{
