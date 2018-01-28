@@ -1475,10 +1475,10 @@ const FormularioController = new Vue({
                                                                      id="estadistica_detalle">
 
                                                                      <!-- Mensaje -->
-                                                                     <div class="alert alert-info alert-dismissable">
+                                                                     <!--div class="alert alert-info alert-dismissable">
                                                                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                                         El porcentaje es solo referencial, existen campos en el formulario que son opcionales y otros que por reglas de negocio no pueden ser completados.
-                                                                     </div>
+                                                                     </div-->
 
                                                                      <!-- Si entra aqui es por que estoy viendo un solo item -->
 
@@ -1496,7 +1496,10 @@ const FormularioController = new Vue({
                                                                            <div class="list-group-item">
 
                                                                               <span>
-                                                                                 <b>Completados: {{ o[Object.keys(o)[0]].not_null }} campos</b>
+                                                                                 <b>Completado: </b>
+
+                                                                                 <!--{{ o[Object.keys(o)[0]].not_null }} campos-->
+
                                                                                  <small class="pull-right text-success">
                                                                                     {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
                                                                                  </small>
@@ -1505,7 +1508,8 @@ const FormularioController = new Vue({
                                                                               <br>
 
                                                                               <span>
-                                                                                 <b>Sin Completar: {{ o[Object.keys(o)[0]].null }} campos</b>
+                                                                                 <b>Sin Completar: </b>
+                                                                                    <!-- {{ o[Object.keys(o)[0]].null }} campos -->
 
                                                                                  <small class="pull-right text-warning">
                                                                                     {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
@@ -1515,11 +1519,10 @@ const FormularioController = new Vue({
                                                                               <br>
 
                                                                               <span>
-                                                                                 <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b>
+                                                                                 <!-- <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b> -->
                                                                               </span>
 
-                                                                              <br>
-                                                                              <br>
+
 
                                                                               <div class="progress">
                                                                                  <div class="progress-bar progress-bar-success progress-bar-striped active"
@@ -1795,6 +1798,8 @@ const FormularioController = new Vue({
                            }
 
                            switch (keyjs) {
+
+
                               case 'resultado_1_vdrl_embarazo':
                               case 'resultado_2_vdrl_embarazo':
                               case 'resultado_3_vdrl_embarazo':
@@ -1808,7 +1813,15 @@ const FormularioController = new Vue({
                                  if ( value == null ) {
                                     control_embarazo.push({keyjs:label});
                                  }
-                                 break
+                                 break;
+                              case 'resultado_dilucion_1_vdrl_embarazo':
+                                 if (ftmp["resultado_1_vdrl_embarazo"] == "No Reactivo" ||
+                                    ftmp["resultado_1_vdrl_embarazo"] == "No Realizado" ) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    control_embarazo.push({keyjs:label});
+                                 }
                               case 'resultado_1_examen_vih_embarazo':
                               case 'resultado_2_examen_vih_embarazo':
                                  if (value == "No Realizado") {
@@ -3759,14 +3772,25 @@ const FormularioController = new Vue({
 
       verifica_validacion_blur: function (input) {
 
+         if (this.fdc[input.name]) {
+            this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\(\)\#\+\/,\.\:ÑÍÉÓÁÚ@_]/g, '');
+         }
+
+         if (this.is_null(this.fdc[input.name]) == true) {
+            return;
+         }
+
+         /*
          for (let i in this.inputs){
             //this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóúscript;:\#\,\.\;\:ÑÍÉÓÁÚ@_]/g, '');
             this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\(\)\#\+\/,\.\:ÑÍÉÓÁÚ@_]/g, '');
          }
+         */
 
          switch (input.id) {
 
             case 'fecha_nacimiento_madre':
+
                var date = this.fdc[input.name].split('-');
                var ano_tope = new Date();
                ano_tope = ano_tope.getFullYear();
