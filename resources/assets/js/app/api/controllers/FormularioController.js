@@ -1789,107 +1789,118 @@ const FormularioController = new Vue({
                            break;
 
                         case "control_embarazo":
-                           //control_embarazo.push({key:value});//Mis elementos de la seccion
-                           ce++; //Mi total de elementos en esta seccion
-                           if (value != null) {
-                              ce_not_null++;
+
+                           if (ftmp["embarazo_con_control_parental"] == "No") {
+                              ce = 30;
+                              ce_not_null = 30;
+                              ce_null = 0;
                            } else {
-                              ce_null++;
+
+                              //control_embarazo.push({key:value});//Mis elementos de la seccion
+                              ce++; //Mi total de elementos en esta seccion
+                              if (value != null) {
+                                 ce_not_null++;
+                              } else {
+                                 ce_null++;
+                              }
+
+                              //cuando está, manda la posicion
+                              //cuando no está, manda -1
+                              //this.$parent.in_array(["a",undefined,3,"4","e",true,1],"e");
+                              switch (keyjs) {
+
+                                 case 'resultado_1_vdrl_embarazo':
+                                 case 'resultado_2_vdrl_embarazo':
+                                 case 'resultado_3_vdrl_embarazo':
+                                    if (value == "No Reactivo") {
+                                       cern += 1;
+                                       break;
+                                    } else if (value == "No Realizado") {
+                                       cern += 3;
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'resultado_dilucion_1_vdrl_embarazo':
+                                 case 'resultado_dilucion_2_vdrl_embarazo':
+                                 case 'resultado_dilucion_3_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Reactivo","No Realizado"],ftmp[keyjs]) == true) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_1_vdrl_embarazo':
+                                 case 'eg_1_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_vdrl_embarazo"]) == true) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_2_vdrl_embarazo':
+                                 case 'eg_2_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_vdrl_embarazo"]) == true) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_3_vdrl_embarazo':
+                                 case 'eg_3_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_3_vdrl_embarazo"]) == true) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+
+                                 case 'resultado_1_examen_vih_embarazo':
+                                 case 'resultado_2_examen_vih_embarazo':
+                                    if (value == "No Realizado") {
+                                       cern += 2;
+                                       break;
+                                    }
+
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_1_examen_vih_embarazo':
+                                 case 'eg_1_examen_vih':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_examen_vih_embarazo"]) == true) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_2_examen_vih_embarazo':
+                                 case 'eg_2_examen_vih':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_examen_vih_embarazo"]) == true) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+
+
+                                 default:
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                              }
+
                            }
-                           //cuando está, manda la posicion
-                           //cuando no está, manda -1
-                           //this.$parent.in_array(["a",undefined,3,"4","e",true,1],"e");
-                           switch (keyjs) {
 
-                              case 'resultado_1_vdrl_embarazo':
-                              case 'resultado_2_vdrl_embarazo':
-                              case 'resultado_3_vdrl_embarazo':
-                                 if (value == "No Reactivo") {
-                                    cern += 1;
-                                    break;
-                                 } else if (value == "No Realizado") {
-                                    cern += 3;
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                              case 'resultado_dilucion_1_vdrl_embarazo':
-                              case 'resultado_dilucion_2_vdrl_embarazo':
-                              case 'resultado_dilucion_3_vdrl_embarazo':
-                                 if (this.$parent.in_array(["No Reactivo","No Realizado"],ftmp[keyjs]) == true) {
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                              case 'fecha_1_vdrl_embarazo':
-                              case 'eg_1_vdrl_embarazo':
-                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_vdrl_embarazo"]) == true) {
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                              case 'fecha_2_vdrl_embarazo':
-                              case 'eg_2_vdrl_embarazo':
-                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_vdrl_embarazo"]) == true) {
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                              case 'fecha_3_vdrl_embarazo':
-                              case 'eg_3_vdrl_embarazo':
-                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_3_vdrl_embarazo"]) == true) {
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-
-                              case 'resultado_1_examen_vih_embarazo':
-                              case 'resultado_2_examen_vih_embarazo':
-                                 if (value == "No Realizado") {
-                                    cern += 2;
-                                    break;
-                                 }
-
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                              case 'fecha_1_examen_vih_embarazo':
-                              case 'eg_1_examen_vih':
-                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_examen_vih_embarazo"]) == true) {
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                              case 'fecha_2_examen_vih_embarazo':
-                              case 'eg_2_examen_vih':
-                                 if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_examen_vih_embarazo"]) == true) {
-                                    break;
-                                 }
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-
-
-                              default:
-                                 if ( value == null ) {
-                                    control_embarazo.push({keyjs:label});
-                                 }
-                                 break;
-                           }
 
                            break;
 
@@ -3730,9 +3741,9 @@ const FormularioController = new Vue({
 
             case 'terapia_antiretroviral_tar_farmaco_3':
                if (this.fdc[input.name]) {
-                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = null;
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = null;
                }else{
-                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = true;
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = true;
                }
                break;
 
