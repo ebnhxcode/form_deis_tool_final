@@ -2905,7 +2905,7 @@ const FormularioController = new Vue({
                break;
             case 'embarazo_con_control_parental':
                if (this.fdc[input.name] == null) { break; }
-               if (this.fdc[input.name] == 'No' || this.fdc[input.name] == 'Desconocido') {
+               if (this.in_array(["No","Desconocido"] ,this.fdc[input.name])) {
                   for (let i in this.inputs){
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
                      if (input.seccion == this.inputs[i].seccion &&
@@ -3494,30 +3494,22 @@ const FormularioController = new Vue({
                break;
 
             case 'diagnostico_sifilis_embarazo':
-               if (this.fdc[input.name] == 'Sifilis Primaria' ||
-                  this.fdc[input.name] == 'Sifilis Secundaria' ||
-                  this.fdc[input.name] == 'Sifilis Latente Precoz' ||
-                  this.fdc[input.name] == 'Sifilis Latente Tardia' ||
-                  this.fdc[input.name] == 'Sifilis Sin Especificar' ) {
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_sifilis_farmaco' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_dosis' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_frecuencia' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ||
-                        this.inputs[i].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[i].disabled = null;
-                     }
-                  }
+               var diagnosticos = [
+                  'Sifilis Primaria','Sifilis Secundaria', 'Sifilis Latente Precoz','Sifilis Latente Tardia','Sifilis Sin Especificar'
+               ];
+
+               if (this.in_array(diagnosticos, this.fdc[input.name])) {
+                  this.find_input(this.inputs, 'fecha_administracion_1_dosis_penicilina_gestante').disabled = null;
+                  this.find_input(this.inputs, 'fecha_administracion_ult_dosis_penicilina_gestante').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_farmaco').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_dosis').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_frecuencia').disabled = null;
                }else{
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'tratamiento_sifilis_farmaco' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_dosis' ||
-                        this.inputs[i].name == 'tratamiento_sifilis_frecuencia' ||
-                        this.inputs[i].name == 'fecha_administracion_1_dosis_penicilina_gestante' ||
-                        this.inputs[i].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_administracion_1_dosis_penicilina_gestante').disabled = true;
+                  this.find_input(this.inputs, 'fecha_administracion_ult_dosis_penicilina_gestante').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_farmaco').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_dosis').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_frecuencia').disabled = true;
                }
                break;
 
@@ -3834,7 +3826,7 @@ const FormularioController = new Vue({
 
       verifica_validacion_blur: function (input) {
 
-         if (this.fdc[input.name]) {
+         if (this.fdc[input.name] && isNaN(this.fdc[input.name]) && typeof this.fdc[input.name] != 'number' ) {
             this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\(\)\#\+\/,\.\:ÑÍÉÓÁÚ@_]/g, '');
          }
 

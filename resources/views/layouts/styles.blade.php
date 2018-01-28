@@ -78,12 +78,12 @@
    }
 
    .modal-container {
-      width: 1100px;
+      width: 950px;
       max-height: 640px;
       margin: 0px auto;
       padding: 10px 15px;
       background-color: #fff;
-      border-radius: 5px;
+      border-radius: 3px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
       transition: all .3s ease;
       font-family: Helvetica, Arial, sans-serif;

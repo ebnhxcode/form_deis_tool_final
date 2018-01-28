@@ -36961,18 +36961,20 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'diagnostico_sifilis_embarazo':
-               if (this.fdc[input.name] == 'Sifilis Primaria' || this.fdc[input.name] == 'Sifilis Secundaria' || this.fdc[input.name] == 'Sifilis Latente Precoz' || this.fdc[input.name] == 'Sifilis Latente Tardia' || this.fdc[input.name] == 'Sifilis Sin Especificar') {
-                  for (var _i5 in this.inputs) {
-                     if (this.inputs[_i5].name == 'tratamiento_sifilis_farmaco' || this.inputs[_i5].name == 'tratamiento_sifilis_dosis' || this.inputs[_i5].name == 'tratamiento_sifilis_frecuencia' || this.inputs[_i5].name == 'fecha_administracion_1_dosis_penicilina_gestante' || this.inputs[_i5].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[_i5].disabled = null;
-                     }
-                  }
+               var diagnosticos = ['Sifilis Primaria', 'Sifilis Secundaria', 'Sifilis Latente Precoz', 'Sifilis Latente Tardia', 'Sifilis Sin Especificar'];
+
+               if (this.in_array(diagnosticos, this.fdc[input.name])) {
+                  this.find_input(this.inputs, 'fecha_administracion_1_dosis_penicilina_gestante').disabled = null;
+                  this.find_input(this.inputs, 'fecha_administracion_ult_dosis_penicilina_gestante').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_farmaco').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_dosis').disabled = null;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_frecuencia').disabled = null;
                } else {
-                  for (var _i6 in this.inputs) {
-                     if (this.inputs[_i6].name == 'tratamiento_sifilis_farmaco' || this.inputs[_i6].name == 'tratamiento_sifilis_dosis' || this.inputs[_i6].name == 'tratamiento_sifilis_frecuencia' || this.inputs[_i6].name == 'fecha_administracion_1_dosis_penicilina_gestante' || this.inputs[_i6].name == 'fecha_administracion_ult_dosis_penicilina_gestante') {
-                        this.inputs[_i6].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_administracion_1_dosis_penicilina_gestante').disabled = true;
+                  this.find_input(this.inputs, 'fecha_administracion_ult_dosis_penicilina_gestante').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_farmaco').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_dosis').disabled = true;
+                  this.find_input(this.inputs, 'tratamiento_sifilis_frecuencia').disabled = true;
                }
                break;
 
@@ -37044,15 +37046,15 @@ var FormularioController = new _vue2.default({
 
             case 'nombre_farmaco_1_vih':
                if (this.fdc[input.name]) {
-                  for (var _i7 in this.inputs) {
-                     if (this.inputs[_i7].name == 'peso_mujer_parto' || this.inputs[_i7].name == 'dosis_farmaco_1_vih' || this.inputs[_i7].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i7].name == 'hora_inicio_farmaco_1_vih' || this.inputs[_i7].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i7].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i7].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[_i7].disabled = null;
+                  for (var _i5 in this.inputs) {
+                     if (this.inputs[_i5].name == 'peso_mujer_parto' || this.inputs[_i5].name == 'dosis_farmaco_1_vih' || this.inputs[_i5].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i5].name == 'hora_inicio_farmaco_1_vih' || this.inputs[_i5].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i5].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i5].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[_i5].disabled = null;
                      }
                   }
                } else {
-                  for (var _i8 in this.inputs) {
-                     if (this.inputs[_i8].name == 'peso_mujer_parto' || this.inputs[_i8].name == 'dosis_farmaco_1_vih' || this.inputs[_i8].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i8].name == 'hora_inicio_farmaco_1_vih' || this.inputs[_i8].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i8].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i8].name == 'hora_2_inicio_farmaco_1_vih') {
-                        this.inputs[_i8].disabled = true;
+                  for (var _i6 in this.inputs) {
+                     if (this.inputs[_i6].name == 'peso_mujer_parto' || this.inputs[_i6].name == 'dosis_farmaco_1_vih' || this.inputs[_i6].name == 'fecha_inicio_farmaco_1_vih' || this.inputs[_i6].name == 'hora_inicio_farmaco_1_vih' || this.inputs[_i6].name == 'dosis_2_farmaco_1_vih' || this.inputs[_i6].name == 'fecha_2_inicio_farmaco_1_vih' || this.inputs[_i6].name == 'hora_2_inicio_farmaco_1_vih') {
+                        this.inputs[_i6].disabled = true;
                      }
                   }
                }
@@ -37108,15 +37110,15 @@ var FormularioController = new _vue2.default({
 
             case 'estado_recien_nacido':
                if (this.fdc[input.name] == 'Muerto') {
-                  for (var _i9 in this.inputs) {
-                     if (this.inputs[_i9].bloque == input.bloque && this.inputs[_i9].name != input.name) {
-                        this.inputs[_i9].disabled = true;
+                  for (var _i7 in this.inputs) {
+                     if (this.inputs[_i7].bloque == input.bloque && this.inputs[_i7].name != input.name) {
+                        this.inputs[_i7].disabled = true;
                      }
                   }
                } else {
-                  for (var _i10 in this.inputs) {
-                     if (this.inputs[_i10].bloque == input.bloque && this.inputs[_i10].name != input.name) {
-                        this.inputs[_i10].disabled = null;
+                  for (var _i8 in this.inputs) {
+                     if (this.inputs[_i8].bloque == input.bloque && this.inputs[_i8].name != input.name) {
+                        this.inputs[_i8].disabled = null;
                      }
                   }
                }
@@ -37272,7 +37274,7 @@ var FormularioController = new _vue2.default({
 
       verifica_validacion_blur: function verifica_validacion_blur(input) {
 
-         if (this.fdc[input.name]) {
+         if (this.fdc[input.name] && isNaN(this.fdc[input.name]) && typeof this.fdc[input.name] != 'number') {
             this.fdc[input.name] = this.fdc[input.name].replace(/[^a-zA-Z0-9\s\-ñíéáóú\(\)\#\+\/,\.\:ÑÍÉÓÁÚ@_]/g, '');
          }
 
