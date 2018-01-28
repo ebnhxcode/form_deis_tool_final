@@ -9,9 +9,7 @@
     <bookmark url="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" afterPath="$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js" />
-    </list>
+    <list default="true" id="41f1858f-db14-4365-887d-6a2a9a7a39b7" name="Default" comment="" />
     <ignored path="deis_form_tool.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -35,8 +33,8 @@
       <file leaf-file-name="FormularioController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.68209875">
-              <caret line="3996" column="0" selection-start-line="3996" selection-start-column="0" selection-end-line="3996" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.80246913">
+              <caret line="2436" column="12" selection-start-line="2436" selection-start-column="12" selection-end-line="2436" selection-end-column="12" />
               <folding>
                 <element signature="e#2053#2424#0" expanded="false" />
                 <element signature="e#2443#2802#0" expanded="false" />
@@ -63,6 +61,7 @@
                 <element signature="e#128627#129697#0" expanded="false" />
                 <element signature="e#128638#129098#0" expanded="false" />
                 <element signature="e#129844#130253#0" expanded="false" />
+                <element signature="e#130305#131994#0" expanded="false" />
                 <element signature="e#132346#132667#0" expanded="false" />
                 <element signature="e#132721#184236#0" expanded="false" />
                 <element signature="e#133057#133261#0" expanded="false" />
@@ -444,11 +443,6 @@
           <url>file://$PROJECT_DIR$/database/migrations/2017_10_26_060732_create_form_deis_inputs_table.php</url>
           <line>2</line>
           <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js</url>
-          <line>2448</line>
-          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="81" />
@@ -842,8 +836,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/api/controllers/FormularioController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.68209875">
-          <caret line="3996" column="0" selection-start-line="3996" selection-start-column="0" selection-end-line="3996" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.80246913">
+          <caret line="2436" column="12" selection-start-line="2436" selection-start-column="12" selection-end-line="2436" selection-end-column="12" />
           <folding>
             <element signature="e#2053#2424#0" expanded="false" />
             <element signature="e#2443#2802#0" expanded="false" />
@@ -870,6 +864,7 @@
             <element signature="e#128627#129697#0" expanded="false" />
             <element signature="e#128638#129098#0" expanded="false" />
             <element signature="e#129844#130253#0" expanded="false" />
+            <element signature="e#130305#131994#0" expanded="false" />
             <element signature="e#132346#132667#0" expanded="false" />
             <element signature="e#132721#184236#0" expanded="false" />
             <element signature="e#133057#133261#0" expanded="false" />

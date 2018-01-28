@@ -37394,112 +37394,40 @@ var FormularioController = new _vue2.default({
                }
 
                if (this.fdc['fecha_examen_linfocitos_cd4_ingreso_control_prenatal'] != null) {
-                  for (var _i12 in this.inputs) {
-                     if (this.inputs[_i12].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[_i12].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_cd4_ingreso_control_prenatal').disabled = null;
                } else {
-                  for (var _i13 in this.inputs) {
-                     if (this.inputs[_i13].name == 'numero_cd4_ingreso_control_prenatal') {
-                        this.inputs[_i13].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_cd4_ingreso_control_prenatal').disabled = true;
                }
 
                if (this.fdc['fecha_examen_carga_viral_control_prenatal'] != null) {
-                  for (var _i14 in this.inputs) {
-                     if (this.inputs[_i14].name == 'numero_carga_viral_control_prenatal') {
-                        this.inputs[_i14].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_carga_viral_control_prenatal').disabled = null;
                } else {
-                  for (var _i15 in this.inputs) {
-                     if (this.inputs[_i15].name == 'numero_carga_viral_control_prenatal') {
-                        this.inputs[_i15].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'numero_carga_viral_control_prenatal').disabled = true;
                }
 
                if (this.fdc['fecha_examen_carga_viral_semana_34'] != null) {
-                  for (var _i16 in this.inputs) {
-                     if (this.inputs[_i16].name == 'carga_viral_numero_copia_semana_34') {
-                        this.inputs[_i16].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'carga_viral_numero_copia_semana_34').disabled = null;
                } else {
-                  for (var _i17 in this.inputs) {
-                     if (this.inputs[_i17].name == 'carga_viral_numero_copia_semana_34') {
-                        this.inputs[_i17].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'carga_viral_numero_copia_semana_34').disabled = true;
                }
 
                if (this.fdc['terapia_antiretroviral_farmaco_1']) {
-                  for (var _i18 in this.inputs) {
-                     if (this.inputs[_i18].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[_i18].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_1').disabled = null;
                } else {
-                  for (var _i19 in this.inputs) {
-                     if (this.inputs[_i19].name == 'fecha_inicio_tar_farmaco_1') {
-                        this.inputs[_i19].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_1').disabled = true;
                }
 
                if (this.fdc['terapia_antiretroviral_tar_farmaco_2']) {
-                  for (var _i20 in this.inputs) {
-                     if (this.inputs[_i20].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[_i20].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = null;
                } else {
-                  for (var _i21 in this.inputs) {
-                     if (this.inputs[_i21].name == 'fecha_inicio_tar_farmaco_2') {
-                        this.inputs[_i21].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = true;
                }
 
                if (this.fdc['terapia_antiretroviral_tar_farmaco_3']) {
-                  for (var _i22 in this.inputs) {
-                     if (this.inputs[_i22].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[_i22].disabled = null;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = null;
                } else {
-                  for (var _i23 in this.inputs) {
-                     if (this.inputs[_i23].name == 'fecha_inicio_tar_farmaco_3') {
-                        this.inputs[_i23].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = true;
                }
-
-               if (this.fdc['fecha_inicio_farmaco_2_vih']) {
-                  /*
-                  if(this.fdc['nombre_farmaco_2_vih'] != null && this.fdc['nombre_farmaco_2_vih'] != '' &&
-                     this.fdc['dosis_farmaco_2_vih'] != null && this.fdc['dosis_farmaco_2_vih'] != '' &&
-                     this.fdc['fecha_inicio_farmaco_2_vih'] != null && this.fdc['fecha_inicio_farmaco_2_vih'] != '' &&
-                     this.fdc['hora_inicio_farmaco_2_vih'] != null && this.fdc['hora_inicio_farmaco_2_vih'] != ''){
-                     for (let i in this.inputs){
-                        if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                           this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                           this.inputs[i].disabled = null;
-                        }
-                     }
-                  }
-                  else{
-                     for (let i in this.inputs){
-                        if (this.inputs[i].name == 'nombre_farmaco_suspencion_lactancia' ||
-                           this.inputs[i].name == 'fecha_administracion_farmaco_suspencion_lactancia') {
-                           this.inputs[i].disabled = true;
-                        }
-                     }
-                  }*/
-               }
-
                break;
 
          }
