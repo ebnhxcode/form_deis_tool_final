@@ -35403,7 +35403,7 @@ var FormularioController = new _vue2.default({
                                  case 'resultado_dilucion_1_vdrl_embarazo':
                                  case 'resultado_dilucion_2_vdrl_embarazo':
                                  case 'resultado_dilucion_3_vdrl_embarazo':
-                                    if (this.$parent.in_array(["No Reactivo", "No Realizado"], ftmp[keyjs]) == true) {
+                                    if (this.$parent.in_array(["No Reactivo", "No Realizado"], ftmp[keyjs])) {
                                        break;
                                     }
                                     if (value == null) {
@@ -35412,7 +35412,7 @@ var FormularioController = new _vue2.default({
                                     break;
                                  case 'fecha_1_vdrl_embarazo':
                                  case 'eg_1_vdrl_embarazo':
-                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_1_vdrl_embarazo"]) == true) {
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_1_vdrl_embarazo"])) {
                                        break;
                                     }
                                     if (value == null) {
@@ -35421,7 +35421,7 @@ var FormularioController = new _vue2.default({
                                     break;
                                  case 'fecha_2_vdrl_embarazo':
                                  case 'eg_2_vdrl_embarazo':
-                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_2_vdrl_embarazo"]) == true) {
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_2_vdrl_embarazo"])) {
                                        break;
                                     }
                                     if (value == null) {
@@ -35430,7 +35430,7 @@ var FormularioController = new _vue2.default({
                                     break;
                                  case 'fecha_3_vdrl_embarazo':
                                  case 'eg_3_vdrl_embarazo':
-                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_3_vdrl_embarazo"]) == true) {
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_3_vdrl_embarazo"])) {
                                        break;
                                     }
                                     if (value == null) {
@@ -35451,7 +35451,7 @@ var FormularioController = new _vue2.default({
                                     break;
                                  case 'fecha_1_examen_vih_embarazo':
                                  case 'eg_1_examen_vih':
-                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_1_examen_vih_embarazo"]) == true) {
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_1_examen_vih_embarazo"])) {
                                        break;
                                     }
                                     if (value == null) {
@@ -35460,7 +35460,7 @@ var FormularioController = new _vue2.default({
                                     break;
                                  case 'fecha_2_examen_vih_embarazo':
                                  case 'eg_2_examen_vih':
-                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_2_examen_vih_embarazo"]) == true) {
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_2_examen_vih_embarazo"])) {
                                        break;
                                     }
                                     if (value == null) {
@@ -35614,7 +35614,7 @@ var FormularioController = new _vue2.default({
 
                            switch (keyjs) {
                               case 'resultado_dilucion_vdrl_parto':
-                                 if (ftmp["resultado_vdrl_parto"] == "No Realizado" || ftmp["resultado_vdrl_parto"] == "No Reactivo") {
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado"], ftmp["resultado_vdrl_parto"])) {
                                     break;
                                  }
                                  if (value == null) {
@@ -35622,7 +35622,7 @@ var FormularioController = new _vue2.default({
                                  }
                                  break;
                               case 'resultado_vdrl_parto':
-                                 if (value == "No Realizado" || value == "No Reactivo") {
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado"], value)) {
                                     dprn += 1;
                                     break;
                                  }
@@ -35632,7 +35632,7 @@ var FormularioController = new _vue2.default({
                                  break;
 
                               case 'tratamiento_retroviral_parto':
-                                 if (ftmp["resultado_examen_vih_parto"] == "No Reactivo" || ftmp["resultado_examen_vih_parto"] == "No Reactivo" || ftmp["resultado_examen_vih_parto"] == "No Corresponde") {
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado", "No Corresponde"], ftmp["resultado_examen_vih_parto"])) {
                                     break;
                                  }
                                  if (value == null) {
@@ -35640,7 +35640,7 @@ var FormularioController = new _vue2.default({
                                  }
                                  break;
                               case 'resultado_examen_vih_parto':
-                                 if (value == "No Reactivo" || value == "No Realizado" || value == "No Corresponde") {
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado", "No Corresponde"], value)) {
                                     dprn += 1;
                                     break;
                                  }
@@ -35667,7 +35667,7 @@ var FormularioController = new _vue2.default({
                               case 'nombre_farmaco_1_vih':
                                  if (value == null || value == "") {
                                     dprn += 7;
-                                    break;
+                                    //break;
                                  }
                                  if (value == null) {
                                     datos_parto.push({ keyjs: label });
@@ -35687,7 +35687,7 @@ var FormularioController = new _vue2.default({
                               case 'nombre_farmaco_2_vih':
                                  if (value == null && value == "") {
                                     dprn += 3;
-                                    break;
+                                    //break;
                                  }
                                  if (value == null) {
                                     datos_parto.push({ keyjs: label });
@@ -36007,7 +36007,7 @@ var FormularioController = new _vue2.default({
 
                   this.empaquetar_datos_estadistica(pv - pvrn, pv_null - pvrn, pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
 
-                  this.empaquetar_datos_estadistica(dp - (dprn - 2), dp_null - (dprn - 2), dp_not_null, "Datos del Parto", keyjs, datos_parto);
+                  this.empaquetar_datos_estadistica(dp - dprn, dp_null - dprn, dp_not_null, "Datos del Parto", keyjs, datos_parto);
 
                   this.empaquetar_datos_estadistica(drn - (drnrn - 2), drn_null - (drnrn - 2), drn_not_null, "Datos recien nacido", keyjs, datos_recien_nacido);
 
@@ -36440,7 +36440,7 @@ var FormularioController = new _vue2.default({
                if (this.fdc[input.name] == null) {
                   break;
                }
-               if (this.fdc[input.name] == 'No' || this.fdc[input.name] == 'Desconocido') {
+               if (this.in_array(["No", "Desconocido"], this.fdc[input.name])) {
                   for (var _i2 in this.inputs) {
                      //Aqui agregar la validacion del bloque para que no se lo pase de largo
                      if (input.seccion == this.inputs[_i2].seccion && input.name != this.inputs[_i2].name && this.inputs[_i2].disabled != 'disabled') {
