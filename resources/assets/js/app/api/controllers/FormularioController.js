@@ -1421,14 +1421,7 @@ const FormularioController = new Vue({
 
 
                                                 </div>
-                                                <div style="padding: 10px;" v-else>
-
-                                                   <button class="btn btn-success btn-sm"
-                                                      @click.prevent="show_mis_formularios_grid=true">
-                                                      Volver
-                                                   </button>
-                                                   <br>
-                                                   <br>
+                                                <div style="padding: 30px;" v-else>
 
 
                                                    <dl class="dl-vertical">
@@ -1444,12 +1437,12 @@ const FormularioController = new Vue({
                                                             <!-- Items elementos de cabecera -->
                                                             <div class="panel-heading">
                                                                <!-- Nav tabs -->
-                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 18px;">
+                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 24px;">
 
                                                                   <li role="presentation" class="active">
                                                                      <a href="#estadistica_detalle" aria-controls="estadistica_detalle"
                                                                         role="tab" data-toggle="tab"
-                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
+                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 25px;">
                                                                         Detalle de ficha
                                                                      </a>
                                                                   </li>
@@ -1457,7 +1450,7 @@ const FormularioController = new Vue({
                                                                   <li role="presentation" class="">
                                                                      <a href="#estadisticas_generales" aria-controls="estadisticas_generales"
                                                                         role="tab" data-toggle="tab"
-                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 19px;">
+                                                                        style="padding-top: 3px;padding-bottom: 0px;height: 24px;">
                                                                         Estadísticas generales
                                                                      </a>
                                                                   </li>
@@ -1473,6 +1466,30 @@ const FormularioController = new Vue({
 
                                                                   <div role="tabpanel" class="tab-pane fade in active"
                                                                      id="estadistica_detalle">
+
+                                                                     <button class="btn btn-success btn-xs"
+                                                                        @click.prevent="show_mis_formularios_grid=true">
+                                                                        Volver
+                                                                     </button>
+
+                                                                     <br>
+                                                                     <br>
+
+                                                                     <div class="well">
+                                                                        <h4 class="text-center">
+                                                                           Información de completitud de fichas por pestaña
+                                                                        </h4>
+                                                                     </div>
+
+                                                                     <div>
+
+                                                                        Nombre: {{formulario_tmp['nombres_madre'] || 'Sin ingresar'}}<br>
+                                                                        Ap. Paterno: {{formulario_tmp['primer_apellido_madre'] || 'Sin ingresar'}}<br>
+                                                                        Ap. Materno: {{formulario_tmp['segundo_apellido_madre'] || 'Sin ingresar'}}<br>
+
+                                                                     </div>
+
+                                                                     <hr>
 
                                                                      <!-- Mensaje -->
                                                                      <!--div class="alert alert-info alert-dismissable">
@@ -1553,6 +1570,13 @@ const FormularioController = new Vue({
                                                                                  <div class="collapse" :id="'fields'+i"
                                                                                     style="overflow-y: scroll;max-height: 200px;">
                                                                                     <h5>Campos por completar</h5>
+                                                                                    
+                                                                                    <span class="small text-success"
+                                                                                       v-if="Math.round(o[Object.keys(o)[0]].completion) == 100">
+                                                                                       A continuación sólo quedan campos opcionales
+                                                                                       <br>
+                                                                                    </span>
+
                                                                                     <ul v-for="i in o.field_name.field_name">
                                                                                        <li class="small">{{i.keyjs}}</li>
                                                                                     </ul>
@@ -2214,9 +2238,9 @@ const FormularioController = new Vue({
                                  break;
 
                               case 'tratamiento_recien_nacido_farmaco':
-                                 if (value == null || value == "Reactivo") {
+                                 if (this.$parent.in_array([null,"","No Aplica","No Administrado"], value)) {
                                     drnrn += 2;
-                                    break;
+                                    //break;
                                  }
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
@@ -2224,14 +2248,13 @@ const FormularioController = new Vue({
                                  break;
                               case 'tratamiento_recien_nacido_dosis':
                               case 'tratamiento_recien_nacido_frecuencia':
-                                 if (ftmp["tratamiento_recien_nacido_farmaco"] == null ||
-                                    ftmp["tratamiento_recien_nacido_farmaco"] == "") {
+                                 if (this.$parent.in_array([null,"","No Aplica","No Administrado"], ftmp["tratamiento_recien_nacido_farmaco"])) {
                                     break;
                                  }
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
                                  }
-
+                                 break;
 
                               case 'resultado_examen_treponemico_parto_madre':
                                  if (value == "No Realizado") {
@@ -2275,7 +2298,7 @@ const FormularioController = new Vue({
                               case 'nombre_farmaco_1_vih_recien_nacido':
                                  if (value == "" || value == null) {
                                     drnrn += 3;
-                                    break;
+                                    //break;
                                  }
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
@@ -2297,7 +2320,7 @@ const FormularioController = new Vue({
                               case 'nombre_farmaco_2_vih_recien_nacido':
                                  if (value == "" || value == null) {
                                     drnrn += 3;
-                                    break;
+                                    //break;
                                  }
                                  if ( value == null ) {
                                     datos_recien_nacido.push({keyjs:label});
@@ -2442,7 +2465,7 @@ const FormularioController = new Vue({
 
 
 
-                  // Los 1 en duro son por campos opcionales, eso es todo quedó clarito
+                  // Los 1 en duro son por campos opcionales por concepto de no realizado, eso es todo quedó clarito
                   this.empaquetar_datos_estadistica(im-1,im_null-1,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
 
                   this.empaquetar_datos_estadistica(ce-(cern),ce_null-(cern),ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
@@ -2453,7 +2476,7 @@ const FormularioController = new Vue({
 
                   this.empaquetar_datos_estadistica(dp-(dprn),dp_null-(dprn),dp_not_null,"Datos del Parto",keyjs,datos_parto);
 
-                  this.empaquetar_datos_estadistica(drn-(drnrn-2),drn_null-(drnrn-2),drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
+                  this.empaquetar_datos_estadistica(drn-(drnrn-3),drn_null-(drnrn-3),drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
 
 
                   this.show_mis_formularios_grid = false;
