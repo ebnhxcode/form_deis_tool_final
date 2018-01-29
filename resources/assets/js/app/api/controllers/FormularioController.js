@@ -2000,7 +2000,7 @@ const FormularioController = new Vue({
                                                                      <td>
                                                                         <!-- Boton revisar cumplimiento -->
                                                                         <button class="btn btn-xs btn-success"
-                                                                           @click.prevent="mostrar_detalles_formulario(f.form_deis)">
+                                                                           @click.prevent="mostrar_detalles_formulario_otros(f.form_deis)">
                                                                            <!-- <i class="fa fa-external-link-square"></i> -->
                                                                            Revisar cumplimiento <i class="fa fa-check"></i>
                                                                         </button>
@@ -2097,7 +2097,7 @@ const FormularioController = new Vue({
                                                                      id="estadistica_detalle">
 
                                                                      <button class="btn btn-success btn-xs"
-                                                                        @click.prevent="show_mis_formularios_grid=true">
+                                                                        @click.prevent="show_formularios_otros_grid=true">
                                                                         Volver
                                                                      </button>
 
@@ -2113,20 +2113,20 @@ const FormularioController = new Vue({
                                                                      <div>
                                                                         <!-- Boton editar formulario cumplimiento -->
                                                                         <button class="btn btn-xs btn-primary pull-right"
-                                                                           v-if="formulario_tmp['run_madre']!=null &&
-                                                                              formulario_tmp['digito_verificador']!=null"
+                                                                           v-if="formulario_otros_tmp['run_madre']!=null &&
+                                                                              formulario_otros_tmp['digito_verificador']!=null"
                                                                            @click.prevent="modificar_usuario_seleccionado(
-                                                                              formulario_tmp['run_madre'],
-                                                                              formulario_tmp['digito_verificador']
+                                                                              formulario_otros_tmp['run_madre'],
+                                                                              formulario_otros_tmp['digito_verificador']
                                                                            )">
                                                                            Ir a editar
                                                                            &nbsp;<i class="fa fa-pencil"></i>
                                                                         </button>
 
                                                                         Nombre: {{
-                                                                           (formulario_tmp['nombres_madre'] || 'sin nombre') +" "+
-                                                                           (formulario_tmp['primer_apellido_madre'] || 'sin ap. paterno') +" "+
-                                                                           (formulario_tmp['segundo_apellido_madre'] || 'sin ap. materno')
+                                                                           (formulario_otros_tmp['nombres_madre'] || 'sin nombre') +" "+
+                                                                           (formulario_otros_tmp['primer_apellido_madre'] || 'sin ap. paterno') +" "+
+                                                                           (formulario_otros_tmp['segundo_apellido_madre'] || 'sin ap. materno')
                                                                         }}
 
                                                                      </div>
@@ -2143,7 +2143,7 @@ const FormularioController = new Vue({
 
                                                                      <div class="row">
                                                                      <div class="col-sm-6 col-md-6"
-                                                                        v-for="o,i in datos_estadisticas_mi_formulario">
+                                                                        v-for="o,i in datos_estadisticas_mi_formulario_otros">
 
                                                                         <div class="list-group">
                                                                            <div class="list-group-item">
@@ -2305,13 +2305,17 @@ const FormularioController = new Vue({
          data () {
             return {
                'filterTerm':null,
+               'filterTermOtros':null,
                'rut_formularios_otros':null,
                'email_formularios_otros':null,
                'show_mis_formularios_grid':true,
                'show_formularios_otros_grid':true,
                'formulario_tmp':{},
+               'formulario_otros_tmp':{},
                'formularios_otros':[],
+               'inputs_formularios_otros':[],
                'datos_estadisticas_mi_formulario':[],
+               'datos_estadisticas_mi_formulario_otros':[],
                //'mis_formularios':{},
             }
          },
@@ -2331,7 +2335,7 @@ const FormularioController = new Vue({
             buscar_formularios_otros_rut: function () {
 
 
-               if (validate(this.rut_inconsistencias_otros) == false) {
+               if (validate(this.rut_formularios_otros) == false) {
                   swal({
                      title: "Advertencia",
                      text: "El rut es incorrecto.",
@@ -2339,20 +2343,22 @@ const FormularioController = new Vue({
                      confirmButtonClass: "btn-danger",
                      closeOnConfirm: false
                   });
-                  return this.rut_inconsistencias_otros = null;
+                  return this.rut_formularios_otros = null;
                }else{
-                  format(this.rut_inconsistencias_otros);
+                  format(this.rut_formularios_otros);
                }
 
                var formData = new FormData();
 
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               formData.append('rut', this.rut_inconsistencias_otros);
+               formData.append('rut', this.rut_formularios_otros);
 
-               this.$http.post('/formulario/buscar_inconsistencias_rut', formData).then(response => { // success callback
-                  //console.log(response);
-                  this.inconsistencias = [];
-                  this.inconsistencias = response.body.inconsistencias[0];
+               this.$http.post('/formulario/buscar_formularios_otros_rut', formData).then(response => { // success callback
+                  //return console.log(response);
+                  this.formularios_otros = [];
+                  this.inputs_formularios_otros = [];
+                  this.formularios_otros = response.body.formularios_otros;
+                  this.inputs_formularios_otros = response.body.inputs_formularios_otros;
                   //console.log(this.inconsistencias);
 
                }, response => { // error callback
@@ -2369,12 +2375,14 @@ const FormularioController = new Vue({
                var formData = new FormData();
 
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-               formData.append('email', this.email_inconsistencias_otros);
+               formData.append('email', this.email_formularios_otros);
 
-               this.$http.post('/formulario/buscar_inconsistencias_email', formData).then(response => { // success callback
-                  //console.log(response);
-                  this.inconsistencias = [];
-                  this.inconsistencias = response.body.inconsistencias[0];
+               this.$http.post('/formulario/buscar_formularios_otros_email', formData).then(response => { // success callback
+                  //return console.log(response);
+                  this.formularios_otros = [];
+                  this.inputs_formularios_otros = [];
+                  this.formularios_otros = response.body.formularios_otros;
+                  this.inputs_formularios_otros = response.body.inputs_formularios_otros;
                   //console.log(this.inconsistencias);
 
                }, response => { // error callback
@@ -3209,8 +3217,763 @@ const FormularioController = new Vue({
                return alert("No se ha seleccionador un formulario.");
             },
 
+            mostrar_detalles_formulario_otros: function (formulario) { //console.log();
+               this.formulario_otros_tmp = formulario || null;
+               var inputs = this.inputs_formularios_otros;
+               this.datos_estadisticas_mi_formulario_otros=[];
+
+               //Variables contenedoras de los inputs y el valor
+               var identificacion_mujer = [];
+               var control_embarazo = [];
+               var patologias_sifilis = [];
+               var patologias_vih = [];
+               var datos_parto = [];
+               var datos_recien_nacido = [];
+
+               if (this.formulario_tmp != null && this.formulario_tmp != null) {
+
+                  var im=0; //identificacion mujer
+                  var imrn=0; //identificacion mujer regla de negocio
+                  var ce=0; //control embarazo
+                  var cern=0; //control embarazo regla de negocio
+                  var ps=0; //patologias sifilis
+                  var psrn=0; //patologias sifilis regla de negocio
+                  var pv=0; //patologias vih
+                  var pvrn=0; //patologias vih regla de negocio
+                  var dp=0; //datos parto
+                  var dprn=0; //datos parto regla de negocio
+                  var drn=0; //datos recien nacido
+                  var drnrn=0; //datos recien nacido regla de negocio
+
+                  //Todas las null
+                  var im_null=0;
+                  var ce_null=0;
+                  var ps_null=0;
+                  var pv_null=0;
+                  var dp_null=0;
+                  var drn_null=0;
+
+                  //Todas las completas o no null
+                  var im_not_null=0;
+                  var ce_not_null=0;
+                  var ps_not_null=0;
+                  var pv_not_null=0;
+                  var dp_not_null=0;
+                  var drn_not_null=0;
+
+                  var keyjs = null;
+                  var value = null;
+                  var label = null;
+                  var ftmp = [];
+
+                  for (var i in this.inputs_formularios_otros) {
+
+                     keyjs = inputs[i].id; //Le paso el nombre del campo\input
+                     value = this.formulario_otros_tmp[inputs[i].id]; //Le paso el value del campo\input
+                     label = inputs[i].label; //Le paso el nombre del label
+                     ftmp = this.formulario_otros_tmp; //Le paso el formulario
+
+                     switch (inputs[i].seccion) {
+                        case "identificacion_mujer":
+                           //identificacion_mujer.push({key:value});//Mis elementos de la seccion
+                           im++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              im_not_null++;
+                           } else {
+                              im_null++;
+                              identificacion_mujer.push({keyjs:label});
+                           }
+                           break;
+
+                        case "control_embarazo":
+
+                           if (ftmp["embarazo_con_control_parental"] == "No") {
+                              ce = 30;
+                              ce_not_null = 30;
+                              ce_null = 0;
+                           } else {
+
+                              //control_embarazo.push({key:value});//Mis elementos de la seccion
+                              ce++; //Mi total de elementos en esta seccion
+                              if (value != null) {
+                                 ce_not_null++;
+                              } else {
+                                 ce_null++;
+                              }
+
+                              //cuando está, manda la posicion
+                              //cuando no está, manda -1
+                              //this.$parent.in_array(["a",undefined,3,"4","e",true,1],"e");
+                              switch (keyjs) {
+
+                                 case 'resultado_1_vdrl_embarazo':
+                                 case 'resultado_2_vdrl_embarazo':
+                                 case 'resultado_3_vdrl_embarazo':
+                                    if (value == "No Reactivo") {
+                                       cern += 1;
+                                       break;
+                                    } else if (value == "No Realizado") {
+                                       cern += 3;
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'resultado_dilucion_1_vdrl_embarazo':
+                                 case 'resultado_dilucion_2_vdrl_embarazo':
+                                 case 'resultado_dilucion_3_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Reactivo","No Realizado"],ftmp[keyjs]) ) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_1_vdrl_embarazo':
+                                 case 'eg_1_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_vdrl_embarazo"]) ) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_2_vdrl_embarazo':
+                                 case 'eg_2_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_vdrl_embarazo"]) ) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_3_vdrl_embarazo':
+                                 case 'eg_3_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_3_vdrl_embarazo"]) ) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+
+                                 case 'resultado_1_examen_vih_embarazo':
+                                 case 'resultado_2_examen_vih_embarazo':
+                                    if (value == "No Realizado") {
+                                       cern += 2;
+                                       break;
+                                    }
+
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_1_examen_vih_embarazo':
+                                 case 'eg_1_examen_vih':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_1_examen_vih_embarazo"]) ) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                                 case 'fecha_2_examen_vih_embarazo':
+                                 case 'eg_2_examen_vih':
+                                    if (this.$parent.in_array(["No Realizado"],ftmp["resultado_2_examen_vih_embarazo"]) ) {
+                                       break;
+                                    }
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+
+
+                                 default:
+                                    if ( value == null ) {
+                                       control_embarazo.push({keyjs:label});
+                                    }
+                                    break;
+                              }
+
+                           }
+
+
+                           break;
+
+                        case "patologias_sifilis":
+                           //patologias_sifilis.push({key:value});//Mis elementos de la seccion
+                           ps++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              ps_not_null++;
+                           } else {
+                              ps_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'ano_sifilis_previa_embarazo':
+                                 if (ftmp["sifilis_previa_embarazo"] == "No") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'sifilis_previa_embarazo':
+                                 if (value == "No") {
+                                    psrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_examen_treponemico':
+                                 if (ftmp["resultado_treponemico"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'resultado_treponemico':
+                                 if (value == "No Realizado") {
+                                    psrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_estudiados':
+                              case 'numero_contactos_sexuales_tratados':
+                                 //console.log(ftmp[keyjs]);
+                                 if (ftmp["numero_contactos_sexuales_declarados"] == 0 || ftmp["numero_contactos_sexuales_declarados"] == "0") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_declarados':
+                                 if (value == "0") {
+                                    psrn += 2;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+                              default:
+                                 if ( value == null ) {
+                                    patologias_sifilis.push({keyjs:label});
+                                 }
+                                 break;
+
+                           }
+
+                           break;
+
+                        case "patologias_vih":
+                           //patologias_vih.push({key:value});//Mis elementos de la seccion
+                           pv++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              pv_not_null++;
+                           } else {
+                              pv_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'numero_contactos_sexuales_estudiados':
+                              case 'numero_contactos_sexuales_tratados':
+                                 //console.log(ftmp[keyjs]);
+                                 if (ftmp["numero_contactos_sexuales_declarados"] == 0 || ftmp["numero_contactos_sexuales_declarados"] == "0") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_declarados':
+                                 if (value == "0" || value == 0) {
+                                    pvrn += 2;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_examen_linfocitos_cd4_ingreso_control_prenatal':
+                              case 'fecha_examen_carga_viral_control_prenatal':
+                              case 'fecha_examen_carga_viral_semana_34':
+                              case 'terapia_antiretroviral_farmaco_1':
+                              case 'terapia_antiretroviral_tar_farmaco_2':
+                              case 'terapia_antiretroviral_tar_farmaco_3':
+                                 if (value == null) {
+                                    pvrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({keyjs:label});
+                                 }
+                                 break;
+                              default :
+                                 if (value == null) {
+                                    patologias_vih.push({keyjs:label});
+                                 }
+                                 break;
+                           }
+
+                           break;
+
+                        case "datos_parto":
+                           //datos_parto.push({key:value});//Mis elementos de la seccion
+                           dp++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              dp_not_null++;
+                           } else {
+                              dp_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'resultado_dilucion_vdrl_parto':
+                                 if (this.$parent.in_array(["No Reactivo","No Realizado"], ftmp["resultado_vdrl_parto"])) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'resultado_vdrl_parto':
+                                 if (this.$parent.in_array(["No Reactivo","No Realizado"], value)) {
+                                    dprn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'tratamiento_retroviral_parto':
+                                 if (this.$parent.in_array(["No Reactivo","No Realizado","No Corresponde"], ftmp["resultado_examen_vih_parto"])) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'resultado_examen_vih_parto':
+                                 if (this.$parent.in_array(["No Reactivo","No Realizado","No Corresponde"], value)) {
+                                    dprn += 1;
+                                    break;
+                                 }
+
+                                 if ( value == null ) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+
+
+                              case 'peso_mujer_parto':
+                              case 'dosis_farmaco_1_vih':
+                              case 'fecha_inicio_farmaco_1_vih':
+                              case 'hora_inicio_farmaco_1_vih':
+                              case 'dosis_2_farmaco_1_vih':
+                              case 'fecha_2_inicio_farmaco_1_vih':
+                              case 'hora_2_inicio_farmaco_1_vih':
+                                 if (ftmp["nombre_farmaco_1_vih"] == null || ftmp["nombre_farmaco_1_vih"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'nombre_farmaco_1_vih':
+                                 if (value == null || value == "") {
+                                    dprn += 7;
+                                    //break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'dosis_farmaco_2_vih':
+                              case 'fecha_inicio_farmaco_2_vih':
+                              case 'hora_inicio_farmaco_2_vih':
+                                 if (ftmp["nombre_farmaco_2_vih"] == null || ftmp["nombre_farmaco_2_vih"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'nombre_farmaco_2_vih':
+                                 if (value == null && value == "") {
+                                    dprn += 3;
+                                    //break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+
+
+                              case 'fecha_administracion_farmaco_suspencion_lactancia':
+                                 if (ftmp["nombre_farmaco_suspencion_lactancia"] == null ||
+                                    ftmp["nombre_farmaco_suspencion_lactancia"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'nombre_farmaco_suspencion_lactancia':
+                                 if (value == null && value == "") {
+                                    dprn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+
+                              default:
+                                 if ( value == null ) {
+                                    datos_parto.push({keyjs:label});
+                                 }
+                                 break;
+                           }
+
+                           break;
+
+                        case "datos_recien_nacido":
+                           //datos_recien_nacido.push({key:value});//Mis elementos de la seccion
+                           drn++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              drn_not_null++;
+                           } else {
+                              drn_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'resultado_vdrl_periferico_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 2;
+                                    break;
+                                 } else if (value == "No Reactivo") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'titulacion_vdrl_periferico_recien_nacido':
+                                 if (ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Realizado" ||
+                                    ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Reactivo") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_examen_vdrl_periferico_recien_nacido':
+                                 if (ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_vdrl_liq_cefalo_recien_nacido':
+                                 if (value == "Puncion Frustrada" ||
+                                    value == "No Reactivo" ||
+                                    value == "No Realizado") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'titulacion_vdrl_liq_cefalo_recien_nacido':
+                              case 'fecha_examen_vdrl_liq_cefalo_recien_nacido':
+                                 if (ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "Puncion Frustrada" ||
+                                    ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Reactivo" ||
+                                    ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'tratamiento_recien_nacido_farmaco':
+                                 if (this.$parent.in_array([null,"","No Aplica","No Administrado"], value)) {
+                                    drnrn += 2;
+                                    //break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'tratamiento_recien_nacido_dosis':
+                              case 'tratamiento_recien_nacido_frecuencia':
+                                 if (this.$parent.in_array([null,"","No Aplica","No Administrado"], ftmp["tratamiento_recien_nacido_farmaco"])) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_examen_treponemico_parto_madre':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_examen_treponemico_recien_nacido':
+                                 if (ftmp["resultado_examen_treponemico_parto_madre"] == null ||
+                                    ftmp["resultado_examen_treponemico_parto_madre"] == "") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'sustituto_leche_materna':
+                                 if (value == "No") {
+                                    drnrn += 3;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_inicio_sustituto_leche_materna':
+                              case 'hora_inicio_sustituto_leche_materna':
+                              case 'entrega_sustituto_leche_materna_al_alta':
+                                 if (ftmp["sustituto_leche_materna"] == "No") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'nombre_farmaco_1_vih_recien_nacido':
+                                 if (value == "" || value == null) {
+                                    drnrn += 3;
+                                    //break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_inicio_farmaco_1_vih_recien_nacido':
+                              case 'hora_inicio_farmaco_1_vih_recien_nacido':
+                              case 'dosis_farmaco_1_vih_recien_nacido':
+                                 if (ftmp["nombre_farmaco_1_vih_recien_nacido"] == "" ||
+                                    ftmp["nombre_farmaco_1_vih_recien_nacido"] == null) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+
+                              case 'nombre_farmaco_2_vih_recien_nacido':
+                                 if (value == "" || value == null) {
+                                    drnrn += 3;
+                                    //break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_inicio_farmaco_2_vih_recien_nacido':
+                              case 'hora_inicio_farmaco_2_vih_recien_nacido':
+                              case 'dosis_farmaco_2_vih_recien_nacido':
+                                 if (ftmp["nombre_farmaco_2_vih_recien_nacido"] == "" ||
+                                    ftmp["nombre_farmaco_2_vih_recien_nacido"] == null) {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_1_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_1_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_1_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_2_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_2_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_2_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_3_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_3_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_3_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_test_elisa_18_meses':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_test_elisa_18_meses':
+                                 if (ftmp["resultado_test_elisa_18_meses"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'resultado_final_isp_examen_vih_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'fecha_resultado_final_isp_examen_vih_recien_nacido':
+                                 if (ftmp["resultado_final_isp_examen_vih_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+                              case 'derivacion_recien_nacido_a_seguimiento':
+                                 if (value == "No") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+                              case 'lugar_derivacion_recien_nacido_a_seguimiento':
+                              case 'fecha_ingreso_control_recien_nacido_post_nacimiento':
+                                 if (ftmp["derivacion_recien_nacido_a_seguimiento"] == "No") {
+                                    break;
+                                 }
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+
+                              default:
+                                 if ( value == null ) {
+                                    datos_recien_nacido.push({keyjs:label});
+                                 }
+                                 break;
+
+
+
+                           }
+
+                           break;
+
+                     }//Fin switch
+                  }//Fin for
+
+
+
+                  // Los 1 en duro son por campos opcionales por concepto de no realizado, eso es todo quedó clarito
+                  this.empaquetar_datos_estadistica_otros(im-1,im_null-1,im_not_null,"Identificacion de la Mujer",keyjs,identificacion_mujer);
+
+                  this.empaquetar_datos_estadistica_otros(ce-(cern),ce_null-(cern),ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
+
+                  this.empaquetar_datos_estadistica_otros(ps-(psrn),ps_null-(psrn),ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
+
+                  this.empaquetar_datos_estadistica_otros(pv-(pvrn),pv_null-(pvrn),pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
+
+                  this.empaquetar_datos_estadistica_otros(dp-(dprn),dp_null-(dprn),dp_not_null,"Datos del Parto",keyjs,datos_parto);
+
+                  this.empaquetar_datos_estadistica_otros(drn-(drnrn-3),drn_null-(drnrn-3),drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
+
+
+                  this.show_formularios_otros_grid = false;
+                  return ;
+               }
+               return alert("No se ha seleccionador un formulario.");
+            },
+
             empaquetar_datos_estadistica: function (total, nulls, not_null, title, field_name, arr_detail) {
                this.datos_estadisticas_mi_formulario.push({
+                  field_name:{
+                     'total':total,
+                     'null':nulls,
+                     'not_null':not_null,
+                     'title':title,
+                     'completion':(not_null/total)*100,
+                     'remaining':(nulls/total)*100,
+                     'field_name':arr_detail,
+                  }
+               });
+               return;
+            },
+            empaquetar_datos_estadistica_otros: function (total, nulls, not_null, title, field_name, arr_detail) {
+               this.datos_estadisticas_mi_formulario_otros.push({
                   field_name:{
                      'total':total,
                      'null':nulls,

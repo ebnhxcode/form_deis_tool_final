@@ -35247,18 +35247,22 @@ var FormularioController = new _vue2.default({
       },
       'modal_mis_formularios': {
          props: ['auth', 'mis_formularios', 'inputs_formulario'],
-         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_mis_formularios" aria-controls="lista_mis_formularios" role="tab" data-toggle="tab">\n                                             Mis fichas gestionadas\n                                          </a>\n                                       </li>\n\n                                       <li role="presentation" v-if="auth.id_role == 5 || auth.id_role == 2">\n                                          <a href="#lista_formularios_otros" aria-controls="lista_formularios_otros" role="tab" data-toggle="tab">\n                                             Fichas gestionadas de otros\n                                             <span class="label label-warning">nuevo</span>\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">\n\n\n                                          <div class="row">\n\n                                             <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                <div v-if="show_mis_formularios_grid == true">\n\n\n                                                   <!--// buscador en grid //-->\n                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n\n                                                   <!-- Input filterTerm -->\n                                                   <div class="form-group">\n                                                      <div class="input-group input-group-sm">\n                                                         <div class="input-group-addon">\n                                                            <i class="fa fa-font"></i>\n                                                         </div>\n                                                         <!-- Input para escribir el termino a buscar -->\n                                                         <input type="text" class="form-control"\n                                                            placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                                v-model="filterTerm" id="filterTerm">\n                                                         <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                            <span class="input-group-btn">\n                                                               <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                                  Limpiar\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                      </div><!-- /.input-group -->\n                                                   </div><!-- /.form-group -->\n\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                         Seleccion de ficha\n                                                      </dt>\n\n\n                                                      <dd>\n                                                         <div class="table-responsive">\n                                                            <small class="text-info">Resultados encontrados:</small>\n                                                            <small class="text-info">{{filterBy(mis_formularios, filterTerm).length || 0}}</small>\n\n                                                            <br>\n\n                                                            <table class="table table-striped small">\n                                                               <thead>\n                                                                  <tr>\n\n                                                                     <th>Accion</th>\n                                                                     <th>Correlativo</th>\n                                                                     <th>Run Madre</th>\n                                                                     <th>Nombre</th>\n                                                                  </tr>\n                                                               </thead>\n                                                               <tbody>\n\n                                                                  <tr v-for="f in\n                                                                     filterBy(mis_formularios, filterTerm)"\n                                                                     v-if="f.form_deis != null">\n\n                                                                     <!-- Bot\xF3n de acci\xF3n -->\n                                                                     <td>\n                                                                        <!-- Boton revisar cumplimiento -->\n                                                                        <button class="btn btn-xs btn-success"\n                                                                           @click.prevent="mostrar_detalles_formulario(f.form_deis)">\n                                                                           <!-- <i class="fa fa-external-link-square"></i> -->\n                                                                           Revisar cumplimiento <i class="fa fa-check"></i>\n                                                                        </button>\n\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary"\n                                                                           v-if="f.form_deis.run_madre!=null&&f.form_deis.digito_verificador!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n                                                                     </td>\n\n                                                                     <!-- Correlativo -->\n                                                                     <td>\n                                                                        {{f.form_deis.id}}\n                                                                     </td>\n\n                                                                     <!-- Run madre y dv -->\n                                                                     <td v-if="f.form_deis.run_madre != null &&\n                                                                        f.form_deis.digito_verificador != null">\n                                                                        {{\n                                                                           f.form_deis.run_madre\n                                                                           +""+\n                                                                           f.form_deis.digito_verificador\n                                                                        }}\n                                                                     </td>\n                                                                     <td v-else class="text-warning">\n                                                                        Run sin ingresar\n                                                                     </td>\n\n                                                                     <!-- Nombre Paciente -->\n                                                                     <td>\n                                                                        {{f.form_deis.nombres_madre ||\n                                                                           \'Sin Nombre\'}}\n                                                                        {{f.form_deis.primer_apellido_madre ||\n                                                                           \'Sin Apellido\'}}\n                                                                     </td>\n\n                                                                  </tr>\n\n                                                               </tbody>\n                                                            </table>\n                                                         </div><!-- .table-responsive -->\n\n                                                      </dd>\n                                                   </dl><!-- dl-vertical -->\n\n\n                                                </div>\n                                                <div style="padding: 30px;" v-else>\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                      <!-- por el momento, asi vacio se ve bien -->\n                                                      </dt>\n\n\n                                                      <dd>\n\n                                                         <div id="" class="panel with-nav-tabs panel-primary">\n\n                                                            <!-- Items elementos de cabecera -->\n                                                            <div class="panel-heading">\n                                                               <!-- Nav tabs -->\n                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 24px;">\n\n                                                                  <li role="presentation" class="active">\n                                                                     <a href="#estadistica_detalle" aria-controls="estadistica_detalle"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 25px;">\n                                                                        Detalle de ficha\n                                                                     </a>\n                                                                  </li>\n                                                                  <!--\n                                                                  <li role="presentation" class="">\n                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 3px;padding-bottom: 0px;height: 24px;">\n                                                                        Estad\xEDsticas generales\n                                                                     </a>\n                                                                  </li>\n                                                                  -->\n\n\n                                                               </ul>\n                                                            </div><!-- .panel-heading -->\n\n                                                            <div class="panel-body">\n                                                               <!-- Tab panes -->\n                                                               <div class="tab-content">\n\n                                                                  <div role="tabpanel" class="tab-pane fade in active"\n                                                                     id="estadistica_detalle">\n\n                                                                     <button class="btn btn-success btn-xs"\n                                                                        @click.prevent="show_mis_formularios_grid=true">\n                                                                        Volver\n                                                                     </button>\n\n                                                                     <br>\n                                                                     <br>\n\n                                                                     <div class="well">\n                                                                        <h4 class="text-center">\n                                                                           Informaci\xF3n de completitud de fichas por pesta\xF1a\n                                                                        </h4>\n                                                                     </div>\n\n                                                                     <div>\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary pull-right"\n                                                                           v-if="formulario_tmp[\'run_madre\']!=null &&\n                                                                              formulario_tmp[\'digito_verificador\']!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(\n                                                                              formulario_tmp[\'run_madre\'],\n                                                                              formulario_tmp[\'digito_verificador\']\n                                                                           )">\n                                                                           Ir a editar\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n\n                                                                        Nombre: {{\n                                                                           (formulario_tmp[\'nombres_madre\'] || \'sin nombre\') +" "+\n                                                                           (formulario_tmp[\'primer_apellido_madre\'] || \'sin ap. paterno\') +" "+\n                                                                           (formulario_tmp[\'segundo_apellido_madre\'] || \'sin ap. materno\')\n                                                                        }}\n\n                                                                     </div>\n\n                                                                     <hr>\n\n                                                                     <!-- Mensaje -->\n                                                                     <!--div class="alert alert-info alert-dismissable">\n                                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\n                                                                        El porcentaje es solo referencial, existen campos en el formulario que son opcionales y otros que por reglas de negocio no pueden ser completados.\n                                                                     </div-->\n\n                                                                     <!-- Si entra aqui es por que estoy viendo un solo item -->\n\n                                                                     <div class="row">\n                                                                     <div class="col-sm-6 col-md-6"\n                                                                        v-for="o,i in datos_estadisticas_mi_formulario">\n\n                                                                        <div class="list-group">\n                                                                           <div class="list-group-item">\n\n                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h4>\n\n                                                                           </div>\n\n                                                                           <div class="list-group-item">\n\n                                                                              <span>\n                                                                                 <b>Completado: </b>\n\n                                                                                 <!--{{ o[Object.keys(o)[0]].not_null }} campos-->\n\n                                                                                 <small class="pull-right text-success">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                    }}% completado\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <b>Sin Completar: </b>\n                                                                                    <!-- {{ o[Object.keys(o)[0]].null }} campos -->\n\n                                                                                 <small class="pull-right text-warning">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].remaining) < 0 ?\n                                                                                       0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                    }}% restante\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <!-- <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b> -->\n                                                                              </span>\n\n\n\n                                                                              <div class="progress">\n                                                                                 <div class="progress-bar progress-bar-success progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : o[Object.keys(o)[0]].completion)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       +{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].completion) > 100) ?\n                                                                                          100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                                 <div class="progress-bar progress-bar-warning progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].remaining < 0) ?\n                                                                                       0 : o[Object.keys(o)[0]].remaining)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       -{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].remaining) < 0) ?\n                                                                                          0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                              </div>\n\n                                                                              <div v-if="o.field_name.field_name.length > 0">\n\n                                                                                 <button class="btn btn-danger btn-sm"\n                                                                                    type="button" data-toggle="collapse"\n                                                                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;"\n                                                                                         :data-target="\'#fields\'+i" aria-expanded="false"\n                                                                                         :aria-controls="\'fields\'+i">\n                                                                                    <small>Ver campos por completar</small>\n                                                                                 </button><!-- .btn .btn-success -->\n\n\n                                                                                 <div class="collapse" :id="\'fields\'+i"\n                                                                                    style="overflow-y: scroll;max-height: 200px;">\n                                                                                    <h5>Campos por completar</h5>\n\n                                                                                    <span class="small text-success"\n                                                                                       v-if="Math.round(o[Object.keys(o)[0]].completion) == 100">\n                                                                                       A continuaci\xF3n s\xF3lo quedan campos opcionales\n                                                                                       <br>\n                                                                                    </span>\n\n                                                                                    <ul v-for="i in o.field_name.field_name">\n                                                                                       <li class="small">{{i.keyjs}}</li>\n                                                                                    </ul>\n                                                                                 </div><!-- .collapse #fields -->\n\n                                                                              </div>\n\n                                                                           </div>\n\n                                                                        </div>\n\n\n                                                                     </div><!-- .col -->\n                                                                     </div><!-- .row -->\n                                                                  </div><!-- .tab-pane .fade #estadistica_detalle -->\n\n\n                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"\n                                                                     id="estadisticas_generales">\n\n                                                                     <small>Temporalmente sin datos</small>\n\n                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->\n\n                                                               </div><!-- .tab-content -->\n                                                            </div><!-- .panel-body -->\n                                                         </div><!-- .panel -->\n\n\n                                                      </dd>\n\n                                                   </dl><!-- dl-horizontal -->\n\n                                                </div>\n\n                                             </div><!-- .col-md-12 -->\n                                          </div>\n                                       </div><!-- .tab-pane .fade #lista_mis_formularios -->\n\n<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->\n\n                                       <div role="tabpanel" class="tab-pane fade" id="lista_formularios_otros">\n\n                                          <div class="row">\n\n                                             <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                <h4 class="text-center">Fichas de otros usuarios (Solo para perfil observador)</h4>\n                                                <br>\n\n                                                <div v-if="show_formularios_otros_grid == true">\n\n                                                      <div class="row">\n\n                                                         <div class="col-sm-6 col-md-6">\n\n                                                            <dl class="dl-horizontal">\n                                                               <dt>\n                                                                  Buscar por rut\n                                                               </dt>\n                                                               <dd>\n\n                                                                  <div class="input-group input-group-sm">\n                                                                     <input type="text"\n                                                                        placeholder="Ej: 123456789"\n                                                                        id="rut_formularios_otros"\n                                                                        name="rut_formularios_otros"\n                                                                        class="form-control"\n                                                                        v-model="rut_formularios_otros">\n\n                                                                     <span class="input-group-btn">\n                                                                        <button class="btn btn-sm btn-primary"\n                                                                           @click.prevent="buscar_formularios_otros_rut">\n                                                                           &nbsp;<i class="fa fa-search"></i>\n                                                                        </button>\n                                                                        &nbsp;\n                                                                     </span><!-- .input-group-btn -->\n\n                                                                  </div><!-- /.input-group -->\n\n                                                                  <small>completo sin puntos ni gui\xF3n de matr\xF3n o matrona registrado/a.</small>\n                                                               </dd>\n                                                            </dl>\n\n                                                         </div><!-- .col-* -->\n\n                                                         <div class="col-sm-6 col-md-6">\n\n                                                            <dl class="dl-horizontal">\n                                                               <dt>\n                                                                  Buscar por email\n                                                               </dt>\n                                                               <dd>\n\n                                                                  <div class="input-group input-group-sm">\n                                                                     <input type="email"\n                                                                        id="email_formularios_otros"\n                                                                        name="email_formularios_otros"\n                                                                        class="form-control"\n                                                                        v-model="email_formularios_otros">\n\n                                                                     <span class="input-group-btn">\n                                                                        <button class="btn btn-sm btn-primary"\n                                                                            @click.prevent="buscar_formularios_otros_email">\n                                                                           &nbsp;<i class="fa fa-search"></i>\n                                                                        </button>\n                                                                     </span><!-- .input-group-btn -->\n                                                                  </div><!-- /.input-group -->\n\n                                                                  <small>email de matr\xF3n o matrona registrado/a.</small>\n                                                               </dd>\n                                                            </dl>\n\n                                                         </div><!-- .col-* -->\n\n                                                      </div><!-- .row -->\n\n                                                   <!--// buscador en grid //-->\n                                                   <h5 style="position: relative;" v-if="filterTermOtros">Filtrando por el criterio \'<b>{{ filterTermOtros }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n\n                                                   <!-- Input filterTermOtros -->\n                                                   <div class="form-group">\n                                                      <div class="input-group input-group-sm">\n                                                         <div class="input-group-addon">\n                                                            <i class="fa fa-font"></i>\n                                                         </div>\n                                                         <!-- Input para escribir el termino a buscar -->\n                                                         <input type="text" class="form-control"\n                                                            placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                                v-model="filterTermOtros" id="filterTermOtros">\n                                                         <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                            <span class="input-group-btn">\n                                                               <button @click.prevent="filterTermOtros=\'\'" type="button" class="btn btn-default">\n                                                                  Limpiar\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                      </div><!-- /.input-group -->\n                                                   </div><!-- /.form-group -->\n\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                         Seleccion de ficha\n                                                      </dt>\n\n\n                                                      <dd>\n                                                         <div class="table-responsive">\n                                                            <small class="text-info">Resultados encontrados:</small>\n                                                            <small class="text-info">{{filterBy(formularios_otros, filterTermOtros).length || 0}}</small>\n\n                                                            <br>\n\n                                                            <table class="table table-striped small">\n                                                               <thead>\n                                                                  <tr>\n\n                                                                     <th>Accion</th>\n                                                                     <th>Correlativo</th>\n                                                                     <th>Run Madre</th>\n                                                                     <th>Nombre</th>\n                                                                  </tr>\n                                                               </thead>\n                                                               <tbody>\n\n                                                                  <tr v-for="f in\n                                                                     filterBy(formularios_otros, filterTermOtros)"\n                                                                     v-if="f.form_deis != null">\n\n                                                                     <!-- Bot\xF3n de acci\xF3n -->\n                                                                     <td>\n                                                                        <!-- Boton revisar cumplimiento -->\n                                                                        <button class="btn btn-xs btn-success"\n                                                                           @click.prevent="mostrar_detalles_formulario(f.form_deis)">\n                                                                           <!-- <i class="fa fa-external-link-square"></i> -->\n                                                                           Revisar cumplimiento <i class="fa fa-check"></i>\n                                                                        </button>\n\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary"\n                                                                           v-if="f.form_deis.run_madre!=null&&f.form_deis.digito_verificador!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n                                                                     </td>\n\n                                                                     <!-- Correlativo -->\n                                                                     <td>\n                                                                        {{f.form_deis.id}}\n                                                                     </td>\n\n                                                                     <!-- Run madre y dv -->\n                                                                     <td v-if="f.form_deis.run_madre != null &&\n                                                                        f.form_deis.digito_verificador != null">\n                                                                        {{\n                                                                           f.form_deis.run_madre\n                                                                           +""+\n                                                                           f.form_deis.digito_verificador\n                                                                        }}\n                                                                     </td>\n                                                                     <td v-else class="text-warning">\n                                                                        Run sin ingresar\n                                                                     </td>\n\n                                                                     <!-- Nombre Paciente -->\n                                                                     <td>\n                                                                        {{f.form_deis.nombres_madre ||\n                                                                           \'Sin Nombre\'}}\n                                                                        {{f.form_deis.primer_apellido_madre ||\n                                                                           \'Sin Apellido\'}}\n                                                                     </td>\n\n                                                                  </tr>\n\n                                                               </tbody>\n                                                            </table>\n                                                         </div><!-- .table-responsive -->\n\n                                                      </dd>\n                                                   </dl><!-- dl-vertical -->\n\n\n                                                </div>\n                                                <div style="padding: 30px;" v-else>\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                      <!-- por el momento, asi vacio se ve bien -->\n                                                      </dt>\n\n\n                                                      <dd>\n\n                                                         <div id="" class="panel with-nav-tabs panel-primary">\n\n                                                            <!-- Items elementos de cabecera -->\n                                                            <div class="panel-heading">\n                                                               <!-- Nav tabs -->\n                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 24px;">\n\n                                                                  <li role="presentation" class="active">\n                                                                     <a href="#estadistica_detalle" aria-controls="estadistica_detalle"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 25px;">\n                                                                        Detalle de ficha\n                                                                     </a>\n                                                                  </li>\n                                                                  <!--\n                                                                  <li role="presentation" class="">\n                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 3px;padding-bottom: 0px;height: 24px;">\n                                                                        Estad\xEDsticas generales\n                                                                     </a>\n                                                                  </li>\n                                                                  -->\n\n\n                                                               </ul>\n                                                            </div><!-- .panel-heading -->\n\n                                                            <div class="panel-body">\n                                                               <!-- Tab panes -->\n                                                               <div class="tab-content">\n\n                                                                  <div role="tabpanel" class="tab-pane fade in active"\n                                                                     id="estadistica_detalle">\n\n                                                                     <button class="btn btn-success btn-xs"\n                                                                        @click.prevent="show_mis_formularios_grid=true">\n                                                                        Volver\n                                                                     </button>\n\n                                                                     <br>\n                                                                     <br>\n\n                                                                     <div class="well">\n                                                                        <h4 class="text-center">\n                                                                           Informaci\xF3n de completitud de fichas por pesta\xF1a\n                                                                        </h4>\n                                                                     </div>\n\n                                                                     <div>\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary pull-right"\n                                                                           v-if="formulario_tmp[\'run_madre\']!=null &&\n                                                                              formulario_tmp[\'digito_verificador\']!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(\n                                                                              formulario_tmp[\'run_madre\'],\n                                                                              formulario_tmp[\'digito_verificador\']\n                                                                           )">\n                                                                           Ir a editar\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n\n                                                                        Nombre: {{\n                                                                           (formulario_tmp[\'nombres_madre\'] || \'sin nombre\') +" "+\n                                                                           (formulario_tmp[\'primer_apellido_madre\'] || \'sin ap. paterno\') +" "+\n                                                                           (formulario_tmp[\'segundo_apellido_madre\'] || \'sin ap. materno\')\n                                                                        }}\n\n                                                                     </div>\n\n                                                                     <hr>\n\n                                                                     <!-- Mensaje -->\n                                                                     <!--div class="alert alert-info alert-dismissable">\n                                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\n                                                                        El porcentaje es solo referencial, existen campos en el formulario que son opcionales y otros que por reglas de negocio no pueden ser completados.\n                                                                     </div-->\n\n                                                                     <!-- Si entra aqui es por que estoy viendo un solo item -->\n\n                                                                     <div class="row">\n                                                                     <div class="col-sm-6 col-md-6"\n                                                                        v-for="o,i in datos_estadisticas_mi_formulario">\n\n                                                                        <div class="list-group">\n                                                                           <div class="list-group-item">\n\n                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h4>\n\n                                                                           </div>\n\n                                                                           <div class="list-group-item">\n\n                                                                              <span>\n                                                                                 <b>Completado: </b>\n\n                                                                                 <!--{{ o[Object.keys(o)[0]].not_null }} campos-->\n\n                                                                                 <small class="pull-right text-success">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                    }}% completado\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <b>Sin Completar: </b>\n                                                                                    <!-- {{ o[Object.keys(o)[0]].null }} campos -->\n\n                                                                                 <small class="pull-right text-warning">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].remaining) < 0 ?\n                                                                                       0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                    }}% restante\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <!-- <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b> -->\n                                                                              </span>\n\n\n\n                                                                              <div class="progress">\n                                                                                 <div class="progress-bar progress-bar-success progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : o[Object.keys(o)[0]].completion)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       +{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].completion) > 100) ?\n                                                                                          100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                                 <div class="progress-bar progress-bar-warning progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].remaining < 0) ?\n                                                                                       0 : o[Object.keys(o)[0]].remaining)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       -{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].remaining) < 0) ?\n                                                                                          0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                              </div>\n\n                                                                              <div v-if="o.field_name.field_name.length > 0">\n\n                                                                                 <button class="btn btn-danger btn-sm"\n                                                                                    type="button" data-toggle="collapse"\n                                                                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;"\n                                                                                         :data-target="\'#fields\'+i" aria-expanded="false"\n                                                                                         :aria-controls="\'fields\'+i">\n                                                                                    <small>Ver campos por completar</small>\n                                                                                 </button><!-- .btn .btn-success -->\n\n\n                                                                                 <div class="collapse" :id="\'fields\'+i"\n                                                                                    style="overflow-y: scroll;max-height: 200px;">\n                                                                                    <h5>Campos por completar</h5>\n\n                                                                                    <span class="small text-success"\n                                                                                       v-if="Math.round(o[Object.keys(o)[0]].completion) == 100">\n                                                                                       A continuaci\xF3n s\xF3lo quedan campos opcionales\n                                                                                       <br>\n                                                                                    </span>\n\n                                                                                    <ul v-for="i in o.field_name.field_name">\n                                                                                       <li class="small">{{i.keyjs}}</li>\n                                                                                    </ul>\n                                                                                 </div><!-- .collapse #fields -->\n\n                                                                              </div>\n\n                                                                           </div>\n\n                                                                        </div>\n\n\n                                                                     </div><!-- .col -->\n                                                                     </div><!-- .row -->\n                                                                  </div><!-- .tab-pane .fade #estadistica_detalle -->\n\n\n                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"\n                                                                     id="estadisticas_generales">\n\n                                                                     <small>Temporalmente sin datos</small>\n\n                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->\n\n                                                               </div><!-- .tab-content -->\n                                                            </div><!-- .panel-body -->\n                                                         </div><!-- .panel -->\n\n\n                                                      </dd>\n\n                                                   </dl><!-- dl-horizontal -->\n\n                                                </div>\n\n                                             </div><!-- .col-md-12 -->\n                                          </div>\n                                       </div><!-- .tab-pane .fade #lista_formularios_otros -->\n\n\n\n\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
+         template: '\n\t\t\t   <!-- template for the modal component -->\n\t\t\t   <transition name="modal">\n\t\t\t\t   <div class="modal-mask">\n\t\t\t\t\t   <div class="modal-wrapper">\n\t\t\t\t\t      <div class="modal-container">\n\n\t\t\t\t\t\t      <div class="modal-header">\n\t\t\t\t\t\t\t      <slot name="header"></slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <div class="modal-body">\n\t\t\t\t\t\t\t      <slot name="body">\n\n                              <div id="" class="panel with-nav-tabs panel-primary">\n                                 <!-- Items elementos de cabecera -->\n                                 <div class="panel-heading">\n                                    <!-- Nav tabs -->\n                                    <ul class="nav nav-tabs small" role="tablist">\n\n                                       <li role="presentation" class="active">\n                                          <a href="#lista_mis_formularios" aria-controls="lista_mis_formularios" role="tab" data-toggle="tab">\n                                             Mis fichas gestionadas\n                                          </a>\n                                       </li>\n\n                                       <li role="presentation" v-if="auth.id_role == 5 || auth.id_role == 2">\n                                          <a href="#lista_formularios_otros" aria-controls="lista_formularios_otros" role="tab" data-toggle="tab">\n                                             Fichas gestionadas de otros\n                                             <span class="label label-warning">nuevo</span>\n                                          </a>\n                                       </li>\n\n                                    </ul>\n                                 </div><!-- .panel-heading -->\n\n                                 <div class="panel-body">\n                                    <!-- Tab panes -->\n                                    <div class="tab-content">\n\n                                       <div role="tabpanel" class="tab-pane fade in active" id="lista_mis_formularios">\n\n\n                                          <div class="row">\n\n                                             <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                <div v-if="show_mis_formularios_grid == true">\n\n\n                                                   <!--// buscador en grid //-->\n                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio \'<b>{{ filterTerm }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n\n                                                   <!-- Input filterTerm -->\n                                                   <div class="form-group">\n                                                      <div class="input-group input-group-sm">\n                                                         <div class="input-group-addon">\n                                                            <i class="fa fa-font"></i>\n                                                         </div>\n                                                         <!-- Input para escribir el termino a buscar -->\n                                                         <input type="text" class="form-control"\n                                                            placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                                v-model="filterTerm" id="filterTerm">\n                                                         <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                            <span class="input-group-btn">\n                                                               <button @click.prevent="filterTerm=\'\'" type="button" class="btn btn-default">\n                                                                  Limpiar\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                      </div><!-- /.input-group -->\n                                                   </div><!-- /.form-group -->\n\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                         Seleccion de ficha\n                                                      </dt>\n\n\n                                                      <dd>\n                                                         <div class="table-responsive">\n                                                            <small class="text-info">Resultados encontrados:</small>\n                                                            <small class="text-info">{{filterBy(mis_formularios, filterTerm).length || 0}}</small>\n\n                                                            <br>\n\n                                                            <table class="table table-striped small">\n                                                               <thead>\n                                                                  <tr>\n\n                                                                     <th>Accion</th>\n                                                                     <th>Correlativo</th>\n                                                                     <th>Run Madre</th>\n                                                                     <th>Nombre</th>\n                                                                  </tr>\n                                                               </thead>\n                                                               <tbody>\n\n                                                                  <tr v-for="f in\n                                                                     filterBy(mis_formularios, filterTerm)"\n                                                                     v-if="f.form_deis != null">\n\n                                                                     <!-- Bot\xF3n de acci\xF3n -->\n                                                                     <td>\n                                                                        <!-- Boton revisar cumplimiento -->\n                                                                        <button class="btn btn-xs btn-success"\n                                                                           @click.prevent="mostrar_detalles_formulario(f.form_deis)">\n                                                                           <!-- <i class="fa fa-external-link-square"></i> -->\n                                                                           Revisar cumplimiento <i class="fa fa-check"></i>\n                                                                        </button>\n\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary"\n                                                                           v-if="f.form_deis.run_madre!=null&&f.form_deis.digito_verificador!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n                                                                     </td>\n\n                                                                     <!-- Correlativo -->\n                                                                     <td>\n                                                                        {{f.form_deis.id}}\n                                                                     </td>\n\n                                                                     <!-- Run madre y dv -->\n                                                                     <td v-if="f.form_deis.run_madre != null &&\n                                                                        f.form_deis.digito_verificador != null">\n                                                                        {{\n                                                                           f.form_deis.run_madre\n                                                                           +""+\n                                                                           f.form_deis.digito_verificador\n                                                                        }}\n                                                                     </td>\n                                                                     <td v-else class="text-warning">\n                                                                        Run sin ingresar\n                                                                     </td>\n\n                                                                     <!-- Nombre Paciente -->\n                                                                     <td>\n                                                                        {{f.form_deis.nombres_madre ||\n                                                                           \'Sin Nombre\'}}\n                                                                        {{f.form_deis.primer_apellido_madre ||\n                                                                           \'Sin Apellido\'}}\n                                                                     </td>\n\n                                                                  </tr>\n\n                                                               </tbody>\n                                                            </table>\n                                                         </div><!-- .table-responsive -->\n\n                                                      </dd>\n                                                   </dl><!-- dl-vertical -->\n\n\n                                                </div>\n                                                <div style="padding: 30px;" v-else>\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                      <!-- por el momento, asi vacio se ve bien -->\n                                                      </dt>\n\n\n                                                      <dd>\n\n                                                         <div id="" class="panel with-nav-tabs panel-primary">\n\n                                                            <!-- Items elementos de cabecera -->\n                                                            <div class="panel-heading">\n                                                               <!-- Nav tabs -->\n                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 24px;">\n\n                                                                  <li role="presentation" class="active">\n                                                                     <a href="#estadistica_detalle" aria-controls="estadistica_detalle"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 25px;">\n                                                                        Detalle de ficha\n                                                                     </a>\n                                                                  </li>\n                                                                  <!--\n                                                                  <li role="presentation" class="">\n                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 3px;padding-bottom: 0px;height: 24px;">\n                                                                        Estad\xEDsticas generales\n                                                                     </a>\n                                                                  </li>\n                                                                  -->\n\n\n                                                               </ul>\n                                                            </div><!-- .panel-heading -->\n\n                                                            <div class="panel-body">\n                                                               <!-- Tab panes -->\n                                                               <div class="tab-content">\n\n                                                                  <div role="tabpanel" class="tab-pane fade in active"\n                                                                     id="estadistica_detalle">\n\n                                                                     <button class="btn btn-success btn-xs"\n                                                                        @click.prevent="show_mis_formularios_grid=true">\n                                                                        Volver\n                                                                     </button>\n\n                                                                     <br>\n                                                                     <br>\n\n                                                                     <div class="well">\n                                                                        <h4 class="text-center">\n                                                                           Informaci\xF3n de completitud de fichas por pesta\xF1a\n                                                                        </h4>\n                                                                     </div>\n\n                                                                     <div>\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary pull-right"\n                                                                           v-if="formulario_tmp[\'run_madre\']!=null &&\n                                                                              formulario_tmp[\'digito_verificador\']!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(\n                                                                              formulario_tmp[\'run_madre\'],\n                                                                              formulario_tmp[\'digito_verificador\']\n                                                                           )">\n                                                                           Ir a editar\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n\n                                                                        Nombre: {{\n                                                                           (formulario_tmp[\'nombres_madre\'] || \'sin nombre\') +" "+\n                                                                           (formulario_tmp[\'primer_apellido_madre\'] || \'sin ap. paterno\') +" "+\n                                                                           (formulario_tmp[\'segundo_apellido_madre\'] || \'sin ap. materno\')\n                                                                        }}\n\n                                                                     </div>\n\n                                                                     <hr>\n\n                                                                     <!-- Mensaje -->\n                                                                     <!--div class="alert alert-info alert-dismissable">\n                                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\n                                                                        El porcentaje es solo referencial, existen campos en el formulario que son opcionales y otros que por reglas de negocio no pueden ser completados.\n                                                                     </div-->\n\n                                                                     <!-- Si entra aqui es por que estoy viendo un solo item -->\n\n                                                                     <div class="row">\n                                                                     <div class="col-sm-6 col-md-6"\n                                                                        v-for="o,i in datos_estadisticas_mi_formulario">\n\n                                                                        <div class="list-group">\n                                                                           <div class="list-group-item">\n\n                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h4>\n\n                                                                           </div>\n\n                                                                           <div class="list-group-item">\n\n                                                                              <span>\n                                                                                 <b>Completado: </b>\n\n                                                                                 <!--{{ o[Object.keys(o)[0]].not_null }} campos-->\n\n                                                                                 <small class="pull-right text-success">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                    }}% completado\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <b>Sin Completar: </b>\n                                                                                    <!-- {{ o[Object.keys(o)[0]].null }} campos -->\n\n                                                                                 <small class="pull-right text-warning">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].remaining) < 0 ?\n                                                                                       0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                    }}% restante\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <!-- <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b> -->\n                                                                              </span>\n\n\n\n                                                                              <div class="progress">\n                                                                                 <div class="progress-bar progress-bar-success progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : o[Object.keys(o)[0]].completion)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       +{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].completion) > 100) ?\n                                                                                          100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                                 <div class="progress-bar progress-bar-warning progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].remaining < 0) ?\n                                                                                       0 : o[Object.keys(o)[0]].remaining)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       -{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].remaining) < 0) ?\n                                                                                          0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                              </div>\n\n                                                                              <div v-if="o.field_name.field_name.length > 0">\n\n                                                                                 <button class="btn btn-danger btn-sm"\n                                                                                    type="button" data-toggle="collapse"\n                                                                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;"\n                                                                                         :data-target="\'#fields\'+i" aria-expanded="false"\n                                                                                         :aria-controls="\'fields\'+i">\n                                                                                    <small>Ver campos por completar</small>\n                                                                                 </button><!-- .btn .btn-success -->\n\n\n                                                                                 <div class="collapse" :id="\'fields\'+i"\n                                                                                    style="overflow-y: scroll;max-height: 200px;">\n                                                                                    <h5>Campos por completar</h5>\n\n                                                                                    <span class="small text-success"\n                                                                                       v-if="Math.round(o[Object.keys(o)[0]].completion) == 100">\n                                                                                       A continuaci\xF3n s\xF3lo quedan campos opcionales\n                                                                                       <br>\n                                                                                    </span>\n\n                                                                                    <ul v-for="i in o.field_name.field_name">\n                                                                                       <li class="small">{{i.keyjs}}</li>\n                                                                                    </ul>\n                                                                                 </div><!-- .collapse #fields -->\n\n                                                                              </div>\n\n                                                                           </div>\n\n                                                                        </div>\n\n\n                                                                     </div><!-- .col -->\n                                                                     </div><!-- .row -->\n                                                                  </div><!-- .tab-pane .fade #estadistica_detalle -->\n\n\n                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"\n                                                                     id="estadisticas_generales">\n\n                                                                     <small>Temporalmente sin datos</small>\n\n                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->\n\n                                                               </div><!-- .tab-content -->\n                                                            </div><!-- .panel-body -->\n                                                         </div><!-- .panel -->\n\n\n                                                      </dd>\n\n                                                   </dl><!-- dl-horizontal -->\n\n                                                </div>\n\n                                             </div><!-- .col-md-12 -->\n                                          </div>\n                                       </div><!-- .tab-pane .fade #lista_mis_formularios -->\n\n<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->\n\n                                       <div role="tabpanel" class="tab-pane fade" id="lista_formularios_otros">\n\n                                          <div class="row">\n\n                                             <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">\n\n                                                <h4 class="text-center">Fichas de otros usuarios (Solo para perfil observador)</h4>\n                                                <br>\n\n                                                <div v-if="show_formularios_otros_grid == true">\n\n                                                      <div class="row">\n\n                                                         <div class="col-sm-6 col-md-6">\n\n                                                            <dl class="dl-horizontal">\n                                                               <dt>\n                                                                  Buscar por rut\n                                                               </dt>\n                                                               <dd>\n\n                                                                  <div class="input-group input-group-sm">\n                                                                     <input type="text"\n                                                                        placeholder="Ej: 123456789"\n                                                                        id="rut_formularios_otros"\n                                                                        name="rut_formularios_otros"\n                                                                        class="form-control"\n                                                                        v-model="rut_formularios_otros">\n\n                                                                     <span class="input-group-btn">\n                                                                        <button class="btn btn-sm btn-primary"\n                                                                           @click.prevent="buscar_formularios_otros_rut">\n                                                                           &nbsp;<i class="fa fa-search"></i>\n                                                                        </button>\n                                                                        &nbsp;\n                                                                     </span><!-- .input-group-btn -->\n\n                                                                  </div><!-- /.input-group -->\n\n                                                                  <small>completo sin puntos ni gui\xF3n de matr\xF3n o matrona registrado/a.</small>\n                                                               </dd>\n                                                            </dl>\n\n                                                         </div><!-- .col-* -->\n\n                                                         <div class="col-sm-6 col-md-6">\n\n                                                            <dl class="dl-horizontal">\n                                                               <dt>\n                                                                  Buscar por email\n                                                               </dt>\n                                                               <dd>\n\n                                                                  <div class="input-group input-group-sm">\n                                                                     <input type="email"\n                                                                        id="email_formularios_otros"\n                                                                        name="email_formularios_otros"\n                                                                        class="form-control"\n                                                                        v-model="email_formularios_otros">\n\n                                                                     <span class="input-group-btn">\n                                                                        <button class="btn btn-sm btn-primary"\n                                                                            @click.prevent="buscar_formularios_otros_email">\n                                                                           &nbsp;<i class="fa fa-search"></i>\n                                                                        </button>\n                                                                     </span><!-- .input-group-btn -->\n                                                                  </div><!-- /.input-group -->\n\n                                                                  <small>email de matr\xF3n o matrona registrado/a.</small>\n                                                               </dd>\n                                                            </dl>\n\n                                                         </div><!-- .col-* -->\n\n                                                      </div><!-- .row -->\n\n                                                   <!--// buscador en grid //-->\n                                                   <h5 style="position: relative;" v-if="filterTermOtros">Filtrando por el criterio \'<b>{{ filterTermOtros }}</b>\'</h5>\n                                                   <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>\n\n                                                   <!-- Input filterTermOtros -->\n                                                   <div class="form-group">\n                                                      <div class="input-group input-group-sm">\n                                                         <div class="input-group-addon">\n                                                            <i class="fa fa-font"></i>\n                                                         </div>\n                                                         <!-- Input para escribir el termino a buscar -->\n                                                         <input type="text" class="form-control"\n                                                            placeholder="Ingrese criterio de b\xFAsqueda para filtrar"\n                                                                v-model="filterTermOtros" id="filterTermOtros">\n                                                         <!-- Boton para limpiar contenido del filtro por criterio -->\n                                                            <span class="input-group-btn">\n                                                               <button @click.prevent="filterTermOtros=\'\'" type="button" class="btn btn-default">\n                                                                  Limpiar\n                                                               </button>\n                                                            </span><!-- .input-group-btn -->\n                                                      </div><!-- /.input-group -->\n                                                   </div><!-- /.form-group -->\n\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                         Seleccion de ficha\n                                                      </dt>\n\n\n                                                      <dd>\n                                                         <div class="table-responsive">\n                                                            <small class="text-info">Resultados encontrados:</small>\n                                                            <small class="text-info">{{filterBy(formularios_otros, filterTermOtros).length || 0}}</small>\n\n                                                            <br>\n\n                                                            <table class="table table-striped small">\n                                                               <thead>\n                                                                  <tr>\n\n                                                                     <th>Accion</th>\n                                                                     <th>Correlativo</th>\n                                                                     <th>Run Madre</th>\n                                                                     <th>Nombre</th>\n                                                                  </tr>\n                                                               </thead>\n                                                               <tbody>\n\n                                                                  <tr v-for="f in\n                                                                     filterBy(formularios_otros, filterTermOtros)"\n                                                                     v-if="f.form_deis != null">\n\n                                                                     <!-- Bot\xF3n de acci\xF3n -->\n                                                                     <td>\n                                                                        <!-- Boton revisar cumplimiento -->\n                                                                        <button class="btn btn-xs btn-success"\n                                                                           @click.prevent="mostrar_detalles_formulario_otros(f.form_deis)">\n                                                                           <!-- <i class="fa fa-external-link-square"></i> -->\n                                                                           Revisar cumplimiento <i class="fa fa-check"></i>\n                                                                        </button>\n\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary"\n                                                                           v-if="f.form_deis.run_madre!=null&&f.form_deis.digito_verificador!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n                                                                     </td>\n\n                                                                     <!-- Correlativo -->\n                                                                     <td>\n                                                                        {{f.form_deis.id}}\n                                                                     </td>\n\n                                                                     <!-- Run madre y dv -->\n                                                                     <td v-if="f.form_deis.run_madre != null &&\n                                                                        f.form_deis.digito_verificador != null">\n                                                                        {{\n                                                                           f.form_deis.run_madre\n                                                                           +""+\n                                                                           f.form_deis.digito_verificador\n                                                                        }}\n                                                                     </td>\n                                                                     <td v-else class="text-warning">\n                                                                        Run sin ingresar\n                                                                     </td>\n\n                                                                     <!-- Nombre Paciente -->\n                                                                     <td>\n                                                                        {{f.form_deis.nombres_madre ||\n                                                                           \'Sin Nombre\'}}\n                                                                        {{f.form_deis.primer_apellido_madre ||\n                                                                           \'Sin Apellido\'}}\n                                                                     </td>\n\n                                                                  </tr>\n\n                                                               </tbody>\n                                                            </table>\n                                                         </div><!-- .table-responsive -->\n\n                                                      </dd>\n                                                   </dl><!-- dl-vertical -->\n\n\n                                                </div>\n                                                <div style="padding: 30px;" v-else>\n\n\n                                                   <dl class="dl-vertical">\n                                                      <dt>\n                                                      <!-- por el momento, asi vacio se ve bien -->\n                                                      </dt>\n\n\n                                                      <dd>\n\n                                                         <div id="" class="panel with-nav-tabs panel-primary">\n\n                                                            <!-- Items elementos de cabecera -->\n                                                            <div class="panel-heading">\n                                                               <!-- Nav tabs -->\n                                                               <ul class="nav nav-tabs small" role="tablist" style="height: 24px;">\n\n                                                                  <li role="presentation" class="active">\n                                                                     <a href="#estadistica_detalle" aria-controls="estadistica_detalle"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 1px;padding-bottom: 0px;height: 25px;">\n                                                                        Detalle de ficha\n                                                                     </a>\n                                                                  </li>\n                                                                  <!--\n                                                                  <li role="presentation" class="">\n                                                                     <a href="#estadisticas_generales" aria-controls="estadisticas_generales"\n                                                                        role="tab" data-toggle="tab"\n                                                                        style="padding-top: 3px;padding-bottom: 0px;height: 24px;">\n                                                                        Estad\xEDsticas generales\n                                                                     </a>\n                                                                  </li>\n                                                                  -->\n\n\n                                                               </ul>\n                                                            </div><!-- .panel-heading -->\n\n                                                            <div class="panel-body">\n                                                               <!-- Tab panes -->\n                                                               <div class="tab-content">\n\n                                                                  <div role="tabpanel" class="tab-pane fade in active"\n                                                                     id="estadistica_detalle">\n\n                                                                     <button class="btn btn-success btn-xs"\n                                                                        @click.prevent="show_formularios_otros_grid=true">\n                                                                        Volver\n                                                                     </button>\n\n                                                                     <br>\n                                                                     <br>\n\n                                                                     <div class="well">\n                                                                        <h4 class="text-center">\n                                                                           Informaci\xF3n de completitud de fichas por pesta\xF1a\n                                                                        </h4>\n                                                                     </div>\n\n                                                                     <div>\n                                                                        <!-- Boton editar formulario cumplimiento -->\n                                                                        <button class="btn btn-xs btn-primary pull-right"\n                                                                           v-if="formulario_otros_tmp[\'run_madre\']!=null &&\n                                                                              formulario_otros_tmp[\'digito_verificador\']!=null"\n                                                                           @click.prevent="modificar_usuario_seleccionado(\n                                                                              formulario_otros_tmp[\'run_madre\'],\n                                                                              formulario_otros_tmp[\'digito_verificador\']\n                                                                           )">\n                                                                           Ir a editar\n                                                                           &nbsp;<i class="fa fa-pencil"></i>\n                                                                        </button>\n\n                                                                        Nombre: {{\n                                                                           (formulario_otros_tmp[\'nombres_madre\'] || \'sin nombre\') +" "+\n                                                                           (formulario_otros_tmp[\'primer_apellido_madre\'] || \'sin ap. paterno\') +" "+\n                                                                           (formulario_otros_tmp[\'segundo_apellido_madre\'] || \'sin ap. materno\')\n                                                                        }}\n\n                                                                     </div>\n\n                                                                     <hr>\n\n                                                                     <!-- Mensaje -->\n                                                                     <!--div class="alert alert-info alert-dismissable">\n                                                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>\n                                                                        El porcentaje es solo referencial, existen campos en el formulario que son opcionales y otros que por reglas de negocio no pueden ser completados.\n                                                                     </div-->\n\n                                                                     <!-- Si entra aqui es por que estoy viendo un solo item -->\n\n                                                                     <div class="row">\n                                                                     <div class="col-sm-6 col-md-6"\n                                                                        v-for="o,i in datos_estadisticas_mi_formulario_otros">\n\n                                                                        <div class="list-group">\n                                                                           <div class="list-group-item">\n\n                                                                              <h4>{{ o[Object.keys(o)[0]].title }}</h4>\n\n                                                                           </div>\n\n                                                                           <div class="list-group-item">\n\n                                                                              <span>\n                                                                                 <b>Completado: </b>\n\n                                                                                 <!--{{ o[Object.keys(o)[0]].not_null }} campos-->\n\n                                                                                 <small class="pull-right text-success">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                    }}% completado\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <b>Sin Completar: </b>\n                                                                                    <!-- {{ o[Object.keys(o)[0]].null }} campos -->\n\n                                                                                 <small class="pull-right text-warning">\n                                                                                    {{\n                                                                                       Math.round(o[Object.keys(o)[0]].remaining) < 0 ?\n                                                                                       0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                    }}% restante\n                                                                                 </small>\n                                                                              </span>\n\n                                                                              <br>\n\n                                                                              <span>\n                                                                                 <!-- <b>De un total de: {{ o[Object.keys(o)[0]].total }} campos</b> -->\n                                                                              </span>\n\n\n\n                                                                              <div class="progress">\n                                                                                 <div class="progress-bar progress-bar-success progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].completion) > 100 ?\n                                                                                       100 : o[Object.keys(o)[0]].completion)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       +{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].completion) > 100) ?\n                                                                                          100 : Math.round(o[Object.keys(o)[0]].completion)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                                 <div class="progress-bar progress-bar-warning progress-bar-striped active"\n                                                                                    :style="\'width: \'+\n                                                                                       ((o[Object.keys(o)[0]].remaining < 0) ?\n                                                                                       0 : o[Object.keys(o)[0]].remaining)\n                                                                                    +\'%\'">\n                                                                                    <span class="">\n                                                                                       -{{\n                                                                                          (Math.round(o[Object.keys(o)[0]].remaining) < 0) ?\n                                                                                          0 : Math.round(o[Object.keys(o)[0]].remaining)\n                                                                                       }}%\n                                                                                    </span>\n                                                                                 </div>\n                                                                              </div>\n\n                                                                              <div v-if="o.field_name.field_name.length > 0">\n\n                                                                                 <button class="btn btn-danger btn-sm"\n                                                                                    type="button" data-toggle="collapse"\n                                                                                         style="box-shadow: 2px 1px 2px 1px #dbdbdb;"\n                                                                                         :data-target="\'#fields\'+i" aria-expanded="false"\n                                                                                         :aria-controls="\'fields\'+i">\n                                                                                    <small>Ver campos por completar</small>\n                                                                                 </button><!-- .btn .btn-success -->\n\n\n                                                                                 <div class="collapse" :id="\'fields\'+i"\n                                                                                    style="overflow-y: scroll;max-height: 200px;">\n                                                                                    <h5>Campos por completar</h5>\n\n                                                                                    <span class="small text-success"\n                                                                                       v-if="Math.round(o[Object.keys(o)[0]].completion) == 100">\n                                                                                       A continuaci\xF3n s\xF3lo quedan campos opcionales\n                                                                                       <br>\n                                                                                    </span>\n\n                                                                                    <ul v-for="i in o.field_name.field_name">\n                                                                                       <li class="small">{{i.keyjs}}</li>\n                                                                                    </ul>\n                                                                                 </div><!-- .collapse #fields -->\n\n                                                                              </div>\n\n                                                                           </div>\n\n                                                                        </div>\n\n\n                                                                     </div><!-- .col -->\n                                                                     </div><!-- .row -->\n                                                                  </div><!-- .tab-pane .fade #estadistica_detalle -->\n\n\n                                                                  <div role="tabpanel" class="tab-pane <!--fade in active-->"\n                                                                     id="estadisticas_generales">\n\n                                                                     <small>Temporalmente sin datos</small>\n\n                                                                  </div><!-- .tab-pane .fade #estadisticas_generales -->\n\n                                                               </div><!-- .tab-content -->\n                                                            </div><!-- .panel-body -->\n                                                         </div><!-- .panel -->\n\n\n                                                      </dd>\n\n                                                   </dl><!-- dl-horizontal -->\n\n                                                </div>\n\n                                             </div><!-- .col-md-12 -->\n                                          </div>\n                                       </div><!-- .tab-pane .fade #lista_formularios_otros -->\n\n\n\n\n                                    </div><!-- .panel-heading -->\n                                 </div><!-- .panel-heading -->\n                              </div><!-- .panel-heading -->\n\n\n\t\t\t\t\t\t\t      </slot>\n\t\t\t\t\t\t      </div>\n\n\t\t\t\t\t\t      <!--\n\t\t\t\t\t\t      <div class="modal-footer">\n\t\t\t\t\t\t\t      <slot name="footer">\n\t\t\t\t\t\t\t         <button class="btn btn-sm btn-success" @click="$emit(\'close\')">\n\t\t\t\t\t\t\t\t         Aceptar\n\t\t\t\t\t\t\t         </button>\n                           </slot>\n\t\t\t\t\t\t      </div>\n\t\t\t\t\t\t      -->\n\t\t\t\t\t      </div>\n                  </div>\n\t\t\t\t   </div>\n\t\t\t   </transition>\n\t\t\t',
          name: 'modal_mis_formularios',
          data: function data() {
             return {
                'filterTerm': null,
+               'filterTermOtros': null,
                'rut_formularios_otros': null,
                'email_formularios_otros': null,
                'show_mis_formularios_grid': true,
                'show_formularios_otros_grid': true,
                'formulario_tmp': {},
+               'formulario_otros_tmp': {},
                'formularios_otros': [],
-               'datos_estadisticas_mi_formulario': []
+               'inputs_formularios_otros': [],
+               'datos_estadisticas_mi_formulario': [],
+               'datos_estadisticas_mi_formulario_otros': []
                //'mis_formularios':{},
             };
          },
@@ -35275,11 +35279,67 @@ var FormularioController = new _vue2.default({
 
          methods: {
 
-            buscar_formularios_otros_email: function buscar_formularios_otros_email() {},
-            buscar_formularios_otros_rut: function buscar_formularios_otros_rut() {},
+            buscar_formularios_otros_rut: function buscar_formularios_otros_rut() {
+               var _this10 = this;
+
+               if ((0, _rut.validate)(this.rut_formularios_otros) == false) {
+                  swal({
+                     title: "Advertencia",
+                     text: "El rut es incorrecto.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return this.rut_formularios_otros = null;
+               } else {
+                  (0, _rut.format)(this.rut_formularios_otros);
+               }
+
+               var formData = new FormData();
+
+               _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('rut', this.rut_formularios_otros);
+
+               this.$http.post('/formulario/buscar_formularios_otros_rut', formData).then(function (response) {
+                  // success callback
+                  //return console.log(response);
+                  _this10.formularios_otros = [];
+                  _this10.inputs_formularios_otros = [];
+                  _this10.formularios_otros = response.body.formularios_otros;
+                  _this10.inputs_formularios_otros = response.body.inputs_formularios_otros;
+                  //console.log(this.inconsistencias);
+               }, function (response) {
+                  // error callback
+                  //console.log(response);
+                  _this10.$parent.check_status_code(response.status);
+               });
+            },
+
+            buscar_formularios_otros_email: function buscar_formularios_otros_email() {
+               var _this11 = this;
+
+               var formData = new FormData();
+
+               _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('email', this.email_formularios_otros);
+
+               this.$http.post('/formulario/buscar_formularios_otros_email', formData).then(function (response) {
+                  // success callback
+                  //return console.log(response);
+                  _this11.formularios_otros = [];
+                  _this11.inputs_formularios_otros = [];
+                  _this11.formularios_otros = response.body.formularios_otros;
+                  _this11.inputs_formularios_otros = response.body.inputs_formularios_otros;
+                  //console.log(this.inconsistencias);
+               }, function (response) {
+                  // error callback
+                  //console.log(response);
+                  _this11.$parent.check_status_code(response.status);
+               });
+            },
 
             modificar_usuario_seleccionado: function modificar_usuario_seleccionado(run_madre, digito_verificador) {
-               var _this10 = this;
+               var _this12 = this;
 
                if (!run_madre || !digito_verificador || (0, _rut.validate)(run_madre + "" + digito_verificador) == false) {
                   swal({
@@ -35325,30 +35385,30 @@ var FormularioController = new _vue2.default({
                         });
                      }
 
-                     _this10.$parent.fdc = formularios;
-                     _this10.$parent.fdc_temp = formularios;
-                     _this10.$parent.formularioActivoObj = formularios;
+                     _this12.$parent.fdc = formularios;
+                     _this12.$parent.fdc_temp = formularios;
+                     _this12.$parent.formularioActivoObj = formularios;
 
-                     _this10.$parent.formularioEditActivo = true;
-                     _this10.$parent.formularioNuevoActivo = false;
+                     _this12.$parent.formularioEditActivo = true;
+                     _this12.$parent.formularioNuevoActivo = false;
 
-                     _this10.$parent.show_modal_mis_formularios = false;
+                     _this12.$parent.show_modal_mis_formularios = false;
 
-                     _this10.$parent.renderizar_solo_inputs();
+                     _this12.$parent.renderizar_solo_inputs();
 
                      var formData = new FormData();
                      _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                      formData.append('n_correlativo_interno', formularios.n_correlativo_interno);
 
-                     _this10.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
+                     _this12.$http.post('/formulario/marcar_registro_form_deis', formData).then(function (response) {
                         // success callback
-                        _this10.$parent.fdc = response.body.fdc;
+                        _this12.$parent.fdc = response.body.fdc;
 
                         //console.log(response);
                      }, function (response) {
                         // error callback
                         //console.log(response);
-                        _this10.$parent.check_status_code(response.status);
+                        _this12.$parent.check_status_code(response.status);
                      });
                   }
 
@@ -35356,7 +35416,7 @@ var FormularioController = new _vue2.default({
                }, function (response) {
                   // error callback
                   //console.log(response);
-                  _this10.$parent.check_status_code(response.status);
+                  _this12.$parent.check_status_code(response.status);
                });
 
                return;
@@ -36084,8 +36144,744 @@ var FormularioController = new _vue2.default({
                return alert("No se ha seleccionador un formulario.");
             },
 
+            mostrar_detalles_formulario_otros: function mostrar_detalles_formulario_otros(formulario) {
+               //console.log();
+               this.formulario_otros_tmp = formulario || null;
+               var inputs = this.inputs_formularios_otros;
+               this.datos_estadisticas_mi_formulario_otros = [];
+
+               //Variables contenedoras de los inputs y el valor
+               var identificacion_mujer = [];
+               var control_embarazo = [];
+               var patologias_sifilis = [];
+               var patologias_vih = [];
+               var datos_parto = [];
+               var datos_recien_nacido = [];
+
+               if (this.formulario_tmp != null && this.formulario_tmp != null) {
+
+                  var im = 0; //identificacion mujer
+                  var imrn = 0; //identificacion mujer regla de negocio
+                  var ce = 0; //control embarazo
+                  var cern = 0; //control embarazo regla de negocio
+                  var ps = 0; //patologias sifilis
+                  var psrn = 0; //patologias sifilis regla de negocio
+                  var pv = 0; //patologias vih
+                  var pvrn = 0; //patologias vih regla de negocio
+                  var dp = 0; //datos parto
+                  var dprn = 0; //datos parto regla de negocio
+                  var drn = 0; //datos recien nacido
+                  var drnrn = 0; //datos recien nacido regla de negocio
+
+                  //Todas las null
+                  var im_null = 0;
+                  var ce_null = 0;
+                  var ps_null = 0;
+                  var pv_null = 0;
+                  var dp_null = 0;
+                  var drn_null = 0;
+
+                  //Todas las completas o no null
+                  var im_not_null = 0;
+                  var ce_not_null = 0;
+                  var ps_not_null = 0;
+                  var pv_not_null = 0;
+                  var dp_not_null = 0;
+                  var drn_not_null = 0;
+
+                  var keyjs = null;
+                  var value = null;
+                  var label = null;
+                  var ftmp = [];
+
+                  for (var i in this.inputs_formularios_otros) {
+
+                     keyjs = inputs[i].id; //Le paso el nombre del campo\input
+                     value = this.formulario_otros_tmp[inputs[i].id]; //Le paso el value del campo\input
+                     label = inputs[i].label; //Le paso el nombre del label
+                     ftmp = this.formulario_otros_tmp; //Le paso el formulario
+
+                     switch (inputs[i].seccion) {
+                        case "identificacion_mujer":
+                           //identificacion_mujer.push({key:value});//Mis elementos de la seccion
+                           im++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              im_not_null++;
+                           } else {
+                              im_null++;
+                              identificacion_mujer.push({ keyjs: label });
+                           }
+                           break;
+
+                        case "control_embarazo":
+
+                           if (ftmp["embarazo_con_control_parental"] == "No") {
+                              ce = 30;
+                              ce_not_null = 30;
+                              ce_null = 0;
+                           } else {
+
+                              //control_embarazo.push({key:value});//Mis elementos de la seccion
+                              ce++; //Mi total de elementos en esta seccion
+                              if (value != null) {
+                                 ce_not_null++;
+                              } else {
+                                 ce_null++;
+                              }
+
+                              //cuando está, manda la posicion
+                              //cuando no está, manda -1
+                              //this.$parent.in_array(["a",undefined,3,"4","e",true,1],"e");
+                              switch (keyjs) {
+
+                                 case 'resultado_1_vdrl_embarazo':
+                                 case 'resultado_2_vdrl_embarazo':
+                                 case 'resultado_3_vdrl_embarazo':
+                                    if (value == "No Reactivo") {
+                                       cern += 1;
+                                       break;
+                                    } else if (value == "No Realizado") {
+                                       cern += 3;
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                                 case 'resultado_dilucion_1_vdrl_embarazo':
+                                 case 'resultado_dilucion_2_vdrl_embarazo':
+                                 case 'resultado_dilucion_3_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Reactivo", "No Realizado"], ftmp[keyjs])) {
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                                 case 'fecha_1_vdrl_embarazo':
+                                 case 'eg_1_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_1_vdrl_embarazo"])) {
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                                 case 'fecha_2_vdrl_embarazo':
+                                 case 'eg_2_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_2_vdrl_embarazo"])) {
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                                 case 'fecha_3_vdrl_embarazo':
+                                 case 'eg_3_vdrl_embarazo':
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_3_vdrl_embarazo"])) {
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+
+                                 case 'resultado_1_examen_vih_embarazo':
+                                 case 'resultado_2_examen_vih_embarazo':
+                                    if (value == "No Realizado") {
+                                       cern += 2;
+                                       break;
+                                    }
+
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                                 case 'fecha_1_examen_vih_embarazo':
+                                 case 'eg_1_examen_vih':
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_1_examen_vih_embarazo"])) {
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                                 case 'fecha_2_examen_vih_embarazo':
+                                 case 'eg_2_examen_vih':
+                                    if (this.$parent.in_array(["No Realizado"], ftmp["resultado_2_examen_vih_embarazo"])) {
+                                       break;
+                                    }
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+
+                                 default:
+                                    if (value == null) {
+                                       control_embarazo.push({ keyjs: label });
+                                    }
+                                    break;
+                              }
+                           }
+
+                           break;
+
+                        case "patologias_sifilis":
+                           //patologias_sifilis.push({key:value});//Mis elementos de la seccion
+                           ps++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              ps_not_null++;
+                           } else {
+                              ps_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'ano_sifilis_previa_embarazo':
+                                 if (ftmp["sifilis_previa_embarazo"] == "No") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'sifilis_previa_embarazo':
+                                 if (value == "No") {
+                                    psrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_examen_treponemico':
+                                 if (ftmp["resultado_treponemico"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'resultado_treponemico':
+                                 if (value == "No Realizado") {
+                                    psrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_estudiados':
+                              case 'numero_contactos_sexuales_tratados':
+                                 //console.log(ftmp[keyjs]);
+                                 if (ftmp["numero_contactos_sexuales_declarados"] == 0 || ftmp["numero_contactos_sexuales_declarados"] == "0") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_declarados':
+                                 if (value == "0") {
+                                    psrn += 2;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+                              default:
+                                 if (value == null) {
+                                    patologias_sifilis.push({ keyjs: label });
+                                 }
+                                 break;
+
+                           }
+
+                           break;
+
+                        case "patologias_vih":
+                           //patologias_vih.push({key:value});//Mis elementos de la seccion
+                           pv++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              pv_not_null++;
+                           } else {
+                              pv_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'numero_contactos_sexuales_estudiados':
+                              case 'numero_contactos_sexuales_tratados':
+                                 //console.log(ftmp[keyjs]);
+                                 if (ftmp["numero_contactos_sexuales_declarados"] == 0 || ftmp["numero_contactos_sexuales_declarados"] == "0") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'numero_contactos_sexuales_declarados':
+                                 if (value == "0" || value == 0) {
+                                    pvrn += 2;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_examen_linfocitos_cd4_ingreso_control_prenatal':
+                              case 'fecha_examen_carga_viral_control_prenatal':
+                              case 'fecha_examen_carga_viral_semana_34':
+                              case 'terapia_antiretroviral_farmaco_1':
+                              case 'terapia_antiretroviral_tar_farmaco_2':
+                              case 'terapia_antiretroviral_tar_farmaco_3':
+                                 if (value == null) {
+                                    pvrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
+                                 break;
+                              default:
+                                 if (value == null) {
+                                    patologias_vih.push({ keyjs: label });
+                                 }
+                                 break;
+                           }
+
+                           break;
+
+                        case "datos_parto":
+                           //datos_parto.push({key:value});//Mis elementos de la seccion
+                           dp++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              dp_not_null++;
+                           } else {
+                              dp_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'resultado_dilucion_vdrl_parto':
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado"], ftmp["resultado_vdrl_parto"])) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'resultado_vdrl_parto':
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado"], value)) {
+                                    dprn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'tratamiento_retroviral_parto':
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado", "No Corresponde"], ftmp["resultado_examen_vih_parto"])) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'resultado_examen_vih_parto':
+                                 if (this.$parent.in_array(["No Reactivo", "No Realizado", "No Corresponde"], value)) {
+                                    dprn += 1;
+                                    break;
+                                 }
+
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'peso_mujer_parto':
+                              case 'dosis_farmaco_1_vih':
+                              case 'fecha_inicio_farmaco_1_vih':
+                              case 'hora_inicio_farmaco_1_vih':
+                              case 'dosis_2_farmaco_1_vih':
+                              case 'fecha_2_inicio_farmaco_1_vih':
+                              case 'hora_2_inicio_farmaco_1_vih':
+                                 if (ftmp["nombre_farmaco_1_vih"] == null || ftmp["nombre_farmaco_1_vih"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'nombre_farmaco_1_vih':
+                                 if (value == null || value == "") {
+                                    dprn += 7;
+                                    //break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'dosis_farmaco_2_vih':
+                              case 'fecha_inicio_farmaco_2_vih':
+                              case 'hora_inicio_farmaco_2_vih':
+                                 if (ftmp["nombre_farmaco_2_vih"] == null || ftmp["nombre_farmaco_2_vih"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'nombre_farmaco_2_vih':
+                                 if (value == null && value == "") {
+                                    dprn += 3;
+                                    //break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'fecha_administracion_farmaco_suspencion_lactancia':
+                                 if (ftmp["nombre_farmaco_suspencion_lactancia"] == null || ftmp["nombre_farmaco_suspencion_lactancia"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'nombre_farmaco_suspencion_lactancia':
+                                 if (value == null && value == "") {
+                                    dprn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              default:
+                                 if (value == null) {
+                                    datos_parto.push({ keyjs: label });
+                                 }
+                                 break;
+                           }
+
+                           break;
+
+                        case "datos_recien_nacido":
+                           //datos_recien_nacido.push({key:value});//Mis elementos de la seccion
+                           drn++; //Mi total de elementos en esta seccion
+                           if (value != null) {
+                              drn_not_null++;
+                           } else {
+                              drn_null++;
+                           }
+
+                           switch (keyjs) {
+                              case 'resultado_vdrl_periferico_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 2;
+                                    break;
+                                 } else if (value == "No Reactivo") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'titulacion_vdrl_periferico_recien_nacido':
+                                 if (ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Realizado" || ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Reactivo") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_examen_vdrl_periferico_recien_nacido':
+                                 if (ftmp["resultado_vdrl_periferico_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_vdrl_liq_cefalo_recien_nacido':
+                                 if (value == "Puncion Frustrada" || value == "No Reactivo" || value == "No Realizado") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'titulacion_vdrl_liq_cefalo_recien_nacido':
+                              case 'fecha_examen_vdrl_liq_cefalo_recien_nacido':
+                                 if (ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "Puncion Frustrada" || ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Reactivo" || ftmp["resultado_vdrl_liq_cefalo_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'tratamiento_recien_nacido_farmaco':
+                                 if (this.$parent.in_array([null, "", "No Aplica", "No Administrado"], value)) {
+                                    drnrn += 2;
+                                    //break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'tratamiento_recien_nacido_dosis':
+                              case 'tratamiento_recien_nacido_frecuencia':
+                                 if (this.$parent.in_array([null, "", "No Aplica", "No Administrado"], ftmp["tratamiento_recien_nacido_farmaco"])) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_examen_treponemico_parto_madre':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_examen_treponemico_recien_nacido':
+                                 if (ftmp["resultado_examen_treponemico_parto_madre"] == null || ftmp["resultado_examen_treponemico_parto_madre"] == "") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'sustituto_leche_materna':
+                                 if (value == "No") {
+                                    drnrn += 3;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_inicio_sustituto_leche_materna':
+                              case 'hora_inicio_sustituto_leche_materna':
+                              case 'entrega_sustituto_leche_materna_al_alta':
+                                 if (ftmp["sustituto_leche_materna"] == "No") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'nombre_farmaco_1_vih_recien_nacido':
+                                 if (value == "" || value == null) {
+                                    drnrn += 3;
+                                    //break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_inicio_farmaco_1_vih_recien_nacido':
+                              case 'hora_inicio_farmaco_1_vih_recien_nacido':
+                              case 'dosis_farmaco_1_vih_recien_nacido':
+                                 if (ftmp["nombre_farmaco_1_vih_recien_nacido"] == "" || ftmp["nombre_farmaco_1_vih_recien_nacido"] == null) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'nombre_farmaco_2_vih_recien_nacido':
+                                 if (value == "" || value == null) {
+                                    drnrn += 3;
+                                    //break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_inicio_farmaco_2_vih_recien_nacido':
+                              case 'hora_inicio_farmaco_2_vih_recien_nacido':
+                              case 'dosis_farmaco_2_vih_recien_nacido':
+                                 if (ftmp["nombre_farmaco_2_vih_recien_nacido"] == "" || ftmp["nombre_farmaco_2_vih_recien_nacido"] == null) {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_1_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_1_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_1_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_2_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_2_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_2_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_3_examen_pcr_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_3_examen_pcr_recien_nacido':
+                                 if (ftmp["resultado_3_examen_pcr_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_test_elisa_18_meses':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_test_elisa_18_meses':
+                                 if (ftmp["resultado_test_elisa_18_meses"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'resultado_final_isp_examen_vih_recien_nacido':
+                                 if (value == "No Realizado") {
+                                    drnrn += 1;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'fecha_resultado_final_isp_examen_vih_recien_nacido':
+                                 if (ftmp["resultado_final_isp_examen_vih_recien_nacido"] == "No Realizado") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              case 'derivacion_recien_nacido_a_seguimiento':
+                                 if (value == "No") {
+                                    drnrn += 2;
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+                              case 'lugar_derivacion_recien_nacido_a_seguimiento':
+                              case 'fecha_ingreso_control_recien_nacido_post_nacimiento':
+                                 if (ftmp["derivacion_recien_nacido_a_seguimiento"] == "No") {
+                                    break;
+                                 }
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                              default:
+                                 if (value == null) {
+                                    datos_recien_nacido.push({ keyjs: label });
+                                 }
+                                 break;
+
+                           }
+
+                           break;
+
+                     } //Fin switch
+                  } //Fin for
+
+
+                  // Los 1 en duro son por campos opcionales por concepto de no realizado, eso es todo quedó clarito
+                  this.empaquetar_datos_estadistica_otros(im - 1, im_null - 1, im_not_null, "Identificacion de la Mujer", keyjs, identificacion_mujer);
+
+                  this.empaquetar_datos_estadistica_otros(ce - cern, ce_null - cern, ce_not_null, "Control de Embarazo (APS)", keyjs, control_embarazo);
+
+                  this.empaquetar_datos_estadistica_otros(ps - psrn, ps_null - psrn, ps_not_null, "Control Sífilis (Especialidades)", keyjs, patologias_sifilis);
+
+                  this.empaquetar_datos_estadistica_otros(pv - pvrn, pv_null - pvrn, pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
+
+                  this.empaquetar_datos_estadistica_otros(dp - dprn, dp_null - dprn, dp_not_null, "Datos del Parto", keyjs, datos_parto);
+
+                  this.empaquetar_datos_estadistica_otros(drn - (drnrn - 3), drn_null - (drnrn - 3), drn_not_null, "Datos recien nacido", keyjs, datos_recien_nacido);
+
+                  this.show_formularios_otros_grid = false;
+                  return;
+               }
+               return alert("No se ha seleccionador un formulario.");
+            },
+
             empaquetar_datos_estadistica: function empaquetar_datos_estadistica(total, nulls, not_null, title, field_name, arr_detail) {
                this.datos_estadisticas_mi_formulario.push({
+                  field_name: {
+                     'total': total,
+                     'null': nulls,
+                     'not_null': not_null,
+                     'title': title,
+                     'completion': not_null / total * 100,
+                     'remaining': nulls / total * 100,
+                     'field_name': arr_detail
+                  }
+               });
+               return;
+            },
+            empaquetar_datos_estadistica_otros: function empaquetar_datos_estadistica_otros(total, nulls, not_null, title, field_name, arr_detail) {
+               this.datos_estadisticas_mi_formulario_otros.push({
                   field_name: {
                      'total': total,
                      'null': nulls,
@@ -36345,7 +37141,7 @@ var FormularioController = new _vue2.default({
       },
 
       verifica_validacion_change: function verifica_validacion_change(input) {
-         var _this11 = this;
+         var _this13 = this;
 
          switch (input.id) {
 
@@ -36404,9 +37200,9 @@ var FormularioController = new _vue2.default({
                      // success callback
                      if (response.status == 200) {
                         var rd = response.body.rd;
-                        _this11.formularios_encontrados = response.body.formularios;
+                        _this13.formularios_encontrados = response.body.formularios;
                         if (rd == 'Existe') {
-                           var self = _this11;
+                           var self = _this13;
                            swal({
                               title: "Atencion",
                               text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
@@ -37598,7 +38394,7 @@ var FormularioController = new _vue2.default({
       },
 
       visualizar_mis_formularios: function visualizar_mis_formularios() {
-         var _this12 = this;
+         var _this14 = this;
 
          //console.log(this.$children[4].show_mis_formularios_grid = false);//.show_mis_formularios_grid = true;
          //Forma no muuy optima para volver a mostrar el grid tras el cierre.
@@ -37611,8 +38407,8 @@ var FormularioController = new _vue2.default({
             //console.log(response.body.mis_formularios);
             if (response.status == 200) {
                if (response.body.mis_formularios != null && response.body.mis_formularios.length > 0) {
-                  _this12.mis_formularios = response.body.mis_formularios;
-                  _this12.inputs_formulario = response.body.inputs_formulario;
+                  _this14.mis_formularios = response.body.mis_formularios;
+                  _this14.inputs_formulario = response.body.inputs_formulario;
                   /*
                   for (var i in this.mis_formularios) {
                      if (this.mis_formularios[i].form_deis != null) {console.log(this.mis_formularios[i].form_deis.id);}
@@ -37626,7 +38422,7 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this12.check_status_code(response.status);
+            _this14.check_status_code(response.status);
          });
 
          return this.show_modal_mis_formularios = true;
@@ -37732,27 +38528,27 @@ var FormularioController = new _vue2.default({
       },
 
       fetch_formulario: function fetch_formulario() {
-         var _this13 = this;
+         var _this15 = this;
 
          this.$http.get('/formulario/create').then(function (response) {
             // success callback
             //Se reciben los recursos desde el backend para renderizar el formulario
-            _this13.instructions = response.body.instructions;
-            _this13.auth = response.body.auth;
+            _this15.instructions = response.body.instructions;
+            _this15.auth = response.body.auth;
 
             //Se disponibilizan para edición, todos los formularios tomados por el usuario en sesión.
             _vue2.default.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-            _this13.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
+            _this15.$http.post('/formulario/desmarcar_registro_form_deis').then(function (response) {// success callback
                //console.log(response);
             }, function (response) {// error callback
                //console.log(response);
             });
 
             //Fx para checkear mensajes informativos directos a los usuarios
-            _this13.check_mensajes_informativos();
+            _this15.check_mensajes_informativos();
 
             //Fx para checkear si los usuarios aceptaron los terminos y condiciones
-            _this13.check_acepta_terminos();
+            _this15.check_acepta_terminos();
          }, function (response) {// error callback
             //console.log('Error fetch_formulario: '+response);
          });
@@ -37761,7 +38557,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario: function guardar_formulario(tabName) {
-         var _this14 = this;
+         var _this16 = this;
 
          //Condicionales previas, preventivas al guardado, para evitar doble envío.
          if (this.formulario_guardandose == false) {
@@ -37837,18 +38633,18 @@ var FormularioController = new _vue2.default({
                //alert('Guardado');
 
                //Si guardar salio bien
-               _this14.hayGuardadoActivo = true;
-               _this14.idFormularioActivo = _this14.fdc.id;
+               _this16.hayGuardadoActivo = true;
+               _this16.idFormularioActivo = _this16.fdc.id;
                $('.circle-loader').toggleClass('load-complete');
                $('.checkmark').toggle();
-               _this14.mini_loader = false;
+               _this16.mini_loader = false;
                swal("Guardado", "El registro se guardó correctamente!", "success");
-               _this14.formulario_guardandose = false;
+               _this16.formulario_guardandose = false;
             }, function (response) {
                // error callback
                //console.log(response);
-               _this14.check_status_code(response.status);
-               _this14.formulario_guardandose = false;
+               _this16.check_status_code(response.status);
+               _this16.formulario_guardandose = false;
             });
          } else {
             alert('\n               Espere por favor, el formulario se encuentra ocupado guardando otra ficha.\n               Vuelva a intentar en 10 segundos.\n            ');
@@ -37858,7 +38654,7 @@ var FormularioController = new _vue2.default({
       },
 
       guardar_formulario_completo_silencioso: function guardar_formulario_completo_silencioso() {
-         var _this15 = this;
+         var _this17 = this;
 
          //Carga el loader
          this.mini_loader = true;
@@ -37913,11 +38709,11 @@ var FormularioController = new _vue2.default({
             //console.log(response.status);
 
             //Si guardar salio bien
-            _this15.hayGuardadoActivo = true;
-            _this15.idFormularioActivo = _this15.fdc.id;
+            _this17.hayGuardadoActivo = true;
+            _this17.idFormularioActivo = _this17.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this15.mini_loader = false;
+            _this17.mini_loader = false;
             /*
              swal("Guardado", `
              El registro se ha guardado automáticamente con éxito.
@@ -37927,14 +38723,14 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this15.check_status_code(response.status);
+            _this17.check_status_code(response.status);
          });
 
          return;
       },
 
       guardar_formulario_completo: function guardar_formulario_completo() {
-         var _this16 = this;
+         var _this18 = this;
 
          //Carga el loader
          this.mini_loader = true;
@@ -37989,13 +38785,13 @@ var FormularioController = new _vue2.default({
             //console.log(response.status);
 
             //alert('Guardado');
-            _this16.buscar_formulario();
+            _this18.buscar_formulario();
             //Si guardar salio bien
-            _this16.hayGuardadoActivo = true;
-            _this16.idFormularioActivo = _this16.fdc.id;
+            _this18.hayGuardadoActivo = true;
+            _this18.idFormularioActivo = _this18.fdc.id;
             $('.circle-loader').toggleClass('load-complete');
             $('.checkmark').toggle();
-            _this16.mini_loader = false;
+            _this18.mini_loader = false;
             /*
             swal("Guardado", `
                El registro se ha guardado automáticamente con éxito.
@@ -38005,7 +38801,7 @@ var FormularioController = new _vue2.default({
          }, function (response) {
             // error callback
             //console.log(response);
-            _this16.check_status_code(response.status);
+            _this18.check_status_code(response.status);
          });
 
          return;
@@ -38017,23 +38813,23 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_solo_inputs: function renderizar_solo_inputs() {
-         var _this17 = this;
+         var _this19 = this;
 
          this.$http.get('/formulario/inputs_formulario').then(function (response) {
             // success callback
-            _this17.inputs = response.body.inputs;
-            _this17.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this17.deis_form_table_options = response.body.deis_form_table_options;
-            _this17.pais_origen = response.body.pais_origen;
-            _this17.auth = response.body.auth;
+            _this19.inputs = response.body.inputs;
+            _this19.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this19.deis_form_table_options = response.body.deis_form_table_options;
+            _this19.pais_origen = response.body.pais_origen;
+            _this19.auth = response.body.auth;
 
-            if (_this17.fdc_temp['form_deis_user'] && _this17.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this17.fdc_temp['form_deis_user'];
+            if (_this19.fdc_temp['form_deis_user'] && _this19.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this19.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this17.auth.id) {
-                     _this17.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this19.auth.id) {
+                     _this19.permiso_temporal_edicion = true;
                   }
                }
             }
@@ -38077,7 +38873,7 @@ var FormularioController = new _vue2.default({
                 }
              }
             */
-            _this17.validar_validaciones_previas();
+            _this19.validar_validaciones_previas();
 
             /*
              if (this.inputs[i].name == 'lugar_control_prenatal' ||
@@ -38098,11 +38894,11 @@ var FormularioController = new _vue2.default({
       },
 
       renderizar_formulario: function renderizar_formulario() {
-         var _this18 = this;
+         var _this20 = this;
 
          this.$http.get('/formulario/datos_formulario').then(function (response) {
             // success callback
-            _this18.inputs = response.body.inputs;
+            _this20.inputs = response.body.inputs;
 
             /*
             //Generamos limpieza de los campos con el plugin
@@ -38113,27 +38909,27 @@ var FormularioController = new _vue2.default({
             $('#select2-lugar_atencion_parto-container').val(null).empty();
             */
 
-            _this18.nav_tab_form_deis = response.body.nav_tab_form_deis;
-            _this18.deis_form_table_options = response.body.deis_form_table_options;
-            _this18.pais_origen = response.body.pais_origen;
-            _this18.fdc = response.body.fdc;
-            _this18.fdc_temp = response.body.fdc;
+            _this20.nav_tab_form_deis = response.body.nav_tab_form_deis;
+            _this20.deis_form_table_options = response.body.deis_form_table_options;
+            _this20.pais_origen = response.body.pais_origen;
+            _this20.fdc = response.body.fdc;
+            _this20.fdc_temp = response.body.fdc;
 
-            _this18.formularioActivoObj = response.body.fdc;
-            _this18.auth = response.body.auth;
+            _this20.formularioActivoObj = response.body.fdc;
+            _this20.auth = response.body.auth;
 
-            if (_this18.fdc_temp['form_deis_user'] && _this18.fdc_temp['form_deis_user'] != null) {
-               var form_deis_user = _this18.fdc_temp['form_deis_user'];
+            if (_this20.fdc_temp['form_deis_user'] && _this20.fdc_temp['form_deis_user'] != null) {
+               var form_deis_user = _this20.fdc_temp['form_deis_user'];
                var user = null;
                for (var i in form_deis_user) {
                   user = form_deis_user[i];
-                  if (user.usuario_modifica_form_deis == _this18.auth.id) {
-                     _this18.permiso_temporal_edicion = true;
+                  if (user.usuario_modifica_form_deis == _this20.auth.id) {
+                     _this20.permiso_temporal_edicion = true;
                   }
                }
             }
 
-            _this18.validar_validaciones_previas();
+            _this20.validar_validaciones_previas();
 
             /*
             //NO es necesario al crear un nuevo formulario, ya que solo se debe manejar el control sobre el edit
