@@ -1875,7 +1875,7 @@ const FormularioController = new Vue({
                                                 <h4 class="text-center">Fichas de otros usuarios (Solo para perfil observador)</h4>
                                                 <br>
 
-                                                <div v-if="show_mis_formularios_grid == true">
+                                                <div v-if="show_formularios_otros_grid == true">
 
                                                       <div class="row">
 
@@ -1943,10 +1943,10 @@ const FormularioController = new Vue({
                                                       </div><!-- .row -->
 
                                                    <!--// buscador en grid //-->
-                                                   <h5 style="position: relative;" v-if="filterTerm">Filtrando por el criterio '<b>{{ filterTerm }}</b>'</h5>
+                                                   <h5 style="position: relative;" v-if="filterTermOtros">Filtrando por el criterio '<b>{{ filterTermOtros }}</b>'</h5>
                                                    <h5 style="position: relative;" v-else>Filtrar por criterio...</h5>
 
-                                                   <!-- Input filterTerm -->
+                                                   <!-- Input filterTermOtros -->
                                                    <div class="form-group">
                                                       <div class="input-group input-group-sm">
                                                          <div class="input-group-addon">
@@ -1955,10 +1955,10 @@ const FormularioController = new Vue({
                                                          <!-- Input para escribir el termino a buscar -->
                                                          <input type="text" class="form-control"
                                                             placeholder="Ingrese criterio de búsqueda para filtrar"
-                                                                v-model="filterTerm" id="filterTerm">
+                                                                v-model="filterTermOtros" id="filterTermOtros">
                                                          <!-- Boton para limpiar contenido del filtro por criterio -->
                                                             <span class="input-group-btn">
-                                                               <button @click.prevent="filterTerm=''" type="button" class="btn btn-default">
+                                                               <button @click.prevent="filterTermOtros=''" type="button" class="btn btn-default">
                                                                   Limpiar
                                                                </button>
                                                             </span><!-- .input-group-btn -->
@@ -1976,7 +1976,7 @@ const FormularioController = new Vue({
                                                       <dd>
                                                          <div class="table-responsive">
                                                             <small class="text-info">Resultados encontrados:</small>
-                                                            <small class="text-info">{{filterBy(mis_formularios, filterTerm).length || 0}}</small>
+                                                            <small class="text-info">{{filterBy(formularios_otros, filterTermOtros).length || 0}}</small>
 
                                                             <br>
 
@@ -1993,7 +1993,7 @@ const FormularioController = new Vue({
                                                                <tbody>
 
                                                                   <tr v-for="f in
-                                                                     filterBy(mis_formularios, filterTerm)"
+                                                                     filterBy(formularios_otros, filterTermOtros)"
                                                                      v-if="f.form_deis != null">
 
                                                                      <!-- Botón de acción -->
@@ -2310,7 +2310,7 @@ const FormularioController = new Vue({
                'show_mis_formularios_grid':true,
                'show_formularios_otros_grid':true,
                'formulario_tmp':{},
-               'formulario_otros_tmp':{},
+               'formularios_otros':[],
                'datos_estadisticas_mi_formulario':[],
                //'mis_formularios':{},
             }
@@ -2328,8 +2328,62 @@ const FormularioController = new Vue({
          },
          methods: {
 
-            buscar_formularios_otros_email: function () {},
-            buscar_formularios_otros_rut: function () {},
+            buscar_formularios_otros_rut: function () {
+
+
+               if (validate(this.rut_inconsistencias_otros) == false) {
+                  swal({
+                     title: "Advertencia",
+                     text: "El rut es incorrecto.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return this.rut_inconsistencias_otros = null;
+               }else{
+                  format(this.rut_inconsistencias_otros);
+               }
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('rut', this.rut_inconsistencias_otros);
+
+               this.$http.post('/formulario/buscar_inconsistencias_rut', formData).then(response => { // success callback
+                  //console.log(response);
+                  this.inconsistencias = [];
+                  this.inconsistencias = response.body.inconsistencias[0];
+                  //console.log(this.inconsistencias);
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+            },
+
+            buscar_formularios_otros_email: function () {
+
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('email', this.email_inconsistencias_otros);
+
+               this.$http.post('/formulario/buscar_inconsistencias_email', formData).then(response => { // success callback
+                  //console.log(response);
+                  this.inconsistencias = [];
+                  this.inconsistencias = response.body.inconsistencias[0];
+                  //console.log(this.inconsistencias);
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+            },
 
             modificar_usuario_seleccionado: function (run_madre,digito_verificador) {
 

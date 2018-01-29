@@ -108,9 +108,13 @@ Route::post ('/formulario/mis_formularios' , 'FormDeisController@mis_formularios
 
 Route::post ('/formulario/marcar_error_revisado' , 'FormDeisController@marcar_error_revisado');
 
+#Rutas para inconsistencias
 Route::post ('/formulario/buscar_inconsistencias_rut' , 'FormDeisController@buscar_inconsistencias_rut');
 Route::post ('/formulario/buscar_inconsistencias_email' , 'FormDeisController@buscar_inconsistencias_email');
 
+#Rutas para formularios otros
+Route::post ('/formulario/buscar_formularios_otros_rut' , 'FormDeisController@buscar_formularios_otros_rut');
+Route::post ('/formulario/buscar_formularios_otros_email' , 'FormDeisController@buscar_formularios_otros_email');
 
 Route::get ('/formulario/datos_formulario' , 'FormDeisController@datos_formulario') ;
 Route::get ('/formulario/inputs_formulario' , 'FormDeisController@inputs_formulario') ;
