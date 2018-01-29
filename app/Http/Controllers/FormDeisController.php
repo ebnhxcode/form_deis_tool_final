@@ -281,16 +281,9 @@ class FormDeisController extends Controller {
        if ($request->wantsJson()) {
           $email = isset($request->email)?$request->email:null;
           if ($email) {
-             $user = User::where('email', '=', $email)->first();
-             if (count($user)>0){
-
-                $formularios_otros = FormDeisUser::where('usuario_modifica_form_deis', $user->id)->with('form_deis')->get();
-                $inputs_formulario = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
-
-                return response()->json([
-                   'formularios_otros' => $formularios_otros,
-                   'inputs_formulario' => $inputs_formulario,
-                ]);
+             $inconsistencias = User::where('email', '=', $email)->with('form_deis_errores')->get();
+             if (count($inconsistencias)>0){
+                return response()->json(['rd'=>'Existe', 'inconsistencias' => $inconsistencias]);
 
              }else{
                 return response()->json(['rd'=>'No existe']);
@@ -310,11 +303,11 @@ class FormDeisController extends Controller {
              if (count($user)>0){
 
                 $formularios_otros = FormDeisUser::where('usuario_modifica_form_deis', $user->id)->with('form_deis')->get();
-                $inputs_formulario = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
+                $inputs_formularios_otros = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
 
                 return response()->json([
                    'formularios_otros' => $formularios_otros,
-                   'inputs_formulario' => $inputs_formulario,
+                   'inputs_formularios_otros' => $inputs_formularios_otros,
                 ]);
 
              }else{
@@ -330,9 +323,16 @@ class FormDeisController extends Controller {
        if ($request->wantsJson()) {
           $email = isset($request->email)?$request->email:null;
           if ($email) {
-             $inconsistencias = User::where('email', '=', $email)->with('form_deis_errores')->get();
-             if (count($inconsistencias)>0){
-                return response()->json(['rd'=>'Existe', 'inconsistencias' => $inconsistencias]);
+             $user = User::where('email', '=', $email)->first();
+             if (count($user)>0){
+
+                $formularios_otros = FormDeisUser::where('usuario_modifica_form_deis', $user->id)->with('form_deis')->get();
+                $inputs_formularios_otros = FormDeisInput::where('table_name', $table_name = 'form_deis_inputs')->orderby('order_layout_form', 'asc')->get();
+
+                return response()->json([
+                   'formularios_otros' => $formularios_otros,
+                   'inputs_formularios_otros' => $inputs_formularios_otros,
+                ]);
 
              }else{
                 return response()->json(['rd'=>'No existe']);

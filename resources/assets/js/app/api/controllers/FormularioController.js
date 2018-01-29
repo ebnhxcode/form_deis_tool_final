@@ -1976,6 +1976,9 @@ const FormularioController = new Vue({
                                                       <dd>
                                                          <div class="table-responsive">
                                                             <small class="text-info">Resultados encontrados:</small>
+                                                            <small class="text-info btn btn-link pull-right" @click.prevent="formularios_otros=[]">
+                                                               Limpiar tabla
+                                                            </small>
                                                             <small class="text-info">{{filterBy(formularios_otros, filterTermOtros).length || 0}}</small>
 
                                                             <br>
@@ -3230,7 +3233,7 @@ const FormularioController = new Vue({
                var datos_parto = [];
                var datos_recien_nacido = [];
 
-               if (this.formulario_tmp != null && this.formulario_tmp != null) {
+               if (this.formulario_otros_tmp != null && this.formulario_otros_tmp != null) {
 
                   var im=0; //identificacion mujer
                   var imrn=0; //identificacion mujer regla de negocio
