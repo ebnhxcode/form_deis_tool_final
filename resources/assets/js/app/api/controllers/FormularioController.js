@@ -1081,7 +1081,8 @@ const FormularioController = new Vue({
                                                                         v-if="e.run_madre!=null&&e.digito_verificador!=null"
                                                                         @click.prevent="modificar_usuario_seleccionado
                                                                         (e.run_madre,e.digito_verificador)">
-                                                                        &nbsp;<i class="fa fa-pencil"></i>
+                                                                        Ir a ver ficha
+                                                                        &nbsp;<i class="fa fa-eye"></i>
                                                                      </button>
                                                                   </td>
                                                                   <td>{{e.id_form_deis}}</td>
@@ -1191,7 +1192,7 @@ const FormularioController = new Vue({
                   //console.log(response);
                   this.inconsistencias = [];
                   this.inconsistencias = response.body.inconsistencias[0];
-                  console.log(this.inconsistencias);
+                  //console.log(this.inconsistencias);
 
                }, response => { // error callback
                   //console.log(response);
@@ -1555,7 +1556,9 @@ const FormularioController = new Vue({
 
                                                       <dd>
                                                          <div class="table-responsive">
-                                                            <small class="text-info">Resultados encontrados</small>
+                                                            <small class="text-info">Resultados encontrados:</small>
+                                                            <small class="text-info">{{filterBy(mis_formularios, filterTerm).length || 0}}</small>
+
                                                             <br>
 
                                                             <table class="table table-striped small">
@@ -1738,7 +1741,10 @@ const FormularioController = new Vue({
                                                                                  <!--{{ o[Object.keys(o)[0]].not_null }} campos-->
 
                                                                                  <small class="pull-right text-success">
-                                                                                    {{ Math.round(o[Object.keys(o)[0]].completion) }}% completado
+                                                                                    {{
+                                                                                       Math.round(o[Object.keys(o)[0]].completion) > 100 ?
+                                                                                       100 : Math.round(o[Object.keys(o)[0]].completion)
+                                                                                    }}% completado
                                                                                  </small>
                                                                               </span>
 
@@ -1749,7 +1755,10 @@ const FormularioController = new Vue({
                                                                                     <!-- {{ o[Object.keys(o)[0]].null }} campos -->
 
                                                                                  <small class="pull-right text-warning">
-                                                                                    {{ Math.round(o[Object.keys(o)[0]].remaining) }}% restante
+                                                                                    {{
+                                                                                       Math.round(o[Object.keys(o)[0]].remaining) < 0 ?
+                                                                                       0 : Math.round(o[Object.keys(o)[0]].remaining)
+                                                                                    }}% restante
                                                                                  </small>
                                                                               </span>
 
@@ -1763,15 +1772,27 @@ const FormularioController = new Vue({
 
                                                                               <div class="progress">
                                                                                  <div class="progress-bar progress-bar-success progress-bar-striped active"
-                                                                                    :style="'width: '+o[Object.keys(o)[0]].completion+'%'">
+                                                                                    :style="'width: '+
+                                                                                       ((o[Object.keys(o)[0]].completion) > 100 ?
+                                                                                       100 : o[Object.keys(o)[0]].completion)
+                                                                                    +'%'">
                                                                                     <span class="">
-                                                                                       +{{Math.round(o[Object.keys(o)[0]].completion) }}%
+                                                                                       +{{
+                                                                                          (Math.round(o[Object.keys(o)[0]].completion) > 100) ?
+                                                                                          100 : Math.round(o[Object.keys(o)[0]].completion)
+                                                                                       }}%
                                                                                     </span>
                                                                                  </div>
                                                                                  <div class="progress-bar progress-bar-warning progress-bar-striped active"
-                                                                                    :style="'width: '+o[Object.keys(o)[0]].remaining+'%'">
+                                                                                    :style="'width: '+
+                                                                                       ((o[Object.keys(o)[0]].remaining < 0) ?
+                                                                                       0 : o[Object.keys(o)[0]].remaining)
+                                                                                    +'%'">
                                                                                     <span class="">
-                                                                                       -{{Math.round(o[Object.keys(o)[0]].remaining)}}%
+                                                                                       -{{
+                                                                                          (Math.round(o[Object.keys(o)[0]].remaining) < 0) ?
+                                                                                          0 : Math.round(o[Object.keys(o)[0]].remaining)
+                                                                                       }}%
                                                                                     </span>
                                                                                  </div>
                                                                               </div>
