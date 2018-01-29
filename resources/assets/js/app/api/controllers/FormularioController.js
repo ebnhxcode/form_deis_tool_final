@@ -1482,10 +1482,23 @@ const FormularioController = new Vue({
                                                                      </div>
 
                                                                      <div>
+                                                                        <!-- Boton editar formulario cumplimiento -->
+                                                                        <button class="btn btn-xs btn-primary pull-right"
+                                                                           v-if="formulario_tmp['run_madre']!=null &&
+                                                                              formulario_tmp['digito_verificador']!=null"
+                                                                           @click.prevent="modificar_usuario_seleccionado(
+                                                                              formulario_tmp['run_madre'],
+                                                                              formulario_tmp['digito_verificador']
+                                                                           )">
+                                                                           Ir a editar
+                                                                           &nbsp;<i class="fa fa-pencil"></i>
+                                                                        </button>
 
-                                                                        Nombre: {{formulario_tmp['nombres_madre'] || 'Sin ingresar'}}<br>
-                                                                        Ap. Paterno: {{formulario_tmp['primer_apellido_madre'] || 'Sin ingresar'}}<br>
-                                                                        Ap. Materno: {{formulario_tmp['segundo_apellido_madre'] || 'Sin ingresar'}}<br>
+                                                                        Nombre: {{
+                                                                           (formulario_tmp['nombres_madre'] || 'sin nombre') +" "+
+                                                                           (formulario_tmp['primer_apellido_madre'] || 'sin ap. paterno') +" "+
+                                                                           (formulario_tmp['segundo_apellido_madre'] || 'sin ap. materno')
+                                                                        }}
 
                                                                      </div>
 
@@ -1570,7 +1583,7 @@ const FormularioController = new Vue({
                                                                                  <div class="collapse" :id="'fields'+i"
                                                                                     style="overflow-y: scroll;max-height: 200px;">
                                                                                     <h5>Campos por completar</h5>
-                                                                                    
+
                                                                                     <span class="small text-success"
                                                                                        v-if="Math.round(o[Object.keys(o)[0]].completion) == 100">
                                                                                        A continuación sólo quedan campos opcionales
