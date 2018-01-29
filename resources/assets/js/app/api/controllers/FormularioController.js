@@ -877,7 +877,7 @@ const FormularioController = new Vue({
                                           </a>
                                        </li>
 
-                                       <li role="presentation" v-if="auth.id_role == 2">
+                                       <li role="presentation" v-if="$parent.in_array([2,3,5],auth.id_role)">
                                           <a href="#lista_errores_formulario_otros"
                                              aria-controls="lista_errores_formulario_otros" role="tab" data-toggle="tab">
                                              Inconsistencias de otros
@@ -1506,7 +1506,7 @@ const FormularioController = new Vue({
                                           </a>
                                        </li>
 
-                                       <li role="presentation" v-if="auth.id_role == 2">
+                                       <li role="presentation" v-if="$parent.in_array([2,3,5],auth.id_role)">
                                           <a href="#lista_formularios_otros" aria-controls="lista_formularios_otros" role="tab" data-toggle="tab">
                                              Fichas gestionadas de otros
                                              <span class="label label-warning">nuevo</span>
