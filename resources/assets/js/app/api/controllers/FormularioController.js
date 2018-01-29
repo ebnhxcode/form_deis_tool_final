@@ -983,7 +983,7 @@ const FormularioController = new Vue({
                                                 <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
 
                                                    <dt>
-                                                      Inconsistencias de otros usuarios
+                                                      Inconsistencias de otros usuarios (matrones o matronas) del sistema
                                                       <small>(Solo para perfil Observador)</small>
                                                       <br><br>
                                                    </dt>
@@ -1017,7 +1017,7 @@ const FormularioController = new Vue({
 
                                                                   </div><!-- /.input-group -->
 
-                                                                  <small>completo sin puntos ni guión.</small>
+                                                                  <small>completo sin puntos ni guión de matrón o matrona registrado/a.</small>
                                                                </dd>
                                                             </dl>
 
@@ -1046,7 +1046,7 @@ const FormularioController = new Vue({
                                                                      </span><!-- .input-group-btn -->
                                                                   </div><!-- /.input-group -->
 
-                                                                  <small>email del usuario registrado.</small>
+                                                                  <small>email de matrón o matrona registrado/a.</small>
                                                                </dd>
                                                             </dl>
 
@@ -1055,36 +1055,28 @@ const FormularioController = new Vue({
                                                       </div><!-- .row -->
 
                                                       <div class="table-responsive">
+                                                         <small class="text-info btn btn-link pull-right" @click.prevent="inconsistencias=[]">
+                                                            Limpiar tabla
+                                                         </small>
                                                          <small class="text-info">Resultados encontrados</small>
 
                                                          <br>
                                                          <table class="table table-striped small">
                                                             <thead>
                                                                <tr>
-                                                                  <th>Accion</th>
-                                                                  <!-- <th>ID</th> -->
-                                                                  <!-- <th># Registro</th> -->
+                                                                  <th>Acción</th>
                                                                   <th>Correlativo</th>
                                                                   <th>Run Madre</th>
                                                                   <th>Glosa Error</th>
-                                                                  <!-- <th>Estado</th> -->
+                                                                  <th>Estado</th>
                                                                </tr>
                                                             </thead>
                                                             <tbody>
 
-                                                               <tr v-for="e,i in auth['form_deis_errores']">
+                                                               <tr v-for="e,i in inconsistencias['form_deis_errores']">
                                                                <!-- v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'" -->
+
                                                                   <td>
-                                                                     <button class="btn btn-xs btn-success"
-                                                                        @click.prevent="marcar_error_revisado(e.id)"
-                                                                         v-if="e.estado!='Revisado'">
-                                                                        <i class="fa fa-check"></i>
-                                                                        <small>Marcar Revisado</small>
-                                                                     </button>
-                                                                     <button class="btn btn-xs btn-info" v-else>
-                                                                        Revisado
-                                                                     </button>
-                                                                     <!-- Boton editar formulario cumplimiento -->
                                                                      <button class="btn btn-xs btn-primary"
                                                                         v-if="e.run_madre!=null&&e.digito_verificador!=null"
                                                                         @click.prevent="modificar_usuario_seleccionado
@@ -1092,23 +1084,18 @@ const FormularioController = new Vue({
                                                                         &nbsp;<i class="fa fa-pencil"></i>
                                                                      </button>
                                                                   </td>
-                                                                  <!-- <td>{{e.id}}</td> -->
-                                                                  <!-- <td>{{(i+1)}}</td> -->
                                                                   <td>{{e.id_form_deis}}</td>
                                                                   <td>{{e.run_madre+e.digito_verificador}}</td>
                                                                   <td>{{e.glosa_error}}</td>
-
-                                                                  <!--
-                                                                   <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
-                                                                     {{e.estado || 'Pendiente'}}
+                                                                  <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
+                                                                     {{ (e.estado!='NULL')?e.estado:'Pendiente' || 'Pendiente' }}
                                                                   </td>
-                                                                  -->
                                                                </tr>
-
                                                             </tbody>
                                                          </table>
                                                       </div><!-- .table-responsive -->
-                                                      <small class="text-center" v-if="auth['form_deis_errores'].length==0">
+                                                      <small class="text-center" v-if="!inconsistencias['form_deis_errores'] ||
+                                                         inconsistencias['form_deis_errores'].length==0">
                                                          No hay más inconsistencias
                                                       </small>
                                                    </dd>
@@ -1151,6 +1138,7 @@ const FormularioController = new Vue({
             return {
                'rut_inconsistencias_otros':null,
                'email_inconsistencias_otros':null,
+               'inconsistencias':[],
 
             }
          },
@@ -1180,7 +1168,10 @@ const FormularioController = new Vue({
                formData.append('rut', this.rut_inconsistencias_otros);
 
                this.$http.post('/formulario/buscar_inconsistencias_rut', formData).then(response => { // success callback
-
+                  //console.log(response);
+                  this.inconsistencias = [];
+                  this.inconsistencias = response.body.inconsistencias[0];
+                  //console.log(this.inconsistencias);
 
                }, response => { // error callback
                   //console.log(response);
@@ -1197,7 +1188,10 @@ const FormularioController = new Vue({
                formData.append('email', this.email_inconsistencias_otros);
 
                this.$http.post('/formulario/buscar_inconsistencias_email', formData).then(response => { // success callback
-
+                  //console.log(response);
+                  this.inconsistencias = [];
+                  this.inconsistencias = response.body.inconsistencias[0];
+                  console.log(this.inconsistencias);
 
                }, response => { // error callback
                   //console.log(response);
