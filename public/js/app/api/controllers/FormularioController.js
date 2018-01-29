@@ -36188,11 +36188,8 @@ var FormularioController = new _vue2.default({
       is_null: function is_null(v) {
          return v == null ? true : false;
       },
-      is_empty: function is_empty() {
-         if (!v || v == null || v == '' || (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined) {
-            return true;
-         }
-         return false;
+      is_empty: function is_empty(v) {
+         return !v || v == null || v == '' || (typeof v === 'undefined' ? 'undefined' : _typeof(v)) == undefined ? true : false;
       },
       in_array: function in_array(array, v) {
          return array.indexOf(v) > -1 ? true : false;

@@ -2668,15 +2668,10 @@ const FormularioController = new Vue({
          return null;
       },
 
-      is_undefined: function (v) { return (typeof v == undefined)?true:false; },
-      is_null: function (v) { return v==null?true:false; },
-      is_empty: function () {
-         if (!v || v==null || v=='' || typeof v == undefined) {
-            return true;
-         }
-         return false;
-      },
-      in_array: function (array, v) { return (array.indexOf(v) > -1) ? true : false; },
+      is_undefined:(v) => { return (typeof v == undefined)?true:false; },
+      is_null: (v) => { return v==null?true:false; },
+      is_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
+      in_array: (array, v) => { return (array.indexOf(v) > -1) ? true : false; },
 
       //Checkea cada input a renderizar de forma reactiva, realiza validación en cualquier cambio de otros campos
       check_input: function (input,index) {
