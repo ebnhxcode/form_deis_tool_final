@@ -877,12 +877,24 @@ const FormularioController = new Vue({
                                           </a>
                                        </li>
 
+                                       <li role="presentation" v-if="auth.id_role == 5 || auth.id_role == 2">
+                                          <a href="#lista_errores_formulario_otros"
+                                             aria-controls="lista_errores_formulario_otros" role="tab" data-toggle="tab">
+                                             Inconsistencias de otros
+                                             <span class="label label-warning">nuevo</span>
+                                          </a>
+                                       </li>
+
                                     </ul>
                                  </div><!-- .panel-heading -->
 
                                  <div class="panel-body">
+
                                     <!-- Tab panes -->
                                     <div class="tab-content">
+
+
+
 
                                        <div role="tabpanel" class="tab-pane fade in active" id="lista_errores_formulario">
 
@@ -945,13 +957,14 @@ const FormularioController = new Vue({
                                                                   -->
 
                                                                </tr>
-                                                               <tr v-if="auth['form_deis_errores'].length==0">
-                                                                  <small>No hay más inconsistencias</small>
-                                                               </tr>
 
                                                             </tbody>
                                                          </table>
+
                                                       </div><!-- .table-responsive -->
+                                                      <small class="text-center" v-if="auth['form_deis_errores'].length==0">
+                                                         No hay más inconsistencias
+                                                      </small>
                                                    </dd>
 
                                                 </div><!-- .col-md-12 -->
@@ -959,8 +972,159 @@ const FormularioController = new Vue({
                                           </dl><!-- dl-horizontal -->
 
 
-                                       </div><!-- .tab-pane .fade #lista_personas_run -->
-                                    </div><!-- .panel-heading -->
+                                       </div><!-- .tab-pane .fade #lista_errores_formulario -->
+
+
+
+                                       <div role="tabpanel" class="tab-pane fade" id="lista_errores_formulario_otros">
+
+                                          <dl class="dl-vertical">
+                                             <div class="row">
+                                                <div class="col-md-12" style="overflow-y: scroll;max-height: 400px;">
+
+                                                   <dt>
+                                                      Inconsistencias de otros usuarios
+                                                      <small>(Solo para perfil Observador)</small>
+                                                      <br><br>
+                                                   </dt>
+                                                   <dd>
+
+                                                      <div class="row">
+
+                                                         <div class="col-sm-6 col-md-6">
+
+                                                            <dl class="dl-horizontal">
+                                                               <dt>
+                                                                  Buscar por rut
+                                                               </dt>
+                                                               <dd>
+
+                                                                  <div class="input-group input-group-sm">
+                                                                     <input type="text"
+                                                                        placeholder="Ej: 123456789"
+                                                                        id="rut_inconsistencias_otros"
+                                                                        name="rut_inconsistencias_otros"
+                                                                        class="form-control"
+                                                                        v-model="rut_inconsistencias_otros">
+
+                                                                     <span class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-primary"
+                                                                           @click.prevent="buscar_inconsistencias_rut">
+                                                                           &nbsp;<i class="fa fa-search"></i>
+                                                                        </button>
+                                                                        &nbsp;
+                                                                     </span><!-- .input-group-btn -->
+
+                                                                  </div><!-- /.input-group -->
+
+                                                                  <small>completo sin puntos ni guión.</small>
+                                                               </dd>
+                                                            </dl>
+
+                                                         </div><!-- .col-* -->
+
+                                                         <div class="col-sm-6 col-md-6">
+
+                                                            <dl class="dl-horizontal">
+                                                               <dt>
+                                                                  Buscar por email
+                                                               </dt>
+                                                               <dd>
+
+                                                                  <div class="input-group input-group-sm">
+                                                                     <input type="email"
+                                                                        id="email_inconsistencias_otros"
+                                                                        name="email_inconsistencias_otros"
+                                                                        class="form-control"
+                                                                        v-model="email_inconsistencias_otros">
+
+                                                                     <span class="input-group-btn">
+                                                                        <button class="btn btn-sm btn-primary"
+                                                                            @click.prevent="buscar_inconsistencias_email">
+                                                                           &nbsp;<i class="fa fa-search"></i>
+                                                                        </button>
+                                                                     </span><!-- .input-group-btn -->
+                                                                  </div><!-- /.input-group -->
+
+                                                                  <small>email del usuario registrado.</small>
+                                                               </dd>
+                                                            </dl>
+
+                                                         </div><!-- .col-* -->
+
+                                                      </div><!-- .row -->
+
+                                                      <div class="table-responsive">
+                                                         <small class="text-info">Resultados encontrados</small>
+
+                                                         <br>
+                                                         <table class="table table-striped small">
+                                                            <thead>
+                                                               <tr>
+                                                                  <th>Accion</th>
+                                                                  <!-- <th>ID</th> -->
+                                                                  <!-- <th># Registro</th> -->
+                                                                  <th>Correlativo</th>
+                                                                  <th>Run Madre</th>
+                                                                  <th>Glosa Error</th>
+                                                                  <!-- <th>Estado</th> -->
+                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                               <tr v-for="e,i in auth['form_deis_errores']">
+                                                               <!-- v-if="!e.estado || e.estado=='Pendiente' || e.estado=='pendiente'" -->
+                                                                  <td>
+                                                                     <button class="btn btn-xs btn-success"
+                                                                        @click.prevent="marcar_error_revisado(e.id)"
+                                                                         v-if="e.estado!='Revisado'">
+                                                                        <i class="fa fa-check"></i>
+                                                                        <small>Marcar Revisado</small>
+                                                                     </button>
+                                                                     <button class="btn btn-xs btn-info" v-else>
+                                                                        Revisado
+                                                                     </button>
+                                                                     <!-- Boton editar formulario cumplimiento -->
+                                                                     <button class="btn btn-xs btn-primary"
+                                                                        v-if="e.run_madre!=null&&e.digito_verificador!=null"
+                                                                        @click.prevent="modificar_usuario_seleccionado
+                                                                        (e.run_madre,e.digito_verificador)">
+                                                                        &nbsp;<i class="fa fa-pencil"></i>
+                                                                     </button>
+                                                                  </td>
+                                                                  <!-- <td>{{e.id}}</td> -->
+                                                                  <!-- <td>{{(i+1)}}</td> -->
+                                                                  <td>{{e.id_form_deis}}</td>
+                                                                  <td>{{e.run_madre+e.digito_verificador}}</td>
+                                                                  <td>{{e.glosa_error}}</td>
+
+                                                                  <!--
+                                                                   <td :class="e.estado=='Revisado'?'text-success':'text-warning'">
+                                                                     {{e.estado || 'Pendiente'}}
+                                                                  </td>
+                                                                  -->
+                                                               </tr>
+
+                                                            </tbody>
+                                                         </table>
+                                                      </div><!-- .table-responsive -->
+                                                      <small class="text-center" v-if="auth['form_deis_errores'].length==0">
+                                                         No hay más inconsistencias
+                                                      </small>
+                                                   </dd>
+
+                                                </div><!-- .col-md-12 -->
+                                             </div>
+                                          </dl><!-- dl-horizontal -->
+
+
+                                       </div><!-- .tab-pane .fade #lista_errores_formulario_otros -->
+
+
+
+                                    </div><!-- .tab-content -->
+
+
                                  </div><!-- .panel-heading -->
                               </div><!-- .panel-heading -->
 
@@ -985,6 +1149,8 @@ const FormularioController = new Vue({
          name: 'modal_errores_formulario',
          data () {
             return {
+               'rut_inconsistencias_otros':null,
+               'email_inconsistencias_otros':null,
 
             }
          },
@@ -993,6 +1159,53 @@ const FormularioController = new Vue({
          created () {
          },
          methods: {
+            buscar_inconsistencias_rut: function () {
+
+               if (validate(this.rut_inconsistencias_otros) == false) {
+                  swal({
+                     title: "Advertencia",
+                     text: "El rut es incorrecto.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return this.rut_inconsistencias_otros = null;
+               }else{
+                  format(this.rut_inconsistencias_otros);
+               }
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('rut', this.rut_inconsistencias_otros);
+
+               this.$http.post('/formulario/buscar_inconsistencias_rut', formData).then(response => { // success callback
+
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+            },
+            buscar_inconsistencias_email: function () {
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+               formData.append('email', this.email_inconsistencias_otros);
+
+               this.$http.post('/formulario/buscar_inconsistencias_email', formData).then(response => { // success callback
+
+
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+            },
+
             modificar_usuario_seleccionado: function (run_madre,digito_verificador) {
 
                if (!run_madre || !digito_verificador || validate(run_madre+""+digito_verificador) == false){
@@ -1076,7 +1289,6 @@ const FormularioController = new Vue({
                return ;
 
             },
-
             marcar_error_revisado: function (id_error) {
                Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
                var formData = new FormData();
@@ -1108,6 +1320,7 @@ const FormularioController = new Vue({
                   this.check_status_code(response.status);
                });
             }
+
          },
          watch: {
          },

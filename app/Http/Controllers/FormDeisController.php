@@ -259,6 +259,41 @@ class FormDeisController extends Controller {
         return $this->create($request);
     }
 
+    public function buscar_inconsistencias_rut (Request $request) {
+       if ($request->wantsJson()) {
+          $rut = isset($request->rut)?$request->rut:null;
+          if ($rut) {
+             $inconsistencias = User::where('rut', '=', $rut)->with('form_deis_errores')->get();
+             if (count($inconsistencias)>0){
+                return response()->json(['rd'=>'Existe', 'inconsistencias' => $inconsistencias]);
+
+             }else{
+                return response()->json(['rd'=>'No existe']);
+             }
+
+          }else{
+             return response()->json(['rd'=>'No existe']);
+          }
+       }
+    }
+    public function buscar_inconsistencias_email (Request $request) {
+       if ($request->wantsJson()) {
+          $email = isset($request->email)?$request->email:null;
+          if ($email) {
+             $inconsistencias = User::where('email', '=', $email)->with('form_deis_errores')->get();
+             if (count($inconsistencias)>0){
+                return response()->json(['rd'=>'Existe', 'inconsistencias' => $inconsistencias]);
+
+             }else{
+                return response()->json(['rd'=>'No existe']);
+             }
+
+          }else{
+             return response()->json(['rd'=>'No existe']);
+          }
+       }
+    }
+
     #Busqueda de validacion para comprobar si es que el rut existe
     public function buscar_run_existente (Request $request) {
         if ($request->wantsJson()) {
