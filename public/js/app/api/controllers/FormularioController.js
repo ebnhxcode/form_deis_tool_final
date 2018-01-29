@@ -36130,13 +36130,13 @@ var FormularioController = new _vue2.default({
 
                   this.empaquetar_datos_estadistica(ce - cern, ce_null - cern, ce_not_null, "Control de Embarazo (APS)", keyjs, control_embarazo);
 
-                  this.empaquetar_datos_estadistica(ps - psrn, ps_null - psrn, ps_not_null, "Control Sífilis (Especialidades)", keyjs, patologias_sifilis);
-
-                  this.empaquetar_datos_estadistica(pv - pvrn, pv_null - pvrn, pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
-
-                  this.empaquetar_datos_estadistica(dp - dprn, dp_null - dprn, dp_not_null, "Datos del Parto", keyjs, datos_parto);
-
-                  this.empaquetar_datos_estadistica(drn - (drnrn - 3), drn_null - (drnrn - 3), drn_not_null, "Datos recien nacido", keyjs, datos_recien_nacido);
+                  /*
+                  
+                  this.empaquetar_datos_estadistica(ps-(psrn),ps_null-(psrn),ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
+                   this.empaquetar_datos_estadistica(pv-(pvrn),pv_null-(pvrn),pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
+                   this.empaquetar_datos_estadistica(dp-(dprn),dp_null-(dprn),dp_not_null,"Datos del Parto",keyjs,datos_parto);
+                   this.empaquetar_datos_estadistica(drn-(drnrn-3),drn_null-(drnrn-3),drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
+                   */
 
                   this.show_mis_formularios_grid = false;
                   return;
@@ -36852,13 +36852,12 @@ var FormularioController = new _vue2.default({
 
                   this.empaquetar_datos_estadistica_otros(ce - cern, ce_null - cern, ce_not_null, "Control de Embarazo (APS)", keyjs, control_embarazo);
 
-                  this.empaquetar_datos_estadistica_otros(ps - psrn, ps_null - psrn, ps_not_null, "Control Sífilis (Especialidades)", keyjs, patologias_sifilis);
-
-                  this.empaquetar_datos_estadistica_otros(pv - pvrn, pv_null - pvrn, pv_not_null, "Control VIH (Especialidades)", keyjs, patologias_vih);
-
-                  this.empaquetar_datos_estadistica_otros(dp - dprn, dp_null - dprn, dp_not_null, "Datos del Parto", keyjs, datos_parto);
-
-                  this.empaquetar_datos_estadistica_otros(drn - (drnrn - 3), drn_null - (drnrn - 3), drn_not_null, "Datos recien nacido", keyjs, datos_recien_nacido);
+                  /*
+                   this.empaquetar_datos_estadistica_otros(ps-(psrn),ps_null-(psrn),ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
+                   this.empaquetar_datos_estadistica_otros(pv-(pvrn),pv_null-(pvrn),pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
+                   this.empaquetar_datos_estadistica_otros(dp-(dprn),dp_null-(dprn),dp_not_null,"Datos del Parto",keyjs,datos_parto);
+                   this.empaquetar_datos_estadistica_otros(drn-(drnrn-3),drn_null-(drnrn-3),drn_not_null,"Datos recien nacido",keyjs,datos_recien_nacido);
+                   */
 
                   this.show_formularios_otros_grid = false;
                   return;

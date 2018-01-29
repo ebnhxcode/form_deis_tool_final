@@ -3206,7 +3206,7 @@ const FormularioController = new Vue({
                   this.empaquetar_datos_estadistica(ce-(cern),ce_null-(cern),ce_not_null,"Control de Embarazo (APS)",keyjs,control_embarazo);
 
                   /*
-                  
+
                   this.empaquetar_datos_estadistica(ps-(psrn),ps_null-(psrn),ps_not_null,"Control Sífilis (Especialidades)",keyjs,patologias_sifilis);
 
                   this.empaquetar_datos_estadistica(pv-(pvrn),pv_null-(pvrn),pv_not_null,"Control VIH (Especialidades)",keyjs,patologias_vih);
