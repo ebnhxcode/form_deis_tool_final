@@ -1808,6 +1808,14 @@ const FormularioController = new Vue({
                                                                            Ir a editar
                                                                            &nbsp;<i class="fa fa-pencil"></i>
                                                                         </button>
+                                                                        <button class="btn btn-xs btn-warning pull-right"
+                                                                           v-else
+                                                                           @click.prevent="modificar_usuario_seleccionado_id(
+                                                                              formulario_tmp['id']
+                                                                           )">
+                                                                           Ir a editar
+                                                                           &nbsp;<i class="fa fa-pencil"></i>
+                                                                        </button>
 
                                                                         Nombre: {{
                                                                            (formulario_tmp['nombres_madre'] || 'sin nombre') +" "+
@@ -2228,6 +2236,14 @@ const FormularioController = new Vue({
                                                                            @click.prevent="modificar_usuario_seleccionado(
                                                                               formulario_otros_tmp['run_madre'],
                                                                               formulario_otros_tmp['digito_verificador']
+                                                                           )">
+                                                                           Ir a editar
+                                                                           &nbsp;<i class="fa fa-pencil"></i>
+                                                                        </button>
+                                                                        <button class="btn btn-xs btn-warning pull-right"
+                                                                           v-else
+                                                                           @click.prevent="modificar_usuario_seleccionado_id(
+                                                                              formulario_otros_tmp['id']
                                                                            )">
                                                                            Ir a editar
                                                                            &nbsp;<i class="fa fa-pencil"></i>
