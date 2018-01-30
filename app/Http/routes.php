@@ -93,6 +93,7 @@ Route::get('/testapi', function () {
 #Route::get('/formulario/api_registro_civil', 'FormDeisController@api_registro_civil');
 
 Route::post ('/formulario/buscar_por_run' , 'FormDeisController@buscar_por_run') ;
+Route::post ('/formulario/buscar_por_id' , 'FormDeisController@buscar_por_id') ;
 Route::post ('/formulario/buscar_por_pasaporte' , 'FormDeisController@buscar_por_pasaporte') ;
 Route::post ('/formulario/buscar_run_existente' , 'FormDeisController@buscar_run_existente') ;
 Route::post ('/formulario/buscar_por_correlativo' , 'FormDeisController@buscar_por_correlativo') ;

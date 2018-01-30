@@ -379,6 +379,20 @@ class FormDeisController extends Controller {
         }
     }
 
+    #Busqueda de un registro por el id
+    public function buscar_por_id (Request $request) {
+        if ($request->wantsJson()) {
+            $id = isset($request->id)?$request->id:null;
+            if ($id) {
+                $formularios = FormDeis::where('id', '=', $id)->with('form_deis_user')->get();
+                #$formularios = FormDeis::where('run_madre', '=', $run_madre)->get();
+                return response()->json(['formularios'=>$formularios]);
+            }else{
+                return response()->json(['error'=>['rd' => 'El id no existe']]);
+            }
+        }
+    }
+
     public function buscar_por_pasaporte (Request $request) {
         if ($request->wantsJson()) {
             $pasaporte_provisorio = isset($request->pasaporte_provisorio)?$request->pasaporte_provisorio:null;

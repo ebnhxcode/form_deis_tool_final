@@ -1005,7 +1005,9 @@ const FormularioController = new Vue({
                                                                         id="rut_inconsistencias_otros"
                                                                         name="rut_inconsistencias_otros"
                                                                         class="form-control"
-                                                                        v-model="rut_inconsistencias_otros">
+                                                                        v-model="rut_inconsistencias_otros"
+                                                                        @blur.prevent="buscar_inconsistencias_rut"
+                                                                        @change.prevent="buscar_inconsistencias_rut">
 
                                                                      <span class="input-group-btn">
                                                                         <button class="btn btn-sm btn-primary"
@@ -1036,7 +1038,9 @@ const FormularioController = new Vue({
                                                                         id="email_inconsistencias_otros"
                                                                         name="email_inconsistencias_otros"
                                                                         class="form-control"
-                                                                        v-model="email_inconsistencias_otros">
+                                                                        v-model="email_inconsistencias_otros"
+                                                                        @blur.prevent="buscar_inconsistencias_email"
+                                                                        @change.prevent="buscar_inconsistencias_email">
 
                                                                      <span class="input-group-btn">
                                                                         <button class="btn btn-sm btn-primary"
@@ -1084,6 +1088,13 @@ const FormularioController = new Vue({
                                                                         Ir a ver ficha
                                                                         &nbsp;<i class="fa fa-eye"></i>
                                                                      </button>
+                                                                     <button class="btn btn-xs btn-warning"
+                                                                        @click.prevent="modificar_usuario_seleccionado_id(e.id_form_deis)"
+                                                                         v-else>
+                                                                        Ir a ver ficha
+                                                                        &nbsp;<i class="fa fa-eye"></i>
+                                                                     </button>
+
                                                                   </td>
                                                                   <td>{{e.id_form_deis}}</td>
                                                                   <td>{{e.run_madre+e.digito_verificador}}</td>
@@ -1201,6 +1212,85 @@ const FormularioController = new Vue({
 
             },
 
+            modificar_usuario_seleccionado_id: function (id_form_deis) {
+               if (!id_form_deis){
+                  swal({
+                     title: "Advertencia",
+                     text: "Debe seleccionar a un usuario válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return;
+               }
+
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+
+               formData.append('id', id_form_deis);
+
+               var formularios = null;
+               var formulario_vacio = null;
+               this.$http.post('/formulario/buscar_por_id', formData).then(response => { // success callback
+
+                  if (response.status == 200) {
+
+                     formularios = response.body.formularios[0];
+
+                     formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
+
+                     if (formulario_vacio == true) {
+                        swal({
+                           title: "Atención",
+                           text: "El rut ingresado no se encuentra registrado.",
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                     }
+
+                     this.$parent.fdc = formularios;
+                     this.$parent.fdc_temp = formularios;
+                     this.$parent.formularioActivoObj = formularios;
+
+                     this.$parent.formularioEditActivo = true;
+                     this.$parent.formularioNuevoActivo = false;
+
+                     this.$parent.show_modal_mis_formularios = false;
+
+                     this.$parent.renderizar_solo_inputs();
+
+
+                     var formData = new FormData();
+                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                     formData.append('n_correlativo_interno', formularios.n_correlativo_interno);
+
+                     this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                        this.$parent.fdc = response.body.fdc;
+
+                        //console.log(response);
+                     }, response => { // error callback
+                        //console.log(response);
+                        this.$parent.check_status_code(response.status);
+                     });
+
+                  }
+
+                  //console.log(formularios);
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+               return ;
+
+            },
             modificar_usuario_seleccionado: function (run_madre,digito_verificador) {
 
                if (!run_madre || !digito_verificador || validate(run_madre+""+digito_verificador) == false){
@@ -1599,6 +1689,14 @@ const FormularioController = new Vue({
                                                                            @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">
                                                                            &nbsp;<i class="fa fa-pencil"></i>
                                                                         </button>
+                                                                        <button class="btn btn-xs btn-warning"
+                                                                           @click.prevent="modificar_usuario_seleccionado_id(f.form_deis.id)"
+                                                                           v-else>
+
+
+                                                                           &nbsp;<i class="fa fa-pencil"></i>
+                                                                        </button>
+
                                                                      </td>
 
                                                                      <!-- Correlativo -->
@@ -1893,7 +1991,9 @@ const FormularioController = new Vue({
                                                                         id="rut_formularios_otros"
                                                                         name="rut_formularios_otros"
                                                                         class="form-control"
-                                                                        v-model="rut_formularios_otros">
+                                                                        v-model="rut_formularios_otros"
+                                                                        @blur.prevent="buscar_formularios_otros_rut"
+                                                                        @change.prevent="buscar_formularios_otros_rut">
 
                                                                      <span class="input-group-btn">
                                                                         <button class="btn btn-sm btn-primary"
@@ -1924,7 +2024,9 @@ const FormularioController = new Vue({
                                                                         id="email_formularios_otros"
                                                                         name="email_formularios_otros"
                                                                         class="form-control"
-                                                                        v-model="email_formularios_otros">
+                                                                        v-model="email_formularios_otros"
+                                                                        @blur.prevent="buscar_formularios_otros_email"
+                                                                        @change.prevent="buscar_formularios_otros_email">
 
                                                                      <span class="input-group-btn">
                                                                         <button class="btn btn-sm btn-primary"
@@ -2012,6 +2114,11 @@ const FormularioController = new Vue({
                                                                         <button class="btn btn-xs btn-primary"
                                                                            v-if="f.form_deis.run_madre!=null&&f.form_deis.digito_verificador!=null"
                                                                            @click.prevent="modificar_usuario_seleccionado(f.form_deis.run_madre,f.form_deis.digito_verificador)">
+                                                                           &nbsp;<i class="fa fa-pencil"></i>
+                                                                        </button>
+                                                                        <button class="btn btn-xs btn-warning"
+                                                                           @click.prevent="modificar_usuario_seleccionado_id(f.form_deis.id)"
+                                                                           v-else>
                                                                            &nbsp;<i class="fa fa-pencil"></i>
                                                                         </button>
                                                                      </td>
@@ -2396,6 +2503,85 @@ const FormularioController = new Vue({
 
             },
 
+            modificar_usuario_seleccionado_id: function (id_form_deis) {
+               if (!id_form_deis){
+                  swal({
+                     title: "Advertencia",
+                     text: "Debe seleccionar a un usuario válido.",
+                     type: "warning",
+                     confirmButtonClass: "btn-danger",
+                     closeOnConfirm: false
+                  });
+                  return;
+               }
+
+               this.$parent.fdc = [];
+               this.$parent.fdc_temp = [];
+
+               var formData = new FormData();
+
+               Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+
+
+               formData.append('id', id_form_deis);
+
+               var formularios = null;
+               var formulario_vacio = null;
+               this.$http.post('/formulario/buscar_por_id', formData).then(response => { // success callback
+
+                  if (response.status == 200) {
+
+                     formularios = response.body.formularios[0];
+
+                     formulario_vacio = $.isEmptyObject(formularios)==true?true:false;
+
+                     if (formulario_vacio == true) {
+                        swal({
+                           title: "Atención",
+                           text: "El rut ingresado no se encuentra registrado.",
+                           type: "warning",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                     }
+
+                     this.$parent.fdc = formularios;
+                     this.$parent.fdc_temp = formularios;
+                     this.$parent.formularioActivoObj = formularios;
+
+                     this.$parent.formularioEditActivo = true;
+                     this.$parent.formularioNuevoActivo = false;
+
+                     this.$parent.show_modal_mis_formularios = false;
+
+                     this.$parent.renderizar_solo_inputs();
+
+
+                     var formData = new FormData();
+                     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                     formData.append('n_correlativo_interno', formularios.n_correlativo_interno);
+
+                     this.$http.post('/formulario/marcar_registro_form_deis', formData).then(response => { // success callback
+                        this.$parent.fdc = response.body.fdc;
+
+                        //console.log(response);
+                     }, response => { // error callback
+                        //console.log(response);
+                        this.$parent.check_status_code(response.status);
+                     });
+
+                  }
+
+                  //console.log(formularios);
+               }, response => { // error callback
+                  //console.log(response);
+                  this.$parent.check_status_code(response.status);
+               });
+
+
+               return ;
+
+            },
             modificar_usuario_seleccionado: function (run_madre,digito_verificador) {
 
                if (!run_madre || !digito_verificador || validate(run_madre+""+digito_verificador) == false){
