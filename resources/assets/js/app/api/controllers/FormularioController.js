@@ -4471,14 +4471,95 @@ const FormularioController = new Vue({
                input.disabled = 'disabled';
                break;
             case 'run_madre':
-
-
-
                // Valida si es distinto a null, bloquea digito y pasaporte
+               var run_limpio = null;
+               var dv = null;
+
                if (this.is_null(this.fdc[input.name]) == false /*&& this.fdc[input.name]*/) {
                   this.find_input(this.inputs, 'pasaporte_provisorio').disabled = 'disabled';
                   this.find_input(this.inputs, 'digito_verificador').disabled = 'disabled';
                }
+
+               if (this.formularioNuevoActivo == true) {
+                  if (this.fdc[input.name]) {
+                     if (validate(this.fdc[input.name]) == false) {
+                        swal({
+                           title: "Error",
+                           text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                           type: "error",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
+                        this.fdc[input.name] = null;
+                        this.fdc['digito_verificador'] = null;
+                        break;
+                     } else {
+                        run_limpio = clean(this.fdc[input.name]);
+                        dv = run_limpio.substr(run_limpio.length-1, run_limpio.length);
+                        run_limpio = run_limpio.substr(0, run_limpio.length-1);
+                        this.fdc['run_madre'] = run_limpio;
+                        this.fdc['digito_verificador'] = dv;
+                     }
+                  } else {
+                     break;
+                  }
+               }
+
+               if (this.formularioEditActivo == true) {
+                  
+                  if (validate(this.fdc[input.name]+""+this.fdc['digito_verificador']) == false) {
+                     swal({
+                        title: "Error",
+                        text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                        type: "error",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                     this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
+                     this.fdc[input.name] = null;
+                     this.fdc['digito_verificador'] = null;
+                     break;
+                  }
+
+
+
+               }
+
+
+
+
+               if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
+                  var formData = new FormData();
+                  Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                  formData.append('run_madre', run_limpio);
+                  this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
+                     if (response.status == 200) {
+                        var rd = response.body.rd;
+                        this.formularios_encontrados = response.body.formularios;
+                        if (rd == 'Existe') {
+                           var self = this;
+                           swal({
+                              title: "Atencion",
+                              text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
+                              type: "success",
+                              confirmButtonClass: "btn-success",
+                              closeOnConfirm: true
+                           }, function(isConfirm){ if (isConfirm) { self.show_modal_formularios_encontrados = true; } });
+                        }
+                     }else{
+                        swal({
+                           title: "Advertencia",
+                           text: "Ocurrio un error al procesar la solicitud.",
+                           type: "error",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                     }
+                  }, response => { }); // error callback //console.log(response);
+               }
+
+
 
                /*
                if (this.auth && this.in_array([2,3,5], this.auth.id_role)) {
@@ -4508,7 +4589,8 @@ const FormularioController = new Vue({
                }
                */
 
-               console.log(this.fdc[input.name].substr(this.fdc[input.name].length-1, this.fdc[input.name].length));
+               //console.log(this.fdc[input.name].substr(this.fdc[input.name].length-1, this.fdc[input.name].length));
+               /*
                if ( this.formularioEditActivo == true ) {
 
                   if (this.fdc['digito_verificador'] != null &&
@@ -4549,6 +4631,7 @@ const FormularioController = new Vue({
                   }
 
                }
+               */
 
 
                /*
@@ -4579,6 +4662,7 @@ const FormularioController = new Vue({
 
 
                //Aca ya está validado el rut
+               /*
                if (this.formularioNuevoActivo == true ||
                   ( validate(this.fdc[input.name]) && this.fdc['digito_verificador'] == null ) ) {
 
@@ -4590,40 +4674,13 @@ const FormularioController = new Vue({
 
                   //input.disabled = 'disabled';
                }
+               */
 
 
                // Validacion para recordar al usuario que ese rut ingresado ya existe en el sistema,
                // entonces le pregunta si es nuevo o lo sigue creando
 
-               if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
-                  var formData = new FormData();
-                  Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
-                  formData.append('run_madre', run_limpio);
-                  this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
-                     if (response.status == 200) {
-                        var rd = response.body.rd;
-                        this.formularios_encontrados = response.body.formularios;
-                        if (rd == 'Existe') {
-                           var self = this;
-                           swal({
-                              title: "Atencion",
-                              text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
-                              type: "success",
-                              confirmButtonClass: "btn-success",
-                              closeOnConfirm: true
-                           }, function(isConfirm){ if (isConfirm) { self.show_modal_formularios_encontrados = true; } });
-                        }
-                     }else{
-                        swal({
-                           title: "Advertencia",
-                           text: "Ocurrio un error al procesar la solicitud.",
-                           type: "error",
-                           confirmButtonClass: "btn-danger",
-                           closeOnConfirm: false
-                        });
-                     }
-                  }, response => { }); // error callback //console.log(response);
-               }
+
 
                break;
 
