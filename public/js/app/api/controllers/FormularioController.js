@@ -37314,42 +37314,105 @@ var FormularioController = new _vue2.default({
                      this.find_input(this.inputs, 'digito_verificador').disabled = 'disabled';
                   }
 
-               // Valida si se está editando para bloquear la edicion del campo
-               if (this.formularioEditActivo == true /* && this.formularioNuevoActivo == false*/) {
-                     if (this.auth && this.in_array([2, 3, 5], this.auth.id_role)) {
-                        input.disabled = null;
-                     } else {
-                        input.disabled = 'disabled';
-                        return;
-                     }
-                  }
+               /*
+               if (this.auth && this.in_array([2,3,5], this.auth.id_role)) {
+                  input.disabled = null
+               }else {
+                  input.disabled = 'disabled';
+                  return;
+               }
+               */
 
-               if (this.formularioNuevoActivo == true && this.fdc[input.name] == null /* && this.formularioNuevoActivo == false*/) {
+               /*
+               if ( this.formularioNuevoActivo == true || this.fdc[input.name] == null ) {
+                  break;
+               } else {
+                  if (validate(this.fdc[input.name]+""+this.fdc['digito_verificador']) == false) {
+                     swal({
+                        title: "Error",
+                        text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                        type: "error",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                     this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
+                     this.fdc[input.name] = null;
                      break;
                   }
+               }
+               */
 
-               //this.is_null(this.fdc[input.name]) ||
-               if ((0, _rut.validate)(this.fdc[input.name]) == false) {
-                  swal({
-                     title: "Error",
-                     text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
-                     type: "error",
-                     confirmButtonClass: "btn-danger",
-                     closeOnConfirm: false
-                  });
-                  this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
-                  this.fdc[input.name] = null;
-                  break;
+               console.log(this.fdc[input.name].substr(this.fdc[input.name].length - 1, this.fdc[input.name].length));
+               if (this.formularioEditActivo == true) {
+
+                  if (this.fdc['digito_verificador'] != null && this.fdc[input.name].substr(this.fdc[input.name].length - 1, this.fdc[input.name].length) != this.fdc['digito_verificador']) {
+
+                     if ((0, _rut.validate)(this.fdc[input.name] + "" + this.fdc['digito_verificador']) == false) {
+                        swal({
+                           title: "Error",
+                           text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                           type: "error",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
+                        this.fdc[input.name] = null;
+                        this.fdc['digito_verificador'] = null;
+                        break;
+                     }
+                  } else {
+                     this.fdc['digito_verificador'] = null;
+                     if ((0, _rut.validate)(this.fdc[input.name]) == false) {
+
+                        swal({
+                           title: "Error",
+                           text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                           type: "error",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                        this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
+                        this.fdc[input.name] = null;
+                        this.fdc['digito_verificador'] = null;
+                        break;
+                     }
+                  }
                }
 
-               //Aca ya está validado el rut
-               var run_limpio = (0, _rut.clean)(this.fdc[input.name]);
-               var dv = run_limpio.substr(run_limpio.length - 1, run_limpio.length);
-               run_limpio = run_limpio.substr(0, run_limpio.length - 1);
-               this.fdc['run_madre'] = run_limpio;
-               this.fdc['digito_verificador'] = dv;
+               /*
+               // Valida si se está editando para bloquear la edicion del campo
+               if ( this.formularioEditActivo == true &&
+                  (this.fdc[input.name] == null ||
+                  this.fdc['digito_verificador'] == null)
+                  ) {
+                  return;
+               }else{
+                  if (validate(this.fdc[input.name]+""+this.fdc['digito_verificador']) == false) {
+                      swal({
+                        title: "Error",
+                        text: "Debe ingresar un rut completo valido, sin puntos ni guión.",
+                        type: "error",
+                        confirmButtonClass: "btn-danger",
+                        closeOnConfirm: false
+                     });
+                     this.find_input(this.inputs, 'pasaporte_provisorio').disabled = null;
+                     this.fdc[input.name] = null;
+                     break;
+                  }
+               }
+               */
 
-               input.disabled = 'disabled';
+               //Aca ya está validado el rut
+               if (this.formularioNuevoActivo == true || (0, _rut.validate)(this.fdc[input.name]) && this.fdc['digito_verificador'] == null) {
+
+                  var run_limpio = (0, _rut.clean)(this.fdc[input.name]);
+                  var dv = run_limpio.substr(run_limpio.length - 1, run_limpio.length);
+                  run_limpio = run_limpio.substr(0, run_limpio.length - 1);
+                  this.fdc['run_madre'] = run_limpio;
+                  this.fdc['digito_verificador'] = dv;
+
+                  //input.disabled = 'disabled';
+               }
 
                // Validacion para recordar al usuario que ese rut ingresado ya existe en el sistema,
                // entonces le pregunta si es nuevo o lo sigue creando
