@@ -4480,7 +4480,11 @@ const FormularioController = new Vue({
 
                // Valida si se está editando para bloquear la edicion del campo
                if ( this.formularioEditActivo == true /* && this.formularioNuevoActivo == false*/ ) {
-                  input.disabled = 'disabled';
+                  if (this.auth && this.in_array([2,3,5], this.auth.id_role)) {
+                     input.disabled = null;
+                  }else {
+                     input.disabled = 'disabled';
+                  }
                   return;
                }
 
@@ -4510,10 +4514,6 @@ const FormularioController = new Vue({
                this.fdc['digito_verificador'] = dv;
 
                input.disabled = 'disabled';
-
-               if (this.auth && this.in_array([2,3,5], this.auth.id_role)) {
-                  input.disabled = null;
-               }
 
                // Validacion para recordar al usuario que ese rut ingresado ya existe en el sistema,
                // entonces le pregunta si es nuevo o lo sigue creando
