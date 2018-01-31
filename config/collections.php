@@ -38,6 +38,7 @@ return [
    'deis_form_table_options' => [
 
       'pueblos_indigenas' => [
+         '' => '',
          'Mapuche' => 'Mapuche',
          'Aymara' => 'Aymara',
          'Rapa Nui' => 'Rapa Nui',
@@ -49,16 +50,17 @@ return [
          'Yagan' => 'Yagan',
          'Otro' => 'Otro',
          'Ninguno' => 'Ninguno',
-
       ],
 
       'embarazo_con_control_parental' => [
+         '' => '',
          'Si' => 'Si',
          'No' => 'No',
          'Desconocido' => 'Desconocido',
       ],
 
       'codigo_establecimiento_control_prenatal_embarazo' => [
+         '' => '',
          'Publico'=>'Publico',
          'Privado'=>'Privado',
          'Mixto'=>'Mixto',
@@ -67,27 +69,30 @@ return [
       ],
 
       'acepta_rechaza_toma_examen_vih' => [
+         '' => '',
          'Acepta' => 'Acepta',
          'Rechaza' => 'Rechaza',
          'No Corresponde' => 'No Corresponde',
       ],
 
       'resultado_final_isp_examen_vih' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Registra Muestra Anterior' => 'Registra Muestra Anterior',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'derivada_a_especialidades_embarazo' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
          'No Corresponde' => 'No Corresponde',
       ],
 
       'estado_civil' => [
+         ''=>'',
          'Soltera' => 'Soltera',
          'Casada' => 'Casada',
          'Viuda' => 'Viuda',
@@ -98,6 +103,7 @@ return [
       ],
 
       'tipo_de_convivencia' => [
+         ''=>'',
          'Estable' => 'Estable',
          'Ocacional' => 'Ocacional',
          'Desconocido' => 'Desconocido',
@@ -105,6 +111,7 @@ return [
 
 
       'escolaridad' => [
+         ''=>'',
          'Ed. Basica' => 'Ed. Basica',
          'Ed. Media' => 'Ed. Media',
          'Tecnico' => 'Tecnico',
@@ -114,6 +121,7 @@ return [
       ],
 
       'residencia_gestante' => [
+         ''=>'',
          'Fija' => 'Fija',
          'Transitoria' => 'Transitoria',
          'Situacion de Calle' => 'Situacion de Calle',
@@ -123,6 +131,7 @@ return [
       ],
 
       'adicciones' => [
+         ''=>'',
          'Alcohol' => 'Alcohol',
          'Drogas' => 'Drogas',
          'Alcohol y Drogas' => 'Alcohol y Drogas',
@@ -131,23 +140,26 @@ return [
       ],
 
       'sifilis_previa_embarazo' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
       'otra_its_previa_embarazo' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
       'resultado_treponemico' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'diagnostico_sifilis_embarazo' => [
+         ''=>'',
          'Sifilis Primaria' => 'Sifilis Primaria',
          'Sifilis Secundaria' => 'Sifilis Secundaria',
          'Sifilis Latente Precoz' => 'Sifilis Latente Precoz',
@@ -158,6 +170,7 @@ return [
       ],
 
       'tratamiento_sifilis_farmaco' => [
+         ''=>'',
          'Penicilina Benzatina' => 'Penicilina Benzatina',
          'Penicilina Sodica' => 'Penicilina Sodica',
          'Penicilina Sodica Mas Benzatina' => 'Penicilina Sodica Mas Benzatina',
@@ -165,33 +178,35 @@ return [
       ],
 
       'tratamiento_sifilis_dosis' => [
+         ''=>'',
          '2.400.000 UI' => '2.400.000 UI',
          '1.000.000 UI' => '1.000.000 UI',
          'Otra' => 'Otra',
       ],
 
       'tratamiento_sifilis_frecuencia' => [
+         ''=>'',
          'Una vez' => 'Una vez',
          'Dos veces' => 'Dos veces',
          'Tres veces' => 'Tres veces',
          'Otra' => 'Otra',
       ],
 
-
-
       'terapia_antiretroviral_farmaco_1' => [
+         ''=>'',
          'Zidovudina' => 'Zidovudina',
          'Abacavir' => 'Abacavir',
          'Tenofovir' => 'Tenofovir',
       ],
 
-
       'terapia_antiretroviral_tar_farmaco_2' => [
+         ''=>'',
          'Lamivudina' => 'Lamivudina',
          'Emtricitabina' => 'Emtricitabina',
       ],
 
       'terapia_antiretroviral_tar_farmaco_3' => [
+         ''=>'',
          'Nevirapina' => 'Nevirapina',
          'Atazanavir' => 'Atazanavir',
          'Fosamprenavir' => 'Fosamprenavir',
@@ -201,44 +216,49 @@ return [
          'Otro' => 'Otro',
       ],
 
-
-
       'vih_conocido_previa_embarazo' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
          'Desconocido' => 'Desconocido',
       ],
 
       'pareja_vih_positivo' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
          'Desconocido' => 'Desconocido',
       ],
 
       'mujer_es_vih_positivo' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
          'Desconocido' => 'Desconocido',
       ],
 
       'via_parto' => [
+         ''=>'',
          'Parto Vaginal' => 'Parto Vaginal',
          'Parto Cesarea' => 'Parto Cesarea',
       ],
 
       'tipo_establecimiento_control_prenatal_embarazo' => [
+         ''=>'',
          'Publico' => 'Publico',
          'Privado' => 'Privado',
          'Otro' => 'Otro',
       ],
 
       'tipo_establecimiento' => [
+         ''=>'',
          'Publico' => 'Publico',
          'Privado' => 'Privado',
          'Otro' => 'Otro',
       ],
 
       'tipo_parto' => [
+         ''=>'',
          'Simple' => 'Simple',
          'Doble' => 'Doble',
          'Triple' => 'Triple',
@@ -248,14 +268,15 @@ return [
 
 
       'resultado_vdrl_parto' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
 
       'resultado_dilucion_vdrl_parto' => [
+         ''=>'',
          '1:1' => '1:1',
          '1:2' => '1:2',
          '1:4' => '1:4',
@@ -269,13 +290,14 @@ return [
       ],
 
       'resultado_examen_treponemico_parto' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_examen_treponemico_parto_madre' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'No Realizado' => 'Examen No Realizado',
@@ -283,44 +305,50 @@ return [
       ],
 
       'tratamiento_sifilis_parto' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
       'resultado_examen_vih_parto' => [
+         ''=>'',
          'No Corresponde' => 'No Corresponde',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
-
       ],
 
       'tratamiento_retroviral_parto' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
       'nombre_farmaco_1_vih' => [
+         ''=>'',
          'Zidovudina (AZT)' => 'Zidovudina (AZT)',
       ],
 
       'nombre_farmaco_2_vih' => [
+         ''=>'',
          'Nevirapina' => 'Nevirapina (NVP)',
       ],
 
       'nombre_farmaco_suspencion_lactancia' => [
+         ''=>'',
          'Cabergolina' => 'Cabergolina',
          'Bromocriptina' => 'Bromocriptina',
       ],
 
 
       'estado_recien_nacido' => [
+         ''=>'',
          'Vivo' => 'Vivo',
          'Muerto' => 'Muerto',
       ],
 
       'sexo_recien_nacido' => [
+         ''=>'',
          'Hombre' => 'Hombre',
          'Mujer' => 'Mujer',
          'Intersex' => 'Intersex',
@@ -328,13 +356,14 @@ return [
       ],
 
       'resultado_vdrl_periferico_recien_nacido' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'titulacion_vdrl_periferico_recien_nacido' => [
+         ''=>'',
          '1:1' => '1:1',
          '1:2' => '1:2',
          '1:4' => '1:4',
@@ -348,14 +377,15 @@ return [
       ],
 
       'resultado_vdrl_liq_cefalo_recien_nacido' => [
+         ''=>'',
          'Puncion Frustrada' => 'Punción Frustrada',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'titulacion_vdrl_liq_cefalo_recien_nacido' => [
+         ''=>'',
          '1:1' => '1:1',
          '1:2' => '1:2',
          '1:4' => '1:4',
@@ -369,28 +399,29 @@ return [
       ],
 
       'resultado_radiografia_huesos_largos' => [
+         ''=>'',
          'Normal' => 'Normal',
          'Alterado' => 'Alterado',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_citoquimico_liq_cefalo_raquideo' => [
+         ''=>'',
          'Puncion Frustrada' => 'Punción Frustrada',
          'Normal' => 'Normal',
          'Alterado' => 'Alterado',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_estudio_placentario' => [
+         ''=>'',
          'Infeccion por Treponema' => 'Infeccion por Treponema',
          'No Infeccion por Treponema' => 'No Infeccion por Treponema',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'tratamiento_recien_nacido_farmaco' => [
+         ''=>'',
          'Penicilina Sodica' => 'Penicilina Sodica',
          'Penicilina Benzatina' => 'Penicilina Benzatina',
          'Otro Antibiotico' => 'Otro Antibiotico',
@@ -399,32 +430,37 @@ return [
       ],
 
       'resultado_examen_treponemico_parto_datos_recien_nacido' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'sustituto_leche_materna' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
       'entrega_sustituto_leche_materna_al_alta' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
       'nombre_farmaco_1_vih_recien_nacido' => [
+         ''=>'',
          'Zidovudina (AZT)' => 'Zidovudina (AZT)',
       ],
 
       'nombre_farmaco_2_vih_recien_nacido' => [
+         ''=>'',
          'Nevirapina' => 'Nevirapina (NVP)',
       ],
 
       'diagnostico_final_vih_isp_recien_nacido' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
@@ -432,20 +468,22 @@ return [
 
 
       'resultado_test_elisa_18_meses' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
 
       'derivacion_recien_nacido_a_seguimiento' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
 
       'estado_seguimiento_mes' => [
+         ''=>'',
          'Control' => 'Control',
          'Alta' => 'Alta',
          'Abandono' => 'Abandono',
@@ -455,6 +493,7 @@ return [
 
 
       'estado_seguimiento_3_meses' => [
+         ''=>'',
          'Control' => 'Control',
          'Alta' => 'Alta',
          'Abandono' => 'Abandono',
@@ -464,6 +503,7 @@ return [
 
 
       'estado_seguimiento_6_meses' => [
+         ''=>'',
          'Control' => 'Control',
          'Alta' => 'Alta',
          'Abandono' => 'Abandono',
@@ -473,6 +513,7 @@ return [
 
 
       'estado_seguimiento_12_meses' => [
+         ''=>'',
          'Control' => 'Control',
          'Alta' => 'Alta',
          'Abandono' => 'Abandono',
@@ -482,6 +523,7 @@ return [
 
 
       'estado_seguimiento_18_meses' => [
+         ''=>'',
          'Control' => 'Control',
          'Alta' => 'Alta',
          'Abandono' => 'Abandono',
@@ -491,19 +533,21 @@ return [
 
 
       'mujer_continua_tratamiento_antiretroviral' => [
+         ''=>'',
          'Si' => 'Si',
          'No' => 'No',
       ],
 
 
       'resultado_1_vdrl_embarazo' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_dilucion_1_vdrl_embarazo' => [
+         ''=>'',
          '1:1' => '1:1',
          '1:2' => '1:2',
          '1:4' => '1:4',
@@ -518,13 +562,14 @@ return [
 
 
       'resultado_2_vdrl_embarazo' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_dilucion_2_vdrl_embarazo' => [
+         ''=>'',
          '1:1' => '1:1',
          '1:2' => '1:2',
          '1:4' => '1:4',
@@ -538,13 +583,14 @@ return [
       ],
 
       'resultado_3_vdrl_embarazo' => [
+
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_dilucion_3_vdrl_embarazo' => [
+         ''=>'',
          '1:1' => '1:1',
          '1:2' => '1:2',
          '1:4' => '1:4',
@@ -558,82 +604,83 @@ return [
       ],
 
       'resultado_1_examen_vih_embarazo' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_2_examen_vih_embarazo' => [
+         ''=>'',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
 
       'resultado_1_examen_pcr_recien_nacido' => [
+         ''=>'',
          'Indeterminado' => 'Indeterminado',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_2_examen_pcr_recien_nacido' => [
+         ''=>'',
          'Indeterminado' => 'Indeterminado',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
       'resultado_3_examen_pcr_recien_nacido' => [
+         ''=>'',
          'Indeterminado' => 'Indeterminado',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'numero_cd4_ingreso_control_prenatal' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
 
       'numero_carga_viral_control_prenatal' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
 
       'carga_viral_numero_copia_semana_34' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'resultado_final_isp_examen_vih_recien_nacido' => [
+         ''=>'',
          'Positivo' => 'Positivo',
          'Negativo' => 'Negativo',
          'Registra Muestra Anterior' => 'Registra Muestra Anterior',
          'Pendiente' => 'Pendiente',
          'No Realizado' => 'Examen No Realizado',
-         ''=>'',
       ],
 
       'edad_gestacional_ingreso_control_embarazo' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,
@@ -642,6 +689,7 @@ return [
       ],
 
       'eg_1_vdrl_embarazo' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,
@@ -650,6 +698,7 @@ return [
       ],
 
       'eg_2_vdrl_embarazo' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>  27,28=>28,29=>29,30=>30,
@@ -658,6 +707,7 @@ return [
       ],
 
       'eg_3_vdrl_embarazo' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,
@@ -666,6 +716,7 @@ return [
       ],
 
       'eg_1_examen_vih' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,
@@ -674,6 +725,7 @@ return [
       ],
 
       'eg_2_examen_vih' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,
@@ -682,6 +734,7 @@ return [
       ],
 
       'eg_pediatrica' => [
+         ''=>'',
          1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,
          11=>11,12=>12,13=>13,14=>14,15=>15,16=>16,17=>17,18=>18,19=>19,20=>20,
          21=>21,22=>22,23=>23,24=>24,25=>25,26=>26,27=>27,28=>28,29=>29,30=>30,
@@ -690,6 +743,7 @@ return [
       ],
 
       'prevision_madre' => [
+         ''=>'',
          'Isapre' => 'Isapre',
          'FFAA' => 'FFAA',
          'Fonasa' => 'Fonasa',
