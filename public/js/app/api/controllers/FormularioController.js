@@ -37320,8 +37320,8 @@ var FormularioController = new _vue2.default({
                         input.disabled = null;
                      } else {
                         input.disabled = 'disabled';
+                        return;
                      }
-                     return;
                   }
 
                if (this.formularioNuevoActivo == true && this.fdc[input.name] == null /* && this.formularioNuevoActivo == false*/) {
