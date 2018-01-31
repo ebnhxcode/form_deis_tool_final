@@ -4471,11 +4471,94 @@ const FormularioController = new Vue({
                input.disabled = 'disabled';
                break;
             case 'run_madre':
+
+
+               if (!this.fdc[input.name] ||
+                  this.fdc[input.name] == '' ||
+                  this.fdc[input.name] == null ||
+                  validate(this.fdc[input.name]+this.fdc['digito_verificador'])){
+                  return;
+               }
+
+               if (validate(this.fdc[input.name]) == false) {
+                  alert('Debe ingresar un rut completo valido, sin puntos ni guión.');
+                  this.fdc[input.name] = null;
+                  this.fdc['digito_verificador'] = dv;
+                  return;
+               }
+
+               if (this.fdc[input.name] != null && this.fdc[input.name]) {
+
+                  for (let i in this.inputs){
+                     if (this.inputs[i].name == 'pasaporte_provisorio') {
+                        this.inputs[i].disabled = true;
+                     }
+                  }
+
+               }
+
+               var run_limpio = clean(this.fdc[input.name]);
+               var dv = run_limpio.substr(run_limpio.length-1, run_limpio.length);
+               run_limpio = run_limpio.substr(0, run_limpio.length-1);
+               this.fdc['run_madre'] = run_limpio;
+               this.fdc['digito_verificador'] = dv;
+
+               //input.disabled = 'disabled';
+
+               if (this.formularioNuevoActivo == true && this.fdc[input.name] != null) {
+                  var formData = new FormData();
+                  Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').val();
+                  //formData.append('run_madre', this.fdc[input.name]);
+                  formData.append('run_madre', run_limpio);
+                  this.$http.post('/formulario/buscar_run_existente', formData).then(response => { // success callback
+                     //console.log(response);
+                     if (response.status == 200) {
+                        var rd = response.body.rd;
+                        this.formularios_encontrados = response.body.formularios;
+                        if (rd == 'Existe') {
+                           //this.fdc[input.name] = null;
+                           var self = this;
+                           swal({
+                              title: "Atencion",
+                              text: "El rut ingresado ya existe para una madre registrada, por favor seleccione el registro a modificar.",
+                              type: "success",
+                              confirmButtonClass: "btn-success",
+                              closeOnConfirm: true
+                           }, function(isConfirm){
+                              if (isConfirm) {
+                                 self.show_modal_formularios_encontrados = true;
+                              }
+                           });
+                        }
+                     }else{
+                        swal({
+                           title: "Advertencia",
+                           text: "Ocurrio un error al procesar la solicitud.",
+                           type: "error",
+                           confirmButtonClass: "btn-danger",
+                           closeOnConfirm: false
+                        });
+                     }
+                  }, response => { // error callback
+                     //console.log(response);
+                  });
+               }
+
+               break;
+
+
+
+
+
+
+
+
+               /*
                // Valida si es distinto a null, bloquea digito y pasaporte
                var run_limpio = null;
                var dv = null;
 
-               if (this.is_null(this.fdc[input.name]) == false /*&& this.fdc[input.name]*/) {
+               if (this.is_null(this.fdc[input.name]) == false ) {
                   this.find_input(this.inputs, 'pasaporte_provisorio').disabled = 'disabled';
                   this.find_input(this.inputs, 'digito_verificador').disabled = 'disabled';
                }
@@ -4507,7 +4590,7 @@ const FormularioController = new Vue({
                }
 
                if (this.formularioEditActivo == true) {
-                  
+
                   if (validate(this.fdc[input.name]+""+this.fdc['digito_verificador']) == false) {
                      swal({
                         title: "Error",
@@ -4559,7 +4642,7 @@ const FormularioController = new Vue({
                   }, response => { }); // error callback //console.log(response);
                }
 
-
+               */
 
                /*
                if (this.auth && this.in_array([2,3,5], this.auth.id_role)) {
