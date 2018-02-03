@@ -4453,7 +4453,7 @@ const FormularioController = new Vue({
       verifica_validacion_keyup: function (input) {
          switch (input.id) {
             case 'run_madre':
-               this.fdc[input.name] = format(this.fdc[input.name]);
+               //this.fdc[input.name] = format(this.fdc[input.name]);
                break;
             /*
             case 'run_recien_nacido':
