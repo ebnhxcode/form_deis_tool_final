@@ -37286,16 +37286,16 @@ var FormularioController = new _vue2.default({
 
       //Validacion de campos 1 a 1 al evento keyup filtrado por un case sobre el cambio
       verifica_validacion_keyup: function verifica_validacion_keyup(input) {
-         /*
          switch (input.id) {
             case 'run_madre':
-               this.fdc[input.name] = format(this.fdc[input.name]);
+               this.fdc[input.name] = (0, _rut.format)(this.fdc[input.name]);
                break;
+            /*
             case 'run_recien_nacido':
                this.fdc[input.name] = format(this.fdc[input.name]);
                break;
+            */
          }
-         */
       },
 
       verifica_validacion_change: function verifica_validacion_change(input) {
