@@ -4476,35 +4476,35 @@ const FormularioController = new Vue({
             case 'run_madre':
 
 
-               if (!this.fdc[input.name] ||
-                  this.fdc[input.name] == '' ||
-                  this.fdc[input.name] == null ||
-                  validate(this.fdc[input.name]+this.fdc['digito_verificador'])){
-                  return;
+
+
+               var r = this.fdc[input.name];
+               var dv = this.fdc['digito_verificador'];
+
+               //Si se está editando, que valide el rut
+               if (this.fdc[input.name] != this.fdc_temp[input.name]) {
+
+                  if (validate(r) == false) {
+                     alert('Debe ingresar un rut completo valido, sin puntos ni guión.');
+                     this.fdc[input.name] = null;
+                     this.fdc['digito_verificador'] = dv;
+                     return;
+                  } else {
+                     var run_limpio = clean(this.fdc[input.name]);
+                     dv = run_limpio.substr(run_limpio.length-1, run_limpio.length);
+                     run_limpio = run_limpio.substr(0, run_limpio.length-1);
+                     this.fdc['run_madre'] = run_limpio;
+                     this.fdc['digito_verificador'] = dv;
+                  }
                }
 
-               if (validate(this.fdc[input.name]) == false) {
-                  alert('Debe ingresar un rut completo valido, sin puntos ni guión.');
-                  this.fdc[input.name] = null;
-                  this.fdc['digito_verificador'] = dv;
-                  return;
-               }
+
 
                if (this.fdc[input.name] != null && this.fdc[input.name]) {
-
-                  for (let i in this.inputs){
-                     if (this.inputs[i].name == 'pasaporte_provisorio') {
-                        this.inputs[i].disabled = true;
-                     }
-                  }
+                  this.find_input(this.inputs, 'pasaporte_provisorio').disabled = true;
 
                }
 
-               var run_limpio = clean(this.fdc[input.name]);
-               var dv = run_limpio.substr(run_limpio.length-1, run_limpio.length);
-               run_limpio = run_limpio.substr(0, run_limpio.length-1);
-               this.fdc['run_madre'] = run_limpio;
-               this.fdc['digito_verificador'] = dv;
 
                //input.disabled = 'disabled';
 
