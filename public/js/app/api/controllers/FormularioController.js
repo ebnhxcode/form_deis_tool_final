@@ -37289,6 +37289,9 @@ var FormularioController = new _vue2.default({
          switch (input.id) {
             case 'run_madre':
                //this.fdc[input.name] = format(this.fdc[input.name]);
+
+               console.log(this.fdc.run_madre);
+               console.log(this.fdc_temp.run_madre);
                break;
             /*
             case 'run_recien_nacido':
@@ -38966,6 +38969,10 @@ var FormularioController = new _vue2.default({
             this.$http.post('/formulario', formData).then(function (response) {
                // success callback
                //console.log(response.status);
+               _this18.fdc = {};
+               _this18.fdc_temp = {};
+               _this18.fdc = response.body.data;
+               _this18.fdc_temp = response.body.data;
 
                //alert('Guardado');
 
