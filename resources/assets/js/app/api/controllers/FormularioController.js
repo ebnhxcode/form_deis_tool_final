@@ -4356,7 +4356,7 @@ const FormularioController = new Vue({
       },
 
       is_undefined:(v) => { return (typeof v == undefined)?true:false; },
-      is_null: (v) => { return v==null?true:false; },
+      is_null: (v) => { return (v==null)?true:false; },
       is_empty: (v) => { return (!v || v==null || v=='' || typeof v == undefined) ? true : false; },
       in_array: (array, v) => { return (array.indexOf(v) > -1) ? true : false; },
 
@@ -4455,8 +4455,8 @@ const FormularioController = new Vue({
             case 'run_madre':
                //this.fdc[input.name] = format(this.fdc[input.name]);
 
-               console.log(this.fdc.run_madre);
-               console.log(this.fdc_temp.run_madre);
+               //console.log(this.fdc.run_madre);
+               //console.log(this.fdc_temp.run_madre);
                break;
             /*
             case 'run_recien_nacido':
@@ -6286,10 +6286,12 @@ const FormularioController = new Vue({
 
             this.$http.post('/formulario', formData).then(response => { // success callback
                //console.log(response.status);
+               /*
                this.fdc = {};
                this.fdc_temp = {};
                this.fdc = response.body.data;
                this.fdc_temp = response.body.data;
+               */
 
                //alert('Guardado');
 

@@ -38969,9 +38969,7 @@ var FormularioController = new _vue2.default({
             this.$http.post('/formulario', formData).then(function (response) {
                // success callback
                //console.log(response.status);
-               _this18.fdc = {};
                _this18.fdc_temp = {};
-               _this18.fdc = response.body.data;
                _this18.fdc_temp = response.body.data;
 
                //alert('Guardado');
