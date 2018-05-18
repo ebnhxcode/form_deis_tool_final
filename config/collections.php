@@ -50,6 +50,7 @@ return [
          'Yagan' => 'Yagan',
          'Otro' => 'Otro',
          'Ninguno' => 'Ninguno',
+         'Dato no disponible' => 'Dato no disponible',
       ],
 
       'embarazo_con_control_parental' => [
@@ -171,6 +172,7 @@ return [
 
       'tratamiento_sifilis_farmaco' => [
          ''=>'',
+         'No Se Trato'=>'No se trato',
          'Penicilina Benzatina' => 'Penicilina Benzatina',
          'Penicilina Sodica' => 'Penicilina Sodica',
          'Penicilina Sodica Mas Benzatina' => 'Penicilina Sodica Mas Benzatina',
@@ -194,6 +196,7 @@ return [
 
       'terapia_antiretroviral_farmaco_1' => [
          ''=>'',
+         'No Se Trato'=>'No se trato',
          'Zidovudina' => 'Zidovudina',
          'Abacavir' => 'Abacavir',
          'Tenofovir' => 'Tenofovir',
@@ -201,12 +204,14 @@ return [
 
       'terapia_antiretroviral_tar_farmaco_2' => [
          ''=>'',
+         'No Se Trato'=>'No se trato',
          'Lamivudina' => 'Lamivudina',
          'Emtricitabina' => 'Emtricitabina',
       ],
 
       'terapia_antiretroviral_tar_farmaco_3' => [
          ''=>'',
+         'No Se Trato'=>'No se trato',
          'Nevirapina' => 'Nevirapina',
          'Atazanavir' => 'Atazanavir',
          'Fosamprenavir' => 'Fosamprenavir',
@@ -451,11 +456,13 @@ return [
 
       'nombre_farmaco_1_vih_recien_nacido' => [
          ''=>'',
+         'No Se Trato'=>'No se trato',
          'Zidovudina (AZT)' => 'Zidovudina (AZT)',
       ],
 
       'nombre_farmaco_2_vih_recien_nacido' => [
          ''=>'',
+         'No Se Trato'=>'No se trato',
          'Nevirapina' => 'Nevirapina (NVP)',
       ],
 
@@ -748,6 +755,11 @@ return [
          'FFAA' => 'FFAA',
          'Fonasa' => 'Fonasa',
          'Desconocido' => 'Desconocido',
+      ],
+
+      'sin_tratamiento_aps' => [
+         ''=>'',
+         'No Se Trato'=>'No se trato',
       ],
 
    ]

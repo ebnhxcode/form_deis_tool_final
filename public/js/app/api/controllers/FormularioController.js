@@ -38214,7 +38214,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'nombre_farmaco_1_vih_recien_nacido':
-               if (this.fdc[input.name] != null && this.fdc[input.name] != '') {
+               if (this.fdc[input.name] != null && this.fdc[input.name] != '' && this.fdc[input.name] != 'No Se Trato') {
                   this.find_input(this.inputs, 'fecha_inicio_farmaco_1_vih_recien_nacido').disabled = null;
                   this.find_input(this.inputs, 'hora_inicio_farmaco_1_vih_recien_nacido').disabled = null;
                   this.find_input(this.inputs, 'dosis_farmaco_1_vih_recien_nacido').disabled = null;
@@ -38226,7 +38226,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'nombre_farmaco_2_vih_recien_nacido':
-               if (this.fdc[input.name] != null && this.fdc[input.name] != '') {
+               if (this.fdc[input.name] != null && this.fdc[input.name] != '' && this.fdc[input.name] != 'No Se Trato') {
                   this.find_input(this.inputs, 'fecha_inicio_farmaco_2_vih_recien_nacido').disabled = null;
                   this.find_input(this.inputs, 'hora_inicio_farmaco_2_vih_recien_nacido').disabled = null;
                   this.find_input(this.inputs, 'dosis_farmaco_2_vih_recien_nacido').disabled = null;
@@ -38365,7 +38365,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'terapia_antiretroviral_farmaco_1':
-               if (this.fdc[input.name]) {
+               if (this.fdc[input.name] && this.fdc[input.name] != 'No Se Trato') {
                   this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_1').disabled = null;
                } else {
                   this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_1').disabled = true;
@@ -38373,7 +38373,7 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'terapia_antiretroviral_tar_farmaco_2':
-               if (this.fdc[input.name]) {
+               if (this.fdc[input.name] && this.fdc[input.name] != 'No Se Trato') {
                   this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = null;
                } else {
                   this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_2').disabled = true;
@@ -38381,10 +38381,19 @@ var FormularioController = new _vue2.default({
                break;
 
             case 'terapia_antiretroviral_tar_farmaco_3':
-               if (this.fdc[input.name]) {
+               if (this.fdc[input.name] && this.fdc[input.name] != 'No Se Trato') {
                   this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = null;
                } else {
                   this.find_input(this.inputs, 'fecha_inicio_tar_farmaco_3').disabled = true;
+               }
+               break;
+
+            case 'sin_tratamiento_aps':
+
+               if (this.fdc[input.name] == 'No Se Trato') {
+                  this.find_input(this.inputs, 'fecha_administracion_1_dosis_penicilina_gestante').disabled = true;
+               } else {
+                  this.find_input(this.inputs, 'fecha_administracion_1_dosis_penicilina_gestante').disabled = null;
                }
                break;
 
@@ -38466,10 +38475,6 @@ var FormularioController = new _vue2.default({
                }
                $('.anos_estudio1').val(this.fdc['anos_estudio']);
                $('.anos_estudio2').val(this.fdc['anos_estudio']);
-               break;
-
-            case 'sin_tratamiento_aps':
-               alert(1);
                break;
 
          }

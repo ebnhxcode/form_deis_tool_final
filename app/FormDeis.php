@@ -199,7 +199,9 @@ class FormDeis extends Model
       'updated_at',
       'usuario_modifica_form_deis',
       'via_parto',
-      'vih_conocido_previa_embarazo'
+      'vih_conocido_previa_embarazo',
+
+      'sin_tratamiento_aps',
    ];
 
    public function form_deis_user () {
