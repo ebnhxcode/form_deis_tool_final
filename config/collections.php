@@ -583,7 +583,7 @@ return [
       ],
 
       'resultado_3_vdrl_embarazo' => [
-
+         '' => '',
          'Reactivo' => 'Reactivo',
          'No Reactivo' => 'No Reactivo',
          'No Realizado' => 'Examen No Realizado',

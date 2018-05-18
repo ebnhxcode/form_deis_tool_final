@@ -226,6 +226,9 @@ return [
       'fecha_administracion_1_dosis_penicilina_gestante_sifilis',
       'fecha_administracion_ult_dosis_penicilina_gestante',
 
+
+      'sin_tratamiento_aps',
+
    ],
 
    #Campos definidos con sus propiedades

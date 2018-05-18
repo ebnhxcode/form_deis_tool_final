@@ -34681,7 +34681,7 @@ var FormularioController = new _vue2.default({
          'spinner_form_deis': true,
 
          'inputTypes': {
-            'basics': ['text', 'number', 'email', 'password', 'date', 'time'],
+            'basics': ['text', 'number', 'email', 'password', 'date', 'time', 'checkbox'],
             'select': ['select'],
             'textarea': ['textarea']
          },
@@ -37634,6 +37634,7 @@ var FormularioController = new _vue2.default({
                   this.fdc[input.name] = 0;
                }
                break;
+
             case 'embarazo_con_control_parental':
                if (this.fdc[input.name] == null) {
                   break;
@@ -38465,6 +38466,10 @@ var FormularioController = new _vue2.default({
                }
                $('.anos_estudio1').val(this.fdc['anos_estudio']);
                $('.anos_estudio2').val(this.fdc['anos_estudio']);
+               break;
+
+            case 'sin_tratamiento_aps':
+               alert(1);
                break;
 
          }
