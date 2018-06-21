@@ -4205,7 +4205,6 @@ const FormularioController = new Vue({
          watch: {
          },
       },
-
       /*
        '':{
        props: [''],
@@ -4333,14 +4332,16 @@ const FormularioController = new Vue({
             default :
                swal({
                   title: "Atencion",
-                  text: "Ocurrio un error al procesar el formulario, por favor actualice la página.",
+                  text: "Ocurrio un error al procesar el formulario, por favor intente nuevamente.",
                   type: "warning",
                   confirmButtonClass: "btn-danger",
                   closeOnConfirm: true
                }, function (isConfirm) {
+                  /*
                   if (isConfirm) {
                      window.location.href = '/login';
                   }
+                  */
                });
                break;
          }
